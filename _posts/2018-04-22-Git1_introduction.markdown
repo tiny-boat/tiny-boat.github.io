@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Note for Git 1: introduction"
+date:   2018-04-22 23:46:00 +0800
+categories: jekyll update
+---
+
 # 1.1 前世今生
 
 *Git* 是目前世界上最先进的分布式版本控制系统，它的诞生源于 “管理 *Linux* 系统代码” 的需要。

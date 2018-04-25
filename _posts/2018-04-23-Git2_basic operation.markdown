@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Note for Git 2: basic operation"
+date:   2018-04-23 18:43:00 +0800
+categories: jekyll update
+---
+
 # 2.1 创建工作区与版本库
 
 工作区与版本库的创建十分简单，使用 *mkdir*、*cd*、*git init* 三个命令即可完成，*mkdir* 是 *make directory* 的缩写，*cd* 是 *change directory* 的缩写，*init* 是 *initialization* 的缩写，下面是示例代码：
