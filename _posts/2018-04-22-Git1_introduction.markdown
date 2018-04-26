@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Git学习笔记(2):概述"
+title:  "Git学习笔记(1):概述"
 date:   2018-04-22 23:46:00 +0800
 categories: Git
 ---
@@ -27,6 +27,7 @@ categories: Git
 
 最后，让我们记住以下两个重要的日子：*8* 月 *25* 日，和 *12* 月 *28* 日。前者是 *27* 年前 *Linux* 内核的诞生之日，后者则是 *49* 年前 *Linus Torvalds* 的出生之日。
 
+
 # 1.2 版本控制
 
 在项目开发中，对项目的每次修改形成项目新的版本，将这些修改完整记录下来，以期能够把握项目总体进程并能在某个时刻方便快捷地回退到某个历史版本，这就是版本控制。
@@ -36,6 +37,7 @@ categories: Git
 >版本库：又名仓库（*Repository*），即项目当前版本和全部历史版本构成的集合。
 
 目前集中式版本控制系统的代表有：开源的 *CVS*、*SVN*，*IBM* 的 *ClearCase*，*Microsoft* 的 *VSS* 等等；分布式版本控制系统的代表有：开源的 *Git*、*Mercurial*、*Bazaar*，*BitMover* 的 *BitKeeper* 等等。
+
 
 # 1.3 安装
 
@@ -49,10 +51,12 @@ $ git config --global user.email "llygg6@gmail.com"
 
 ```
 
+
 # 1.4 内部框架
 下图展示了 *Git* 内部的基本框架，它由工作区（*Working Directory*）和版本库（*Repository*）共同构成，版本库中又由暂存区（*stage*）和分支（*branch*，默认为 *master*，它是 *Git* 创建的第一个分支，有一个指针 *HEAD* 指向它）构成。接下来的 [Git 学习笔记 (2)：Git 基本操作](https://www.jianshu.com/p/0aea325bab25) 将使我们熟悉 *Git* 的这一内部框架。
 
 <div align='center'>
 <img src="http://upload-images.jianshu.io/upload_images/6113920-a6436998275527f8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<p> </p>
 <p>图 1-1: Git 内部框架示意图</p>
 </div>
