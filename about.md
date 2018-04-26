@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 关于
+title: 关于我
 permalink: /about/
 ---
 
@@ -8,6 +8,10 @@ permalink: /about/
 <p>谢谢你关注远行的小舟，欢迎你走进征帆的世界！</p>
 </div>
 
+### 联系方式
+- 新浪微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
+- 手机/微信：17610891317
+- 邮箱：llygg6@gmail.com / 737130291@qq.com
 
 ### 教育经历
 
