@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Note for Git 1: introduction"
+title:  "Git学习笔记(2):概述"
 date:   2018-04-22 23:46:00 +0800
-categories: jekyll update
+categories: Git
 ---
 
 # 1.1 前世今生

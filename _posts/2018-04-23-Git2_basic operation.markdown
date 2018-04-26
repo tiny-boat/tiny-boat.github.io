@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Note for Git 2: basic operation"
+title:  "Git学习笔记(1):基本操作"
 date:   2018-04-23 18:43:00 +0800
-categories: jekyll update
+categories: Git
 ---
 
 # 2.1 创建工作区与版本库

@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: 
+permalink: /关于/
 ---
 
 > 谢谢你关注远行的小舟，欢迎你走进征帆的世界！
