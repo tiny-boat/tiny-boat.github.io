@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Git学习笔记(1):基本操作"
+title:  "Git学习笔记(2):基本操作"
 date:   2018-04-23 18:43:00 +0800
 categories: Git
 ---
@@ -15,6 +15,7 @@ $ cd learngit
 $ git init
 ```
 执行前两行命令后，一个名为 *learngit* 的工作区就创建了，执行最后一行命令后，*learngit* 目录下将出现名为 *.git* 的隐藏文件夹，它就是版本库。
+
 
 # 2.2 修改提交
 
@@ -47,13 +48,14 @@ $ git commit -m "delete readme3.txt"
  delete mode 100644 readme3.txt
 ```
 
+
 # 2.3 管理修改
 
 管理修改，即管理对工作区或版本库暂存区的修改，可借助以下一些命令实现。
 - *git status* 命令用来查看工作区与版本库的当前状态
 - *git diff* 命令用来查看工作区被修改的文件与版本库分支当前指针指向文件的差异
-- *git chekout -- <file>* 命令用来撤销对工作区的修改，即用版本库当前指针指向文件替代工作区被修改的文件
-- *git reset HEAD <file>* 命令用来撤销对版本库暂存区的修改
+- *git chekout -- \<file\>* 命令用来撤销对工作区的修改，即用版本库当前指针指向文件替代工作区被修改的文件
+- *git reset HEAD \<file\>* 命令用来撤销对版本库暂存区的修改
 
 其中后两个命令在 *git status* 的系统输出中均有提示，无需记忆，相关示例代码如下：
 
@@ -107,6 +109,7 @@ On branch master
 nothing to commit, working tree clean
 ```
 在将版本库暂存区修改提交到版本库分支后，工作区当前状态更改为 *working tree clean*，即工作区的修改已提交到版本库分支，现在工作区是干净的；版本库当前状态更改为 *nothing to commit*，即版本库暂存区没有任何修改待提交到版本库分支。
+
 
 # 2.4 版本回退
 版本回退，即重置版本库分支中指针的指向，将版本库分支中的指针指向某个历史版本，可借助以下一些命令实现。
