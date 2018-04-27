@@ -48,12 +48,11 @@ categories: Git
 ```
 $ git config --global user.name "tiny-boat"
 $ git config --global user.email "llygg6@gmail.com"
-
 ```
 
 
 # 1.4 内部框架
-下图展示了 *Git* 内部的基本框架，它由工作区（*Working Directory*）和版本库（*Repository*）共同构成，版本库中又由暂存区（*stage*）和分支（*branch*，默认为 *master*，它是 *Git* 创建的第一个分支，有一个指针 *HEAD* 指向它）构成。接下来的 [Git 学习笔记 (2)：Git 基本操作](https://www.jianshu.com/p/0aea325bab25) 将使我们熟悉 *Git* 的这一内部框架。
+下图展示了 *Git* 内部的基本框架，它由工作区（*Working Directory*）和版本库（*Repository*）共同构成，版本库中又由暂存区（*stage*）和分支（*branch*，默认为 *master*，它是 *Git* 创建的第一个分支，有一个指针 *HEAD* 指向它）构成。接下来的 [Git 学习笔记 (2)：Git 基本操作](https://www.longzf.com/git/2018/04/23/Git2_basic-operation.html) 将使我们熟悉 *Git* 的这一内部框架。
 
 <div align='center'>
 <img src="http://upload-images.jianshu.io/upload_images/6113920-a6436998275527f8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
