@@ -19,7 +19,7 @@ git remote add origin git@github.com:username/foldername.git
 ```
 git clone git@github.com:tiny-boat/foldername.git
 ```
-在连接创建后，实现本地仓库与 *Github* 的同步，主要由推送（*git push*）与拉取（*git pull*）两个命令实现。将本地更新推送到 *github* 的命令如下：
+在连接创建后，本地仓库与 *Github* 的同步，主要由推送（*git push*）与拉取（*git pull*）两个命令实现。将本地更新推送到 *github* 的命令如下：
 
 ```
 git push origin master
