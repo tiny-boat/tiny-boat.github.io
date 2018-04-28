@@ -16,7 +16,7 @@ permalink: /about/
 ### 教育经历
 
 - 2013.09——2017.06 东北师范大学 数学与统计学院 统计学 理学学士
-- 2018.09—— &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;湘潭大学 数学与计算科学学院 应用统计专业硕士 在读
+- 2018.09—— &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;湘潭大学 数学与计算科学学院 应用统计专业硕士 在读
 
 ### 实习经历
 
