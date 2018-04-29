@@ -19,17 +19,17 @@ categories: Git
 
 分支管理包括分支的查看、创建、切换、合并与删除等操作，它们对应的命令如下所示：
 
-1.  查看、创建与切换分支
-     + 查看分支：*git branch*
-     + 创建分支：*git branch \<name\>*
-     + 切换分支：*git checkout \<name\>*
-     + 创建+切换分支：*git checkout -b \<name\>*
-2.  合并某分支到当前分支
-     + *Fast forward* 模式（不会留下分支合并的历史）： *git merge \<name\>*
-     + 普通模式（会留下分支合并图，可通过 *git log --graph* 命令查看）：*git merge --no-ff -m "description" \<name\>*
-3.  删除分支
-     + 分支已合并：*git branch -d \<name\>*
-     + 分支未合并：*git branch -D \<name\>*
+* 查看、创建与切换分支
+  + 查看分支：*git branch*
+  + 创建分支：*git branch \<name\>*
+  + 切换分支：*git checkout \<name\>*
+  + 创建+切换分支：*git checkout -b \<name\>*
+* 合并某分支到当前分支
+  + *Fast forward* 模式（不会留下分支合并的历史）： *git merge \<name\>*
+  + 普通模式（会留下分支合并图，可通过 *git log --graph* 命令查看）：*git merge --no-ff -m "description" \<name\>*
+* 删除分支
+  + 分支已合并：*git branch -d \<name\>*
+  + 分支未合并：*git branch -D \<name\>*
 
 # 4.3 Git stash
 
@@ -38,8 +38,8 @@ categories: Git
 # 4.4 多人协作
 
 多人协作的工作模式通常如下：
-1. 查看远程/本地分支信息：*git remote -v*、*git branch*
-2. 如果本地不存在远程分支对应的分支，创建之：git checkout -b branch-name origin/branch-name
-3. 如果本地分支与远程分支没有链接关系，创建之：git branch --set-upstream branch-name origin/branch-name
-4. 推送修改：git push origin branch-name；
-5. 如果推送失败，先拉取，本地合并解决冲突后再推送。
+- 查看远程/本地分支信息：*git remote -v*、*git branch*
+- 如果本地不存在远程分支对应的分支，创建之：git checkout -b branch-name origin/branch-name
+- 如果本地分支与远程分支没有链接关系，创建之：git branch --set-upstream branch-name origin/branch-name
+- 推送修改：git push origin branch-name；
+- 如果推送失败，先拉取，本地合并解决冲突后再推送。
