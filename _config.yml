@@ -13,9 +13,9 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: tiny-boat's blog
-description: >- # this means to ignore newlines until "baseurl:"
-  a young boy graduated from Northeast Normal University of China
+#title: tiny-boat's blog
+#description: >- # this means to ignore newlines until "baseurl:"
+ # a young boy graduated from Northeast Normal University of China
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  tiny-boat
@@ -53,3 +53,7 @@ disqus:
 
 # add google_analytics
 google_analytics: UA-118414695-1
+
+title: 远行的舟
+description: >- # this means to ignore newlines until "baseurl:"
+  一位毕业于东北师范大学的年轻男孩
