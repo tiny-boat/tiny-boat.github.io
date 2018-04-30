@@ -13,9 +13,9 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: 远行的舟
+title: tiny-boat's blog
 description: >- # this means to ignore newlines until "baseurl:"
-  一位毕业于东北师范大学的年轻男孩
+  a young boy graduated from Northeast Normal University of China
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  tiny-boat
@@ -25,6 +25,7 @@ markdown: kramdown
 #theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -37,3 +38,15 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+#This allows you to set which pages you want to appear in the navigation area and configure order of the links.
+header_pages:
+  - about.md
+  - README.md
+
+# change the default date format
+date_format: "%Y-%m-%d %H:%M"
+
+
+disqus:
+  short_name: "tiny-boat"
