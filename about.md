@@ -87,7 +87,7 @@ permalink: /about_me/
 
 ```
 
-### 骚扰途径
+### 联系方式
 * 新浪微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
 * 手机/微信：17610891317
 * 邮箱：llygg6@gmail.com / 737130291@qq.com
