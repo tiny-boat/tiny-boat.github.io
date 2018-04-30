@@ -84,13 +84,18 @@ permalink: /about_me/
 而我只是坐在船上
 引着一根无钩的线
 在月光下静静地等你
-
 ```
 
 ### 联系方式
 * 新浪微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
-* 手机/微信：17610891317
-* 邮箱：llygg6@gmail.com / 737130291@qq.com
+* 手机：17610891317
+* 微信
+<div align='center'>  
+<img src='/assets/wechat.jpg'>
+</div>
+* 邮箱
+  + llygg6@gmail.com
+  + 737130291@qq.com
 
 ### 结语
 
