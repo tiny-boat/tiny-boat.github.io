@@ -87,15 +87,17 @@ permalink: /about_me/
 ```
 
 ### 联系方式
-* 新浪微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
-* 手机：17610891317
-* 微信
-<div align='center'>  
-<img src='/assets/wechat.jpg'>
-</div>
 * 邮箱
   + llygg6@gmail.com
   + 737130291@qq.com
+* 微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
+* 微信：xiaozhou13171317
+<div align='center'>  
+<img src='/assets/wechat.jpg' height="200" width="200">
+<p></p>
+<p>微信扫一扫添加</p>
+</div>
+
 
 ### 结语
 
