@@ -1,11 +1,12 @@
 ---
 layout: page
-title: ABOUT
-permalink: /about/
+title: 关于我
+permalink: /about_me/
 ---
 
 <div align='left'>
-<p>谢谢你关注远行的小舟，欢迎你走进征帆的世界！</p>
+<p>谢谢你关注远行的小舟o(*￣▽￣*)</p>
+<p>欢迎你走进征帆的世界(*￣▽￣*)o</p>
 </div>
 
 ### 联系方式
