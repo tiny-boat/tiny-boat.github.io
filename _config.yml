@@ -50,3 +50,6 @@ date_format: "%Y-%m-%d %H:%M"
 # comment setting
 disqus:
   shortname: tiny-boat
+
+# add google_analytics
+google_analytics: UA-118414695-1
