@@ -28,9 +28,11 @@ layout: default
           </a>
         </h3>
 -->
-        {%- if site.show_excerpts -%}
+        <p class="post-meta">
+		{%- if site.show_excerpts -%}
           {{ post.excerpt | strip_html }}
         {%- endif -%}
+		</p>
       </li>
       {%- endfor -%}
     </ul>

@@ -25,9 +25,11 @@ permalink: /
           </a>
         </h3>
 -->
+		<p class="post-meta">
         {%- if site.show_excerpts -%}
           {{ post.excerpt | strip_html }}
         {%- endif -%}
+		</p>
       </li>
       {%- endfor -%}
     </ul>

@@ -57,9 +57,8 @@ disqus:
 google_analytics: UA-118414695-1
 
 show_excerpts: true
-excerpt_separator: \n\n
+excerpt_separator: <!--excerpt-->
 
-paginate: 4
 
 title: 远行的舟
 description: >- # this means to ignore newlines until "baseurl:"

@@ -9,7 +9,7 @@ categories: Git
 
 *Git* 是目前世界上最先进的分布式版本控制系统，它的诞生源于 “管理 *Linux* 系统代码” 的需要。
 
-*1991* 年，年仅 *21* 岁、还在芬兰赫尔辛基大学读书的 *[Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds)*（[林纳斯·托瓦茨](https://baike.baidu.com/item/%E6%9E%97%E7%BA%B3%E6%96%AF%C2%B7%E6%89%98%E7%93%A6%E5%85%B9/2122821?fr=aladdin)）就编写出了如今在服务器端得到广泛应用的操作系统 *[Linux](https://baike.baidu.com/item/linux/27050)* 的内核。此后，来自世界各地的众多程序员陆续加入到 *Linux* 的开发工作中，于是代码的管理成为了他们必须面对的重要问题。
+*1991* 年，年仅 *21* 岁、还在芬兰赫尔辛基大学读书的 *[Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds)*（[林纳斯·托瓦茨](https://baike.baidu.com/item/%E6%9E%97%E7%BA%B3%E6%96%AF%C2%B7%E6%89%98%E7%93%A6%E5%85%B9/2122821?fr=aladdin)）就编写出了如今在服务器端得到广泛应用的操作系统 *[Linux](https://baike.baidu.com/item/linux/27050)* 的内核。<!--excerpt-->此后，来自世界各地的众多程序员陆续加入到 *Linux* 的开发工作中，于是代码的管理成为了他们必须面对的重要问题。
 
 *2002* 年以前，各地程序员发来的代码均由 *Linus* 本人通过手工合并。
 
