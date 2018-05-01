@@ -1,13 +1,10 @@
 ---
 layout: default
+title: 首页
+permalink: /
 ---
 
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
-
-  {{ content }}
 
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "" }}</h2>
@@ -39,5 +36,5 @@ layout: default
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
 -->
   {%- endif -%}
-  
+
 </div>
