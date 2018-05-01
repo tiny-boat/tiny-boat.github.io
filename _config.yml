@@ -44,7 +44,7 @@ header_pages:
   - homepage.md
   - category.md
   - about.md
-  - README.md
+#  - README.md
 
 # change the default date format
 date_format: "%Y-%m-%d %H:%M"
