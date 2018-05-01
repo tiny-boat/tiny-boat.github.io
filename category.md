@@ -14,7 +14,7 @@ permalink: /git/
 				<h3>
 					<a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
 				</h3>
-				{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
+				{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H: %M" -%}
 				<p class="post-meta">{{ post.date | date: date_format }}</p>
 				<p class="post-meta">
 				{%- if site.show_excerpts -%}
