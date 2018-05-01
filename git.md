@@ -9,7 +9,7 @@ permalink: /git/
 	<h2 class="post-list-heading">{{ page.list_title | default: "" }}</h2>
 
 	<ul class="post-list">
-		{% for post in site.categories.Git %}
+		{% for post in site.categories.Git reversed %}
 			<li>
 				<h3>
 					<a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
