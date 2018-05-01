@@ -57,7 +57,7 @@ disqus:
 google_analytics: UA-118414695-1
 
 show_excerpts: true
-excerpt_separator:  '<!-- more -->'
+excerpt_separator: \n\n
 
 paginate: 4
 
