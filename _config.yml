@@ -50,8 +50,9 @@ header_pages:
 date_format: "%Y-%m-%d %H:%M"
 
 # comment setting
-disqus:
-  shortname: tiny-boat
+#disqus:
+  #shortname: tiny-boat
+livere_comments: true
 
 # add google_analytics
 google_analytics: UA-118414695-1
