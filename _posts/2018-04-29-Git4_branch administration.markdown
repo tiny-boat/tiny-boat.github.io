@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Git学习笔记(4):分支管理"
-date:   2018-04-29 15:46:00 +0800
+date:   2018-04-29 15:46:00 +0000
 categories: Git
 ---
 

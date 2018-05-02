@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Git学习笔记(1):概述"
-date:   2018-04-22 23:46:00 +0800
+date:   2018-04-22 23:46:00 +0000
 categories: Git
 ---
 

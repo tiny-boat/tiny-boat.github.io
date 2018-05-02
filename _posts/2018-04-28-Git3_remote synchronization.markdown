@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Git学习笔记(3):同步Github"
-date:   2018-04-28 14:02:00 +0800
+date:   2018-04-28 14:02:00 +0000
 categories: Git
 ---
 
