@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Git
-permalink: /git/
 ---
 
 <div class="home">

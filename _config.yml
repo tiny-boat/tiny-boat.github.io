@@ -41,7 +41,7 @@ plugins:
 
 #This allows you to set which pages you want to appear in the navigation area and configure order of the links.
 header_pages:
-  - homepage.md
+  - homepage.html
   - git.md
   - about.md
 #  - README.md
@@ -60,6 +60,8 @@ google_analytics: UA-118414695-1
 show_excerpts: true
 excerpt_separator: <!--excerpt-->
 
+paginate: 3
+paginate_path: "page:num"
 
 title: 远行的舟
 description: >- # this means to ignore newlines until "baseurl:"
