@@ -3,7 +3,6 @@ layout: post
 title:  "Study Plan"
 date:   2018-05-02 21:56:00 +0000
 categories: book
-
 ---
 
 ### computer science
