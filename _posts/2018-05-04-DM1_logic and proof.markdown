@@ -2,7 +2,7 @@
 layout: post
 title:  "离散数学(1):逻辑与证明"
 date:   2018-05-04 11:28:00 +0000
-categories: Discrete-Mathematics
+categories: discretemath
 ---
 
 逻辑与证明在数学学科中的重要性不言而喻，我们甚至可以说，数学就是通过各种各样的证明构造出的一款伟大的逻辑游戏。然而许多人并不知道，它们在计算机学科中同样有着举足轻重的地位。<!--excerpt-->
@@ -15,6 +15,8 @@ categories: Discrete-Mathematics
 
 命题是一个要么为真、要么为假的陈述语句。无论复杂与否，一切命题均可以由命题变元和逻辑联结词构成。例如：以 $p$ 表示我很高，$q$ 表示我很瘦，$r$ 表示我喜欢打球。那么命题 “我很高或我很瘦，但如果我很高，我就不会瘦，并且我很高当且仅当我喜欢打球” 可以表示为
 
-$$ 
+$$
+\begin{center}
 \left (p\vee q  \right )\wedge \left ( p\rightarrow  \lnot q\right )\wedge \left ( p\leftrightarrow r \right )
-$$1
+\end{center}
+$$
