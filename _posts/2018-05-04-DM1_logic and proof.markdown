@@ -13,4 +13,7 @@ categories: Discrete_Mathematics
 
 # 1.1 命题逻辑
 
-命题是一个要么为真、要么为假的陈述语句。无论复杂与否，一切命题均可以由命题变元和逻辑联结词构成。例如：以 $p$ 表示我很高，$q$ 表示我很瘦，$r$ 表示我喜欢打球。那么命题 “我很高或我很瘦，但如果我很高，我就不会瘦，并且我很高当且仅当我喜欢打球” 可以表示为 $$ \left (p\vee q  \right )\wedge \left ( p\rightarrow  \lnot q\right )\wedge \left ( p\leftrightarrow r \right ) $$
+命题是一个要么为真、要么为假的陈述语句。无论复杂与否，一切命题均可以由命题变元和逻辑联结词构成。例如：以 $p$ 表示我很高，$q$ 表示我很瘦，$r$ 表示我喜欢打球。那么命题 “我很高或我很瘦，但如果我很高，我就不会瘦，并且我很高当且仅当我喜欢打球” 可以表示为
+$$ 
+\left (p\vee q  \right )\wedge \left ( p\rightarrow  \lnot q\right )\wedge \left ( p\leftrightarrow r \right ) 
+$$
