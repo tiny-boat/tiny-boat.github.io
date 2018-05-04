@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Git学习笔记(4):分支管理"
-date:   2018-05-03 15:46:00 +0000
-categories: Git
+date:   2018-05-04 11:28:00 +0000
+categories: Discrete
 ---
 
 # 4.1 多分支存在的意义
