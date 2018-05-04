@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "离散数学(1):逻辑与证明"
-date:   2018-04-04 11:28:00 +0000
+date:   2018-05-04 11:28:00 +0000
 categories: Discrete
 ---
 
