@@ -25,4 +25,10 @@ $$
 \left (p\vee q  \right )\wedge \left ( p\rightarrow  \lnot q\right )\wedge \left ( p\leftrightarrow r \right )
 $$
 
-……未完待续
+# 待加入的内容
+
+- 析取在自然语言中存在两种含义：兼或（*inclusive or*）、异或（*exclusive or*）
+- $p\rightarrow q$ 的多种表述方式
+- 真值表
+- 原命题与逆否命题的等价性；逆命题与反命题的等价性
+- 命题逻辑的应用：语句翻译、系统规范说明布尔搜索、逻辑谜题、逻辑电路
