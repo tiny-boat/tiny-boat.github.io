@@ -13,7 +13,11 @@ categories: Git
 
 有了多个分支，不同的人就可以在不同的分支上独立进行相关开发，而后通过分支合并完成项目总的开发工作。（我们也可以把这种做法称为分布式的开发，因为它听起来和 *MapReduce* 的工作原理很像）
 
->*MapReduce* 是一种编程模型，用于大规模数据集（大于 1 *TB*）的并行运算。*Map*（映射）和 *Reduce*（归约）是其主要思想。它的出现使得程序员在不会分布式并行编程的情况下，也可以将自己的程序运行在[分布式系统](https://baike.baidu.com/item/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F)上。
+<div>
+<blockquote class='quote-style'>
+<em>MapReduce</em> 是一种用于大规模数据集（大于 1 <em>TB</em>）并行运算的编程模型，<em>Map</em>（映射）和 <em>Reduce</em>（归约）是其主要思想。它的出现使得程序员在不会分布式并行编程的情况下，也可以将自己的程序运行在<a href="https://baike.baidu.com/item/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F">分布式系统</a>上。
+</blockquote>
+</div>
 
 # 4.2 分支管理
 
