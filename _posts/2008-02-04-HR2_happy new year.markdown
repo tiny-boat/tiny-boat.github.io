@@ -3,7 +3,6 @@ layout: post
 title:  "喜迎新春"
 date:   2008-02-04 13:25:00 +0000
 categories: History_Article
-excerpt：这似乎是我第一次写古体诗，当然这样的古体诗一点也不古体
 ---
 
 <div>
