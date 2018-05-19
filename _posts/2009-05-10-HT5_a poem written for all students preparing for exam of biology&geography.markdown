@@ -2,7 +2,7 @@
 layout: post
 title:  "送给所有为生地会考努力的人"
 date:   2009-05-10 12:12:00 +0000
-categories: History_Article
+categories: HighSchool_Time
 ---
 
 <div>
@@ -12,6 +12,7 @@ categories: History_Article
 </div>
 
 <div align='center'>
+<br>
 日月如梭，光阴似箭。 <br>
 走过阳春三月的细雨， <br>
 我们来到了似乎有些闷热的五月， <br>

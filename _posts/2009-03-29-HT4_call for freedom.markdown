@@ -2,7 +2,7 @@
 layout: post
 title:  "呼唤自由"
 date:   2009-03-29 08:58:00 +0000
-categories: History_Article
+categories: HighSchool_Time
 ---
 
 <div>
@@ -12,6 +12,7 @@ categories: History_Article
 </div>
 
 <div align='center'>
+<br>
 一颗流星飞入，打破了一夜的平静……<br>
 幼小的心灵已经解脱。 <br>
 飞吧，去宇宙尽情的飞吧，<br>

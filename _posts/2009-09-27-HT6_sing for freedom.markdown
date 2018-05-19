@@ -2,7 +2,7 @@
 layout: post
 title:  "为自由而歌"
 date:   2009-09-27 14:31:00 +0000
-categories: History_Article
+categories: HighSchool_Time
 ---
 
 <div>
@@ -12,6 +12,7 @@ categories: History_Article
 </div>
 
 <div align='center'>
+<br>
 洁白的天空逐渐黑暗，<br>
 夕阳收起了那最后的余晖，<br>
 大地一片宁静，<br>

@@ -2,7 +2,7 @@
 layout: post
 title:  "喜迎新春"
 date:   2008-02-04 13:25:00 +0000
-categories: History_Article
+categories: HighSchool_Time
 ---
 
 <div>
@@ -12,6 +12,7 @@ categories: History_Article
 </div>
 
 <div align='center'>
+<br>
 大雪纷纷扬扬，人间情意浓浓。<br>
 喜迎新春佳节，共望美好明天。<br>
 大雪无情人有爱，送猪迎鼠贺新春。<br>

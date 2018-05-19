@@ -2,7 +2,7 @@
 layout: post
 title:  "赠0702班全体同学"
 date:   2009-10-25 09:48:00 +0000
-categories: History_Article
+categories: HighSchool_Time
 ---
 
 <div>
@@ -12,6 +12,7 @@ categories: History_Article
 </div>
 
 <div align='center'>
+<br>
 持续两天的田径运动会在一片喝彩声中结束，<br>
 蔚蓝的天空，黑白相间的赛道记住了一个个精彩瞬间。<br>
 这里曾经有太多的欢欣与鼓舞，<br>

@@ -59,7 +59,7 @@ google_analytics: UA-118414695-1
 show_excerpts: true
 excerpt_separator: <!--excerpt-->
 
-paginate: 3
+paginate: 5
 paginate_path: "page:num"
 
 title: 远行的舟

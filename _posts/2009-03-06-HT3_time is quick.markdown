@@ -2,7 +2,7 @@
 layout: post
 title:  "时间匆匆"
 date:   2009-03-06 14:01:00 +0000
-categories: History_Article
+categories: HighSchool_Time
 ---
 
 <div>
@@ -12,6 +12,7 @@ categories: History_Article
 </div>
 
 <div align='center'>
+<br>
 时间匆匆，时间匆匆，<br>
 经历2月的夏天，<br>
 走过3月的阴雨，<br>
