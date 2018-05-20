@@ -1,0 +1,58 @@
+---
+layout: post
+title:  "知了"
+date:   2014-08-01 00:00:00 +0000
+categories: University_Essay
+excerpt: "夜深 人静 轻轻地 我将风扇停了 以便细听 你的歌声"
+---
+
+<div>
+<blockquote class="quote-style">
+这首诗应该是在乡下准备入睡之时写下的
+</blockquote>
+<br>
+</div>
+
+<div align='center'>
+夜深<br>
+人静<br>
+轻轻地<br>
+我将风扇停了<br>
+以便细听<br>
+你的歌声<br>
+<br>
+这个夏天<br>
+熟悉的你<br>
+熟悉的旋律<br>
+无言地<br>
+将我不多的听觉<br>
+霸占<br>
+<br>
+我曾想<br>
+你的明天<br>
+究竟何去何从<br>
+你却说<br>
+我的未来<br>
+属于这片土地<br>
+<br>
+此时此刻<br>
+你在窗外<br>
+我在屋里<br>
+你干着你的活<br>
+我做着我的事<br>
+彼此无忧<br>
+<br>
+不知<br>
+明日清晨<br>
+太阳升起时<br>
+我的耳畔<br>
+能否再次响起<br>
+你熟悉的问候<br>
+<br>
+夜深<br>
+人静<br>
+悄悄地<br>
+我将风扇开了<br>
+但愿梦中<br>
+有你出现<br>
+</div>
