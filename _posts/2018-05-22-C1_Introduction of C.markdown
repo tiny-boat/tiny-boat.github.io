@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "C语言(1):初识C语言"
-date:   2018-05-21 09:08:00
+date:   2018-05-22 09:08:00
 categories: C
 excerpt: "C语言简介"
 ---
