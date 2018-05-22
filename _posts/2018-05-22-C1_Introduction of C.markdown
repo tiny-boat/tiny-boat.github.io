@@ -27,8 +27,8 @@ excerpt: "C语言简介"
 
 <div>
 <blockquote class="quote-style">
-<em>If you want a job writing software, one of the first questions you should be able to answer yes to is "oh say, can you C?"</em> <br>
-如果你想获得一份编写软件的工作，那么你需要作出肯定回答的首要问题便是：“哦说吧，你会用 <em>C</em> 吗？”
+If you want a job writing software, one of the first questions you should be able to answer yes to is "oh say, can you C?" <br>
+如果你想获得一份编写软件的工作，那么你需要作出肯定回答的首要问题便是：“哦说吧，你会用 C 吗？”
 </blockquote>
 <br>
 </div>
@@ -39,7 +39,7 @@ excerpt: "C语言简介"
 
 <div>
 <blockquote class="quote-style">
-它从内存（<em>memory</em>）中提取（<em>fetch</em>）并执行一条指令（<em>instruction</em>），接着它从内存中提取并执行下一条指令，如此继续下去，直到所有指令执行完毕，频率为 1<em> GHz</em> 的 <em>CPU</em> 每秒能执行大约 10 亿次这样的操作。CPU 能理解的指令非常有限且非常具体，这些指令的集合被称作指令集（<em>instruction set</em>），其中许多指令都用来完成移动数字位置的任务，如提取内存中的数字到寄存器中。<em>CPU</em> 有自己的小工作区，它就是由若干个寄存器（<em>register</em>）组成的，每个寄存器可以存储（<em>hold</em>）一个数字。寄存器 1 存储下一条指令的内存地址，<em>CPU</em> 使用这一信息提取下一条指令并将其存储在寄存器 2，而后更新寄存器 1 中的内容为下一条指令的内存地址。
+它从内存（memory）中提取（fetch）并执行一条指令（instruction），接着它从内存中提取并执行下一条指令，如此继续下去，直到所有指令执行完毕，频率为 1 GHz 的 CPU 每秒能执行大约 10 亿次这样的操作。CPU 能理解的指令非常有限且非常具体，这些指令的集合被称作指令集（instruction set），其中许多指令都用来完成移动数字位置的任务，如提取内存中的数字到寄存器中。CPU 有自己的小工作区，它就是由若干个寄存器（register）组成的，每个寄存器可以存储（hold）一个数字。寄存器 1 存储下一条指令的内存地址，CPU 使用这一信息提取下一条指令并将其存储在寄存器 2，而后更新寄存器 1 中的内容为下一条指令的内存地址。
 </blockquote>
 </div>
 
@@ -60,7 +60,7 @@ excerpt: "C语言简介"
 
 <div>
 <blockquote class="quote-style">
-<em>In computer science, an implementation is a realization of a technical specification or algorithm as a program, software component, or other computer system through computer programming and deployment. Many implementations may exist for a given specification or standard. For example, web browsers contain implementations of World Wide Web Consortium-recommended specifications, and software development tools contain implementations of programming languages (A programming language implementation is a system for executing computer programs) .</em><br>
+In computer science, an implementation is a realization of a technical specification or algorithm as a program, software component, or other computer system through computer programming and deployment. Many implementations may exist for a given specification or standard. For example, web browsers contain implementations of World Wide Web Consortium-recommended specifications, and software development tools contain implementations of programming languages (A programming language implementation is a system for executing computer programs) .<br>
 在计算机科学中，一个实现指的是通过计算机编程和调度将一项技术规范或算法变成实实在在的一段程序、软件组成部分或者其他计算机系统。许多实现是为某个特定的规范或标准存在的。例如，网络浏览器包含万维网联盟推荐的规范，软件开发工具包含编程语言的实现（编程语言的实现是一个用来执行计算机程序的系统）。
 </blockquote>
 </div>
