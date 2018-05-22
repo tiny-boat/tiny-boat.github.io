@@ -1,0 +1,36 @@
+---
+layout: post
+title:  "忘了它"
+date:   2014-10-05 21:27:00 +0000
+categories: University_Essay
+excerpt: "它是乌云下一片黄叶 也是艳阳中一缕青烟"
+---
+
+<div>
+<blockquote class="quote-style">
+我也不知道它是什么，扑朔迷离
+</blockquote>
+<br>
+</div>
+
+<div align='center'>
+它是乌云下一片黄叶<br>
+也是艳阳中一缕青烟<br>
+是在期待着光明<br>
+也是在静候着黑夜<br>
+<br>
+它是花丛里长出的狗尾巴<br>
+也是草地外盛开的野百合<br>
+是为同胞扩大领地<br>
+也是为自己繁衍生息<br>
+<br>
+它是像她般默默无闻<br>
+也是如他般故作深沉<br>
+是随你的步伐极速奔驰<br>
+也是踩我的足迹慢慢前进<br>
+<br>
+它是矛也是盾<br>
+它不大也不小<br>
+它是解不开的谜<br>
+天知，地知，而你我不知<br>
+</div>
