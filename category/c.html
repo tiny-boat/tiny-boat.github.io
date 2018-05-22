@@ -10,8 +10,7 @@ layout: default
 		{% for post in site.categories.C reversed %}
 			<li>
 				<h3>
-					{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H: %M" -%}
-					<a class="post-link" href="{{ post.url }}">{{ post.title }}</a><span class="post-meta">{{ post.date | date: date_format }}</span>
+					<a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
 				</h3>
 			</li>
 		{% endfor %}
