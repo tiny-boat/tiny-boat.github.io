@@ -30,7 +30,6 @@ excerpt: "C语言简介"
 If you want a job writing software, one of the first questions you should be able to answer yes to is "oh say, can you C?" <br>
 如果你想获得一份编写软件的工作，那么你需要作出肯定回答的首要问题便是：“哦说吧，你会用 C 吗？”
 </blockquote>
-<br>
 </div>
 
 # 1.1 CPU 的工作原理
@@ -51,8 +50,6 @@ If you want a job writing software, one of the first questions you should be abl
 4. 复制寄存器 1 中的内容到内存地址 2008 上
 
 可以看到：对于计算机而言，实现一个简单的加法就需要如此多的步骤。如果我们使用机器语言（计算机能直接识别的指令，仅由 0 和 1 构成）来编写程序，那么可以想象编程将是一个多么索然无味而又浪费时间的过程。正是基于这样的原因，高级编程语言应运而生并不断获得发展，它的出现大大降低了编程门槛，推动了计算机技术的普及和应用，也缔造了如今规模庞大的程序员群体。
-
-<br>
 
 # 1.2 C 标准
 
@@ -75,3 +72,29 @@ spirit of C*）这一指导原则，具体包括：
 - 即便无法保证可移植性，也要让程序运行更快（*Make it fast, even if it is not guaranteed to be portable*）
 
 此后，*C* 标准又历经了两次修订，这两次修订得到的新标准分别被称为 *C99* 标准和 *C11* 标准。其中，*C99* 标准在 *C89* 标准的基础上开始支持国际化编程、提高了对科学和工程项目中关键数值计算的适用性并且弥补了许多明显的缺陷，而 *C11* 标准则在 *C99* 的基础上提出了一些新的指导原则：出于对当前编程安全性的担忧，信任程序员的目标将被弱化。
+
+# 1.3 C 的编程机制
+
+*C* 的编程机制（*programming mechanism*）如图 1-1 所示，它首先用编译器（*compiler*）将源代码文件（*source code file*）转换为目标代码文件（*objective code file*），然后用链接器（*linker*）合并目标代码文件、启动代码文件（*startup code file*）和库代码文件（*library code file*）为可执行文件（*executable code file*）。
+
+<div>
+<blockquote class="quote-style">
+目标代码文件是由源代码转化为的机器语言代码构成的文件，但它并不是一个完整的可执行程序，它还缺乏重要的启动代码以及库代码。启动代码是程序和操作系统的接口（interface），接口是计算机科学中的一个术语，它指的是连接两台设备或两个系统的电路、接头或程序（interface is an electrical circuit, connection or program that joins one device or system to another）。库代码是 C 标准库中函数的代码，由于几乎所有的 C 程序都要使用 C 标准库中的函数，因此程序要执行，库代码必不可少，当然实际中链接器不会提取所有的库代码，而只会提取用到的库函数代码。
+</blockquote>
+</div>
+
+<div align='center'>
+<img src="/assets/cmechanism.png">
+<p> </p>
+<p>图 1-1  C 的编程机制</p>
+</div>
+
+# 1.4 C 的编程步骤
+
+图 1-2 展示了使用 *C* 编程的一般步骤，实际操作时往往需要多次往复。值得注意的是：人们容易忽视图中的前 2 步：定义程序的目标和设计程序。这种忽略对简单程序编写而言并无不可，但却给我们编写复杂程序埋下不小的隐患。在编写复杂程序前，如果不做事先的详细规划，就容易造成写出的程序缺乏条理、漏洞百出、令人费解。所谓磨刀不误砍柴工，学习编程请从养成先规划再动手编写代码的良好习惯开始，哪怕这样会使你在一开始时慢人几拍。
+
+<div align='center'>
+<img src="/assets/cprogramstep.png">
+<p> </p>
+<p>图 1-2  C 的编程步骤</p>
+</div>
