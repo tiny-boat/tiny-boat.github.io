@@ -40,7 +40,7 @@ If you want a job writing software, one of the first questions you should be abl
 
 <div>
 <blockquote class="quote-style">
-它从内存（memory）中提取（fetch）并执行一条指令（instruction），接着它从内存中提取并执行下一条指令，如此继续下去，直到所有指令执行完毕，频率为 1 GHz 的 CPU 每秒能执行大约 10 亿次这样的操作。CPU 能理解的指令非常有限且非常具体，这些指令的集合被称作指令集（instruction set），其中许多指令都用来完成移动数字位置的任务，如提取内存中的数字到寄存器中。CPU 有自己的小工作区，它就是由若干个<a href="https://baike.baidu.com/item/%E5%AF%84%E5%AD%98%E5%99%A8">寄存器</a>（register）组成的，每个寄存器可以存储（hold）一个数字。寄存器 1 存储下一条指令的内存地址，CPU 使用这一信息提取下一条指令并将其存储在寄存器 2，而后更新寄存器 1 中的内容为下一条指令的内存地址。
+它从内存（memory）中提取（fetch）并执行一条<strong>指令</strong>（instruction），接着它从内存中提取并执行下一条指令，如此继续下去，直到所有指令执行完毕，频率为 1 GHz 的 CPU 每秒能执行大约 10 亿次这样的操作。CPU 能理解的指令非常有限且非常具体，这些指令的集合被称作<strong>指令集</strong>（instruction set），其中许多指令都用来完成移动数字位置的任务，如提取内存中的数字到寄存器中。CPU 有自己的小工作区，它就是由若干个<a href="https://baike.baidu.com/item/%E5%AF%84%E5%AD%98%E5%99%A8"><strong>寄存器</strong></a>（register）组成的，每个寄存器可以存储（hold）一个数字。寄存器 1 存储下一条指令的内存地址，CPU 使用这一信息提取下一条指令并将其存储在寄存器 2，而后更新寄存器 1 中的内容为下一条指令的内存地址。
 </blockquote>
 </div>
 
@@ -55,7 +55,7 @@ If you want a job writing software, one of the first questions you should be abl
 
 # 1.2 C 标准
 
-*C* 标准（*C Standard*）是不同的 *C* 语言实现（*implementation*）共同遵循的统一规范。实现是计算机科学中的一个术语，下面是维基百科对实现的解释：
+*C* 标准（*C Standard*）是不同的 *C* 语言<strong>实现</strong>（*implementation*）共同遵循的统一规范。实现是计算机科学中的一个术语，下面是维基百科对实现的解释：
 
 <div>
 <blockquote class="quote-style">
@@ -77,11 +77,11 @@ spirit of C*）这一指导原则，具体包括：
 
 # 1.3 C 的编程机制
 
-*C* 的编程机制（*programming mechanism*）如图 1-1 所示，它首先用编译器（*compiler*）将源代码文件（*source code file*）转换为目标代码文件（*objective code file*），然后用[链接器](https://baike.baidu.com/item/%E9%93%BE%E6%8E%A5%E5%99%A8)（*linker*）合并目标代码文件、启动代码文件（*startup code file*）和库代码文件（*library code file*）为可执行文件（*executable code file*）。
+*C* 的编程机制（*programming mechanism*）如图 1-1 所示，它首先用**编译器**（*compiler*）将**源代码文件**（*source code file*）转换为**目标代码文件**（*objective code file*），然后用[**链接器**](https://baike.baidu.com/item/%E9%93%BE%E6%8E%A5%E5%99%A8)（*linker*）合并目标代码文件、**启动代码文件**（*startup code file*）和**库代码文件**（*library code file*）为**可执行文件**（*executable code file*）。
 
 <div>
 <blockquote class="quote-style">
-目标代码文件是由源代码转化为的机器语言代码构成的文件，但它并不是一个完整的可执行程序，它还缺乏重要的启动代码以及库代码。启动代码是程序和操作系统的接口（interface），接口是计算机科学中的一个术语，它指的是连接两台设备或两个系统的电路、接头或程序（interface is an electrical circuit, connection or program that joins one device or system to another）。库代码是 C 标准库中函数的代码，由于几乎所有的 C 程序都要使用 C 标准库中的函数，因此程序要执行，库代码必不可少，当然实际中链接器不会提取所有的库代码，而只会提取用到的库函数代码。
+目标代码文件是由源代码转化为的机器语言代码构成的文件，但它并不是一个完整的可执行程序，它还缺乏重要的启动代码以及库代码。启动代码是程序和操作系统的<strong>接口</strong>（interface），接口是计算机科学中的一个术语，它指的是连接两台设备或两个系统的电路、接头或程序（interface is an electrical circuit, connection or program that joins one device or system to another）。库代码是 C 标准库中函数的代码，由于几乎所有的 C 程序都要使用 C 标准库中的函数，因此程序要执行，库代码必不可少，当然实际中链接器不会提取所有的库代码，而只会提取用到的库函数代码。
 </blockquote>
 </div>
 

@@ -33,28 +33,51 @@ layout: default
 
 <!-- 分页链接 -->
 
+
 {% if paginator.total_pages > 1 %}
 <div class="pagination" align="center">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">上一页&nbsp;</a>
+  {% if paginator.page == 1 %}
+    <span>首页&nbsp;</span>
   {% else %}
-    <span>上一页&nbsp;</span>
+    <a href="/">首页&nbsp;</a>
   {% endif %}
 
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      &nbsp;{{ page }}&nbsp;
-    {% elsif page == 1 %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&nbsp;{{ page }}&nbsp;</a>
-    {% else %}
-      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">&nbsp;{{ page }}&nbsp;</a>
-    {% endif %}
-  {% endfor %}
+  {% if paginator.previous_page %}
+    <a title="上一页" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><<&nbsp;</a>
+  {% else %}
+    <span><<&nbsp;</span>
+  {% endif %}
+
+  {% if paginator.page <= 8 %}
+	  {% for count in (1..paginator.total_pages) limit:8 %}
+		{% if count == paginator.page %}
+		  &nbsp;{{ count }}&nbsp;
+		{% elsif count == 1 %}
+		  <a href="/">&nbsp;{{ count }}&nbsp;</a>
+		{% else %}
+		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
+		{% endif %}
+	  {% endfor %}
+  {% else %}
+	  {% for count in (5..paginator.total_pages) limit:8 %}
+		{% if count == paginator.page %}
+		  &nbsp;{{ count }}&nbsp;
+		{% else %}
+		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
+		{% endif %}
+	  {% endfor %}
+  {% endif %}
 
   {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&nbsp;下一页</a>
+    <a title="下一页" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&nbsp;>>&nbsp;</a></a></a>
   {% else %}
-    <span>&nbsp;下一页</span>
+    <span>&nbsp;>>&nbsp;</span></span></span>
+  {% endif %}
+  
+  {% if paginator.page == paginator.total_pages %}
+    <span>尾页&nbsp;</span>
+  {% else %}
+    <a href="/page{{ paginator.total_pages }}">尾页&nbsp;</a>
   {% endif %}
 </div>
 {% endif %}
