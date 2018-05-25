@@ -12,11 +12,11 @@ layout: default
             {{ post.title | escape }}
           </a>
         </h3>
-        {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
-        <p class="post-meta">{{ post.date | date: date_format }}</p>
+        {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d" -%}
         <p class="post-meta">
+		{{ post.date | date: date_format }}
 		{%- if site.show_excerpts -%}
-          {{ post.excerpt | strip_html }}
+          &nbsp;&nbsp;{{ post.excerpt | strip_html }}
         {%- endif -%}
 		</p>
       </li>
@@ -58,7 +58,7 @@ layout: default
 		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
 		{% endif %}
 	  {% endfor %}
-  {% else %}
+  {% elsif paginator.page <= 12 %}
 	  {% for count in (5..paginator.total_pages) limit:8 %}
 		{% if count == paginator.page %}
 		  &nbsp;{{ count }}&nbsp;
@@ -66,6 +66,54 @@ layout: default
 		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
 		{% endif %}
 	  {% endfor %}
+  {% elsif paginator.page <= 16 %}
+	  {% for count in (9..paginator.total_pages) limit:8 %}
+		{% if count == paginator.page %}
+		  &nbsp;{{ count }}&nbsp;
+		{% else %}
+		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
+		{% endif %}
+	  {% endfor %}
+  {% elsif paginator.page <= 20 %}
+	  {% for count in (13..paginator.total_pages) limit:8 %}
+		{% if count == paginator.page %}
+		  &nbsp;{{ count }}&nbsp;
+		{% else %}
+		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
+		{% endif %}
+	  {% endfor %}
+  {% elsif paginator.page <= 24 %}
+	  {% for count in (17..paginator.total_pages) limit:8 %}
+		{% if count == paginator.page %}
+		  &nbsp;{{ count }}&nbsp;
+		{% else %}
+		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
+		{% endif %}
+	  {% endfor %}
+  {% elsif paginator.page <= 28 %}
+	  {% for count in (21..paginator.total_pages) limit:8 %}
+		{% if count == paginator.page %}
+		  &nbsp;{{ count }}&nbsp;
+		{% else %}
+		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
+		{% endif %}
+	  {% endfor %}
+  {% elsif paginator.page <= 32 %}
+	  {% for count in (25..paginator.total_pages) limit:8 %}
+		{% if count == paginator.page %}
+		  &nbsp;{{ count }}&nbsp;
+		{% else %}
+		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
+		{% endif %}
+	  {% endfor %}
+  {% elsif paginator.page <= 36 %}
+	  {% for count in (29..paginator.total_pages) limit:8 %}
+		{% if count == paginator.page %}
+		  &nbsp;{{ count }}&nbsp;
+		{% else %}
+		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
+		{% endif %}
+	  {% endfor %}	  
   {% endif %}
 
   {% if paginator.next_page %}
