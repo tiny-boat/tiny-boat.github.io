@@ -16,7 +16,7 @@ categories: HighSchool_Time
 沉于大海知天命，一路高歌铸光辉。<br>
 千载难逢无为人，黑白蓝黄总相归。<br>
 <br>
-<img height='200' src="/assets/mjw.jpg"><br>
+<img height='200' src="/assets/img/Highschool_time/mjw.jpg"><br>
 <br>
 无为孟面壁思过
 </div>

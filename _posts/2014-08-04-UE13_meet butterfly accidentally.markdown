@@ -14,7 +14,7 @@ excerpt: "垂死挣扎的最后时刻，仍不忘将最美的一面展现给世�
 </div>
 
 <div align='center'>
-<img height="340" src="/assets/butterfly.jpg"><br>
+<img height="340" src="/assets/img/University_Essay/butterfly.jpg"><br>
 <br>
 </div>
 

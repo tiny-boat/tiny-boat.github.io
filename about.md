@@ -29,7 +29,7 @@ permalink: /about_me/
 
 ### 恋爱状态
 
-* 我知道我还没有资格去谈一场恋爱，如果喜欢那就默默喜欢吧。我在等，等待我拥有足够才华的那一天。待到那时，我便会在最美的角落里与你相遇，而后将我这积蓄多年的爱全部送给你。
+* 我还没有资格去谈一场恋爱，如果喜欢那就默默喜欢吧。我在等，等待我拥有足够才华的那一天。待到那时，我便会在最美的角落里与你相遇，而后将我这积蓄多年的爱全部送给你。
 
 ### 联系方式
 * 邮箱
@@ -38,7 +38,7 @@ permalink: /about_me/
 * 微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
 * 微信：xiaozhou13171317
 <div align='center'>  
-<img src='/assets/wechat.jpg' height="200" width="200">
+<img src='/assets/img/about_me/wechat.jpg' height="200" width="200">
 <p></p>
 <p>微信扫一扫添加</p>
 </div>

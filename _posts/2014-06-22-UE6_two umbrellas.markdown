@@ -14,7 +14,7 @@ excerpt: "太阳离开今天这个日子的时间应该不远了，现在，北�
 </div>
 
 <div align='center'>
-<img height="340" src="/assets/twoumbrellas.jpg"><br>
+<img height="340" src="/assets/img/University_Essay/twoumbrellas.jpg"><br>
 <br>
 </div>
 

@@ -14,7 +14,7 @@ excerpt: "发动机的轰鸣声，回荡在一片芝麻地上"
 </div>
 
 <div align='center'>
-<img height="340" src="/assets/sesame.jpg"><br>
+<img height="340" src="/assets/img/University_Essay/sesame.jpg"><br>
 <br>
 发动机的轰鸣声<br>
 回荡在一片芝麻地上<br>

@@ -69,7 +69,11 @@ $$
 
 **逻辑谜题**（*logic puzzles*）是可以用逻辑推理解决的谜题。求解逻辑谜题是实践逻辑规则的极佳途径，用来执行逻辑推理的计算机程序也通常使用著名的逻辑谜题来验证它们的确具备相关能力。
 
-**逻辑电路/数字电路**（*logic circuits / digital circuits*）是将命题逻辑应用于计算机硬件设计而得到的电路，复杂的数字电路均由三种最简单的基本电路即**与门**（*AND gate*）电路、**或门**（*OR gate*）电路和**非门**（*NOT gate*）电路构造而得。
+**逻辑电路/数字电路**（*logic circuits / digital circuits*）是将命题逻辑应用于计算机硬件设计而得到的电路，复杂的数字电路均由三种最简单的基本电路即**与门**（*AND gate*）电路、**或门**（*OR gate*）电路和**非门**（*NOT gate*）电路构造而得。图 1-1 为各种门电路的电路符号。
+
+<div align='center'>
+<img src="/assets/img/Discrete_Mathematics/gate.png">
+</div>
 
 <div>
 <blockquote class="quote-style">

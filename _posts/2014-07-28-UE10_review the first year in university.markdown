@@ -14,7 +14,7 @@ excerpt: "曾经回眸的一刹，是否预见到了一年后的自己，依然�
 </div>
 
 <div align='center'>
-<img height="340" src="/assets/me.jpg"><br>
+<img height="340" src="/assets/img/University_Essay/me.jpg"><br>
 <br>
 </div>
 
