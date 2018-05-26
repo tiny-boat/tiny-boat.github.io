@@ -267,7 +267,7 @@
 	font-family: 'Times New Roman', Arial, KaiTi, STKaiTi,	SimSun, 'Microsoft YaHei';
 }
 
-a:link {color: #0000C6}		/* 未访问的链接 */
-a:visited {color: #0000C6}	/* 已访问的链接 */
-a:hover {color: #4A4AFF; text-decoration: none}	/* 鼠标移动到链接上 */
-a:active {color: #0000C6}	/* 选定的链接 */
+a:link {text-decoration: none}		/* 未访问的链接 */
+a:visited {text-decoration: none}	/* 已访问的链接 */
+a:hover {text-decoration: none}	/* 鼠标移动到链接上 */
+a:active {text-decoration: none}	/* 选定的链接 */
