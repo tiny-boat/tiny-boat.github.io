@@ -12,7 +12,7 @@ excerpt: "学习计算机，从学习逻辑开始"
 
 在数学中，证明常常被用来说明一个命题的真假性。在计算机科学中，证明则常常用来验证计算机程序对所有可能的输入是否会产生正确的输出，以确保系统的安全性和有效性。因此，证明在计算机科学中的地位同样不亚于它在数学中的地位。
 
-# 1.1 命题逻辑（Propositional Logic）
+# 1.1 命题的逻辑（Propositional Logic）
 
 **命题**是一个要么为真、要么为假的陈述语句（*A proposition is a declarative sentence that is either true or false, but not both*）。无论复杂与否，一切命题均可由**命题变元**（*propositional variables*）和**逻辑运算符/联结词**（*logical operators / connectives*）构成。例如：如果用 $p$ 表示你很高，$q$ 表示你很瘦，$r$ 表示你喜欢打球，那么就可以用命题变元 $p$、$q$、$r$ 和逻辑运算符**否定**（*negation*, $\lnot$）、**合取**（*conjunction*, $\wedge$）、**析取**（*disjunction*, $\vee$）、**条件/蕴含**（*conditional statement / implication*, $\rightarrow$）、**双条件**（*biconditional statement*, $\leftrightarrow$）将命题
 
@@ -81,6 +81,55 @@ $$
 <div>
 <blockquote class="quote-style">
 <p>将命题逻辑应用于计算机硬件设计的思想首先由信息论之父克劳德·香农在他的麻省理工硕士毕业论文中提出：1938年，22岁的香农在 <em>MIT </em> 获得电气工程硕士学位，他的硕士论文题目是《<em>A Symbolic Analysis of Relay and Switching Circuits</em>》（继电器与开关电路的符号分析）。当时他已经注意到电话交换电路与布尔代数之间的类似性，即把布尔代数的 “真” 与 “假” 和电路系统的 “开” 与 “关” 对应起来，并用 1 和 0 表示。于是他用布尔代数分析并优化了开关电路，而这奠定了数字电路的理论基础。</p>
+</blockquote>
+</div>
+
+# 1.2 命题的等价（Propositional Equivalences）
+
+在数学证明中，用一个较原命题更简洁清晰或较原命题更容易导出目标结论的等价命题来替换原命题，是常有的事，并且这种等价特指逻辑上的等价性。那什么是逻辑等价呢？两个命题 $p$ 、$q$ 是**逻辑等价的**（*logically
+equivalent*）就是指它们在所有可能情况下拥有相同的真值，或者说命题 $p \leftrightarrow q$ 是**永真式**（*tautology*）。我们将两个命题 $p$ 、$q$ 这种逻辑上的等价性形式化地记作 $p \equiv q$ 或 $p \Leftrightarrow q$，并称这样的式子为**逻辑等价式**（*logical
+equivalence*）. 表 1-2、1-3、1-4 给出了若干重要的逻辑等价式。
+
+<div>
+<blockquote class="quote-style">
+<p><strong>永真式</strong>（tautology）是一个真值永远为真的命题，记作 <strong>T</strong>；<strong>矛盾式</strong>（contradiction）是一个真值永远为假的命题，记作 <strong>F</strong>；既不是永真式也不是矛盾式的命题则称为<strong>可能式</strong>（contingency）.</p>
+</blockquote>
+</div>
+
+<div align='center'>
+表 1-2 逻辑等价式<br>
+<br>
+<img src="/assets/img/Discrete_Mathematics/logical equivalence 1.png"><br>
+<br>
+表 1-3 条件命题的逻辑等价式<br>
+<br>
+<img src="/assets/img/Discrete_Mathematics/logical equivalence 2.png"><br>
+<br>
+表 1-4 双条件命题的逻辑等价式<br>
+<br>
+<img src="/assets/img/Discrete_Mathematics/logical equivalence 3.png"><br>
+<br>
+</div>
+
+观察表 1-2，我们不难看到：除了双重否定律（*Double negation law*）外，其余各规律都有两条逻辑等价式出现，并且任意其中一条逻辑等价式的两个命题是另一条两个命题各自的**对偶式**（*dual*）。我们不禁要问：是不是只含逻辑运算符 $\lnot$、$\wedge$ 和 $\vee$ 的两个逻辑等价命题，它们各自的对偶式一定逻辑等价呢？
+
+<div>
+<blockquote class="quote-style">
+<p>一个命题 $p$ 的<strong>对偶式</strong>（dual）$p^\ast$ 指的是用 $\wedge$ 替代 $\vee$，用 $\vee$ 替代 $\wedge$，用永真式 (<strong>T</strong>) 替代矛盾式 (<strong>F</strong>)，并用矛盾式 (<strong>F</strong>) 替代永真式 (<strong>T</strong>) 得到的命题。</p>
+</blockquote>
+</div>
+
+这一问题的答案是肯定的，作出判断的关键便是表 1-2 中著名的**德摩根定律**（*De Morgan's laws*），因为它告诉我们：一个析取（合取）式的否定由各分命题否定的合取（析取）式组成，而对偶恰恰就包含把合取变析取、把析取变合取的过程，下面将简要阐述得出这一判断的论证过程。
+
+设 $p$、$q$ 是仅包含逻辑运算符 $\lnot$、$\wedge$、$\vee$ 和 **T**、**F** 的逻辑等价命题，则 $\lnot p$、$\lnot q$ 也是逻辑等价命题。通过多次使用德摩根定律可以将 $\lnot p$、$\lnot q$ 中的全部 $\wedge$ 替换为 $\vee$，全部 $\vee$ 替换为 $\wedge$，并把全部 **T** 替换为 **F**，以及把全部 **F** 替换为 **T**。此时，我们将发现 $\lnot p$、$\lnot q$ 和 $p^\ast$、$q^\ast$ 十分类似，它们仅有的差别在于：构成 $\lnot p$、$\lnot q$ 的命题变元前均有逻辑运算符 $\lnot$。但由于是所有的命题变元前都有逻辑运算符 $\lnot$，因此 $\lnot p$ 与 $p^\ast$、$\lnot q$ 与 $q^\ast$ 具有完全一致的真值表。这样，根据 $\lnot p$、$\lnot q$ 的逻辑等价性，我们立即可得 $p^\ast$、$q^\ast$ 也是逻辑等价的。
+
+接下来，我们将叙述一个与逻辑等价有关的重要结论，并且我们仍将在这一结论的论证过程中看到德摩根定律的身影。你将穿过历史的烟云，与生活在 19 世纪的著名数学家奥古斯塔·德·摩根（*Augustus De Morgan, 1806——1871*）先生一起，再次领略到这个小小公式背后蕴含的无尽能量。
+
+这个重要结论是：任何命题都可以逻辑等价于一个只含逻辑运算符 $\lnot$、$\wedge$ 的命题，任何命题也都可以等价于一个只含逻辑运算符 $\lnot$、$\vee$ 的命题。这个结论告诉我们：世界上所有的命题都可以由命题变元和两个逻辑运算符 $\lnot$、$\wedge$（或 $\vee$）表示。进一步，如果我们引入新的逻辑运算符**与非**（*NAND*, $\vert$）和**或非**（*NOR*, $\downarrow$），那么我们可以说：**世界上所有的命题都可以由命题变元和一个逻辑运算符 $\vert$（$\downarrow$）表示**。哇哦，多么简洁而漂亮的结论！怎么，你有点不相信自己的眼睛，没关系，接下来，就让我们一步一步走近这个神奇的结论，一览逻辑世界的美妙风景。
+
+<div>
+<blockquote class="quote-style">
+<p>顾名思义，$p\ \vert \ q$ 等价于 $\lnot \left (p \wedge q \right )$，它只在 $p$ 真 $q$ 真时为假，而 $p \downarrow q$ 等价于 $\lnot \left (p \vee q \right )$，它只在 $p$ 假 $q$ 假时为真</p>
 </blockquote>
 </div>
 
