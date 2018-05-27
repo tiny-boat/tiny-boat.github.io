@@ -5,14 +5,25 @@ layout: default
 
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H: %M" -%}
-        {{ page.date | date: date_format }}
-      </time>
+    <div class="post-meta">
+        {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
+      <span class="post-meta-content">时间: {{ page.date | date: date_format }}</span>
+      <span class="post-meta-content">分类: 
+	  {% if page.categories contains 'Discrete_Mathematics' %}
+		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">离散数学</a>
+	  {% elsif page.categories contains 'HighSchool_Time' %}
+		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">中学时代</a>
+	  {% elsif page.categories contains 'University_Essay' %}
+		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">大学随笔</a>
+	  {% else %}
+		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">{{ page.categories }}</a>
+	  {% endif %}
+	  </span>
+	  
       {%- if page.author -%}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
-      {%- endif -%}</p>
+      {%- endif -%}
+	 </div>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
@@ -20,7 +31,7 @@ layout: default
   </div>                       
   
   <div class="comment-tips">
-	文章评论功能由 LiveRe (来必力) 提供，加载可能需要一定时间，如需评论或留言，请您耐心等候(•ᴗ•)
+	文章评论功能由 LiveRe (来必力) 提供，除微信外的其余社交账号均可在手机端登录。
   </div>
   
   

@@ -202,6 +202,26 @@
   color: $grey-color;
 }
 
+.post-meta-content {
+	margin: 0px 4px 0px 4px;
+
+}
+
+.post-meta-content-a {
+	&:link {
+		color: $grey-color;
+	}
+	&:visited {
+		color: $grey-color;
+	}
+	&:hover {
+		color: #0000CC;
+	}
+	&:active {
+		color: #0000CC;
+	}
+}
+
 .post-link {
   display: block;
   @include relative-font-size(1.5);
@@ -214,10 +234,11 @@
  */
 .post-header {
   margin-bottom: $spacing-unit;
+  text-align: center;
 }
 
 .post-title {
-  @include relative-font-size(2);
+  @include relative-font-size(1.6);
   letter-spacing: -1px;
   line-height: 1;
 

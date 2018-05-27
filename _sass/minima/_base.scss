@@ -112,15 +112,19 @@ a {
 
   &:hover {
     color: $text-color;
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   .social-media-list &:hover {
     text-decoration: none;
 
     .username {
-      text-decoration: underline;
+      text-decoration: none;
     }
+  }
+  
+  .post-meta-content &:link{
+	  color: $text-color;
   }
 }
 
