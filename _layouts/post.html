@@ -30,6 +30,11 @@ layout: default
     {{ content }}
   </div>                       
   
+  <div class="post-index">
+  <span class="post-index-up"><a href="{{ page.previous.url }}">上一篇：{{ page.previous.title }}</a></span>
+  <span class="post-index-down"><a href="{{ page.next.url }}">下一篇：{{ page.next.title }}</a></span>
+  </div>
+
   <div class="comment-tips">
 	文章评论功能由 LiveRe (来必力) 提供，除微信外的其余社交账号均可在手机端登录。
   </div>

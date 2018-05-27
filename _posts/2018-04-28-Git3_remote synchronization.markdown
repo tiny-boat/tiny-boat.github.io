@@ -16,27 +16,31 @@ excerpt: "Git 与 Github 的远程连接支持两种协议：HTTPS 和 SSH，使
 
 创建远程连接的示例代码如下：
 
-```
-git remote add origin git@github.com:username/foldername.git
-```
+{% highlight Bash shell scripts %}
+$ git remote add origin git@github.com:username/foldername.git
+{% endhighlight %}
+
 其中 *username* 为 *github* 用户名，*foldername* 为需要连接的目录名。若要克隆 *github* 上的内容，可执行类似命令
 
-```
-git clone git@github.com:tiny-boat/foldername.git
-```
+{% highlight Bash shell scripts %}
+$ git clone git@github.com:tiny-boat/foldername.git
+{% endhighlight %}
+
 在连接创建后，本地仓库与 *Github* 的同步，主要由推送（*git push*）与拉取（*git pull*）两个命令实现。将本地更新推送到 *github* 的命令如下：
 
-```
-git push origin master
-```
+{% highlight Bash shell scripts %}
+$ git push origin master
+{% endhighlight %}
+
 若提交失败，可先拉取后推送，命令如下：
 
-```
-git pull --rebase origin master
-git push origin master
-```
+{% highlight Bash shell scripts %}
+$ git pull --rebase origin master
+$ git push origin master
+{% endhighlight %}
+
 或者执行以下强行推送的命令
 
-```
+{% highlight Bash shell scripts %}
 git push -f origin master
-```
+{% endhighlight %}

@@ -288,6 +288,24 @@
 	font-family: 'Times New Roman', Arial, KaiTi, STKaiTi,	SimSun, 'Microsoft YaHei';
 }
 
+.post-index{
+	width: 734px;
+	height: 30px;
+	margin: 10px 0px 10px 0px
+}
+
+.post-index-up{
+	text-align: left;
+	width: 367px;
+	float: left;
+}
+
+.post-index-down{
+	text-align: right;
+	width: 367px;
+	float: right;
+}
+
 a:link {text-decoration: none}		/* 未访问的链接 */
 a:visited {text-decoration: none}	/* 已访问的链接 */
 a:hover {text-decoration: none}	/* 鼠标移动到链接上 */
