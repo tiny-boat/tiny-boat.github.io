@@ -237,9 +237,21 @@
   text-align: center;
 }
 
+@media screen and (min-width: 0px) and (max-width: 900px) {
+	.post-title {
+	  margin: 0px 0px 16px 0px;
+	  font-size: 10px;
+	  line-height: 1;
+
+	  @include media-query($on-laptop) {
+		@include relative-font-size(2.25);
+	  }
+	}
+}
+
 .post-title {
   margin: 0px 0px 16px 0px;
-  font-size: 100%;
+  font-size: 26px;
   line-height: 1;
 
   @include media-query($on-laptop) {
