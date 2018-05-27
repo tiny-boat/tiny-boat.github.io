@@ -1,6 +1,8 @@
 ---
 layout: default
 ---
+
+
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
@@ -19,6 +21,15 @@ layout: default
 		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">{{ page.categories }}</a>
 	  {% endif %}
 	  </span>
+	  
+	  {% if site.leancloud.enable %}
+       <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
+        <span class="post-meta-divider">|</span>
+        <span class="post-meta-item-text"> Hits:  </span>
+        <span class="leancloud-visitors-count"></span>
+       </span>
+      {% endif %}
+	  
 	  
       {%- if page.author -%}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
+  {% include leancloud-analytics.html %}
+
   {%- include head.html -%}
 
   <body>
@@ -16,5 +18,5 @@
     {%- include footer.html -%}
 
   </body>
-
+  
 </html>
