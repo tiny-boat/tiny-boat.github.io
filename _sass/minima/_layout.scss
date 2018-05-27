@@ -238,8 +238,8 @@
 }
 
 .post-title {
-  @include relative-font-size(1.6);
-  letter-spacing: -1px;
+  margin: 0px 0px 16px 0px;
+  font-size: 26px;
   line-height: 1;
 
   @include media-query($on-laptop) {
