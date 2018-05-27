@@ -239,7 +239,7 @@
 
 .post-title {
   margin: 0px 0px 16px 0px;
-  font-size: 26px;
+  font-size: 24px;
   line-height: 1;
 
   @include media-query($on-laptop) {
@@ -276,7 +276,7 @@
 }
 
 .comment-tips{
-	margin-top: 60px;
+	margin-top: 40px;
 	font-size: 16px;
 	font-style: normal;
 	font-family: 'Times New Roman', Arial, KaiTi, STKaiTi,	SimSun, 'Microsoft YaHei';
@@ -290,20 +290,18 @@
 
 .post-index{
 	width: 734px;
-	height: 30px;
-	margin: 10px 0px 10px 0px
+	height: 50px;
+	margin: 25px 0px 25px 0px;
 }
 
 .post-index-up{
 	text-align: left;
 	width: 367px;
-	float: left;
 }
 
 .post-index-down{
-	text-align: right;
+	text-align: left;
 	width: 367px;
-	float: right;
 }
 
 a:link {text-decoration: none}		/* 未访问的链接 */

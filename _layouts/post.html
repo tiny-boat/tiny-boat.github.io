@@ -6,7 +6,7 @@ layout: default
   <header class="post-header">
     <div class="post-title" itemprop="name headline">{{ page.title | escape }}</div>
     <div class="post-meta">
-        {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
+      {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
       <span class="post-meta-content">时间: {{ page.date | date: date_format }}</span>
       <span class="post-meta-content">分类: 
 	  {% if page.categories contains 'Discrete_Mathematics' %}
@@ -32,10 +32,10 @@ layout: default
   
   <div class="post-index">
 	  {%- if page.previous -%}
-		<span class="post-index-up"><a href="{{ page.previous.url }}">上一篇：{{ page.previous.title }}</a></span>
+		<div class="post-index-up"><a href="{{ page.previous.url }}">上一篇：{{ page.previous.title }}</a></div>
 	  {%- endif -%}
 	  {%- if page.next -%}
-		<span class="post-index-down"><a href="{{ page.next.url }}">下一篇：{{ page.next.title }}</a></span>
+		<div class="post-index-down"><a href="{{ page.next.url }}">下一篇：{{ page.next.title }}</a></div>
 	  {%- endif -%}
   </div>
 
