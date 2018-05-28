@@ -1,0 +1,7 @@
+		{% if count == paginator.page %}
+		  &nbsp;{{ count }}&nbsp;
+		{% elsif count == 1 %}
+		  <a href="/">&nbsp;{{ count }}&nbsp;</a>
+		{% else %}
+		  <a href="/page{{count}}">&nbsp;{{ count }}&nbsp;</a>
+		{% endif %}

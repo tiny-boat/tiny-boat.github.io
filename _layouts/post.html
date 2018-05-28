@@ -21,6 +21,8 @@ layout: default
 	  {% endif %}
 	  </span>
 
+	  <span class="post-list-tips">字数: {{ page.content | strip_html | strip_newlines | strip_space | split: "" | size }}</span>
+	  
    {% if site.leancloud.enable %}
        <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">浏览量: 
 	    <span class="leancloud-visitors-count"></span>

@@ -24,6 +24,17 @@
   }
 }
 
+.site-title-img {
+	float:left;
+	margin: 0px 12px 0px 0px;
+	padding: 6px 0px 4px 0px;
+	height: 46px;
+}
+
+.site-title-title {
+	float:right;
+}
+
 .site-nav {
   float: right;
   line-height: $base-line-height * $base-font-size * 2.25;
@@ -135,18 +146,23 @@
 }
 
 .footer-col-1 {
-  width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-  width:         calc(35% - (#{$spacing-unit} / 2));
+  width: -webkit-calc(36% - (#{$spacing-unit} / 2));
+  width:         calc(36% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-2 {
-  width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-  width:         calc(20% - (#{$spacing-unit} / 2));
+  width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+  width:         calc(50% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-3 {
-  width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-  width:         calc(45% - (#{$spacing-unit} / 2));
+  width: -webkit-calc(14% - (#{$spacing-unit} / 2));
+  width:         calc(14% - (#{$spacing-unit} / 2));
+}
+
+.footer-img {
+	height:16px;
+	margin-right:4px;
 }
 
 @include media-query($on-laptop) {
@@ -176,7 +192,8 @@
  * Page content
  */
 .page-content {
-  padding: $spacing-unit 0;
+  height: 350px;
+  padding: 40px 0px 16px 0px;
   flex: 1;
 }
 
@@ -189,7 +206,7 @@
 }
 
 .post-list {
-  margin: 10px 0px 20px 0px;
+  margin: 0px 0px 20px 0px;
 
   > li {
     margin-bottom: 30px;
@@ -330,3 +347,7 @@ a:link {text-decoration: none}		/* 未访问的链接 */
 a:visited {text-decoration: none}	/* 已访问的链接 */
 a:hover {text-decoration: none}	/* 鼠标移动到链接上 */
 a:active {text-decoration: none}	/* 选定的链接 */
+
+.pagination {
+	padding: 18px 0px 0px 0px;
+}
