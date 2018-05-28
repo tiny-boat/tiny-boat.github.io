@@ -9,10 +9,10 @@ AV.initialize("{{site.leancloud.app_id}}", "{{site.leancloud.app_key}}");
 
 <!--实现计数的js包装脚本-->
 <script type="text/javascript">
-function showHit(Counter) {
+function showHit(Pageview) {
 /* 这是给一个页面中有多篇文章时所调用的，例如博客主界面或者存档界面。
 */
-    var query = new AV.Query(Counter);
+    var query = new AV.Query(Pageview);
     var entries = [];
     var $visitors = $(".leancloud_visitors");
 
@@ -61,13 +61,13 @@ function showHit(Counter) {
         });
 }
 
-function addCount(Counter) {
+function addCount(Pageview) {
       // 页面（博客文章）中的信息：leancloud_visitors
       // id为page.url， data-flag-title为page.title
     var $visitors = $(".leancloud_visitors");
     var url = $visitors.attr('id').trim();
     var title = $visitors.attr('data-flag-title').trim();
-    var query = new AV.Query(Counter);
+    var query = new AV.Query(Pageview);
 
 	// 只根据文章的url查询LeanCloud服务器中的数据
     query.equalTo("url", url);
@@ -89,7 +89,7 @@ function addCount(Counter) {
                 });
             } else {
 			// 执行这里，说明LeanCloud中还没有记录此文章
-                var newcounter = new Counter();
+                var newcounter = new Pageview();
                 /* Set ACL */
                 var acl = new AV.ACL();
                 acl.setPublicReadAccess(true);
@@ -124,13 +124,13 @@ function addCount(Counter) {
     });
 }
 $(function() {
-    var Counter = AV.Object.extend("Counter");
+    var Pageview = AV.Object.extend("Pageview");
     //如果只有1个.leancloud_visitors，则说明是博客页，需要显示查看数并将查看数+1
     //超过1个，则说明是文章列表，只需要显示查看数
     if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
+        addCount(Pageview);
     } else {
-        showHit(Counter);
+        showHit(Pageview);
     }
 });
 </script>
