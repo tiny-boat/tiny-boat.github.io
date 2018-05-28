@@ -11,13 +11,13 @@ layout: default
       <span class="post-meta-content">时间: {{ page.date | date: date_format }}</span>
       <span class="post-meta-content">类别: 
 	  {% if page.categories contains 'Discrete_Mathematics' %}
-		<a class="post-meta-content-a" href="/category/{{ page.categories | downcase }}.html">离散数学</a>
+		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">离散数学</a>
 	  {% elsif page.categories contains 'HighSchool_Time' %}
-		<a class="post-meta-content-a" href="/category/{{ page.categories | downcase }}.html">中学时代</a>
+		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">中学时代</a>
 	  {% elsif page.categories contains 'University_Essay' %}
-		<a class="post-meta-content-a" href="/category/{{ page.categories | downcase }}.html">大学随笔</a>
+		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">大学随笔</a>
 	  {% else %}
-		<a class="post-meta-content-a" href="/category/{{ page.categories | downcase }}.html">{{ page.categories }}</a>
+		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">{{ page.categories }}</a>
 	  {% endif %}
 	  </span>
 
