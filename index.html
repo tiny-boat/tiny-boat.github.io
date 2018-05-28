@@ -31,7 +31,7 @@ layout: default
 		  {% endif %}
 		</span>
 	   
-	    <span class="post-list-tips">字数: {{ post.content | number_of_words }}</span>
+	    <span class="post-list-tips">字数: {{ post.content | strip_html | strip_newlines | strip_space | split: "" | size }}</span>
 	   
 	   {% if site.leancloud.enable %}
 		   <span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}">浏览量: 
