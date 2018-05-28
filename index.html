@@ -34,7 +34,7 @@ layout: default
 	    <span class="post-list-tips">字数: {{ post.content | number_of_words }}</span>
 	   
 	   {% if site.leancloud.enable %}
-		   <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">浏览量:
+		   <span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}">浏览量:
 			   <span class="old-visitors-count" style="display: none;"></span>
 			   <span class="leancloud-visitors-count"></span>
 			   <span class="post-meta-item-text"></span>
