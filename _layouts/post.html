@@ -10,7 +10,7 @@ layout: default
     <div class="post-meta">
       {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
       <span class="post-meta-content">时间: {{ page.date | date: date_format }}</span>
-      <span class="post-meta-content">分类: 
+      <span class="post-meta-content">类别: 
 	  {% if page.categories contains 'Discrete_Mathematics' %}
 		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">离散数学</a>
 	  {% elsif page.categories contains 'HighSchool_Time' %}
@@ -23,10 +23,9 @@ layout: default
 	  </span>
 
    {% if site.leancloud.enable %}
-       <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
-        <span class="post-meta-item-text">阅读: </span>
+       <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">浏览量: 
         <span class="leancloud-visitors-count"></span>
-		<span class="post-meta-item-text">次</span>
+		<span class="post-meta-item-text"></span>
        </span>
    {% endif %}	  
 	  
