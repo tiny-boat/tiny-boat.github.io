@@ -2,27 +2,52 @@
 layout: default
 ---
 <div class="home">
+  
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "" }}</h2>
-    <ul class="post-list">
-      {% for post in paginator.posts %}
-      <li>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d" -%}
-        <p class="post-meta">
-		{{ post.date | date: date_format }}
-		{%- if site.show_excerpts -%}
-          &nbsp;&nbsp;{{ post.excerpt | strip_html }}
-        {%- endif -%}
-		</p>
-      </li>
-      {% endfor %}
-    </ul>
+	
+	<ul class="post-list">
+	  
+	  {% for post in paginator.posts %}
+	  
+	  <li>
+		<h3>
+		  <a class="post-link" href="{{ post.url | relative_url }}">
+			{{ post.title | escape }}
+		  </a>
+		</h3>
+		
+		{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d" -%}
+		<span class="post-list-tips">时间: {{ post.date | date: date_format }}</span>
+		
+		<span class="post-list-tips">类别: 
+		  {% if post.categories contains 'Discrete_Mathematics' %}
+			<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">离散数学</a>
+		  {% elsif post.categories contains 'HighSchool_Time' %}
+			<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">中学时代</a>
+		  {% elsif post.categories contains 'University_Essay' %}
+			<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">大学随笔</a>
+		  {% else %}
+			<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">{{ post.categories }}</a>
+		  {% endif %}
+		</span>
+	   
+	    <span class="post-list-tips">字数: {{ post.content | number_of_words }}</span>
+	   
+	   {% if site.leancloud.enable %}
+		   <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">浏览量:
+			<span class="leancloud-visitors-count"></span>
+			<span class="post-meta-item-text"></span>
+		   </span>
+	   {% endif %}	  
 
+	   {%- if site.show_excerpts -%}
+		<span class="post-list-excerpt">摘要: {{ post.excerpt | strip_html }}</span>
+	   {%- endif -%}
+	  </li>
+	  
+	  {% endfor %}
+	
+	</ul>
 <!--
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
 -->
