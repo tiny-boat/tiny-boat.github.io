@@ -26,6 +26,8 @@ layout: default
 			<a class="post-meta-content-a" href="/category/{{ 'HighSchool_Time' | downcase }}.html">中学时代</a>
 		  {% elsif post.categories contains 'University_Essay' %}
 			<a class="post-meta-content-a" href="/category/{{ 'University_Essay' | downcase }}.html">大学随笔</a>
+		  {% elsif post.categories contains 'C' %}
+			<a class="post-meta-content-a" href="/category/{{ 'C' | downcase }}.html">C 语言</a>
 		  {% else %}
 			<a class="post-meta-content-a" href="/category/{{ post.categories | downcase }}.html">{{ post.categories }}</a>
 		  {% endif %}

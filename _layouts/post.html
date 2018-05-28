@@ -9,13 +9,15 @@ layout: default
     <div class="post-meta">
       {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
       <span class="post-meta-content">时间: {{ page.date | date: date_format }}</span>
-      <span class="post-meta-content">类别: 
+      <span class="post-meta-content">分类: 
 	  {% if page.categories contains 'Discrete_Mathematics' %}
-		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">离散数学</a>
+		<a class="post-meta-content-a" href="/category/discrete_mathematics.html">离散数学</a>
 	  {% elsif page.categories contains 'HighSchool_Time' %}
-		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">中学时代</a>
+		<a class="post-meta-content-a" href="/category/highSchool_time.html">中学时代</a>
 	  {% elsif page.categories contains 'University_Essay' %}
-		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">大学随笔</a>
+		<a class="post-meta-content-a" href="/category/university_essay.html">大学随笔</a>
+	  {% elsif page.categories contains 'C' %}
+		<a class="post-meta-content-a" href="/category/c.html">C 语言</a>
 	  {% else %}
 		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">{{ page.categories }}</a>
 	  {% endif %}
