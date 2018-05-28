@@ -18,6 +18,8 @@ layout: default
 		<a class="post-meta-content-a" href="/category/university_essay.html">大学随笔</a>
 	  {% elsif page.categories contains 'C' %}
 		<a class="post-meta-content-a" href="/category/c.html">C 语言</a>
+	  {% elsif page.categories contains 'Git' %}
+		<a class="post-meta-content-a" href="/category/git.html">Git 学习笔记</a>
 	  {% else %}
 		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">{{ page.categories }}</a>
 	  {% endif %}

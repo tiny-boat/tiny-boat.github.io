@@ -2,7 +2,7 @@
 layout: post
 title:  "Study Plan"
 date:   2018-05-02 21:56:00 +0000
-categories: book
+categories: University_Essay
 excerpt: "DM & C & ML & HE"
 ---
 
@@ -10,6 +10,7 @@ excerpt: "DM & C & ML & HE"
 
 - Discrete Mathematics and Its Applications
 - C Primer Plus
+- Introduction of Computer Science
 
 ### Machine Learning
 
