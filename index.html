@@ -17,9 +17,9 @@ layout: default
 		</h3>
 		
 		{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d" -%}
-		<span class="post-list-tips">时间: {{ post.date | date: date_format }}</span>
+		<span class="post-list-tips">{{ post.date | date: date_format }}</span>
 		
-		<span class="post-list-tips">类别: 
+		<span class="post-list-tips"> 
 		  {% if post.categories contains 'Discrete_Mathematics' %}
 			<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">离散数学</a>
 		  {% elsif post.categories contains 'HighSchool_Time' %}
@@ -31,12 +31,12 @@ layout: default
 		  {% endif %}
 		</span>
 	   
-	    <span class="post-list-tips">字数: {{ post.content | strip_html | strip_newlines | strip_space | split: "" | size }}</span>
+	    <span class="post-list-tips">{{ post.content | strip_html | strip_newlines | strip_space | split: "" | size }} 字</span>
 	   
 	   {% if site.leancloud.enable %}
-		   <span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}">浏览量: 
+		   <span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> 
 			   <span class="leancloud-visitors-count"></span>
-			   <span class="post-meta-item-text"></span>
+			   <span class="post-meta-item-text">次浏览</span>
 		   </span>
 	   {% endif %}	  
 
