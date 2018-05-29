@@ -5,7 +5,8 @@
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     <div class="site-title">
 		<span><img class="site-title-img" src="/assets/img/about_me/tiny-boat.gif"></span>
-		<span class="site-title-title">{{ site.title | escape }}</span>
+<!-- 		<span class="site-title-title">{{ site.title | escape }}</span>-->
+		<span class="site-title-search"><input placeholder="欢迎你走进征帆的世界" type="text" class="st-default-search-input"></span>
 	</div>
 
     {%- if page_paths -%}
@@ -20,7 +21,6 @@
         </label>
 
         <div class="trigger">
-		  <a class="page-link" href="/#stq=&stp=1">搜索</a>
 		  <a class="page-link" href="/">首页</a>
 		  <a class="page-link" href="/category/university_essay.html">大学随笔</a>
 		  <a class="page-link" href="/category/highschool_time.html">中学时代</a>
