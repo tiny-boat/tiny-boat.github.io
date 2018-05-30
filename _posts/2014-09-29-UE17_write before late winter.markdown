@@ -3,7 +3,7 @@ layout: post
 title:  "写在深冬前"
 date:   2014-09-29 13:33:00 +0000
 categories: University_Essay
-excerpt: "穿着厚厚的外套依然感觉寒冷，气温已经在零度上下徘徊，很想戴上帽子和手套，却又觉得不合时宜"
+excerpt: "穿着厚厚的外套依然感觉寒冷，气温已经在零度上下徘徊"
 ---
 
 <div>

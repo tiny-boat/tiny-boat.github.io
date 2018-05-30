@@ -3,11 +3,12 @@ layout: post
 title:  "时间匆匆"
 date:   2009-03-06 14:01:00 +0000
 categories: HighSchool_Time
+excerpt: "如今读来，虽然文字稍显青涩，但依旧饱含能量、催人奋进！"
 ---
 
 <div>
 <blockquote class='quote-style'>
-原文标题为《无题》，如今读来，虽然文字稍显青涩，但依旧饱含能量、催人奋进！<!--excerpt-->
+原文标题为《无题》，如今读来，虽然文字稍显青涩，但依旧饱含能量、催人奋进！
 </blockquote>
 </div>
 

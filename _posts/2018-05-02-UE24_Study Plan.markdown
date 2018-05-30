@@ -3,7 +3,7 @@ layout: post
 title:  "Study Plan"
 date:   2018-05-02 21:56:00 +0000
 categories: University_Essay
-excerpt: "DM & C & ML & HE"
+excerpt: "To like sth I like and love sth I love. It isn't statistics but computer science."
 ---
 
 ### Computer Science

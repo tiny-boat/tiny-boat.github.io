@@ -3,7 +3,7 @@ layout: post
 title:  "Git学习笔记(3):同步Github"
 date:   2018-04-28 14:02:00 +0000
 categories: Git
-excerpt: "Git 与 Github 的远程连接支持两种协议：HTTPS 和 SSH，使用后者连接时传输速度更快"
+excerpt: "本文介绍如何通过 SSH 协议同步本地 Git 仓库与 Github"
 ---
 
 *Git* 与 *Github* 的远程连接支持两种协议：*HTTPS* 和 *SSH* ，使用后者连接时传输速度更快，并且不必每次输入用户名和密码，以下代码基于 *SSH* 协议。

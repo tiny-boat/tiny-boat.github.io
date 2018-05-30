@@ -3,7 +3,7 @@ layout: post
 title:  "C语言(1):初识C语言"
 date:   2018-05-22 09:08:00
 categories: C
-excerpt: "C语言简介"
+excerpt: "本文介绍了 C 的历史、特性、编程机制和编程步骤"
 ---
 
 1972年，贝尔实验室的[丹尼斯·里奇](https://baike.baidu.com/item/%E4%B8%B9%E5%B0%BC%E6%96%AF%C2%B7%E9%87%8C%E5%A5%87)（*Dennis Ritch*）和[肯·汤普逊](https://baike.baidu.com/item/%E8%82%AF%C2%B7%E6%B1%A4%E6%99%AE%E9%80%8A)（*Ken Thompson*）在开发 [*UNIX*](https://baike.baidu.com/item/unix) 操作系统时设计了 *C* 语言。尽管此后，各式各样的[高级编程语言](https://baike.baidu.com/item/%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/299113)（*high-level programming languages*）层出不穷，但 *C* 语言历经 46 年风雨始终屹立不倒。

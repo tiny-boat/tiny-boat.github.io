@@ -3,7 +3,7 @@ layout: post
 title:  "在故乡的黑夜里"
 date:   2014-08-23 23:09:00 +0000
 categories: University_Essay
-excerpt: "坐在空旷无人的土地上，听着无休止的知了的叫声，四周一片漆黑，唯有荧屏的光将周遭点亮"
+excerpt: "坐在空旷无人的土地上，听着无休止的知了的叫声，四周一片漆黑……"
 ---
 
 <div>

@@ -3,7 +3,7 @@ layout: post
 title:  "离散数学(1):逻辑与证明"
 date:   2018-05-04 11:28:00
 categories: Discrete_Mathematics
-excerpt: "学习计算机，从学习逻辑开始"
+excerpt: "本文介绍了离散数学中最基础性的内容：逻辑"
 ---
 
 **逻辑与证明**（*Logic and Proofs*）在**数学**（*mathematics*）中的重要性不言而喻，我们甚至可以说，数学就是通过各种各样的证明构造出的一款伟大的逻辑游戏。然而许多人并不知道，逻辑与证明在**计算机科学**（*computer science*）中同样有着举足轻重的地位。

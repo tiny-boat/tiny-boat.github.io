@@ -3,6 +3,7 @@ layout: post
 title:  "呼唤自由"
 date:   2009-03-29 08:58:00 +0000
 categories: HighSchool_Time
+excerpt: "一颗流星飞入，打破了一夜的平静……"
 ---
 
 <div>
