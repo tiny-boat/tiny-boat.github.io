@@ -3,12 +3,12 @@ layout: post
 title:  "灰绿之间"
 date:   2013-06-16 10:13:00 +0000
 categories: HighSchool_Time
-excerpt："皆云万世灰泥上，只道年秋绿土中"
+excerpt: "皆云万世灰泥上，只道年秋绿土中"
 ---
 
 <div>
 <blockquote class='quote-style'>
-这首诗写于高考结束后不久，其中心思想应该与志愿填报有关。<!--excerpt-->
+这首诗写于高考结束后不久，其中心思想应该与志愿填报有关。
 </blockquote>
 <br>
 </div>

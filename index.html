@@ -5,17 +5,7 @@ layout: default
 <div class="home">
   
   <div class="search">
-  {% if paginator.previous_page %}
-    <a title="上一页" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><<&nbsp;</a>
-  {% else %}
-    <span><<&nbsp;</span>
-  {% endif %}
   <input placeholder="第{{paginator.page}}页, 共{{paginator.total_pages}}页, 点我搜索文章" type="text" class="st-default-search-input">
-  {% if paginator.next_page %}
-    <a title="下一页" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&nbsp;>>&nbsp;</a></a></a>
-  {% else %}
-    <span>&nbsp;>>&nbsp;</span></span></span>
-  {% endif %}
   </div>
   
   {%- if site.posts.size > 0 -%}
