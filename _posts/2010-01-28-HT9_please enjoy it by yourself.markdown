@@ -3,11 +3,12 @@ layout: post
 title:  "请君自品味"
 date:   2010-01-28 10:55:00 +0000
 categories: HighSchool_Time
+excerpt: "公元2010年1月28日，与君共看脚下美好河山"
 ---
 
 <div>
 <blockquote class='quote-style'>
-诗歌表达的中心思想似乎是：看遍世间繁华，方知天外有天、人外有人<!--excerpt-->
+诗歌表达的中心思想似乎是：看遍世间繁华，方知天外有天、人外有人
 </blockquote>
 </div>
 

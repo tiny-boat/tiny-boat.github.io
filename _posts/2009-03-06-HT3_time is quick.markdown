@@ -3,7 +3,7 @@ layout: post
 title:  "时间匆匆"
 date:   2009-03-06 14:01:00 +0000
 categories: HighSchool_Time
-excerpt: "如今读来，虽然文字稍显青涩，但依旧饱含能量、催人奋进！"
+excerpt: "如今读来，虽文字青涩，但仍饱含能量、催人奋进！"
 ---
 
 <div>

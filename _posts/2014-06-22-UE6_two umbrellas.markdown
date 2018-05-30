@@ -3,7 +3,7 @@ layout: post
 title:  "两把雨伞"
 date:   2014-06-22 21:24:00 +0000
 categories: University_Essay
-excerpt: "太阳离开今天这个日子的时间应该不远了，现在，北京时间16时25分"
+excerpt: "太阳离开今天这个日子的时间应该不远了……"
 ---
 
 <div>

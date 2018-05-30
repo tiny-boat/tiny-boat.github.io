@@ -3,7 +3,7 @@ layout: post
 title:  "送给所有为生地会考努力的人"
 date:   2009-05-10 12:12:00 +0000
 categories: HighSchool_Time
-excerpt: "加油，所有为梦想努力的人们，你们是这个世界上最美丽的风景！"
+excerpt: "加油，所有为梦想努力的人们！"
 ---
 
 <div>

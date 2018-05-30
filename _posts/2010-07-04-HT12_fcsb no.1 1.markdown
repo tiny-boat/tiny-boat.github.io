@@ -3,6 +3,7 @@ layout: post
 title:  "fcsb No.1 第一回"
 date:   2010-07-04 10:41:00 +0000
 categories: HighSchool_Time
+excerpt: "那是第一次写小说，还用的章回体"
 ---
 
 <div>

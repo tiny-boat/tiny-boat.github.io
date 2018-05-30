@@ -3,11 +3,12 @@ layout: post
 title:  "一中初现"
 date:   2011-07-28 16:41:00 +0000
 categories: HighSchool_Time
+excerpt: "这是写给高中班长的第一首诗"
 ---
 
 <div>
 <blockquote class='quote-style'>
-这是写给高中班长，也是我在高中时代最要好的朋友的第一首诗<!--excerpt-->
+这是写给高中班长，也是我在高中时代最要好的朋友的第一首诗
 </blockquote>
 <br>
 </div>
