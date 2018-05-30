@@ -3,7 +3,7 @@ layout: post
 title:  "重逢(未完)"
 date:   2014-08-28 23:43:00 +0000
 categories: University_Essay
-excerpt: "我不见晓洲已经很久了，他是我的老同学。以前我们住在一个城市里……"
+excerpt: "这是我第二次写小说，但没有写完"
 ---
 
 <div>

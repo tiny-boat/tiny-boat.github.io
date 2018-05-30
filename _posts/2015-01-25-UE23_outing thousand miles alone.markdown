@@ -3,7 +3,7 @@ layout: post
 title:  "千里独行"
 date:   2015-01-25 15:36:00 +0000
 categories: University_Essay
-excerpt: "窗外 你或许看见 秋千上玩耍的孩子 窗里 你也许听到 人们轻轻哼着的曲"
+excerpt: "窗外 你或许看见 秋千上玩耍的孩子 窗里 你也许听到……"
 ---
 
 <div>

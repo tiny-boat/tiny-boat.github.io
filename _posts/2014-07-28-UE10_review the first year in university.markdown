@@ -3,7 +3,7 @@ layout: post
 title:  "回望大学的第一年"
 date:   2014-07-28 12:03:00 +0000
 categories: University_Essay
-excerpt: "曾经回眸的一刹，是否预见到了一年后的自己，依然留着短发……"
+excerpt: "曾经回眸的一刹，是否预见到了一年后的自己……"
 ---
 
 <div>

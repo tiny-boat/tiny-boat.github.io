@@ -3,7 +3,7 @@ layout: post
 title:  "Git学习笔记(2):基本操作"
 date:   2018-04-23 18:43:00 +0000
 categories: Git
-excerpt: "本文介绍如何在 Git 中创建仓库、提交修改、管理修改和回退版本"
+excerpt: "本文介绍如何在 Git 中创建仓库、管理修改和回退版本"
 ---
 
 # 2.1 创建工作区与版本库

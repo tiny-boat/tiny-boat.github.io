@@ -3,7 +3,7 @@ layout: post
 title:  "Git学习笔记(1):概述"
 date:   2018-04-22 23:46:00 +0000
 categories: Git
-excerpt: "本文对目前世界上最先进的分布式版本控制系统 Git 作了简要介绍"
+excerpt: "本文对分布式版本控制系统 Git 作了简要介绍"
 ---
 
 # 1.1 前世今生
