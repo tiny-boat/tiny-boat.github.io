@@ -8,7 +8,7 @@ layout: default
     <div class="post-title" itemprop="name headline">{{ page.title | escape }}</div>
     <div class="post-meta">
       {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
-      <span class="post-meta-content">时间: {{ page.date | date: date_format }}</span>
+      <span class="post-meta-content">发表于 {{ page.date | date: date_format }}</span><br>
       <span class="post-meta-content">分类: 
 	  {% if page.categories contains 'Discrete_Mathematics' %}
 		<a class="post-meta-content-a" href="/category/discrete_mathematics.html">离散数学</a>
