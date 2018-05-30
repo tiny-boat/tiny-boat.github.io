@@ -2,12 +2,18 @@
  * Site header
  */
 .site-header {
-  border-top: 5px solid $grey-color-dark;
   border-bottom: 1px solid $grey-color-light;
   min-height: $spacing-unit * 1.865;
-
+  
   // Positioning context for the mobile navigation icon
   position: relative;
+  
+  @include media-query($on-palm) {
+     position: fixed;
+	 width: 100%;
+	 background-color:white;
+  }
+
 }
 
 .site-title {
@@ -16,8 +22,7 @@
   line-height: $base-line-height * $base-font-size * 2.25;
   letter-spacing: -1px;
   margin-bottom: 0;
-  float: left;
-
+  
   &,
   &:visited {
     color: $grey-color-dark;
@@ -32,7 +37,7 @@
 }
 
 .site-title-title {
-	float:right;
+	float:left;
 }
 
 .site-nav {
@@ -58,8 +63,8 @@
   }
 
   @include media-query($on-palm) {
-    position: absolute;
-    top: 9px;
+    position: fixed;
+    top: 12px;
     right: $spacing-unit / 2;
     background-color: $background-color;
     border: 1px solid $grey-color-light;
@@ -191,6 +196,12 @@
 .page-content {
   padding: 24px 0px 16px 0px;
   flex: 1;
+  
+  @include media-query($on-palm) {
+      margin: 54px 0px 0px 0px;
+	  padding: 20px 0px 16px 0px;
+  }
+ 
 }
 
 .search {
