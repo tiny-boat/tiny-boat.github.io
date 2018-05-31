@@ -28,6 +28,7 @@
 	 top:0;
 	 width: 100%;
 	 background-color:white;
+	 z-index: 1;
   }
   
 }
@@ -305,7 +306,7 @@
       margin: 54px 0px 0px 0px;
 	  padding: 20px 0px 16px 0px;
       overflow-y: scroll;  
-	  -webkit-overflow-scrolling: touch;
+	  z-index: -1;
   }
  
 }
