@@ -23,6 +23,13 @@
   // Positioning context for the mobile navigation icon
   position: relative;
   
+  @include media-query($on-palm) {
+     position: fixed;
+	 top:0;
+	 width: 100%;
+	 background-color:white;
+  }
+  
 }
 
 .site-title {
@@ -72,9 +79,9 @@
   }
 
   @include media-query($on-palm) {
-    position: relative;
-    top: 8px;
-    right: $spacing-unit / 2;
+    position: fixed;
+    top: 2%;
+    right: 4%;
     background-color: $background-color;
     border: 1px solid $grey-color-light;
     border-radius: 5px;
@@ -286,6 +293,19 @@
   @include media-query($on-palm) {
       margin: 54px 0px 0px 0px;
 	  padding: 20px 0px 16px 0px;
+  }
+ 
+}
+
+.page-post-content {
+  padding: 24px 0px 16px 0px;
+  flex: 1;
+  
+  @include media-query($on-palm) {
+      margin: 54px 0px 0px 0px;
+	  padding: 20px 0px 16px 0px;
+      overflow-y: scroll;  
+	  -webkit-overflow-scrolling: touch;
   }
  
 }
