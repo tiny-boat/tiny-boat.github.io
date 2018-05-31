@@ -321,7 +321,9 @@
 }
 
 .post-list-heading {
-  @include relative-font-size(1.75);
+  @include relative-font-size(1.5);
+  text-align: center;
+  padding: 0px 0px 10px 0px;
 }
 
 .post-list {
@@ -331,6 +333,11 @@
     margin-bottom: 30px;
 	list-style: none;
   }
+}
+
+.post-category-list {
+  list-style:none;
+  margin:0px;
 }
 
 .post-list-tips {
@@ -355,9 +362,26 @@
   @include relative-font-size(1.4);
 }
 
+.post-category-link {
+  font-size: 18px;
+  width: 70%;
+  float: left;
+  margin: 4px 0px;
+}
+
 .post-meta {
   font-size: $small-font-size;
   color: $grey-color;
+}
+
+.post-category-meta {
+  font-size:14px;
+  text-align: right;
+  float:right;
+  padding:2px 0px;
+  margin: 4px 0px;
+  color: $grey-color;
+  width: 30%;
 }
 
 .post-meta-content {
