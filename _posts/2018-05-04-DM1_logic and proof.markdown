@@ -133,5 +133,13 @@ equivalence*）. 表 1-2、1-3、1-4 给出了若干重要的逻辑等价式。
 </blockquote>
 </div>
 
+假设一个命题包含 *n* 个命题变元 $p_1,p_2,\cdots ,p_n$, 并设当命题真值为真时，$p_1,p_2,\cdots ,p_n$ 的所有可能真值组合为 $t_1^j,t_2^j,\cdots ,t_n^j,\ j=1,2,\cdots,m,\ m\leq 2^n$. 则命题 $\left (p_1^1\wedge p_2^1\wedge \cdots \wedge p_n^1 \right ) \vee \left (p_1^2\wedge p_2^2\wedge \cdots \wedge p_n^2 \right ) \vee \cdots \vee \left (p_1^m\wedge p_2^m\wedge \cdots \wedge p_n^m \right )$ 与原命题是逻辑等价的，其中
+
+$$
+p_i^j = \left\{\begin{matrix}
+p_i,\quad \;\; when \; t_i^j = T\\
+\lnot p_i,\quad when \; t_i^j = F\\  
+\end{matrix}\right
+$$ 
 
 **未完待续(*^▽^*)**
