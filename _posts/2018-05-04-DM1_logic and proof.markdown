@@ -129,17 +129,67 @@ equivalence*）. 表 1-2、1-3、1-4 给出了若干重要的逻辑等价式。
 
 <div>
 <blockquote class="quote-style">
-<p>顾名思义，$p\ \vert \ q$ 等价于 $\lnot \left (p \wedge q \right )$，它只在 $p$ 真 $q$ 真时为假，而 $p \downarrow q$ 等价于 $\lnot \left (p \vee q \right )$，它只在 $p$ 假 $q$ 假时为真</p>
+<p>顾名思义，$p\ \vert \ q$ 等价于 $\lnot \left (p \wedge q \right )$，它只在 $p$ 真 $q$ 真时为假，而 $p \downarrow q$ 等价于 $\lnot \left (p \vee q \right )$，它只在 $p$ 假 $q$ 假时为真，另外，$\vert $ 还被称为 Sheffer 竖线（Sheffer stroke）、$\downarrow $ 还被称为 Peirce 箭头（Peirce arrow）</p>
 </blockquote>
 </div>
 
-假设一个命题包含 *n* 个命题变元 $p_1,p_2,\cdots ,p_n$, 并设当命题真值为真时，$p_1,p_2,\cdots ,p_n$ 的所有可能真值组合为 $t_1^j,t_2^j,\cdots ,t_n^j,\ j=1,2,\cdots,m,\ m\leq 2^n$. 则命题 $\left (p_1^1\wedge p_2^1\wedge \cdots \wedge p_n^1 \right ) \vee \left (p_1^2\wedge p_2^2\wedge \cdots \wedge p_n^2 \right ) \vee \cdots \vee \left (p_1^m\wedge p_2^m\wedge \cdots \wedge p_n^m \right )$ 与原命题是逻辑等价的，其中
+假设一个命题包含 *n* 个命题变元 $p_1,p_2,\cdots ,p_n$, 并设当命题真值为真时，$p_1,p_2,\cdots ,p_n$ 的所有可能真值组合为 $t_1^j,t_2^j,\cdots ,t_n^j,\ j=1,2,\cdots,m,\ m\leq 2^n$. 则容易验证命题的**析取范式**（*disjunctive normal form*）
 
 $$
-p_i^j = \left\{\begin{matrix}
-p_i,\quad \;\; when \; t_i^j = T\\
-\lnot p_i,\quad when \; t_i^j = F\\  
-\end{matrix}\right
+\left (p_1^1\wedge p_2^1\wedge \cdots \wedge p_n^1 \right ) \vee \left (p_1^2\wedge p_2^2\wedge \cdots \wedge p_n^2 \right ) \vee \cdots \vee \left (p_1^m\wedge p_2^m\wedge \cdots \wedge p_n^m \right )
 $$ 
+
+与原命题是逻辑等价的，这里
+
+<div align='center'>
+<img src="/assets/img/Discrete_Mathematics/MF1.gif"><br>
+<br>
+</div>
+
+<div>
+<blockquote class='quote-style'>
+一个命题的<strong>析取范式</strong>（disjunctive normal form）是利用该命题的各命题变元或命题变元的否定构造的多个合取式，而后再由这多个合取式构成的析取式，其中每个合取式对应一组该命题真值为 T 时各命题变元的真值组合，在该真值组合下，合取式的真值必须为 T.
+</blockquote>
+</div>
+
+以 1.1 节中的命题
+
+<div align='center'>
+你很高或你很瘦，但如果你很高，你就不会很瘦，并且你很高当且仅当你喜欢打球<br>
+<br>
+</div>
+
+为例，它仅在如下两种情况下的真值为真：
+
+- 你很高、不很瘦且喜欢打球
+- 你很瘦、不很高且不喜欢打球
+
+现在我们用 $p_1$ 表示你很高，$p_2$ 表示你很瘦，$p_3$ 表示你喜欢打球，那么我们可以说这是一个含三个命题变元 $p_1,p_2,p_3$ 的命题，当命题真值为真时，$p_1,p_2,p_3$ 的所有可能真值组合只有两个，它们是 $t_1^j,t_2^j,t_3^j,\ j=1,2$，其中 $t_1^1=T,t_2^1=F,t_3^1=T$，$t_1^2=F,t_2^2=T,t_3^2=F$。透过这个直观的例子，我们能更容易地看到原命题与命题的析取范式
+
+$$
+\left (p_1\wedge \lnot p_2\wedge p_3 \right ) \vee \left (\lnot p_1\wedge p_2\wedge \lnot p_3 \right )
+$$
+
+是逻辑等价的。这一结论告诉我们：世界上的所有命题都可以由命题变元和三个逻辑运算符 $\lnot$、$\wedge$、$\vee$ 表示，而由德·摩根律我们知道 $\vee$ 和 $\wedge$ 借助于 $\lnot$ 可以实现相互转化，因此世界上的所有命题都可以由命题变元和两个逻辑运算符 $\lnot$、$\wedge$（或 $\vee$）表示。
+
+进一步，对于新的逻辑运算符 $\vert $, $\downarrow $，我们很容易通过构造真值表证明存在如下四个逻辑等价式：
+
+$$
+p\ \vert \  p \equiv \lnot p
+$$
+
+$$
+\left (p\ \vert \  q \right ) \ \vert \  \left (p\ \vert \  q \right ) \equiv p \wedge q
+$$
+
+$$
+p\ \downarrow \  p \equiv \lnot p
+$$
+
+$$
+\left (p\ \downarrow \  q \right ) \ \downarrow \  \left (p\ \downarrow \  q \right ) \equiv p \vee q
+$$
+
+而这四个逻辑等价式告诉我们：如果世界上的所有命题都可以由命题变元和两个逻辑运算符 $\lnot$、$\wedge$（或 $\vee$）表示，那么世界上的所有命题就都可以由命题变元和一个逻辑运算符 $\vert$ (或 $\downarrow$) 表示。
 
 **未完待续(*^▽^*)**
