@@ -495,3 +495,79 @@ a:active {text-decoration: none}	/* 选定的链接 */
 .pagination {
 	padding: 0px 0px 0px 0px;
 }
+
+.proof-style{
+	padding: 0px 16px;
+	text-align: justify;
+}
+
+.post-style{
+
+	@include media-query($on-palm) {
+		text-indent: 0px;
+	}
+
+
+	text-indent: 32px;
+	line-height: 28px;
+	font-size: 16px;
+	
+	> p {
+		margin: 0px 0px;
+		@include media-query($on-palm) {
+			margin: 8px 0px;
+		}
+	}
+	
+	> h1 {
+		text-indent: 0px;
+		font-weight: 540;
+		font-size: 24px;
+		margin: 20px 0px;
+		
+		@include media-query($on-palm) {
+			font-size: 120%;
+		}
+	}
+	
+	> ul {
+		list-style-type: disc;
+		list-style-position: inside;
+		margin:8px 32px;
+		font-size: 14px;
+		text-indent: -20px;
+		padding-left: 20px;
+	}
+	
+	text-align: justify;
+	
+	.post-text-center{
+		text-indent: 0px;
+		margin: 8px 0px;
+		text-align: center;
+		font-size: 14px;
+	}
+	
+	.post-text-tablename{
+		text-indent: 0px;
+		margin: 8px 0px;
+		text-align: center;
+		font-size: 14px;
+	}
+	
+	.post-text-noindent{
+		text-indent: 0px;
+	}
+	
+	.post-text-formula{
+		margin: -8px 0px;
+	}
+	
+	> blockquote{
+		margin: 8px 0px;
+		font-size: 16px;
+		font-style: normal;
+		font-family: 'Times New Roman', Arial, KaiTi, STKaiTi,	SimSun, 'Microsoft YaHei';
+		text-indent: 0px;
+	}
+}
