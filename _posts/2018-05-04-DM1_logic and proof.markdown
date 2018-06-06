@@ -211,9 +211,87 @@ $$
 
 <p class="post-text-noindent">而这四个逻辑等价式告诉我们：如果世界上的所有命题都可以由命题变元和两个逻辑运算符 $\lnot$、$\wedge$（或 $\vee$）表示，那么世界上的所有命题就都可以由命题变元和一个逻辑运算符 $\vert$ (或 $\downarrow$) 表示。</p>
 
+<h1>1.3 命题的可满足性</h1>
 
+<p>如果存在一组命题变元的真值，使得命题的真值为真，那么我们就称这个命题是<strong>可满足的</strong>（<em>satisfiable</em>），并称这一组命题变元的真值为该可满足性问题的一个<strong>解</strong>（<em>solution</em>）。命题的可满足性在<strong>机器人学、软件测试、计算机辅助设计、机器视觉、集成电路设计、计算机网络、遗传学</strong>（<em>robotics, software testing, computer-aided design,
+machine vision, integrated circuit design, computer networking, genetics</em>）等诸多领域都有重要应用。下面我们将简要叙述命题的可满足性在数独谜题求解中的应用。</p>
 
+<p>图 1-5 是一个 9×9 <strong>数独谜题</strong>（<em>Sudoku puzzle</em>），谜题的求解就是给所有空白单元格赋上数字，这些数字必须是 1-9 中的一个，并且大<strong>九宫格</strong>（<em>blocks</em>）的每一行、每一列以及每个小九宫格都分别包含 1-9 这九个数字，即不能有相同的数字出现在大九宫格的每一行、每一列乃至每个小九宫格。自 20 世纪 70 年代末现代数独游戏被设计出来后，人们发展了许许多多的方法来求解数独谜题，而将数独谜题转化为一个命题可满足性问题并借助计算机寻找该可满足性问题的解的方法，便是其中之一。</p>
+
+<p>
+<p class="post-text-center"><img src="/assets/img/Discrete_Mathematics/Sudoku puzzle.png"></p>
+<p class="post-text-tablename">图 1-5 9×9 数独谜题</p>
+</p>
+
+<p class="post-text-noindent">以上述数独谜题为例，设命题变元 $p\left (i,j,n \right )$ 表示数 $n$ 位于第 $i$ 行第 $j$ 列，则可以将其转化为可满足性问题：寻找使得命题</p>
+
+<p class="post-text-formula">
+$$
+A\bigwedge B\bigwedge C\bigwedge D\bigwedge E
+$$
+</p>
+
+<p class="post-text-noindent">为真的解，即使该命题真值为真时对应的 729 个命题变元 $p\left (i,j,n \right )$ 的真值组合。其中</p>
+
+<p class="post-text-formula">
+$$
+A\equiv \bigwedge_{\left ( i^*,j^*,n^* \right )} p\left ( i^*,j^*,n^* \right )
+$$
+</p>
+
+<p class="post-text-noindent">
+为真当且仅当已知的数 $n^*$ 位于第 $i^*$ 行第 $j^*$ 列，这里 $\left ( i^*,j^*,n^* \right )$ 代表所有已知的数 $n^*$ 与其所在行列构成的组合，依据图 1-5，这样的组合有 17 个；
+</p>
+
+<p class="post-text-formula">
+$$
+B\equiv \bigwedge_{i= 1}^{9}\bigwedge_{n= 1}^{9}\bigvee_{j= 1}^{9}p\left ( i,j,n \right )
+$$
+</p>
+
+<p class="post-text-noindent">
+为真当且仅当每一行都包含了 1-9 这九个数字；
+</p>
+
+<p class="post-text-formula">
+$$
+C\equiv \bigwedge_{j= 1}^{9}\bigwedge_{n= 1}^{9}\bigvee_{i= 1}^{9}p\left ( i,j,n \right )
+$$
+</p>
+
+<p class="post-text-noindent">
+为真当且仅当每一列都包含了 1-9 这九个数字；
+</p>
+
+<p class="post-text-formula">
+$$
+D\equiv \bigwedge_{r= 0}^{2}\bigwedge_{s= 0}^{2}\bigwedge_{n= 1}^{9}\bigvee_{i= 1}^{3}\bigvee_{j= 1}^{3}p\left ( 3r+ i,3s+ j,n \right )
+$$
+</p>
+
+<p class="post-text-noindent">
+为真当且仅当每一个九宫格都包含了 1-9 这九个数字；
+</p>
+
+<p class="post-text-formula">
+$$
+E\equiv \bigwedge_{i= 1}^{9}\bigwedge_{j= 1}^{9}\bigwedge_{n^{'}\neq n}^{9} \bigwedge_{n= 1}^{9} \left ( p\left ( i,j,n \right ) \rightarrow \lnot p ( i,j,n^{'}) \right )
+$$
+</p>
+
+<p class="post-text-noindent">
+为真当且仅当没有一个单元格包含多于一个数。至于具体的计算机算法是怎样的，我们后续再加以讨论，但可以肯定的是，这样的算法肯定不会遍历 $2^{729}$ 种可能真值组合来寻找使得上述合取式为真的 729 个命题变元的真值组合，因为这相较于计算机当前的计算能力而言仍然是一个天文数字。<em>Kenneth H.Rosen</em>先生在其所著的《<em>Discrete Mathematics and Its Applications</em>》这样写道：
+</p>
+
+<blockquote>
+In our discussion of the subject of algorithms in Chapter 3, we will discuss this question further. In particular, we will explain the important role the propositional satisfiability problem plays in the study of the complexity of algorithms.<br>
+我们将在第三章关于算法的部分继续讨论这一问题。特别地，我们将阐释命题的可满足性问题在算法复杂度的学习中扮演的重要角色。
+</blockquote>
+
+<p class="post-text-noindent">瞧，同学们，又一片蔚蓝而广阔的天空即将出现在我们的眼前，就让我们拭目以待吧！</p>
+
+<p class="post-text-noindent">
+<br>
+未完待续(*^▽^*)
+</p>
 </div>
-
-
-**未完待续(*^▽^*)**
