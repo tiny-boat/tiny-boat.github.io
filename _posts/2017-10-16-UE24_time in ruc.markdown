@@ -1,12 +1,26 @@
 ---
 layout: post
 title:  "人大时光"
-date:   2017-08-01 21:56:00 +0000
+date:   2017-10-16 22:27:00 +0000
 categories: University_Essay
 excerpt: "这是一段美好的时光，即便最终未能成为人大的学生"
 ---
 
-### 1.2017-08-06 22:32
+## 0.2017-07-03 20:29
+
+<div align="center"><p><img src="/assets/img/University_Essay/ruc0.1.jpg"></p></div>
+
+纪念一下上班第一天哈哈，北京号是这个，17610891317，原长春号继续使用
+
+<div align="center"><p><img src="/assets/img/University_Essay/ruc0.2.jpg"></p></div>
+
+虽然许多现代科技设备的出现使得自动化获取高质量数据成为可能，然而这依旧无法替代由人工控制和施行的数据获取方法，以总统预测为代表的抽样调查就是其中之一
+
+<div align="center"><p><img src="/assets/img/University_Essay/ruc0.3.jpg"></p></div>
+
+我相信科学无所不能，只要我们敢想敢做敢折腾，终有一天这一领域能够实现机器化，让人类得以从繁琐的数据采集中真正解脱出来。可是路在何方，蒋大为说，路在脚下
+
+## 1.2017-08-06 22:32
 
 <div align="center"><p><img src="/assets/img/University_Essay/ruc1.jpg"></p></div>
 
@@ -30,7 +44,7 @@ Good night, all my friends, we are living in a great era which must belong to tr
 
 晚安，我的朋友们，我们生活在一个属于变革和革命的伟大时代，这种前所未有的改变将在某一天永久地解放我们全人类，向你们所有人致以最美好的祝愿。 
 
-### 2.2017-08-07 23:13
+## 2.2017-08-07 23:13
 
 <div align="center"><p>
 <img src="/assets/img/University_Essay/ruc2.1.jpg">
@@ -60,7 +74,7 @@ From my perspective, the central thing educator should do is to arouse students�
 
 晚安，好梦 ！
 
-### 3.2017-08-08 23:25
+## 3.2017-08-08 23:25
 
 <div align="center"><p>
 <img src="/assets/img/University_Essay/ruc3.jpg">
@@ -78,7 +92,7 @@ When I write these words, a sudden message from Sichuan shocks me that a magnitu
      
 当我写到这里时，来自四川的突然消息震惊了我。北京时间21:19 在阿坝藏族羌族自治州九寨沟县发生里氏 7 级地震。这次地震震源深度 20 公里，仅比 5·12 汶川大地震深 6 公里。阿坝藏族羌族自治州在9年以后再次发生强烈地震……为九寨祈福，为阿坝祈福，为四川祈福，愿一切安好。
 
-### 4.2017-08-09 23:27
+## 4.2017-08-09 23:27
 
 Following are two pictures, the former was taken at 5:29 p.m., and the latter on yesterday.
 
@@ -108,7 +122,7 @@ As I write these words, in the distance I heard Mr. Du’ s voice: Looking back 
 
 当我写到这里时，我听到了杜先生的声音：长安回望绣成堆，山顶千门次第开。一骑红尘妃子笑，无人知是荔枝来。
 
-### 5.2017-08-20 12:09
+## 5.2017-08-20 12:09
 
 <div align="center"><p>
 <img src="/assets/img/University_Essay/ruc5.jpg">
@@ -126,7 +140,7 @@ Tomorrow is an overtime for me, so the writing now should be stopped. See you to
 
 明天有一天加班，所以写作到现在应该停止了。明晚再见，美梦，所有的朋友们！
 
-### 6.2017-08-20 23:29
+## 6.2017-08-20 23:29
 
 <div align="center"><p>
 <img src="/assets/img/University_Essay/ruc6.jpg">
@@ -142,7 +156,7 @@ One hour has passed, but I only squeezed 127 words. Making sentences possessing 
 什么是宫颈？它是一个位于女性阴道末端，子宫开端的狭窄的通道，而子宫是婴儿出生前所呆的地方。宫颈癌主要是由人乳头瘤病毒 (HPV) 引起的一种恶性肿瘤，其发病率位列女性恶性肿瘤的第二位，仅次于乳腺癌。数据显示，全球每年新增宫颈癌 50万人，而中国就占到了其中的 26%，也就是13 万人。   
 一个小时已经过去，但我只挤出了 127 个字。拥有科学味道的造句对我来说仍是一个巨大的挑战，前方还有很长的路要走。
 
-### 7.2017-08-21 21:30
+## 7.2017-08-21 21:30
 
 <div align="center"><p>
 <img src="/assets/img/University_Essay/ruc7.1.jpg">
@@ -172,7 +186,7 @@ Even as the sound of her voice died away, bewilderment suddenly occupied my whol
 
 她没有再说话，只是给我发了一条消息：异性相吸，你说得对，现在你偷走了我大部分的电，我不得不和你说再见了，但我爱你，傻傻的你！
 
-### 8.2017-08-22 23:15
+## 8.2017-08-22 23:15
 
 Today’s noon, a thought glinted in my mind: it had been a long time since I played basketball last time. I bowed my head and consulted my watch, then knew the time is 11:46, which has 14 minutes from off-duty time of the morning. I told myself that there was nothing else for it but to run out, afterwards I galloped across office towards basketball count. I was happy that there are some people. Three minutes later, a game where four persons versus another four persons came at the appointed time. Within 20 minutes, I got 10 points, 2 rebounds and 1 turnover. The 10 points comes from 5-of-8 shooting, containing 1 jump shot, 1 fade-away shot, 2 left wing breakthrough and 1 floater. Shooting streak was so well that I start to suspect my life.
 
@@ -186,7 +200,7 @@ Good night, all my friends
 
 晚安，所有的朋友们
 
-### 9.2017-08-30 12:12
+## 9.2017-08-30 12:12
 
 <div align="center"><p>
 <img src="/assets/img/University_Essay/ruc9.1.jpg">
@@ -230,7 +244,7 @@ About 200 years ago, Alembert described math in those days using an inspiring sl
 
 大约两百年前，达朗贝尔用一句鼓舞人心的口号来描述当时的数学：“前进吧，你就会有信心”，而现在的情况则是：人类正充满信心，人类正在前进！
 
-### 10.2017-09-10 12:07
+## 10.2017-09-10 12:07
 
 <div align="center"><p>
 <img src="/assets/img/University_Essay/ruc10.1.jpg">
@@ -276,221 +290,39 @@ Happy Teacher’s Day to all teachers, the happiest thing learning in normal uni
 
 祝所有的老师们教师节快乐，在师范大学读书最幸福的事莫过于你可以在微信朋友圈看到许许多多年轻的面孔，他们是未来世界的希望!
 
-### 11.2018-01-01 23:25
+## 11.2017-09-24 12:24
 
-The implication of fallen flowers
-——the first poem writing for future:
+Following are a dialogue extracted from a microfilm Validation. 以下对话摘自微电影《[盖章](https://m.v.qq.com/play.html?vid=v0116rn9voq&ptag=v_qq_com%23v.play.adaptor%233&from=timeline&isappinstalled=0)》 
 
-Silently at noon yesterday,
-the flowers were fading.
-Because of forgetting its name,
-you turned to consult me.
-But I say I know nothing.
+M:I don't understand I tried everything … what happend?
+男：我不明白，我尝试了所能尝试的一切（试图让你笑起来也没能成功，而现在你却笑起来了），（在你的身上）究竟发生了什么？
 
-A long time had passed,
-then a laughter came out suddenly.
-You regarded me as a fake,
-fake scientist in detail.
-Actually I could not argue.
+W:When I was a little girl, my mother got very sick, and she stayed away. And alawys these years she just got so sad that she forgot how to smile. And seeing her like that, I couldn't smile either. And I didn't … for years. 
+女：当我还是小女孩的时候，我的妈妈患了重病，并且一病不起。这些年她总是很悲伤以至于忘记了怎么去笑。而看到她这样，我也笑不起来。我已经很多年（没笑了）。
 
-That night I lit my lamp to read,
-bit lips, beat breast and stamped feet
-only for reshaping status or prestige.
-But I failed to imagine its difficulties,
-which equal the Shu Road or the heaven.
+W:But one day, a young man came up to her and told her how beautiful she was, so beautiful that you wanna to take her pictures. He made her smile, and suddenly after almost these years, she got better. I knew he was you. I looked everywhere for you but I couldn't find you anywhere. I went every garage town and paid every fee they had, but I couldn't find you.
+女：但是有一天，一个年轻人来到她的身边，告诉她：她是如此的美丽以至于你会很想给她拍照片。他让她笑了起来，在这么多年（的悲伤）过后，她终于感觉自己变好了。我知道那个他就是你。我四处找你但却找不到你，我走遍了所有车库，出了所有需要缴纳的停车费，但我还是没能找到你。
 
-Coldly at morning today,
-the heat originated from back
-made meditation fruit.
-You brought a wind coat to me,
-then I knew the implication of fallen flowers.
+M:You paid for parking, for me?
+男：你为了我交停车费？
 
-落花之意：写给未来的诗1
+W:Yes, because you are great, you are amazing
+女：嗯嗯，因为你很伟大，因为你让人惊奇。
 
-昨日寂静午间
-行将衰落的花
-你想不起名字
-于是转身问我
-我说我也不知
+M:No one has ever said that about me before.
+男：之前从没有人对我说过这样的话（❤）
 
-此后许久过了
-突然笑声传出
-你称我是冒牌
-冒牌的科学家
-我竟无力辩解
+## 12.2017-09-29 22:57
 
-是夜挑灯苦读
-咬牙捶胸顿足
-只为重拾颜面
-不想个中荆棘
-比肩蜀道青天
+也许爱情就在洱海边，也许故事正在发生着
+Maybe the love is nearing Erhai Lake
+Maybe the story is happening
+[点此](https://pan.baidu.com/s/1ESi2vLWJYwkQ-jAdBGmY2g)下载视频
 
-今日刺骨清晨
-忽觉背后一热
-冥思终成正果
-你把风衣送来
-我明落花之意
-
-### 12.2018-01-02 23:58
+## 13.2017-10-16 22:27
 
 <div align="center"><p>
-<img src="/assets/img/University_Essay/ruc12.1.jpg">
+<img src="/assets/img/University_Essay/ruc13.jpg">
 </p></div>
 
-Today, basketball accompanied me all day and sent me a present——crus cramp——which makes me have no choice but to use study instead of sport. Now my heart can be seen as a mixture of sadness and joy, how interesting it is!
-
-<div align="center"><p>
-<img src="/assets/img/University_Essay/ruc12.2.jpg">
-</p></div>
-
-Wangyi Cloud Music tells me that frequency of the word ‘heart’ equaling 993 hit the top position among all lyrics I have ever heard in 2017. It exceeds my expectation but within the bound of reason.
-
-She also mentions me that 24th Feb may be a special day for me since I listened to Fifth Melody of the Night performed by Shi Jin many times. However, I really cannot grasp its particularity, I do not know why 47 became the amount of listening to that music on that day as if I do not understand how do I possess the present appearance step by step. 
-
-Extremely the world is fantastic, she always bringing curiosity into our heart with no end.
-
-今天，篮球陪伴了我一天并送给我一份礼物：小腿抽筋，这让我除了用学习代替运动外别无选择。现在我的心悲喜交加，多么有意思！
-
-网易云音乐告诉我2017我听到最多的歌词是“心”，达到993次，这既出乎我意料，又在情理之中。
-
-她还提醒我，对我而言，2月24日也许是特别的一天，因为我把石进的《夜的钢琴曲五》听了很多次。然而，我真的不知道特别在何处，我不知道为什么那一天听这首曲子听了47次，就好像我无法理解我是如何一步一步成为今天这般模样的。
-
-这世界如此奇妙，它总把好奇植入我们内心，并且源源不断。
-
-### 13.2018-01-03 
-
-<div align="center"><p>
-<img src="/assets/img/University_Essay/ruc13.1.jpg">
-</p></div>
-
-用英文写日记实在是件遭罪的事，我偷回懒。
-
-<div align="center"><p>
-<img src="/assets/img/University_Essay/ruc13.2.jpg">
-</p></div>
-
-中国的大学什么时候能成为中国的大学呢? 我是指：什么时候我们可以脱口而出：我有一个想法，我来做个展示，而不是脱口而出：我有一个idea，我来做个presentation.
-
-因为落后，我们学习了人家这么多年，该有点骨气做点超越人家的事，比如，有一天，让汉语成为西方研究生入学考试的必考科目。
-
-昨天网易云带着她对用户听歌的记录刷爆朋友圈，今天支付宝带着他对用户消费的记录同样刷爆朋友圈。他和她，一个管着物质，一个管着精神，他和她，好像牛郎和织女，离牵手只差一座桥的距离。
-
-过去的一年是漂泊的一年，他告诉我，说我一共坐了17次火车，花费3497.50元，这数字多少超出了我的意料。2次往返于长春和长沙，3次往返于长春和北京，1次往返于长春和哈尔滨，1次去往北京，1次去往长沙，1次去往益阳，还有2次忘了。平均每次205.73元，有点小贵，至今可恶的花呗小朋友还时不时拽着我的手，嚷嚷着：欠债还钱，天经地义。
-
-全年总消费14226.25元，月均1185.52元，加上其他渠道的消费，实际应该在1500到2000之间吧，不知道算什么水平，唯一肯定的是花了不少冤枉钱。当然像北京房租这种大贪官不在统计范围内，他必须被剔除出去，以告慰天下苍生。
-
-### 14.2018-01-05 22:39
-
-Snowflakes
-——the 2th poem written for future
-
-In the south of China,
-many snowflakes with dust
-fall onto highways and byways.
-
-With each other,
-sprays on the window
-bond, play and have fun.
-Now and then, one by one,
-they make many drawings naturally.
-
-Children waken from dream
-are discontented with natural presents.
-On sprays with young hands carefully,
-they depict snowflakes in their eyes.
-
-To take advantage of free time,
-adults returning from work
-are also unwilling to fall behind.
-In the place where children cannot reach,
-by staring at remote mountain,
-they confide stories in their heart.
-
-Because of the continuity of the creation,
-you eventually crawl out from warm bed.
-In that moment,
-the cold wind swallow you.
-But suddenly,
-winter clothes, neckerchief,
-together with ginger decoction,
-throng into the house.
-
-Through the arts in window,
-you say you have observed
-pureness, kindness and honesty,
-and have touched
-gladness, gratitude and happiness,
-and also have tasted
-all the beauty of human world
-which cast light on by snowflakes.
-
-I ask you what the beauty is.
-You answer me without thinking:
-it is friendship, romance and familial affection.
-Smiling with shyness, you speak again:
-It is also the love which includes the above three.
-The loving process converts two persons’ relationship 
-from the stranger into the friend firstly,
-from the friend into the sweetheart secondly,
-and from the sweetheart into the relative ultimately.
-
-雪花：写给未来的诗2
-
-中国南方
-粒粒雪花
-夹杂尘土
-飘落
-大街小巷
-
-窗上水雾
-你来我往
-嬉戏打闹
-不时勾勒出
-一幅幅
-浑然天成的图画
-
-从梦中苏醒的孩子
-对这自然的馈赠
-并不满意
-他们拖着稚嫩的双手
-在这水雾上
-一笔一划
-描绘着
-他们眼里的雪花
-
-劳作归来的大人
-趁着这难得的闲暇
-也不甘落后
-他们望着远方的大山
-在孩子们够不着的地方
-一点一线
-诉说着
-他们心中的故事
-
-如火如荼的创作
-终于让你爬出温暖被窝
-那一刹
-刺骨寒风吞没了你
-但很快
-冬衣围巾
-加上姜汤
-纷至沓来
-
-透过窗户上的艺术品
-你说你看到了
-纯洁、善良与真诚
-触摸到了
-欣喜、感动和幸福
-也品尝到了
-雪花映照下的
-人间一切美好
-
-我问你
-这美好指什么
-你不假思索
-友情、恋情、亲情啊
-又含羞一笑
-还有囊括三者的爱情
-从外人，到朋友
-从朋友，到恋人
-从恋人，到亲人
+I do not know what I will meet in the future, can 2 months' real review take me into Renming University? I do not know but I believe I can. There is an amazing task waiting for me, so just do it！
