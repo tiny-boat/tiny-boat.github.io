@@ -100,3 +100,72 @@ spirit of C*）这一指导原则，具体包括：
 <p> </p>
 <p>图 1-2  C 的编程步骤</p>
 </div>
+
+# 1.5 C 程序的结构
+
+一个 C 程序通常由**预处理器指令**（*preprocessor directive*）、**函数原型/声明**（*function prototyping/declaration*）、**函数**（*function*）这三个部分构成。下面是一个简单的 C 程序示例，该程序将会在屏幕上打印如图 1-3 所示的五行文字，后面我们将依托这个程序示例对构成 C 程序的三大部分作简要介绍。
+
+{% highlight C %}
+// ————————————
+// an example of C program
+// ————————————
+
+/* 1.preprocessor directive */
+
+#include <stdio.h> 
+// stdio.h: standard input/output header 
+
+/* 2.function prototyping/declaration */
+
+void br(void);  // void means a large empty space in English
+void ic(void);
+
+/* 3.1 function main(): the int means the output of function is an integer, and the void means function has no parameters */
+
+int main(void) // the following block {...} is a compound-statement
+{
+	int fingers, toes, twofold_fingers, square_toes;
+	
+	br();  // an expression-statement
+	printf(", ");
+	ic();
+	printf("\n");
+	
+	ic();
+	printf("\n");
+	
+	br();
+	printf("\n");
+	
+	fingers = 10;  // an expression-statement
+	toes = 10;
+	twofold_fingers = fingers * 2;
+	square_toes = toes * toes;
+	printf("Every normal human has %d fingers and %d toes.\nIf you have %d fingers and %d toes, you may be an extraterrestrial.", fingers, toes, twofold_fingers, square_toes);
+	
+	getchar();  // to wait for a keystroke
+	return 0;  // a jump-statement
+}
+
+/* 3.2 function br() */
+
+void br(void)
+{
+	printf("Brazil, Russia");
+}
+
+/* 3.3 function ic() */
+
+void ic(void)
+{
+	printf("India, China");
+}
+
+{% endhighlight %}
+
+<div align='center'>
+<br>
+<img src="/assets/img/C/implementation result 1.png">
+<p> </p>
+<p>图 1-3  示例 C 程序的执行结果</p>
+</div>
