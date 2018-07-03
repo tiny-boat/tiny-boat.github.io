@@ -582,5 +582,9 @@ a:active {text-decoration: none}	/* 选定的链接 */
 		@include media-query($on-palm) {
 			margin: 12px 0px;
 		}
+		
+		.blockquote-code{
+			border: 0px 0px;
+		}
 	}
 }

@@ -27,16 +27,30 @@ permalink: /about_me/
 * 念奴娇·赤壁怀古 *苏轼*
 * 将进酒 *李白*
 
+### 喜欢的书
+
+* 时间简史 *霍金*
+* 沉默的大多数 *王小波*
+* 七堂极简物理课
+* 一九八四 *乔治·奥威尔*
+* ……
+
 ### 联系方式
 * 邮箱
   + llygg6@gmail.com
   + 737130291@qq.com
 * 微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
-* 微信：xiaozhou13171317
+* 微信：17610891317
 <div align='center'>  
 <img src='/assets/img/about_me/wechat.jpg' height="200" width="200">
 <p></p>
 <p>微信扫一扫添加</p>
+</div>
+* QQ：737130291
+<div align='center'>  
+<img src='/assets/img/about_me/qq.jpg' height="200" width="200">
+<p></p>
+<p>QQ 扫一扫添加</p>
 </div>
 
 ### 结语
