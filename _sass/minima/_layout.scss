@@ -501,6 +501,11 @@ a:active {text-decoration: none}	/* 选定的链接 */
 	text-align: justify;
 }
 
+.code-style{
+	margin: 12px 0px;
+	padding: 0px 32px;
+}
+
 .post-style{
 
 	@include media-query($on-palm) {
@@ -552,7 +557,8 @@ a:active {text-decoration: none}	/* 选定的链接 */
 	
 	.post-text-center{
 		text-indent: 0px;
-		margin: 8px 0px;
+		margin: 12px 0px;
+		padding: 0px 32px;
 		text-align: center;
 		font-size: 14px;
 	}
@@ -573,7 +579,7 @@ a:active {text-decoration: none}	/* 选定的链接 */
 	}
 	
 	> blockquote{
-		margin: 8px 0px;
+		margin: 10px 32px;
 		font-size: 16px;
 		font-style: normal;
 		font-family: 'Times New Roman', Arial, KaiTi, STKaiTi,	SimSun, 'Microsoft YaHei';
@@ -582,9 +588,10 @@ a:active {text-decoration: none}	/* 选定的链接 */
 		@include media-query($on-palm) {
 			margin: 12px 0px;
 		}
-		
-		.blockquote-code{
-			border: 0px 0px;
-		}
 	}
+	
+	.blockquote-code{
+		text-indent: 0px;
+	}
+	
 }

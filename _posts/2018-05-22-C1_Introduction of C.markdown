@@ -21,7 +21,7 @@ excerpt: "本文介绍了 C 的历史、特性、编程机制和编程步骤"
 <li>科学领域编程（<em>scientific programming</em>）</li>
 </ul>
 
-<p>当然，金无足赤、人无完人，<em>C</em> 语言也有一些缺点，例如：</p>
+<p class="post-text-noindent">当然，金无足赤、人无完人，<em>C</em> 语言也有一些缺点，例如：</p>
 
 <ul>
 <li><em>C</em> 语言使用<a href="https://baike.baidu.com/item/%E6%8C%87%E9%92%88">指针</a>（<em>pointers</em>），而涉及指针的编程错误常常难以察觉</li>
@@ -68,7 +68,7 @@ In computer science, an implementation is a realization of a technical specifica
 </blockquote>
 
 
-<p><em>C</em> 语言刚出道时，人们并没有为其设立标准，1978 年出版的由布莱恩·柯林汉（<em>Brian Kernighan</em>）和丹尼斯·里奇（<em>Dennis Ritchie</em>）合著的[《<em>The C Programming Language</em>》](https://pan.baidu.com/s/1nblipZ7kDDeFwPKJU7b-Bg)事实上成为了当时公认的 <em>C</em> 标准（被称为 <em>K&R C</em> 或 <em>Classic C</em>），而 <em>UNIX</em> 实现提供的库则成为了公认的 <em>C</em> 库（<em>library</em>）标准。直到 1989 年，第一个正式的 <em>C</em> 标准才由<a href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD%E5%9B%BD%E5%AE%B6%E6%A0%87%E5%87%86%E5%AD%A6%E4%BC%9A/1351184">美国国家标准协会</a>（<em>ANSI, Ameirican National Standards Institute</em>）公布。1990 年<a href="https://baike.baidu.com/item/%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E5%8C%96%E7%BB%84%E7%BB%87">国际标准化组织</a>（<em>ISO, International Organization for Standardization</em>）宣布采用这套标准，这套标准因而被称为 <em>ANSI/ISO C</em> 标准，又由于其首先于 1989 年由 <em>ANSI</em> 提出，因而又被称为 <a href="https://baike.baidu.com/item/c89"><em>C89</em></a> 标准或 <a href="https://baike.baidu.com/item/ANSI%20C/7657277"><em>ANSI C</em></a> 标准。在这一标准的制定中，标准委员会提出了 "保持 <em>C</em> 的精神"（<em>Keep the spirit of C</em>）这一指导原则，具体包括：</p>
+<p><em>C</em> 语言刚出道时，人们并没有为其设立标准，1978 年出版的由布莱恩·柯林汉（<em>Brian Kernighan</em>）和丹尼斯·里奇（<em>Dennis Ritchie</em>）合著的<a href="https://pan.baidu.com/s/1nblipZ7kDDeFwPKJU7b-Bg">《<em>The C Programming Language</em>》</a>事实上成为了当时公认的 <em>C</em> 标准（被称为 <em>K&R C</em> 或 <em>Classic C</em>），而 <em>UNIX</em> 实现提供的库则成为了公认的 <em>C</em> 库（<em>library</em>）标准。直到 1989 年，第一个正式的 <em>C</em> 标准才由<a href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD%E5%9B%BD%E5%AE%B6%E6%A0%87%E5%87%86%E5%AD%A6%E4%BC%9A/1351184">美国国家标准协会</a>（<em>ANSI, Ameirican National Standards Institute</em>）公布。1990 年<a href="https://baike.baidu.com/item/%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E5%8C%96%E7%BB%84%E7%BB%87">国际标准化组织</a>（<em>ISO, International Organization for Standardization</em>）宣布采用这套标准，这套标准因而被称为 <em>ANSI/ISO C</em> 标准，又由于其首先于 1989 年由 <em>ANSI</em> 提出，因而又被称为 <a href="https://baike.baidu.com/item/c89"><em>C89</em></a> 标准或 <a href="https://baike.baidu.com/item/ANSI%20C/7657277"><em>ANSI C</em></a> 标准。在这一标准的制定中，标准委员会提出了 "保持 <em>C</em> 的精神"（<em>Keep the spirit of C</em>）这一指导原则，具体包括：</p>
 
 <ul>
 <li>信任程序员（<em>Trust the programmer</em>）</li>
@@ -106,25 +106,33 @@ In computer science, an implementation is a realization of a technical specifica
 
 <h1>1.5 C 程序的结构</h1>
 
-<p>一个 C 程序通常由<strong>预处理器指令</strong>（<em>preprocessor directive</em>）、<strong>函数原型/声明</strong>（<em>function prototyping/declaration</em>）、<strong>函数</strong>（<em>function</em>）这三个部分构成。下面是一个简单的 C 程序示例，该程序将会在屏幕上打印如图 1-3 所示的五行文字，后面我们将依托这个程序示例对构成 C 程序的三大部分作简要介绍。</p>
+<p>一个 C 程序通常由<strong>预处理器指令</strong>（<em>preprocessor directive</em>）、<strong>函数原型/声明</strong>（<em>function prototyping/declaration</em>）、<strong>函数</strong>（<em>function</em>）这三个部分构成。下面是一个简单的 C 程序示例（<a title="点击下载源代码" href="https://github.com/tiny-boat/my-C-code/archive/master.zip">下载源代码</a>），该程序将会在屏幕上打印如图 1-3 所示的五行文字，后面我们将依托这个程序示例对构成 C 程序的三大部分作简要介绍。</p>
+</div>
 
-<blockquote>
+<div class="code-style">
+
 {% highlight C %}
-// ————————————
 // an example of C program
-// ————————————
 
+/* ------------------------ */
 /* 1.preprocessor directive */
+/* ------------------------ */
 
-#include <stdio.h> 
+#include <stdio.h>  
 // stdio.h: standard input/output header 
 
-/* 2.function prototyping/declaration */
+/* ---------------------------------- */
+/* 2 function prototyping/declaration */
+/* ---------------------------------- */
 
 void br(void);  // void means a large empty space in English
-void ic(void);
+void ic(void);  
 
-/* 3.1 function main(): the int means the output of function is an integer, and the void means function has no parameters */
+/* ---------- */
+/* 3.function */
+/* ---------- */
+
+// 3.1 function main(): the int means the output of function is an integer, and the void means function has no parameters
 
 int main(void) // the following block {...} is a compound-statement
 {
@@ -151,14 +159,14 @@ int main(void) // the following block {...} is a compound-statement
 	return 0;  // a jump-statement
 }
 
-/* 3.2 function br() */
+// 3.2 function br()
 
 void br(void)
 {
 	printf("Brazil, Russia");
 }
 
-/* 3.3 function ic() */
+// 3.3 function ic()
 
 void ic(void)
 {
@@ -166,11 +174,20 @@ void ic(void)
 }
 
 {% endhighlight %}
-</blockquote>
+
+</div>
+
+<div class="post-style">
 
 <p class="post-text-center">
 <img src="/assets/img/C/implementation result 1.png">
 </p>
 <p class="post-text-tablename">图 1-3  示例 C 程序的执行结果</p>
+
+<p><em>C</em> 程序的预处理器指令是在编译器执行编译工作之前，<em>C</em> <strong>预处理器</strong>（<em>preprocessor</em>）将会执行的命令。在上面的示例代码中，以 “<em>#</em>” 开头的这行代码就是 <em>C</em> 预处理器指令的一个典型例子。在这行代码中，”<em>include</em>“ 执行的是 ”复制粘贴“ 的工作，即把 <em>stdio.h</em> 头文件的内容拷贝到程序文件中，它的存在为不同程序间共享部分相同信息以及程序的维护与管理提供了极大便利，但要注意的是它不以 “;” 结尾也不是一条 <em>C</em> 语言语句（C language statement）。<em>stdio.h</em> 文件是位于 <em>C</em> <strong>编译器软件包</strong>（<em>compiler packages</em>）中的标准输入/输出头文件，<strong>头文件</strong>（<em>header</em>）是程序顶部的信息集合，在大多数情况下，头文件包含了编译器在构建可执行程序时所需要的信息，例如常量、函数原型等，但它并不包含函数的实际代码，函数的实际代码位于库代码文件中。</p>
+
+<p>函数原型/声明是 <em>C90</em> 标准新增的内容，旧式编译器可能无法识别。函数原型用来告知编译器将要使用的函数名称及其使用方法，<em>C</em> 标准建议要为程序中所有使用到的函数提供函数原型。对于那些位于标准库中的函数而言，通过预处理器指令便可以完成这一任务，但对于非标准库中的自定义函数而言，则要通过编写语句完成这一任务。上述示例中，由于函数 br()、ic() 是不属于标准库的自定义函数，因此在编写函数要加入了两行函数原型/声明。</p>
+
+<p>函数是 <em>C</em> 程序的主体 未完待续……</p>
 
 </div>
