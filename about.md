@@ -26,32 +26,28 @@ permalink: /about_me/
 * 夜雨寄北 *李商隐*
 * 念奴娇·赤壁怀古 *苏轼*
 * 将进酒 *李白*
+* 送杜少府之任蜀州 *王勃*
+* ……
 
-### 喜欢的书
+### 最近读的书
 
-* 时间简史 *霍金*
+* 极简音乐史 *[日] 冈田晓生*
+* 七堂极简物理课 *[意] 卡洛·罗伟利*
+* 娱乐至死 *[美] 尼尔·波兹曼*
+* 晚安玫瑰 *迟子建*
 * 沉默的大多数 *王小波*
-* 七堂极简物理课
-* 一九八四 *乔治·奥威尔*
+* 时间简史 *[英] 史蒂芬·霍金*
 * ……
 
 ### 联系方式
-* 邮箱
-  + llygg6@gmail.com
-  + 737130291@qq.com
+
+* 微信：[17610891317](https://www.longzf.com/assets/img/about_me/wechat.jpg)
 * 微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
-* 微信：17610891317
-<div align='center'>  
-<img src='/assets/img/about_me/wechat.jpg' height="200" width="200">
-<p></p>
-<p>微信扫一扫添加</p>
-</div>
-* QQ：737130291
-<div align='center'>  
-<img src='/assets/img/about_me/qq.jpg' height="200" width="200">
-<p></p>
-<p>QQ 扫一扫添加</p>
-</div>
+* QQ：[737130291](https://www.longzf.com/assets/img/about_me/qq.jpg)
+* QQ 邮箱：[737130291@qq.com](https://mail.qq.com)
+* Github：[@tiny-boat](https://github.com/tiny-boat)
+* Twitter：[@BoatTiny](https://twitter.com/BoatTiny)
+* Gmail：[llygg6@gmail.com](https://mail.google.com/mail)
 
 ### 结语
 
