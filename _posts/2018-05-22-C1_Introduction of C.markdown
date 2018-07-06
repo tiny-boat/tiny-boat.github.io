@@ -188,6 +188,53 @@ void ic(void)
 
 <p>函数原型/声明是 <em>C90</em> 标准新增的内容，旧式编译器可能无法识别。函数原型用来告知编译器将要使用的函数名称及其使用方法，<em>C</em> 标准建议要为程序中所有使用到的函数提供函数原型。对于那些位于标准库中的函数而言，通过预处理器指令便可以完成这一任务，但对于非标准库中的自定义函数而言，则要通过编写语句完成这一任务。上述示例中，由于函数 br()、ic() 是不属于标准库的自定义函数，因此在编写函数前要加入了两行函数原型/声明。</p>
 
-<p>函数是 <em>C</em> 程序的主体 未完待续……</p>
+<p>函数是 <em>C</em> 程序的基本模块（<em>basic module</em>），无论 main() 函数位于 <em>C</em> 程序的何处，在绝大多数情况下，<em>C</em> 程序都会从 main() 函数开始执行。main() 中的<strong>圆括号</strong>（<em>parentheses</em>）表明 main() 是一个函数，int main(void) 表示函数 main() 返回给操作系统的数据类型为整型，而由操作系统传递给该函数的信息即<strong>实际参数</strong>（<em>actual argument</em>）则为空。</p>
+
+<blockquote>
+实际参数（actual argument）：传递给函数的特定值<br>
+形式参数（formal argument）：函数中用于存储值的变量
+</blockquote>
+
+<p class="post-text-noindent"><em>C</em> 函数是由<strong>语句</strong>（<em>statement</em>）组成的，这些语句均以<strong>分号</strong>（<em>semicolon</em>）结尾。<em>C11</em> 标准将 <em>C</em> 程序语句分为如下六大类：</p>
+
+<ul>
+<li><strong>标识语句</strong>（<em>labeled-statement</em>）</li>
+<li><strong>复合语句</strong>（<em>compound-statement</em>）</li>
+<li><strong>表达式语句</strong>（<em>expression-statement</em>）</li>
+<li><strong>选择语句</strong>（<em>selection-statement</em>）</li>
+<li><strong>迭代语句</strong>（<em>iteration-statement</em>）</li>
+<li><strong>跳转语句</strong>（<em>jump-statement</em>）</li>
+</ul>
+
+<p class="post-text-noindent">上述示例程序中，出现了复合语句、表达式语句以及跳转语句，其余三种语句我们也将在后续章节的示例程序中陆续见到，到时我们再对这六大语句做一个总结性的论述。这里我们重点谈一谈表达式语句中的变量声明。</p>
+
+<p><strong>声明</strong>（<em>declaration</em>）是 <em>C</em> 语言中最重要的特征之一，在 <em>C</em> 语言中，一切变量在使用之前必须先声明，在 <em>C99</em> 标准出来以前，还要求所有变量的声明必须放在函数体的顶部。示例中的 fingers, toes, twofold_fingers, square_toes 等变量名是<strong>标识符</strong>（<em>identifier</em>）的典型例子。<em>C</em> 中的标识符可以由小写字母（<em>lowercase letters</em>）、大写字母（<em>uppercase letters</em>）、数字（<em>digits</em>）和下划线（<em>underscore</em>）构成且要求第一个字符不能为数字，但由于操作系统和 <em>C</em> 库经常使用一个或两个下划线字符开始的 <strong>保留标识符</strong>（<em>reserved identifier</em>），因此我们在 <em>C</em> 程序中应尽量避免使用以下划线开头的命名方式。另外编程语言中用来表达语言的单词即<strong>关键字</strong>（<em>keyword</em>）是不能作为标识符使用的，表 1-4 是 ISO C 关键字。</p>
+
+<blockquote>
+<strong>标识符</strong>（identifier）:一个变量、函数或者其他实体（entity）的名称
+</blockquote>
+
+<p class="post-text-tablename">表 1-4 ISO C 关键字</p>
+<p class="post-text-center"><img src="/assets/img/C/iso c keywords.png"></p>
+<p class="post-text-center"><img src="/assets/img/C/iso c keywords 2.png"></p>
+
+<p class="post-text-noindent">如果你使用过其他更简洁的编程语言，可能会和我一样觉得声明变量实在让人厌烦，但如果你知道了声明变量的种种好处，也许你也会和我一样改变一些看法。下面是声明变量的几点好处：</p>
+
+<ul>
+<li>声明变量将促使你在编写程序前做一些全局性的考虑，比如：程序需要哪些信息，程序将要输出哪些信息，这些信息应该用哪种数据类型存储才能最大化节约内存空间等等</li>
+<li>声明变量特别是将所有变量声明置于一处，将有利于使用者迅速把握程序的用途</li>
+<li>声明变量还有助于发现一些十分微小而难于发现的问题，例如：在那些无需声明变量的编程语言中，像将字母 ”l“ 误写为数字 ”1“ 这样的非语法性错误将很难察觉，而这种误写完全有可能带来无法估量的损失</li>
+</ul>
+
+<h1>1.6 C 程序的调试与优化</h1>
+
+<p><em>C</em> 程序的<strong>调试</strong>（<em>debug</em>）必须检查两方面的错误：一是<strong>语法错误</strong>（<em>syntax errors</em>），二是<strong>语义错误</strong>（<em>semantic errors</em>）。语法错误即不遵循 <em>C</em> 语言规则的错误通常都能由编译器检测到，如果存在语法错误程序将无法编译运行。但语义错误是编译器所无法检测的，而要确保程序不存在语义错误，需要逐步跟踪程序的执行步骤并记录每个变量的当前状态或者使用专门的<strong>调试器</strong>（<em>debugger</em>）。最后，我们再介绍一些优化程序可读性的技巧并以此结束本章内容。这些技巧是：</p>
+
+<ul>
+<li>选择有意义的变量名、函数名，使用的名称应能清楚地表达自身的用途，如果不能请一定添加<strong>注释</strong>（<em>comments</em>）</li>
+<li>为避免即便声明变量也难以察觉的拼写错误的出现，请避免声明两个极其相似的变量</li>
+<li>使用空行分隔概念上的多个部分</li>
+<li>每条语句独占一行</li>
+</ul>
 
 </div>
