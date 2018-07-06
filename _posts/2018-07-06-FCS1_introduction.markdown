@@ -2,7 +2,7 @@
 layout: post
 title:  "计算机科学导论(1):绪论"
 date:   2018-07-06 16:33:00
-categories: "Computer Science"
+categories: "Computer_Science"
 excerpt: "让我们从这里开始，走进神奇的计算机世界"
 ---
 
