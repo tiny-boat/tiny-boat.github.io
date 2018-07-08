@@ -45,7 +45,7 @@ excerpt: "让我们从这里开始，走进神奇的计算机世界"
 
 <p><strong>1946 年 2 月 14 日</strong>，这是一个无论怎么强调也不为过的日子，在这个无数男男女女享受着无尽甜蜜与幸福的日子里，美国人<strong>约翰·莫奇勒</strong>（<em>John Mauchly</em>）和<strong>普雷斯波·埃克特</strong>（<em>J.Presper Eckert</em>）发明的世界上第一台通用的、完全电子的十进制计算机 <strong>ENIAC</strong> 在美国宾夕法尼亚大学诞生。这台因战争的迫切需要、耗资 48 万美元研制成功的庞然大物重达 30 吨，长约 30.48 米，宽约 6 米，高约 2.4 米，占地面积约 170 平方米。它包含 17468 根电子管、7200 根晶体管、1500 个中转、70000 个电阻器、10000 个电容器、1500 个继电器和 6000 多个开关，计算速度达到每秒 5000 次加法或 400 次乘法，是使用继电器运转的机电式计算机的 1000 倍，手工计算的 20 万倍。<strong>ENIAC</strong> 的研制成功宣告了一个崭新时代的到来，从此人类的计算能力被机器远远地甩在身后，今天我们运算速度最快的超级计算机的峰值计算能力已达到每秒 12.5 亿亿次，持续计算能力也已达到每秒 9.3 亿亿次。</p>
 
-<p>1949 年 5 月 6 日，英国剑桥大学的<strong>莫里斯·威尔克斯</strong>（<em>Maurice Wilkes</em>）基于冯·诺依曼模型制造了世界上第一台商用的程序内藏式电子计算机，与此同时的 1949 年 8 月，<strong>约翰·莫奇勒</strong>（<em>John Mauchly</em>）和<strong>普雷斯波·埃克特</strong>（<em>J.Presper Eckert</em>）基于冯·诺依曼模型建造了一台通用、完全电子的二进制计算机 <strong>EDVAC</strong>（<em>Electronic Discrete Variable Automatic Computer</em>）也研制完成。</p>
+<p>1949 年 5 月 6 日，英国剑桥大学的<strong>莫里斯·威尔克斯</strong>（<em>Maurice Wilkes</em>）基于冯·诺依曼模型制造了世界上第一台商用的程序内藏式电子计算机 <strong>EDSAC</strong>（<em>Electronic Delay Storage Automatic Calculator</em>，电子延迟存储自动计算机），与此同时的 1949 年 8 月，<strong>约翰·莫奇勒</strong>（<em>John Mauchly</em>）和<strong>普雷斯波·埃克特</strong>（<em>J.Presper Eckert</em>）基于冯·诺依曼模型建造了一台通用、完全电子的二进制计算机 <strong>EDVAC</strong>（<em>Electronic Discrete Variable Automatic Computer</em>，离散变量自动电子计算机）也研制完成。</p>
 
 <p>自 1950 年开始后出现的几乎所有计算机均基于冯·诺依曼模型，它们先后经历<strong>电子管时代</strong>、<strong>晶体管时代</strong>、<strong>集成电路（晶体管、导线及其他部件做在一块单芯片上）时代</strong>的发展，速度变得越来越快、体积变得越来越小、价格变得越来越便宜，但原理几乎相同。</p>
 
