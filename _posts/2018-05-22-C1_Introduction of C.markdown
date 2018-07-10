@@ -3,7 +3,7 @@ layout: post
 title:  "C语言(1):初识C语言"
 date:   2018-05-22 09:08:00
 categories: Computer_Science C
-excerpt: "本文介绍了 C 的历史、特性、编程机制和编程步骤"
+excerpt: "本文介绍了 C 的历史、特性、编程机制和步骤以及 C 程序的结构、调试及优化"
 ---
 
 <div class="post-style">
