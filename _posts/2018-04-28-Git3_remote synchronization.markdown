@@ -2,7 +2,7 @@
 layout: post
 title:  "Git学习笔记(3):同步Github"
 date:   2018-04-28 14:02:00 +0000
-categories: Git
+categories: Computer_Science Git
 excerpt: "本文介绍如何通过 SSH 协议同步本地 Git 仓库与 Github"
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "离散数学(1):逻辑与证明"
 date:   2018-05-04 11:28:00
-categories: Discrete_Mathematics
+categories: Computer_Science Discrete_Mathematics
 excerpt: "本文介绍了离散数学中最基础性的内容：逻辑"
 ---
 

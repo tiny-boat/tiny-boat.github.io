@@ -2,7 +2,7 @@
 layout: post
 title:  "Git学习笔记(1):概述"
 date:   2018-04-22 23:46:00 +0000
-categories: Git
+categories: Computer_Science Git
 excerpt: "本文对分布式版本控制系统 Git 作了简要介绍"
 ---
 

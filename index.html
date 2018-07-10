@@ -27,18 +27,12 @@ layout: default
 		<span class="post-list-tips">{{ post.date | date: date_format }}</span>
 		
 		<span class="post-list-tips"> 
-		  {% if post.categories contains 'Discrete_Mathematics' %}
-			<a class="post-meta-content-a" href="/category/{{ 'Discrete_Mathematics' | downcase }}.html">离散数学</a>
+		  {% if post.categories contains 'Computer_Science' %}
+			<a class="post-meta-content-a" href="/category/{{ 'Computer_Science' | downcase }}.html">计算机科学</a>
 		  {% elsif post.categories contains 'HighSchool_Time' %}
 			<a class="post-meta-content-a" href="/category/{{ 'HighSchool_Time' | downcase }}.html">中学时代</a>
 		  {% elsif post.categories contains 'University_Essay' %}
 			<a class="post-meta-content-a" href="/category/{{ 'University_Essay' | downcase }}.html">大学随笔</a>
-		  {% elsif post.categories contains 'C' %}
-			<a class="post-meta-content-a" href="/category/{{ 'C' | downcase }}.html">C 语言</a>
-		  {% elsif post.categories contains 'Git' %}
-			<a class="post-meta-content-a" href="/category/{{ 'Git' | downcase }}.html">Git 学习笔记</a>
-		  {% elsif post.categories contains 'Computer_Science' %}
-			<a class="post-meta-content-a" href="/category/{{ 'Computer_Science' | downcase }}.html">计算机科学</a>
 		  {% else %}
 			<a class="post-meta-content-a" href="/category/{{ post.categories | downcase }}.html">{{ post.categories }}</a>
 		  {% endif %}
