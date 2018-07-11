@@ -29,9 +29,15 @@ layout: default
 		<span class="post-list-tips"> 
 		  {% if post.categories contains 'Computer_Science' %}
 			<a class="post-meta-content-a" href="/category/{{ 'Computer_Science' | downcase }}.html">计算机科学</a>
+		  {% elsif post.categories contains 'Mathematics' %}
+			<a class="post-meta-content-a" href="/category/{{ 'Mathematics' | downcase }}.html">数学</a>
+		  {% elsif page.categories contains 'Statistics' %}
+			<a class="post-meta-content-a" href="/category/statistics.html">统计学</a>
+		  {% elsif page.categories contains 'Humanities' %}
+			<a class="post-meta-content-a" href="/category/humanities.html">人文社科</a>
 		  {% elsif post.categories contains 'HighSchool_Time' %}
 			<a class="post-meta-content-a" href="/category/{{ 'HighSchool_Time' | downcase }}.html">中学时代</a>
-		  {% elsif post.categories contains 'University_Essay' %}
+   		  {% elsif post.categories contains 'University_Essay' %}
 			<a class="post-meta-content-a" href="/category/{{ 'University_Essay' | downcase }}.html">大学随笔</a>
 		  {% else %}
 			<a class="post-meta-content-a" href="/category/{{ post.categories | downcase }}.html">{{ post.categories }}</a>

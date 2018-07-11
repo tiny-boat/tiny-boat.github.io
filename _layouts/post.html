@@ -11,7 +11,13 @@ layout: post-default
       <span class="post-meta-content">发表于 {{ page.date | date: date_format }}</span><br>
       <span class="post-meta-content">分类: 
 	  {% if page.categories contains 'Computer_Science' %}
-		<a class="post-meta-content-a" href="/category/computer_science.html">计算机科学</a>
+		<a class="post-meta-content-a" href="/category/natural_science.html">计算机科学</a>
+	  {% elsif page.categories contains 'Mathematics' %}
+		<a class="post-meta-content-a" href="/category/mathematics.html">数学</a>
+	  {% elsif page.categories contains 'Statistics' %}
+		<a class="post-meta-content-a" href="/category/statistics.html">统计学</a>
+	  {% elsif page.categories contains 'Humanities' %}
+		<a class="post-meta-content-a" href="/category/humanities.html">人文社科</a>
 	  {% elsif page.categories contains 'HighSchool_Time' %}
 		<a class="post-meta-content-a" href="/category/highSchool_time.html">中学时代</a>
 	  {% elsif page.categories contains 'University_Essay' %}
