@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<div class="home">
+
+	<h2 class="post-list-heading">
+		艺术<br>
+		<em>Art</em>
+	</h2>
+
+	<ul class="post-category-list">
+		<li>页面建设中，尽请期待 (๑′ᴗ‵๑) ❤</li>
+		{% for post in site.categories.Art reversed %}
+			<li>
+				<h3>
+					{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
+					<span class="post-category-link"><a href="{{ post.url }}">{{ post.title }}</a></span>
+					<span class="post-category-meta">{{ post.date | date: date_format }}</span>
+				</h3>
+			</li>
+		{% endfor %}		
+	</ul>
+
+</div>
