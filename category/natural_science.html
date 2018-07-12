@@ -5,51 +5,18 @@ layout: default
 <div class="home">
 
 	<h2 class="post-list-heading">
-		计算机科学<br>
-		<em>Computer Science</em>
+		自然科学<br>
+		<em>Natural Science</em>
 	</h2>
 
-	<ul class="post-category-list">
-		{% for post in site.categories.Computer_Science_Introduction reversed %}
-			<li>
-				<h3>
-					{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
-					<span class="post-category-link"><a href="{{ post.url }}">{{ post.title }}</a></span>
-					<span class="post-category-meta">{{ post.date | date: date_format }}</span>
-				</h3>
-			</li>
-		{% endfor %}
-
-		{% for post in site.categories.Discrete_Mathematics reversed %}
-			<li>
-				<h3>
-					{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
-					<span class="post-category-link"><a href="{{ post.url }}">{{ post.title }}</a></span>
-					<span class="post-category-meta">{{ post.date | date: date_format }}</span>
-				</h3>
-			</li>
-		{% endfor %}
+	<div class="natural-science">
+		<span class="natural-science-category"><a href="/category/computer_science.html">计算机科学</a></span>
 		
-		{% for post in site.categories.C reversed %}
-			<li>
-				<h3>
-					{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
-					<span class="post-category-link"><a href="{{ post.url }}">{{ post.title }}</a></span>
-					<span class="post-category-meta">{{ post.date | date: date_format }}</span>
-				</h3>
-			</li>
-		{% endfor %}
-
-		{% for post in site.categories.Git reversed %}
-			<li>
-				<h3>
-					{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
-					<span class="post-category-link"><a href="{{ post.url }}">{{ post.title }}</a></span>
-					<span class="post-category-meta">{{ post.date | date: date_format }}</span>
-				</h3>
-			</li>
-		{% endfor %}
+		<span class="natural-science-category"><a href="/category/mathematics.html">数学</a></span>
 		
-	</ul>
-
+		<span class="natural-science-category"><a href="/category/statistics.html">统计学</a></span>
+		
+		<span class="natural-science-category"><a href="/category/physics.html">物理学</a></span>
+    </div>
+		
 </div>
