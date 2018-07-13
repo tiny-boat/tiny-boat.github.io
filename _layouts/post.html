@@ -10,9 +10,9 @@ layout: post-default
       {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
       <span class="post-meta-content">发表于 {{ page.date | date: date_format }}</span><br>
       <span class="post-meta-content">分类: 
-		  {% if post.categories contains 'Computer_Science' %}
+		  {% if page.categories contains 'Computer_Science' %}
 			<a class="post-meta-content-a" href="/category/natural_science/{{ 'Computer_Science' | downcase }}.html">计算机科学</a>
-		  {% elsif post.categories contains 'Mathematics' %}
+		  {% elsif page.categories contains 'Mathematics' %}
 			<a class="post-meta-content-a" href="/category/natural_science/{{ 'Mathematics' | downcase }}.html">数学</a>
 		  {% elsif page.categories contains 'Statistics' %}
 			<a class="post-meta-content-a" href="/category/natural_science/statistics.html">统计</a>
