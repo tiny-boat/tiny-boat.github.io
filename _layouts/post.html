@@ -10,21 +10,49 @@ layout: post-default
       {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
       <span class="post-meta-content">发表于 {{ page.date | date: date_format }}</span><br>
       <span class="post-meta-content">分类: 
-	  {% if page.categories contains 'Computer_Science' %}
-		<a class="post-meta-content-a" href="/category/natural_science.html">计算机科学</a>
-	  {% elsif page.categories contains 'Mathematics' %}
-		<a class="post-meta-content-a" href="/category/mathematics.html">数学</a>
-	  {% elsif page.categories contains 'Statistics' %}
-		<a class="post-meta-content-a" href="/category/statistics.html">统计学</a>
-	  {% elsif page.categories contains 'Humanities' %}
-		<a class="post-meta-content-a" href="/category/humanities.html">人文社科</a>
-	  {% elsif page.categories contains 'HighSchool_Time' %}
-		<a class="post-meta-content-a" href="/category/highSchool_time.html">中学时代</a>
-	  {% elsif page.categories contains 'University_Essay' %}
-		<a class="post-meta-content-a" href="/category/university_essay.html">大学随笔</a>
-      {% else %}
-		<a class="post-meta-content-a" href="/category/{{ page.categories }}.html">{{ page.categories }}</a>
-	  {% endif %}
+		  {% if post.categories contains 'Computer_Science' %}
+			<a class="post-meta-content-a" href="/category/natural_science/{{ 'Computer_Science' | downcase }}.html">计算机科学</a>
+		  {% elsif post.categories contains 'Mathematics' %}
+			<a class="post-meta-content-a" href="/category/natural_science/{{ 'Mathematics' | downcase }}.html">数学</a>
+		  {% elsif page.categories contains 'Statistics' %}
+			<a class="post-meta-content-a" href="/category/natural_science/statistics.html">统计</a>
+		  {% elsif page.categories contains 'Physics' %}
+			<a class="post-meta-content-a" href="/category/natural_science/physics.html">物理</a>
+		  {% elsif page.categories contains 'Chemistry' %}
+			<a class="post-meta-content-a" href="/category/natural_science/chemistry.html">化学</a>
+		  {% elsif page.categories contains 'Biology' %}
+			<a class="post-meta-content-a" href="/category/natural_science/biology.html">生物</a>
+		  {% elsif page.categories contains 'Geography' %}
+			<a class="post-meta-content-a" href="/category/natural_science/geography.html">地理</a>
+		  {% elsif page.categories contains 'Medicine' %}
+			<a class="post-meta-content-a" href="/category/natural_science/medicine.html">医学</a>
+		  {% elsif page.categories contains 'Literature' %}
+			<a class="post-meta-content-a" href="/category/humanities/literature.html">文学</a>
+		  {% elsif page.categories contains 'Art' %}
+			<a class="post-meta-content-a" href="/category/humanities/art.html">艺术</a>
+		  {% elsif page.categories contains 'History' %}
+			<a class="post-meta-content-a" href="/category/humanities/history.html">历史</a>
+		  {% elsif page.categories contains 'Philosophy' %}
+			<a class="post-meta-content-a" href="/category/humanities/philosophy.html">哲学</a>
+		  {% elsif page.categories contains 'Archaeology' %}
+			<a class="post-meta-content-a" href="/category/humanities/archaeology.html">考古学</a>
+		  {% elsif page.categories contains 'Economics' %}
+			<a class="post-meta-content-a" href="/category/humanities/economics.html">经济学</a>
+		  {% elsif page.categories contains 'Sociology' %}
+			<a class="post-meta-content-a" href="/category/humanities/sociology.html">社会学</a>
+		  {% elsif page.categories contains 'Law' %}
+			<a class="post-meta-content-a" href="/category/humanities/law.html">法律</a>
+		  {% elsif page.categories contains 'Management' %}
+			<a class="post-meta-content-a" href="/category/humanities/management.html">管理学</a>			
+          {% elsif page.categories contains 'Psychology' %}
+			<a class="post-meta-content-a" href="/category/humanities/psychology.html">心理学</a>
+		  {% elsif post.categories contains 'HighSchool_Time' %}
+			<a class="post-meta-content-a" href="/category/{{ 'HighSchool_Time' | downcase }}.html">中学时代</a>
+   		  {% elsif post.categories contains 'University_Essay' %}
+			<a class="post-meta-content-a" href="/category/{{ 'University_Essay' | downcase }}.html">大学随笔</a>
+		  {% else %}
+			<a class="post-meta-content-a" href="/category/{{ post.categories | downcase }}.html">{{ post.categories }}</a>
+		  {% endif %}	  
 	  </span>
 
 	  <span class="post-list-tips">字数: {{ page.content | strip_html | strip_newlines | strip_space | split: "" | size }}</span>
@@ -59,7 +87,7 @@ layout: post-default
 	文章评论功能由第三方评论系统 LiveRe 提供，存在三个问题：<br>
 	1.简单评论功能无法使用；<br>
 	2.手机端无法使用微信登录,电脑端可以；<br>
-	3.手机竖屏模式下可能找不到QQ、微博、百度社交账号的登录入口，横屏模式下无此问题。<br>
+	3.手机竖屏模式下可能找不到 QQ、微博、百度社交账号的登录入口，横屏模式下无此问题。<br>
 	对因上述问题给您评论或留言造成的不便，笔者深表歉意！<br>
   </div>
   

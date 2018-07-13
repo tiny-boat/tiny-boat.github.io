@@ -90,7 +90,7 @@ In computer science, an implementation is a realization of a technical specifica
 </blockquote>
 
 <p class="post-text-center">
-<img src="/assets/img/C/cmechanism.png">
+<img src="/assets/img/Natural_Science/Computer_Science/C/cmechanism.png">
 </p>
 <p class="post-text-tablename">图 1-1  C 的编程机制</p>
 
@@ -100,7 +100,7 @@ In computer science, an implementation is a realization of a technical specifica
 <p>图 1-2 展示了使用 <em>C</em> 编程的一般步骤，实际操作时往往需要多次往复。值得注意的是：人们容易忽视图中的前 2 步：定义程序的目标和设计程序。这种忽略对简单程序编写而言并无不可，但却给我们编写复杂程序埋下不小的隐患。在编写复杂程序前，如果不做事先的详细规划，就容易导致写出的程序缺乏条理、漏洞百出、令人费解。所谓磨刀不误砍柴工，学习编程请从养成先规划再动手编写代码的良好习惯开始，哪怕这样会使你在一开始时慢人几拍。</p>
 
 <p class="post-text-center">
-<img src="/assets/img/C/cprogramstep.png">
+<img src="/assets/img/Natural_Science/Computer_Science/C/cprogramstep.png">
 </p>
 <p class="post-text-tablename">图 1-2  C 的编程步骤</p>
 
@@ -180,7 +180,7 @@ void ic(void)
 <div class="post-style">
 
 <p class="post-text-center">
-<img src="/assets/img/C/implementation result 1.png">
+<img src="/assets/img/Natural_Science/Computer_Science/C/implementation result 1.png">
 </p>
 <p class="post-text-tablename">图 1-3  示例 C 程序的执行结果</p>
 
@@ -215,8 +215,8 @@ void ic(void)
 </blockquote>
 
 <p class="post-text-tablename">表 1-4 ISO C 关键字</p>
-<p class="post-text-center"><img src="/assets/img/C/iso c keywords.png"></p>
-<p class="post-text-center"><img src="/assets/img/C/iso c keywords 2.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/C/iso c keywords.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/C/iso c keywords 2.png"></p>
 
 <p class="post-text-noindent">如果你使用过其他更简洁的编程语言，可能会和我一样觉得声明变量实在让人厌烦，但如果你知道了声明变量的种种好处，也许你也会和我一样改变一些看法。下面是声明变量的几点好处：</p>
 

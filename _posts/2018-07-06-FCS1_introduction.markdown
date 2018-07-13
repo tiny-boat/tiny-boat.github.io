@@ -22,7 +22,7 @@ excerpt: "让我们从这里开始，走进神奇的计算机世界"
 
 <p>1937 年，英国数学家、逻辑学家，计算机科学与人工智能之父<strong>阿兰·图灵</strong>（<em>Alan Turing</em>）首次提出了一个通用计算设备的构想，他设想所有的计算都可能在一种特殊的机器上执行，这种机器我们今天称之为<strong>图灵机</strong>（<em>Turing machine</em>）。阿兰·图灵将计算机定义为一种如图 1-1 所示的可编程数据处理器模型即<strong>图灵模型</strong>（<em>Turing model</em>），在图灵模型中，程序是一系列用来告诉计算机如何处理数据的指令。</p>
 
-<p class="post-text-center"><img src="/assets/img/C/turing model.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/turing model.png"></p>
 <p class="post-text-tablename">图 1-1 可编程数据处理模型</p>
 
 <p>1938 年，生活在法西斯统治下而与世隔绝的德国土木建筑工程师<strong>康拉德·朱斯</strong>（<em>Konrad Zuse</em>）设计出了一台机械式通用计算机 <strong>Z1</strong>，第二年他又利用一些电话公司废弃的继电器组装了一台电磁式计算机 <strong>Z2</strong>，他的工作引起德国飞机试验研究所的关注，这使他获得了一笔资金。1941 年，他使用 2600 个继电器组装了他的第二台电磁式计算机 <strong>Z3</strong>，它每秒能执行 3-4 次加法运算并能在 3-5 秒内执行一次乘法运算。1944 年，美国空军对柏林实施空袭，Z3 连同他的住宅一起被炸得支离破碎。1945年，他又建造了一台更先进的电磁式计算机 <strong>Z4</strong>，其存储器单元从 64 位扩展到 1024 位，其继电器则几乎占满了一个房间。为了使机器运行效率更高，他还设计了一种编程语言 <strong>Plankalkuel</strong>. 1995 年 12 月，85 岁的康拉德·朱斯与世长辞，他是世界上最早提出程序设计概念的人，后来的计算机史学家不禁感慨：如果康拉德·朱斯不是生活在法西斯统治下的德国，他可能早已把他的计算机升级为电子计算机，因为早在 1938 年他和他的朋友已经在考虑用 2000 个电子管和其他电子元件组装新的计算机，这样一来人类电子计算机的历史就会被改写，他的发明将属于德国而非美国。后来康拉德·朱斯创办的朱斯计算机公司于 1958 年研制出了电子管通用计算机 <strong>Z-22R</strong>，而这离世界上第一台电子管通用计算机的诞生已过去 12 年之久。</p>
@@ -40,7 +40,7 @@ excerpt: "让我们从这里开始，走进神奇的计算机世界"
 <strong>输入/输出单元</strong>：用来从计算机外部接收数据和程序并将处理结果输出到计算机外部，值得注意的是辅助存储社会被如磁盘和磁带也属于输入/输出单元的范畴
 </blockquote>
 
-<p class="post-text-center"><img src="/assets/img/C/von Neumann model.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/von Neumann model.png"></p>
 <p class="post-text-tablename">图 1-2 冯·诺依曼模型</p>
 
 <p><strong>1946 年 2 月 14 日</strong>，这是一个无论怎么强调也不为过的日子，在这个无数男男女女享受着无尽甜蜜与幸福的日子里，美国人<strong>约翰·莫奇勒</strong>（<em>John Mauchly</em>）和<strong>普雷斯波·埃克特</strong>（<em>J.Presper Eckert</em>）发明的世界上第一台通用的、完全电子的十进制计算机 <strong>ENIAC</strong> 在美国宾夕法尼亚大学诞生。这台因战争的迫切需要、耗资 48 万美元研制成功的庞然大物重达 30 吨，长约 30.48 米，宽约 6 米，高约 2.4 米，占地面积约 170 平方米。它包含 17468 根电子管、7200 根晶体管、1500 个中转、70000 个电阻器、10000 个电容器、1500 个继电器和 6000 多个开关，计算速度达到每秒 5000 次加法或 400 次乘法，是使用继电器运转的机电式计算机的 1000 倍，手工计算的 20 万倍。<strong>ENIAC</strong> 的研制成功宣告了一个崭新时代的到来，从此人类的计算能力被机器远远地甩在身后，今天我们运算速度最快的超级计算机的峰值计算能力已达到每秒 12.5 亿亿次，持续计算能力也已达到每秒 9.3 亿亿次。</p>

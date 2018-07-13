@@ -28,15 +28,41 @@ layout: default
 		
 		<span class="post-list-tips"> 
 		  {% if post.categories contains 'Computer_Science' %}
-			<a class="post-meta-content-a" href="/category/{{ 'Computer_Science' | downcase }}.html">计算机科学</a>
+			<a class="post-meta-content-a" href="/category/natural_science/{{ 'Computer_Science' | downcase }}.html">计算机科学</a>
 		  {% elsif post.categories contains 'Mathematics' %}
-			<a class="post-meta-content-a" href="/category/{{ 'Mathematics' | downcase }}.html">数学</a>
+			<a class="post-meta-content-a" href="/category/natural_science/{{ 'Mathematics' | downcase }}.html">数学</a>
 		  {% elsif page.categories contains 'Statistics' %}
-			<a class="post-meta-content-a" href="/category/statistics.html">统计学</a>
+			<a class="post-meta-content-a" href="/category/natural_science/statistics.html">统计</a>
 		  {% elsif page.categories contains 'Physics' %}
-			<a class="post-meta-content-a" href="/category/statistics.html">物理学</a>
-		  {% elsif page.categories contains 'Humanities' %}
-			<a class="post-meta-content-a" href="/category/humanities.html">人文社科</a>
+			<a class="post-meta-content-a" href="/category/natural_science/physics.html">物理</a>
+		  {% elsif page.categories contains 'Chemistry' %}
+			<a class="post-meta-content-a" href="/category/natural_science/chemistry.html">化学</a>
+		  {% elsif page.categories contains 'Biology' %}
+			<a class="post-meta-content-a" href="/category/natural_science/biology.html">生物</a>
+		  {% elsif page.categories contains 'Geography' %}
+			<a class="post-meta-content-a" href="/category/natural_science/geography.html">地理</a>
+		  {% elsif page.categories contains 'Medicine' %}
+			<a class="post-meta-content-a" href="/category/natural_science/medicine.html">医学</a>
+		  {% elsif page.categories contains 'Literature' %}
+			<a class="post-meta-content-a" href="/category/humanities/literature.html">文学</a>
+		  {% elsif page.categories contains 'Art' %}
+			<a class="post-meta-content-a" href="/category/humanities/art.html">艺术</a>
+		  {% elsif page.categories contains 'History' %}
+			<a class="post-meta-content-a" href="/category/humanities/history.html">历史</a>
+		  {% elsif page.categories contains 'Philosophy' %}
+			<a class="post-meta-content-a" href="/category/humanities/philosophy.html">哲学</a>
+		  {% elsif page.categories contains 'Archaeology' %}
+			<a class="post-meta-content-a" href="/category/humanities/archaeology.html">考古学</a>
+		  {% elsif page.categories contains 'Economics' %}
+			<a class="post-meta-content-a" href="/category/humanities/economics.html">经济学</a>
+		  {% elsif page.categories contains 'Sociology' %}
+			<a class="post-meta-content-a" href="/category/humanities/sociology.html">社会学</a>
+		  {% elsif page.categories contains 'Law' %}
+			<a class="post-meta-content-a" href="/category/humanities/law.html">法律</a>
+		  {% elsif page.categories contains 'Management' %}
+			<a class="post-meta-content-a" href="/category/humanities/management.html">管理学</a>			
+          {% elsif page.categories contains 'Psychology' %}
+			<a class="post-meta-content-a" href="/category/humanities/psychology.html">心理学</a>
 		  {% elsif post.categories contains 'HighSchool_Time' %}
 			<a class="post-meta-content-a" href="/category/{{ 'HighSchool_Time' | downcase }}.html">中学时代</a>
    		  {% elsif post.categories contains 'University_Essay' %}

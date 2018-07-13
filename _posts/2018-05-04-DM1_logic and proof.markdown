@@ -37,7 +37,7 @@ $$
 表 1-1：<img height="30%" width="30%" src="http://latex.codecogs.com/svg.latex?\left%20(p\vee%20q%20\right%20)\wedge%20\left%20(%20p\rightarrow%20\lnot%20q\right%20)\wedge%20\left%20(%20p\leftrightarrow%20r%20\right%20)"> 的真值表
 </p>
 <p class="post-text-center">
-<img width="85%" src="/assets/img/Discrete_Mathematics/truth table.png">
+<img width="85%" src="/assets/img/Natural_Science/Computer_Science/Discrete_Mathematics/truth table.png">
 </p>
 </p>
 
@@ -88,7 +88,7 @@ $$
 <p><strong>逻辑电路/数字电路</strong>（<em>logic circuits / digital circuits</em>）是将命题的逻辑应用于计算机硬件设计而得到的电路，复杂的数字电路均由三种最简单的基本电路即<strong>非门</strong>（<em>NOT gate</em>）电路、<strong>或门</strong>（<em>OR gate</em>）电路和<strong>与门</strong>（<em>AND gate</em>）电路构造而得。图 1-1 为三种基本门电路的电路符号。</p>
 
 <p>
-<p class='post-text-center'><img src="/assets/img/Discrete_Mathematics/gate.png"></p>
+<p class='post-text-center'><img src="/assets/img/Natural_Science/Computer_Science/Discrete_Mathematics/gate.png"></p>
 <p class="post-text-tablename">图 1-1 基本逻辑门</p>
 </p>
 
@@ -112,11 +112,11 @@ equivalence</em>）. 表 1-2、1-3、1-4 给出了若干重要的逻辑等价式
 
 <p>
 <p class="post-text-tablename">表 1-2 逻辑等价式</p>
-<p class="post-text-center"><img src="/assets/img/Discrete_Mathematics/logical equivalence 1.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Discrete_Mathematics/logical equivalence 1.png"></p>
 <p class="post-text-tablename">表 1-3 条件命题的逻辑等价式</p>
-<p class="post-text-center"><img src="/assets/img/Discrete_Mathematics/logical equivalence 2.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Discrete_Mathematics/logical equivalence 2.png"></p>
 <p class="post-text-tablename">表 1-4 双条件命题的逻辑等价式</p>
-<p class="post-text-center"><img src="/assets/img/Discrete_Mathematics/logical equivalence 3.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Discrete_Mathematics/logical equivalence 3.png"></p>
 </p>
 
 <p>观察表 1-2，我们不难看到：除了双重否定律（<em>Double negation law</em>）外，其余各规律都有两条逻辑等价式出现，并且任意其中一条逻辑等价式的两个命题是另一条两个命题各自的<strong>对偶式</strong>（<em>dual</em>）。我们不禁要问：是不是只含逻辑运算符 $\lnot$、$\wedge$ 和 $\vee$ 的两个逻辑等价命题，它们各自的对偶式一定逻辑等价呢？</p>
@@ -153,7 +153,7 @@ $$
 
 <p class="post-text-noindent">与原命题是逻辑等价的，这里</p>
 
-<p class="post-text-center"><img src="/assets/img/Discrete_Mathematics/MF1.gif"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Discrete_Mathematics/MF1.gif"></p>
 
 <p>
 <blockquote>
@@ -219,7 +219,7 @@ machine vision, integrated circuit design, computer networking, genetics</em>）
 <p>图 1-5 是一个 9×9 <strong>数独谜题</strong>（<em>Sudoku puzzle</em>），谜题的求解就是给所有空白单元格赋上数字，这些数字必须是 1-9 中的一个，并且大<strong>九宫格</strong>（<em>blocks</em>）的每一行、每一列以及每个小九宫格都分别包含 1-9 这九个数字，即不能有相同的数字出现在大九宫格的每一行、每一列乃至每个小九宫格。自 20 世纪 70 年代末现代数独游戏被设计出来后，人们发展了许许多多的方法来求解数独谜题，而将数独谜题转化为一个命题可满足性问题并借助计算机寻找该可满足性问题的解的方法，便是其中之一。</p>
 
 <p>
-<p class="post-text-center"><img src="/assets/img/Discrete_Mathematics/Sudoku puzzle.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Discrete_Mathematics/Sudoku puzzle.png"></p>
 <p class="post-text-tablename">图 1-5 9×9 数独谜题</p>
 </p>
 
