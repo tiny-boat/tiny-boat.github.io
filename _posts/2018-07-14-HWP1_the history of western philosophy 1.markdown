@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "西方哲学史(1):希腊哲学"
-date:   2018-07-13 19:19:00
+date:   2018-07-14 19:19:00
 categories: Philosophy
 excerpt: ""
 ---
