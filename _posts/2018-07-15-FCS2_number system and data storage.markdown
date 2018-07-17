@@ -133,7 +133,9 @@ UTF-8 的编码规则很简单，只有二条：<br>
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/sampling of audio.png"></p>
 <p class="post-text-tablename">图 2-14 一个音频信号的采样</p>
 
-<p class="post-text-noindent">每秒采集的样本数称为<strong>采样率</strong>（<em>sampling rate</em>），例如上图中音频信号的采样率为 10 个<em>/s</em>，通常而言，40000 个<em>/s</em> 的采样率对音频信号来说就已经足够好了。得到样本后，还需进行<strong>量化</strong>（<em>quantization</em>）即将样本取值截取为最接近的整数值，这样样本将以无符号表示法或有符号加绝对值表示法的方式存储于计算机中。分配给每个样本的位的数量称之为<strong>位深度</strong>（<em>bit depth</em>），这样位深度乘以采样率即为一秒钟的音频所需的存储空间，它被称为<strong>位率</strong>（<em>bit rate</em>）。例如：我们使用 40000/s 的采样率以及 16位/样本 的位深度，则音频的位率为 625 <em>KB/s</em> ，即每秒音频所需的存储空间为 640 <em>KB</em>. 当今音频编码的主流标准是视频压缩方法<strong>动态图像专家组</strong>（<em><strong>MPEG</strong>, motion picture experts group</em>）的一个修改版：<strong>MPEG 第三代音频压缩格式</strong>（<em><strong>MP3</strong>, MPEG audio layer 3</em>），它采用 44100个<em>/s</em> 的采样率以及 16位/s 的位深度，其位率达到约 689.06 <em>KB/s</em>，即每秒音频占用约 689.06 <em>KB</em> 的空间，另外它还会用到去掉人耳无法识别的信息的压缩方法对音频作有损压缩。</p>
+<p>每秒采集的样本数称为<strong>采样率</strong>（<em>sampling rate</em>），例如上图中音频信号的采样率为 10 个<em>/s</em>，通常而言，40000 个<em>/s</em> 的采样率对音频信号来说就已经足够好了。得到样本后，还需进行<strong>量化</strong>（<em>quantization</em>）即将样本取值截取为最接近的整数值，这样样本将以无符号表示法或有符号加绝对值表示法的方式存储于计算机中。分配给每个样本的位的数量称之为<strong>位深度</strong>（<em>bit depth</em>），这样位深度乘以采样率即为一秒钟的音频所需的存储空间，它被称为<strong>位率</strong>（<em>bit rate</em>）。例如：我们使用 40000/s 的采样率以及 16位/样本 的位深度，则音频的位率为 625 <em>KB/s</em> ，即每秒音频所需的存储空间为 640 <em>KB</em>.</p>
+
+<p>当今音频编码的主流标准是视频压缩方法<strong>动态图像专家组</strong>（<em><strong>MPEG</strong>, motion picture experts group</em>）的一个修改版：<strong>MPEG 第三代音频压缩格式</strong>（<em><strong>MP3</strong>, MPEG audio layer 3</em>），它采用 44100个<em>/s</em> 的采样率以及 16位/s 的位深度，其位率达到约 689.06 <em>KB/s</em>，即每秒音频占用约 689.06 <em>KB</em> 的空间，另外它还会用到去掉人耳无法识别的信息的压缩方法对音频作有损压缩。</p>
 
 <h1>2.4 图像的存储</h1>
 
