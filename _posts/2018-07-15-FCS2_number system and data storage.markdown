@@ -74,7 +74,7 @@ excerpt: "数据包括数字、文本、音频、图像和视频"
 <p class="post-text-tablename">表 2-10 单精度标准下的各种极值</p>
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/extremum of float.png"></p>
 
-<p>至此，我们已经知道了在计算机中整数和实数是如何存储的，我们或许还有很多疑问，疑问于缘何计算机要以这样的方式而不以另外的方式存储这些数字。亲爱的读者，在我敲下这些文字时，我的心中与你有着同样的疑惑，但我相信，先贤们制定这样的标准而不是那样的标准，选择这样的方式而不是那样的方式，自有其道理所在。现在暂且让我们放下这些或许还需要许许多多其他知识才能求得答案的谜团，来看一看聪明的人们是如何将文本、图像、音频、视频这些看似与数字毫不相干的信息转化为数字（我们称这一过程为编码）进而使得它们能够在计算机中存储的。</p>
+<p>至此，我们已经知道了在计算机中整数和实数是如何存储的，我们或许还有很多疑问，疑问于缘何计算机要以这样的方式而不以另外的方式存储这些数字。亲爱的读者，在我敲下这些文字时，我的心中与你有着同样的疑惑，但我相信，先贤们制定这样的标准而不是那样的标准，选择这样的方式而不是那样的方式，自有其道理所在。现在暂且让我们放下这些或许还需要许许多多其他知识才能求得答案的谜团，来看一看聪明的人们是如何将文本、音频、图像、视频这些看似与数字毫不相干的信息转化为数字（我们称这一过程为编码）进而使得它们能够在计算机中存储的。</p>
 
 <h1>2.2 文本的存储</h1>
 
@@ -126,7 +126,33 @@ UTF-8 的编码规则很简单，只有二条：<br>
 
 <p class="post-text-noindent">综上，我们可以看到，虽然 <em>UTF-8</em> 也存在一些问题，但相比其他二者而言，它突出的优势尤其是不存在字节序以及容错性高的优势，使得它成为了当今网络时代文本信息交换的通用规则。</p>
 
-<br>
-<p class="post-text-noindent">未完待续……</p>
+<h1>2.3 音频的存储</h1>
+
+<p>与文本不同，<strong>音频</strong>（<em>audio</em>）是不可数的随时间变化的连续实体，我们不可能记录每一个时刻的声音密度，因此在音频的存储中，存在一个重要的概念：<strong>采样</strong>（<em>sampling</em>）. 所谓采样即是等间隔地采集一个音频信号在有限个时间点上的密度值，图 2-14 展示了一个音频信号在一秒内的采样情况。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/sampling of audio.png"></p>
+<p class="post-text-tablename">图 2-14 一个音频信号的采样</p>
+
+<p class="post-text-noindent">每秒采集的样本数称为<strong>采样率</strong>（<em>sampling rate</em>），例如上图中音频信号的采样率为 10 个<em>/s</em>，通常而言，40000 个<em>/s</em> 的采样率对音频信号来说就已经足够好了。得到样本后，还需进行<strong>量化</strong>（<em>quantization</em>）即将样本取值截取为最接近的整数值，这样样本将以无符号表示法或有符号加绝对值表示法的方式存储于计算机中。分配给每个样本的位的数量称之为<strong>位深度</strong>（<em>bit depth</em>），这样位深度乘以采样率即为一秒钟的音频所需的存储空间，它被称为<strong>位率</strong>（<em>bit rate</em>）。例如：我们使用 40000/s 的采样率以及 16位/样本 的位深度，则音频的位率为 625 <em>KB/s</em> ，即每秒音频所需的存储空间为 640 <em>KB</em>. 当今音频编码的主流标准是视频压缩方法<strong>动态图像专家组</strong>（<em><strong>MPEG</strong>, motion picture experts group</em>）的一个修改版：<strong>MPEG 第三代音频压缩格式</strong>（<em><strong>MP3</strong>, MPEG audio layer 3</em>），它采用 44100个<em>/s</em> 的采样率以及 16位/s 的位深度，其位率达到约 689.06 <em>KB/s</em>，即每秒音频占用约 689.06 <em>KB</em> 的空间，另外它还会用到去掉人耳无法识别的信息的压缩方法对音频作有损压缩。</p>
+
+<h1>2.4 图像的存储</h1>
+
+<p>计算机中对图像的存储有两种不同方式：<strong>光栅图/位图</strong>（<em>raster/bitmap graphic</em>）和<strong>矢量图</strong>（<em>vector graphic</em>）。</p>
+
+<p>光栅图将原图像分割成很小的<strong>像素</strong>（<em>pixel / picture element</em>），每个像素存储有图像单元的色彩信息。依据使用的位模式长度的不同，色彩信息的存储又分为<strong>真彩色</strong>（<em>true-color</em>）和<strong>索引色/调色板色</strong>（<em>indexed color / palette color</em>）两种方式。前者使用 24 位，每个三原色（<em>RGB,  red, blue, green</em>）占 8 位，因此总共能表示 $2^{24}= 16777216$ 种颜色，后者通常只使用 8 位，它从真彩色这一大色彩集中选择其中一小部分具有代表性的颜色并对其建立索引，为选中的颜色赋一个 0-255 之间的值。如果我们拍摄一张 300 万像素的照片，当使用真彩色模式时，未压缩的照片大小约为 8.58 M，当使用索引色模式时，其大小则仅为真彩色模式下的 1/3，即 2.86 M. 表 2-15 列出了一些真彩色对应的 <em>RGB</em> 值，图 2-16 则展示了索引色与真彩色的关系。</p>
+
+<p class="post-text-tablename">表 2-15 一些真彩色对应的 RGB 值</p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/RGB.png"></p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/relation of indexed color and true-color.png"></p>
+<p class="post-text-tablename">图 2-16 索引色与真彩色的关系</p>
+
+<p class="post-text-noindent">目前基于光栅图的图像的实际编码标准有很多，例如常见的 <strong>联合图像专家组</strong>（<em><strong>JPEG</strong>, joint photographic experts group</em>）、<strong>便携式网络图形</strong>（<em><strong>PNG</strong>, portable network graphics</em>）、<strong>图形交换格式</strong>（<em><strong>GIF</strong>, graphical interchange format</em>）等。其中 <em>JPEG</em> 是采用真彩色模式的有损压缩图像，<em>PNG</em> 是采用真彩色或索引色的无损压缩图像，而 <em>GIF</em> 是采用索引色模式的无损压缩的多幅图像。可以看到这些常见的图像编码标准都对图像数据作了压缩处理，这大大减小了图像占用的存储空间。关于数据压缩的详细内容，我们将在后续章节中加以讨论。下面我们来看一下计算机存储图像的另一种截然不同的方式：矢量图。</p>
+
+<p>光栅图存在两个明显的缺点：一是文件体积较大、二是放大图像将导致图像变得模糊不清。矢量图则不存在上述两个问题，它将图像分解成线段、矩形、圆形等几何图形的组合。例如对半径为 $r$ 的圆形，计算机只需要存储圆的半径、圆心位置、线的类型和颜色、填充的类型和颜色以及它们之间的关系等几点基本信息。当要改变图片大小时，计算机只要依据新的圆的半径及其与其他信息的关系计算出其他信息的值就可以完成新图形的绘制。可以说，矢量图是由定义如何绘制几何图形的一系列命令构成的，因此它也被称为<strong>几何模型</strong>或<strong>面向对象图形</strong>。但世界的图像是异常丰富的，单靠几个几何图形显然无法还原出一个真实的世界，所以矢量图不适合存储照片，它常用于 <em>Flash</em> 动画制作（<em>flash</em> 是交互式矢量图和 <em>Web</em> 动画标准），一些计算机字体的创建以及计算机辅助设计 （<em>CAD, Computer Aided Design</em>） 等领域。</p>
+
+<h1>2.5 视频的存储</h1>
+
+<p><strong>视频</strong>（<em>video</em>）是图像（<strong>帧，<em>frame</em></strong>）在时间上累加的结果，因此视频的存储就是将每一幅图像或帧转化为一系列位模式并存储。当然实际当中视频的存储都使用了压缩技术，而这已经超出了本章的范围，我们将在后续关于数据压缩的章节中继续讨论音频、图像、视频的存储问题。滴水穿石，非一日之功，真相离我们还有很远的距离，但可以预见的是，它正迈着坚实的步伐朝我们走来，现在就让我们好好养精蓄锐，他日收拾行囊勇攀高峰，登凌绝顶一览众山，自当不在话下。</p>
 
 </div>
