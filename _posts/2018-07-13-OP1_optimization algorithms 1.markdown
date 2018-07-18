@@ -40,8 +40,8 @@ $$
 <p>黄金分割法依据的基本原理与进退法是一致的，但相较于进退法执行效率对初值和搜索步长的依赖，黄金分割法是一种更稳定的快速缩小搜索区间进而找到函数极值点的方法，该算法每循环一次，搜索区间长度就会变为原搜索区间长度的 61.8%。其具体算法如下：</p>
 
 <ul>
-<li>给定初始搜索区间 $\left [a_1,b_1 \right]$ 及精度 $\varepsilon > 0$，令 $\lambda_1 = a_1+0.382\left(b_1-a_1\right),\ \mu_1 = a_1+0.618\left(b_1-a_1\right)$.</li>
-<li>若 $f\left(\lambda_k\right) \geq f\left(\mu_k\right)$，则令 $a_{k+1}=\lambda_k,\ b_{k+1}=b_k,\ \lambda_{k+1}=\mu_k,\ \mu_{k+1}=a_{k+1}+0.618\left(b_{k+1}-a_{k+1}\right)$，否则令 $a_{k+1}=a_k,\ b_{k+1}=\mu_k,\ \lambda_{k+1}=a_{k+1}+0.382\left(b_{k+1}-a_{k+1}\right),\ \mu_{k+1}=\lambda_k$.</li>
+<li>给定初始搜索区间 $\left [a_1,b_1 \right]$ 及精度 $\varepsilon > 0$，令 $\lambda_1 = a_1+0.382\left(b_1-a_1\right)$, $\mu_1 = a_1+0.618\left(b_1-a_1\right)$.</li>
+<li>若 $f\left(\lambda_k\right) \geq f\left(\mu_k\right)$，则令 $a_{k+1}=\lambda_k$, $b_{k+1}=b_k$, $\lambda_{k+1}=\mu_k$, $\mu_{k+1}=a_{k+1}+0.618\left(b_{k+1}-a_{k+1}\right)$，否则令 $a_{k+1}=a_k$, $b_{k+1}=\mu_k$, $\lambda_{k+1}=a_{k+1}+0.382\left(b_{k+1}-a_{k+1}\right)$, $\mu_{k+1}=\lambda_k$.</li>
 <li>对 $k=1,2,\cdots$，重复第 2 步直到 $b_k-a_k<\varepsilon$ 为止。</li>
 </ul>
 
