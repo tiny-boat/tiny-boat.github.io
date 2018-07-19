@@ -46,9 +46,9 @@ layout: post-default
 			<a class="post-meta-content-a" href="/category/humanities/management.html">管理学</a>			
           {% elsif page.categories contains 'Psychology' %}
 			<a class="post-meta-content-a" href="/category/humanities/psychology.html">心理学</a>
-		  {% elsif post.categories contains 'HighSchool_Time' %}
+		  {% elsif page.categories contains 'HighSchool_Time' %}
 			<a class="post-meta-content-a" href="/category/{{ 'HighSchool_Time' | downcase }}.html">中学时代</a>
-   		  {% elsif post.categories contains 'University_Essay' %}
+   		  {% elsif page.categories contains 'University_Essay' %}
 			<a class="post-meta-content-a" href="/category/{{ 'University_Essay' | downcase }}.html">大学随笔</a>
 		  {% else %}
 			<a class="post-meta-content-a" href="/category/{{ post.categories | downcase }}.html">{{ post.categories }}</a>
