@@ -20,7 +20,7 @@ $$
 
 <h1>1.1 一元目标函数优化</h1>
 
-<p>这一节我们将介绍一元目标函数的最优化算法，这些算法包括：用来确定搜索区间即极小值所在区间的进退法、用来在搜索区间内寻找极小值的线性搜索方法（黄金分割法、牛顿法等）以及用来在搜索区间内寻找极小值的非线性搜索方法（抛物线法、三次插值法等）。</p>
+<p>这一节我们将介绍一元目标函数的最优化算法，这些算法包括：用来确定搜索区间即极小值所在区间的进退法、用来在搜索区间内寻找极小值的线性搜索方法（黄金分割法、牛顿法）以及用来在搜索区间内寻找极小值的非线性搜索方法（抛物线法、三次插值法等）。</p>
 
 <h2>1.1.1 进退法</h2>
 
@@ -49,22 +49,53 @@ $$
 
 <h2>1.1.3 牛顿法</h2>
 
+<p>牛顿法依据的基本原理是用 $f\left(x\right)$ 在某点 $x_k$ 处的二阶泰勒展开式</p>
+
+<p class="post-text-formula">$$f\left(x\right)\approx f\left(x_k \right )+f'\left(x_k \right )\left(x-x_k \right )+\frac{f''\left(x_k \right )}{2}\left(x-x_k \right )^2$$</p>
+
+<p class="post-text-noindent">近似 $f\left(x\right)$，而后求得该近似函数的导数为 0 的点，不妨记该点为  $x_{k+1}$，如果 $\left | f'\left(x_{k+1} \right ) \right |$ 与 0 十分接近，则 $x_{k+1}$ 即为 $f\left(x\right)$ 的近似极值点，否则令 $k=k+1$，重复上述步骤直到 $\left | f'\left(x_{k+1} \right ) \right |$ 与 0 十分接近为止。其具体算法如下：</p>
+
+<ul>
+<li>给定初始点 $x_0$，精度 $\varepsilon >0$；</li>
+<li>若$\left | f'\left(x_{k} \right ) \right |>\varepsilon$，令 $x_{k+1}=x_k-\frac{f'\left(x_k \right )}{f''\left(x_k \right )}$，否则 $x_{k}$ 为 $f\left(x\right)$ 的（近似）极值点；</li>
+<li>对 $k=1,2,\cdots$，重复第 2 步直到确定极值点。</li>
+</ul>
+
+<h2>1.1.4 抛物线法</h2>
+
+<p>抛物线法又称二次插值法，它在搜索区间中选择一点 $c_0$，首先利用该点和搜索区间的两个端点 $a_0$、$b_0$ 构造二次插值多项式</p>
+
+<p class="post-text-formula">
+$$f\left(x\right)=\alpha_0+\alpha_1x+\alpha_2x^2\ \ s.t.
+\left\{\begin{matrix}f\left(a_0\right)=\alpha _1+\alpha _2a_0+\alpha _3a_0^2
+\\ f\left(b_0\right)=\alpha _1+\alpha _2b_0+\alpha _3b_0^2
+\\ f\left(c_0\right)=\alpha _1+\alpha _2c_0+\alpha _3c_0^2
+\end{matrix}\right.$$
+</p>
+
+<p class="post-text-noindent">来近似原函数，并求得二次插值多项式的极值点</p>
+
+<p class="post-text-formula">
+$$c_1=-\frac{\alpha _1}{2\alpha _2}=\frac{1}{2}\frac{f\left(a_0 \right )\left(b_0^2-c_0^2 \right )+f\left(b_0 \right )\left(c_0^2-a_0^2 \right )+f\left(c_0 \right )\left(a_0^2-b_0^2 \right )}{f\left(a_0 \right )\left(b_0-c_0 \right )+f\left(b_0 \right )\left(c_0-a_0 \right )+f\left(c_0 \right )\left(a_0-b_0 \right )}$$
+</p>
+
+<p class="post-text-noindent">然后依据 $c_0$ 与 $c_1$ 的函数值的大小关系以及它们自身的大小关系缩小搜索区间，最后在新的搜索区间下重复上述步骤直到搜索区间中选择的点与二次插值多项式极值点距离十分接近时为止，此时二次插值多项式极值点即为原函数的近似极值点。抛物线法的具体算法如下：</p>
+
+<ul>
+<li>确定初始搜索区间 $\left[a_0,b_0\right]$，初始插值内点 $c_0\epsilon \left[a_0,b_0\right]$ 以及精度 $\varepsilon >0$；</li>
+<li>计算 $c_{k+1}$，$f\left(c_{k+1}\right)$ 以及 $f\left(c_k\right)$，其中</li>
+$$c_{k+1}=\frac{1}{2}\frac{f\left(a_k \right )\left(b_k^2-c_k^2 \right )+f\left(b_k \right )\left(c_k^2-a_k^2 \right )+f\left(c_k \right )\left(a_k^2-b_k^2 \right )}{f\left(a_k \right )\left(b_k-c_k \right )+f\left(b_k \right )\left(c_k-a_k \right )+f\left(c_k \right )\left(a_k-b_k \right )}$$
+<li>当 $f\left(c_{k+1}\right)\leq f\left(c_k\right)$ 时，若 $c_{k+1}\geq c_k$，则令 $a_{k+1}=c_k$，$c_{k+1}=c_{k+1}$，$b_{k+1}=b_k$，否则令 $a_{k+1}=a_k$，$c_{k+1}=c_{k+1}$，$b_{k+1}=c_k$；</li>
+<li>当 $f\left(c_{k+1}\right)> f\left(c_k\right)$ 时，若 $c_{k+1}\geq c_k$，则令 $a_{k+1}=a_k$，$c_{k+1}=c_{k}$，$b_{k+1}=c_{k+1}$，否则令 $a_{k+1}=c_{k+1}$，$c_{k+1}=c_{k}$，$b_{k+1}=b_k$；</li>
+<li>对 $k=1,2,\cdots$，重复第 2,3 步或 2,4 步直到 $\left | c_{k+1}-c_{k} \right |\leq \varepsilon $ 为止，此时 $c_{k+1}$ 即为 $f\left(x\right)$ 的近似极值点。</li>
+</ul>
+
+<h2>1.1.5 三次插值法</h2>
+
 <p></p>
 
-<h2>1.1.4 割线法</h2>
 
-<p></p>
-
-<h2>1.1.5 抛物线法</h2>
-
-<p></p>
-
-<h2>1.1.6 三次插值法</h2>
-
-<p></p>
-
-
-<h2>1.1.7 可接受搜索法</h2>
+<h2>1.1.6 可接受搜索法</h2>
 
 <p></p>
 
