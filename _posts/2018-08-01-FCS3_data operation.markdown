@@ -40,7 +40,8 @@ excerpt: "数据运算包括逻辑运算、移位运算和算术运算"
 
 <p><strong>逻辑移位运算</strong>（<em>logical shift operation</em>）包括逻辑右移运算、逻辑左移运算、循环右移运算和循环左移运算，这些移位运算的共同特征是：如果将其应用于有符号整数，该运算可能会改变数的符号。图 3-5 向我们展示了逻辑移位运算的具体过程。</p>
 
-<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/logical shift operation.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/logical shift operation 1.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/logical shift operation 2.png"></p>
 <p class="post-text-tablename">图 3-5 逻辑移位运算</p>
 
 <p><strong>算术移位运算</strong>（<em>arithmetic shift operation</em>）包括算术右移运算和算术左移运算，图 3-6 向我们展示了算术移位运算的具体过程。算术右移运算等价于对整数除以 2 并取整，算术左移运算则等价于对整数乘以 2。值得注意的是算术移位运算存在溢出情况，在这种情况下，新的符号位发生了反转而不再与原符号位保持一致。</p>
