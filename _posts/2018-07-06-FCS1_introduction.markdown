@@ -37,7 +37,7 @@ excerpt: "让我们从这里开始，走进神奇的计算机世界"
 <strong>算术逻辑单元</strong>：用来对数据进行算术运算和逻辑运算<br>
 <strong>控制单元</strong>：用来控制存储器、算术逻辑单元、输入/输出单元的操作<br>
 <strong>存储器</strong>：用来存储数据和程序<br>
-<strong>输入/输出单元</strong>：用来从计算机外部接收数据和程序并将处理结果输出到计算机外部，值得注意的是辅助存储社会被如磁盘和磁带也属于输入/输出单元的范畴
+<strong>输入/输出单元</strong>：用来从计算机外部接收数据和程序并将处理结果输出到计算机外部，值得注意的是辅助存储设备如磁盘和磁带也属于输入/输出单元的范畴
 </blockquote>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/von Neumann model.png"></p>
