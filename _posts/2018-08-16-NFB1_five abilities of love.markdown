@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "读书笔记(1):爱的五种能力"
-date:   2018-08-15 11:29:00
+date:   2018-08-16 11:29:00
 categories: Psychology
 excerpt: "拥有爱的能力，与谁结婚都幸福"
 ---
