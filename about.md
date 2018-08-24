@@ -31,17 +31,15 @@ permalink: /about_me/
 
 ### 最近读的书
 
-* 极简音乐史 *[日] 冈田晓生*
-* 七堂极简物理课 *[意] 卡洛·罗伟利*
-* 娱乐至死 *[美] 尼尔·波兹曼*
-* 晚安玫瑰 *迟子建*
-* 沉默的大多数 *王小波*
-* 时间简史 *[英] 史蒂芬·霍金*
+* 爱的五种能力 *赵永久*
+* 台湾四百年 *许倬云*
+* 永远讲不完的故事 *[德] 米切尔·恩德*
 * ……
 
 ### 联系方式
 
-* 微信：[17610891317](https://www.longzf.com/assets/img/about_me/wechat.jpg)
+* 手机：16673292312 / 17610891317
+* 微信：[xiaozhou13171317](https://www.longzf.com/assets/img/about_me/wechat.jpg)
 * 微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
 * QQ：[737130291](https://www.longzf.com/assets/img/about_me/qq.jpg)
 * QQ 邮箱：[737130291@qq.com](https://mail.qq.com)
