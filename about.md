@@ -36,6 +36,42 @@ permalink: /about_me/
 * 永远讲不完的故事 *[德] 米切尔·恩德*
 * ……
 
+### 学习计划（2018.09.01 —— 2019.01.13 共 135 天）
+
+* **Computer Science**
+	+ Discrete Mathematics and Its Applications
+	+ C Primer Plus
+	+ Introduction of Computer Science
+<p> </p>
+* **AI & ML & Stat & Opt**
+	+ Artificial Intelligence
+		- Artificial Intelligence: A Modern Approach *Stuart Russell*
+	+ Machine Learning
+		- Pattern Recognition and Machine Learning *Christpher M.Bishop*
+		- 机器学习 *周志华*
+		- Machine Learning in Action
+	+ Statistics
+		- The element of Statistical learning
+	    - 统计学习方法 *李航*
+	+ Optimization
+		- Convex Optimization *Stephen Boyd, Lieven Vandenberghe*
+<p> </p>
+* **Economics**
+	+ Principles of Economics 
+<p> </p>
+* **Other**
+	+ Literature   
+		- 荷马史诗：伊利亚特 *人民文学出版社*
+		- 最后十二天的生命之旅 *[法] 埃里克·艾玛纽埃尔·施密特* *译林出版社*
+		- 诗词格律 *王力* *中华书局*
+		- 经典常谈 *朱自清* *生活·读书·新知三联书店*		
+	+ Philosophy
+		- 西方哲学史 *[美] 梯利* *商务印书馆*
+	+ History
+		- 战争论 *[德] 克劳塞维茨* *商务印书馆*
+	+ Psychology
+		- 爱的艺术 *[美] 艾·弗洛姆* *上海译文出版社*
+
 ### 联系方式
 
 * 手机：16673292312 / 17610891317
