@@ -63,17 +63,26 @@ $$
 
 <h2>1.1.4 割线法</h2>
 
-<p>割线法与牛顿法类似，它们都是通过寻找导数近似零点的方式来寻找极值点的，而进退法和黄金分割法则是通过比较函数值大小从而逐步缩小搜索区间的方式来寻找极值点的。割线法与牛顿法的区别体现在：割线法寻找的是原函数导数的近似零点，牛顿法寻找的是原函数的近似函数的导数的近似零点。割线法的具体算法如下：</p>
+<p>割线法与牛顿法类似，它们都是通过寻找导数近似零点的方式来寻找极值点的，而进退法和黄金分割法则是通过比较函数值大小从而逐步缩小搜索区间的方式来寻找极值点的。割线法与牛顿法的区别体现在：割线法寻找的是原函数导数的近似零点，牛顿法寻找的是原函数的近似函数（函数的二阶泰勒展开）的导数的近似零点。割线法的具体算法如下：</p>
+
+<ul>
+<li>给定初始点 $x_0, x_1$ 和精度 $\varepsilon > 0$；</li>
+<li>若 $\left | f'\left( x_k\right ) \right | \leq \varepsilon$，则 $x_k$ 为 $f\left(x\right)$ 的（近似）极值点，否则令</li>
+$$
+x_{k+1} = x_k - \frac{f'\left ( x_k \right )}{\frac{f'\left ( x_k \right )-f'\left ( x_{k-1} \right )}{x_k-x_{k-1}}} = \frac{\left ( x_k-x_{k-1} \right )f'\left ( x_k \right )}{f'\left ( x_k \right )-f'\left ( x_{k-1}\right) }
+$$
+<li>对 $k=1,2,\cdots$，重复第 2 步直到确定极值点。</li>
+</ul>
 
 <h2>1.1.5 抛物线法</h2>
 
 <p>抛物线法又称二次插值法，它在搜索区间中选择一点 $c_0$，首先利用该点和搜索区间的两个端点 $a_0$、$b_0$ 构造二次插值多项式</p>
 
 <p class="post-text-formula">
-$$f\left(x\right)=\alpha_0+\alpha_1x+\alpha_2x^2\ \ s.t.
-\left\{\begin{matrix}f\left(a_0\right)=\alpha _1+\alpha _2a_0+\alpha _3a_0^2
-\\ f\left(b_0\right)=\alpha _1+\alpha _2b_0+\alpha _3b_0^2
-\\ f\left(c_0\right)=\alpha _1+\alpha _2c_0+\alpha _3c_0^2
+$$P\left(x\right)=\alpha_0+\alpha_1x+\alpha_2x^2\ \ s.t.
+\left\{\begin{matrix}f\left(a_0\right)=\alpha _0+\alpha _1a_0+\alpha _2a_0^2
+\\ f\left(b_0\right)=\alpha _0+\alpha _1b_0+\alpha _2b_0^2
+\\ f\left(c_0\right)=\alpha _0+\alpha _1c_0+\alpha _2c_0^2
 \end{matrix}\right.$$
 </p>
 
@@ -96,14 +105,57 @@ $$c_{k+1}=\frac{1}{2}\frac{f\left(a_k \right )\left(b_k^2-c_k^2 \right )+f\left(
 
 <h2>1.1.6 三次插值法</h2>
 
-<p></p>
+<p>三次插值法即用三次多项式函数近似原函数，将三次多项式 $P\left(x\right)$ 的极值作为原函数 $f\left(x\right)$ 极值的近似。首先我们利用搜索区间的两个端点 $a_0$、$b_0$ 以及附加导数条件 $f'\left(a_0\right)=P'\left(a_0\right)$、$f'\left(b_0\right)=P'\left(b_0\right)$ 构造三次插值多项式</p>
 
+<p class="post-text-formula">
+$$P\left(x\right)=\alpha_0+\alpha_1x+\alpha_2x^2+\alpha_3x^3$$
+$$s.t.
+\left\{\begin{matrix} f\left(a_0\right)&=&\alpha _0&+&\alpha _1a_0&+&\alpha _2a_0^2&+&\alpha _3a_0^3
+\\f\left(b_0\right)&=&\alpha _0&+&\alpha _1b_0&+&\alpha _2b_0^2&+&\alpha _3b_0^3
+\\f'\left(a_0\right)&=&\alpha _1&+&2\alpha _2a_0&+&3\alpha _3a_0^2
+\\f'\left(b_0\right)&=&\alpha _1&+&2\alpha _2b_0&+&3\alpha _3b_0^2
+\end{matrix}\right.$$
+</p>
+
+<p class="post-text-noindent">来近似原函数，并求得三次插值多项式的极值点</p>
+
+<p class="post-text-formula">
+$$c_1 = a_0 + \frac{z_0-f'\left(a_0 \right )-w_0}{2z_0-f'\left(a_0 \right )+f'\left(b_0 \right )}\left(b_0-a_0 \right )$$
+</p>
+
+<p class="post-text-noindent">其中</p>
+
+<p class="post-text-formula">
+$$\left\{\begin{matrix} z_0& = &\sqrt{w_0^2-f'\left(a_0 \right )f'\left(b_0 \right )}&
+\\ w_0& = &\frac{3\left[f\left(b_0 \right )-f\left(a_0 \right ) \right ]}{b_0-a_0}-f'\left(a_0 \right )f'\left(b_0 \right )
+\end{matrix}\right.$$
+</p>
+
+<p class="post-text-noindent">接着依据 $f\left(x\right)$ 在 $c_1$ 处的二阶导数与 0 的大小关系缩小搜索区间，最后在新的搜索区间下重复上述步骤直到原函数在三次插值多项式极值点上的导数值十分接近 0 时位置，此时三次插值多项式极值点即为原函数的近似极值点。三次插值法的具体算法如下：</p>
+
+<ul>
+<li>确定初始搜索区间 $\left[a_0,b_0\right]$，初始插值内点 $c_0\epsilon \left[a_0,b_0\right]$ 以及精度 $\varepsilon >0$</li>
+<li>计算 $c_{k+1}$，$f‘\left(c_{k+1}\right)$ 以及 $f’‘\left(c_k\right)$，其中</li>
+$$c_{k+1} = a_k + \frac{z_k-f'\left(a_k \right )-w_k}{2z_k-f'\left(a_k \right )+f'\left(b_k \right )}\left(b_k-a_k \right )$$
+$$\left\{\begin{matrix} z_k& = &\sqrt{w_k^2-f'\left(a_k \right )f'\left(b_k \right )}&
+\\ w_k& = &\frac{3\left[f\left(b_k \right )-f\left(a_k \right ) \right ]}{b_k-a_k}-f'\left(a_k \right )f'\left(b_k \right )
+\end{matrix}\right.$$
+<li>若 $\left|f'’(c_{k+1}\right| < 0$，令 $a_{k+1} = c_{k+1}$，$b_{k+1} = b_k$，否则令 $a_{k+1} = a_k$，$b_{k+1} = c_{k+1}$</li>
+<li>对 $k=1,2,\cdots$，重复第 2,3 步直到 $\left|f'(c_{k+1}\right|\leq \varepsilon$ 为止，此时 $c_{k+1}$ 即为 $f\left(x\right)$ 的近似极值点。</li>
+</ul>
 
 <h2>1.1.7 可接受搜索法</h2>
 
 <p></p>
 
 <p class="post-text-noindent">未完待续……</p>
+
+<p>我的问题：</p>
+<ul>
+<li>全局牛顿法的基本思想是怎样的？牛顿法的收敛条件是初始点要充分靠近某一极值点，那究竟什么程度算充分靠近？算法的收敛与否又是怎样分析的？</li>
+<li>可接受搜索法的基本思想是什么？</li>
+<li>有没有书介绍这些算法最初的想法的？有没有书对各种算法作出详细比较的？有没有书对这些算法在当前的应用情况作出介绍的？这种跳过思想只讲步骤让人难受！</li>
+</ul>
 
 <p class="post-text-center"></p>
 <p class="post-text-tablename"></p>
