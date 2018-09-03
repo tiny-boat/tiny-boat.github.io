@@ -3,7 +3,7 @@ layout: post
 title:  "BWL(1):yls1"
 date:   2018-09-03 11:05:00
 categories: Note
-permalink: /BWL/1/
+permalink: /bwl/1/
 ---
 
 <div class="post-style">
