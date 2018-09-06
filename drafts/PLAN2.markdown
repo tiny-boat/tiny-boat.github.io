@@ -40,12 +40,45 @@ permalink: /plan/2/
 
 ### 2. 舆情研究之舆情生成规律
 
+孙飞显在[《针对政府的微博网络舆情传播规律与对策研究——以新浪微博为例》](http://kns.cnki.net/KXReader/Detail?dbcode=CJFD&filename=ZOZO201604014&UID=WEEvREdxOWJmbC9oM1NjYkZCbDZZNXlFWlpXNk9UclMxcEZIUW14SE8wNUc%3d%24R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&autoLogin=0)中以微博为例指出舆情的生成过程如下：
+1. 舆情事件产生;
+2. 事件信息推送至微博;
+3. 微博意见领袖(“大V”)介入;
+4. 粉丝转发、评论，事件持续发酵;
+5. 一致性倾向产生，形成网络舆情。
+
 ### 3. 舆情研究之舆情分析
 
 郑越在[《基于人工智能的网络舆情系统解析》](http://kns.cnki.net/KXReader/Detail?dbcode=CJFD&filename=ZLXC201828039&UID=WEEvREdxOWJmbC9oM1NjYkZCbDZZNXlFWlpXN2huRE9kVXVmWVBGK0c5ajA%3d%24R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&autoLogin=0)（中国战略新兴产业，2018 年第 28 期）中指出**网络舆情分析系统主要包括语义分析和情感倾向分析两大部分**，语义分析方法有传统的**最大匹配法**和现代的**隐马尔科夫模型**和**人工神经网络**，情感分析方法有传统的**规则判别**和现代的各种**机器学习分类方法**，文章**建议将传统与现代的方法结合起来**用于网络舆情的分析。
 
 
+
+孙飞显在[《针对政府的微博网络舆情传播规律与对策研究——以新浪微博为例》](http://kns.cnki.net/KXReader/Detail?dbcode=CJFD&filename=ZOZO201604014&UID=WEEvREdxOWJmbC9oM1NjYkZCbDZZNXlFWlpXNk9UclMxcEZIUW14SE8wNUc%3d%24R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&autoLogin=0)中总结网络舆情的传播特征如下图所示：
+
+![图 3-1](/assets/img/ktsq/cbtz.jpg)
+
+作者指出：任何网络舆情的传播扩散并非是微博孤军奋战的结果，微信、微视、美拍大有抢占微博之势。因此，下一步须**扩大网络媒体的研究范围**，为针对政府的网络舆情态势感知、预警、引导和干预研究作铺垫。
+
+刘雅囡在[《网络舆情生成与演化机制研究--以食品安全事件为例》](http://kns.cnki.net/kns/download.aspx?filename=INTd5MkRodXWDhVVKJnVKhVayY1NsJlaZJWSt50MY9SRwNlcvtmRRZGTndmRro1QKxmeBx0QZN1RpxmQ0hDTTF3VoFESUJkSCRDMCVHTod3Y1tUbXJ0NoxmNlJERKRzcCRFVrhzQLJkQuhWMwlHNRFDWTdUUwRUV&dflag=nhdown&tablename=CMFD201601)（2015-5-10 南京邮电大学硕士论文）中利用**因子分析**和**多主体建模仿真**的方法对网络舆情演化的影响因素和网络舆情的生成与演化机制进行了研究，提出了网络舆情生成与演化的四阶段：**潜伏**、**爆发**、**蔓延**、**消解**。但作者指出文章**未能全面总结影响网络舆情演化和群体行为的因素**，并且文章**只选取了单个案例**即食品安全事件对网络舆情的生成与演化阶段进行了分析。
+
 ### 4. 舆情研究之舆情防控引导应对
+
+刘雅囡在[《网络舆情生成与演化机制研究--以食品安全事件为例》](http://kns.cnki.net/kns/download.aspx?filename=INTd5MkRodXWDhVVKJnVKhVayY1NsJlaZJWSt50MY9SRwNlcvtmRRZGTndmRro1QKxmeBx0QZN1RpxmQ0hDTTF3VoFESUJkSCRDMCVHTod3Y1tUbXJ0NoxmNlJERKRzcCRFVrhzQLJkQuhWMwlHNRFDWTdUUwRUV&dflag=nhdown&tablename=CMFD201601)（2015-5-10 南京邮电大学硕士论文）中针对其所提出的网络舆情生成与演化的四个阶段的不同特点指出了相应的应对策略：
+
+* 网络舆情的潜伏阶段是舆情监管最适宜的介入时期，但由于舆情生成机理的不确定性、舆论的复杂性和舆情检测技术的不发达，监管者很难察觉和预防敏感话题，由此提出以下建议：
+	+ 建立网络舆情监测指标体系
+	+ 完善网络舆情预警系统
+* 网络舆情的爆发阶段是舆情调控的关键时期，相关监管者应秉承正面回应、积极配合、及时公开信息的处置原则，尽可能利用多的渠道与网民和媒体沟互动沟通，以有效应对网络舆情。
+	+ 加强与意见领袖的沟通互动
+	+ 加强与媒体的公关合作
+	+ 加强政府公信力建设
+	+ 加强政府处置效率和信息公开透明度
+* 网络蔓延爆发阶段是网络舆情从爆炸演变到消解的一个重要过渡阶段，这一阶段的网络舆情发展稳定性增强，有了一定的秩序和方向，为了避免舆情的次生传播，政府的合理引导成为此过程的重要举措。
+    + 加强政府引导力度
+    + 发挥媒体正面作用，加强与媒体配合引导
+* 网络舆情的消解阶段是网络舆情演化的最后一个阶段，这一阶段如果舆情事件解决圆满并且没有出现新的关注点，网民和媒体的关注度会继续减退甚至转移；反之，若舆情事件处置不佳，将有可能引发新的舆情变化使网络舆情更加复杂，因此即使舆情发展到最后阶段，也需要监管者和相关部门对舆情予以持续重视，具体措施如下：
+    + 信息连续公开
+    + 事后评估和反思
 
 ### 舆情研究分类
 
