@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "PLAN(2)"
+title:  "网络舆情研究资料搜集"
 date:   2018-09-05 11:30:00
 categories: Note
 permalink: /plan/2/
