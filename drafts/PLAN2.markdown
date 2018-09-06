@@ -42,6 +42,10 @@ permalink: /plan/2/
 
 ### 3. 舆情研究之舆情分析
 
+郑越在[《基于人工智能的网络舆情系统解析》](http://kns.cnki.net/KXReader/Detail?dbcode=CJFD&filename=ZLXC201828039&UID=WEEvREdxOWJmbC9oM1NjYkZCbDZZNXlFWlpXN2huRE9kVXVmWVBGK0c5ajA%3d%24R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&autoLogin=0)（中国战略新兴产业，2018 年第 28 期）中指出**网络舆情分析系统主要包括语义分析和情感倾向分析两大部分**，语义分析方法有传统的**最大匹配法**和现代的**隐马尔科夫模型**和**人工神经网络**，情感分析方法有传统的**规则判别**和现代的各种**机器学习分类方法**，文章**建议将传统与现代的方法结合起来**用于网络舆情的分析。
+
+
+
 ### 4. 舆情研究之舆情防控引导应对
 
 ### 舆情研究分类
