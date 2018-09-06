@@ -53,6 +53,9 @@ permalink: /plan/2/
 
 王心瑶、郝艳华、吴群红、徐威、王晓菲、代亚君、陈超亿在[《基于登革热事件的官方微博网络舆情可视化分析》](http://kns.cnki.net/KXReader/Detail?dbcode=CJFD&filename=ZGYC201806001&uid=WEEvREdxOWJmbC9oM1NjYkZCbDZZNXlFWlpXNlBDRDB1b0pYNUZpNmpkTzg=$R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!)中对登革热事件官方微博网络舆情进行了词频、语义网络和情感的可视化分析，其中词频可视化分析采用了**标签云图**。
 
+彭霞在[《网页文本内容情感挖掘研究》](http://kns.cnki.net/KXReader/Detail?dbcode=CJFD&filename=QDJY201803009&UID=WEEvREdxOWJmbC9oM1NjYkZCbDZZNXlFWlpaak9vTitQQzdKSlY0cjM0dXI%3d%24R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&autoLogin=0)中提出了一个如下图所示的利用 Python 进行网页文本数据情感分析的框架：
+
+![图 3-2](/assets/img/ktsq/wyqgfx_python.jpg)
 
 孙飞显在[《针对政府的微博网络舆情传播规律与对策研究——以新浪微博为例》](http://kns.cnki.net/KXReader/Detail?dbcode=CJFD&filename=ZOZO201604014&UID=WEEvREdxOWJmbC9oM1NjYkZCbDZZNXlFWlpXNk9UclMxcEZIUW14SE8wNUc%3d%24R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&autoLogin=0)中总结网络舆情的传播特征如下图所示：
 
