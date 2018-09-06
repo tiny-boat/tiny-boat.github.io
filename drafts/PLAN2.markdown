@@ -51,6 +51,7 @@ permalink: /plan/2/
 
 郑越在[《基于人工智能的网络舆情系统解析》](http://kns.cnki.net/KXReader/Detail?dbcode=CJFD&filename=ZLXC201828039&UID=WEEvREdxOWJmbC9oM1NjYkZCbDZZNXlFWlpXN2huRE9kVXVmWVBGK0c5ajA%3d%24R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&autoLogin=0)（中国战略新兴产业，2018 年第 28 期）中指出**网络舆情分析系统主要包括语义分析和情感倾向分析两大部分**，语义分析方法有传统的**最大匹配法**和现代的**隐马尔科夫模型**和**人工神经网络**，情感分析方法有传统的**规则判别**和现代的各种**机器学习分类方法**，文章**建议将传统与现代的方法结合起来**用于网络舆情的分析。
 
+王心瑶、郝艳华、吴群红、徐威、王晓菲、代亚君、陈超亿在[《基于登革热事件的官方微博网络舆情可视化分析》](http://kns.cnki.net/KXReader/Detail?dbcode=CJFD&filename=ZGYC201806001&uid=WEEvREdxOWJmbC9oM1NjYkZCbDZZNXlFWlpXNlBDRDB1b0pYNUZpNmpkTzg=$R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!)中对登革热事件官方微博网络舆情进行了词频、语义网络和情感的可视化分析，其中词频可视化分析采用了**标签云图**。
 
 
 孙飞显在[《针对政府的微博网络舆情传播规律与对策研究——以新浪微博为例》](http://kns.cnki.net/KXReader/Detail?dbcode=CJFD&filename=ZOZO201604014&UID=WEEvREdxOWJmbC9oM1NjYkZCbDZZNXlFWlpXNk9UclMxcEZIUW14SE8wNUc%3d%24R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&autoLogin=0)中总结网络舆情的传播特征如下图所示：
@@ -79,6 +80,7 @@ permalink: /plan/2/
 * 网络舆情的消解阶段是网络舆情演化的最后一个阶段，这一阶段如果舆情事件解决圆满并且没有出现新的关注点，网民和媒体的关注度会继续减退甚至转移；反之，若舆情事件处置不佳，将有可能引发新的舆情变化使网络舆情更加复杂，因此即使舆情发展到最后阶段，也需要监管者和相关部门对舆情予以持续重视，具体措施如下：
     + 信息连续公开
     + 事后评估和反思
+
 
 ### 舆情研究分类
 
