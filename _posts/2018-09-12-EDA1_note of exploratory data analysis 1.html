@@ -52,19 +52,131 @@ excerpt: "课程笔记"
 
 <h2>1.1.2 变量与常量</h2>
 
-<p></p>
+<p>Python 中变量的命名规则与 C 语言是一致的，在博文<a href="/computer_science/c/2018/05/22/C1_Introduction-of-C.html">《C语言(1):初识C语言》</a>中已有详细说明，这里不再赘述。在 Python 中，可以把任意类型的数据赋值给变量，这种变量本身类型不固定的语言称之为<strong>动态语言</strong>，而像 C、Java 这种变量类型固定，即使用变量前必须声明变量类型的语言称之为<strong>静态语言</strong>。</p>
+
+<p>Python 中实际上不存在内置常量，我们定义的常量本质上仍是变量，只是为了区分所谓变量与常量，我们约定常量的名称使用大写字母。</p>
 
 <h2>1.1.3 字符编码</h2>
 
-<p></p>
+<p>在计算机内存中，通常使用 Unicode 编码（每个字符的字节数一致），而当需要保存到硬盘或进行传输时，通常使用基于 Unicode 码的 UTF-8 编码（不同字符的字节数可能不一致），关于 Unicode 码与 UTF-8 编码以及其他编码的关系详见博文<a href="/computer_science/computer_science_introduction/2018/07/15/FCS2_data-storage.html">《计算机科学导论(2):数据存储》</a>，这里不再赘述。</p>
+
+<p>在 Python 中，字符串（str）是以 Unicode 编码的，使用函数 ord() 可以获得字符对应的 Unicode 码，使用函数 chr() 则可以获得 Unicode 码对应的字符。如果知道字符的 Unicode 码，在创建字符串时可以直接输入 Unicode 码，其显示效果与输入字符一致。</p>
+
+<p>由于 Python 的字符串类型是 str，在内存中以 Unicode 表示，一个字符对应若干个字节。如果要在网络上传输，或者保存到磁盘上，就需要把 str 变为以字节为单位的 bytes，而如果要在网络上或磁盘上读取字节流，则需要把 bytes 转换为 str.</p>
+
+<p>Python 中对 bytes 类型的数据用 b'' 或 b"" 表示。使用函数 encode() 可以将 str 转变为 bytes，使用函数 decode() 也可以将 bytes 转为 str，如果其中存在无法编码的字符或字节，Python 会报错，此时如果无法编码的字符或字节较少，可以通过增加参数 errors='ignore' 忽略错误。图 1-6 给出了与字符编码相关的 Python 示例代码。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_6.png"></p>
+
+<p class="post-text-tablename">图 1-6 Python 代码示例之字符编码</p>
+
+<p>此外当 Python 解释器读取源代码时，为了让它按 UTF-8 编码读取，我们通常在文件开头处写上如下两行：
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">第一行注释是为了告诉Linux/OS X 系统，这是一个 Python 可执行程序，Windows 系统会忽略这个注释；第二行注释是为了告知 Python 解释器按照 UTF-8 编码读取源代码。
+</p>
 
 <h2>1.1.4 输出格式化字符串</h2>
 
-<p></p>
+<p>Python 中对字符串的格式化输出与 C 语言基本一致，只在语法格式上存在细微差别，下面是示例代码：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+#BMI指数计算器
+height = input('\n这是一个BMI指数计算器\n\n请您在输入数据时不要加单位\n\n现在，请输入您的身高（单位：cm），然后按回车键：\n',)
+weight = input('\n接下来，请输入您的体重（单位：kg），然后按回车键：\n',)
+height = float(height)
+weight = float(weight)
+BMI = weight/pow(height*0.01,2)
+
+if BMI < 18.5:
+	TYPE='过轻'
+elif 18.5 <= BMI < 24:
+	TYPE='正常'
+elif 23 <= BMI < 27:
+	TYPE='过重'
+elif 27 <= BMI <= 30:
+	TYPE='肥胖'
+else:
+	TYPE='严重肥胖'
+
+print("\n您的BMI指数 = %.2f，属 \"%s\" 类型" % (BMI,TYPE)) #切记不要加逗号！！！
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
 
 <h2>1.1.5 条件判断与循环</h2>
 
-<p></p>
+<p>Python 中的条件判断以及循环与其他语言区别不大，即使有区别也只是语法格式上的细微区别，Python 的条件判断采用通常的 if-elif-else 语句，循环采用通常的 for 循环和 while 循环，在循环中可采用 break 语句结束整个循环，也可采用 continue 语句跳出当次循环。下面是示例代码：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+sum = 0
+for x in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+    sum = sum + x
+print(sum)
+
+sum = 0
+for x in range(11):
+    sum = sum + x
+print(sum)
+
+sum = 0
+n = 99
+while n > 0:
+    sum = sum + n
+    n = n - 2
+print(sum)
+
+n = 1
+while n <= 100:
+    if n > 10: # 当n = 11时，条件满足，执行break语句
+        break # break语句会结束当前循环
+    print(n)
+    n = n + 1
+print('END')
+
+n = 0
+while n < 10:
+    n = n + 1
+    if n % 2 == 0: # 如果n是偶数，执行continue语句
+        continue # continue语句会直接继续下一轮循环，后续的print()语句不会执行
+    print(n)
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
 
 <p>未完待续……</p>
 
