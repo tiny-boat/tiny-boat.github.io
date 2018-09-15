@@ -22,9 +22,49 @@ excerpt: "课程笔记"
 
 <p>Python 内置的数据类型有：整数（int）、浮点数（float）、布尔值（True False）、空值（None）、字符串（str）、元组（tuple）、列表（list）、字典（dict）和集合（set）</p>
 
-<p>对于整数、浮点数、布尔值和空值，与其他语言是类似的，故不再赘述。这里只提一点，那就是 Python 中允许使用二进制、八进制和十六进制表示一个数，只不过需要在数的前面分别添加 “0b”、“0o” 和 “0x”。 </p>
+<p>对于<strong>整数</strong>、<strong>浮点数</strong>、<strong>布尔值</strong>和<strong>空值</strong>，与其他语言是类似的，故不再赘述。这里只提一点，那就是 Python 中允许使用二进制、八进制和十六进制表示一个数，只不过需要在数的前面分别添加 “0b”、“0o” 和 “0x”。 </p>
 
-<p>Python 中的字符串不仅可以使用单引号、双引号表示，还可以使用三引号表示。三引号的作用体现在两方面：一是对字符串中存在双引号字符的语句使用三引号，可避免使用转义符表示双引号字符；二是使用三引号且需要换行显示时，直接回车而无需使用转义回车符 “\n”。 另外如果字符串里面有很多字符都需要转义，就需要加很多 \，为了简化，Python 允许使用 r''，在这种表示下，''内部的字符串讲不会被转义。下图给出的 Python </p>
+<p>Python 中的<strong>字符串</strong>不仅可以使用单引号、双引号表示，还可以使用三引号表示。三引号的作用体现在两方面：一是对字符串中存在双引号字符的语句使用三引号，可避免使用转义符表示双引号字符；二是使用三引号且需要换行显示时，直接回车而无需使用转义回车符 “\n”。 另外如果字符串里面有很多字符都需要转义，就需要加很多 \，为了简化，Python 允许使用 r' '、r" " 和 r''' '''，在这种表示下，''、" "、''' ''' 内部的字符串将不会被转义。下图给出了相关的 Python 代码示例：</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_1.png"></p>
+
+<p class="post-text-tablename">图 1-1 Python 代码示例之字符串</p>
+
+<p><strong>元组</strong>和<strong>列表</strong>均是 Python 中用来表示有序列表的数据类型，分别使用小括号 () 和中括号 [] 表示。二者的根本区别在于前者是不可变对象，后者是可变对象。我们可以把这种有序列表看成为一个向量，但与 R 语言中对向量的要求不同，元组和列表中元素的数据类型不必保持一致。实际上，这一特性与 R 语言中的列表是类似的，但 R 语言自身内置的数据类型要比 Python 多，这导致 R 语言列表中元素的数据类型不仅可以像 Python 那样取整数、实数、布尔值、空值或列表，还可以取更为复杂的矩阵和类似于矩阵的数据框。图 1-2 给出了与元组相关的 Python 代码示例，图 1-3 则给出了与列表相关的 Python 代码示例。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_2.png"></p>
+
+<p class="post-text-tablename">图 1-2 Python 代码示例之元组</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_3.png"></p>
+
+<p class="post-text-tablename">图 1-3 Python 代码示例之列表</p>
+
+<p><strong>字典</strong>和<strong>集合</strong>是 Python 内置的数据类型中比较特别的两个，我们可以将字典看成是一个由<strong>键</strong>（key）向量和<strong>值</strong> (value) 向量构成的二维数组，而将集合看成是一个由键构成的无序不重复序列。需要特别强调的是：键的数据类型只能为整数、实数、布尔值、空值、字符串等不可变对象，通常情况下我们使用的都是字符串。图 1-4 给出了与字典相关的 Python 代码示例，图 1-5 则给出了与集合相关的 Python 代码示例。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_4.png"></p>
+
+<p class="post-text-tablename">图 1-4 Python 代码示例之字典</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_5.png"></p>
+
+<p class="post-text-tablename">图 1-5 Python 代码示例之集合</p>
+
+<h2>1.1.2 变量与常量</h2>
+
+<p></p>
+
+<h2>1.1.3 字符编码</h2>
+
+<p></p>
+
+<h2>1.1.4 输出格式化字符串</h2>
+
+<p></p>
+
+<h2>1.1.5 条件判断与循环</h2>
+
+<p></p>
 
 <p>未完待续……</p>
 
