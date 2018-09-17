@@ -289,7 +289,7 @@
  */
 .page-content {
   padding: 36px 0px 10px 0px;
-  flex: 1 1 0%;
+  flex: 1;
   
   @include media-query($on-palm) {
       margin: 54px 0px 0px 0px;
@@ -298,9 +298,11 @@
  
 }
 
+:root Selector {property: value9;}
+
 .page-post-content {
   padding: 24px 0px 16px 0px;
-  flex: 1 1 0%;
+  flex: 1;
   
   @include media-query($on-palm) {
       margin: 54px 0px 0px 0px;
