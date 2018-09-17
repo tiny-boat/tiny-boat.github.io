@@ -300,7 +300,7 @@
 
 .page-post-content {
   padding: 24px 0px 16px 0px;
-  flex: 1;
+  /*flex: 1;*/
   
   @include media-query($on-palm) {
       margin: 54px 0px 0px 0px;
