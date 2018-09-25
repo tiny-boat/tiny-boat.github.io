@@ -129,7 +129,8 @@ print("\n您的BMI指数 = %.2f，属 \"%s\" 类型" % (BMI,TYPE)) #切记不要
 
 <h2>1.1.5 条件判断与循环</h2>
 
-<p>Python 中的条件判断以及循环与其他语言区别不大，即使有区别也只是语法格式上的细微区别，Python 的条件判断采用通常的 if-elif-else 语句，循环采用通常的 for 循环和 while 循环，在循环中可采用 break 语句结束整个循环，也可采用 continue 语句跳出当次循环。下面是示例代码：</p>
+<p>Python 中的条件判断以及循环与其他语言区别不大，即使有区别也只是语法格式上的细微区别，Python 的条件判断采用通常的 if-elif-else 语句，循环采用通常的 for 循环和 while 循环，在循环中可采用 break 语句结束整个循环，也可采用 continue 语句跳出当次循环。其中，在 for 循环中，迭代对象可以是字符串、列表、元组、其他内置可迭代对象（<strong>如 range(start,stop,step) 代表从 start 开始以步长 step 到 stop 的序列，若省略 start 参数，则 start 为 1，若省略 step 参数，则 step 为 1，stop 参数不可省</strong>），以及用户通过类创建的新对象。
+下面是示例代码：</p>
 
 </div>
 
@@ -177,6 +178,63 @@ while n < 10:
 </div>
 
 <div class="post-style">
+
+<h1>1.2 Python 函数</h1>
+
+<p><a href="http://docs.python.org/3/library/functions.html#abs">python 内置函数</a></p>
+
+<p>在python中函数定义语法如下：def function_name(arg1,arg2[,...]):</p>
+
+<p>python 中，定义函数时，默认参数必须在所有标准参数之后</p>
+
+<p>需要一个函数能处理比当初声明时更多的参数。这些参数叫做不定长参数.
+def functionname([formal_args,] *var_args_tuple ):   "函数_文档字符串"   function_suite   return [expression]
+加了星号(*)的变量名会存放所有未命名的变量参数。选择不多传参数也可。
+</p>
+
+<p>如果你已经把my_abs()的函数定义保存为abstest.py文件了，那么，可以在该文件的当前目录下启动Python解释器，用from abstest import my_abs来导入my_abs()函数，注意abstest是文件名（不含.py扩展名）：</p>
+
+<p>如果想定义一个什么事也不做的空函数，可以用pass语句：
+
+def nop():
+    pass
+pass语句什么都不做，那有什么用？实际上pass可以用来作为占位符，比如现在还没想好怎么写函数的代码，就可以先放一个pass，让代码能运行起来。
+
+pass还可以用在其他语句里，比如：
+
+if age >= 18:
+    pass
+缺少了pass，代码运行就会有语法错误。</p>
+
+<p>当传入了不恰当的参数时，内置函数abs会检查出参数错误，而我们定义的my_abs没有参数检查，会导致if语句出错，出错信息和abs不一样。所以，这个函数定义不够完善。
+
+让我们修改一下my_abs的定义，对参数类型做检查，只允许整数和浮点数类型的参数。数据类型检查可以用内置函数isinstance()实现：
+
+def my_abs(x):
+    if not isinstance(x, (int, float)):
+        raise TypeError('bad operand type')
+    if x >= 0:
+        return x
+    else:
+        return -x</p>
+
+<p>import math语句表示导入math包，并允许后续代码引用math包里的sin、cos等函数。然后，我们就可以同时获得返回值：
+
+>>> x, y = move(100, 100, 60, math.pi / 6)
+>>> print(x, y)
+151.96152422706632 70.0
+但其实这只是一种假象，Python函数返回的仍然是单一值：
+
+>>> r = move(100, 100, 60, math.pi / 6)
+>>> print(r)
+(151.96152422706632, 70.0)
+原来返回值是一个tuple！但是，在语法上，返回一个tuple可以省略括号，而多个变量可以同时接收一个tuple，按位置赋给对应的值，所以，Python的函数返回多值其实就是返回一个tuple，但写起来更方便。</p>
+
+<h1>1.3 Numpy 库</h1>
+
+<p>import numpy as np</p>
+
+<p>创建数组：np.array([[1,2,3,4],[5,6,7,8],[7,8,9,10]])</p>
 
 <p>未完待续……</p>
 
