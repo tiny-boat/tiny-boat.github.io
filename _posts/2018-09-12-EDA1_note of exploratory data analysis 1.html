@@ -67,7 +67,6 @@ excerpt: "课程笔记"
 <p>Python 中对 bytes 类型的数据用 b'' 或 b"" 表示。使用函数 encode() 可以将 str 转变为 bytes，使用函数 decode() 也可以将 bytes 转为 str，如果其中存在无法编码的字符或字节，Python 会报错，此时如果无法编码的字符或字节较少，可以通过增加参数 errors='ignore' 忽略错误。图 1-6 给出了与字符编码相关的 Python 示例代码。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_6.png"></p>
-
 <p class="post-text-tablename">图 1-6 Python 代码示例之字符编码</p>
 
 <p>此外当 Python 解释器读取源代码时，为了让它按 UTF-8 编码读取，我们通常在文件开头处写上如下两行：
@@ -181,12 +180,46 @@ while n < 10:
 
 <h1>1.2 Python 函数</h1>
 
-<p><a href="http://docs.python.org/3/library/functions.html#abs">python 内置函数</a></p>
+<h2>1.2.1 内置函数</h2>
 
-<p>在python中函数定义语法如下：def function_name(arg1,arg2[,...]):</p>
+<p>Python 中有 69 个内置函数（built-in functions）,例如用于求绝对值、最大值的 abs()、max()；用于转换数据类型的 int()、float()、str()、bool() 等等，表 1-7 列出了这些内置函数。</p>
 
-<p>python 中，定义函数时，默认参数必须在所有标准参数之后</p>
+<p class="post-text-tablename">表 1-7 Python 内置函数</p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/built_in_functions.png"></p>
 
+<p class="post-text-noindent">我们可以通过<a href="http://docs.python.org/3/library/functions.html#abs">访问官网</a>或使用 help(function_name) 命令获知这些内置函数的作用及使用方法。另外，在 Python 中，我们可以把函数名赋给一个变量，这相当于给函数起了一个<strong>别名</strong>，以后我们调用函数时可以使用这个别名替代原有名称。</p>
+
+<h2>1.2.2 自定义函数</h2>
+
+<p>在 Python 中，函数自定义的基本格式如下所示：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+def function_name(arg):
+    function_body
+    return var_name
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">其中 return 语句可以省略，当省略时，函数返回值为 None. 这里，我们要重点讲一下的是函数的参数（arg）。 在 Python 函数中，参数的类型多达 5 种，按定义的顺序依次为：<strong>必选参数</strong>、<strong>默认参数</strong>、<strong>可变参数</strong>、<strong>命名关键字参数</strong>和<strong>关键字参数</strong></p>
+
+<p>必选参数即我们通常意义下的参数，默认参数即我们通常意义下的给定了默认值的参数，这里不做过多叙述，但要特别强调的一点是：默认参数必须指向不可变对象，否则将会导致如图 1-8 所示的类似问题：</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_7.png"></p>
+<p class="post-text-tablename">图 1-8 Python 函数默认参数指向可变对象时的问题</p>
+
+<!--
 <p>需要一个函数能处理比当初声明时更多的参数。这些参数叫做不定长参数.
 def functionname([formal_args,] *var_args_tuple ):   "函数_文档字符串"   function_suite   return [expression]
 加了星号(*)的变量名会存放所有未命名的变量参数。选择不多传参数也可。
@@ -235,7 +268,7 @@ def my_abs(x):
 <p>import numpy as np</p>
 
 <p>创建数组：np.array([[1,2,3,4],[5,6,7,8],[7,8,9,10]])</p>
-
+-->
 <p>未完待续……</p>
 
 </div>
