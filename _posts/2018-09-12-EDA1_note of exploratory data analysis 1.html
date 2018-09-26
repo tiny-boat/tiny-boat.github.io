@@ -212,12 +212,32 @@ def function_name(arg):
 
 <div class="post-style">
 
-<p class="post-text-noindent">其中 return 语句可以省略，当省略时，函数返回值为 None. 这里，我们要重点讲一下的是函数的参数（arg）。 在 Python 函数中，参数的类型多达 5 种，按定义的顺序依次为：<strong>必选参数</strong>、<strong>默认参数</strong>、<strong>可变参数</strong>、<strong>命名关键字参数</strong>和<strong>关键字参数</strong></p>
+<p class="post-text-noindent">其中 return 语句可以省略，当省略时，函数返回值为 None. 这里，我们要重点讲一下的是函数的<strong>参数</strong>（arg）。 在 Python 函数中，参数的类型多达 5 种，按定义的顺序依次为：必选参数、默认参数、可变参数、命名关键字参数和关键字参数</p>
 
-<p>必选参数即我们通常意义下的参数，默认参数即我们通常意义下的给定了默认值的参数，这里不做过多叙述，但要特别强调的一点是：默认参数必须指向不可变对象，否则将会导致如图 1-8 所示的类似问题：</p>
+<p><strong>必选参数</strong>即我们通常意义下的参数，<strong>默认参数</strong>即我们通常意义下的给定了默认值的参数，这里不做过多叙述，但要特别强调的一点是：默认参数必须指向不可变对象，否则将会导致如图 1-8 所示的类似问题：</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_7.png"></p>
 <p class="post-text-tablename">图 1-8 Python 函数默认参数指向可变对象时的问题</p>
+
+<p><strong>可变参数</strong>指的是传入参数个数可变（可为 0 个）的参数，由符号 * 和参数名构成，这些可变参数在函数调用时自动组装为一个 tuple. 图 1-9 展示了含可变参数的函数的定义方法和使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_8.png"></p>
+<p class="post-text-tablename">图 1-9 含可变参数的 Python 函数的定义及使用方法</p>
+
+<p><strong>关键字参数</strong>由符号 ** 和参数名构成，与可变参数一样，它允许传入 0 个或任意个含参数名的参数，它的不同之处体现在：这些关键字参数在函数调用时自动组装为一个 dict 而非 tuple. 图 1-10 展示了含关键字参数的函数的定义方法和使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_9.png"></p>
+<p class="post-text-tablename">图 1-10 含关键字参数的 Python 函数的定义及使用方法</p>
+
+<p><strong>命名关键字参数</strong>通常由分隔符 * 和参数名构成，在函数参数中包含可变参数的情况下可仅由参数名构成，它主要用来限制关键字参数的名字。在调用函数时命名关键字参数必须传入参数名，否则系统将会报错，另外，命名关键字参数还可以设置默认值。图 1-11 展示了含命名关键字参数的函数的定义方法和使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_10.png"></p>
+<p class="post-text-tablename">图 1-11 含命名关键字参数的 Python 函数的定义及使用方法</p>
+
+<p>如有必要，在 Python 中定义函数时可以使用几种乃至全部参数类型，但必须遵循参数定义的顺序：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。图 1-12 展示了含各种参数的函数的定义方法和使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_11.png"></p>
+<p class="post-text-tablename">图 1-12 含各种参数的 Python 函数的定义及使用方法</p>
 
 <!--
 <p>需要一个函数能处理比当初声明时更多的参数。这些参数叫做不定长参数.
