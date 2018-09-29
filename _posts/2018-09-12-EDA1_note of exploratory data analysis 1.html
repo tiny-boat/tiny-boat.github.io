@@ -8,7 +8,7 @@ excerpt: "课程笔记"
 
 <div class="post-style">
 
-<h1>1.1 Python 基础</h1>
+<h1>1.1 基础</h1>
 
 <p>在讲述有关 Python 的基础性内容前，这里先列出 Python 中可能需要注意的一些特点： </p>
 
@@ -178,7 +178,9 @@ while n < 10:
 
 <div class="post-style">
 
-<h1>1.2 Python 函数</h1>
+<h1>1.2 函数</h1>
+
+<p>上一节中我们介绍了 Python 的数据类型、变量与常量、字符编码、字符格式化输出以及条件判断与循环等基础内容，这一节我们将主要介绍 Python 函数，包括： Python 的内置函数、自定义函数和递归函数，并且我们将在自定义函数部分重点讲述 Python 函数可以使用的五大参数类型。</p>
 
 <h2>1.2.1 内置函数</h2>
 
@@ -241,51 +243,46 @@ def function_name(arg):
 
 <h2>1.2.3 递归函数</h2>
 
-<p></p>
+<p>如果一个函数在其内部调用自身，则我们称这样的函数为<strong>递归函数</strong>，例如：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# 递归求阶乘
+def frac(n):
+	if n == 1:
+		return 1
+	return n*frac(n-1)
+
+# 递归解决著名的汉诺塔问题
+def hanoi(n, a, b, c):
+    if n == 1:
+        print(a, '-->', c)
+    else:
+        hanoi(n - 1, a, c, b)
+        print(a, '-->', c)
+        hanoi(n - 1, b, a, c)
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<blockquote><a href="https://baike.baidu.com/item/%E6%B1%89%E8%AF%BA%E5%A1%94/3468295"><strong>汉诺塔</strong></a>问题：汉诺塔（又称河内塔）问题是源于印度一个古老传说的益智玩具。大梵天创造世界的时候做了三根金刚石柱子，在一根柱子上从下往上按照大小顺序摞着 64 片黄金圆盘。大梵天命令婆罗门把圆盘从下面开始按大小顺序重新摆放在另一根柱子上。并且规定，在小圆盘上不能放大圆盘，在三根柱子之间一次只能移动一个圆盘。</blockquote>
+
+<p class="post-text-noindent">我们可以看到递归函数实际上相当于一个循环，但相较于循环的写法，使用递归在逻辑上显得更为清晰。但值得注意的是：递归只能用来实现少量循环，当循环次数过大时，将会出现栈溢出现象。在计算机中，函数调用是通过<strong>栈</strong>（stack）这种数据结构实现的，<strong>每当进入一个函数调用，栈就会加一层栈帧，每当函数返回，栈就会减一层栈帧</strong>。由于栈的大小不是无限的，所以，递归调用的次数过多，会导致栈溢出。</p>
+
+<h1>1.3 高级特性</h1>
 
 <!--
-<p>需要一个函数能处理比当初声明时更多的参数。这些参数叫做不定长参数.
-def functionname([formal_args,] *var_args_tuple ):   "函数_文档字符串"   function_suite   return [expression]
-加了星号(*)的变量名会存放所有未命名的变量参数。选择不多传参数也可。
-</p>
 
-<p>如果你已经把my_abs()的函数定义保存为abstest.py文件了，那么，可以在该文件的当前目录下启动Python解释器，用from abstest import my_abs来导入my_abs()函数，注意abstest是文件名（不含.py扩展名）：</p>
-
-<p>如果想定义一个什么事也不做的空函数，可以用pass语句：
-
-def nop():
-    pass
-pass语句什么都不做，那有什么用？实际上pass可以用来作为占位符，比如现在还没想好怎么写函数的代码，就可以先放一个pass，让代码能运行起来。
-
-pass还可以用在其他语句里，比如：
-
-if age >= 18:
-    pass
-缺少了pass，代码运行就会有语法错误。</p>
-
-<p>当传入了不恰当的参数时，内置函数abs会检查出参数错误，而我们定义的my_abs没有参数检查，会导致if语句出错，出错信息和abs不一样。所以，这个函数定义不够完善。
-
-让我们修改一下my_abs的定义，对参数类型做检查，只允许整数和浮点数类型的参数。数据类型检查可以用内置函数isinstance()实现：
-
-def my_abs(x):
-    if not isinstance(x, (int, float)):
-        raise TypeError('bad operand type')
-    if x >= 0:
-        return x
-    else:
-        return -x</p>
-
-<p>import math语句表示导入math包，并允许后续代码引用math包里的sin、cos等函数。然后，我们就可以同时获得返回值：
-
->>> x, y = move(100, 100, 60, math.pi / 6)
->>> print(x, y)
-151.96152422706632 70.0
-但其实这只是一种假象，Python函数返回的仍然是单一值：
-
->>> r = move(100, 100, 60, math.pi / 6)
->>> print(r)
-(151.96152422706632, 70.0)
-原来返回值是一个tuple！但是，在语法上，返回一个tuple可以省略括号，而多个变量可以同时接收一个tuple，按位置赋给对应的值，所以，Python的函数返回多值其实就是返回一个tuple，但写起来更方便。</p>
 
 <h1>1.3 Numpy 库</h1>
 
