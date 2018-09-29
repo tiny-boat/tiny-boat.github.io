@@ -61,7 +61,7 @@ show_excerpts: true
 excerpt_separator: <!--excerpt-->
 
 # paginator
-paginate: 3
+paginate: 10
 paginate_path: "page:num"
 
 # page_view_counter
