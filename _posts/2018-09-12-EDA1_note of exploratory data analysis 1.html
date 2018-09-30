@@ -281,6 +281,107 @@ def hanoi(n, a, b, c):
 
 <h1>1.3 高级特性</h1>
 
+<p>上面我们介绍了 Python 的一些基础性内容以及 Python 函数，本节，我们将介绍 Python 的一些高级特性，包括：<strong>切片</strong> (slice)、<strong>列表生成式</strong> (list comprehensions)、<strong>生成器</strong> (generator)、<strong>迭代器</strong> (iterator) 和<strong>可迭代对象</strong> (iterable)。相信通过本节的学习，你将能够写出更为简洁、更易维护的 Python 代码，小伙伴们，还等什么，就让我们抓紧扶手，即刻出发，开赴战场，亟拯斯民于水火，切扶大厦之将倾！</p>
+
+<h2>1.3.1 切片</h2>
+
+<p>Python 为列表 (list)、元组 (tuple) 和字符串 (str) 等数据类型提供了切片 (slice) 操作符，从而大大简化了从这些数据中提取子集的过程。若 L 为一个列表，则 L[start:stop:step] 将从列表的第 (start+1) 个元素开始到列表的第 (stop) 个元素结束，每隔 (step-1) 个元素提取一个，这些提取出来的元素将被组成一个新的列表。下面给出的是一个用来实现去除字符串首尾空格的 Python 自定义函数示例，其中使用了切片操作。</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+def trim(s):
+    i = 0
+    ls = len(s)
+    j = ls - 1
+    if ls > 0:
+        while s[i]==' ':
+            i += 1
+            if i >= ls:
+                break
+        while s[j]==' ' and i < ls:
+            j -= 1
+    return s[i:j+1]
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<h2>1.3.2 列表生成式</h2>
+
+<p>列表生成式 (List Comprehensions) 是 Python 中内置的用来快速创建列表的方法。图 1-13 向我们展示了 Python 列表生成式的使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_12.png"></p>
+<p class="post-text-tablename">图 1-13 Python 列表生成式的使用方法</p>
+
+<p class="post-text-noindent">通过上图，我们可以看到：通过将循环语句和条件判断语句引入列表，列表生成式大大简化了一些较复杂列表的生成步骤，使得程序更加清晰、简单而直观。</p>
+
+<h2>1.3.3 生成器</h2>
+
+<p>通过列表生成式我们可以快速创建一个列表，但受到内存的限制，列表的容量是有限的。那 Python 中是否有方法创建一个容量无限的列表呢？答案是：可以创建，但此时创建的将不再是列表对象，而是一种被称之为生成器（generator）的对象。它可以依据事先定义好的列表元素生成规则，通过 next() 函数或循环语句不断生成新的列表元素。创建生成器的方法有两种：一是将列表生成器中的方括号 [] 换成圆括号 (); 二是在自定义函数中使用关键字 yield.图 1-14 向我们展示了 Python 生成器的定义及使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_13_1.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_13_2.png"></p>
+<p class="post-text-tablename">图 1-14 Python 生成器的定义及使用方法</p>
+
+<h2>1.3.4 迭代器与可迭代对象</h2>
+
+<p>我们将可以被 next() 函数调用并不断返回下一个值的对象称为迭代器 (iterator) ，而将可以直接作用于 for 循环的对象统称为可迭代对象 (iterable). 上节提到的生成器 (generator) 都是迭代器，但集合数据类型 list、tuple、dict、set、str 虽然是可迭代对象，却不是迭代器。可以使用 isinstance() 判断一个对象是否为迭代器或可迭代对象。</p>
+
+<p>为什么 list、dict、str 等数据类型不是 Iterator？这是因为 Python 的 Iterator 对象表示的是一个数据流，Iterator 对象可以被 next() 函数调用并不断返回下一个数据，直到没有数据时抛出 StopIteration 错误。可以把这个数据流看做是一个有序序列，但我们却不能提前知道序列的长度，只能不断通过 next() 函数实现按需计算下一个数据，所以 Iterator 的计算是惰性的，只有在需要返回下一个数据时它才会计算。</p>
+
+<p>另外，Python 的 for 循环本质上就是通过不断调用 next() 函数实现的。代码</p>
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+for x in [1, 2, 3, 4, 5]:
+    pass
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">实际上等价于</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+# 首先获得Iterator对象:
+it = iter([1, 2, 3, 4, 5])
+# 循环:
+while True:
+    try:
+        # 获得下一个值:
+        x = next(it)
+    except StopIteration:
+        # 遇到StopIteration就退出循环
+        break
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style"></div>
+
 <!--
 
 
