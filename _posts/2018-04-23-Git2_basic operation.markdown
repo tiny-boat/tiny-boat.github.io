@@ -10,11 +10,13 @@ excerpt: "本文介绍如何在 Git 中创建仓库、管理修改和回退版�
 
 工作区与版本库的创建十分简单，使用 *mkdir*、*cd*、*git init* 三个命令即可完成，*mkdir* 是 *make directory* 的缩写，*cd* 是 *change directory* 的缩写，*init* 是 *initialization* 的缩写，下面是示例代码：
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ mkdir learngit
 $ cd learngit
 $ git init
 {% endhighlight %}
+</div>
 
 执行前两行命令后，一个名为 *learngit* 的工作区就创建了，执行最后一行命令后，*learngit* 目录下将出现名为 *.git* 的隐藏文件夹，它就是版本库。
 
@@ -27,6 +29,7 @@ $ git init
 
 将工作区的修改提交到版本库需要经历两个步骤、使用两个命令：*git add/rm* 和 *git commit*，前者执行将工作区修改写入版本库暂存区的任务，后者执行将版本库暂存区的修改提交到版本库分支的任务，下面是示例代码（注：非 $ 号开头的行为系统输出）：
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ git add readme.txt
 $ git commit -m "wrote a readme file"
@@ -49,7 +52,7 @@ $ git commit -m "delete readme3.txt"
  1 file changed, 2 deletions(-)
  delete mode 100644 readme3.txt
 {% endhighlight %}
-
+</div>
 
 # 2.3 管理修改
 
@@ -61,6 +64,7 @@ $ git commit -m "delete readme3.txt"
 
 其中后两个命令在 *git status* 的系统输出中均有提示，无需记忆，相关示例代码如下：
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ git status
 On branch master
@@ -72,8 +76,11 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 {% endhighlight %}
+</div>
+
 工作区当前状态为 *modified: readme.txt*，即 *readme.txt* 文件被修改了；版本库当前状态为 *Changes not staged for commit*，即工作区的修改还未放入版本库暂存区以待提交到版本库分支。
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ git diff
 diff --git a/readme.txt b/readme.txt
@@ -86,8 +93,11 @@ index d8036c1..013b5bc 100644
  Git is free software.
 \ No newline at end of file
 {% endhighlight %}
+</div>
+
 工作区中被修改的文件与版本库分支中当前指针指向文件的差异为：*version* 被更改为了 *distributed version*.
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ git add readme.txt
 
@@ -99,8 +109,11 @@ Changes to be committed:
         modified:   readme.txt
 
 {% endhighlight %}
+</div>
+
 在将文件修改写入版本库暂存区后，工作区当前状态仍为 *modified: readme.txt*，而版本库当前状态更改为 *Changes to be committed*，即版本库暂存区修改待提交到版本库分支。
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ git commit -m "add distributed"
 [master 116a472] add distributed
@@ -110,6 +123,8 @@ $ git status
 On branch master
 nothing to commit, working tree clean
 {% endhighlight %}
+</div>
+
 在将版本库暂存区修改提交到版本库分支后，工作区当前状态更改为 *working tree clean*，即工作区的修改已提交到版本库分支，现在工作区是干净的；版本库当前状态更改为 *nothing to commit*，即版本库暂存区没有任何修改待提交到版本库分支。
 
 
@@ -123,6 +138,7 @@ nothing to commit, working tree clean
 
 下面是相关示例代码：
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ git log
 commit 83570d55f4c0af6b0221addebfe0d399ac03a21c (HEAD -> master)
@@ -194,3 +210,4 @@ $ git reflog
 116a472 HEAD@{3}: commit: add distributed
 910e7dd HEAD@{4}: commit (initial): wrote a readme file
 {% endhighlight %}
+</div>

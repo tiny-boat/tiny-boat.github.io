@@ -54,10 +54,12 @@ excerpt: "本文对分布式版本控制系统 Git 作了简要介绍"
 
 安装完成后，还需给 *Git* 仓库指定用户名和邮箱，代码示例如下（*global* 参数代表该机器中所有 *Git* 仓库都将使用这一配置）：
 
-```
+<div class="code-style">
+{% highlight Bash %}
 $ git config --global user.name "tiny-boat"
 $ git config --global user.email "llygg6@gmail.com"
-```
+{% endhighlight %}
+</div>
 
 
 # 1.4 内部框架

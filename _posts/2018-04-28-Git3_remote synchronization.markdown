@@ -16,31 +16,41 @@ excerpt: "本文介绍如何通过 SSH 协议同步本地 Git 仓库与 Github"
 
 创建远程连接的示例代码如下：
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ git remote add origin git@github.com:username/foldername.git
 {% endhighlight %}
+</div>
 
 其中 *username* 为 *github* 用户名，*foldername* 为需要连接的目录名。若要克隆 *github* 上的内容，可执行类似命令
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ git clone git@github.com:tiny-boat/foldername.git
 {% endhighlight %}
+</div>
 
 在连接创建后，本地仓库与 *Github* 的同步，主要由推送（*git push*）与拉取（*git pull*）两个命令实现。将本地更新推送到 *github* 的命令如下：
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ git push origin master
 {% endhighlight %}
+</div>
 
 若提交失败，可先拉取后推送，命令如下：
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 $ git pull --rebase origin master
 $ git push origin master
 {% endhighlight %}
+</div>
 
 或者执行以下强行推送的命令
 
+<div class="code-style">
 {% highlight Bash shell scripts %}
 git push -f origin master
 {% endhighlight %}
+</div>
