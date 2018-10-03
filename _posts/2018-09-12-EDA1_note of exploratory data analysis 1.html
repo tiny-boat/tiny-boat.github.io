@@ -687,9 +687,64 @@ slow(11,22,33)
 
 <div class="post-style">
 
-<h1>1.5 模块</h1>
+<h1>1.5 模块化</h1>
 
-<p></p>
+<p>随着程序需要实现的功能越来越多，我们编写的代码量也会越来越大，如果把这些代码都放置在一个文件中，那么代码的管理与维护将变得十分困难，解决这一困难的方法就是将代码按照用途分割成多个部分，每一部分使用一个文件，我们称这样的一个文件为<strong>模块</strong>（module）。模块化的编程不仅极大地方便了单个项目代码的管理与维护，而且其用来实现某个通用功能的模块在将来还可以应用于其他项目以加快这些项目的开发进程。此外，模块化编程还可以让我们免于考虑函数名和模块外变量名的冲突，因为相同名字的函数和变量可以分别置于不同的模块中。</p>
+
+<p>模块的命名遵循变量命名规则且应避免使用 Python 已有的模块名，如不确定自己想使用的名称是否同 Python 已有的模块名冲突，可使用 import 命令导入该名称，如果系统报错，则可以放心使用该名称了。此外，为了避免模块名的冲突，Python 引入了按目录来组织模块的方法，这就是<strong>包</strong>（package）. 下图向我们展示了一个有多级目录的包，父包 MyPackage 下还存在一个子包 netease_music_spider.</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/package.png"></p>
+<p class="post-text-tablename">图 1-15 Python 包示例</p>
+
+<p class="post-text-noindent">从图中，我们可以看到：每个包下都有一个名为 __init__.py 的模块。这个模块用来将包与普通目录区别开来，它可以是空文件，也可以有代码，但要注意它的模块名不像其他模块一样是包名加英文句号再加上文件名，而就是包名本身。例如：MyPackage 包下的 __init__ 模块的名称为 MyPackage 而不是 MyPackage.__init__.</p>
+
+<p>下面我们通过一个代码示例来看一下 Python 模块文件的标准写法：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+' my first module '
+
+__author__ = 'tiny-boat'
+
+def _private_1(name):
+    return 'Hello, %s' % name
+
+def _private_2(name):
+    return 'Hi, %s' % name
+
+def greeting(name):
+    if len(name) > 3:
+        return _private_1(name)
+    else:
+        return _private_2(name)
+
+# 如果直接执行该文件，会打印下述字符串
+# 如果通过模块导入，则打印字符串的命令不会执行
+if __name__ == '__main__':
+    print("It is not used as module, but executed directly!")
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">代码第四行 ' my first module ' 是该模块的<strong>文档注释</strong>，第六行 __author__ = 'tiny-boat' 是该模块的<strong>作者信息</strong>，后续则是模块的主体程序。在这个模块中，我们定义了两个<strong>私有</strong>（private）函数 _private_1() 和 _private_2() 以及一个<strong>公有</strong>（public）函数 greeting(). </p>
+
+<p>私有函数或私有变量（如 __name__、__main__）的名称通常以 _ 开头，它仅供模块内部使用，虽然 Python 中并没有一种方法可以完全限制从外部访问私有函数或变量，但从编程的习惯上来讲我们不建议大家从外部访问私有函数和变量。<strong>人们为什么要把函数或变量分成公有和私有的呢？</strong>从上面的代码中，我们可以看到: 通过定义和调用私有函数，模块里的公有函数 greeting() 函数将其内部实现的逻辑隐藏了起来。这样，我们在调用 greeting() 函数时不用关心内部私有函数的细节，而这其实是<strong>一种非常有用的代码封装和抽象的方法</strong>。是不是仍然觉得云里雾里？亲爱的读者，笔者此时与你有着同样的感受，然古人言：河冰结合，非一日之寒；积土成山，非斯须之作。 让我们沉下心来继续前进吧，或许当我们学习完面向对象编程后，就会对此有深刻体会了。</p>
+
+<p>说完了模块化编程的意义、模块文件的命名和编写方法，最后我们来说一下第三方模块的安装方法以及模块的导入方法。第三方模块的安装采用命令 <strong>pip install module_name</strong> 即可，模块的导入采用命令 <strong>import module_name</strong> 即可。但要注意的是：<strong>模块必须置于 Python 的搜索路径下</strong>，否则导入将会失败。Python 的搜索路径可通过 sys 模块下的 sys.path 命令查看，如果要永久性添加新的搜索路径的话，就需要在系统中添加新的环境变量 PYTHONPATH，如果只是临时性地添加新的搜索路径，那直接使用命令 sys.path.append(‘path') 就可以了。</p>
+
+<p>这一节的内容到这里就要结束了，伸个懒腰休息一下吧！接下来的一节，我们将走入面向对象编程的世界。面向对象，面向对象，面向对象，无数编程语言如 C++、Java、R、Python 在介绍自己时总要说自己是面向对象的编程语言，仿佛有了这四个字，就实现了从劳苦大众向百万富翁的飞跃。然而面向对象究竟是什么，它究竟是什么？这个曾经让笔者以及现在依旧让笔者魂牵梦绕的名词，是否也曾让你心怀念念却又不知所云？不管是与不是，来吧，让我们一起往下看，一起去心爱的对象那里，和她面对面坐着。相信我，那聪明美丽善良的她，一定会带你领略一段别样的风景，让你的编程思想经历全新的洗礼，出发!</p>
+
+<h1>1.6 面向对象编程</h1>
 
 <!--
 
