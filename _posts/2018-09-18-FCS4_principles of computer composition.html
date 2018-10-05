@@ -3,14 +3,14 @@ layout: post
 title:  "计算机科学导论(4):计算机组成原理"
 date:   2018-09-17 08:24:00
 categories: Computer_Science Computer_Science_Introduction
-excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元、总线、输入/输出控制器构成"
+excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元、总线、输入/输出接口构成"
 ---
 
 <div class="post-style">
 
 <p>上两章我们介绍了计算机的主要组成部分——数据，阐述了计算机是如何存储和运算各种类型数据的。本章我们将简要介绍计算机的另一个组成部分——计算机硬件，可以说，这个部分是计算机中最基础，也是最重要的部分，因为无论是数据能以何种方式存储和运算，还是计算机软件能实现哪些功能、发挥哪些效用，都取决于计算机硬件。</p>
 
-<p>在第一章中，我们提到：当今的计算机硬件几乎都基于冯·诺依曼模型。冯·诺依曼模型指出计算机硬件由算术逻辑单元（ALU）、控制单元、存储器、输入/输出单元五大部分构成。事实上，今天我们熟知的 <strong>中央处理单元</strong>（Central Processing Unit,CPU）包括了算术逻辑单元、控制单元和部分存储器，其中部分存储器指的就是寄存器。除了寄存器外，<strong>存储器</strong>还包括主存和高速缓冲存储器。<strong>输入/输出单元</strong>则包括键盘、鼠标、操作杆、监视器、打印机等非存储设备以及磁盘、光盘等存储设备。这些独立的部分需要相互连接才能构成一个完整的计算机硬件系统，用于连接中央处理单元和存储器的是<strong>总线</strong>，用于连接输入/输出单元与中央处理单元和存储器的是<strong>输入/输出控制器</strong>。因此，我们说：计算机硬件系统由中央处理单元、存储器、输入/输出单元、总线和输入/输出控制器构成。 </p>
+<p>在第一章中，我们提到：当今的计算机硬件几乎都基于冯·诺依曼模型。冯·诺依曼模型指出计算机硬件由算术逻辑单元（ALU）、控制单元、存储器、输入/输出单元五大部分构成。事实上，今天我们熟知的 <strong>中央处理单元</strong>（Central Processing Unit,CPU）包括了算术逻辑单元、控制单元和部分存储器，其中部分存储器指的是寄存器和高速缓冲存储器。除了寄存器和告诉缓冲存储器外，<strong>存储器</strong>还包括我们通常称之为内存的主存。<strong>输入/输出单元</strong>则包括键盘、鼠标、操作杆、显示器、打印机等非存储设备以及硬盘、光盘等存储设备。这些独立的部分需要相互连接才能构成一个完整的计算机硬件系统，用于连接中央处理单元和存储器的是<strong>总线</strong>，用于连接输入/输出单元与中央处理单元和存储器的是<strong>输入/输出接口</strong>。因此，我们说：计算机硬件系统由中央处理单元、存储器、输入/输出单元、总线和输入/输出接口构成。 </p>
 
 <h1>4.1 中央处理单元</h1>
 
@@ -38,7 +38,7 @@ excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元
 
 <blockquote><strong>高速缓冲存储器</strong>简称缓存，其英文名为 cache. cache 一词来源于 1967 年的一篇电子工程期刊论文。其作者将法语词 “cache” 赋予 “safekeeping storage” 的涵义，用于电脑工程领域。</blockquote>
 
-<blockquote>当 CPU 要存取主存（main memory,我们通常说的内存）中的<strong>字</strong>（字是 CPU 一次存取的位组，现在大部分 CPU 一次存取的位组长度已达到 64 位）时，它会首先检查缓存，如果缓存中存在就从缓存中存取，如果不存在，就从主存中复制一份从需要读取的字开始的数据块到缓存，而后从缓存中复制该字。提供 “缓存” 的目的就是为了让数据存取的速度适应 CPU 的处理速度。</blockquote>
+<blockquote>当 CPU 要存取主存（main memory,我们通常说的内存）中的<strong>字</strong>（字是 CPU 一次存取的位组，其长度称为<strong>字长</strong>，现在大部分 CPU 的字长已达到 64 位）时，它会首先检查缓存，如果缓存中存在就从缓存中存取，如果不存在，就从主存中复制一份从需要读取的字开始的数据块到缓存，而后从缓存中复制该字。提供 “缓存” 的目的就是为了让数据存取的速度适应 CPU 的处理速度。</blockquote>
 
 <blockquote>CPU 的缓存曾经是用在超级计算机上的一种高级技术，不过现今电脑上使用的的 AMD 或 Intel 微处理器都在芯片内部集成了大小不等的数据缓存和指令缓存，通称为 L1 缓存（L1 Cache 即 Level 1 On-die Cache，第一级片上高速缓冲存储器）；而比 L1 更大容量的 L2 缓存曾经被放在 CPU 外部（主板或者 CPU 接口卡上），但是现在已经成为 CPU 内部的标准组件；更昂贵的 CPU 会配备比 L2 缓存还要大的 L3 缓存。</blockquote>
 
@@ -101,9 +101,47 @@ excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元
 
 <p class="post-text-noindent">DVD 采用 MPEG 压缩数据，一个单面、单层的 DVD 的容量为 4.7 GB，可存储 133 分钟高品质视频，而双面、双层的 DVD 容量可达到 17 GB。进入 21 世纪，蓝光光盘（BD）问世，<a href="https://baike.baidu.com/item/%E8%93%9D%E5%85%89%E5%85%89%E7%A2%9F/6685255?fromtitle=%E8%93%9D%E5%85%89%E5%85%89%E7%9B%98&fromid=302164&fr=aladdin"><strong>蓝光光盘</strong></a>采用波长更小的<strong>蓝色激光束</strong>替代红色激光束，其单层容量达到 25 GB，双层容量达到 50 GB，三层容量达到 100GB，四层容量达到 128GB。</p>
 
-<h1>4.4 总线与输入/输出控制器</h1>
+<p>在本节最后，我们大致讲一下 CPU 读写输入/输出设备数据时的两种不同寻址方式：I/O 独立寻址和 I/O 存储器映射寻址，以及用命令将数据从输入/输出设备传输到 CPU 和内存时，为协调输入/输出设备与 CPU 在运行速度上的差异而采取的三种不同方式：程序控制输入/输出、中断控制输入/输出和直接存储器存取（DMA）控制输入/输出。在这一部分涉及到的总线以及控制器（接口）的概念将会在 4.4 节中作详细阐述。</p>
 
+<p>在 <strong>I/O 独立寻址</strong>中，用来读/写输入/输出设备的指令与用来读/写内存的指令完全不同，因为指令的不同，输入/输出设备的地址可以和内存地址重复而不致混淆，图 4-8 是 I/O 独立寻址的一个示例。</p>
 
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/I_O_independent_addressing.png"></p>
+<p class="post-text-tablename">图 4-8 I/O 独立寻址</p>
+
+<p class="post-text-noindent">在 <strong>I/O 存储器映射寻址</strong>中，用来读/写输入/输出设备的指令与用来读/写内存的指令是相同的，因为指令的相同，输入/输出设备将会占用一部分内存地址，图 4-9 是 I/O 存储器映射寻址的一个示例。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/I_O_memory_mapping_addressing.png"></p>
+<p class="post-text-tablename">图 4-9 I/O 存储器映射寻址</p>
+
+<p>在<strong>程序控制输入/输出</strong>中，当 CPU 遇到一条输入/输出指令时，它会停下当前的工作而查询输入/输出设备的状态，如果设备做好了数据传输准备，那么数据将会被传送到 CPU，否则 CPU 将继续查询输入/输出设备的状态直到设备做好了数据传输的准备。图 4-10 向我们展示了程序控制输入/输出的流程。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/I_O_control_by_program.png"></p>
+<p class="post-text-tablename">图 4-10 程序控制输入/输出</p>
+
+<p class="post-text-noindent">在<strong>中断控制输入/输出</strong>中，当 CPU 遇到一条输入/输出指令时，它在告知输入/输出设备后便会继续做其他工作，当输入/输出设备做好了数据传输准备时，它会通知 CPU 终端当前工作并将数据传送到 CPU. 图 4-11 向我们展示了中断控制输入/输出的流程。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/I_O_control_by_suspend.png"></p>
+<p class="post-text-tablename">图 4-11 中断控制输入/输出</p>
+
+<p class="post-text-noindent">在<strong>直接存取器存取（DMA）控制输入/输出</strong>中，则采用 DMA 控制器来承担 CPU 的一些功能。DMA 控制器中有寄存器，可在内存传输前后保存数据块。当 CPU 遇到一条输入/输出指令时，它首先发送信息（传输类型、内存单元起始地址、传输字节数等）给 DMA，之后 CPU 就去做其他工作了。当输入/输出设备做好了数据传输准备后，DMA 控制器通知 CPU 移交总线使用权以便在 DMA 和内存间完成数据传输。图 4-12 向我们展示了展示了 DMA 控制输入/输出的流程。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/I_O_control_by_DMA.png"></p>
+<p class="post-text-tablename">图 4-12 DMA 控制输入/输出</p>
+
+<h1>4.4 总线与输入/输出接口</h1>
+
+<p>如图 4-13 所示，CPU 与存储器通过<strong>总线</strong> （bus）相连，总线有三组线路：数据总线、地址总线和控制总线。<strong>数据总线</strong>的数量取决于计算机的字长，<strong>地址总线</strong>的数量取决于内存容量，<strong>控制总线</strong>的数量则取决于控制命令的多少。若计算机字长为 64 位，则数据总线数量为 64 根；若内存容量为 $2^n$ 个字，则地址总线数量为 $n$ 根；若计算机控制命令有 $2^m$ 条，则控制总线数量为 $m$ 根。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/bus.png"></p>
+<p class="post-text-tablename">图 4-13 使用三种总线连接 CPU 和存储器</p>
+
+<p>输入/输出设备通过<strong>输入/输出接口</strong>与连接 CPU 和内存的总线相连，输入/输出接口（或称输入/输出控制器）的主要作用是消除机电、磁性或光学性质的输入/输出设备与纯电子性质的 CPU 和内存在本质上的差异。如今常用的输入/输出接口有用于硬盘、光盘等设备的<strong>串行高技术配置</strong> (Serial Advanced Technology Attachment, <strong>SATA</strong>)、<strong>串行小型计算机系统接口</strong> (Serial Attached Small Computer System Interface, Serial Attached SCSI, <strong>SAS</strong>)，用于鼠标、键盘、U 盘、打印机等设备的<strong>通用串行总线</strong> (Universal Serial Bus, <strong>USB</strong>)，用于数字投影机等显示设备的<strong>数字视频接口</strong> (Digital Visual Interface, <strong>DVI</strong>) ，用于液晶显示器等显示设备的<strong>视频图形阵列端子</strong> (Video Graphics Array connector, <strong>VGA connector</strong>) 等，以及用于电视机、数字音响等设备的<strong>高清多媒体接口</strong>（High Definition Multimedia Interface, <strong>HDMI</strong>）等。而曾广泛应用于硬盘、光盘等设备的小型计算机系统接口 (<strong>SCSI</strong>, 或称并行 SCSI)、<strong>IEEE 1394</strong>（或称火线接口）、（并行）高技术配置（<strong>ATA</strong>, 或称 PATA）以及曾广泛应用于键盘、鼠标等设备的个人系统/2 (Personal System/2, <strong>PS/2</strong>) 接口则已经或正在退出历史的舞台。限于篇幅，如此多的接口显然无法在这里一一介绍，这里我们仅简要介绍一下与我们日常生活形影不离的 USB 接口，对其他接口感兴趣的读者可以自行搜索了解。当然关于其他接口以及 USB 接口更为详尽的内容，笔者也会在学习完计算机组成原理后，于相关专题文章里加以阐述，不过这应该会是挺长时间之后的事情了。闲话不多说了，下面进入正题！</p>
+
+<p></p>
+
+<h1>4.5 计算机的体系结构</h1>
+
+<h1>4.6 简单计算机</h1>
 
 
 </div>
