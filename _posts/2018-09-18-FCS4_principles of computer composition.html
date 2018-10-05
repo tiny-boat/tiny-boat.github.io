@@ -137,9 +137,20 @@ excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元
 
 <p>输入/输出设备通过<strong>输入/输出接口</strong>与连接 CPU 和内存的总线相连，输入/输出接口（或称输入/输出控制器）的主要作用是消除机电、磁性或光学性质的输入/输出设备与纯电子性质的 CPU 和内存在本质上的差异。如今常用的输入/输出接口有用于硬盘、光盘等设备的<strong>串行高技术配置</strong> (Serial Advanced Technology Attachment, <strong>SATA</strong>)、<strong>串行小型计算机系统接口</strong> (Serial Attached Small Computer System Interface, Serial Attached SCSI, <strong>SAS</strong>)，用于鼠标、键盘、U 盘、打印机等设备的<strong>通用串行总线</strong> (Universal Serial Bus, <strong>USB</strong>)，用于数字投影机等显示设备的<strong>数字视频接口</strong> (Digital Visual Interface, <strong>DVI</strong>) ，用于液晶显示器等显示设备的<strong>视频图形阵列端子</strong> (Video Graphics Array connector, <strong>VGA connector</strong>) 等，以及用于电视机、数字音响等设备的<strong>高清多媒体接口</strong>（High Definition Multimedia Interface, <strong>HDMI</strong>）等。而曾广泛应用于硬盘、光盘等设备的小型计算机系统接口 (<strong>SCSI</strong>, 或称并行 SCSI)、<strong>IEEE 1394</strong>（或称火线接口）、（并行）高技术配置（<strong>ATA</strong>, 或称 PATA）以及曾广泛应用于键盘、鼠标等设备的个人系统/2 (Personal System/2, <strong>PS/2</strong>) 接口则已经或正在退出历史的舞台。限于篇幅，如此多的接口显然无法在这里一一介绍，这里我们仅简要介绍一下与我们日常生活形影不离的 USB 接口，对其他接口感兴趣的读者可以自行搜索了解。当然关于其他接口以及 USB 接口更为详尽的内容，笔者也会在学习完计算机组成原理后，于相关专题文章里加以阐述，不过这应该会是挺长时间之后的事情了。闲话不多说了，下面进入正题！</p>
 
-<p></p>
+<p>图 4-14 向我们展示了 USB 接口及其与输入/输出设备、CPU、内存的连接方式。USB 2.0 允许多达 127 个设备组成树状拓扑结构连接到一个 USB 接口上，其中接口（控制器, 根集线器）作为树的根，集线器作为中间节点，设备作为末端节点。根集线器能感知树中其他集线器，而其他集线器仅有传送数据的功能。输入/输出设备可以在不需要关闭计算机的情况下方便地连接到树中或从树中移除，这一特性在计算机科学中被称为<strong>热交换/热插拔</strong>（hot swapping/plugging）。USB 使用 4 根线的电缆，其中 2 根线从总线取得电压，用来为像键盘和鼠标这样的低压设备提供电压，其他 2 根线用来传送数据、地址和控制信号，为了减小噪声这 2 根线是纠缠在一起的。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/USB.png"></p>
+<p class="post-text-tablename">图 4-14 通用串行总线（USB）</p>
+
+<p class="post-text-noindent">USB 2.0 提供三种传输速率：1.5 Mbps（用于低速设备如键盘和鼠标）、12 Mbps（用于中速设备如打印机）和 <strong>480 Mbps</strong>（用于高速设备如大容量存储设备）。2008 年 11 月，<strong>USB-IF</strong> 发布 <strong>USB 3.0</strong>，其传输速率较 USB 2.0 提高 10 倍，由 480 Mbps 大幅提升到 <strong>5 Gbps</strong>。 USB 3.0 插座通常是蓝色的，并向下兼容 USB 2.0。2013 年 7 月 31 日，USB-IF 发布 <strong>USB 3.1</strong>，其传输速率提升至 <strong>10 Gbps</strong>，同时也向下兼容 USB 2.0/1.0，但如果要得到 10Gbps 的传输速率，主机和目标端必须同时具备对应的芯片。2017 年 10 月 22 日，USB-IF 又发布 <strong>USB 3.2</strong>，它在现有的 USB Type-C 数据线上实现了双通道，从而实现了传输速率的进一步翻倍，同时自 USB 3.2 开始，Type-C 将成为唯一推荐的接口方案。</p>
+
+<blockquote><strong>USB 开发者论坛</strong>（USB Implementers Forum, <strong>USB-IF</strong>）于 1995 年由一些 USB 开发公司发起成立，它是一个旨在推广、支持与维护通用串行总线（USB）的非营利组织，其著名会员有：苹果、微软、英特尔、惠普、日本电气（NEC）等</blockquote>
+
+<blockquote><strong>日本电气</strong>（日本電気, NEC, 恩益禧）是日本一家跨国信息技术公司，也是作为日本三大经济集团之一的<a href="https://baike.baidu.com/item/%E4%BD%8F%E5%8F%8B%E9%9B%86%E5%9B%A2"><strong>住友集团</strong></a>的成员（另两家是<a href="https://baike.baidu.com/item/%E4%B8%89%E8%8F%B1%E9%9B%86%E5%9B%A2"><strong>三菱集团</strong></a>和<a href="https://baike.baidu.com/item/%E4%B8%89%E4%BA%95%E9%9B%86%E5%9B%A2"><strong>三井集团</strong></a>），其总部位于东京都港区。NEC 为商业企业、通信服务企业以及政府提供信息技术（IT）和网络产品。它的经营范围主要分成三个部分：IT 解决方案、网络解决方案和电子设备。IT 解决方案主要是向商业企业、政府和个人用户提供软件、硬件和相关服务。网络解决方案主要是设计和提供宽带系统、移动和无线通信网络系统、移动电话、广播和其他系统。NEC 涉足的电子设备包括半导体、显示器以及其他的电子器件，也包括面向国际市场的 Versa 系列笔记本电脑和面向日本国内市场的 LaVie 系列笔记本电脑。此外，NEC 发明的地球模拟器曾是 2002 年到 2004 年的那个时间段里世界上运算速度最快的超级计算机。</blockquote>
 
 <h1>4.5 计算机的体系结构</h1>
+
+
 
 <h1>4.6 简单计算机</h1>
 
