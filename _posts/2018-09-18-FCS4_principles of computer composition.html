@@ -30,11 +30,16 @@ excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/machine_cycle.png"></p>
 <p class="post-text-tablename">图 4-2 机器周期的步骤</p>
 
+<p class="post-text-noindent">在早期的计算机中，机器周期的三个阶段需要串行完成，现代计算机则使用<strong>流水线</strong>技术来提高<strong>吞吐量</strong>（计算机在单位时间内所能完成的指令总数）。图 4-3 是流水线的示意图。然而，流水线并不像这样简单，如当它遇到转移指令时就会出现一些问题，此时在管道中的指令应该被丢弃。但是，新的 CPU 设计已经克服了流水线技术的大部分缺点，有些新的 CPU 设计甚至能同时进行多个取指令周期。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/flow_line.png"></p>
+<p class="post-text-tablename">图 4-3 流水线</p>
+
 <h1>4.2 存储器</h1>
 
 <p>本章中我们所讲的存储器是计算机中内部用来存储数据的器件，它不包括我们通常提到的硬盘、光盘等外部存储设备，在本章中，这些外部存储设备将在输入/输出单元下讲述。事实上，笔者觉得在这里，将存储器改为内部存储器，或许要更准确一些。但在本章中，笔者仍将与 Behrouz Forouzan 先生所著的 《计算机科学导论》 保持一致，采用 “存储器” 一词指代内部存储器件，在此特别强调一下，望读者明晰。</p>
 
-<p>计算机需要许多的存储器，尤其是又快又便宜的存储器，然而遗憾的是：速度与价钱水火不相容，速度越快价格也越高。解决的办法是：用少量高速存储器来存储需要快速访问的数据（如：<strong>寄存器</strong>），用适量的中速存储器来存储需要经常访问的数据（如：<strong>高速缓冲存储器</strong>），用大量低速存储器存储不经常访问的数据（如：<strong>主存</strong>）。图 4-3 向我们展示了存储器的层次结构。</p>
+<p>计算机需要许多的存储器，尤其是又快又便宜的存储器，然而遗憾的是：速度与价钱水火不相容，速度越快价格也越高。解决的办法是：用少量高速存储器来存储需要快速访问的数据（如：<strong>寄存器</strong>），用适量的中速存储器来存储需要经常访问的数据（如：<strong>高速缓冲存储器</strong>），用大量低速存储器存储不经常访问的数据（如：<strong>主存</strong>）。图 4-4 向我们展示了存储器的层次结构。</p>
 
 <blockquote><strong>高速缓冲存储器</strong>简称缓存，其英文名为 cache. cache 一词来源于 1967 年的一篇电子工程期刊论文。其作者将法语词 “cache” 赋予 “safekeeping storage” 的涵义，用于电脑工程领域。</blockquote>
 
@@ -46,7 +51,7 @@ excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元
 </blockquote>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/memory_structure.png"></p>
-<p class="post-text-tablename">图 4-3 存储器的层次结构</p>
+<p class="post-text-tablename">图 4-4 存储器的层次结构</p>
 
 <p>主存与缓存均是<strong>随机存取存储器</strong>（Random-access Memory,RAM）,用户可对其进行读写操作，但当系统断电后，存储器中的所有信息就不复存在了。主存使用<strong>动态 RAM 技术</strong>（DRAM），它使用<strong>电容器</strong>充放电状态的不同表示 1 和 0，充电时为 1，放电时为 0。但由于电容器会随着时间的流逝而漏掉一部分电，因此内存单元需要周期性地刷新，速度较慢，价格也相应较低。缓存使用<strong>静态 RAM 技术</strong>（SRAM），它使用传统的<strong>触发器门电路</strong>保存数据，这些门保持 0 或 1 的状态，通电时数据始终存在，无需刷新，因而速度较快，价格也相应较高。至于其中原理以及究竟什么是触发器门电路，笔者还不得而知。</p>
 
@@ -62,17 +67,17 @@ excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元
 
 <p>输入/输出单元包括非存储性输入设备键盘、鼠标、操作杆、扫描仪等，非存储性输出设备监视器、打印机等，存储性输入/输出设备磁盘、光盘、U 盘等。这里我们主要介绍磁盘和光盘。</p>
 
-<p><strong>磁盘</strong>即我们现在常说的<strong>机械硬盘</strong>（mechanical hard disk,HDD）,它使用磁介质存储数据。磁盘由一张一张的磁片叠加而成，呈圆环形的磁片被划分成若干个小圆环形磁道，每个磁道又分成若干个扇区，磁道间通过磁道内部间隔隔开，扇区间则通过扇区内部间隔隔开。图 4-4 向我们展示了磁盘的结构。</p>
+<p><strong>磁盘</strong>即我们现在常说的<strong>机械硬盘</strong>（mechanical hard disk,HDD）,它使用磁介质存储数据。磁盘由一张一张的磁片叠加而成，呈圆环形的磁片被划分成若干个小圆环形磁道，每个磁道又分成若干个扇区，磁道间通过磁道内部间隔隔开，扇区间则通过扇区内部间隔隔开。图 4-5 向我们展示了磁盘的结构。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/HDD.png"></p>
-<p class="post-text-tablename">图 4-4 磁盘的结构</p>
+<p class="post-text-tablename">图 4-5 磁盘的结构</p>
 
 <p class="post-text-noindent">数据的读写是通过盘上每一个磁片的读/写磁头读写磁介质表面实现的，磁片有磁性的地方表示 1，无磁性的地方则表示 0。磁盘是一种典型的<strong>随机存储设备</strong>，在随机存储设备中，数据的存取不需要存取放置在其前的所有其他数据。磁盘的性能取决于<strong>角速度</strong>（磁盘旋转速度）、<strong>寻道时间</strong>（读/写磁头寻找数据所在磁道的时间）和<strong>传送时间</strong>（数据从磁盘移到 CPU 或内存的时间）。</p>
 
-<p><strong>光盘</strong>使用光介质存储数据，包括只读光盘（CD-ROM）、可刻录光盘（CD-R）、可重写光盘（CD-RW）、数字多功能光盘（DVD）以及最新的蓝光光盘（BD）。我们首先介绍只读光盘（CD-ROM），CD-ROM 的制造如图 4-5 所示，分为以下三个步骤：</p>
+<p><strong>光盘</strong>使用光介质存储数据，包括只读光盘（CD-ROM）、可刻录光盘（CD-R）、可重写光盘（CD-RW）、数字多功能光盘（DVD）以及最新的蓝光光盘（BD）。我们首先介绍只读光盘（CD-ROM），CD-ROM 的制造如图 4-6 所示，分为以下三个步骤：</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/CD-ROM.png"></p>
-<p class="post-text-tablename">图 4-5 CD-ROM 的制造</p>
+<p class="post-text-tablename">图 4-6 CD-ROM 的制造</p>
 
 <ul>
 	<li>制造<strong>主盘</strong>：使用<strong>高能红外激光</strong>在塑料涂层上刻写位模式，激光束使得塑料涂层上形成一系列的<strong>坑</strong>和<strong>纹间表面</strong>用以代表 0 和 1</li>
@@ -80,15 +85,15 @@ excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元
 	<li>制造 CD-ROM：将溶解的<strong>聚碳酸酯树脂</strong>注入模盘，由此形成像主盘一样的坑，在其上添加一层<strong>铝制反射层</strong>，然后在反射层上添加一层保护漆和标签</li>
 </ul>
 
-<p class="post-text-noindent">CD-ROM 依靠<strong>低能激光束</strong>读取数据，激光束在经过纹间表面时会被铝质反射层反射，在经过坑时会被坑的边缘和铝质反射层反射两次，由于坑的深度为激光束波长的 1/4，这两次反射经叠加后会减弱，因此激光束在经过纹间表面和坑时会得到强弱不同的信号反射，这样 CD-ROM 就能读取光盘上的数据了。<strong>CD-R</strong> 仅在 CD-ROM 上增加了一项功能：可以写入一次数据，其制造技术与 CD-ROM 基本相同，不同之处在于无需使用主盘和模盘、反射层材料为金、反射层和聚碳酸酯间加入了染料。CD-R 的刻录通过高能激光束在染料层上的烧制实现，被激光照射的区域成为模拟的坑，没有被照射的区域成为模拟的纹间表面。CD-R 数据的读取通过低能激光束实现，激光束在模拟的纹间表面上反射，在模拟的坑上不反射。图 4-6 展示了 CD-R 的制造技术。</p>
+<p class="post-text-noindent">CD-ROM 依靠<strong>低能激光束</strong>读取数据，激光束在经过纹间表面时会被铝质反射层反射，在经过坑时会被坑的边缘和铝质反射层反射两次，由于坑的深度为激光束波长的 1/4，这两次反射经叠加后会减弱，因此激光束在经过纹间表面和坑时会得到强弱不同的信号反射，这样 CD-ROM 就能读取光盘上的数据了。<strong>CD-R</strong> 仅在 CD-ROM 上增加了一项功能：可以写入一次数据，其制造技术与 CD-ROM 基本相同，不同之处在于无需使用主盘和模盘、反射层材料为金、反射层和聚碳酸酯间加入了染料。CD-R 的刻录通过高能激光束在染料层上的烧制实现，被激光照射的区域成为模拟的坑，没有被照射的区域成为模拟的纹间表面。CD-R 数据的读取通过低能激光束实现，激光束在模拟的纹间表面上反射，在模拟的坑上不反射。图 4-7 展示了 CD-R 的制造技术。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/CD-R.png"></p>
-<p class="post-text-tablename">图 4-6 CD-R 的制造</p>
+<p class="post-text-tablename">图 4-7 CD-R 的制造</p>
 
-<p class="post-text-noindent"><strong>CD-RW</strong> 在 CD-R 的基础上又进一步实现了多次写入数据的功能，它的制造技术与 CD-R 基本相同，不同之处在于使用了银、锢、锑、碲的合金替代了染料，这种材料具有晶体态和无定型态两种稳定状态。CD-RW 的刻录通过高能激光束在合金层创建模拟的坑（由晶体态变为无定型态）实现，CD-RW 的擦写通过中等能量激光束将模拟的坑变为模拟的纹间表面（由无定型态变为晶体态）实现，CD-RW 数据的读取与 CD-R 一致。另外，CD-RW、CD-R 与 CD-ROM 的容量（650 Mb）和数据传输速率（从 150 KB/s 到 6 MB/s 不等）是一致的。图 4-7 展示了 CD-RW 的制造技术。</p>
+<p class="post-text-noindent"><strong>CD-RW</strong> 在 CD-R 的基础上又进一步实现了多次写入数据的功能，它的制造技术与 CD-R 基本相同，不同之处在于使用了银、锢、锑、碲的合金替代了染料，这种材料具有晶体态和无定型态两种稳定状态。CD-RW 的刻录通过高能激光束在合金层创建模拟的坑（由晶体态变为无定型态）实现，CD-RW 的擦写通过中等能量激光束将模拟的坑变为模拟的纹间表面（由无定型态变为晶体态）实现，CD-RW 数据的读取与 CD-R 一致。另外，CD-RW、CD-R 与 CD-ROM 的容量（650 Mb）和数据传输速率（从 150 KB/s 到 6 MB/s 不等）是一致的。图 4-8 展示了 CD-RW 的制造技术。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/CD-RW.png"></p>
-<p class="post-text-tablename">图 4-7 CD-RW 的制造</p>
+<p class="post-text-tablename">图 4-8 CD-RW 的制造</p>
 
 <p class="post-text-noindent"><strong>DVD</strong> 使用与 CD-ROM 类似的技术，其优化主要体现在以下几点：</p>
 
@@ -103,44 +108,44 @@ excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元
 
 <p>在本节最后，我们大致讲一下 CPU 读写输入/输出设备数据时的两种不同寻址方式：I/O 独立寻址和 I/O 存储器映射寻址，以及用命令将数据从输入/输出设备传输到 CPU 和内存时，为协调输入/输出设备与 CPU 在运行速度上的差异而采取的三种不同方式：程序控制输入/输出、中断控制输入/输出和直接存储器存取（DMA）控制输入/输出。在这一部分涉及到的总线以及控制器（接口）的概念将会在 4.4 节中作详细阐述。</p>
 
-<p>在 <strong>I/O 独立寻址</strong>中，用来读/写输入/输出设备的指令与用来读/写内存的指令完全不同，因为指令的不同，输入/输出设备的地址可以和内存地址重复而不致混淆，图 4-8 是 I/O 独立寻址的一个示例。</p>
+<p>在 <strong>I/O 独立寻址</strong>中，用来读/写输入/输出设备的指令与用来读/写内存的指令完全不同，因为指令的不同，输入/输出设备的地址可以和内存地址重复而不致混淆，图 4-9 是 I/O 独立寻址的一个示例。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/I_O_independent_addressing.png"></p>
-<p class="post-text-tablename">图 4-8 I/O 独立寻址</p>
+<p class="post-text-tablename">图 4-9 I/O 独立寻址</p>
 
-<p class="post-text-noindent">在 <strong>I/O 存储器映射寻址</strong>中，用来读/写输入/输出设备的指令与用来读/写内存的指令是相同的，因为指令的相同，输入/输出设备将会占用一部分内存地址，图 4-9 是 I/O 存储器映射寻址的一个示例。</p>
+<p class="post-text-noindent">在 <strong>I/O 存储器映射寻址</strong>中，用来读/写输入/输出设备的指令与用来读/写内存的指令是相同的，因为指令的相同，输入/输出设备将会占用一部分内存地址，图 4-10 是 I/O 存储器映射寻址的一个示例。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/I_O_memory_mapping_addressing.png"></p>
-<p class="post-text-tablename">图 4-9 I/O 存储器映射寻址</p>
+<p class="post-text-tablename">图 4-10 I/O 存储器映射寻址</p>
 
-<p>在<strong>程序控制输入/输出</strong>中，当 CPU 遇到一条输入/输出指令时，它会停下当前的工作而查询输入/输出设备的状态，如果设备做好了数据传输准备，那么数据将会被传送到 CPU，否则 CPU 将继续查询输入/输出设备的状态直到设备做好了数据传输的准备。图 4-10 向我们展示了程序控制输入/输出的流程。</p>
+<p>在<strong>程序控制输入/输出</strong>中，当 CPU 遇到一条输入/输出指令时，它会停下当前的工作而查询输入/输出设备的状态，如果设备做好了数据传输准备，那么数据将会被传送到 CPU，否则 CPU 将继续查询输入/输出设备的状态直到设备做好了数据传输的准备。图 4-11 向我们展示了程序控制输入/输出的流程。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/I_O_control_by_program.png"></p>
-<p class="post-text-tablename">图 4-10 程序控制输入/输出</p>
+<p class="post-text-tablename">图 4-11 程序控制输入/输出</p>
 
-<p class="post-text-noindent">在<strong>中断控制输入/输出</strong>中，当 CPU 遇到一条输入/输出指令时，它在告知输入/输出设备后便会继续做其他工作，当输入/输出设备做好了数据传输准备时，它会通知 CPU 终端当前工作并将数据传送到 CPU. 图 4-11 向我们展示了中断控制输入/输出的流程。</p>
+<p class="post-text-noindent">在<strong>中断控制输入/输出</strong>中，当 CPU 遇到一条输入/输出指令时，它在告知输入/输出设备后便会继续做其他工作，当输入/输出设备做好了数据传输准备时，它会通知 CPU 终端当前工作并将数据传送到 CPU. 图 4-12 向我们展示了中断控制输入/输出的流程。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/I_O_control_by_suspend.png"></p>
-<p class="post-text-tablename">图 4-11 中断控制输入/输出</p>
+<p class="post-text-tablename">图 4-12 中断控制输入/输出</p>
 
-<p class="post-text-noindent">在<strong>直接存取器存取（DMA）控制输入/输出</strong>中，则采用 DMA 控制器来承担 CPU 的一些功能。DMA 控制器中有寄存器，可在内存传输前后保存数据块。当 CPU 遇到一条输入/输出指令时，它首先发送信息（传输类型、内存单元起始地址、传输字节数等）给 DMA，之后 CPU 就去做其他工作了。当输入/输出设备做好了数据传输准备后，DMA 控制器通知 CPU 移交总线使用权以便在 DMA 和内存间完成数据传输。图 4-12 向我们展示了展示了 DMA 控制输入/输出的流程。</p>
+<p class="post-text-noindent">在<strong>直接存取器存取（DMA）控制输入/输出</strong>中，则采用 DMA 控制器来承担 CPU 的一些功能。DMA 控制器中有寄存器，可在内存传输前后保存数据块。当 CPU 遇到一条输入/输出指令时，它首先发送信息（传输类型、内存单元起始地址、传输字节数等）给 DMA，之后 CPU 就去做其他工作了。当输入/输出设备做好了数据传输准备后，DMA 控制器通知 CPU 移交总线使用权以便在 DMA 和内存间完成数据传输。图 4-13 向我们展示了展示了 DMA 控制输入/输出的流程。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/I_O_control_by_DMA.png"></p>
-<p class="post-text-tablename">图 4-12 DMA 控制输入/输出</p>
+<p class="post-text-tablename">图 4-13 DMA 控制输入/输出</p>
 
 <h1>4.4 总线与输入/输出接口</h1>
 
-<p>如图 4-13 所示，CPU 与存储器通过<strong>总线</strong> （bus）相连，总线有三组线路：数据总线、地址总线和控制总线。<strong>数据总线</strong>的数量取决于计算机的字长，<strong>地址总线</strong>的数量取决于内存容量，<strong>控制总线</strong>的数量则取决于控制命令的多少。若计算机字长为 64 位，则数据总线数量为 64 根；若内存容量为 $2^n$ 个字，则地址总线数量为 $n$ 根；若计算机控制命令有 $2^m$ 条，则控制总线数量为 $m$ 根。</p>
+<p>如图 4-14 所示，CPU 与存储器通过<strong>总线</strong> （bus）相连，总线有三组线路：数据总线、地址总线和控制总线。<strong>数据总线</strong>的数量取决于计算机的字长，<strong>地址总线</strong>的数量取决于内存容量，<strong>控制总线</strong>的数量则取决于控制命令的多少。若计算机字长为 64 位，则数据总线数量为 64 根；若内存容量为 $2^n$ 个字，则地址总线数量为 $n$ 根；若计算机控制命令有 $2^m$ 条，则控制总线数量为 $m$ 根。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/bus.png"></p>
-<p class="post-text-tablename">图 4-13 使用三种总线连接 CPU 和存储器</p>
+<p class="post-text-tablename">图 4-14 使用三种总线连接 CPU 和存储器</p>
 
 <p>输入/输出设备通过<strong>输入/输出接口</strong>与连接 CPU 和内存的总线相连，输入/输出接口（或称输入/输出控制器）的主要作用是消除机电、磁性或光学性质的输入/输出设备与纯电子性质的 CPU 和内存在本质上的差异。如今常用的输入/输出接口有用于硬盘、光盘等设备的<strong>串行高技术配置</strong> (Serial Advanced Technology Attachment, <strong>SATA</strong>)、<strong>串行小型计算机系统接口</strong> (Serial Attached Small Computer System Interface, Serial Attached SCSI, <strong>SAS</strong>)，用于鼠标、键盘、U 盘、打印机等设备的<strong>通用串行总线</strong> (Universal Serial Bus, <strong>USB</strong>)，用于数字投影机等显示设备的<strong>数字视频接口</strong> (Digital Visual Interface, <strong>DVI</strong>) ，用于液晶显示器等显示设备的<strong>视频图形阵列端子</strong> (Video Graphics Array connector, <strong>VGA connector</strong>) 等，以及用于电视机、数字音响等设备的<strong>高清多媒体接口</strong>（High Definition Multimedia Interface, <strong>HDMI</strong>）等。而曾广泛应用于硬盘、光盘等设备的小型计算机系统接口 (<strong>SCSI</strong>, 或称并行 SCSI)、<strong>IEEE 1394</strong>（或称火线接口）、（并行）高技术配置（<strong>ATA</strong>, 或称 PATA）以及曾广泛应用于键盘、鼠标等设备的个人系统/2 (Personal System/2, <strong>PS/2</strong>) 接口则已经或正在退出历史的舞台。限于篇幅，如此多的接口显然无法在这里一一介绍，这里我们仅简要介绍一下与我们日常生活形影不离的 USB 接口，对其他接口感兴趣的读者可以自行搜索了解。当然关于其他接口以及 USB 接口更为详尽的内容，笔者也会在学习完计算机组成原理后，于相关专题文章里加以阐述，不过这应该会是挺长时间之后的事情了。闲话不多说了，下面进入正题！</p>
 
-<p>图 4-14 向我们展示了 USB 接口及其与输入/输出设备、CPU、内存的连接方式。USB 2.0 允许多达 127 个设备组成树状拓扑结构连接到一个 USB 接口上，其中接口（控制器, 根集线器）作为树的根，集线器作为中间节点，设备作为末端节点。根集线器能感知树中其他集线器，而其他集线器仅有传送数据的功能。输入/输出设备可以在不需要关闭计算机的情况下方便地连接到树中或从树中移除，这一特性在计算机科学中被称为<strong>热交换/热插拔</strong>（hot swapping/plugging）。USB 使用 4 根线的电缆，其中 2 根线从总线取得电压，用来为像键盘和鼠标这样的低压设备提供电压，其他 2 根线用来传送数据、地址和控制信号，为了减小噪声这 2 根线是纠缠在一起的。</p>
+<p>图 4-15 向我们展示了 USB 接口及其与输入/输出设备、CPU、内存的连接方式。USB 2.0 允许多达 127 个设备组成树状拓扑结构连接到一个 USB 接口上，其中接口（控制器, 根集线器）作为树的根，集线器作为中间节点，设备作为末端节点。根集线器能感知树中其他集线器，而其他集线器仅有传送数据的功能。输入/输出设备可以在不需要关闭计算机的情况下方便地连接到树中或从树中移除，这一特性在计算机科学中被称为<strong>热交换/热插拔</strong>（hot swapping/plugging）。USB 使用 4 根线的电缆，其中 2 根线从总线取得电压，用来为像键盘和鼠标这样的低压设备提供电压，其他 2 根线用来传送数据、地址和控制信号，为了减小噪声这 2 根线是纠缠在一起的。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/USB.png"></p>
-<p class="post-text-tablename">图 4-14 通用串行总线（USB）</p>
+<p class="post-text-tablename">图 4-15 通用串行总线（USB）</p>
 
 <p class="post-text-noindent">USB 2.0 提供三种传输速率：1.5 Mbps（用于低速设备如键盘和鼠标）、12 Mbps（用于中速设备如打印机）和 <strong>480 Mbps</strong>（用于高速设备如大容量存储设备）。2008 年 11 月，<strong>USB-IF</strong> 发布 <strong>USB 3.0</strong>，其传输速率较 USB 2.0 提高 10 倍，由 480 Mbps 大幅提升到 <strong>5 Gbps</strong>。 USB 3.0 插座通常是蓝色的，并向下兼容 USB 2.0。2013 年 7 月 31 日，USB-IF 发布 <strong>USB 3.1</strong>，其传输速率提升至 <strong>10 Gbps</strong>，同时也向下兼容 USB 2.0/1.0，但如果要得到 10Gbps 的传输速率，主机和目标端必须同时具备对应的芯片。2017 年 10 月 22 日，USB-IF 又发布 <strong>USB 3.2</strong>，它在现有的 USB Type-C 数据线上实现了双通道，从而实现了传输速率的进一步翻倍，同时自 USB 3.2 开始，Type-C 将成为唯一推荐的接口方案。</p>
 
@@ -150,9 +155,27 @@ excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元
 
 <h1>4.5 计算机的体系结构</h1>
 
+<p>虽然我们说当今计算机的体系结构都基于冯·诺依曼模型，但其具体实现细节仍是多种多样的。要对这一部分做详细讲述是不现实的，不仅因为篇幅有限，而且因为笔者对此实在还知之甚少。这里我们主要介绍三个概念：复杂指令集计算机、精简指令集计算机以及并行处理。</p>
 
+<p><strong>复杂指令集计算机</strong>（Complex Instruction Set Computer, CISC）的设计策略是使用大量的指令，包括复杂指令。由于每一项简单或复杂的任务都有一条对应的指令，在这种体系结构下程序设计相对容易。然而指令集的复杂性使得 CPU 和控制单元的电路非常复杂。为此，CISC 体系结构的设计者提出了减少这种复杂性的解决方案：CPU 不再直接执行复杂的机器语言指令，而只执行被称为<strong>微操作</strong> (micro-operation, micro-ops, μops) 的简单操作。那些复杂指令对应的一系列简单指令被保存在一种被称为<strong>微内存</strong>的特殊内存中，使用微操作的程序设计被称为<strong>微程序设计</strong>。从奔腾 Pro (Pentium Pro) 开始，Intel CPU 便开始使用 micro-ops，每一个 x86 CISC 指令在取址译码后，将会被翻译成一个或多个 RISC 指令，在流水线的后半部分，可以利用 RISC CPU 的一些技术来提高指令的执行效率。 RISC 是<strong>精简指令集计算机</strong>（Reduce Instruction Set Computer）的英文简称，顾名思义，它的设计策略是使用少量的指令完成最少的简单操作，复杂指令用简单指令子集模拟。因此，在 RISC 体系结构下进行程序设计相对困难和费时。很难说，今天我们哪一台计算机的体系结构是绝对的 CISC 或者是绝对的 RISC，世界不是非黑即白的，正如我们上面提到的 Intel Pentium Pro CPU，作为曾经 CISC 坚定支持者的行业老大 Intel 从上世纪 90 年代开始就在利用 RISC 技术来减少 CISC 技术带来的负面影响，业界人士曾经戏称 Intel Pentium Pro 为披着 CISC 外衣的 RISC。</p>
+
+<p>拥有多个控制单元、多个算术逻辑单元或多个内存单元的计算机被称为能进行<strong>并行处理</strong>的计算机，像流水线技术一样，并行处理也能提高计算机在单位时间内完成的指令总数即计算机的吞吐量。并行处理涉及多种不同的技术：<strong>SIMD</strong>、<strong>MISD</strong> 以及 <strong>MIMD</strong>。SIMD 即<strong>单指令流，多数据流</strong>，它是指单个指令流的单个指令作用于多个数据项上，图 4-16 向我们展示了 SIMD 组织的构造。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/SIMD.png"></p>
+<p class="post-text-tablename">图 4-16 SIMD 组织</p>
+
+<p class="post-text-noindent">MISD 即<strong>多指令流，单数据流</strong>，它是指多个指令流的多个指令作用于单个数据项上，图 4-17 向我们展示了 MISD 组织的构造。 </p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/MISD.png"></p>
+<p class="post-text-tablename">图 4-17 MISD 组织</p>
+
+<p class="post-text-noindent">MIMD 即<strong>多指令流、多数据流</strong>，它是指多个指令流的多个指令作用于多个数据项上，图 4-18 向我们展示了 MIMD 组织的构造。许多人认为只有 MIMD 才是真正意义上的并行处理的体系结构。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/MIMD.png"></p>
+<p class="post-text-tablename">图 4-18 MIMD 组织</p>
 
 <h1>4.6 简单计算机</h1>
 
+<p>在这一节中，我们将通过自定义的一台简单计算机来讲述计算机是如何执行一次加法运算的，相信通过这一节的学习，我们可以对上述讲到的计算机硬件以及由其搭建起的计算机体系结构有一个更为深入的理解，同时也可以知道用高级编程语言编写的哪怕简单的程序其在计算机内部的执行过程也并不简单：一次加法运算在高级编程语言中不过是一行代码的事情，然而在计算机内部要实现这样一次加法却要经历很多步骤。</p>
 
 </div>
