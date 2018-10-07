@@ -1,0 +1,33 @@
+---
+layout: post
+title:  "机器学习(1):绪论"
+date:   2018-10-07 19:41:00
+categories: Computer_Science Machine_Learning
+excerpt: "机器学习是研究数据分析方法的计算机科学分支，但它吸收了许多数学和统计学方法并以这些方法为基础，因此它也是一门横跨数学、统计学、计算机科学等多个学科领域的交叉学科"
+---
+
+<div class="post-style">
+
+<p>周志华教授在其所著 《机器学习》 一书中将机器学习定义为：一门致力于研究如何通过计算的手段，利用数据来改善系统自身性能的学科。同时周教授指出：机器学习主要研究从数据中产生模型的算法，即学习算法（learning alogrithm）. 笔者认为可以将机器学习定义得更简单一点：机器学习就是研究数据分析方法的计算机科学分支，但它吸收了许多数学和统计学方法并以这些方法为基础，因此它也是一门横跨数学、统计学、计算机科学等多个学科领域的交叉学科。</p>
+
+<blockquote><strong>模型</strong> (model) / <strong>学习器</strong> (learner) 是从数据中学到的结果，这个结果通常是一个函数或可以看成为一个函数。有的文献会用模型指全局性结果，而用<strong>模式</strong>指局部性结果。</blockquote>
+
+<p>下面我们列举一下机器学习中的常用术语，事实上，这些常用术语中有许多都可以在统计学中找到意义相近或相同的术语与之对应，笔者将对此加以说明。令一个 $m\times d$ 实矩阵</p>
+
+<p class="post-text-formula">
+$$D_1 = \left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \right )^{\bf{T}}, \boldsymbol{x}_i = \left ( x_{i1},x_{i2},\cdots,x_{id} \right ),x_{i} \in \mathcal {X}\subseteq {\textbf {R}^d}$$</p>
+
+<p class="post-text-noindent">以及一个 $m\times \left(d+1\right)$ 实矩阵</p>
+
+<p class="post-text-formula">$$D_2 = \left ( \left(\boldsymbol{x}_1,y_1\right), \left(\boldsymbol{x}_2,y_2\right),\cdots, \left(\boldsymbol{x}_m,y_m\right) \right )^{\bf{T}},\boldsymbol{x}_i \ 同上\ ,y_i \in \mathcal {Y}\subseteq{\textbf R}$$</p>
+
+<p>$D_1$ 或 $D_2$ 称为一个<strong>数据集</strong> (data set)，它们都有 $m$ 个<strong>示例</strong>/<strong>样本</strong>/<strong>特征向量</strong> (instance / sample / feature vector) $\left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \right )$，$D_2$ 中则有 $m$ 个<strong>样例</strong> (example) $\left ( \left(\boldsymbol{x}_1,y_1\right), \left(\boldsymbol{x}_2,y_2\right),\cdots, \left(\boldsymbol{x}_m,y_m\right) \right )$。它们都有 $d$ 个<strong>属性</strong>/<strong>特征</strong> (attribute / feature)，$D_2$ 中还另有一个<strong>标记</strong> (label)。它们的第 $i$ 个示例 $\boldsymbol{x}_i$ 的<strong>维数</strong> (dimensionality) 为 $d$，即它们有 $d$ 个<strong>属性值</strong> (attribute value) $x_{i1},x_{i2},\cdots,x_{id}$。由属性张成的空间 $\mathcal {X}$ 称为<strong>属性空间</strong>/<strong>样本空间</strong>/<strong>输入空间</strong> (attribute space / sample space / input space)，由标记张成的空间 $\mathcal {Y}$ 称为<strong>标记空间</strong>/<strong>输出空间</strong> (label space / output space)，我们通常假设样本空间中的全体样本服从一个未知的<strong>分布</strong> (distribution)，且每一个样本都是独立地从分布中采样得到的，即各样本<strong>独立同分布</strong> (independent and identically distributed, i.i.d.)。</p>
+
+<p>我们将对数据集建模的过程称为<strong>学习</strong>/<strong>训练</strong> (learning / training)，建模使用的数据集称为<strong>训练数据集</strong> (training data set)，其中的示例称为<strong>训练样本</strong> (training sample)。学得的模型还可称为<strong>假设</strong> (hypothesis)，它对应于数据的某种潜在规律即<strong>真相</strong> (ground-truth)。学得模型后，使用其进行预测的过程称为<strong>测试</strong> (testing)，预测使用的数据集称为<strong>测试数据集</strong> (testing data set)，其中的示例称为<strong>测试样本</strong> (testing sample)。我们将学得的模型适用于新样本的能力称为<strong>泛化</strong> (generalization) 能力。</p>
+
+<p>对类似 $D_1$ 这样没有标记信息的数据，我们可以按照其属性特征将其分为多个类，我们将这种学习方法称之为<strong>聚类</strong> (clustering)，每个类称为一个<strong>簇</strong> (cluster)。对类似 $D_2$ 这样有标记信息的数据，如果其标记信息为离散值，那么这些标记信息相当于示例所属类别，因此我们可以通过学习来预测新的样本所属类别，我们将这种学习方法称之为<strong>分类</strong> (classification)；如果其标记信息为连续值，那么我们可以通过学习来预测新的样本的取值，我们将这种学习方法称之为<strong>回归</strong> (regression). 对于分类问题，当标记信息只有两种取值时，称为<strong>二分类</strong> (binary classification)，否则称为<strong>多分类</strong> (multi-class classification)，在二分类中两个类分别称为<strong>正类</strong> (postive class) 和<strong>反类</strong>/<strong>负类</strong> (negative class)。聚类属于<strong>无监督学习</strong>/<strong>无导师学习</strong> (unsupervised learning)，分类与回归则属于<strong>有监督学习</strong>/<strong>有导师学习</strong> (supervised learning)，此外还有<strong>半监督学习</strong> (semi-supervised learning) 与<strong>强化学习</strong> (reinforcement learning) 等多种学习方法。</p>
+
+<br>
+<p>未完待续……</p>
+
+</div>
