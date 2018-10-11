@@ -12,6 +12,10 @@ excerpt: "机器学习是研究数据分析方法的计算机科学分支，但�
 
 <blockquote><strong>模型</strong> (model) / <strong>学习器</strong> (learner) 是从数据中学到的结果，这个结果通常是一个函数或可以看成为一个函数。有的文献会用模型指全局性结果，而用<strong>模式</strong>指局部性结果。</blockquote>
 
+<blockquote>统计学本是一门研究数据的科学，然而从上个世纪三四十年代开始，它的研究越来越数学化，越来越脱离实际问题，我国统计学界唯一的已故院士陈希孺先生在其所著的 《数理统计简史》 中对此有详细阐述。于是长江后浪推前浪，新兴的计算机科学中专注研究数据的分支学科机器学习，以其基于数据驱动的研究方法而非模型驱动的研究方法，以其对数学、统计学等多门学科的包容性，逐渐在数据分析中取代传统统计学，而成为工业界数据分析尤其是大规模数据分析的主流方法。上世纪六七十年代，一些富有远见的统计学家也意识到了统计研究愈来愈数学化的不良倾向，在他们的推动下，国外的统计教学与研究开始纠正航向，转移到数据驱动的研究方法上来。然而国内目前的教学与研究仍然未能摆脱这种数学化倾向，作为一门研究数据的科学，我们大多数学校的统计学本科生在大学前两年不是泡在数据的海洋里，而是泡在一堆数学公式里面，不是说数学不重要，但依靠公式是孕育不了新的统计思想的。如果我们回看当年 Fisher 提出方差分析方法的历史，就该明白：实际数据分析才是催生新的统计思想或新的数据分析方法的源泉。</blockquote>
+
+<h1>1.1 基本术语</h1>
+
 <p>下面我们列举一下机器学习中的常用术语，事实上，这些常用术语中有许多都可以在统计学中找到意义相近或相同的术语与之对应，笔者将对此加以说明。令一个 $m\times d$ 实矩阵</p>
 
 <p class="post-text-formula">
@@ -21,13 +25,26 @@ $$D_1 = \left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \rig
 
 <p class="post-text-formula">$$D_2 = \left ( \left(\boldsymbol{x}_1,y_1\right), \left(\boldsymbol{x}_2,y_2\right),\cdots, \left(\boldsymbol{x}_m,y_m\right) \right )^{\bf{T}},\boldsymbol{x}_i \ 同上\ ,y_i \in \mathcal {Y}\subseteq{\textbf R}$$</p>
 
-<p>$D_1$ 或 $D_2$ 称为一个<strong>数据集</strong> (data set)，它们都有 $m$ 个<strong>示例</strong>/<strong>样本</strong>/<strong>特征向量</strong> (instance / sample / feature vector) $\left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \right )$，$D_2$ 中则有 $m$ 个<strong>样例</strong> (example) $\left ( \left(\boldsymbol{x}_1,y_1\right), \left(\boldsymbol{x}_2,y_2\right),\cdots, \left(\boldsymbol{x}_m,y_m\right) \right )$。它们都有 $d$ 个<strong>属性</strong>/<strong>特征</strong> (attribute / feature)，$D_2$ 中还另有一个<strong>标记</strong> (label)。它们的第 $i$ 个示例 $\boldsymbol{x}_i$ 的<strong>维数</strong> (dimensionality) 为 $d$，即它们有 $d$ 个<strong>属性值</strong> (attribute value) $x_{i1},x_{i2},\cdots,x_{id}$。由属性张成的空间 $\mathcal {X}$ 称为<strong>属性空间</strong>/<strong>样本空间</strong>/<strong>输入空间</strong> (attribute space / sample space / input space)，由标记张成的空间 $\mathcal {Y}$ 称为<strong>标记空间</strong>/<strong>输出空间</strong> (label space / output space)，我们通常假设样本空间中的全体样本服从一个未知的<strong>分布</strong> (distribution)，且每一个样本都是独立地从分布中采样得到的，即各样本<strong>独立同分布</strong> (independent and identically distributed, i.i.d.)。</p>
+<p class="post-text-noindent">$D_1$ 或 $D_2$ 称为一个<strong>数据集</strong> (data set)，它们都有 $m$ 个<strong>示例</strong>/<strong>样本</strong>/<strong>特征向量</strong> (instance / sample / feature vector) $\left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \right )$，$D_2$ 中则有 $m$ 个<strong>样例</strong> (example) $\left ( \left(\boldsymbol{x}_1,y_1\right), \left(\boldsymbol{x}_2,y_2\right),\cdots, \left(\boldsymbol{x}_m,y_m\right) \right )$。它们都有 $d$ 个<strong>属性</strong>/<strong>特征</strong> (attribute / feature)，$D_2$ 中还另有一个<strong>标记</strong> (label)。它们的第 $i$ 个示例 $\boldsymbol{x}_i$ 的<strong>维数</strong> (dimensionality) 为 $d$，即它们有 $d$ 个<strong>属性值</strong> (attribute value) $x_{i1},x_{i2},\cdots,x_{id}$。由属性张成的空间 $\mathcal {X}$ 称为<strong>属性空间</strong>/<strong>样本空间</strong>/<strong>输入空间</strong> (attribute space / sample space / input space)，由标记张成的空间 $\mathcal {Y}$ 称为<strong>标记空间</strong>/<strong>输出空间</strong> (label space / output space)，我们通常假设样本空间中的全体样本服从一个未知的<strong>分布</strong> (distribution)，且每一个样本都是独立地从分布中采样得到的，即各样本<strong>独立同分布</strong> (independent and identically distributed, i.i.d.)。</p>
 
-<p>我们将对数据集建模的过程称为<strong>学习</strong>/<strong>训练</strong> (learning / training)，建模使用的数据集称为<strong>训练数据集</strong> (training data set)，其中的示例称为<strong>训练样本</strong> (training sample)。学得的模型还可称为<strong>假设</strong> (hypothesis)，它对应于数据的某种潜在规律即<strong>真相</strong> (ground-truth)。学得模型后，使用其进行预测的过程称为<strong>测试</strong> (testing)，预测使用的数据集称为<strong>测试数据集</strong> (testing data set)，其中的示例称为<strong>测试样本</strong> (testing sample)。我们将学得的模型适用于新样本的能力称为<strong>泛化</strong> (generalization) 能力。</p>
+<blockquote>在上述这些概念中，数据集对应于统计学中的<strong>样本</strong> (sample)，示例/样本/特征向量/样例对应于统计学中的<strong>样品</strong> (specimen)，属性/特征对应于统计学中的<strong>变量</strong> (variable)，标记对应于统计学中的<strong>因变量</strong> (dependent variable)。</blockquote>
+
+<p>我们将对数据集建模的过程称为<strong>学习</strong>/<strong>训练</strong> (learning / training)，建模使用的数据集称为<strong>训练数据集</strong> (training data set)，其中的示例称为<strong>训练样本</strong> (training sample)。学得的模型还可称为<strong>假设</strong> (hypothesis)，它对应于数据的某种潜在规律即<strong>真相</strong> (ground-truth)，我们可以把学习过程看做一个在所有假设组成的空间中进行搜索的过程，搜索目标就是找到与训练集匹配的假设，我们将与训练集一致的假设集合称之为<strong>版本空间</strong> (version space)。学得模型后，使用其进行预测的过程称为<strong>测试</strong> (testing)，预测使用的数据集称为<strong>测试数据集</strong> (testing data set)，其中的示例称为<strong>测试样本</strong> (testing sample)。我们将学得的模型适用于新样本的能力称为<strong>泛化</strong> (generalization) 能力。</p>
+
+<blockquote>在上述这些概念中，学习/训练对应于统计学中的<strong>建模</strong> (modeling)，由于传统统计学中使用建模数据评估模型预测效果，上述其他概念如训练数据集和测试数据集，似乎在统计学中都找不到与之对应的术语。</blockquote>
 
 <p>对类似 $D_1$ 这样没有标记信息的数据，我们可以按照其属性特征将其分为多个类，我们将这种学习方法称之为<strong>聚类</strong> (clustering)，每个类称为一个<strong>簇</strong> (cluster)。对类似 $D_2$ 这样有标记信息的数据，如果其标记信息为离散值，那么这些标记信息相当于示例所属类别，因此我们可以通过学习来预测新的样本所属类别，我们将这种学习方法称之为<strong>分类</strong> (classification)；如果其标记信息为连续值，那么我们可以通过学习来预测新的样本的取值，我们将这种学习方法称之为<strong>回归</strong> (regression). 对于分类问题，当标记信息只有两种取值时，称为<strong>二分类</strong> (binary classification)，否则称为<strong>多分类</strong> (multi-class classification)，在二分类中两个类分别称为<strong>正类</strong> (postive class) 和<strong>反类</strong>/<strong>负类</strong> (negative class)。聚类属于<strong>无监督学习</strong>/<strong>无导师学习</strong> (unsupervised learning)，分类与回归则属于<strong>有监督学习</strong>/<strong>有导师学习</strong> (supervised learning)，此外还有<strong>半监督学习</strong> (semi-supervised learning) 与<strong>强化学习</strong> (reinforcement learning) 等多种学习方法。</p>
 
-<br>
+<blockquote>在上述这些概念中，回归、聚类、分类来源于统计学。回归是统计学中<strong>回归分析</strong> (regression analysis) 中的研究内容，聚类、分类则是统计学中的<strong>多元统计分析</strong> (multivariate statistical analysis) 中的研究内容。</blockquote>
+
+<p>有限的训练数据集常常导致版本空间中存在多个与训练数据集一致的假设，此时对于一个具体的学习算法而言，它必须从这些假设中选择一个作为模型，我们将学习算法在学习过程中对某种类型假设的偏好称为<strong>归纳偏好</strong> (inductive bias)。有没有一般性的原则来引导算法确立 “正确的” 偏好呢？答案是有的，如 “<strong>奥卡姆剃刀</strong>” (Occam's razor) 原则指出若有多个假设与观察一致，则选择最简单的一个；“<strong>多释原则</strong>” (principle of multiple explanations) 指出应保留与经验观察一致的所有假设。然而，依据 Wolpert 和 Macready 于 1995 年提出的著名的<strong>没有免费午餐定理</strong> (No Free Lunch Theorem, NFL)，我们可以知道对于任意一个学习算法 $\mathcal{L}_a$，若它在某些问题上比学习算法 $\mathcal{L}_b$ 好，则必然存在另一些问题，在那里 $\mathcal{L}_b$ 比 $\mathcal{L}_a$ 好。NFL 定理告诉我们：脱离具体问题空谈 "什么学习算法更好" 或 “那种归纳偏好更好” 是毫无意义的，因为若考虑所有潜在问题，则所有学习算法都一样好。</p>
+
+<h1>1.2 发展历程</h1>
+
+<p>本节，我们将对机器学习的发展历程与应用现状做一个概括性的陈述，了解历史，我们才能更好地面对未来，下面就让我们开始吧！</p>
+
+<p></p>
+
 <p>未完待续……</p>
 
 </div>
