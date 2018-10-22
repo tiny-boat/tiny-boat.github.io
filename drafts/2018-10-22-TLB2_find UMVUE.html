@@ -1,0 +1,115 @@
+---
+layout: post
+title:  "寻找 UMVUE"
+date:   2018-10-21 10:22:00
+categories: Statistics
+excerpt: '看无偏有效相合性，那才是理想的估计'
+permalink: /TLB/2/
+---
+
+<div class="post-style">
+
+<blockquote>记住无偏有效相合性，那才是理想的估计，估计出明天的风景，年年岁岁把大数据沉积——《统计的旋律》</blockquote>
+
+<h1>1 估计量的评价标准</h1>
+
+<p>在我们大多数的统计教科书中，都可以看到这三个字眼：<strong>无偏</strong>、<strong>有效</strong>与<strong>相合</strong>。它们构成评价一个估计量好坏的三个标准。</p>
+
+<p>我们说一个估计量是无偏的，指的是：平均而言该估计量对参数的估计没有偏差，也就是：</p>
+
+<p class="post-text-formula">
+$$
+E_{\theta }\left(T \right ) = g\left(\theta \right )
+$$
+</p>
+
+<p>我们说一个估计量是有效的，是相对于其他估计量而言的。我们说一个估计量 $T$ 比另一个估计量 $T'$ 有效指的是：该估计量的方差小于另一个估计量，也就是：</p>
+
+<p class="post-text-formula">
+$$
+Var_{\theta }\left(T \right ) < Var_{\theta }\left(T' \right )
+$$
+</p>
+
+<p>我们说一个估计量是相合的，指的是：随着样本量的增加，该估计量将越来越趋近于待估参数，也就是：</p>
+
+<p class="post-text-formula">
+$$
+T \rightarrow g\left(\theta \right), n \rightarrow \infty
+$$
+</p>
+
+<p><strong>均方误差</strong>（Mean Square Error, MSE）是一个综合考虑估计量无偏性和有效性的评价标准，它类似于方差的定义，方差是估计量相对其期望的平均散布程度，而均方误差是估计量相对于待估参数的平均散布程度，即：</p>
+
+<p class="post-text-formula">
+$$
+MSE_{\theta }\left ( T \right ) = E_{\theta }\left(\left[T-g\left(\theta \right ) \right ]^2 \right )
+$$
+</p>
+
+<p class="post-text-noindent">为什么说这个标准综合考虑了无偏性和有效性呢？我们对上述定义做一个等价变形：</p>
+
+<p class="post-text-formula">
+$$
+\begin{aligned} &\ E_{\theta }\left(\left[T-g\left(\theta \right ) \right ]^2 \right ) = E_{\theta }\left(\left[T-E_{\theta }\left(T \right )+E_{\theta }\left(T \right )-g\left(\theta \right ) \right ]^2 \right ) \\
+&= E_{\theta}\left(\left[T-E_{\theta }\left(T \right ) \right]^2 + \left[E_{\theta }\left(T \right )-g\left(\theta \right ) \right ]^2 + 2\left[T-E_{\theta }\left(T \right ) \right]\left[E_{\theta }\left(T \right )-g\left(\theta \right ) \right ] \right ) \\
+&= Var_{\theta }\left(T \right ) + \left[E_{\theta }\left(T \right )-g\left(\theta \right ) \right ]^2 + 2E_{\theta}\left(TE_{\theta}\left(T \right ) - Tg\left(\theta \right ) - E_{\theta}^2\left(T \right ) + E_{\theta}\left(T \right )g\left(\theta \right ) \right ) \\
+&= Var_{\theta }\left(T \right ) + \left[E_{\theta }\left(T \right )-g\left(\theta \right ) \right ]^2 \end{aligned}
+$$
+</p>
+
+<p class="post-text-noindent">所以有：</p>
+
+<p class="post-text-formula">
+$$
+MSE_{\theta }\left ( T \right ) = Var_{\theta }\left(T \right ) + \left[E_{\theta }\left(T \right )-g\left(\theta \right ) \right ]^2
+$$
+</p>
+
+<p class="post-text-noindent">也就是说：估计量的均方误差等于估计量方差与估计量偏差平方的和，如果我们选择一个均方误差较小的估计量，那么这意味着该估计量的偏差较小，方差也较小，我们可以说这样的一个估计量是近似无偏且有效的，我们认为一个近似无偏且有效的估计量是一个比较好的估计量。那么，在这个评价标准下能不能找到一个最好的估计量呢？也就是说拥有一致最小均方误差的估计量是否存在呢？或者换句话说：我们能不能找到这样一个估计量，无论待估参数真值是多少，它的均方误差比其他任何估计量都小。答案是否定的，为什么？除非 $T$ 总能准确无误的估计 $g\left(\theta \right)$，否则我一定可以找到一个恒等于 $g\left(\theta_0 \right)$ 的估计量，它在 $\theta_0$ 处的 $MSE$ 比 $T$ 小，因为一个恒等于 $\theta_0$ 的估计量在 $\theta = \theta_0$ 处的 $MSE$ 为 0，然而现实当中要让一个估计量总是能准确无误地估计待估参数，是一件几乎不可能发生的事情。</p>
+
+<p>在均方误差标准下几乎不可能找到最优估计量，但均方误差又是一个较好的评价估计量的标准，怎么办？统计学家们开始限制估计量的范围，他们不再从所有估计量中去寻找拥有一致最小均方误差的估计量，而是从某个限制类中去寻找拥有一致最小均方误差的估计量。一种对估计量范围作出限制的方式就是无偏，而在无偏估计类下寻找一致最小均方误差估计就等价于在无偏估计类下寻找一致最小方差估计。一致最小方差无偏估计（uniformly minimum-variance unbiased estimator）的英文缩写是 $UMVUE$，大家可以看到，我们课本上 2.4 节、2.5 节的大部分内容乃至 2.6 节的相当一部分内容都在围绕着寻找 $UMVUE$ 这个中心主题在展开。</p>
+
+<p>好，我们在门外转了这么久，下面进入正题：如何寻找 $UMVUE$. 非常抱歉，我无法告诉大家我们的先贤们是怎么想到这些方法的，我只能把教材中提到的方法做一个总结告诉大家，这些方法的证明我还能看下去，但关上书我绝对写不出来。教材里提到的寻找 $UMVUE$ 的定理可以归纳为如下三条：</p>
+
+<ul>
+	<li>无偏估计量 $T$ 为 $g\left(\theta \right)$ 的 $UMVUE$ 当且仅当 $T$ 与 $0$ 的所有无偏估计量不相关</li>
+	<li>作为完备充分统计量函数的无偏估计量一定是 $UMVUE$</li>
+	<li>方差等于 $C-R$ 下界的无偏估计量一定是 $UMVUE$</li>
+</ul>
+
+<p>好，讲完了！</p>
+
+<h1>2 寻找 UMVUE</h1>
+
+<p>我们先看第一个定理：<strong>无偏估计量 $T$ 为 $g\left(\theta \right)$ 的 $UMVUE$ 当且仅当 $T$ 与 $0$ 的所有无偏估计量不相关</strong>。注意，若记 $0$ 的所有无偏估计量构成的集合为 $U_0$，则 $T$ 与 $0$ 的所有无偏估计量不相关等价于</p>
+
+<p class="post-text-formula">
+$$\forall v \in U_0,\ Cov_{\theta}\left(v,T\right)=E_{\theta}\left(vT\right)-E_{\theta}\left(v\right)E_{\theta}\left(T\right)=E_{\theta}\left(vT\right)=0$$
+</p>
+
+<p class="post-text-noindent">于是证明 “无偏估计量 $T$ 为 $g\left(\theta \right)$ 的 $UMVUE$ 当且仅当 $T$ 与 $0$ 的所有无偏估计量不相关” 等价于证明 “<strong>无偏估计量 $T$ 为 $g\left(\theta \right)$ 的 $UMVUE$ 当且仅当 $E_{\theta}\left(vT\right)=0,\forall v \in U_0$</strong>”，而这就是书上 2.4 节的定理 2.4.2. 下面我们先来证明一下充分性：</p>
+
+<blockquote>假设结论不成立，则必 $\exists v_0 \in U_0$ 使得 $E_{\theta}\left(v_0T\right)\neq 0$. 我们令 $T_s=T - sv_0$，其中 $s$ 为任意非零常数，下面我们证明 $\exists s_0 \in s$ 使得 $Var_{\theta}\left(T_{s_0} \right) < Var_{\theta}\left(T \right)$。容易验证 $T_s$ 也为 $g\left(\theta \right)$ 的无偏估计量，所以</blockquote>
+
+<blockquote>$Var_{\theta}\left(T_s \right) + g^2\left(\theta\right)= E_{\theta}\left(T_s^2 \right) = E_{\theta}\left(\left(T - sv_0\right)^2 \right) = E_{\theta}\left(v_0^2\right)s^2-2E_{\theta}\left(v_0T\right)s+E_{\theta}\left(T^2\right)$</blockquote>
+
+<blockquote>显然这是一个关于 $s$ 的二次函数，因为 $E_{\theta}\left(v_0^2\right)>0$，所以当 $s = E_{\theta}\left(v_0T\right)/E_{\theta}\left(v_0^2\right) \neq 0$ 时，该函数取到最小值，不妨记该极值点为 $s_0$，则有</blockquote>
+
+<blockquote>$Var_{\theta}\left(T_{s_0} \right) + g^2\left(\theta\right)= E_{\theta}\left(T_{s_0}^2 \right) < E_{\theta}\left(T^2\right) = Var_{\theta}\left(T \right) + g^2\left(\theta\right)$</blockquote>
+
+<blockquote>所以 $\exists s_0 \in s$ 使得 $Var_{\theta}\left(T_{s_0} \right) < Var_{\theta}\left(T \right)$，而这与 $T$ 为 $g\left(\theta \right)$ 的 $UMVUE$ 矛盾，所以结论成立，充分性得证。</blockquote>
+
+<p class="post-text-noindent">下面来看一下必要性的证明：</p>
+
+<blockquote>因为 $T$ 为 $g\left(\theta \right)$ 的无偏估计量，所以 $\forall$ $g\left(\theta \right)$ 的无偏估计量 $T_0$，$T_0-T$ 是 0 的无偏估计量，因此</blockquote>
+
+<blockquote>$E_{\theta}\left(\left(T_0-T \right)T \right) = E_{\theta}\left(T_0T\right)-E_{\theta}\left(T^2\right) = 0$</blockquote>
+
+<blockquote>所以 $E_{\theta}\left(T_0T\right)=E_{\theta}\left(T^2\right)$，又由 Cauchy-Schwartz 不等式有：</blockquote>
+
+<blockquote>$E_{\theta}\left(T^2\right) = E_{\theta}\left(T_0T\right) \leq \sqrt{E_{\theta}\left(T_0^2\right)}\sqrt{E_{\theta}\left(T^2\right)}$</blockquote>
+
+<blockquote>所以 $\forall$ $g\left(\theta \right)$ 的无偏估计量 $T_0$ 有 $E_{\theta}\left(T^2\right) \leq E_{\theta}\left(T_0^2\right)$，所以 $T$ 是 $g\left(\theta \right)$ 的 $UMVUE$.</blockquote>
+
+</div>
