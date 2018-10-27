@@ -1,0 +1,363 @@
+---
+layout: post
+title:  "寻找 UMVUE"
+date:   2018-10-22 10:22:00
+categories: Statistics
+excerpt: '看无偏有效相合性，那才是理想的估计'
+permalink: /Statistics/find_UMVUE/
+---
+
+<div class="post-style">
+
+<blockquote>记住无偏有效相合性，那才是理想的估计，估计出明天的风景，年年岁岁把大数据沉积——《统计的旋律》</blockquote>
+
+<h1>1 估计量的评价标准</h1>
+
+<p>在我们大多数的统计教科书中，都可以看到这三个字眼：<strong>无偏</strong>、<strong>有效</strong>与<strong>相合</strong>。它们构成评价一个估计量好坏的三个标准。</p>
+
+<p>我们说一个估计量是无偏的，指的是：平均而言该估计量对参数的估计没有偏差，也就是：</p>
+
+<p class="post-text-formula">
+$$
+E_{\theta }\left(T \right ) = g\left(\theta \right )
+$$
+</p>
+
+<p>我们说一个估计量是有效的，是相对于其他估计量而言的。我们说一个估计量 $T$ 比另一个估计量 $T'$ 有效指的是：该估计量的方差小于另一个估计量，也就是：</p>
+
+<p class="post-text-formula">
+$$
+Var_{\theta }\left(T \right ) < Var_{\theta }\left(T' \right )
+$$
+</p>
+
+<p>我们说一个估计量是相合的，指的是：随着样本量的增加，该估计量将越来越趋近于待估参数，也就是：</p>
+
+<p class="post-text-formula">
+$$
+T \rightarrow g\left(\theta \right), n \rightarrow \infty
+$$
+</p>
+
+<p><strong>均方误差</strong>（Mean Square Error, MSE）是一个综合考虑估计量无偏性和有效性的评价标准，它类似于方差的定义，方差是估计量相对其期望的平均散布程度，而均方误差是估计量相对于待估参数的平均散布程度，即：</p>
+
+<p class="post-text-formula">
+$$
+MSE_{\theta }\left ( T \right ) = E_{\theta }\left(\left[T-g\left(\theta \right ) \right ]^2 \right )
+$$
+</p>
+
+<p class="post-text-noindent">为什么说这个标准综合考虑了无偏性和有效性呢？我们对上述定义做一个等价变形：</p>
+
+<p class="post-text-formula">
+$$
+\begin{aligned} &\ E_{\theta }\left(\left[T-g\left(\theta \right ) \right ]^2 \right ) = E_{\theta }\left(\left[T-E_{\theta }\left(T \right )+E_{\theta }\left(T \right )-g\left(\theta \right ) \right ]^2 \right ) \\
+&= E_{\theta}\left(\left[T-E_{\theta }\left(T \right ) \right]^2 + \left[E_{\theta }\left(T \right )-g\left(\theta \right ) \right ]^2 + 2\left[T-E_{\theta }\left(T \right ) \right]\left[E_{\theta }\left(T \right )-g\left(\theta \right ) \right ] \right ) \\
+&= Var_{\theta }\left(T \right ) + \left[E_{\theta }\left(T \right )-g\left(\theta \right ) \right ]^2 + 2E_{\theta}\left(TE_{\theta}\left(T \right ) - Tg\left(\theta \right ) - E_{\theta}^2\left(T \right ) + E_{\theta}\left(T \right )g\left(\theta \right ) \right ) \\
+&= Var_{\theta }\left(T \right ) + \left[E_{\theta }\left(T \right )-g\left(\theta \right ) \right ]^2 \end{aligned}
+$$
+</p>
+
+<p class="post-text-noindent">所以有：</p>
+
+<p class="post-text-formula">
+$$
+MSE_{\theta }\left ( T \right ) = Var_{\theta }\left(T \right ) + \left[E_{\theta }\left(T \right )-g\left(\theta \right ) \right ]^2
+$$
+</p>
+
+<p class="post-text-noindent">也就是说：估计量的均方误差等于估计量方差与估计量偏差平方的和，如果我们选择一个均方误差较小的估计量，那么这意味着该估计量的偏差较小，方差也较小，我们可以说这样的一个估计量是近似无偏且有效的，我们认为一个近似无偏且有效的估计量是一个比较好的估计量。那么，在这个评价标准下能不能找到一个最好的估计量呢？也就是说拥有一致最小均方误差的估计量是否存在呢？或者换句话说：我们能不能找到这样一个估计量，无论待估参数真值是多少，它的均方误差比其他任何估计量都小。答案是否定的，为什么？除非 $T$ 总能准确无误的估计 $g\left(\theta \right)$，否则我一定可以找到一个恒等于 $g\left(\theta_0 \right)$ 的估计量，它在 $\theta_0$ 处的 $MSE$ 比 $T$ 小，因为一个恒等于 $\theta_0$ 的估计量在 $\theta = \theta_0$ 处的 $MSE$ 为 0，然而现实当中要让一个估计量总是能准确无误地估计待估参数，是一件几乎不可能发生的事情。</p>
+
+<p>在均方误差标准下几乎不可能找到最优估计量，但均方误差又是一个较好的评价估计量的标准，怎么办？统计学家们开始限制估计量的范围，他们不再从所有估计量中去寻找拥有一致最小均方误差的估计量，而是从某个限制类中去寻找拥有一致最小均方误差的估计量。一种对估计量范围作出限制的方式就是无偏，而在无偏估计类下寻找一致最小均方误差估计就等价于在无偏估计类下寻找一致最小方差估计。一致最小方差无偏估计（uniformly minimum-variance unbiased estimator）的英文缩写是 <em>UMVUE</em>，大家可以看到，我们课本上 2.4 节、2.5 节的大部分内容乃至 2.6 节的相当一部分内容都在围绕着寻找 <em>UMVUE</em> 这个中心主题在展开。</p>
+
+<p>好，我们在门外转了这么久，下面进入正题：如何寻找 <em>UMVUE</em>.教材里提到的寻找 <em>UMVUE</em> 的定理可以归纳为如下三条：</p>
+
+<ul>
+	<li>无偏估计量 $T$ 为 $g\left(\theta \right)$ 的 <em>UMVUE</em> 当且仅当 $T$ 与 $0$ 的所有无偏估计量不相关</li>
+	<li>作为完备充分统计量函数的无偏估计量一定是 <em>UMVUE</em></li>
+	<li>方差等于 <em>C-R</em> 下界的无偏估计量一定是 <em>UMVUE</em></li>
+</ul>
+
+<h1>2 寻找 UMVUE</h1>
+
+<p>我们先看第一个定理：<strong>无偏估计量 $T$ 为 $g\left(\theta \right)$ 的 <em>UMVUE</em> 当且仅当 $T$ 与 $0$ 的所有无偏估计量不相关</strong>。注意，若记 $0$ 的所有无偏估计量构成的集合为 $U_0$，则 $T$ 与 $0$ 的所有无偏估计量不相关等价于</p>
+
+<p class="post-text-formula">
+$$\forall v \in U_0,\ Cov_{\theta}\left(v,T\right)=E_{\theta}\left(vT\right)-E_{\theta}\left(v\right)E_{\theta}\left(T\right)=E_{\theta}\left(vT\right)=0$$
+</p>
+
+<p class="post-text-noindent">于是证明 “无偏估计量 $T$ 为 $g\left(\theta \right)$ 的 <em>UMVUE</em> 当且仅当 $T$ 与 $0$ 的所有无偏估计量不相关” 等价于证明 “<strong>无偏估计量 $T$ 为 $g\left(\theta \right)$ 的 <em>UMVUE</em> 当且仅当 $E_{\theta}\left(vT\right)=0,\forall v \in U_0$</strong>”，而这就是书上 2.4 节的定理 2.4.2. 下面我们先来证明一下充分性：</p>
+
+<blockquote>假设结论不成立，则必 $\exists v_0 \in U_0$ 使得 $E_{\theta}\left(v_0T\right)\neq 0$. 我们令 $T_s=T - sv_0$，其中 $s$ 为任意非零常数，下面我们证明 $\exists s_0 \in s$ 使得 $Var_{\theta}\left(T_{s_0} \right) < Var_{\theta}\left(T \right)$。容易验证 $T_s$ 也为 $g\left(\theta \right)$ 的无偏估计量，所以</blockquote>
+
+<blockquote>$$Var_{\theta}\left(T_s \right) + g^2\left(\theta\right)= E_{\theta}\left(T_s^2 \right) = E_{\theta}\left(\left(T - sv_0\right)^2 \right) = E_{\theta}\left(v_0^2\right)s^2-2E_{\theta}\left(v_0T\right)s+E_{\theta}\left(T^2\right)$$</blockquote>
+
+<blockquote>显然这是一个关于 $s$ 的二次函数，因为 $E_{\theta}\left(v_0^2\right)>0$，所以当 $s = E_{\theta}\left(v_0T\right)/E_{\theta}\left(v_0^2\right) \neq 0$ 时，该函数取到最小值，不妨记该极值点为 $s_0$，则有</blockquote>
+
+<blockquote>$$Var_{\theta}\left(T_{s_0} \right) + g^2\left(\theta\right)= E_{\theta}\left(T_{s_0}^2 \right) < E_{\theta}\left(T^2\right) = Var_{\theta}\left(T \right) + g^2\left(\theta\right)$$</blockquote>
+
+<blockquote>所以 $\exists s_0 \in s$ 使得 $Var_{\theta}\left(T_{s_0} \right) < Var_{\theta}\left(T \right)$，而这与 $T$ 为 $g\left(\theta \right)$ 的 <em>UMVUE</em> 矛盾，所以结论成立，充分性得证。</blockquote>
+
+<p class="post-text-noindent">下面来看一下必要性的证明：</p>
+
+<blockquote>因为 $T$ 为 $g\left(\theta \right)$ 的无偏估计量，所以 $\forall$ $g\left(\theta \right)$ 的无偏估计量 $T_0$，$T_0-T$ 是 0 的无偏估计量，因此</blockquote>
+
+<blockquote>$$E_{\theta}\left(\left(T_0-T \right)T \right) = E_{\theta}\left(T_0T\right)-E_{\theta}\left(T^2\right) = 0$$</blockquote>
+
+<blockquote>所以 $E_{\theta}\left(T_0T\right)=E_{\theta}\left(T^2\right)$，又由 Cauchy-Schwartz 不等式有：</blockquote>
+
+<blockquote>$$E_{\theta}\left(T^2\right) = E_{\theta}\left(T_0T\right) \leq \sqrt{E_{\theta}\left(T_0^2\right)}\sqrt{E_{\theta}\left(T^2\right)}$$</blockquote>
+
+<blockquote>所以 $\forall$ $g\left(\theta \right)$ 的无偏估计量 $T_0$ 有 $E_{\theta}\left(T^2\right) \leq E_{\theta}\left(T_0^2\right)$，所以 $T$ 是 $g\left(\theta \right)$ 的 <em>UMVUE</em>.</blockquote>
+
+<p class="post-text-noindent">下面我们通过一个例子来看一下如何利用这一定理寻找 <em>UMVUE</em>：设 $X_1,X_2,\cdots,X_n$ 是来自正态总体 $N\left(\mu,\sigma^2\right)$ 的一个独立同分布样本，试求 $\mu$、$\sigma^2$ 的 <em>UMVUE</em>. 下面是求解过程：</p>
+
+<blockquote>$X_1,X_2,\cdots,X_n$ 的联合密度函数为：</blockquote>
+
+<blockquote>$$f\left(x_1,x_2,\cdots,x_n;\mu,\sigma^2 \right) = \left(2\pi\sigma^2 \right)^{-n/2}\exp\left \{-\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left(x_i-\mu \right)^2\right \}$$</blockquote>
+
+<blockquote>设 $v$ 为 0 的无偏估计量，则有：</blockquote>
+
+<blockquote>$$E\left(v \right) =\left(2\pi\sigma^2 \right)^{-n/2} \int \cdots \int v\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = 0$$</blockquote>
+
+<blockquote>所以：</blockquote>
+
+<blockquote>$$\int \cdots \int v\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = 0\qquad \cdots \ \left(1 \right)$$</blockquote>
+
+<blockquote>对 $\left(1\right)$ 式两边关于 $\mu$ 求导得：</blockquote>
+
+<blockquote>$$\int \cdots \int v\left ( 2n\mu-2\sum_{i=1}^{n}x_i \right )\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = 0$$</blockquote>
+
+<blockquote>对上式作恒等变形得到：</blockquote>
+
+<blockquote>$$\begin{aligned} &\ 2n\mu\int \cdots \int v\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n \\
+&= 2\int \cdots \int v\sum_{i=1}^{n}x_i\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n \end{aligned}$$</blockquote>
+
+<blockquote>从而我们根据 $\left(1\right)$ 式有：</blockquote>
+
+<blockquote>$$\int \cdots \int v\sum_{i=1}^{n}x_i\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = 0\qquad \cdots \left(2 \right)$$</blockquote>
+
+<blockquote>对 $\left(2\right)$ 式两边继续关于 $\mu$ 求导得：</blockquote>
+
+<blockquote>$$\int \cdots \int v\sum_{i=1}^{n}x_i\left ( 2n\mu-2\sum_{i=1}^{n}x_i \right )\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = 0$$</blockquote>
+
+<blockquote>同样地，对上式作类似的恒等变形并结合 $\left(1 \right)$ 式，我们可以得到：</blockquote>
+
+<blockquote>$$\int \cdots \int v\left(\sum_{i=1}^{n}x_i \right)^2\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = 0\qquad \cdots \left(3 \right)$$</blockquote>
+
+<blockquote>对 $\left(1\right)$ 式两边关于 $\sigma^2$ 求导得：</blockquote>
+
+<blockquote>$$\int \cdots \int v\frac{\sum_{i=1}^{n}\left ( x_i-\mu \right )^2}{2\sigma^4}\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = 0$$</blockquote>
+
+<blockquote>对上式作恒等变形得到：</blockquote>
+
+<blockquote>$$\begin{aligned}&\ \int \cdots \int v\sum_{i=1}^{n}\left ( x_i-\mu \right )^2\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = 0\\
+&= \int \cdots \int v\sum_{i=1}^{n}\left ( x_i^2 - 2\mu x_i + \mu^2 \right )\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n \\
+&= \int \cdots \int v\left (\sum_{i=1}^{n}x_i^2  - 2\mu\sum_{i=1}^{n}x_i + n\mu^2 \right )\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n\end{aligned}$$</blockquote>
+
+<blockquote>从而我们根据 $\left(1\right)$ 式和 $\left(2\right)$ 式有：</blockquote>
+
+<blockquote>$$\int \cdots \int v\sum_{i=1}^{n}x_i^2\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = 0\qquad \cdots \left(4 \right)$$</blockquote>
+
+<blockquote>由 $\left(3\right)$ 式和 $\left(4\right)$ 式我们可以得到：</blockquote>
+
+<blockquote>$$\begin{aligned}&\ \int \cdots \int v\left[\sum_{i=1}^{n}x_i^2 - \frac{1}{n}\left(\sum_{i=1}^{n}x_i \right)^2 \right]\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = 0 \\
+&= \int \cdots \int v\sum_{i=1}^{n}\left(x_i-\bar{x} \right)^2\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n\end{aligned}$$</blockquote>
+
+<blockquote>所以：</blockquote>
+
+<blockquote>$$\left(2\pi\sigma^2 \right)^{-n/2}\int \cdots \int v\frac{1}{n-1}\sum_{i=1}^{n}\left(x_i-\bar{x} \right)^2\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = E\left(vs_n^2\right)= 0$$</blockquote>
+
+<blockquote>即 $S_n^2=\frac{1}{n-1} \sum_{i=1}^{n}\left(X_i-\bar{X} \right)^2$ 与 0 的任意无偏估计量 $v$ 不相关，又由 $\left(2 \right)$ 式我们有：</blockquote>
+
+<blockquote>$$\left(2\pi\sigma^2 \right)^{-n/2}\int \cdots \int v\frac{1}{n}\sum_{i=1}^{n}x_i\exp\left \{ -\frac{1}{2\sigma^2}\sum_{i=1}^{n}\left ( x_i-\mu \right )^2 \right \}dx_1 \cdots dx_n = E\left(v\bar{x}\right) = 0$$</blockquote>
+
+<blockquote>即 $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i$ 与 0 的任意无偏估计量 $v$ 不相关</blockquote>
+
+<blockquote>因为 $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i$，$S_n^2=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_i-\bar{X} \right)^2$ 分别是 $\mu$ 和 $\sigma^2$ 的无偏估计，所以根据定理 “无偏估计量 $T$ 为 $g\left(\theta \right)$ 的 <em>UMVUE</em> 当且仅当 $T$ 与 $0$ 的所有无偏估计量不相关” 我们知道：$\bar{X},S_n^2$ 为 $\mu,\sigma^2$ 的 <em>UMVUE</em></blockquote>
+
+<p>接下来我们来看第二个定理：<strong>作为完备充分统计量 $S$ 函数的 $g\left(\theta \right)$ 的无偏估计量 $T^*\left(S\right)$ 一定是 <em>UMVUE</em></strong>. 我们先来看一下什么是完备充分统计量，完备充分统计量即又完备又充分的统计量。充分统计量大家都知道了，它包含了样本中有关参数的全部信息，给定充分统计量后样本的条件分布与参数无关。那什么是完备统计量呢？如果 0 的任意作为统计量 $T$ 函数的无偏估计量 $g(T)$ 等于 0 的概率为 1，那么我们称统计量 $T$ 是完备统计量，该统计量所属的分布族则被称为完备分布族。怎么去找一个完备统计量呢？我们先不说，我们先来证明一下这个定理为什么成立。这个定理的证明啊，一点也不好玩，下面开始：</p>
+
+<blockquote>我们首先证明：作为完备充分统计量 $S$ 函数的 $g\left(\theta \right)$ 的无偏估计量 $T^*\left(S\right)$ 是唯一的，我们采用反证法，假设存在另一个作为完备充分统计量 $S$ 函数的  $g\left(\theta \right)$ 的无偏估计量 $T'(S) \neq T^*\left(S\right)$，则有：</blockquote>
+
+<blockquote>$$\forall \theta, E_\theta\left[T'\left(S\right)-T^*\left(S\right)\right]=0$$</blockquote>
+
+<blockquote>即 $T'\left(S\right)-T^*\left(S\right)$ 是 0 的一个无偏估计量，又因为 $T'\left(S\right)-T^*\left(S\right)$ 也是完备充分统计量 $S$ 的一个函数，所以根据完备统计量的定义我们有：</blockquote>
+
+<blockquote>$$P\left[T'\left(S\right)-T^*\left(S\right)=0\right]=1$$</blockquote>
+
+<blockquote>而这显然与假设 $T'(S) \neq T^*\left(S\right)$ 矛盾，所以我们证明了：作为完备充分统计量 $S$ 函数的 $g\left(\theta \right)$ 的无偏估计量 $T^*\left(S\right)$ 是唯一的。</blockquote>
+
+<blockquote>设 $T$ 为 $g\left(\theta\right)$ 的任意无偏估计量，根据条件期望性质我们有 $E_\theta\left[E_\theta\left(T|S\right)\right]=E_\theta\left[T\right]=g\left(\theta\right)$，所以 $E_\theta\left(T|S\right)$ 是 $g\left(\theta\right)$ 的一个无偏估计量。又因为 $S$ 是一个完备充分统计量，所以根据充分性的定义我们知道给定充分统计量后 $T$ 的条件分布与 $\theta$ 无关，因此 $E_\theta\left(T|S\right)$ 实际上是一个仅取决于完备充分统计量 $S$ 的函数。 这样 $E_\theta\left(T|S\right)$ 就是一个作为完备充分统计量 $S$ 函数的 $g\left(\theta \right)$ 的无偏估计量，根据前面证明的唯一性，我们就有 $T^*\left(S\right) = E_\theta\left(T|S\right)$. 为了证明 $T^*\left(S\right)$ 的确是 $g\left(\theta \right)$ 的 <em>UMVUE</em>，我们现在只需证明 $Var_\theta\left(T^*\right) \leq Var_\theta\left(T\right)$，其中 $T^* = E_\theta\left(T|S\right).$</blockquote>
+
+<blockquote>$$\begin{aligned} &\ Var_\theta\left(T\right) = E_\theta\left[\left(T-E_\theta\left(T^*\right)\right)^2\right] = E_\theta\left[\left(T-T^*+T^*-E_\theta\left(T^*\right)\right)^2\right] \\
+&= E_\theta\left[\left(T-T^*\right)^2\right] + 2E_\theta\left[\left(T-T^*\right)\left(T^*-E_\theta\left(T^*\right)\right)\right] + E_\theta\left[\left(T^*-E_\theta\left(T^*\right)\right)^2\right] \\
+&= E_\theta\left[\left(T-T^*\right)^2\right] + 2E_\theta\left[\left(T-T^*\right)\left(T^*-E_\theta\left(T^*\right)\right)\right] + Var_\theta\left(T^*\right) \end{aligned}$$</blockquote>
+
+<blockquote>由条件期望性质我们有：</blockquote>
+
+<blockquote>$$E_\theta\left[\left(T-T^*\right)\left(T^*-E_\theta\left(T^*\right)\right)\right]=E_\theta\left[E\left[\left(T-T^*\right)\left(T^*-E_\theta\left(T^*\right)\right)|S\right]\right]$$</blockquote>
+
+<blockquote>下面我们证明 $E\left[\left(T-T^*\right)\left(T^*-E_\theta\left(T^*\right)\right)|S\right]=0$：</blockquote>
+
+<blockquote>$$\begin{aligned} &\ E\left[\left(T-T^*\right)\left(T^*-E_\theta\left(T^*\right)\right)|S\right] \\
+&= \left(T^*-E_\theta\left(T^*\right)\right)E\left[\left(T-T^*\right)|S\right] \\
+&= \left(T^*-E_\theta\left(T^*\right)\right)\left[E\left(T|S\right)-E\left(T^*|S\right)\right] \\
+&= \left(T^*-E_\theta\left(T^*\right)\right)\left[E\left(T|S\right)-E\left(E\left(T|S\right)|S\right)\right] \\
+&= \left(T^*-E_\theta\left(T^*\right)\right)\left[E\left(T|S\right)-E\left(T|S\right)\right] = 0 \end{aligned}$$</blockquote>
+
+<blockquote>所以：</blockquote>
+
+<blockquote>$$E_\theta\left[\left(T-T^*\right)\left(T^*-E_\theta\left(T^*\right)\right)\right]=E_\theta\left[E\left[\left(T-T^*\right)\left(T^*-E_\theta\left(T^*\right)\right)|S\right]\right]=0$$</blockquote>
+
+<blockquote>从而：</blockquote>
+
+<blockquote>$$Var_\theta\left(T\right) = E_\theta\left[\left(T-T^*\right)^2\right] + Var_\theta\left(T^*\right) \geq Var_\theta\left(T^*\right)$$</blockquote>
+
+<blockquote>至此我们证明了 $Var_\theta\left(T^*\right) \leq Var_\theta\left(T\right)$，也就证明了用来寻找 <em>UMVUE</em> 的第二个定理：<strong>作为完备充分统计量 $S$ 函数的 $g\left(\theta \right)$ 的 无偏估计量 $T^*\left(S\right)$ 一定是 <em>UMVUE</em></strong>.</blockquote>
+
+<p class="post-text-noindent">为了应用这个定理去寻找 $UMVUE$，我们必须知道如何去找完备充分统计量，如同直接利用定义去寻找充分统计量比较困难一样，直接利用定义去寻找完备统计量也不容易，因子分解定理为我们寻找充分统计量提供了便利，那有没有定理可以为我们寻找完备统计量提供便利呢？答案是有的：如果样本所属总体的分布是指数型分布族的成员，那么寻找完备充分统计量将变得十分容易。我们来看这个定理（注：省略了某些正则性条件）：</p>
+
+<blockquote>设 $X_1,X_2,\cdots,X_n$ 是一个来自密度为 $f\left(x;\theta_1,\cdots,\theta_k\right)$ 的总体的独立同分布样本，如果 $f\left(x;\theta_1,\cdots,\theta_k\right)$ 属于指数型分布族，即</blockquote>
+
+<blockquote>$$f\left(x;\theta_1,\cdots,\theta_k\right)=a\left(\theta_1,\cdots,\theta_k\right)b(x)\exp\left[\sum_{j=1}^{k} c_j\left(\theta_1,\cdots,\theta_k\right)d_j\left(x\right)\right]$$</blockquote>
+
+<blockquote>那么 $\left\{\sum_{i=1}^{n}d_1\left(X_i\right),\cdots,\sum_{i=1}^{n}d_k\left(X_i\right) \right\}$ 构成一个完备充分统计量集合。</blockquote>
+
+<p class="post-text-noindent">至此，我们证明了第二个用来寻找 <em>UMVUE</em> 的定理，并且给出了一个绕过定义简洁地寻找完备充分统计量的方法，下面我们来看如何运用这个定理寻找 <em>UMVUE</em>，我们仍然以第一个定理应用中的那道题为例：设 $X_1,X_2,\cdots,X_n$ 是来自正态总体 $N\left(\mu,\sigma^2\right)$ 的一个独立同分布样本，试求 $\mu$、$\sigma^2$ 的 <em>UMVUE</em>. 下面是求解过程：</p>
+
+<blockquote>正态总体 $N\left(\mu,\sigma^2\right)$ 的密度函数为：</blockquote>
+
+<blockquote>$$\begin{aligned} &\ f\left(x \right) = \left(2\pi\sigma^2 \right)^{-1/2}\exp\left \{-\frac{\left(x_i-\mu \right)^2}{2\sigma^2}\right \} \\
+&= \left(2\pi\sigma^2 \right)^{-1/2}\exp\left\{-\frac{x^2-2\mu x+\mu^2}{2\sigma^2}\right\} \\
+&= \left(2\pi\sigma^2 \right)^{-1/2}\exp\left\{-\frac{\mu^2}{2\sigma^2}\right\}\exp\left\{-\frac{x^2}{2\sigma^2}+\frac{\mu x}{\sigma^2}\right\} \\
+&= a\left(\mu,\sigma\right)b(x)\exp\left[\sum_{j=1}^{2} c_j\left(\mu,\sigma\right)d_j\left(x\right)\right] \end{aligned}$$</blockquote>
+
+<blockquote>其中：</blockquote>
+
+<blockquote>$$a\left(\mu,\sigma\right) = \left(2\pi\sigma^2 \right)^{-1/2}\exp\left\{-\frac{\mu^2}{2\sigma^2}\right\},\ b(x) = 1 \\
+c_1\left(\mu,\sigma\right) = -\frac{1}{2\sigma^2},\ d_1\left(x\right) = x^2,\ c_2\left(\mu,\sigma\right) = \frac{\mu}{\sigma^2},\ d_2\left(x\right) = x$$</blockquote>
+
+<blockquote>所以样本所属总体的分布 $N\left(\mu,\sigma^2\right)$ 是指数分布族的一个成员且</blockquote>
+
+<blockquote>$$\left\{\sum_{i=1}^{n}d_1\left(X_i\right),\sum_{i=1}^{n}d_2\left(X_i\right) \right\} = \left\{\sum_{i=1}^{n}X_i^2,\sum_{i=1}^{n}X_i \right\}$$</blockquote>
+
+<blockquote>构成一个完备充分统计量集合。因为</blockquote>
+
+<blockquote>$$\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i,\ S_n^2=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_i-\bar{X} \right)^2$$</blockquote>
+
+<blockquote>分别是 $\mu$ 和 $\sigma^2$ 的无偏估计且它们均是完备充分统计量 $\sum_{i=1}^{n}X_i^2,\ \sum_{i=1}^{n}X_i$ 的函数，所以根据定理 “作为完备充分统计量函数的 $g\left(\theta \right)$ 的无偏估计量一定是 $g\left(\theta \right)$ 的 <em>UMVUE</em>” 我们知道：$\bar{X},S_n^2$ 为 $\mu,\sigma^2$ 的 <em>UMVUE</em>.</blockquote>
+
+<p class="post-text-noindent">通过上述例子，我们可以看到：利用第二个定理来寻找 <em>UMVUE</em> 要比利用第一个定理简单太多，但要注意第二个定理以及后面要说的第三个定理只是给出了寻找 <strong>UMVUE</strong> 的充分条件，也就是说完全可能存在某个参数的 <strong>UMVUE</strong> 我们通过第二个定理或第三个定理是找不到的。</p>
+
+<p>下面来看寻找 <em>UMVUE</em> 的第三个定理：<strong>方差等于 <em>C-R</em> 下界的 $g\left(\theta \right)$ 的无偏估计量一定是 $g\left(\theta \right)$ 的 <em>UMVUE</em></strong>. 下面首先讲什么是 <em>C-R</em> 下界。</p>
+
+<p>设 $X_1,X_2,\cdots,X_n$ 是来自密度函数为 $f\left(x;\theta \right)$ 的总体的一个独立同分布样本，$T$ 是 $g\left(\theta \right)$ 的无偏估计量。如果总体密度函数 $f\left(x;\theta \right)$ 和无偏估计量 $T$ 满足如下正则性条件：</p>
+
+<ul>
+	<li>参数空间是直线上的开区间（可以为无穷区间）</li>
+	<li>$f\left(x;\theta \right)$ 取值大于 0 的点不由参数 $\theta$ 决定（即 $f\left(x;\theta \right)$ 支撑集与 $\theta$ 无关）</li>
+	<li>导数 $\frac{\partial f\left(x;\theta \right )}{\partial x}$ 存在</li>
+	<li>Fisher 信息量 $I\left(\theta \right )=E_\theta\left[\left(\frac{\partial \ln f\left(x;\theta \right )}{\partial x} \right )^2 \right ]$ 存在</li>
+	<li>$f\left(x;\theta \right)$ 和无偏估计量 $T$ 满足积分与微分可交换条件，即：$\frac{\partial }{\partial x}\int_{-\infty}^{+\infty}f\left(x;\theta \right )dx = \int_{-\infty}^{+\infty}\frac{\partial }{\partial x}f\left(x;\theta \right )dx$，$\frac{\partial }{\partial x}\int \cdots \int T\prod_{i=1}^{n}f\left(x_i;\theta \right )dx_1 \cdots dx_n = \int \cdots \int T\frac{\partial }{\partial x}\prod_{i=1}^{n}f\left(x_i;\theta \right )dx_1 \cdots dx_n$</li>
+</ul>
+
+<p class="post-text-noindent">则无偏估计量 $T$ 的方差</p>
+
+<p class="post-text-formula">
+$$Var_\theta\left(T \right )\geq \frac{\left[g'\left(\theta \right ) \right ]^2}{nI\left(\theta \right )}=\frac{\left[g'\left(\theta \right ) \right ]^2}{nE_\theta\left[\left(\frac{\partial \ln f\left(x;\theta \right )}{\partial x} \right )^2 \right ]}$$
+</p>
+
+<p class="post-text-noindent">等号成立当且仅当</p>
+
+<p class="post-text-formula">
+$$\frac{\partial }{\partial \theta}\ln \left(\prod_{i=1}^{n}f\left(x_i;\theta \right ) \right )=\sum_{i=1}^{n}\frac{\partial \ln f\left(x_i;\theta \right )}{\partial \theta} =K\left(\theta,n \right )\left[T-g\left(\theta \right ) \right ]$$
+</p>
+
+<p class="post-text-noindent">其中 $K\left(\theta,n\right)$ 是关于 $\theta$ 和样本量 $n$ 的函数。上述不等式称之为 <em>C-R</em> 不等式，其给出的无偏估计量方差的下界则称之为 <em>C-R</em> 下界。由于 <em>C-R</em> 下界是无偏估计量方差所能取到的最小值，因此如果 $g\left(\theta \right)$ 的某个无偏估计量的方差等于 <em>C-R</em> 下界，那么它一定是 $g\left(\theta \right)$ 的 <em>UMVUE</em>. 关于 <em>C-R</em> 不等式的证明这里就不讲了，它的证明主要用到上述正则性条件中积分和求导运算的交换以及柯西·施瓦茨不等式。</p>
+
+<p>不讲的主要原因是：<em>C-R</em> 下界在寻找 <em>UMVUE</em> 时有很大的局限性。在 《Introduction to the theory of statistics, 3rd edition》 一书中，作者这样写道：</p>
+
+<blockquote>如果 $T$ 是 $g\left(\theta\right)$ 的无偏估计量且方差等于 <em>C-R</em> 下界，那么总体密度一定属于指数族，反之，如果总体密度属于指数族，那么便存在某个函数 $g\left(\theta\right)$ 的无偏估计量 $T$，它的方差等于 <em>C-R</em> 下界。</blockquote>
+
+<p class="post-text-noindent">这告诉我们能够找到方差等于 <em>C-R</em> 下界的估计量当且仅当总体密度属于指数族，而上面在讲寻找 UMVUE 的第二个定理时，我们已经指出：如果总体密度属于指数族，那么就意味着完备充分统计量是现成的，在这种情况下我们利用第二个定理寻找 UMVUE 显然比费劲巴力地去验证</p>
+
+<p class="post-text-formula">
+$$\sum_{i=1}^{n}\frac{\partial \ln f\left(x_i;\theta \right )}{\partial \theta} =K\left(\theta,n \right )\left[T-g\left(\theta \right ) \right ]$$
+</p>
+
+<p class="post-text-noindent">是否成立要快得多，况且如果验证不成立的话又得回过头来利用其它方法寻找 <em>UMVUE</em>. 大家如果感兴趣可以拿前面那个正态分布的例子算一下，正态总体均值的 <em>UMVUE</em> 是样本均值，样本均值的方差刚好等于 <em>C-R</em> 下界，而正态总体方差的 <em>UMVUE</em> 虽然是样本方差，但样本方差的方差则要大于 <em>C-R</em> 下界。好，寻找 <em>UMVUE</em> 的内容就讲完了。</p>
+
+<h1>3 闲言碎语</h1>
+
+<p>我没有举太多寻找 <em>UMVUE</em> 的例子，主要原因是这样的技术，它在理论上的意义远大于其实际意义。统计学本是一门研究数据的科学，然而从上个世纪三四十年代开始，它的研究越来越数学化，越来越脱离实际问题，已故的我国统计学界到目前为止唯一的中科院院士陈希孺老师在其所著的 《数理统计简史》 中对此有详细阐述。</p>
+
+<p>长江后浪推前浪，在统计学开始走向脱离实际问题的研究轨道时，一门新兴的学科计算机科学诞生了。</p>
+
+<p>1937 年，英国数学家、逻辑学家，计算机科学与人工智能之父<strong>阿兰·图灵</strong>（<em>Alan Turing</em>）首次提出了一个通用计算设备的构想，他设想所有的计算都可能在一种特殊的机器上执行，这种机器我们今天称之为<strong>图灵机</strong>（<em>Turing machine</em>）。阿兰·图灵将计算机定义为一种如图 3-1 所示的可编程数据处理器模型即<strong>图灵模型</strong>（<em>Turing model</em>），在图灵模型中，程序是一系列用来告诉计算机如何处理数据的指令。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/turing model.png"></p>
+<p class="post-text-tablename">图 3-1 可编程数据处理模型</p>
+
+<p>1945 年 6 月，原籍匈牙利的美国人<strong>冯·诺依曼</strong>发表了一份长达 101 页的报告，这就是著名的 “<strong>关于 EDVAC 的报告草案</strong>”（<em>First Draft of a Report on the EDVAC</em>）,在这份报告中提出的计算机体系结构即<strong>冯·诺依曼模型</strong>（<em>von Neumann model</em>）一直延用至今。图 3-2 展示了冯·诺依曼模型，它由<strong>算术逻辑单元</strong>（<em>ALU</em>）、<strong>控制单元</strong>、<strong>存储器</strong>、<strong>输入/输出单元</strong>五大部分构成。在图灵机的基础上，冯·诺依曼创造性地指出：由于程序和数据在逻辑上是相同的，因此程序也能存储在计算机的存储器中。</p>
+
+<blockquote>
+<strong>算术逻辑单元</strong>：用来对数据进行算术运算和逻辑运算<br>
+<strong>控制单元</strong>：用来控制存储器、算术逻辑单元、输入/输出单元的操作<br>
+<strong>存储器</strong>：用来存储数据和程序<br>
+<strong>输入/输出单元</strong>：用来从计算机外部接收数据和程序并将处理结果输出到计算机外部，值得注意的是辅助存储设备如磁盘和磁带也属于输入/输出单元的范畴
+</blockquote>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/von Neumann model.png"></p>
+<p class="post-text-tablename">图 3-2 冯·诺依曼模型</p>
+
+<p>1946 年 2 月 14 日，人类历史上第一台通用的十进制电子计算机 ENIAC 在美国宾夕法尼亚大学诞生，它每秒能执行 5000 次加法或 400 次乘法，从那以后，人类的计算能力被机器远远地甩在身后，今天我们最快的超级计算机其持续计算能力已经是 ENIAC 的 18 万亿倍，达到了每秒 9.3 亿亿次。随后不久，基于冯·诺依曼模型的人类历史上第一台通用的二进制电子计算机 EDVAC 也诞生了</p>
+
+<p>1968 年，受到苏联发射人类历史上第一颗人造卫星的刺激，作为互联网前身的阿帕网开始在美国组建。</p>
+
+<p>1983 年 1 月 1 日，历时多年讨论，人类历史上至今影响范围最广的一份文件，作为今天互联网通讯基础的 TCP/IP 协议终于成为网络通讯的国际标准。</p>
+
+<p>1989 年，蒂姆·伯纳斯·李发明万维网（World Wide Web）和超文本传输协议（HTTP），这是一个划时代的创举，伯纳斯·李没有为他的发明申请专利，2012 年伦敦奥运会开幕式上，伯纳斯·李在他当年发明万维网的电脑上敲了这样一句话：“this is for everyone”. 如果伯纳斯·李为他的发明申请专利，他将成为今天世界上最富有的人。如果没有伯纳斯·李的发明，就没有我们今天看到的网页，互联网将依然蜷缩在专业人士的圈子，而不会像今天这样走进像我们这样千千万万普通老百姓的生活。</p>
+
+<p>伴随着计算机技术尤其是计算机互联技术的发展与普及，大量的数据，包括数字、文本、图片、音频、视频，扑面而来，而过去建立在处理小数据、处理数字式数据基础上的传统的统计学方法在这些多样化又庞大的数据面前显得捉襟见肘。于是我们看到新兴的计算机科学中专注研究数据的分支学科机器学习，以其基于数据驱动的研究方法而非模型驱动的研究方法，以其对数学、统计学等多门学科的包容性，逐渐在数据分析中取代传统统计学，而成为工业界数据分析尤其是大规模数据分析的主流方法。</p>
+
+<p>上世纪六七十年代，一些富有远见的统计学家也意识到了统计研究愈来愈数学化的不良倾向，在他们的推动下，国外的统计教学与研究开始纠正航向，转移到数据驱动的研究方法上来。然而国内目前的教学与研究仍然未能摆脱这种数学化倾向，作为一门研究数据的科学，我们大多数学校的统计学本科生在大学前两年不是泡在数据的海洋里，而是泡在一堆数学公式里面，不是说数学不重要，但依靠公式是孕育不了新的统计思想的。如果我们回看当年 Fisher 提出方差分析方法的历史，就会明白：实际数据分析才是催生新的统计思想或新的数据分析方法的源泉。在《数理统计简史》中，陈希孺老师对过去百年来数理统计发展的历史作出的评价是：后 Fisher 时代的统计学确实谈不上有多少突破性的成就。下面是从陈希孺老师这本书中的结尾部分摘录的几段文字：</p>
+
+<blockquote>美国统计学界著名的元老图基在 1962 年发表了一篇有很大影响的长文《数据分析的未来》，在此文中他把数理统计学工作分成两类：一类是对数据分析有贡献的，对另一类，他说：“一件数理统计学工作，如果即使从长期的观点看，甚至通过曲折的环节，也不能对数据分析的实践有所贡献，则应视为一种纯数学工作，应从纯数学的标准去评价”。以下还说，任何一件数理统计学工作必须从二者（实用或纯数学）之一的标准中寻求其合法性，对于那种这两个标准都不符合的工作，必然会成为一时的过客，最终从人们的视线中消失。</blockquote>
+
+<blockquote>这里说道了问题的要害，战后数理统计学发展中的偏向（有的学者认为是 “危机”），不在于理论文章比重的增加，而在于这些理论文章中，大量的是那种上述两个标准都不符合的工作。许多文章条件一大堆，结论繁冗复杂，方法上也往往走的老套，不仅对数据分析毫无裨益，也缺乏数学美，从纯数学的观点看也没有多大意义。</blockquote>
+
+<blockquote>图基的上述论文是一个信号，表明美国统计界一部分对现状不满的学者，开始对这种倾向进行批评并寻找纠正的途径。这种努力开始产生了效果，统计学家瑞德在评价弗莱塞的一篇关于结构概率的文章时写道：</blockquote>
+
+<blockquote>“在 1960 年代，特别在美国，对将严格的数学方法用于统计推断，特别是对于推断程序的优良性，有非常大的着重。费舍尔对统计推断的做法与此很不相同，而弗莱塞觉得在统计学界中费舍尔不公正地遭到了忽视。从那时起，费舍尔在统计史上的卓越地位用多种方式重建起来，一个例子是 1989 年出版了由菲因伯格和欣克利编辑出版的文集。”</blockquote>
+
+<blockquote>另一个有象征意义的事件是：1930 年创刊的 《数理统计学纪事》 在 1973 年分为统计和概率两个杂志，前者的名称是 《统计学纪事》，从原名中去掉了 “数理” 这个字眼。</blockquote>
+
+<blockquote>在实际的努力方面，目前有一定影响的还是由图基发起，并有一些有影响的追随者所提倡的 “数据分析”。图基 1962 年文章已勾画出了他主张的基本轮廓，以后不少学者就这个题目发表了不少文章及专著。其基本精神，可摘引这些著作中的一些主张来说明。</blockquote>
+
+<blockquote><ul>
+	<li>我们应当寻求全新的问题来研究</li>
+	<li>我们应当在更现实的框架下去研究老问题</li>
+	<li>我们应当寻求观测数据的原来不熟悉的处理方法，并弄清楚其有用的性质。</li>
+</ul></blockquote>
+
+<blockquote>这几条关系到研究题材，以往研究的问题不少是学究式的，于现实无补，应以全新而有用的问题取代之，以往许多研究，为了迁就数学上的方便，可能采取了一种过于简化的模型或不现实的假定，应当根据实际中出现的情况回以调整，使问题更具有现实意义；不要拘泥于习惯上常用的一些方法如样本均值、线性回归之类，要寻找一些更好的整理数据的方法，弄清楚其有用的性质，以备选用。</blockquote>
+
+<blockquote><ul>
+	<li>许多人认为重要的是从包含参数的概率模型出发，然后去为参数找一个好的估计……许多人忘记了：数据分析可以且有时更宜在给定概率模型之前进行</li>
+	<li>数据分析寻求的是有用性而非严格性</li>
+	<li>数据分析必须容许适当程度的错误，以使所获的不周全的证据可以经常启示一个正确的解法。</li>
+	<li>数据分析使用数学论证和结果，是以之作为判断的一种根据，而非用于证明或方法合法性的印记。</li>
+</ul></blockquote>
+
+<blockquote>这几条是批评现行数理统计学中程式化的僵硬做法：必得要选择概率模型；必得要对参数寻求最优化的估计；必得对所用方法要有严格的数学证明。这些作法把数学上的合法性和形式上的指标（优良性、精度可靠度之类）置于对现实数据的充分考察以从中挖掘更多信息这一更重要的目标之上，导致形式上漂亮而于实际问题无补的解。</blockquote>
+
+<blockquote>几十年来，一些对 “数理统计学向何处去” 这个问题感到关心的统计学家，通过举办专题讨论会和撰写论文的形式，表达他们对这一问题的看法并提出一些主张。如 1967 年在美国威斯康星大学举办的 “统计学的未来” 讨论会，1974 年在加拿大埃德蒙顿举办的 “统计学的方向” 讨论会等，发言的主旨，与前述数据分析论者原则上是一样的，不外是批评当今理论研究与实际脱节的现象，在应用中拘泥于模型和概率论证等，也提出过一些具体的建议，如拆除统计系、学会和杂志的围墙，鼓励其他学科的侵入；杂志编辑部应扩大视野，只发表有用的文章；要研究困难问题，不满足于对简单问题的回答，以及改革统计教学，多看看具体工作人员是如何分析数据的，等等。这些建议，相当部分已有所实施。笔者 1980 年代在美国一所大学的统计系作访问学者，考察过该系应用统计课的情况，学生的习题多是取自各应用领域现实数据的分析问题，学生相当多的时间花在计算机房里，利用统计软件来处理这些数据的分析问题。另外，一些统计杂志，如 《Technometrics》、《Biometrics》以至 JASA，其刊载的论文多系与其他实用领域结合的问题，或一般统计方法的问题，纯数学的理论文章比重很小。</blockquote>
+
+<blockquote>1997 年，统计学家休伯发表了一篇题为《对统计学未来的猜测》的文章，休伯是当代有影响的统计学家，他在六七十年代提出的关于位置参数及一般线性模型的稳健估计的一种方法（M 估计）被认为是 20 世纪统计学的重要成就之一。他后来成为 “数据分析” 这一思潮中的一个重要人物。在上述论文中，他回顾了自图基 1962 年文章《数据分析的未来》发表后直到现在的几十年间，一部分统计学家对统计学未来发展方向的讨论情况和意见，他自己也提出了两点有意思的看法：</blockquote>
+
+<blockquote>第一，他提出了一种螺旋式的统计学发展的观点，笔者理解他的意思是一个 “否定之否定”，他画的那条螺线起点是格朗特的《观察》一书，向外伸展至于无穷。第一阶段大致上自起点至于卡尔·皮尔逊。然后经过 Student-费舍尔-莱曼-爱根·皮尔逊-瓦尔德，统计学由前一阶段描述的性质上升到以严格数学为基础的推断性质，这是一个否定。接着将要出现的是第二个否定，其内容是数据分析，它在一定意义上可视为向第一阶段描述统计的回复，当然是在提高了的意义上，这提高反映在数据分析要吸收前一阶段的成果并有计算机这一有力工具的帮助，这都是早先描述性阶段所不具备的。这一看法的实质是，肯定了数据分析是统计学未来发展的方向。</blockquote>
+
+<blockquote>第二，如果对现今统计学不进行 “改革”——这改革是指将统计学的发展转到数据分析的轨道上，统计学可能会发生存在性的危机。他指的是这样一种情况：数理统计学家的工作将不为实用部门的人所注意，统计学将会消融到一些实用科学领域中去，在那里，一些有能力并对统计学抱实用取向的学者，将在各领域内与该领域专家发展针对该领域的统计方法，这种情况与 20 世纪以前统计学的发展情况相似，当时发展统计方法的人都不以为自己是统计学家。他们对自己领域中出现的数据分析问题有兴趣，并常以结合自己专业领域的方式去研究它，高尔登、威尔登和卡尔·皮尔逊等都是典型的例子。</blockquote>
+
+</div>
