@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "寻找 UMVUE"
+title:  "数理统计讲课稿"
 date:   2018-10-22 10:22:00
 categories: Statistics
-excerpt: '看无偏有效相合性，那才是理想的估计'
+excerpt: '记住无偏有效相合性，那才是理想的估计，估计出明天的风景，年年岁岁把大数据沉积'
 permalink: /Statistics/find_UMVUE/
 ---
 
@@ -30,6 +30,8 @@ $$
 Var_{\theta }\left(T \right ) < Var_{\theta }\left(T' \right )
 $$
 </p>
+
+<p class="post-text-noindent">在一次使用时，无偏估计量可以有偏差，但偏差是随机的，有时大于 0，有时小于 0，无偏说的是在大量重复使用下该估计量的偏差平均而言为 0.</p>
 
 <p>我们说一个估计量是相合的，指的是：随着样本量的增加，该估计量将越来越趋近于待估参数，也就是：</p>
 
@@ -66,7 +68,7 @@ MSE_{\theta }\left ( T \right ) = Var_{\theta }\left(T \right ) + \left[E_{\thet
 $$
 </p>
 
-<p class="post-text-noindent">也就是说：估计量的均方误差等于估计量方差与估计量偏差平方的和，如果我们选择一个均方误差较小的估计量，那么这意味着该估计量的偏差较小，方差也较小，我们可以说这样的一个估计量是近似无偏且有效的，我们认为一个近似无偏且有效的估计量是一个比较好的估计量。那么，在这个评价标准下能不能找到一个最好的估计量呢？也就是说拥有一致最小均方误差的估计量是否存在呢？或者换句话说：我们能不能找到这样一个估计量，无论待估参数真值是多少，它的均方误差比其他任何估计量都小。答案是否定的，为什么？除非 $T$ 总能准确无误的估计 $g\left(\theta \right)$，否则我一定可以找到一个恒等于 $g\left(\theta_0 \right)$ 的估计量，它在 $\theta_0$ 处的 $MSE$ 比 $T$ 小，因为一个恒等于 $\theta_0$ 的估计量在 $\theta = \theta_0$ 处的 $MSE$ 为 0，然而现实当中要让一个估计量总是能准确无误地估计待估参数，是一件几乎不可能发生的事情。</p>
+<p class="post-text-noindent">也就是说：估计量的均方误差等于估计量方差与估计量偏差平方的和，如果我们选择一个均方误差较小的估计量，那么这意味着该估计量的偏差较小，方差也较小，我们可以说这样的一个估计量是近似无偏且有效的，我们认为一个近似无偏且有效的估计量是一个比较好的估计量。那么，在这个评价标准下能不能找到一个最好的估计量呢？也就是说拥有一致最小均方误差的估计量是否存在呢？或者换句话说：我们能不能找到这样一个估计量，无论待估参数真值是多少，它的均方误差比其他任何估计量都小。答案是否定的，为什么？除非 $T$ 总能准确无误的估计 $g\left(\theta \right)$，否则我一定可以找到一个恒等于 $g\left(\theta_0 \right)$ 的估计量，它在 $\theta_0$ 处的 $MSE$ 比 $T$ 小，因为一个恒等于 $g\left(\theta_0 \right)$ 的估计量在 $\theta = \theta_0$ 处的 $MSE$ 为 0，然而现实当中要让一个估计量总是能准确无误地估计待估参数，是一件几乎不可能发生的事情。我们课本上例 2.4.5 是有问题的，它是在样本方差的线性类而不是全部估计类下找的一致最小均方误差估计。</p>
 
 <p>在均方误差标准下几乎不可能找到最优估计量，但均方误差又是一个较好的评价估计量的标准，怎么办？统计学家们开始限制估计量的范围，他们不再从所有估计量中去寻找拥有一致最小均方误差的估计量，而是从某个限制类中去寻找拥有一致最小均方误差的估计量。一种对估计量范围作出限制的方式就是无偏，而在无偏估计类下寻找一致最小均方误差估计就等价于在无偏估计类下寻找一致最小方差估计。一致最小方差无偏估计（uniformly minimum-variance unbiased estimator）的英文缩写是 <em>UMVUE</em>，大家可以看到，我们课本上 2.4 节、2.5 节的大部分内容乃至 2.6 节的相当一部分内容都在围绕着寻找 <em>UMVUE</em> 这个中心主题在展开。</p>
 
@@ -110,7 +112,7 @@ $$\forall v \in U_0,\ Cov_{\theta}\left(v,T\right)=E_{\theta}\left(vT\right)-E_{
 
 <blockquote>所以 $\forall$ $g\left(\theta \right)$ 的无偏估计量 $T_0$ 有 $E_{\theta}\left(T^2\right) \leq E_{\theta}\left(T_0^2\right)$，所以 $T$ 是 $g\left(\theta \right)$ 的 <em>UMVUE</em>.</blockquote>
 
-<p class="post-text-noindent">下面我们通过一个例子来看一下如何利用这一定理寻找 <em>UMVUE</em>：设 $X_1,X_2,\cdots,X_n$ 是来自正态总体 $N\left(\mu,\sigma^2\right)$ 的一个独立同分布样本，试求 $\mu$、$\sigma^2$ 的 <em>UMVUE</em>. 下面是求解过程：</p>
+<p class="post-text-noindent">下面我们通过一个例子，也就是教材的例 2.4.7，来看一下如何利用这一定理寻找 <em>UMVUE</em>：设 $X_1,X_2,\cdots,X_n$ 是来自正态总体 $N\left(\mu,\sigma^2\right)$ 的一个独立同分布样本，试求 $\mu$、$\sigma^2$ 的 <em>UMVUE</em>. 下面是求解过程：</p>
 
 <blockquote>$X_1,X_2,\cdots,X_n$ 的联合密度函数为：</blockquote>
 
@@ -176,7 +178,7 @@ $$\forall v \in U_0,\ Cov_{\theta}\left(v,T\right)=E_{\theta}\left(vT\right)-E_{
 
 <blockquote>因为 $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i$，$S_n^2=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_i-\bar{X} \right)^2$ 分别是 $\mu$ 和 $\sigma^2$ 的无偏估计，所以根据定理 “无偏估计量 $T$ 为 $g\left(\theta \right)$ 的 <em>UMVUE</em> 当且仅当 $T$ 与 $0$ 的所有无偏估计量不相关” 我们知道：$\bar{X},S_n^2$ 为 $\mu,\sigma^2$ 的 <em>UMVUE</em></blockquote>
 
-<p>接下来我们来看第二个定理：<strong>作为完备充分统计量 $S$ 函数的 $g\left(\theta \right)$ 的无偏估计量 $T^*\left(S\right)$ 一定是 <em>UMVUE</em></strong>. 我们先来看一下什么是完备充分统计量，完备充分统计量即又完备又充分的统计量。充分统计量大家都知道了，它包含了样本中有关参数的全部信息，给定充分统计量后样本的条件分布与参数无关。那什么是完备统计量呢？如果 0 的任意作为统计量 $T$ 函数的无偏估计量 $g(T)$ 等于 0 的概率为 1，那么我们称统计量 $T$ 是完备统计量，该统计量所属的分布族则被称为完备分布族。怎么去找一个完备统计量呢？我们先不说，我们先来证明一下这个定理为什么成立。这个定理的证明啊，一点也不好玩，下面开始：</p>
+<p>接下来我们来看第二个定理：<strong>作为完备充分统计量 $S$ 函数的 $g\left(\theta \right)$ 的无偏估计量 $T^*\left(S\right)$ 一定是 <em>UMVUE</em></strong>，这对应于教材的定理 2.5.1. 我们先来看一下什么是完备充分统计量，<strong>完备充分统计量即又完备又充分的统计量</strong>。充分统计量大家都知道了，它包含了样本中有关参数的全部信息，给定充分统计量后样本的条件分布与参数无关。那什么是完备统计量呢？<strong>如果 0 的任意作为统计量 $T$ 函数的无偏估计量 $g(T)$ 等于 0 的概率为 1，那么我们称统计量 $T$ 是完备统计量</strong>，该统计量所属的分布族则被称为完备分布族，关于完备统计量的定义见教材的定义 2.5.1 和 2.5.2。完备统计量的定义是由 <strong>Lehmann</strong> 和 <strong>Scheffe</strong> 于 <strong>1950 年</strong>提出的，这个定理也是他们证明出来的，因此也被称为<strong>莱曼·谢弗定理</strong>。怎么去找一个完备统计量呢？我们先不说，我们先来证明一下莱曼·谢弗定理为什么成立。这个定理的证明啊，一点也不好玩（定理的证明用到了教材的定理 2.4.1），下面开始：</p>
 
 <blockquote>我们首先证明：作为完备充分统计量 $S$ 函数的 $g\left(\theta \right)$ 的无偏估计量 $T^*\left(S\right)$ 是唯一的，我们采用反证法，假设存在另一个作为完备充分统计量 $S$ 函数的  $g\left(\theta \right)$ 的无偏估计量 $T'(S) \neq T^*\left(S\right)$，则有：</blockquote>
 
@@ -216,7 +218,7 @@ $$\forall v \in U_0,\ Cov_{\theta}\left(v,T\right)=E_{\theta}\left(vT\right)-E_{
 
 <blockquote>至此我们证明了 $Var_\theta\left(T^*\right) \leq Var_\theta\left(T\right)$，也就证明了用来寻找 <em>UMVUE</em> 的第二个定理：<strong>作为完备充分统计量 $S$ 函数的 $g\left(\theta \right)$ 的 无偏估计量 $T^*\left(S\right)$ 一定是 <em>UMVUE</em></strong>.</blockquote>
 
-<p class="post-text-noindent">为了应用这个定理去寻找 $UMVUE$，我们必须知道如何去找完备充分统计量，如同直接利用定义去寻找充分统计量比较困难一样，直接利用定义去寻找完备统计量也不容易，因子分解定理为我们寻找充分统计量提供了便利，那有没有定理可以为我们寻找完备统计量提供便利呢？答案是有的：如果样本所属总体的分布是指数型分布族的成员，那么寻找完备充分统计量将变得十分容易。我们来看这个定理（注：省略了某些正则性条件）：</p>
+<p class="post-text-noindent">为了应用这个定理去寻找 $UMVUE$，我们必须知道如何去找完备充分统计量，如同直接利用定义去寻找充分统计量比较困难一样，直接利用定义去寻找完备统计量也不容易，因子分解定理为我们寻找充分统计量提供了便利，那有没有定理可以为我们寻找完备统计量提供便利呢？答案是有的：<strong>如果样本所属总体的分布是指数型分布族的成员，那么寻找完备充分统计量将变得十分容易</strong>。我们来看这个定理（注：省略了某些正则性条件，对应于教材中的定理 2.5.2）：</p>
 
 <blockquote>设 $X_1,X_2,\cdots,X_n$ 是一个来自密度为 $f\left(x;\theta_1,\cdots,\theta_k\right)$ 的总体的独立同分布样本，如果 $f\left(x;\theta_1,\cdots,\theta_k\right)$ 属于指数型分布族，即</blockquote>
 
@@ -224,7 +226,7 @@ $$\forall v \in U_0,\ Cov_{\theta}\left(v,T\right)=E_{\theta}\left(vT\right)-E_{
 
 <blockquote>那么 $\left\{\sum_{i=1}^{n}d_1\left(X_i\right),\cdots,\sum_{i=1}^{n}d_k\left(X_i\right) \right\}$ 构成一个完备充分统计量集合。</blockquote>
 
-<p class="post-text-noindent">至此，我们证明了第二个用来寻找 <em>UMVUE</em> 的定理，并且给出了一个绕过定义简洁地寻找完备充分统计量的方法，下面我们来看如何运用这个定理寻找 <em>UMVUE</em>，我们仍然以第一个定理应用中的那道题为例：设 $X_1,X_2,\cdots,X_n$ 是来自正态总体 $N\left(\mu,\sigma^2\right)$ 的一个独立同分布样本，试求 $\mu$、$\sigma^2$ 的 <em>UMVUE</em>. 下面是求解过程：</p>
+<p class="post-text-noindent">至此，我们证明了第二个用来寻找 <em>UMVUE</em> 的定理，并且给出了一个绕过定义简洁地寻找完备充分统计量的方法，下面我们来看如何运用这个定理寻找 <em>UMVUE</em>，我们仍然以第一个定理应用中的那道题为例：设 $X_1,X_2,\cdots,X_n$ 是来自正态总体 $N\left(\mu,\sigma^2\right)$ 的一个独立同分布样本，试求 $\mu$、$\sigma^2$ 的 <em>UMVUE</em>（对应于教材例 2.5.9）. 下面是求解过程：</p>
 
 <blockquote>正态总体 $N\left(\mu,\sigma^2\right)$ 的密度函数为：</blockquote>
 
@@ -250,7 +252,7 @@ c_1\left(\mu,\sigma\right) = -\frac{1}{2\sigma^2},\ d_1\left(x\right) = x^2,\ c_
 
 <p class="post-text-noindent">通过上述例子，我们可以看到：利用第二个定理来寻找 <em>UMVUE</em> 要比利用第一个定理简单太多，但要注意第二个定理以及后面要说的第三个定理只是给出了寻找 <strong>UMVUE</strong> 的充分条件，也就是说完全可能存在某个参数的 <strong>UMVUE</strong> 我们通过第二个定理或第三个定理是找不到的。</p>
 
-<p>下面来看寻找 <em>UMVUE</em> 的第三个定理：<strong>方差等于 <em>C-R</em> 下界的 $g\left(\theta \right)$ 的无偏估计量一定是 $g\left(\theta \right)$ 的 <em>UMVUE</em></strong>. 下面首先讲什么是 <em>C-R</em> 下界。</p>
+<p>下面来看寻找 <em>UMVUE</em> 的第三个定理：<strong>方差等于 <em>Cramer-Rao</em> 下界的 $g\left(\theta \right)$ 的无偏估计量一定是 $g\left(\theta \right)$ 的 <em>UMVUE</em></strong>. 下面首先讲什么是 <strong><em>C-R</em> 下界</strong>（该下界由 <strong>C.R.Rao</strong> 和 <strong>H.Cramer</strong> 于 <strong>1945 年</strong>和 <strong>1946 年</strong>先后独立地得到，它对应于教材定理 2.6.2 和定义 2.6.1）。</p>
 
 <p>设 $X_1,X_2,\cdots,X_n$ 是来自密度函数为 $f\left(x;\theta \right)$ 的总体的一个独立同分布样本，$T$ 是 $g\left(\theta \right)$ 的无偏估计量。如果总体密度函数 $f\left(x;\theta \right)$ 和无偏估计量 $T$ 满足如下正则性条件：</p>
 
@@ -274,23 +276,37 @@ $$Var_\theta\left(T \right )\geq \frac{\left[g'\left(\theta \right ) \right ]^2}
 $$\frac{\partial }{\partial \theta}\ln \left(\prod_{i=1}^{n}f\left(x_i;\theta \right ) \right )=\sum_{i=1}^{n}\frac{\partial \ln f\left(x_i;\theta \right )}{\partial \theta} =K\left(\theta,n \right )\left[T-g\left(\theta \right ) \right ]$$
 </p>
 
-<p class="post-text-noindent">其中 $K\left(\theta,n\right)$ 是关于 $\theta$ 和样本量 $n$ 的函数。上述不等式称之为 <em>C-R</em> 不等式，其给出的无偏估计量方差的下界则称之为 <em>C-R</em> 下界。由于 <em>C-R</em> 下界是无偏估计量方差所能取到的最小值，因此如果 $g\left(\theta \right)$ 的某个无偏估计量的方差等于 <em>C-R</em> 下界，那么它一定是 $g\left(\theta \right)$ 的 <em>UMVUE</em>. 关于 <em>C-R</em> 不等式的证明这里就不讲了，它的证明主要用到上述正则性条件中积分和求导运算的交换以及柯西·施瓦茨不等式。</p>
+<p class="post-text-noindent">其中 $K\left(\theta,n\right)$ 是关于 $\theta$ 和样本量 $n$ 的函数。上述不等式称之为 <em>C-R</em> 不等式，其给出的无偏估计量方差的下界则称之为 <em>C-R</em> 下界。<strong>由于 <em>C-R</em> 下界是无偏估计量方差所能取到的最小值，因此如果 $g\left(\theta \right)$ 的某个无偏估计量的方差等于 <em>C-R</em> 下界，那么它一定是 $g\left(\theta \right)$ 的 <em>UMVUE</em></strong>. 关于 <em>C-R</em> 不等式的证明这里就不讲了，它的证明主要用到上述正则性条件中积分和求导运算的交换以及柯西·施瓦茨不等式。</p>
 
 <p>不讲的主要原因是：<em>C-R</em> 下界在寻找 <em>UMVUE</em> 时有很大的局限性。在 《Introduction to the theory of statistics, 3rd edition》 一书中，作者这样写道：</p>
 
 <blockquote>如果 $T$ 是 $g\left(\theta\right)$ 的无偏估计量且方差等于 <em>C-R</em> 下界，那么总体密度一定属于指数族，反之，如果总体密度属于指数族，那么便存在某个函数 $g\left(\theta\right)$ 的无偏估计量 $T$，它的方差等于 <em>C-R</em> 下界。</blockquote>
 
-<p class="post-text-noindent">这告诉我们能够找到方差等于 <em>C-R</em> 下界的估计量当且仅当总体密度属于指数族，而上面在讲寻找 UMVUE 的第二个定理时，我们已经指出：如果总体密度属于指数族，那么就意味着完备充分统计量是现成的，在这种情况下我们利用第二个定理寻找 UMVUE 显然比费劲巴力地去验证</p>
+<p class="post-text-noindent">这告诉我们<strong>能够找到方差等于 <em>C-R</em> 下界的估计量当且仅当总体密度属于指数族</strong>，而上面在讲寻找 UMVUE 的第二个定理时，我们已经指出：如果总体密度属于指数族，那么就意味着完备充分统计量是现成的，在这种情况下我们利用第二个定理寻找 UMVUE 显然比费劲巴力地去验证</p>
 
 <p class="post-text-formula">
 $$\sum_{i=1}^{n}\frac{\partial \ln f\left(x_i;\theta \right )}{\partial \theta} =K\left(\theta,n \right )\left[T-g\left(\theta \right ) \right ]$$
 </p>
 
-<p class="post-text-noindent">是否成立要快得多，况且如果验证不成立的话又得回过头来利用其它方法寻找 <em>UMVUE</em>. 大家如果感兴趣可以拿前面那个正态分布的例子算一下，正态总体均值的 <em>UMVUE</em> 是样本均值，样本均值的方差刚好等于 <em>C-R</em> 下界，而正态总体方差的 <em>UMVUE</em> 虽然是样本方差，但样本方差的方差则要大于 <em>C-R</em> 下界。好，寻找 <em>UMVUE</em> 的内容就讲完了。</p>
+<p class="post-text-noindent">是否成立要快得多，况且如果验证不成立的话又得回过头来利用其它方法寻找 <em>UMVUE</em>. 陈希孺院士在其所著《数理统计教程》也指出：<strong>可以证明凡是用 C-R 不等式法求得 UMVUE 的场合必能用莱曼·谢弗定理或 UMVUE 存在的充要条件求得，从这一点来看，C-R 不等式作为一种求 UMVUE 的方法，意义是不大的。</strong>大家如果感兴趣可以拿前面那个正态分布的例子算一下，正态总体均值的 <em>UMVUE</em> 是样本均值，样本均值的方差刚好等于 <em>C-R</em> 下界，而正态总体方差的 <em>UMVUE</em> 虽然是样本方差，但样本方差的方差则要大于 <em>C-R</em> 下界。这里讲到 C-R 下界，顺便再提一个与 C-R 下界有关的定理，即<strong>在总体密度满足某些正则性条件的前提下，参数 $\theta$ 的极大似然估计渐进服从均值为 $\theta$，方差为 $C-R$ 下界的正态分布</strong>，这个定理表明极大似然估计拥有比较好的大样本性质，其精确表述大家可以看我们教材 2.7 节中的定理 2.7.9.</p>
 
-<h1>3 闲言碎语</h1>
+<p>我没有举太多寻找 <em>UMVUE</em> 的例子，主要原因是这样的技术，它在理论上的意义远大于其实际意义。这么说有以下几点理由：</p>
 
-<p>我没有举太多寻找 <em>UMVUE</em> 的例子，主要原因是这样的技术，它在理论上的意义远大于其实际意义。统计学本是一门研究数据的科学，然而从上个世纪三四十年代开始，它的研究越来越数学化，越来越脱离实际问题，已故的我国统计学界到目前为止唯一的中科院院士陈希孺老师在其所著的 《数理统计简史》 中对此有详细阐述。</p>
+<ul>
+	<li><strong>求 UMVUE 的前提是已知总体的分布，然而实际情况是我们通常不知道总体服从的真正分布</strong>。虽然我们可以通过诸如直方图估计、核密度估计，或者通过皮尔逊卡方拟合优度检验、科莫戈诺夫检验、Q-Q 图等方法对总体服从的分布作出推断，但是：通过直方图估计、核密度估计等非参数密度估计方法得到的密度函数通常比较复杂，也几乎不可能是我们常见的密度函数，对这样的密度函数求 UMVUE 将十分困难甚至无法求解，而皮尔逊卡方拟合优度检验、科莫戈诺夫检验、Q-Q 图等检验方法，它们的原假设都是数据服从某个具体的分布，备择假设则是数据不服从这个具体的分布，对这样的假设做检验，当检验无法拒绝原假设时，我们看似可以做出 “数据服从某个具体的分布” 的论断，但不要忘了，我们做出这个论断的犯错概率（即真实情况是备择假设正确，但我却接受原假设的概率）是无法计算的，要计算这个概率你必须知道备择假设它假设的数据所服从的具体分布是什么，但我们看备择假设实际是无穷个假设的集合。因此利用这些检验方法我们只能有把握地作出 “数据不服从某个具体分布” 的论断，却做不出 “数据服从某个具体分布” 的论断，这样求 UMVUE 就无从谈起。</li>
+	<li>即便我们根据许多其他信息可以知道总体服从的真正分布，如果分布属于指数族还好，如果不属于指数族，求 UMVUE 通常是一件涉及大量分析与运算的过程，即便分布属于指数族，当待估参数比较复杂时，求 UMVUE 同样不简单。并且参数的无偏估计可能不存在，即便参数的无偏估计存在，参数的 UMVUE 也可能不存在。</li>
+	<li>1975 年，美国明尼苏达大学统计学院创始人 Seymour Geisser 在他发表在 JASA 的一篇名为 “The Predictive Sample Reuse Method with Applications” 的文章中对交叉验证方法的有关应用及面临的某些问题作了详细阐释。在这篇文章中，Seymour Geisser 多次强调着这样的观点：<strong>预测比参数估计更重要</strong>。他赞同卡尔皮尔逊（Karl Pearson）的 “统计学的根本问题在预测”的观点，认为<strong>统计学应更加关注模型的预测效果而不是参数估计的效果</strong>。</li>
+</ul>
+
+<blockquote>交叉验证方法是如今机器学习中重要的用于评价模型预测效果的方法。1974 年，Seymour Geisser，以及今伦敦学院大学（University College London）统计科学系名誉教授 Mervyn Stone 在两本不同杂志上发表了各自的文章，Seymour Geisser 的文章名为 “A Predictive Approach to the Random Effect Model” 发表在 《Biometrika》 上，而 Mervyn Stone 的文章则名为 “Cross-Validatory Choice and Assessment of Statistical Predictions”，发表在 《Journal of the Royal Statistical Society》 上。在这两篇文章中，两位作者首次独立系统地提出了交叉验证方法。</blockquote>
+
+<h1>3 Bootstrap 方法</h1>
+
+<p>教材在讲到无偏估计时还提到一个刀切法，也就是例 2.4.1，其最初的意图是要降低估计量的偏差，由于现在用得多的是 Bootstrap 方法，而且自助法的发明人 Efron 在 1979 年的文章中指出刀切法是自助法的一阶近似，并且在许多方面自助法优于刀切法，因此我们这里主要介绍一下什么是 Bootstrap 方法，别看名字高大上，它的核心思想其实很简单，就是重抽样。Bootstrap 方法不仅在区间估计中有重要应用，它的基本思想也被广泛应用于机器学习中，机器学习中重要的基于决策树的分类回归算法 Bagging、随机森林、Adaboost 等本质上就是决策树与 Bootstrap 方法的结合，Bootstrap 方法与决策树的组合大大降低了决策树算法的不稳定性。下面以自助置信区间的构造为例讲一下 <a href="/drafts/bootstrap.pdf">Bootstrap 方法</a>。</p>
+
+<h1>4 闲言碎语</h1>
+
+<p>统计学本是一门研究数据的科学，然而从上个世纪三四十年代开始，它的研究越来越数学化，越来越脱离实际问题，已故的我国统计学界到目前为止唯一的中科院院士陈希孺老师在其所著的 《数理统计简史》 中对此有详细阐述。</p>
 
 <p>长江后浪推前浪，在统计学开始走向脱离实际问题的研究轨道时，一门新兴的学科计算机科学诞生了。</p>
 
