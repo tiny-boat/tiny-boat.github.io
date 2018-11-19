@@ -11,6 +11,11 @@ dl, dd, ol, ul, figure {
 body{
     -webkit-transform-origin:top center;
     -webkit-transform:scale(1.2);
+
+    @include media-query($on-palm) {
+    -webkit-transform-origin:top center;
+    -webkit-transform:scale(1);
+    }
 }
 
 
