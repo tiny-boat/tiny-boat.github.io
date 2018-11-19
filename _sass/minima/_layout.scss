@@ -289,28 +289,28 @@
  */
 .page-content {
   padding: 36px 0px 10px 0px;
-  flex: 1;
-  
+  flex: auto;
+
   @include media-query($on-palm) {
       margin: 54px 0px 0px 0px;
 	  padding: 30px 0px 16px 0px;
   }
- 
+
 }
 
 :root Selector {property: value9;}
 
 .page-post-content {
   padding: 24px 0px 16px 0px;
-  flex: 1;
-  
+  flex: auto;
+
   @include media-query($on-palm) {
-      margin: 54px 0px 0px 0px;
+    margin: 54px 0px 0px 0px;
 	  padding: 20px 0px 16px 0px;
-      overflow-y: scroll;  
+    overflow-y: scroll;
 	  z-index: -1;
   }
- 
+
 }
 
 .search {
