@@ -8,43 +8,218 @@ excerpt: "机器学习是研究数据分析方法的计算机科学分支，但�
 
 <div class="post-style">
 
-<p>周志华教授在其所著 《机器学习》 一书中将机器学习定义为：一门致力于研究如何通过计算的手段，利用数据来改善系统自身性能的学科。同时周教授指出：机器学习主要研究从数据中产生模型的算法，即学习算法（learning alogrithm）. 笔者认为可以将机器学习定义得更简单一点：机器学习就是研究数据分析方法的计算机科学分支，但它吸收了许多数学和统计学方法并以这些方法为基础，因此它也是一门横跨数学、统计学、计算机科学等多个学科领域的交叉学科。</p>
+<blockquote>参考文献：① 周志华. 机器学习[M]. 北京:清华大学出版社. 2016.01. ② 李航. 统计学习方法[M]. 北京:清华大学出版社. 2012.03.
+</blockquote>
+
+<p>周志华教授在其所著 《机器学习》 一书中将机器学习定义为：一门致力于研究如何通过计算的手段，利用数据来改善系统自身性能的学科。同时周教授指出：机器学习主要研究从数据中产生模型的算法，即<strong>学习算法</strong>（learning alogrithm）. 笔者认为可以将机器学习定义得更简单一点：机器学习就是研究数据分析方法的计算机科学分支，但它吸收了许多数学和统计学方法并以这些方法为基础，因此它也是一门横跨数学、统计学、计算机科学等多个学科领域的交叉学科。</p>
 
 <blockquote><strong>模型</strong> (model) / <strong>学习器</strong> (learner) 是从数据中学到的结果，这个结果通常是一个函数或可以看成为一个函数。有的文献会用模型指全局性结果，而用<strong>模式</strong>指局部性结果。</blockquote>
 
-<blockquote>统计学本是一门研究数据的科学，然而从上个世纪三四十年代开始，它的研究越来越数学化，越来越脱离实际问题，我国统计学界唯一的已故院士陈希孺先生在其所著的 《数理统计简史》 中对此有详细阐述。于是长江后浪推前浪，新兴的计算机科学中专注研究数据的分支学科机器学习，以其基于数据驱动的研究方法而非模型驱动的研究方法，以其对数学、统计学等多门学科的包容性，逐渐在数据分析中取代传统统计学，而成为工业界数据分析尤其是大规模数据分析的主流方法。上世纪六七十年代，一些富有远见的统计学家也意识到了统计研究愈来愈数学化的不良倾向，在他们的推动下，国外的统计教学与研究开始纠正航向，转移到数据驱动的研究方法上来。然而国内目前的教学与研究仍然未能摆脱这种数学化倾向，作为一门研究数据的科学，我们大多数学校的统计学本科生在大学前两年不是泡在数据的海洋里，而是泡在一堆数学公式里面，不是说数学不重要，但依靠公式是孕育不了新的统计思想的。如果我们回看当年 Fisher 提出方差分析方法的历史，就该明白：实际数据分析才是催生新的统计思想或新的数据分析方法的源泉。</blockquote>
+<p>众所周知，统计学也是一门研究数据的科学。然而，遗憾的是：从上个世纪三四十年代开始，统计学的研究越来越数学化，越来越脱离实际问题，其中的原因是多方面的，我国统计学界唯一的中科院院士陈希孺老师在其所著的 《数理统计简史》 中对此有详细阐述，笔者很喜欢陈老师写得书，陈老写的书不仅一丝不苟而且高屋建瓴。早在二十年前，陈老就在这本书的尾言中写道：统计学的未来大概就是数据分析吧。</p>
+
+<p>在统计学研究数学化倾向开始的三四十年代，一门新兴的学科——计算机科学随着人类历史上第一台通用电子计算机的发明诞生了。此后计算机科学中专注研究数据的分支学科机器学习，以其基于数据驱动的研究方法而非模型驱动的研究方法，以其对数学、统计学等多门学科的包容性，逐渐在数据分析中取代了传统的统计学，而成为工业界数据分析尤其是大规模数据分析的主流方法。陈老在书中讲道：上个世纪六七十年代，一些富有远见的统计学家也意识到了统计研究愈来愈数学化的不良倾向，在他们的推动下，国外的统计教学与研究开始纠正航向，转移到数据驱动的研究方法上来。然而据笔者的观察：暂且不论研究，起码国内目前统计学的教学仍然未能摆脱这种数学化倾向。</p>
+
+<p>作为一门研究数据的科学，我们大多数学校的统计学本科生在大学期间不是泡在数据的海洋里，而是泡在一堆数学公式里面，不是说数学不重要，但依靠公式是孕育不了新的统计思想的。如果我们回看当年 Fisher 提出方差分析方法的历史，就该明白：实际数据分析才是催生新的统计思想或新的数据分析方法的源泉。</p>
+
+<p>有时候笔者会问问自己：作为一名统计专业的毕业生，先不说你会不会分析数据，你先说说你会不会收集各种各样的数据？我想不仅我自己，我们国内目前大多数大学的统计学本科毕业生，哪怕是一些很有名的大学，面对这样的问题，我们的回答一定干脆利落，不会！笔者觉得这是一个天大的笑话：你学统计的吗，答是的，你要对数据作分析先得会什么，答会收集数据，现在什么地方数据最多最丰富，答网络上，网络上的数据你会收集吗，答不会要编程我不会。统计学专业毕业的学生还要别人替他收集数据，这样的笑话就是对我们国内统计学教学现状的赤裸裸的嘲讽！如果要重新设计统计学的本科教学计划，笔者觉得同学们首先要学的不是数学，而是学习如何利用计算机获取各种各样的数据，因为如果连数据都不会收集，统计学的学习与研究就成了无源之水、无本之木。</p>
+
+<p>当然，国内统计学教学的改变不会是一蹴而就的。而统计学过去的研究也并非是一无是处的，实际上六七十年后统计学开始重新走向实用化研究道路后取得了许多新的成果，今天机器学习中许许多多重要的方法都是统计学家提出的，如用于模型选择的交叉验证方法、在许多分类模型中有重要应用的自助方法等等。笔者还记得本科数理统计最后一堂课时，郭老师这样讲道：数据，现在不仅我们搞统计的在研究，数学那边搞计算数学的也在研究，计算机那边也在研究，我们搞统计的从模型出发，他们计算机的呢从算法出发，我认为啊，这几门研究数据的学科最终会殊途同归。</p>
+
+<p>下面，我们将首先介绍机器学习中一些常用的术语，并指出其中部分术语在统计学中对应的名词；接着我们将介绍机器学习的发展历程与应用现状，并给出机器学习领域重要的文献、会议与期刊。</p>
 
 <h1>1.1 基本术语</h1>
 
 <p>下面我们列举一下机器学习中的常用术语，事实上，这些常用术语中有许多都可以在统计学中找到意义相近或相同的术语与之对应，笔者将对此加以说明。令一个 $m\times d$ 实矩阵</p>
 
 <p class="post-text-formula">
-$$D_1 = \left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \right )^{\bf{T}}, \boldsymbol{x}_i = \left ( x_{i1},x_{i2},\cdots,x_{id} \right ),x_{i} \in \mathcal {X}\subseteq {\textbf {R}^d}$$</p>
+$$D_1 = \left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \right )^{\bf{T}}, \boldsymbol{x}_i = \left ( x_{i1},x_{i2},\cdots,x_{id} \right )^{\bf{T}},x_{i} \in \mathcal {X}\subseteq {\textbf {R}^d}$$</p>
 
 <p class="post-text-noindent">以及一个 $m\times \left(d+1\right)$ 实矩阵</p>
 
 <p class="post-text-formula">$$D_2 = \left ( \left(\boldsymbol{x}_1,y_1\right), \left(\boldsymbol{x}_2,y_2\right),\cdots, \left(\boldsymbol{x}_m,y_m\right) \right )^{\bf{T}},\boldsymbol{x}_i \ 同上\ ,y_i \in \mathcal {Y}\subseteq{\textbf R}$$</p>
 
-<p class="post-text-noindent">$D_1$ 或 $D_2$ 称为一个<strong>数据集</strong> (data set)，它们都有 $m$ 个<strong>示例</strong>/<strong>样本</strong>/<strong>特征向量</strong> (instance / sample / feature vector) $\left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \right )$，$D_2$ 中则有 $m$ 个<strong>样例</strong> (example) $\left ( \left(\boldsymbol{x}_1,y_1\right), \left(\boldsymbol{x}_2,y_2\right),\cdots, \left(\boldsymbol{x}_m,y_m\right) \right )$。它们都有 $d$ 个<strong>属性</strong>/<strong>特征</strong> (attribute / feature)，$D_2$ 中还另有一个<strong>标记</strong> (label)。它们的第 $i$ 个示例 $\boldsymbol{x}_i$ 的<strong>维数</strong> (dimensionality) 为 $d$，即它们有 $d$ 个<strong>属性值</strong> (attribute value) $x_{i1},x_{i2},\cdots,x_{id}$。由属性张成的空间 $\mathcal {X}$ 称为<strong>属性空间</strong>/<strong>样本空间</strong>/<strong>输入空间</strong> (attribute space / sample space / input space)，由标记张成的空间 $\mathcal {Y}$ 称为<strong>标记空间</strong>/<strong>输出空间</strong> (label space / output space)，我们通常假设样本空间中的全体样本服从一个未知的<strong>分布</strong> (distribution)，且每一个样本都是独立地从分布中采样得到的，即各样本<strong>独立同分布</strong> (independent and identically distributed, i.i.d.)。</p>
+<p class="post-text-noindent">$D_1$ 或 $D_2$ 称为一个<strong>数据集</strong> (data set)，它们都有 $m$ 个<strong>示例</strong>/<strong>样本</strong>/<strong>特征向量</strong> (instance / sample / feature vector) </p>
 
-<blockquote>在上述这些概念中，数据集对应于统计学中的<strong>样本</strong> (sample)，示例/样本/特征向量/样例对应于统计学中的<strong>样品</strong> (specimen)，属性/特征对应于统计学中的<strong>变量</strong> (variable)，标记对应于统计学中的<strong>因变量</strong> (dependent variable)。</blockquote>
+<p>$$\boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m$$</p>
+
+<p class="post-text-noindent">$D_2$ 中则有 $m$ 个<strong>样例</strong> (example)</p>
+
+<p>$$\left(\boldsymbol{x}_1,y_1\right), \left(\boldsymbol{x}_2,y_2\right),\cdots, \left(\boldsymbol{x}_m,y_m\right)$$</p>
+
+<p class="post-text-noindent">数据集 $D_1$ 或 $D_2$ 中的示例 $\boldsymbol{x}_i$ 都有 $d$ 个<strong>属性</strong>/<strong>特征</strong>/<strong>属性值</strong> (attribute / feature / attribute value)</p>
+
+<p>$$x_{i1},x_{i2},\cdots,x_{id}$$</p>
+
+<p class="post-text-noindent">$d$ 被称为该示例的<strong>维数</strong> (dimensionality)。$D_2$ 中的样例 $\boldsymbol{x}_i,y_i$ 还另有一个<strong>标记</strong> (label)</p>
+
+<p>$$y_i$$</p>
+
+<p class="post-text-noindent">由属性张成的空间 $\mathcal {X}$ 称为<strong>属性空间</strong>/<strong>样本空间</strong>/<strong>输入空间</strong> (attribute space / sample space / input space)，由标记张成的空间 $\mathcal {Y}$ 称为<strong>标记空间</strong>/<strong>输出空间</strong> (label space / output space)，我们通常假设样本空间中的全体样本服从一个未知的<strong>分布</strong> (distribution)，且每一个样本都是独立地从分布中采样得到的，即各样本<strong>独立同分布</strong> (independent and identically distributed, i.i.d.)。</p>
+
+<blockquote>在上述这些概念中，数据集对应于统计学中的<strong>样本</strong> (sample)，示例/样本/特征向量/样例对应于统计学中的<strong>样品</strong> (specimen)，属性/特征对应于统计学中的<strong>变量</strong>/<strong>自变量</strong> (variable / independent variable)，标记对应于统计学中的<strong>因变量</strong> (dependent variable)，属性空间或由属性和标签共同张成的空间对应于统计学中的<strong>样本空间</strong>(sample space)，标记空间在统计学中没有与之对应的术语，如果一定要找个对应名词的话，那就是线性代数中的术语向量空间。其余的如维数、分布和独立同分布这些术语，与统计学中是一致的。</blockquote>
 
 <p>我们将对数据集建模的过程称为<strong>学习</strong>/<strong>训练</strong> (learning / training)，建模使用的数据集称为<strong>训练数据集</strong> (training data set)，其中的示例称为<strong>训练样本</strong> (training sample)。学得的模型还可称为<strong>假设</strong> (hypothesis)，它对应于数据的某种潜在规律即<strong>真相</strong> (ground-truth)，我们可以把学习过程看做一个在所有假设组成的空间中进行搜索的过程，搜索目标就是找到与训练集匹配的假设，我们将与训练集一致的假设集合称之为<strong>版本空间</strong> (version space)。学得模型后，使用其进行预测的过程称为<strong>测试</strong> (testing)，预测使用的数据集称为<strong>测试数据集</strong> (testing data set)，其中的示例称为<strong>测试样本</strong> (testing sample)。我们将学得的模型适用于新样本的能力称为<strong>泛化</strong> (generalization) 能力。</p>
 
-<blockquote>在上述这些概念中，学习/训练对应于统计学中的<strong>建模</strong> (modeling)，由于传统统计学中使用建模数据评估模型预测效果，上述其他概念如训练数据集和测试数据集，似乎在统计学中都找不到与之对应的术语。</blockquote>
+<blockquote>在上述这些概念中，学习/训练对应于统计学中的<strong>建模</strong> (modeling)，由于传统统计学中使用建模数据评估模型预测效果，因此训练数据集、训练样本、测试数据集、测试样本等概念在统计学中都找不到与之对应的术语。</blockquote>
 
-<p>对类似 $D_1$ 这样没有标记信息的数据，我们可以按照其属性特征将其分为多个类，我们将这种学习方法称之为<strong>聚类</strong> (clustering)，每个类称为一个<strong>簇</strong> (cluster)。对类似 $D_2$ 这样有标记信息的数据，如果其标记信息为离散值，那么这些标记信息相当于示例所属类别，因此我们可以通过学习来预测新的样本所属类别，我们将这种学习方法称之为<strong>分类</strong> (classification)；如果其标记信息为连续值，那么我们可以通过学习来预测新的样本的取值，我们将这种学习方法称之为<strong>回归</strong> (regression). 对于分类问题，当标记信息只有两种取值时，称为<strong>二分类</strong> (binary classification)，否则称为<strong>多分类</strong> (multi-class classification)，在二分类中两个类分别称为<strong>正类</strong> (postive class) 和<strong>反类</strong>/<strong>负类</strong> (negative class)。聚类属于<strong>无监督学习</strong>/<strong>无导师学习</strong> (unsupervised learning)，分类与回归则属于<strong>有监督学习</strong>/<strong>有导师学习</strong> (supervised learning)，此外还有<strong>半监督学习</strong> (semi-supervised learning) 与<strong>强化学习</strong> (reinforcement learning) 等多种学习方法。</p>
+<p>对类似 $D_1$ 这样没有标记信息的数据集，我们可以按照其属性特征将其分为多个类，我们将这种学习方法称之为<strong>聚类</strong> (clustering)，每个类称为一个<strong>簇</strong> (cluster)。对类似 $D_2$ 这样有标记信息的数据，如果其标记信息为离散值，那么这些标记信息相当于示例所属类别，因此我们可以通过学习来预测新的样本所属类别，我们将这种学习方法称之为<strong>分类</strong> (classification)；如果其标记信息为连续值，那么我们可以通过学习来预测新的样本的取值，我们将这种学习方法称之为<strong>回归</strong> (regression). 对于分类问题，当标记信息只有两种取值时，称为<strong>二分类</strong> (binary classification)，否则称为<strong>多分类</strong> (multi-class classification)，在二分类中两个类分别称为<strong>正类</strong> (postive class) 和<strong>反类</strong>/<strong>负类</strong> (negative class)。像聚类这种没有标记信息的学习方法属于<strong>无监督学习</strong>/<strong>无导师学习</strong> (unsupervised learning)，像分类与回归这种有标记信息的学习方法则属于<strong>有监督学习</strong>/<strong>有导师学习</strong> (supervised learning)，此外还有<strong>半监督学习</strong> (semi-supervised learning) 与<strong>强化学习</strong> (reinforcement learning) 等多种学习方法。</p>
 
-<blockquote>在上述这些概念中，回归、聚类、分类来源于统计学。回归是统计学中<strong>回归分析</strong> (regression analysis) 中的研究内容，聚类、分类则是统计学中的<strong>多元统计分析</strong> (multivariate statistical analysis) 中的研究内容。</blockquote>
+<blockquote>在上述这些概念中，回归、聚类、分类来源于统计学。回归是统计学中<strong>回归分析</strong> (regression analysis) 的研究内容，聚类、分类则是统计学中<strong>多元统计分析</strong> (multivariate statistical analysis) 中<strong>聚类分析</strong>(cluster analysis)、<strong>判别分析</strong>(discriminant analysis)的研究内容，其余概念在统计学中基本找不到对应术语。</blockquote>
 
 <p>有限的训练数据集常常导致版本空间中存在多个与训练数据集一致的假设，此时对于一个具体的学习算法而言，它必须从这些假设中选择一个作为模型，我们将学习算法在学习过程中对某种类型假设的偏好称为<strong>归纳偏好</strong> (inductive bias)。有没有一般性的原则来引导算法确立 “正确的” 偏好呢？答案是有的，如 “<strong>奥卡姆剃刀</strong>” (Occam's razor) 原则指出若有多个假设与观察一致，则选择最简单的一个；“<strong>多释原则</strong>” (principle of multiple explanations) 指出应保留与经验观察一致的所有假设。然而，依据 Wolpert 和 Macready 于 1995 年提出的著名的<strong>没有免费午餐定理</strong> (No Free Lunch Theorem, NFL)，我们可以知道对于任意一个学习算法 $\mathcal{L}_a$，若它在某些问题上比学习算法 $\mathcal{L}_b$ 好，则必然存在另一些问题，在那里 $\mathcal{L}_b$ 比 $\mathcal{L}_a$ 好。NFL 定理告诉我们：脱离具体问题空谈 "什么学习算法更好" 或 “那种归纳偏好更好” 是毫无意义的，因为若考虑所有潜在问题，则所有学习算法都一样好。</p>
 
-<h1>1.2 发展历程</h1>
+<h1>1.2 发展历程与应用现状</h1>
 
-<p>本节，我们将对机器学习的发展历程与应用现状做一个概括性的陈述，了解历史，我们才能更好地面对未来，下面就让我们开始吧！</p>
+<p>本节，我们将对机器学习的发展历程与应用现状做一个概括性的陈述，了解过去，把握现在，我们才能更好地面对未来，下面就让我们开始吧！</p>
 
-<p>1950</p>
+<p>1950 年，英国著名数学家、逻辑学家、计算机科学与人工智能之父阿兰·图灵 (Alan Mathison Turing, 1912.06.23——1954.06.07) 发表 “<strong>计算机器与智能</strong>” (Computing Machinery and Intelligence) 一文，率先提到了机器学习的可能性。这篇论文也被视为人工智能的开山之作，关于该篇论文的详情见博文<a href="/ET/1/Computing_Machinery_and_Intelligence/">经典论文(1):计算机器与智能</a>。</p>
 
-<p>未完待续……</p>
+<p>1952 年，阿瑟·萨缪尔 (Arthur Samuel,1901.12.05——1990.07.29) 在 IBM 公司研制了一个西洋跳棋程序，该跳棋程序实质上使用了强化学习技术，它可通过对大量棋局的分析逐渐辨识出当前局面下的 “好棋” 和 “坏棋”。<strong>萨缪尔发明了 “机器学习” 这个词</strong>，他将机器学习定义为 “不显式编程地赋予计算机能力的研究领域”，其文章 "Some studies in machine learning using the game of checkers" 于 1959 年在 IBM Journal 上正式发表。1961 年，萨缪尔的跳棋程序在与全美排名第四的棋手对弈中获胜，引起轰动。萨缪尔的跳棋程序不仅在人工智能领域产生了重大影响，也深刻影响了整个计算机科学的发展。早期计算机科学家认为计算机不可能完成事先没有显式编程好的任务，而萨缪尔跳棋程序否定了这个假设。此外，萨缪尔的跳棋程序是最早在计算机上执行非数值计算任务的程序之一，其逻辑指令设计思想极大地影响了 IBM 计算机的指令集，并很快被其他计算机的设计者采用。</p>
+
+<p>1957 年，<strong>Frank Rosenblatt</strong> (1928.07.11——1971.07.11) 发表论文 “The Perceptron: a perceiving and recognizing automaton” ，提出线性二分类模型<strong>感知机</strong> (perceptron), 基于神经网络的 “<strong>连接主义</strong>” (connectionism) 学习开始出现。感知机模型是首个基于线性阈函数 (threshold function) 的人工神经网络 (artificial neural network) ，其线性分类函数也是后来支持向量机的基础。1960 年，斯坦福大学的 <strong>Bernard Widrow</strong> (1929.12.24——) 教授和他的研究生 <strong>Ted Hoff</strong> (1937.12.28——) 提出<strong>自适应线性神经元</strong>/<strong>线性适应元</strong> (Adaptive Linear Neuron / Adaptive Linear Element, Adaline)，它由一个权重 (weight)、一个偏置 (bias) 和一个求和函数 (summation function) 构成。最早的人工神经网络可以追溯到 1943 年 <strong>Warren McCulloch</strong> (1898.11.16——1969.09.24) 和 <strong>Walter Pitts</strong> (1923.04.23——1969.05.14) 提出的<strong>阈值逻辑单元</strong>/<strong>线性阈值单元</strong> (Threshold Logic Unit / Linear Threshold Unit)，关于人工神经网络发展的更多细节，这里就不多说了，笔者将在学习完神经网络和深度学习的有关内容后于专题文章中再作阐述。</p>
+
+<p>20 世纪 60 至 70 年代，基于逻辑表示的 “<strong>符号主义</strong>” (symbolism) 学习方法蓬勃发展，如：P.Winston 的结构学习系统、 Ryszard S.Michalski (1937.05.07——2007.09.20) 等人的 “基于逻辑的归纳学习系统”、E.B.Hunt 等人的 “概念学习系统” 等。与此同时，<strong>以决策理论为基础的学习方法</strong>以及<strong>强化学习</strong>方法等也得到发展，如：N.J.Nilson 的学习机器等。此外，<strong>统计学习</strong>理论中一些奠基性结果也在这个时期取得，如：1963 年 <strong>V.N.Vapwik</strong> (1936.12.06——) 提出了<strong>支持向量</strong> 的概念，1968 年 V.N.Vapnik 和 <strong>A.J.Chervonenkis</strong> (1938.09.07——2014.09.22) 提出 <strong>VC 维</strong>，1974 年 V.N.Vapnik 和 A.J.Chervonenkis 又提出了<strong>结构风险最小化原则</strong>等，关于这些概念的含义，笔者将在后续文章中加以阐述。</p>
+
+<p>1980 年夏，作为<strong>国际机器学习会议</strong> (International Conference on Machine Learning, ICML) 前身的<strong>第一届机器学习研讨会</strong> (IWML) 在卡耐基梅隆大学召开，同年，《策略分析与信息系统》连出三期机器学习专辑。</p>
+
+<p>1983 年，<strong>Ryszard S.Michalski</strong> (1937.05.07——2007.09.20)、<strong>Jaime.G.Carbonell</strong> (1953.07.29——)、<strong>Tom M.Mitchell</strong> (1951.08.09——) 等主编的<strong>《Machine learning: An artificial intelligence approach》</strong>由 Tioga 出版社出版，该书对当时机器学习的研究工作进行了总结，书中将机器学习划分为 “<strong>从样例中学习</strong>”、“<strong>在问题求解和规划中学习</strong>”、“<strong>通过观察和发现学习</strong>” 以及 “<strong>从指令中学习</strong>” 等种类。同年，专家系统之父 <strong>Edward.A.Feigenbaum</strong> (1936.01.20——) 等所著的<strong>《The Handbook of Artificial Intelligence, volume 3》</strong>则将机器学习划分为 “<strong>机械学习</strong>”、“<strong>示教学习</strong>”、“<strong>类比学习</strong>” 和 “<strong>归纳学习</strong>” 等种类，其中 “归纳学习”、“类比学习” 和 “示教学习” 分别大致相当于 “从样例中学习”、“通过观察和发现学习” 和 “从指令中学习”，“机械学习” 则属于死记硬背式的学习。20 世纪 80 年代以来，在机器学习领域，研究最多、应用最广的就是 “从样例中学习”，下面我们将简要介绍自上世纪 80 年代开始，“从样例中学习” 的主流技术的演进历史。</p>
+
+<p>上世纪 80 年代，以<strong>决策树</strong> (Decision Tree) 和<strong>归纳逻辑程序设计</strong> (Inductive Logic Programming) 为代表的 “<strong>符号主义学习</strong>” 成为 “从样例中进行学习” 的一大主流技术，虽然归纳逻辑程序设计的研究自上世纪 90 年代中期后陷入低潮，但决策树至今仍是机器学习领域的主要技术之一。</p>
+
+<p>上世纪 80 年代至 90 年代初，“从样例中进行学习” 的另一大主流技术则是基于神经网络的 “<strong>连接主义学习</strong>”。虽然连接主义学习在上世纪 50 年代就取得了大的发展，然而由于早期人工智能研究者对符号表示的情有独钟，以及连接主义自身遇到的诸如只能处理线性分类、像 “异或” 这样简单的问题也无法处理等的障碍，连接主义在很长一段时间内，都徘徊在人工智能研究领域的边缘。1983 年，<strong>John.J.Hopfield</strong> (1933.07.15——) 利用神经网络求解著名的 NP 难题 “<strong>流动推销员问题</strong>” 取得重大进展，连接主义终于重获关注。3 年后的 1986 年，<strong>David.E.Rumelhart</strong> (1942.06.12——2011.03.13) 等人重新发现了著名的<strong>反向传播算法</strong> (Backpropagation, BP). 与符号主义学习能产生明确的概念表示不同，连接主义学习产生的是 “黑箱” 模型，其学习过程涉及大量参数，而参数的设置又缺乏理论指导，参数调节上失之毫厘，学习结果可能谬以千里。</p>
+
+<p>上世纪 90 年代中期，以<strong>支持向量机</strong>为代表的<strong>统计学习</strong> (Statistcal Learning) 方法取代连接主义成为机器学习的主流方法，支持向量机算法于 90 年代初提出，其优越性能于 90 年代中期在文本分类中显现。在支持向量机被普遍接受后，<strong>核技巧</strong>（将低维输入空间映射到高维特征空间，从而将原本低维空间下的非线性分类问题转换为高维空间的线性分类问题）被人们用到了机器学习的几乎每一个角落。</p>
+
+<p>进入 21 世纪，多层神经网络在涉及语音、图像等复杂对象的应用中取得了举世瞩目的成绩，缺乏严格理论基础的连接主义就这样卷土重来了，其掀起的被命名为 “<strong>深度学习</strong>” 的技术浪潮，席卷了整个世界。相形之下，拥有严格理论基础的统计学习，反而显得黯淡无光了。</p>
+
+<p>今天，在<strong>多媒体</strong>、<strong>图形学</strong>、<strong>网络通信</strong>、<strong>软件工程</strong>、<strong>体系结构</strong>、<strong>芯片设计</strong>等众多计算机科学分支中，都能找到机器学习的身影。而在<strong>计算机视觉</strong> (Computer Vision, CV)、<strong>自然语言处理</strong> (Natrual Language Processing, NLP) 等计算机科学领域，机器学习更是最重要的技术进步源泉之一。同时，机器学习为<strong>生物信息学</strong> (Bioinformatics) 、<strong>互联网搜索</strong> (Internet Search)、<strong>自动驾驶</strong> (Autopilot)、<strong>总统竞选</strong> （
+Presidential Campaign）等涉及数据分析的许多交叉学科或应用领域提供重要技术支撑。此外，机器学习的研究还有助于人们理解我们是如何学习的，例如：P.Kanena 在上世纪 80 年代中期提出的<strong>稀疏分布式存储器</strong> (Sparse Distributed Memory, SDM) 并未刻意模仿人脑的生理结构，然而后来神经科学的研究发现：SDM 的稀疏编码机制在脑皮层负责视觉、听觉、嗅觉功能的区域中广泛存在。</p>
+
+<p>2001 年，美国 NASA-JPL 的科学家 Mjolsness.E 和 D.DeCoste 在 Science 上发表了名为 "<strong>Machine Learning for science: State of the art and future prospects</strong>" 的文章，文章指出：<strong>机器学习对科学研究的整个过程正起到越来越大的支撑作用，其进展对科技发展意义重大</strong>。</p>
+
+<p>2003 年，美国国防高级研究计划署 (DARPA) 启动 <strong>PAL 计划</strong>，将机器学习的重要性上升到美国国家安全的高度来考虑。</p>
+
+<p>2004 年 3 月，在 DARPA 组织的自动驾驶比赛中，斯坦福大学机器学习专家 S.Thrun 的小组研制的参赛车用 6 小时 53 分钟走完了 212.43 km 赛程获得冠军，其比赛路段位于内华达州西南部的山区和沙漠中，路况复杂。</p>
+
+<p>2006 年，卡耐基梅隆大学成立世界上第一个机器学习系，T.Mitchell 出任系主任。</p>
+
+<p>2011 年 6 月，美国内华达州通过法案，成为美国第一个认可自动驾驶的州。</p>
+
+<p>2012 年 3 月，奥巴马政府启动 “大数据研究与发展计划”，美国国家科学基金会旋即在加州大学伯克利分校启动加强计划，强调要深入研究和整合大数据时代的三大关键技术：提供<strong>数据分析</strong>能力的<strong>机器学习</strong> (Machine Learning)、提供<strong>数据处理</strong>能力的<strong>云计算</strong> (Cloud Computing) 以及提供<strong>数据标注</strong>能力的<strong>众包</strong> (Crowdsourcing)</p>
+
+<h1>1.3 重要文献、会议与期刊</h1>
+
+<p>本节，我们将给出一些机器学习及其相关领域的重要书籍、论文、会议与期刊。下面列出的是一些优秀的机器学习入门书籍：</p>
+
+<ul>
+	<li>AIpaydin.E. Introduction to Machine Learning. MIT Press. 2004</li>
+	<li>Duda,R.O, P.E.Hart, D.G.Stork. Pattern Classification,2nd. 2001</li>
+	<li>Flach.P. Machine Learning: The Art and Science of Algorithms that Make Sense of Data. 2012</li>
+	<li>Witten.I.H, E.Frank, M.A.Hall. Data Minning: Practical Machine Learning Tools and Techniques,3rd edition. 2011</li>
+</ul>
+
+<p class="post-text-noindent">下面这些则是一些优秀的机器学习进阶书籍：</p>
+
+<ul>
+	<li>Hastie.T, R.Fibshirani, J.Frieelman. The elements of statistical learning,2nd edition. 2009</li>
+	<li>Bishop.C.M. Pattern Recognition and Machine Learning. Springer. 2006</li>
+	<li>Shalev-Shwartz.S, S.Ben-David. Understanding Machine Learning. 2014</li>
+</ul>
+
+<p class="post-text-noindent">下面给出的是机器学习领域的一些重要的早期论文：</p>
+
+<ul>
+	<li>综述型</li>
+	<ul>
+		<li>Michalski.R.S, J.G.Carbonell, T.M.Mitchell. Machine Learning: An Artificial Intelligence Approach. 1983</li>
+		<li>Cohen.P.R, E.A.Feigenbaum. The Handbook of Artificial Intelligence,volume 3. 1983</li>
+		<li>Dietterich.T.G. Machine Learning research: four current dierections. 1997</li>
+	</ul>
+	<li>概念学习 (rule learning)</li>
+	<ul>
+		<li>Hunt.E.G, D.I.Hovland. Programming a model of human concept formation. Computers and Thought. 1963</li>
+		<li>Winston.P.H. Learning structural descriptions from examples. Tech-nical Report AI-TR-231. 1970</li>
+	</ul>
+	<li>假设空间与版本空间</li>
+	<ul>
+		<li>Simon.H.A, G.Lea. Problem solving and rule introduction: A unified view. Knowledge and Cognition. 1974</li>
+		<li>Mitchell.T.M. Version Space: A candidate elimination approach to rule learning. IJCAI. 1977</li>
+	</ul>
+	<li>奥卡姆剃刀原则</li>
+	<ul>
+		<li>Blumer.A, A.Ehrenfeucht, D.Haussler, M.K.Warmuth. Occam's razor. Information Processing Letters. 1996</li>
+		<li>Wabb.G.I. Further experimental evidence against the utility of Occam's razor. Journal of Artificial Intelligence Research. 1996</li>
+		<li>Domingos.P. The role of Occan's razor in knowledge discovery. Data Mining and Knowledge Discovery. 1999</li>
+	</ul>
+	<li>多释原则</li>
+	<ul>
+		<li>Asmis.E. Epicurus Scientific Method. Cornell University Press. 1984</li>
+	</ul>
+</ul>
+
+<p>下面我们给出机器学习及其相关领域（包括：数据挖掘、计算机视觉、模式识别、人工智能）重要的学术会议，它们是：</p>
+
+<ul>
+	<li>机器学习</li>
+	<ul>
+		<li>ICML, 国际机器学习会议</li>
+		<li>NIPS, 国际神经信息处理系统会议</li>
+		<li>COLT, 国际学习理论会议</li>
+		<li>ECML, 欧洲机器学习会议</li>
+		<li>ACML, 亚洲机器学习会议</li>
+	</ul>
+	<li>数据挖掘</li>
+	<ul>
+		<li>KDD, 数据库中的知识发现</li>
+		<li>ICDM, IEEE 数据挖掘国际会议</li>
+	</ul>
+	<li>计算机视觉</li>
+	<ul>
+		<li>CVPR, IEEE 计算机视觉与模式识别会议</li>
+	</ul>
+	<li>人工智能</li>
+	<ul>
+		<li>IJCAI, 人工智能国际联合会议</li>
+		<li>AAAI, 人工智能国际会议</li>
+	</ul>
+</ul>
+
+<p class="post-text-noindent">下面列出的则是机器学习及其相关领域（包括：人工智能、数据挖掘、模式识别、神经网络、统计学）重要的期刊：</p>
+
+<ul>
+	<li>机器学习</li>
+	<ul>
+		<li>Journal of Machine Learning Research</li>
+		<li>Machine Learning</li>
+	</ul>
+	<li>人工智能</li>
+	<ul>
+		<li>Artificial Intelligence</li>
+		<li>Journal of Artificial Intelligence Research</li>
+	</ul>
+	<li>数据挖掘</li>
+	<ul>
+		<li>ACM Transactions on Knowledge Discovery from Data</li>
+		<li>Data Mining and Knowledge Discovery</li>
+	</ul>
+	<li>模式识别</li>
+	<ul>
+		<li>IEEE Transactions on Pattern Analysis and Machine Intelligence</li>
+	</ul>
+	<li>神经网络</li>
+	<ul>
+		<li>Neural Computation</li>
+		<li>IEEE Transactions on Neural Networks and Learning Systems</li>
+	</ul>
+	<li>统计学</li>
+	<ul>
+		<li>Annals of Statistics</li>
+		<li>Journal of the Royal Statistical Society</li>
+		<li>Journal of the American Statistical Association</li>
+		<li>Biometrica</li>
+	</ul>
+</ul>
+
+<p>本章的内容到这里就结束了，在讨论具体的机器学习算法之前，我们还要探讨模型的评价指标与模型选择的方法，而这就是我们下一章的主题。朋友们，休息一下吧，我们下章再见！</p>
 
 </div>
