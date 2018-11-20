@@ -8,6 +8,12 @@ dl, dd, ol, ul, figure {
   padding: 0;
 }
 
+body{
+  @media screen and (min-width: 1000px) {
+    -webkit-transform-origin:top center;
+    -webkit-transform:scale(1.2);
+  }
+}
 
 /**
  * Basic styling
