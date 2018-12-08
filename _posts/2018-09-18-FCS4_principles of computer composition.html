@@ -67,12 +67,46 @@ excerpt: "计算机硬件由中央处理单元、存储器、输入/输出单元
 
 <p>输入/输出单元包括非存储性输入设备键盘、鼠标、操作杆、扫描仪等，非存储性输出设备监视器、打印机等，存储性输入/输出设备磁盘、光盘、U 盘等。这里我们主要介绍磁盘和光盘。</p>
 
-<p><strong>磁盘</strong>即我们现在常说的<strong>机械硬盘</strong>（mechanical hard disk, HDD），它使用磁介质存储数据。磁盘由一张一张的磁片叠加而成，呈圆环形的磁片被划分成若干个小圆环形磁道，每个磁道又分成若干个扇区，磁道间通过磁道内部间隔隔开，扇区间则通过扇区内部间隔隔开。图 4-5 向我们展示了磁盘的结构。</p>
+<p><strong>磁盘</strong>即我们现在常说的<strong>机械硬盘</strong>（Hard Disc Drive, HDD），它使用磁介质存储数据。磁盘由一张一张的磁片叠加而成，呈圆环形的磁片被划分成若干个小圆环形磁道，每个磁道又分成若干个扇区，磁道间通过磁道内部间隔隔开，扇区间则通过扇区内部间隔隔开。图 4-5 向我们展示了磁盘的结构。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/HDD.png"></p>
 <p class="post-text-tablename">图 4-5 磁盘的结构</p>
 
-<p class="post-text-noindent">数据的读写是通过盘上每一个磁片的读/写磁头读写磁介质表面实现的，磁片有磁性的地方表示 1，无磁性的地方则表示 0。磁盘是一种典型的<strong>随机存储设备</strong>，在随机存储设备中，数据的存取不需要存取放置在其前的所有其他数据。磁盘的性能取决于<strong>角速度</strong>（磁盘旋转速度）、<strong>寻道时间</strong>（读/写磁头寻找数据所在磁道的时间）和<strong>传送时间</strong>（数据从磁盘移到 CPU 或内存的时间）。</p>
+<p class="post-text-noindent">数据的读写是通过盘上每一个磁片的读/写磁头读写磁介质表面实现的，磁片有磁性的地方表示 1，无磁性的地方则表示 0。磁盘是一种典型的<strong>随机存储设备</strong>，在随机存储设备中，数据的存取不需要存取放置在其前的所有其他数据。磁盘的性能取决于<strong>角速度</strong>（磁盘旋转速度）、<strong>寻道时间</strong>（读/写磁头寻找数据所在磁道的时间）和<strong>传送时间</strong>（数据从磁盘移到 CPU 或内存的时间）。下面是计算机硬盘发展的简要历史（摘自维基百科）：</p>
+
+<blockquote>1956 年，IBM 的 IBM 305 RAMAC 是现代硬盘的雏形，它相当于两个冰箱的体积，不过其存储容量只有 5MB。</blockquote>
+
+<blockquote>1973 年，IBM 3340 问世，它拥有 “温彻斯特” 这个绰号，来源于它的两个 30MB 存储单元，恰好是当时出名的 “温彻斯特来福枪” 的口径和填弹量。至此，硬盘的基本架构被确立。</blockquote>
+
+<blockquote>1980 年，两位前 IBM 员工创立的公司开发出 5.25 英寸规格的 5MB 硬盘 ST506，这是首款面向台式机的产品，而该公司正是希捷科技公司（Seagate）。</blockquote>
+
+<blockquote>1980 年代末，IBM 推出磁阻（Magneto Resistive, MR）技术令磁头灵敏度大大提升，使盘片的存储密度较之前的 20Mbpsi（bit/每平方英寸）提高数十倍，该技术为硬盘容量的巨大提升奠定了基础。1991年，IBM 应用该技术推出首款 3.5 英寸的 1GB 硬盘。</blockquote>
+
+<blockquote>1970 年到 1991 年，硬盘碟片的存储密度以每年 25%~30% 的速度增长；从 1991 年开始增长到 60%～80%；至今，速度提升到 100% 甚至是 200%。从 1997 年开始的惊人速度提升得益于 IBM 的巨磁阻（Giant Magneto Resistive, GMR）技术，它使磁头灵敏度进一步提升，进而提高了存储密度。</blockquote>
+
+<blockquote>1993 年，康诺（Conner Peripherals）推出 CP30344 硬盘，容量 340 MB。</blockquote>
+
+<blockquote>1995 年，为了配合 Intel 的 LX 芯片组，昆腾与 Intel 携手发布 UDMA 33 接口—— EIDE 标准，将原来接口数据传输率从 16.6MB/s 提升到了 33MB/s. 同年，希捷开发出液态轴承（FDB，Fluid Dynamic Bearing）电动机。所谓的 FDB 就是指将陀螺仪上的技术引进到硬盘生产中，用厚度相当于头发直径十分之一的油膜取代金属轴承，减轻硬盘噪音与发热量。</blockquote>
+
+<blockquote>1996 年，希捷收购康诺（Conner Peripherals）。</blockquote>
+
+<blockquote>1998 年 2 月，UDMA 66 规格面世。</blockquote>
+
+<blockquote>2000 年 10 月，迈拓（Maxtor）收购昆腾。</blockquote>
+
+<blockquote>2003 年 1 月，日立宣布完成 20.5 亿美元的收购 IBM 硬盘事业部项目，并成立日立环球存储科技公司（Hitachi Global Storage Technologies, Hitachi GST）。</blockquote>
+
+<blockquote>2005 年，日立环储和希捷都宣布了将开始大量采用磁盘垂直写入技术（perpendicular recording），该原理是将平行于盘片的磁场方向改变为垂直（90度），更充分地利用的存储空间。</blockquote>
+
+<blockquote>2005 年 12 月 21 日，希捷宣布收购迈拓（Maxtor）。</blockquote>
+
+<blockquote>2007 年 1 月，日立环球存储科技宣布将会发售全球首只 1 Terabyte 的硬盘，比原先的预定时间迟了一年多。硬盘的售价为 399 美元，平均每美分可以购得 27.5MB 硬盘空间。</blockquote>
+
+<blockquote>2011 年 3 月，西部数据以 43 亿美元的价格，收购日立环球存储科技。</blockquote>
+
+<blockquote>2011 年 4 月，希捷宣布与三星强化策略伙伴关系，传统的硬盘逐渐地被固态硬盘所取代。</blockquote>
+
+<blockquote>2011 年 12 月，希捷宣布收购了三星旗下的硬盘业务。</blockquote>
 
 <p><strong>光盘</strong>使用光介质存储数据，包括只读光盘（CD-ROM）、可刻录光盘（CD-R）、可重写光盘（CD-RW）、数字多功能光盘（DVD）以及最新的蓝光光盘（BD）。我们首先介绍只读光盘（CD-ROM），CD-ROM 的制造如图 4-6 所示，分为以下三个步骤：</p>
 
