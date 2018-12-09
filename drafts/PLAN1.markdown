@@ -6,7 +6,7 @@ categories: Note
 permalink: /plan/1/
 ---
 
-### 学习计划（2018.09.13 —— 2019.01.13 共 123 天）
+### 学习计划
 
 * **Computer Science**
 	+ Discrete Mathematics and Its Applications
@@ -23,12 +23,13 @@ permalink: /plan/1/
 	    - 统计学习方法 *李航*
 	+ Optimization
 		- Convex Optimization *Stephen Boyd, Lieven Vandenberghe*
+		- Introduction to Optimization *Edwin K. P. Chong, Stanislaw H*
 <p> </p>
 * **Economics**
-	+ Principles of Economics 
+	+ Principles of Economics
 <p> </p>
 * **Other**
-	+ Literature   
+	+ Literature
 		- 荷马史诗：伊利亚特 *人民文学出版社*
 		- 最后十二天的生命之旅 *[法] 埃里克·艾玛纽埃尔·施密特* *译林出版社*
 		- 永远讲不完的故事 *[德] 米切尔·恩德* *二十一世纪出版社*
@@ -51,13 +52,19 @@ permalink: /plan/1/
 		- 第二自然 *[美] 杰拉尔德·M.埃德尔曼* *湖南科学技术出版社*
 		- 下一步是什么 *[美] 麦克斯·布罗克曼* *湖南科学技术出版社*
 
-### 2018-09-29
+### 最近计划（自 2018 年 12 月 31 日起，每一周更新一次）
 
-* 上午
-	+ Python
+* 机器学习 第 2 章 模型评估与选择（首要，一周内，截止到 2019.01.06）
 
-* 下午
-	+ 计算机科学导论
+* A Maximum Entropy Approach to Natural Language Processing（重要，半个月内，截止到 2019.01.13）
+* 统计学习方法 第 6 章 逻辑斯谛回归与最大熵模型（重要，半个月内，截止到 2019.01.13）
 
-* 晚上
-	+ 机器学习 *周志华*
+* Python 面向对象编程（重要，1 个月内，截止到 2019.01.29）
+* 离散数学第一章（重要，1 个月内，截止到 2019.01.29）
+* C 语言第 3、4 章（重要，1 个月内，截止到 2019.01.29）
+
+* 计算机网络（一般，2 个月内，截止到 2019.02.28）
+* 浪潮之巅第 3-8 章（一般，3 个月内，截止到 2019.03.30）
+
+* Computing Machinery And Intelligence（一般，无时间限制）
+* 西方哲学史（一般，无时间限制）
