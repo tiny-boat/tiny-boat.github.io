@@ -3,11 +3,12 @@ layout: post
 title:  "赠0702班全体同学"
 date:   2009-10-25 09:48:00 +0000
 categories: HighSchool_Time
+excerpt: "持续两天的田径运动会在一片喝彩声中结束，蔚蓝的天空，黑白相间的赛道记住了一个个精彩瞬间。这里曾经有太多的欢欣与鼓舞，这里也曾上映无数次的失望与遗憾，这些都将是我们永恒的记忆"
 ---
 
 <div>
 <blockquote class='quote-style'>
-这是一首写在初三上学期田径运动会后的诗<!--excerpt-->
+这是一首写在初三上学期田径运动会后的诗
 </blockquote>
 </div>
 

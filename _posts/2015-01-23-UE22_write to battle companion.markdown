@@ -3,7 +3,7 @@ layout: post
 title:  "写给战友"
 date:   2015-01-23 19:52:00 +0000
 categories: University_Essay
-excerpt: "百米之外 有零星的光点在闪 若隐若现"
+excerpt: "这首诗写于大二上学期期末考试结束后，当时自己一个人在图书馆看书，考试周过后的图书馆一片宁静。百米之外，有零星的光点在闪，若隐若现……"
 ---
 
 <div>

@@ -1,0 +1,116 @@
+---
+layout: post
+title:  "概率论回顾"
+date:   2018-12-15 13:02:00
+categories: Mathematics
+excerpt: ''
+permalink: /Math/review_of_probability/
+---
+
+<div class="post-style">
+
+<h1>4 极限定理</h1>
+
+<h2>4.1 三种收敛性的定义及其关系</h2>
+
+<p>设 $\left \{ X_n \right \}$ 为一个随机变量序列，$X$ 为一个随机变量，则 $X_n$ 以概率 1 收敛（或称几乎必然收敛）于 $X$ (记作 $X_n\overset{a.s.}{\longrightarrow}X$) 指的是：</p>
+
+$$P\left(\lim_{n\rightarrow \infty}X_n=X \right ) = 1$$
+
+<p class="post-text-noindent">而 $X_n$ 依概率收敛于 $X$ (记作 $X_n\overset{P}{\longrightarrow}X$) 指的是：$\forall \ \varepsilon >0$，有</p>
+
+$$\lim_{n\rightarrow \infty}P\left(\left|X_n-X \right|< \varepsilon \right ) = 1$$
+
+<p class="post-text-noindent">若还设 ${F_n\left(x \right)}$ 为 $\left \{ X_n \right \}$ 的分布函数列，$F\left(x \right)$ 为 $X$ 的分布函数，则 $X_n$ 依分布收敛（或称弱收敛）于 $X$ (记作 $X_n\overset{L}{\longrightarrow}X$) 指的是：$\forall \ F\left(x \right)$ 的连续点 $x$，有</p>
+
+$$\lim_{n\rightarrow \infty} F_n\left(x\right) = F\left(x \right)$$
+
+<p>以概率 1 收敛说的是当 $n$ 无限大时，$X_n$ 无限接近 $X$ 的概率等于 1，依概率收敛说的是当 $n$ 无限大时，$X_n$ 无限接近 $X$ 的概率无限趋近于 1，依分布收敛说的是当 $n$ 无限大时，$X_n$ 的分布无限趋近于 $X$ 的分布。上述三种收敛性的关系是：如果 $X_n\overset{a.s.}{\longrightarrow}X$，那么 $X_n\overset{P}{\longrightarrow}X$，反之不成立；如果 $X_n\overset{P}{\longrightarrow}X$，那么 $X_n\overset{L}{\longrightarrow}X$，反之不成立。</p>
+
+<h2>4.2 大数定律</h2>
+
+<p>我们说一个随机变量序列 $\left \{ X_n \right \}$ 服从大数定律指的是该随机变量序列均值 $\bar{X}_n$ 依概率收敛于该随机变量序列均值的期望 $E\left(\bar{X}_n\right)$，即</p>
+
+$$\lim_{n\rightarrow \infty}P\left \{ \left | \frac{1}{n}\sum_{i=1}^{n}X_i - \frac{1}{n}\sum_{i=1}^{n}E\left ( X_i \right )\right | <\varepsilon \right \}=1$$
+
+<p>随机变量序列 $\left \{ X_n \right \}$ 需满足一定条件方能服从大数定律，依据条件的不同共有七种大数定律，它们是：伯努利大数定律、泊松大数定律、切比雪夫大数定律、马尔可夫大数定律、伯恩斯坦大数定律、辛钦大数定律和格涅坚科大数定律。</p>
+
+<p>伯努利大数定律的条件是：$X_i,\ i=1,2,\cdots,n$ 均服从参数为 $p$ 的伯努利分布 $B\left(1,p\right)$.</p>
+
+<p>泊松大数定律的条件是：$X_i,\ i=1,2,\cdots,n$ 服从参数为 $p_i$ 的伯努利分布 $B\left(1,p_i\right)$.</p>
+
+<p>切比雪夫大数定律的条件是：$\forall i \neq j,\ Cov(X_i,X_j) = 0$ 且 $\exists \ c,\ s.t.\ \forall \ i, Var\left(X_i\right)\leq c$.</p>
+
+<p>马尔可夫大数定律的条件是：当 $n\rightarrow \infty$ 时，随机变量序列均值的方差 $Var\left(\bar{X}_n \right)\rightarrow 0$.</p>
+
+<p>伯恩斯坦大数定律的条件是：$\exists \ c,\ s.t.\ \forall \ i, Var\left(X_i\right)\leq c$，且 $\forall \varepsilon > 0,\ \exists M>0$，当 $\left|k-l\right|>M$ 时，有 $|Cov(X_k,X_l)| < \varepsilon$.</p>
+
+<p>辛钦大数定律的条件是：随机变量序列 $\left \{ X_n \right \}$ 独立同分布且 $\forall \ i$，$E\left(X_i \right)$ 存在。</p>
+
+<p>格涅坚科大数定律的条件是：随机变量序列均值 $\bar{X}_n$ 与其期望 $E\left(\bar{X}_n\right)$ 满足</p>
+
+$$\lim_{n\rightarrow \infty}E\left[\frac{\left(\bar{X}_n - E\left(\bar{X}_n \right )\right )^2}{1+\left(\bar{X}_n - E\left(\bar{X}_n \right )\right )^2} \right ]$$
+
+<p>上述这些大数定律中，仅有格涅坚科大数定律的条件是随机变量序列 $\left \{ X_n \right \}$ 服从大数定律的充要条件，其余均为充分非必要条件。</p>
+
+<h2>4.3 中心极限定理</h2>
+
+<p>我们说一个期望和方差均存在的随机变量序列 $\left \{ X_n \right \}$ 服从中心极限定理指的是：该随机变量序列和 $\sum_{i=1}^{n}X_i$ 减去该随机变量序列和的期望 $E\left(\sum_{i=1}^{n}X_i \right)$，然后除以该随机变量序列和的标准差 $\sqrt{Var\left(\sum_{i=1}^{n}X_i \right)}$，由此得到的新的随机变量序列</p>
+
+$$\frac{\sum_{i=1}^{n}X_i-E\left(\sum_{i=1}^{n}X_i \right)}{\sqrt{Var\left(\sum_{i=1}^{n}X_i \right)}}$$
+
+<p class="post-text-noindent">其分布函数依分布收敛于标准正态分布。</p>
+
+<p>期望和方差均存在的随机变量序列 $\left \{ X_n \right \}$ 需满足一定条件方能服从中心极限定理，依据条件的不同共有四种中心极限定理，它们是：棣莫弗-拉普拉斯中心极限定理、列维-林德伯格中心极限定理、林德伯格中心极限定理和李雅普诺夫中心极限定理。</p>
+
+<p>棣莫弗-拉普拉斯中心极限定理的条件是：$X_i,\ i=1,2,\cdots,n$ 独立且均服从参数为 $p$ 的伯努利分布 $B\left(1,p\right)$.</p>
+
+<p>列维-林德伯格中心极限定理的条件是：$X_i,\ i=1,2,\cdots,n$ 独立同分布。</p>
+
+<p>林德伯格中心极限定理的条件是：$X_i,\ i=1,2,\cdots,n$ 为连续型随机变量且其概率密度函数 $f_i(x)$ 满足林德伯格条件 ($B_n^2 = Var\left(\sum_{i=1}^{n}X_i \right)$，$\mu_i = E\left(X_i\right)$)</p>
+
+$$\lim_{n\rightarrow \infty}\frac{1}{\tau^2 B_n^2}\sum_{i=1}^{n}\int_{\left | x-\mu _i \right |>\tau B_n}\left ( x-\mu_i \right )^2f_i\left(x\right)dx=0,\ \forall \tau > 0$$
+
+<p>李雅普诺夫中心极限定理的条件是：$X_i,\ i=1,2,\cdots,n$ 独立且 $\exists \delta > 0$，满足：</p>
+
+$$\lim_{n\rightarrow \infty}\frac{1}{B_n^{2+\delta}}\sum_{i=1}^{n}E\left(\left|X_i-\mu_i \right|^{2+\delta}\right) = 0$$
+
+<h2>4.4 典型习题</h2>
+
+<p>1.已知 $X_n\overset{P}{\longrightarrow}X$ 且 $X_n\overset{P}{\longrightarrow}Y$，试证明：$P\left(X=Y\right)=1$</p>
+
+<p>2.已知 $X_n\overset{P}{\longrightarrow}X$ 且 $Y_n\overset{P}{\longrightarrow}Y$，试证明：$X_n+Y_n\overset{P}{\longrightarrow}X+Y$</p>
+
+<p>3.已知 $X_n\overset{P}{\longrightarrow}X$ 且 $Y_n\overset{P}{\longrightarrow}Y$，试证明：$X_nY_n\overset{P}{\longrightarrow}XY$</p>
+
+<p>4.已知 $X_n\overset{P}{\longrightarrow}a$ 且 $Y_n\overset{P}{\longrightarrow}b$，试证明：$X_nY_n\overset{P}{\longrightarrow}ab$</p>
+
+<p>5.已知 $X_n\overset{P}{\longrightarrow}X$ 且 $g$ 是 $R$ 上的连续函数，试证明：$g\left(X_n \right)\overset{P}{\longrightarrow}g\left(X \right)$</p>
+
+<p>6.试证明 $X_n\overset{P}{\longrightarrow}X$ 的充要条件是：</p>
+
+$$\lim_{n\rightarrow \infty}E\left[\frac{\left(X_n - X\right )^2}{1+\left(X_n - X\right )^2} \right ]=0$$
+
+<p>7.已知随机变量序列 $\left \{ X_n \right \}$ 独立且均服从区间 $\left(0,\beta \right)$ 上的均匀分布，试证明 $Y_n\overset{P}{\longrightarrow}\beta$，这里 $Y_n=\max \left \{ X_1,X_2,\cdots,X_n \right \}$</p>
+
+<p>8.已知随机变量序列 $\left \{ X_n \right \}$ 独立同分布且期望、方差均存在，记 $\mu = E\left(X_n \right)$，试证明</p>
+
+$$\frac{2}{n\left ( n+1 \right )}\sum_{k=1}^{n}kX_k\overset{P}{\longrightarrow}\mu$$
+
+<p>9.利用切比雪夫不等式证明伯努利大数定律、泊松大数定律和马尔可夫大数定律</p>
+
+<p>10.已知随机变量序列 $\left \{ X_n \right \}$ 独立同分布且</p>
+
+$$P\left ( X_n = k \right ) = \frac{c}{k^2\ln^2 k},\ c=\left ( \sum_{i=1}^{n}\frac{1}{k^2\ln^2 k} \right )^{-1}$$
+
+<p class="post-text-noindent">试证明：$\left \{ X_n \right \}$ 服从大数定律</p>
+
+<p>11.在伯努利实验中，事件 $A$ 出现的概率为 $p$，若在第 $n$ 次和第 $n+1$ 次试验中 $A$ 出现，则 $X_n = 1$，否则 $X_n = 0$，试证明：$\left \{ X_n \right \}$ 服从大数定律</p>
+
+<p>12.已知随机变量序列 $\left \{ X_n \right \}$ 独立且其分布为</p>
+
+$$P\left ( X_k = \sqrt{k} \right ) = P\left ( X_k = - \sqrt{k} \right ) = \frac{1}{2},\ k = 1,2,3,\cdots$$
+
+<p class="post-text-noindent">试证明：$\left \{ X_n \right \}$ 服从中心极限定理</p>
+
+</div>

@@ -3,7 +3,7 @@ layout: post
 title:  "永远的院长"
 date:   2018-06-02 12:00:00 +0000
 categories: University_Essay
-excerpt: ""
+excerpt: "我找不出词汇来赞美这样的师者，因为一切词汇，即便再绚烂多姿，放在陶老师身上，也显得苍白而无力。陶老师一路走好，您是我们心中，永远的院长！"
 ---
 
 虽然两个月前就知道了[陶老师](https://baike.baidu.com/item/%E9%99%B6%E5%89%91/3313028?fr=aladdin)在养病，但没有想到这么严重，此时接到[陶老师于今天凌晨逝世](http://math.nenu.edu.cn/info/1026/3575.htm)的消息，觉得太突然，看到追悼会在6月4日早上举行，却没有办法前往，遗憾自己没有足够资金支付机票，遗憾不能前往长春送[陶老师](http://202.198.133.35/Hsystem/bin/aspdu/professor/show.asp?id=1993900033)最后一程。

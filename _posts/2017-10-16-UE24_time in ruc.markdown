@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "人大时光"
+title:  "Time in Renming University"
 date:   2017-10-16 22:27:00 +0000
 categories: University_Essay
-excerpt: "这是一段美好的时光，即便最终未能成为人大的学生"
+excerpt: "From now on, I will use English for recording my daily life in Wechat Friends Circle. Maybe my English is poor, but I believe one day I will be good at it, and sharing my writing with each other, in my opinion, could be a effective way for me to achieve this goal. Now, it is 20:21 Beijing time, and I am in Beijing Subway Line 5, carrying a big suitcase and shouldering a medium-size backpack."
 ---
 
 ## 0.2017-07-03 20:29
@@ -250,9 +250,9 @@ About 200 years ago, Alembert described math in those days using an inspiring sl
 <img src="/assets/img/University_Essay/ruc10.1.jpg">
 </p></div>
 
-My perspectives on management
+My perspectives on management of small team
 
-我的管理观
+我的管理观（小团队）
 
 <div align="center"><p>
 <img src="/assets/img/University_Essay/ruc10.2.jpg">

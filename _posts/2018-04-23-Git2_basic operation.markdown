@@ -3,7 +3,7 @@ layout: post
 title:  "Git学习笔记(2):基本操作"
 date:   2018-04-23 18:43:00 +0000
 categories: Computer_Science Git
-excerpt: "本文介绍如何在 Git 中创建仓库、管理修改和回退版本"
+excerpt: "本文介绍如何在 Git 中创建仓库、管理修改和回退版本。工作区与版本库的创建十分简单，使用 mkdir、cd、git init 三个命令即可完成，mkdir 是 make directory 的缩写，cd 是 change directory 的缩写，init 是 initialization 的缩写"
 ---
 
 # 2.1 创建工作区与版本库

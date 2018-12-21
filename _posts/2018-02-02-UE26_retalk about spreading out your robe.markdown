@@ -3,7 +3,7 @@ layout: post
 title:  "再谈 spread out your robe"
 date:   2018-02-02 20:37:23 +0000
 categories: University_Essay
-excerpt: ""
+excerpt: "星星，我的翻译似乎并不是我的翻译，当我今天查牛津词典时发现：我的翻译用词 “摊开” 和 “袍服” 均来自于词典给出的 “英文释义对应的中文翻译”。依据牛津英汉词典和柯林斯高阶英汉词典给出的 spread 和 robe 的英文释义，下面重新谈谈 spread out your robe 的翻译问题。"
 ---
 
 <div>

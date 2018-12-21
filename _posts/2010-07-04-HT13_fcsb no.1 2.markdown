@@ -3,6 +3,7 @@ layout: post
 title:  "fcsb No.1 第二回"
 date:   2010-07-04 11:14:00 +0000
 categories: HighSchool_Time
+excerpt: "诗曰：惊空一声暴雷响，海上大将就此生。眨眼可测路远近，举头可观天好歹"
 ---
 
 <div align='center'>

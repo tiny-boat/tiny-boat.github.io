@@ -3,7 +3,7 @@ layout: post
 title:  "请君自品味"
 date:   2010-01-28 10:55:00 +0000
 categories: HighSchool_Time
-excerpt: "公元2010年1月28日，与君共看脚下美好河山"
+excerpt: "公元2010年1月28日，与君共看脚下美好河山。悠哉悠哉，普天之下，试问谁能敌？"
 ---
 
 <div>

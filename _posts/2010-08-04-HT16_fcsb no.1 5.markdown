@@ -3,6 +3,7 @@ layout: post
 title:  "fcsb No.1 第五回"
 date:   2010-08-04 15:23:00 +0000
 categories: HighSchool_Time
+excerpt: "诗曰：父子海牢受尽苦，坚毅之志感上苍。天施神功与小儿，欲使其能度难关。只因黑鬼一层膜，迫得逃亡就此终。天庭震怒来降旨，神童再闯鬼门关<br>"
 ---
 
 <div align='center'>

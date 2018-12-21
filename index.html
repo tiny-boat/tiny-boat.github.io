@@ -26,11 +26,11 @@ layout: default
 		{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d" -%}
 		<span class="post-list-tips">{{ post.date | date: date_format }}</span>
 		
-		<span class="post-list-tips"> 
-		  {% if post.categories contains 'Statistics' %}
-			<a class="post-meta-content-a" href="/category/natural_science/statistics.html">统计学</a>
-		  {% elsif post.categories contains 'Mathematics' %}
+		<span class="post-list-tips">
+		  {% if post.categories contains 'Mathematics' %}
 			<a class="post-meta-content-a" href="/category/natural_science/{{ 'Mathematics' | downcase }}.html">数学</a>
+		  {% elsif post.categories contains 'Statistics' %}
+			<a class="post-meta-content-a" href="/category/natural_science/statistics.html">统计学</a>
 		  {% elsif post.categories contains 'Computer_Science' %}
 			<a class="post-meta-content-a" href="/category/natural_science/{{ 'Computer_Science' | downcase }}.html">计算机科学</a>
 		  {% elsif post.categories contains 'Physics' %}

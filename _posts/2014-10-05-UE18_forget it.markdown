@@ -3,7 +3,8 @@ layout: post
 title:  "忘了它"
 date:   2014-10-05 21:27:00 +0000
 categories: University_Essay
-excerpt: "它是乌云下一片黄叶 也是艳阳中一缕青烟"
+excerpt: "我也不知道它是什么，扑朔迷离……它是乌云下一片黄叶，也是艳阳中一缕青烟，是在期待着光明，
+也是在静候着黑夜……"
 ---
 
 <div>

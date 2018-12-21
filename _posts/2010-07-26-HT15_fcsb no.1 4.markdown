@@ -3,6 +3,7 @@ layout: post
 title:  "fcsb No.1 第四回"
 date:   2010-07-26 12:22:00 +0000
 categories: HighSchool_Time
+excerpt: "诗曰：一望无际真大海，四面潮涌好气势。黑鬼赶走眼中钉，自却称王霸万里。数年积蓄攒神功，一战擒得父子兵。可怜一代伟人物，今番却是此下场。怜惜一位小神童，年仅五岁进牢狱"
 ---
 
 <div align='center'>

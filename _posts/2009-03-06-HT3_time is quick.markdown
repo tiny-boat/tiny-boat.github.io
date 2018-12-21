@@ -3,7 +3,7 @@ layout: post
 title:  "时间匆匆"
 date:   2009-03-06 14:01:00 +0000
 categories: HighSchool_Time
-excerpt: "如今读来，虽文字青涩，但仍饱含能量、催人奋进！"
+excerpt: "时间匆匆，时间匆匆，经历2月的夏天，走过3月的阴雨，今天我们终于看到了昔日的阳光"
 ---
 
 <div>

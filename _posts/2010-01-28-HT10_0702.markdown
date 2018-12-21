@@ -3,11 +3,12 @@ layout: post
 title:  "零七零二"
 date:   2010-01-28 11:10:00 +0000
 categories: HighSchool_Time
+excerpt: "2010年1月28日，离中考还有4个多月……试问天下形势，可谓一片大好。唯苍苍益阳，稍逊风骚……"
 ---
 
 <div>
 <blockquote class='quote-style'>
-2010年1月28日，离中考还有4个多月<!--excerpt-->
+2010年1月28日，离中考还有4个多月
 </blockquote>
 </div>
 

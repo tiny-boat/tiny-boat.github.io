@@ -3,7 +3,7 @@ layout: post
 title:  "送给最后的四分钟"
 date:   2013-12-12 20:59:00 +0000
 categories: University_Essay
-excerpt: "现在，北京时间2013年12月12日20点56分"
+excerpt: "现在，北京时间2013年12月12日20点56分，还有四分钟我将离开熟悉的自习室——综合楼308教室"
 ---
 
 <div>

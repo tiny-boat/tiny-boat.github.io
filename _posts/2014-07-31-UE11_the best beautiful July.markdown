@@ -3,7 +3,7 @@ layout: post
 title:  "最美七月"
 date:   2014-07-31 12:54:00 +0000
 categories: University_Essay
-excerpt: "发动机的轰鸣声，回荡在一片芝麻地上"
+excerpt: "发动机的轰鸣声 回荡在一片芝麻地上 小小的樟树种子 做着永不达标的 自由落体运动"
 ---
 
 <div>
