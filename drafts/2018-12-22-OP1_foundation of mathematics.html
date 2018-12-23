@@ -1,0 +1,158 @@
+---
+layout: post
+title:  "最优化算法(1):数学基础"
+date:   2018-12-21 10:47:00
+categories: Mathematics Optimization
+excerpt: "从某种程度上说，我们生活中遇到的许许多多的问题，其本质都是一个优化问题。例如着装打扮、选择饭店、租购房屋、旅行规划等等。如果我们能将这些问题转化为目前数学上可解的最优化模型，并且我们掌握了求解相关最优化模型的最优化算法，那么我们或许能够生活得更聪明，更舒适，也更幸福。将生活问题转化为数学模型并不容易，它或许需要敏锐的头脑，需要长期的积累，需要灵光的乍泄，但掌握求解相关最优化模型的算法则相对容易多了"
+permalink: /optimization/1/foundation_of_mathematics/
+---
+
+<div class="post-style">
+
+<p>从某种程度上说，我们生活中遇到的许许多多的问题，都可以看成是一个最优化问题。例如着装打扮、选择饭店、租购房屋、旅行规划等等。如果我们能将这些问题转化为目前数学上可解的最优化模型，并且我们掌握了求解相关最优化模型的最优化算法，那么我们或许能够生活得更聪明，更舒适，也更幸福。将生活问题转化为数学模型并不容易，它或许需要敏锐的头脑，需要长期的积累，需要灵光的乍泄，但掌握求解相关最优化模型的算法则相对容易多了。</p>
+
+<p><strong>1947 年，Dantzig 提出求解一般线性规划问题的单纯形法后，最优化开始成为一门独立的学科</strong>。历经 70 多年的风雨，在电子计算机的推动下，最优化理论与算法如今已在经济计划、工程设计、生产管理、交通运输等诸多方面得到广泛应用，并已发展成为当今应用数学领域一门十分活跃的学科。</p>
+
+<p>最优化问题的一般形式为：</p>
+
+$$
+\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ \boldsymbol{x} \in X \subseteq R^n \end{aligned}
+$$
+
+<p class="post-text-noindent">其中 $x$ 为<strong>决策变量</strong> (decision variable)，$f\left(x \right)$ 为<strong>目标函数</strong> (objective function)，$X$ 为<strong>约束集</strong> (constraint set) 或<strong>可行域</strong> (feasible region)。当 $X = R^n$ 时，称为<strong>无约束优化</strong> (unconstrained optimization) 问题 ，否则称为<strong>约束优化</strong> (constrained optimization) 问题。约束优化问题通常写为如下更具体的形式：</p>
+
+$$
+\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}
+$$
+
+<p class="post-text-noindent">$c_i\left(\boldsymbol{x}\right) = 0, i \in E$ 为<strong>等式约束</strong> (equality constraint)，$c_i\left(\boldsymbol{x}\right) \geq 0, i \in I$ 为<strong>不等式约束</strong> (inequality constraint)，$c_i\left(\boldsymbol{x}\right)$ 为<strong>约束函数</strong> (constraint function)，$E$ 和 $I$ 分别是等式约束的指标集和不等式约束的指标集。当目标函数与约束函数均为线性函数时，约束优化问题称为<strong>线性规划</strong> (linear programming)，否则称为<strong>非线性规划</strong> (nonlinear programming)。</p>
+
+<p>本章，我们将主要介绍一些数学基础知识，为后续系统学习最优化算法打下坚实的基础，此外，我们还会对最优化算法的基本结构做个简要描述。现在，就让我们放下对数学符号的恐惧，拿起笔和纸，一起在属于 x, y 和 z 的王国里开始遨游吧。学习从来都是痛苦的过程，只有那些不惧艰险、勇于攀登的人，才能最终品尝到属于他们的、独一无二的、最甜也最美的果实。</p>
+
+<h1>1.1 线性代数</h1>
+
+<p>本节，我们介绍最优化理论中需要用到的线性代数知识，包括：范数、矩阵的逆与广义逆、矩阵的 Rayleigh 商和矩阵的秩一校正。</p>
+
+<h2>1.1.1 范数</h2>
+
+<p>范数是长度概念的推广，向量、矩阵均有范数。$R^n$ 上的<strong>向量范数</strong> (vector norm) 是一个从 $R^n \rightarrow R$ 的映射 $\left \| \cdot  \right \|$，它满足如下三个性质：</p>
+
+<ul>
+	<li>非负性 (Positivity)：$\left \| \boldsymbol{x}  \right \| \geq 0,\ \forall \ \boldsymbol{x} \in R^n,\ \left \| \boldsymbol{x}  \right \| = 0 \Leftrightarrow \boldsymbol{x} = 0$</li>
+	<li>齐次性 (Homogeneity)：$\left \| \alpha \boldsymbol{x}  \right \| =\left | \alpha \right |\left \| \boldsymbol{x} \right \|,\ \forall \alpha \in R, \ \boldsymbol{x} \in R^n$</li>
+	<li>三角不等式 (Triangle inequality)：$\left \| \boldsymbol{x}+\boldsymbol{y}  \right \| \leq \left \| \boldsymbol{x} \right \|+\left \| \boldsymbol{y} \right \|,\ \forall \ \boldsymbol{x},\boldsymbol{y} \in R^n$</li>
+</ul>
+
+<p class="post-text-noindent">向量 $\boldsymbol{x} = \left(x_1,x_2,\cdots,x_n\right)'$ 的 <strong>$l_p$ 范数</strong>定义为：</p>
+
+$$\left \| \boldsymbol{x}  \right \|_p = \left ( \sum_{i=1}^{n}\left | x_i \right |^p \right )^{\frac{1}{p}},\ 1 \leq p < \infty$$
+
+<p class="post-text-noindent">常用的向量范数如下所示：</p>
+
+<ul>
+	<li><strong>$l_1$ 范数</strong> $\left ( l_1\ \,\,\mathrm{norm} \right )$:</li>
+	$$\left \| \boldsymbol{x}  \right \|_1 = \sum_{i=1}^{n}\left | x_i \right |$$
+	<li><strong>$l_2$ 范数</strong> $\left ( l_2\ \,\,\mathrm{norm} \right )$:</li>
+	$$\left \| \boldsymbol{x}  \right \|_2 = \left (\sum_{i=1}^{n} x_i^2 \right )^{\frac{1}{2}}$$
+	<li><strong>$l_\infty$ 范数</strong> $\left ( l_\infty\  \mathrm{norm} \right )$:</li>
+	$$\left \| \boldsymbol{x}  \right \|_\infty = \max_{1\leq i\leq n}\left | x_i \right |$$
+	<li><strong>椭球范数</strong> $\left(\mathrm{ellipsoidal} \ \mathrm{norm}\right)$:</li>
+	$$\left \| \boldsymbol{x}  \right \|_{\boldsymbol{A}} = \left ( x^T\boldsymbol{A}x \right )^{\frac{1}{2}},\boldsymbol{A}^T=\boldsymbol{A},\boldsymbol{A}_{n\times n} > 0$$
+</ul>
+
+<p class="post-text-noindent">上述四个向量范数是等价的，这是因为它们满足如下四个不等式：</p>
+
+$$\left \| \boldsymbol{x} \right \|_2\ \ \leq \left \| \boldsymbol{x} \right \|_1 \leq \sqrt{n}\left \| \boldsymbol{x} \right \|_2$$
+$$\left \| \boldsymbol{x} \right \|_\infty\  \leq \left \| \boldsymbol{x} \right \|_2 \leq \sqrt{n}\left \| \boldsymbol{x} \right \|_\infty$$
+$$\left \| \boldsymbol{x} \right \|_\infty\  \leq \left \| \boldsymbol{x} \right \|_1 \leq n\left \| \boldsymbol{x} \right \|_\infty$$
+$$\sqrt{\lambda_{\mathrm{min}}\left ( \boldsymbol{A} \right )}\left \| \boldsymbol{x} \right \|_2\ \  \leq \left \| \boldsymbol{x} \right \|_{\boldsymbol{A}} \leq \sqrt{\lambda_{\mathrm{max}}\left ( \boldsymbol{A} \right )}\left \| \boldsymbol{x} \right \|_2$$
+
+<p class="post-text-noindent">其中 $\lambda_{\mathrm{max}} \left ( \boldsymbol{A} \right )$ 为矩阵 $\boldsymbol{A}$ 的最大特征值，$\lambda_{\mathrm{min}} \left ( \boldsymbol{A} \right )$ 为矩阵 $\boldsymbol{A}$ 的最小特征值。</p>
+
+<blockquote>等价范数：如果 $\exists \mu_1,\ \mu_2>0$ 使得 $R^n$ 上的范数 $\left \| \cdot  \right \|_\alpha$ 和 $\left \| \cdot  \right \|_\beta$ 满足：$\mu_1\left \| \boldsymbol{x} \right \|_\alpha \leq \left \| \boldsymbol{x} \right \|_\beta \leq \mu_2\left \| \boldsymbol{x} \right \|_\alpha$，$\forall \ \boldsymbol{x}\in R^n$，则我们称 $R^n$ 上的范数 $\left \| \cdot  \right \|_\alpha$ 和 $\left \| \cdot  \right \|_\beta$ 是等价的。</blockquote>
+
+<p class="post-text-noindent">此外，关于向量范数，还有几个重要的不等式：</p>
+
+<ul>
+	<li>$\left | \boldsymbol{x}^T\boldsymbol{A}\boldsymbol{y} \right |\leq\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}},\boldsymbol{A}_{n\times n}>0;\ \left | \boldsymbol{x}^T\boldsymbol{A}\boldsymbol{y} \right |=\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}} \Leftrightarrow \boldsymbol{x}=c\boldsymbol{y},c\neq 0$</li>
+	<li>$\left | \boldsymbol{x}^T \boldsymbol{y} \right |\leq\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}^{-1}},\boldsymbol{A}_{n\times n}>0;\ \left | \boldsymbol{x}^T\boldsymbol{y} \right |=\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A^{-1}}} \Leftrightarrow \boldsymbol{x}=c\boldsymbol{A^{-1}y},c\neq 0$</li>
+	<li><strong>Young 不等式</strong>（特例：算术-几何不等式）：</li>
+	$$xy \leq \frac{x^p}{p}+\frac{y^q}{q},\ \frac{1}{p}+\frac{1}{q}=1,\ p,q>1;\ xy = \frac{x^p}{p}+\frac{y^q}{q}\Leftrightarrow x^p=y^q$$
+	<li><strong>Holder 不等式</strong>（特例：Cauchy-Schwarz 不等式）：</li>
+	$$\left | \boldsymbol{x}^T \boldsymbol{y} \right |\leq \left \| \boldsymbol{x} \right \|_p\left \| \boldsymbol{y} \right \|_q,\ \frac{1}{p}+\frac{1}{q}=1,\ p,q>1$$
+	<li><strong>Minkowski 不等式</strong>（范数定义中的第 3 条性质）：</li>
+	$$\left \| \boldsymbol{x}+\boldsymbol{y} \right \|_p\leq \left \| \boldsymbol{x} \right \|_p+\left \| \boldsymbol{y} \right \|_p,\ p \geq 1$$
+</ul>
+
+<p>矩阵范数是向量范数的自然推广，$R^{m\times n}$ 上的矩阵可视为 $R^{mn}$ 中的向量。$R^{m\times n}$ 上的<strong>矩阵范数</strong> (matrix norm) 是一个从 $R^{mn} \rightarrow R$ 的映射 $\left \| \cdot  \right \|$，它满足如下三个性质：</p>
+
+<ul>
+	<li>非负性：$\left \| \boldsymbol{A}  \right \| \geq 0,\ \forall \ \boldsymbol{A} \in R^{m\times n},\ \left \| \boldsymbol{A}  \right \| = 0 \Leftrightarrow \boldsymbol{A} = \boldsymbol{O}$，$\boldsymbol{O}$ 为一个零矩阵</li>
+	<li>齐次性：$\left \| \alpha \boldsymbol{A}  \right \| =\left | \alpha \right |\left \| \boldsymbol{A} \right \|,\ \forall \alpha \in R, \ \boldsymbol{A} \in R^{m\times n}$</li>
+	<li>三角不等式：$\left \| \boldsymbol{A}+\boldsymbol{B}  \right \| \leq \left \| \boldsymbol{A} \right \|+\left \| \boldsymbol{B} \right \|,\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{m\times n}$</li>
+</ul>
+
+<p class="post-text-noindent">如果 $\forall \boldsymbol{A} \in R^{m\times n},\ \boldsymbol{x} \in R^n$ 有：</p>
+
+$$\left \| \boldsymbol{Ax}  \right \| \leq \left \| \boldsymbol{A}  \right \|\left \| \boldsymbol{x}  \right \|$$
+
+<p class="post-text-noindent">我们称该矩阵范数可由向量范数导出，或与向量范数兼容，<strong>诱导 (矩阵) 范数</strong>（induced norm）因此定义为：</p>
+
+$$\left \| \boldsymbol{A}  \right \| =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|}{ \left \| \boldsymbol{x}  \right \|} = \max_{\left \| \boldsymbol{x} \right \|=1}\left \| \boldsymbol{Ax}  \right \|$$
+
+<p class="post-text-noindent">如果对 $n\times n$ 正交矩阵 $\boldsymbol{U}$ 有 $\left \| \boldsymbol{UA}  \right \| = \left \| \boldsymbol{A}  \right \|$，则称 $\left \| \cdot  \right \|$ 为<strong>正交不变范数</strong>。常用的矩阵范数如下所示：</p>
+
+<ul>
+	<li><strong>$l_1$ 诱导范数</strong> / <strong>列和范数</strong> $\left ( l_1\ \mathrm{induced\ norm} \right )$:</li>
+	$$\left \| \boldsymbol{A}  \right \|_1 = \max_{j}\left \| \boldsymbol{a}_{j} \right \|_1 = \max_{j}\sum_{i=1}^{n}\left | a_{ij} \right |$$
+	<li><strong>$l_2$ 诱导范数</strong> / <strong>谱范数</strong> $\left ( l_2\ \mathrm{induced\ norm \ / \ spectral \ norm} \right )$:</li>
+	$$\left \| \boldsymbol{A}  \right \|_2 = \sqrt{\lambda_{\mathrm{max}} \left ( \boldsymbol{A}^T\boldsymbol{A} \right )}$$
+	<li><strong>$l_\infty$ 诱导范数</strong> / <strong>行和范数</strong> $\left ( l_\infty\ \mathrm{induced\ norm} \right )$:</li>
+	$$\left \| \boldsymbol{A}  \right \|_\infty = \max_{i}\left \| \boldsymbol{a}_{i} \right \|_1 = \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$
+	<li><strong>Frobenius 范数</strong> $\left (\mathrm{Frobenius\ norm} \right )$:</li>
+	$$\left \| \boldsymbol{A}  \right \|_F = \left ( \sum_{i=1}^{n}\sum_{j=1}^{n}\left | a_{ij} \right |^2 \right )^{\frac{1}{2}} = \sqrt{\mathrm{tr}\left ( \boldsymbol{A}^T\boldsymbol{A} \right )}$$
+	<li>这里 $\boldsymbol{a}_{j}$ 为矩阵 $\boldsymbol{A}$ 的第 $j$ 列构成的向量，$\boldsymbol{a}_{i}$ 为矩阵 $\boldsymbol{A}$ 的第 $i$ 行构成的向量，$\lambda_{\mathrm{max}} \left ( \boldsymbol{A}^T\boldsymbol{A} \right )$ 为矩阵 $\boldsymbol{A}^T\boldsymbol{A}$ 的最大特征值，$\mathrm{tr}\left ( \boldsymbol{A}^T\boldsymbol{A} \right )$ 为矩阵 $\boldsymbol{A}^T\boldsymbol{A}$ 的迹（主对角线上元素的和）</li>
+</ul>
+
+<p class="post-text-noindent">上述常用矩阵范数中，谱范数和 Frobenius 范数为正交不变范数。此外，上述常用矩阵范数均满足<strong>相容性条件</strong>：</p>
+
+$$\left \| \boldsymbol{AB}  \right \| \leq \left \| \boldsymbol{A}  \right \|\left \| \boldsymbol{B}  \right \|,\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{m\times n}$$
+
+<p class="post-text-noindent">且有：</p>
+
+$$\left \| \boldsymbol{AB}  \right \|_F \leq \min \left \{ \left \| \boldsymbol{A}  \right \|_2 \left \| \boldsymbol{B}  \right \|_F,\left \| \boldsymbol{A}  \right \|_F \left \| \boldsymbol{B}  \right \|_2 \right \},\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{m\times n}$$
+
+<h2>1.1.2 矩阵的逆与广义逆</h2>
+<h2>1.1.3 矩阵的 Rayleigh 商</h2>
+<h2>1.1.4 矩阵的秩一校正</h2>
+
+<h1>1.2 微积分</h1>
+
+<p>本节，我们介绍最优化理论中需要用到的微积分知识，包括：函数的微分、向量值函数的微分和有限差分导数。</p>
+
+<h2>1.2.1 向量序列的收敛</h2>
+<h2>1.2.2 函数的微分</h2>
+<h2>1.2.3 向量值函数的微分</h2>
+<h2>1.2.4 有限差分导数</h2>
+
+<h1>1.3 凸分析</h1>
+
+<p>本节，我们介绍最优化理论中需要用到的凸分析知识，包括：凸集、凸函数和凸集的分离与支撑。</p>
+
+<h2>1.3.1 凸集</h2>
+<h2>1.3.2 凸函数</h2>
+<h2>1.3.3 凸集的分离与支撑</h2>
+
+<h1>1.4 最优性条件</h1>
+
+<p>本节，我们介绍最优化理论中目标函数取到极值的条件即最优性条件，包括：无约束问题的最优性条件和约束问题的最优性条件。</p>
+
+<h2>1.4.1 无约束问题的最优性条件</h2>
+<h2>1.4.2 约束问题的最优性条件</h2>
+
+<h1>1.5 最优化算法的基本结构</h1>
+
+</div>
