@@ -1,0 +1,82 @@
+---
+layout: post
+title:  "学术报告(1):基于大数据的确定性小概率事件发现方法及应用"
+date:   2018-12-15 19:24:00
+categories: Mathematics Statistics
+excerpt: '本文是对中国科学院院士郑志明教授于 2018 年 12 月 15 日下午在湘潭大学数学与计算科学学院所作学术报告的总结。在这篇报告中，郑院士首先探讨了目前大数据分析与人工智能存在的问题，他指出：大数据分析与人工智能方法在复杂系统的刻画方面虽然取得了一定进展，也获得了广泛的应用，但是其基础理论还显薄弱，他还说：“基于统计的大数据分析方法和人工智能学习方法对于大概率的知识发现是有效的，但是由于统计方法本身固有的特性，一般来讲它对于小概率事件的发现是无效的”，接着郑院士便介绍了他与他的团队在确定性小概率事件发现方法及应用方面作出的部分成果'
+---
+
+<div class="post-style">
+
+<blockquote>本文是对中国科学院院士郑志明教授于 2018 年 12 月 15 日下午在湘潭大学数学与计算科学学院所作学术报告的总结。在这篇报告中，郑院士首先探讨了目前大数据分析与人工智能存在的问题，他指出：大数据分析与人工智能方法在复杂系统的刻画方面虽然取得了一定进展，也获得了广泛的应用，但是其基础理论还显薄弱，他还说：“基于统计的大数据分析方法和人工智能学习方法对于大概率的知识发现是有效的，但是由于统计方法本身固有的特性，一般来讲它对于小概率事件的发现是无效的”，接着郑院士便介绍了他与他的团队在确定性小概率事件发现方法及应用方面作出的部分成果。<a href="https://pan.baidu.com/s/1Q9zGE6ujhNpKXioVsOAxqw">点击此处</a>可下载郑志明院士的报告。</blockquote>
+
+<h1>1 大数据分析与人工智能中的关键科学问题</h1>
+
+<p>在这一部分，郑院士主要探讨了目前大数据分析与人工智能存在的问题。报告一开篇，郑院士就给当前的人工智能泼了一盆冷水，他鲜明地指出：目前人工智能领域的研究存在极为严重的不可复现问题，以下内容摘自郑院士的报告：</p>
+
+<blockquote>2017年，挪威科技大学计算机科学家 Odd Erik undersen 在 AAAI 会议上报告了一项调查的结果：过去几年在两个 AI 顶会上发表的论文中提出的 400 种算法，94% 的算法 “可复现性” 存疑。法国 Nicolas Rigier 认为:这个领域以外的人可能认为，因为我们有代码，所以重复性是有保证的，但实际完全不是这样。加拿大的 Peter Henderson 则指出：我运行强化学习算法，上一次可能使一个运动简笔画像猎豹，但下一次它在地板上徘徊。可复现性在 2018 年新奥尔良 AAAI 会议上首次被提上重要议程。
+</blockquote>
+
+<p class="post-text-noindent">接着，郑院士谈了他对当前大数据分析与人工智能的理解，他讲了如下三点：</p>
+
+<ul>
+	<li>目前的大数据分析是基于先验经验与统计模型进行的数据预处理和建模分析</li>
+	<li>目前的人工智能，它的数学本质是基于统计的线性化动态建模与分析</li>
+	<li>目前的大数据分析与人工智能学习过程可以概括为：通过统计模型或线性化动态模型的演化和优化，期望达到与目标复杂系统一致或近似的性质</li>
+</ul>
+
+<p>郑院士提到的第一点我没有异议，但对于郑院士提到的第二点我却有疑问，郑院士在提到第二点时是这样讲的：</p>
+
+<blockquote>假设我要建立个系统描述麦克风，我现在不知道这个系统是怎样的，我想把它学习出来，那怎么学习呢？我根据经验也好，根据什么也好，我先把要素找出来，然后就是参数，那么你注意，要素是不动的，参数是动的，学习的过程是在调参数。你不管用什么学习方法，都是在调参数。所以呢，它的基本方法就是基于统计的线性化动态建模与分析。这就是什么，这就是人工智能，所谓深度学习就是这东西，这是我给总结出来的。</blockquote>
+
+<p class="post-text-noindent">我的疑问是：我并不认为深度学习是线性化的模型，深度学习采用的多层神经网络显然是一个高度非线性的模型，它不仅关于要素是非线性的，它关于参数也是非线性的。也许郑院士的意思是：这个模型只有参数是动的，而要素（即统计学中所指的自变量、机器学习中所指的特质/属性）是固定不动的，因而称之为线性化动态建模？</p>
+
+<p>在提到第三点时，郑院士指出目前的大数据分析与人工智能学习过程虽然期望达到与目标复杂系统一致或近似的性质，但实际上还无法达到这个期望，郑院士说：这也是目前人工智能面临的一个最大的问题。郑院士是这样讲的：</p>
+
+<blockquote>目前人工智能一个最大的问题在什么地方？他说我学习以后精度已经达到90%了，所以我停止，或者我精度已经达到95%了，100%了，我停止。但是现在的问题是：你的90%，你的95%，是自己和自己比较，我的下一个和上一个进行比较，精度达到95%，那么现在我要问你的是：你和你希望模拟或近似的这个目标复杂系统之间什么关系？No,没答案！所以说：这就是问题，科学史上从来没有一种学习方法或者一种科学方法，最后这个方法做完以后，它的结果和这个东西无关。你搞计算的，最后一定是和这个目标来比较这个精度是多少，没有说我把目标扔开后我自己和自己比较精度是多少，这就是现在人工智能碰到的巨大的问题。</blockquote>
+
+<p class="post-text-noindent">笔者理解郑院士的意思是：这种自己和自己比较的做法导致了算法极低的可复现性。关于郑院士提到的现在人工智能的学习过程是自己和自己比较的问题，其实笔者觉得：这并不是大家想这样做，而是因为我们压根就不知道我们将要描绘的复杂系统的内部机制是怎样的，如果我们完全知道了，那就根本用不上基于数据和统计的人工智能学习方法，直接利用数学上的分析方法就可以了。另外，依笔者看来：现在人工智能的学习过程其实也不完全是自己和自己比较，关于这一点可以参考当前机器学习模型评价的主流方法：交叉验证。郑院士紧接着解释了为什么现在人工智能会遇到这样巨大的问题，他说：</p>
+
+<blockquote>那么，为什么出现这个问题呢？因为现在我们学人工智能，学这个大数据分析的时候，我们太关注数据了，太关注数据的量大、数据的异构性、数据的这个、数据的那个、数据的多元性，都关注这个，而没有关心一个系统、一个数据系统，之所以称之为复杂系统，并不是说数据的表现形式复杂，我想谈到这一点，而是它内在的机制复杂，内在的要素之间的非线性、动态、随机关系，才能构成这个系统的复杂。这个数据的复杂只是外在的形式，而它的复杂性的内在原因是要素之间的关联关系，这种非线性的关系。因为我们知道：一个系统不管它是以数据形式表现出来的，还是以数学性质、物理性质表现出来的，一个系统之所以称为复杂，这个系统一定不是线性系统，线性系统一定不能称为复杂系统，线性系统就是简单系统，因为是牛顿玩剩的，牛顿玩了一辈子就是玩线性系统，现代科学玩的就是复杂系统：非线性、随机、动态系统。所以说，我们大量的数据系统表现出来的是个什么东西呢？上个世纪80年代在数学上已经有结论：三维以上动态系统它成为复杂系统的概率为1.</blockquote>
+
+<p class="post-text-noindent">对于郑院士提到的我们目前太关注数据的这一点，笔者表示赞同，笔者一贯的观点是：多学科的交叉与融合才能带来人工智能新的突破，光关注数据是不够的，光利用统计方法是不够的，用来得到粗糙结论的统计学方法应该与用来得到精细化结论的数学方法结合起来，在通往高度智能化时代的路上并肩战斗、携手前行。关于大数据分析与人工智能中的关键科学问题，郑院士最后总结为如下两点：</p>
+
+<ul>
+	<li>大数据分析与人工智能方法在刻画复杂系统取得一定进展，获得广泛应用，但是基础理论还显薄弱</li>
+	<li>基于统计的大数据分析方法和人工智能学习方法对于大概率的知识发现是有效的，但是由于统计方法本身固有的特性，一般来讲它对于小概率事件的发现是无效的</li>
+</ul>
+
+<p class="post-text-noindent">由此郑院士引出了他报告的主题：确定性小概率事件的发现方法与应用。他将这些方法总的命名为精准人工智能 (Refined Aritificial Intelligence, RAI)，这些方法综合了统计学与数学的多个分支，包括分析、代数、几何、动力系统、分支突变等等。RAI 具体包括以下四个方面：</p>
+
+<ul>
+	<li>确定性小概率事件的分类（按照复杂系统内在和动态特征）</li>
+	<li>基于局部形态特征的全局结构分析（复杂系统结构）</li>
+	<li>基于阈值分析(分支，Bifurcation)的系统突变（结构突变的道路——蓝天突变）</li>
+	<li>基于复杂数据系统解耦方法的扩散系统重建（复杂系统耦合与解耦）</li>
+</ul>
+
+<h1>2 确定性小概率事件发现方法与应用</h1>
+
+<p>郑院士介绍了他和他的团队在确定性小概率事件发现方法与应用方面取得的两个成果，一个是基于局部拓扑的高连通度超级传播子发现方法，另一个是利用爆炸性渗流刻画信息全局突发扩散模式。</p>
+
+<p>郑院士介绍的第一个应用是超级传播子的发现。超级传播子 (Superspreaders) 是动态网络中最具影响力的传播节点集，发现超级传播子是解决疫情防控、舆情监控、大规模级联故障、网络毁伤与攻防等关键问题的重要途径，然而超级传播子的发现存在以下难点：</p>
+
+<ul>
+	<li>大规模动态系统中快速识别超级传播子是全局问题</li>
+	<li>信息扩散中不同个体的传播能力具有强异质性（真实世界网络结构具有异质性，不同节点由于拓扑位置的差异，在传播能力上具有本质性区别）</li>
+	<li>真实网络世界的准确重构异常困难</li>
+	<li>研究证明，准确识别信息系统中的超级传播子是NP难问题</li>
+</ul>
+
+<p class="post-text-noindent">过去，在发现超级传播子方面，存在不少应用于简化模型的经典方法：Degree Centrality (1979) 、Pagerank (2003) 、K-Shell (2010) 等。然而这些方法都还存在许多问题，Pagerank 准确性低、稳定性低；Degree Centrality 基于局部信息但准确性低；K-Shell 准确性高但需要全局信息。真实网络世界亟需一种快速准确、基于局部信息、适应动态特征的超级传播子近似识别方法。2014 年 7 月，郑院士及其团队在 Scientific Reports 上发表论文：<a href="http://www.nature.com/articles/srep05547.pdf">Searching for superspreaders of
+information in real-world social media</a>. 在这篇论文中，他们提出了一种基于局部拓扑的高连通度超级传播子发现方法，实证表明：这种方法拥有计算复杂性低、准确性高以及不需要全局信息、适应动态网络等优点。对于这篇论文，MIT Technology Review 在其专题报道 The Emerging Science of Superspreaders 中给予了高度评价：目前还没有人指出如何在真实世界网络中发现最有影响力的超级传播子（Nobody has figured out how to spot the most influential spreaders of information in a real-world network）；北航的学者们完成了真实网络世界中超级传播子研究的首个工作，使这一情形终于得到改变（That looks set to change thanks to the work of  Pei et al. at Beihang University in Beijing and a few pals who have performed the first study of superspreaders on real networks），该篇论文于 2015 年和 2016 年先后被 Nature 和 PNAS 等顶级期刊引用。下面是该篇论文的摘要：</p>
+
+<blockquote>A number of predictors have been suggested to detect the most influential spreaders of information in online social media across various domains such as Twitter or Facebook. In particular, degree, PageRank, k-core and other centralities have been adopted to rank the spreading capability of users in information dissemination media. So far, validation of the proposed predictors has been done by simulating the spreading dynamics rather than following real information flow in social networks. Consequently, only model-dependent contradictory results have been achieved so far for the best predictor. Here, we address this issue directly. We search for influential spreaders by following the real spreading dynamics in a wide range of networks. We find that the widely-used degree and PageRank fail in ranking users’ influence. We find that the best spreaders are consistently located in the k-core across dissimilar social platforms such as Twitter, Facebook, Livejournal and scientific publishing in the American Physical Society. Furthermore, when the complete global network structure is unavailable, we find that the sum of the nearest neighbors’ degree is a reliable local proxy for user’s influence. Our analysis provides practical instructions for optimal design of strategies for ‘‘viral’’ information dissemination in relevant applications.</blockquote>
+
+<blockquote>目前，已经有许多预测器用来识别像 Twitter 或者 Facebook 这样的不同领域在线社交媒体的信息超级传播子。特别地，度（degree）、页面排序（PageRank）、k-核心（k-core）和其他中心性（centralities）已经被用来对信息传播媒体中用户的传播能力进行排序。到目前为止，这些预测器有效性的验证都基于传播动力学仿真，而不是基于社会网络中的真实信息流。这导致目前只能将那些依赖于模型的产生矛盾结果的预测器作为最好的预测器。在本篇论文中，我们以一种直接的方式设法解决这个问题。我们通过广范围网络中的真实传播动态来搜寻具有影响力的传播子。我们发现被广泛使用的 degree 和 PageRank 在用户影响力排序中失效了。我们发现在不同的社交平台，如 Twitter、Facebook、Livejournal 和美国物理协会的科学论文发表，超级传播子一致地位于 k-核心。此外，当完整的全局网络结构不可获得时，我们发现最近邻度的和是一个可靠的局部替代指标。我们的分析将在相关应用中，为关键信息宣传设计最优策略提供有效的指导。</blockquote>
+
+<p>郑院士介绍的第二个应用是信息突发扩散模式的刻画。大数据网络环境下信息的全局扩散的基本特征是什么？ 是信息全局突发涌现模式，即爆发模式。传统的随机游走理论虽然能够解释慢速扩散的机理，但无法解释突发涌现和爆发模式。解决这一问题的关键是理解全局扩散与爆发的机理，而在这之前只能找到这些机理的文字性描绘，却找不到这些机理的数学性刻画。郑院士和他的团队创造性地借鉴了地质学中的渗流，认为信息的扩散与地质渗流过程相似，可以由渗流方程来刻画。在原有渗流模式基础上他们提出了新的渗流模式并将其命名为爆炸性渗流（Explosive Percolation），其基本机理是：区域抑制+全局延迟=全局爆发。加拿大 University of Waterloo 的大学研究主席 Bauch 实验室主任，国际著名应用数学专家 Chris Bauch 教授 在 Physics of Life Reviews 上发表的长篇综述文章 “Coupled disease–behavior dynamics on complex networks: A review” 中对郑院士及其团队的相关工作进行了详细报道，称他们的工作开辟了一条理解真实（信息）传播与预防（爆发）的新道路。国际数名著名科学家在 “Physics Reports”,”PRE”等期刊也对他们的发现进行了报道和引用，称相关工作迅速成为了巨大学术兴趣点。</p>
+
+<blockquote>渗流是自然界广泛存在的一类扩散方式，它指的是流体在孔隙介质中的流动。由颗粒状或碎块材料组成，并含有许多孔隙或裂隙的物质称为孔隙介质。通常，在地表面以下的土壤或岩层中的渗流称为地下水运动，是自然界最常见的渗流现象。渗流在水利、地质、采矿、石油、环境保护、化工、生物、医疗等领域都有广泛的应用。如开发利用地下水资源、防止建筑物地基发生渗透变形、基坑排水等均需应用渗流理论。</blockquote>
+
+</div>
