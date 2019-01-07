@@ -2,14 +2,161 @@
 layout: post
 title:  "Summary of essay (1):A subspace conjugate gradient algorithm for large-scale unconstrained optimization"
 date: 2019-01-04 16:48:00
-categories: Mathematics Statistics
+categories: Mathematics
 excerpt: ''
+permalink: /EN/1/
 ---
 
 <div class="post-style">
 
-<p>This paper proposes <strong>a subspace three-term conjugate gradient method</strong></p>
+<blockquote>This paper is published on 13 February 2017 in <strong>Numer Algor</strong>.</blockquote>
+<blockquote>This paper is wriiten by <strong>Yueting Yang</strong>, <strong>Yuting Chen</strong> and <strong>Yunlong Lu</strong> worked in School of Mathematics and Statistics, <strong>Beihua University</strong>, Jilin.</blockquote>
+<blockquote>This work is supported in part by the <strong>National Natural Science Foundation of China</strong>(No.11171003) and <strong>Department of Education of Jilin Province 12th Five-Year Plan to support scientific research projects</strong>(No.2015132)</blockquote>
 
-<p>The search directions in the method: minimizing a <strong>quadratic approximation of the objective function</strong> on a subspace</p>
+<h1>0 Abstract and Keywords</h1>
+
+<p>$\mathrm{1.\ The\ method\ proposed\ in\ this\ paper：}$</p>
+
+<ul>
+	<li>$\mathrm{a\ new}\ subspace\ three-term\ conjugate\ gradient\ \mathrm{method}$</li>
+</ul>
+
+<p>$\mathrm{2.\ The\ search\ directions\ in\ the\ method:}$</p>
+
+<ul>
+	<li>$\mathrm{generated\ by\ minimizing\ a\ } quadratic\ approximation\ of\ the\ objective\ function\mathrm{\ on\ a\ subspace.}$</li>
+	<li>$\mathrm{the\ subspace\ is\ spanned\ by}\ current\ negative\ gradient\ \mathrm{and}\ the\ latest\ two\ search\ directions.$</li>
+	<li>$\mathrm{they\ satisfy}\ the\ descent\ condition\ \mathrm{and}\ Dai-Liao\ conjugacy\ condition$</li>
+</ul>
+
+<p>$\mathrm{3.\ The\ global\ convergence\ result\ of\ the\ method:}$</p>
+
+<ul>
+	<li>$\mathrm{establish\ under\ some\ appropriate}\ assumptions,\mathrm{\ with}\ Wolfe\ condition.$</li>
+</ul>
+
+<p>$\mathrm{4.\ Numerical\ experiments\ of\ the\ method:}$</p>
+
+<ul>
+	<li>$competitive\ \mathrm{for\ a\ set\ of\ 80\ unconstrained\ optimization\ test\ problems.}$</li>
+</ul>
+
+<p>$\mathrm{5.\ Keywords:}$</p>
+
+<ul>
+	<li>$Large-scale\ unconstrained\ optimization$</li>
+	<li>$Subspace \ \cdot \ Conjugate\ gradient \ \cdot \ Global\ convergence$</li>
+</ul>
+
+<h1>1 Introduction</h1>
+
+<p>This paper consideres a $large-scale\ unconstrained\ optimization$ problem:</p>
+
+$$\min f\left(x \right),\ x \in R^n$$
+
+<p class="post-text-noindent">It mentions many essays for solving this problem based on iteration formula
+
+$$x_{k+1} = x_k + \alpha_k d_k = x_k + A_k z_k$$
+$$where\ d_k\ is\ a\ search\ direction, \alpha_k\ is\ a\ step\ size$$
+$$A_k\ is\ a\ basis\ matrix\ of\ a\ subspace\ in\ R^n,\ z_k\ is\ a\ coefficient\ vector$$
+
+<p class="post-text-noindent">They are:</p>
+
+<ul>
+	<li>Hestenes, M.R., Stiefel, E.L.: Methods of conjugate gradient for solving linear systems. J. Res. Natl. Bur. Stand. 6(49), 409–436 (1952)</li>
+
+$$d_k = -g_k + \beta_k^{HS} d_{k-1},\ d_0=-g_0,\ \beta_k^{HS} = \frac{g_k^T \left(g_k-g_{k-1} \right)}{d_{k-1}^T \left(g_k-g_{k-1} \right)}$$
+$$where\ g_k = \nabla f\left(x_k \right )\ is\ the\ gradient\ of\ f\left(x \right)\ at\ x_k$$
+
+	<li>Liu, Y.L., Storey, C.S.: Efficient generalized conjugate gradient, Part I: Theory. J. Optim. Theory Appl. 7, 149–154 (1964)</li>
+
+$$d_k = -g_k + \beta_k^{LS} d_{k-1},\ d_0=-g_0,\ \beta_k^{LS} = \frac{g_k^T \left(g_k-g_{k-1} \right)}{-d_{k-1}^T g_{k-1}}$$
+
+	<li>Flether, R., Reeves, C.M.: Function minimization by conjugate gradient. Comput. J. 7, 149–154 (1964)</li>
+
+$$d_k = -g_k + \beta_k^{FR} d_{k-1},\ d_0=-g_0,\ \beta_k^{FR} = \frac{g_k^T g_k}{g_{k-1}^T g_{k-1}}$$
+
+	<li>Polyak, B.T.: The conjugate gradient method in extreme problems. USSR Comput. Math. Math. Phys. 9, 94–112 (1969)</li>
+
+$$d_k = -g_k + \beta_k^{PRP} d_{k-1},\ d_0=-g_0,\ \beta_k^{PRP} = \frac{g_k^T \left(g_k-g_{k-1} \right)}{g_{k-1}^T g_{k-1}}$$
+
+	<li>Flecther, R.: Practical Methods of Optimization, vol. I. Unconstrained Optimization, Wiley, New York (1988)</li>
+
+$$d_k = -g_k + \beta_k^{CD} d_{k-1},\ d_0=-g_0,\ \beta_k^{CD} = \frac{g_k^T g_k}{-d_{k-1}^T g_{k-1}}$$
+
+	<li>Liu, D.C., Nocedal, J.: On the limited memory BFGS method for large scale optimization. Math. Program. 45, 503–528 (1989)</li>
+
+	<li>Stoer, J., Yuan, Y.X.: A subspace study on conjugate gradient algorithms. Zeitschrift for Angewandte Mathematik and Mechanik 75, 69–77 (1995)</li>
+
+$$d_k \in \mathrm{span}\left \{ A_k \right \}, \ A_k = \left(g_k,x_k-x_{k-1}\right)$$
+$$d_k\ is\ the\ minimum\ of\ approximate\ quadratic\ model\ of\ f\left(x \right)\ at\ x_k$$
+$$namely,\ d_k = \arg \underset{d}{\min}\left (g_k^Td+\frac{1}{2}d^TB_{k}d  \right ),\ B_{k}\ is\ an\ approximation\ of\ the\ \nabla^2f\left(x_{k} \right )$$
+
+	<li>Con, A.R., Could, N., Sartenaer, A., Toint, Ph.L.: On Iterated-Subspace Minimization Methods for Nonlinear Optimization. In: Adams, L., Nazareth, J.L. (eds.) Linear and Nonlinear Conjugate Gradient Related Methods, pp. 50–78. SIAM (1996)</li>
+
+	<li>Dai, Y.H., Yuan, Y.X.: A nonlinear conjugate gradient method with a strong global convergence property. SIAM Journal on Optimization. 10, 177–182 (2000)</li>
+
+$$d_k = -g_k + \beta_k^{DY} d_{k-1},\ d_0=-g_0,\ \beta_k^{DY} = \frac{g_k^T g_k}{d_{k-1}^T \left(g_k-g_{k-1} \right)}$$
+
+	<li>Chen, R.L., Zeng, J.P.: A new subspace correction method for nonlinear unconstrained convex optimization problems. Acta Mathematicae Applicatae Sinica 4(28), 745–756 (2002)</li>
+	<li>Wang, Z.H., Yuan, Y.X., Wen, Z.W.: A subspace trust region method for large scale unconstrained optimization. Int. Conf. Numer. Linear Algebra Optim. 10 (2003)</li>
+
+$$d_k \in \mathrm{span}\left \{ A_k \right \}, \ find\ z_k\ by\ minimizing\ f\left(x_k + A_k z_k\right)\ using\ the\ trust\ region\ method$$
+$$\ A_k = \left(\frac{-g_k}{\left \| g_k \right \|}, \frac{x_{k-m+1}-x_{k-m}}{\left \| x_{k-m+1}-x_{k-m} \right \|}, \cdots, \frac{x_{k}-x_{k-1}}{\left \| x_{k}-x_{k-1} \right \|}, \frac{g_{k-m+1}-g_{k-m}}{\left \| g_{k-m+1}-g_{k-m} \right \|},\cdots, \frac{g_{k}-g_{k-1}}{\left \| g_{k}-g_{k-1} \right \|}\right)$$
+
+	<li>Wang, Z.H.: A limited memory trust region method for unconstrained optimization and its omplementation. Methematica Numerica Sinica 4(27), 395–404 (2005)</li>
+	<li>Yuan, Y.X.: Subspace Techniques for Nonlinear Optimization. Academy of Mathematics and System Sciences, Chinses Academy of Science (2006)</li>
+
+$$reviews\ various\ subspace\ techniques\ used\ in\ constructing\ \\
+of\ numerical\ methods\ for\ large-scale\ optimization$$
+
+	<li>Lv, L.B.: A new algorithm for solving large-scale trust region subproblem. Oper. Res. Manag. Sci. 5(16), 48–52 (2007)</li>
+	<li>Liu, J.K.: Convergence properties of a class of nonlinear conjugate gradient methods. Comput. Oper. Res. 40, 2656–2661 (2013)</li>
+	<li>Andrei, N.: On three-term conjugate gradient algorithms for unconstrained optimization. Appl. Math. Comput. 219, 6316–6327 (2013)</li>
+	<li>Andrei, N.: Another conjugate gradient algorithm with guaranteed descent and conjugacy conditions. J. Optim. Theory Appl. 159, 159–182 (2013)</li>
+	<li>Deng, S.H., Wan, Z.: An improved spectral conjugate gradient algorithm for nonconvex unconstrained optimization problems. J. Optim. Theory Appl. 157(3), 820–842 (2013)</li>
+	<li>Andrei, N.: An accelerated subspace minimization three-term conjugate gradient algorithm for unconstrained optimization. Numerical Algorithms 65, 859–874 (2014)</li>
+
+$$d_k \in \mathrm{span}\left \{ A_k \right \}, \ A_k = \left(-g_k,x_k-x_{k-1},g_k-g_{k-1}\right)$$
+$$d_k\ is\ the\ minimum\ of\ approximate\ quadratic\ model\ of\ f\left(x \right)\ at\ x_k$$
+$$namely,\ d_k = \arg \underset{d}{\min}\left (g_k^Td+\frac{1}{2}d^TB_{k}d  \right ),\ B_{k}\ is\ an\ approximation\ of\ the\ \nabla^2f\left(x_{k} \right )$$
+
+	<li>Deng, S.H., Wan, Z.: A three-term conjugate gradient algorithm for large-scale unconstrained optimization problems. Appl. Numer. Math. 92, 70–81 (2015)</li>
+</ul>
+
+<p>Above-mentioned essays mainly tell us how to determine the search direction $d_k$ in iteration formula</p>
+
+$$x_{k+1} = x_k + \alpha_k d_k$$
+
+<p class="post-text-noindent">But how do we determine the step length $\alpha_k$? Actually, the $\alpha_k$ is usually obtained by some <em>inexact line search techniques</em> such as <em>Armijo</em>, <em>Armijo-Goldstein</em>, <em>Wolfe</em>, <em>strong Wolfe</em> and so on.The core idea of these techniques is to ensure that $\alpha_k$ is in the appropriate range, not too big or not too small.The following are details of these techniques.</p>
+
+<ul>
+	<li>Armijo:</li>
+$$f\left ( x_{k+1} \right ) - f\left ( x_k \right ) \leq \varepsilon \alpha_kf_{\alpha_k}'\left ( x_{k+1} \right )|_{\alpha_k=\ 0} = \varepsilon \alpha_kg_k^Td_k,\ \varepsilon \in \left ( 0,1 \right )$$
+$$f\left ( x_k+\gamma \alpha_kd_k \right ) - f\left ( x_k \right ) \geq \varepsilon \gamma \alpha_kf_{\alpha_k}'\left ( x_{k+1} \right )|_{\alpha_k=\ 0} = \varepsilon \gamma  \alpha_kg_k^Td_k,\ \gamma \in \left ( 1,+\infty \right )$$
+	<li>Armijo-Goldstein:</li>
+$$f\left ( x_{k+1} \right ) - f\left ( x_k \right ) \leq \varepsilon \alpha_kf_{\alpha_k}'\left ( x_{k+1} \right )|_{\alpha_k=\ 0} = \varepsilon \alpha_kg_k^Td_k,\ \varepsilon \in \left ( 0,1 \right )$$
+$$f\left ( x_{k+1} \right ) - f\left ( x_k \right ) \geq \eta \alpha_kf_{\alpha_k}'\left ( x_{k+1} \right )|_{\alpha_k=\ 0} = \eta \alpha_kg_k^Td_k,\ \eta \in \left ( \varepsilon,1 \right )$$
+	<li>Wolfe:</li>
+$$f\left ( x_{k+1} \right ) - f\left ( x_k \right ) \leq \varepsilon \alpha_kf_{\alpha_k}'\left ( x_{k+1} \right )|_{\alpha_k=\ 0} = \varepsilon \alpha_kg_k^Td_k,\ \varepsilon \in \left ( 0,1 \right )$$
+$$f_{\alpha_k}'\left ( x_{k+1} \right ) = g_{k+1}^Td_k \geq \eta f_{\alpha_k}'\left ( x_{k+1} \right )|_{\alpha_k=\ 0} = \eta g_k^Td_k,\ \eta \in \left ( \varepsilon,1 \right )$$
+	<li>Strong Wolfe:</li>
+$$f\left ( x_{k+1} \right ) - f\left ( x_k \right ) \leq \varepsilon \alpha_kf_{\alpha_k}'\left ( x_{k+1} \right )|_{\alpha_k=\ 0} = \varepsilon \alpha_kg_k^Td_k,\ \varepsilon \in \left ( 0,1 \right )$$
+$$\left |f_{\alpha_k}'\left ( x_{k+1} \right )  \right | = \left |g_{k+1}^Td_k  \right | \leq \eta \left |f_{\alpha_k}'\left ( x_{k+1} \right )|_{\alpha_k=\ 0}  \right | = \eta \left |g_k^Td_k  \right |,\ \eta \in \left ( \varepsilon,1 \right )$$
+</ul>
+
+<p class="post-text-noindent">My question is: What are the detail ideas of these inexact line search techniques?</p>
+
+<h1>2 Minimizing the quadratic model on a subspace</h1>
+
+<p>This paper proposes a new method for large-scale unconstrained optimization, where</p>
+
+$$d_k \in \mathrm{span}\left \{ A_k \right \}, \ A_k = \left(-g_k,x_k-x_{k-1},x_{k-1}-x_{k-2}\right)$$
+$$d_k\ is\ the\ minimum\ of\ approximate\ quadratic\ model\ of\ f\left(x \right)\ at\ x_k$$
+$$namely,\ d_k = \arg \underset{d}{\min}\left (g_k^Td+\frac{1}{2}d^TB_{k}d  \right ),\ B_{k}\ is\ an\ approximation\ of\ the\ \nabla^2f\left(x_{k} \right )$$
+
+<p class="post-text-noindent">And we will choose $B_k$ satisfying the quasi-Newton equation</p>
+
+$$B_k\left(x_k-x_{k-1} \right) = \left(g_k-g_{k-1} \right)$$
 
 </div>
