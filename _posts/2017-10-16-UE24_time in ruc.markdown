@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Time in Renming University"
+title:  "人大时光"
 date:   2017-10-16 22:27:00 +0000
 categories: University_Essay
 excerpt: "From now on, I will use English for recording my daily life in Wechat Friends Circle. Maybe my English is poor, but I believe one day I will be good at it, and sharing my writing with each other, in my opinion, could be a effective way for me to achieve this goal. Now, it is 20:21 Beijing time, and I am in Beijing Subway Line 5, carrying a big suitcase and shouldering a medium-size backpack."

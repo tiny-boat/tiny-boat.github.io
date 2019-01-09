@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Time in Preparation for Reexamination of GCT"
+title:  "复试时光"
 date:   2018-01-20 23:38:00 +0000
 categories: University_Essay
 excerpt: "Silently at noon yesterday, the flowers were fading. Because of forgetting its name, you turned to consult me. But I say I know nothing. A long time had passed, then a laughter came out suddenly. You regarded me as a fake, fake scientist in detail. Actually I could not argue."

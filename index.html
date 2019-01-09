@@ -3,29 +3,29 @@ layout: default
 ---
 
 <div class="home">
-  
+
 <!--
   <div c lass="search">
   <input placeholder="第{{paginator.page}}页, 共{{paginator.total_pages}}页, 点我搜索文章" type="text" class="st-default-search-input">
-  </div> 
+  </div>
 -->
-  
+
   {%- if site.posts.size > 0 -%}
-	
+
 	<ul class="post-list">
-	  
+
 	  {% for post in paginator.posts %}
-	  
+
 	  <li>
 		<h3>
 		  <a class="post-link" href="{{ post.url | relative_url }}">
 			{{ post.title | escape }}
 		  </a>
 		</h3>
-		
+
 		{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d" -%}
 		<span class="post-list-tips">{{ post.date | date: date_format }}</span>
-		
+
 		<span class="post-list-tips">
 		  {% if post.categories contains 'Mathematics' %}
 			<a class="post-meta-content-a" href="/category/natural_science/{{ 'Mathematics' | downcase }}.html">数学</a>
@@ -60,7 +60,7 @@ layout: default
 		  {% elsif post.categories contains 'Law' %}
 			<a class="post-meta-content-a" href="/category/humanities/law.html">法律</a>
 		  {% elsif post.categories contains 'Management' %}
-			<a class="post-meta-content-a" href="/category/humanities/management.html">管理学</a>			
+			<a class="post-meta-content-a" href="/category/humanities/management.html">管理学</a>
           {% elsif post.categories contains 'Psychology' %}
 			<a class="post-meta-content-a" href="/category/humanities/psychology.html">心理学</a>
 		  {% elsif post.categories contains 'HighSchool_Time' %}
@@ -71,29 +71,29 @@ layout: default
 			<a class="post-meta-content-a" href="/category/{{ post.categories | downcase }}.html">{{ post.categories }}</a>
 		  {% endif %}
 		</span>
-	   
+
 	    <span class="post-list-tips">{{ post.content | strip_html | strip_newlines | strip_space | split: "" | size }} 字</span>
-	   
+
 	   {% if site.leancloud.enable %}
-		   <span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> 
+		   <span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}">
 			   <span class="leancloud-visitors-count"></span>
 			   <span class="post-list-tips">次浏览</span>
 		   </span>
-	   {% endif %}	  
+	   {% endif %}
 
 	   {%- if site.show_excerpts -%}
 		<span class="post-list-tips">{{ post.excerpt | strip_html }}</span>
 	   {%- endif -%}
 	  </li>
-	  
+
 	  {% endfor %}
-	
+
 	</ul>
 <!--
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
 -->
   {%- endif -%}
-  
+
 </div>
 
 
@@ -145,7 +145,7 @@ layout: default
   {% elsif paginator.page <= 26 %}
 	  {% for count in (22..paginator.total_pages) limit:6 %}
 		{%- include paginator_page.html -%}
-	  {% endfor %}	  
+	  {% endfor %}
   {% endif %}
 
   {% if paginator.next_page %}
@@ -153,7 +153,7 @@ layout: default
   {% else %}
     <span>&nbsp;>>&nbsp;</span></span></span>
   {% endif %}
-  
+
   {% if paginator.page == paginator.total_pages %}
     <span>尾页&nbsp;</span>
   {% else %}
