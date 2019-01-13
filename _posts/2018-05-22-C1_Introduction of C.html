@@ -83,7 +83,7 @@ In computer science, an implementation is a realization of a technical specifica
 
 <h1>1.3 C 的编程机制</h1>
 
-<p><em>C</em> 的编程机制（<em>programming mechanism</em>）如图 1-1 所示，它首先用<strong>编译器</strong>（<em>compiler</em>）将<strong>源代码文件</strong>（<em>source code file</em>）转换为<strong>目标代码文件</strong>（<em>objective code file</em>），然后用[<strong>链接器</strong>](https://baike.baidu.com/item/%E9%93%BE%E6%8E%A5%E5%99%A8)（<em>linker</em>）合并目标代码文件、<strong>启动代码文件</strong>（<em>startup code file</em>）和<strong>库代码文件</strong>（<em>library code file</em>）为<strong>可执行文件</strong>（<em>executable code file</em>）。</p>
+<p><em>C</em> 的编程机制（<em>programming mechanism</em>）如图 1-1 所示，它首先用<strong>编译器</strong>（<em>compiler</em>）将<strong>源代码文件</strong>（<em>source code file</em>）转换为<strong>目标代码文件</strong>（<em>objective code file</em>），然后用<a href="https://baike.baidu.com/item/%E9%93%BE%E6%8E%A5%E5%99%A8"><strong>链接器</strong></a>（<em>linker</em>）合并目标代码文件、<strong>启动代码文件</strong>（<em>startup code file</em>）和<strong>库代码文件</strong>（<em>library code file</em>）为<strong>可执行文件</strong>（<em>executable code file</em>）。</p>
 
 <blockquote>
 目标代码文件是由源代码转化为的机器语言代码构成的文件，但它并不是一个完整的可执行程序，它还缺乏重要的启动代码以及库代码。启动代码是程序和操作系统的<strong>接口</strong>（interface），接口是计算机科学中的一个术语，它指的是连接两台设备或两个系统的电路、接头或程序（interface is an electrical circuit, connection or program that joins one device or system to another）。库代码是 C 标准库中函数的代码，由于几乎所有的 C 程序都要使用 C 标准库中的函数，因此程序要执行，库代码必不可少，当然实际中链接器不会提取所有的库代码，而只会提取用到的库函数代码。
