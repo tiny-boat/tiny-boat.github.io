@@ -1,0 +1,123 @@
+---
+layout: post
+title:  "关于新共轭梯度法论文的问题"
+date:   2019-01-19 18:33:00
+categories: Mathematics
+permalink: /nfe/1/
+---
+
+<div class="post-style">
+
+<h1>1 概述</h1>
+
+<p>本文提出的一种新的共轭梯度法与经典共轭梯度法的基本框架是一致的，其迭代公式均为：</p>
+
+$$x_{k+1} = x_k + \alpha_k d_k,\ d_{k+1} = -g_{k+1} + \beta_k d_k,\ d_0 = g_0$$
+
+<p class="post-text-noindent">其中 $\alpha_k$ 由非精确线搜索技术（通常使用 Wolfe line search）确定，其差别体现在求解搜索方向 $d_{k+1}$ 时确定 $\beta_k$ 的公式不同。</p>
+
+<p>在经典共轭梯度法中，$\beta_k$ 是依据共轭条件（$d_{k+1}^T y_k = 0$）确定的。而在本文提出的新方法中，$\beta_k$ 是通过最小化目标函数</p>
+
+$$g_{k+1}^T d_{k+1} + M \left[ \left(g_{k+2}^T s_k\right)^2 + \left(d_{k+1}^T y_k\right)^2 \right] \quad \left(1 \right)$$
+
+<p class="post-text-noindent">确定的，这里 $M$ 为待定的惩罚参数。</p>
+
+<p>其基本思想是要让新的方法尽量满足经典共轭梯度法所具有的三个性质：</p>
+
+<ul>
+    <li>充分下降条件</li>
+
+$$g_{k+1}^T d_{k+1} \leq -c \left \| g_{k+1} \right \|^2,\ c > 0$$
+
+    <li>共轭条件</li>
+
+$$d_{k+1}^T y_k = 0$$
+
+    <li>正交条件</li>
+
+$$g_{k+1}^T d_i = 0,\ \forall i < k$$
+
+</ul>
+
+<p><strong>我的第一个问题是：</strong>第一个性质自不用说它保证搜索方向始终朝着函数值下降的方向走，但第二个性质以及第三个性质到底意味着什么呢？满足这两个性质有什么好处呢？</p>
+
+<p><strong>我的第二个问题是：</strong>既然正交条件是 $g_{k+1}^T d_i = 0,\ \forall i < k$，为什么 $\left(1 \right)$ 式在考虑这一性质时使用的是 $g_{k+2}^T s_k$ 而不是 $g_{k+1}^T s_k$ 或者 $g_{k+1}^T s_{k-1}$ 等等？要知道 $g_{k+2}$ 是未知的，后面要作近似处理，这里给我的感觉就是很别扭，缺乏美感。</p>
+
+<h1>2 求 $\beta_k$ 的公式</h1>
+
+<p>本文将上述目标函数 $\left(1 \right)$ 中未知的 $g_{k+2}$ 近似地取为 $f\left(x \right)$ 的二阶泰勒展开式</p>
+
+$$f\left(x_{k+1} \right) + g_{k+1}^T \left(x-x_{k+1} \right) + \frac{1}{2} \left(x-x_{k+1} \right)^T B_{k+1} \left(x-x_{k+1} \right)$$
+
+<p class="post-text-noindent">在 $x_{k+2}$ 的梯度</p>
+
+$$\alpha_{k+1} B_{k+1} d_{k+1} + g_{k+1} \quad \left(2 \right)$$
+
+<p class="post-text-noindent">本文又将梯度 $\left(2 \right)$ 中未知的 $\alpha_{k+1}$ 用其合适的近似 $t$ 代替。从而，$\beta_k$ 是通过最小化目标函数</p>
+
+$$g_{k+1}^T d_{k+1} + M \left[ \left(\left(tB_{k+1}d_{k+1} + g_{k+1} \right)^T s_k\right)^2 + \left(d_{k+1}^T y_k\right)^2 \right] \quad \left(3 \right)$$
+
+<p class="post-text-noindent">得到的。通过将 $d_{k+1} = -g_{k+1} + \beta_k d_k$ 代入上述目标函数 $\left(3 \right)$ 可将目标函数重写为关于 $\beta_k$ 的二次多项式函数并且该函数二次项系数大于 0，由此我们可以得到该二次多项式函数极小值点 $\beta_k$ 的解析表达式。进一步利用拟牛顿条件 $B_{k+1} s_k = y_k$ 简化该解析表达式，得到</p>
+
+$$\beta_k = \frac{-1}{2M\left(1+t^2 \right)} \frac{g_{k+1}^T d_k}{\left(y_k^T d_k \right)^2} + \frac{y_k^T g_{k+1}}{y_k^T d_k} - \frac{t}{1+t^2}\frac{s_k^T g_{k+1}}{y_k^T d_k} \quad \left ( 4 \right )$$
+
+<p class="post-text-noindent">本文取</p>
+
+$$\begin{aligned}
+& M = \frac{2\gamma_1}{\left (1+t^2  \right ) \left \| y_k - \frac{\lambda_k}{2} s_k \right \|^2} \\
+& \lambda_k = \min \left ( 1,\frac{2s_k^T y_k}{\left \| s_k \right \|^2} \right )\\
+& t = \left\{\begin{matrix}
+\alpha_k,\ \ \left |\alpha_k-1  \right |\leq \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2}\\ 
+1 + \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2},\ otherwise
+\end{matrix}\right.\\
+& \gamma_1 + \gamma_2 < 1,\quad \gamma_1,\gamma_2>0
+\end{aligned} \quad \left ( 5 \right )$$
+
+<p class="post-text-noindent">因此本文提出的新方法最终是通过</p>
+
+$$\begin{aligned}
+& \beta_k =\frac{y_k^T g_{k+1}}{y_k^T d_k} - \frac{t}{1+t^2}\frac{s_k^T g_{k+1}}{y_k^T d_k} - \frac{\left \| y_k - \frac{\lambda_k}{2} s_k \right \|^2}{4\gamma_1} \frac{g_{k+1}^T d_k}{\left(y_k^T d_k \right)^2} &\left ( 6 \right )  \\
+& \lambda_k = \min \left ( 1,\frac{2s_k^T y_k}{\left \| s_k \right \|^2} \right ) &\left ( 7 \right )\\
+& t = \left\{\begin{matrix}
+\alpha_k,\ \ \left |\alpha_k-1  \right |\leq \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2}\\ 
+1 + \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2},\ otherwise
+\end{matrix}\right.&\left ( 8 \right )
+\end{aligned}$$
+
+<p class="post-text-noindent">确定 $\beta_k$ 的，其中 $\gamma_1,\gamma_2$ 为满足 $\gamma_1 + \gamma_2 < 1$ 的事先给定的正常数。</p>
+
+<h1>3 关于引理 1</h1>
+
+<p>本文对惩罚参数 $M$、$t$ 以及 $M$ 中的 $\lambda_k$ 作出 $\left(5 \right)$ 式那样的选择是因为 $\left(5 \right)$ 式这样的选择使得 $M$、$t$、$\lambda_k$、$\gamma_1$、$\gamma_2$ 满足如下三个条件</p>
+
+$$\begin{aligned}
+& M = \frac{2\gamma_1}{\left (1+t^2  \right ) \left \| y_k - \frac{\lambda_k}{2} s_k \right \|^2} \quad &\left ( 9 \right ) \\
+& \left |t-1  \right |\leq \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2} \quad &\left ( 10 \right )\\
+& \lambda_k \leq 1,\ \gamma_1 + \gamma_2 < 1,\ \gamma_1,\gamma_2>0 \quad &\left ( 11 \right )
+\end{aligned}$$
+
+<p class="post-text-noindent">而在满足上述三个条件时可以保证新的确定 $\beta_k$ 的方法满足充分下降条件，这也正是本文引理 1 的内容。关于这个引理，我有不少问题。</p>
+
+<p><strong>我的第三个问题是：</strong>我觉得引理 1 如下图所示的这一步是有错误的，应该去掉 $\pm \frac{\left (s_k^T g_{k+1}  \right )^2}{2y_k^Ts_k}$ 这一项。</p>
+
+<p class="post-text-center">
+<img src="/assets/img/Natural_Science/Mathematics/NFE1_1.png">
+</p>
+
+<p><strong>我的第四个问题是：</strong>我觉得引理 1 如下图所示的不等式并不需要要求 $a$ 和 $b$ 是正数，如果要求是正数，那么必须验证 $\left(y_k - \left(\lambda_k / 2 \right)s_k \right)^T g_{k+1} > 0$ 且 $\left(g_{k+1}^T s_k \right)/\left(y_k^Ts_k\right) > 0$，而本文并未给出论证。</p>
+
+<p class="post-text-center">
+<img src="/assets/img/Natural_Science/Mathematics/NFE1_2.png">
+</p>
+
+<p><strong>我的第五个问题是：</strong>引理 1 最终证明如下图所示的结论，可见 $\gamma_1 = \frac{M\left ( 1+t^2 \right )\left \| y_k-\frac{\lambda_k}{2} \right \|^2}{2}$ 且 $\gamma_2 = \frac{\left ( t-1 \right )^2}{2\left ( 1+t^2 \right )}\frac{\left \| s_k \right \|^2}{y_k^Ts_k}$，然而本文并未验证 $\gamma_1 + \gamma_2 < 1$，更加奇怪的是由条件 $\left(10 \right)$ 我们有 $\gamma_2 \geq \frac{\left ( t-1 \right )^2}{2}\frac{\left \| s_k \right \|^2}{y_k^Ts_k}$，而 $\frac{\left ( t-1 \right )^2}{2}\frac{\left \| s_k \right \|^2}{y_k^Ts_k} = \left(1+t^2 \right )\gamma_2$，这意味着 $\gamma_2 \geq \left(1+t^2 \right )\gamma_2$，可这怎么可能？</p>
+
+<p class="post-text-center">
+<img src="/assets/img/Natural_Science/Mathematics/NFE1_3.png">
+</p>
+
+<h1>4 全局收敛性的证明</h1>
+
+<p>关于这一部分我也有不少问题，但本文许多证明都省略了，我想读了它给的参考文献后再做整理，也许那时问题能少点。</p>
+
+</div>
