@@ -115,6 +115,19 @@ permalink: /xgjj/4/
 					<span class="comments">/* 2018-12-01 */</span><br>
 					<span class="keyword">LoveBox</span>[<span class="number">8</span>] <span class="operator">=</span> <span class="string">"你都说我是蜗牛了，我打字超慢，但是一直停留在和你说话的界面"</span> <span class="comments">// 23:36</span><br><br>
                 </div>
+                <div id="code" class="code4">
+                	<span class="keyword">LoveBox</span>[<span class="number">9</span>] <span class="operator">=</span> <span class="string">"每天晚上和男神说话以后都高兴到睡不着"</span> <span class="comments">// 23:54</span><br><br>
+					<span class="comments">/* 2018-12-02 */</span><br>
+					<span class="keyword">LoveBox</span>[<span class="number">10</span>] <span class="operator">=</span> <span class="string">"你对别人可能没有这么神，对我就这么神了"</span> <span class="comments">// 00:00</span><br>
+					<span class="keyword">LoveBox</span>[<span class="number">11</span>] <span class="operator">=</span> <span class="string">"那我正式介绍一下，我叫于江，我虽然不喜欢读书，虽然不聪明，虽然不文静，虽然有时候神经质，但是我喜欢你"</span> <span class="comments">// 23:59</span><br><br>
+					<span class="comments">/* 2018-12-07 */</span><br>
+					<span class="keyword">LoveBox</span>[<span class="number">12</span>] <span class="operator">=</span> <span class="string">"你现在在宿舍么，一会儿你下来一趟呗，等我一会儿叫你"</span> <span class="comments">// 21:58</span><br>
+					<span class="keyword">LoveBox</span>[<span class="number">13</span>] <span class="operator">=</span> <span class="string">"你现在下来吧"</span> <span class="comments">// 22:00</span><br>
+					<span class="keyword">LoveBox</span>[<span class="number">14</span>] <span class="operator">=</span> <span class="string">"不不不，只是你眼里的光就好了，那我得加油了，可是平常我都没有和你相处的机会"</span> <span class="comments">// 23:14</span><br><br>
+                </div>
+                
+                <span class="keyword">LoveBox</span>[<span class="number">15</span>] <span class="operator">=</span> <span class="string">"那我下次就要假装没有带伞，然后让你去接我了，哈哈哈"</span> <span class="comments">// 22:00</span><br><br>
+
                 <!--
     <div id="loveHeart">
       <canvas id="garden"></canvas>
@@ -180,6 +193,7 @@ permalink: /xgjj/4/
         var ct = 56000; //codetime
         var ft = 4000; //fadeouttime
 
+        $(".code4").hide();
 		$(".code3").hide();
         $(".code2").hide();
         $(".code1").typewriter();
@@ -191,6 +205,15 @@ permalink: /xgjj/4/
         setTimeout(function(){$(".code2").fadeOut(ft)},ct*2+ft);
         setTimeout(function(){$(".code3").show()},(ct+ft)*2);
         setTimeout(function(){$(".code3").typewriter()},(ct+ft)*2);
+
+        setTimeout(function(){$(".code3").fadeOut(ft)},ct*3+ft*2);
+        setTimeout(function(){$(".code4").show()},(ct+ft)*3);
+        setTimeout(function(){$(".code4").typewriter()},(ct+ft)*3);
+
+        setTimeout(function(){$(".code4").fadeOut(ft)},ct*4+ft*3);
+        setTimeout(function(){$(".code5").show()},(ct+ft)*4);
+        setTimeout(function(){$(".code5").typewriter()},(ct+ft)*4);
+
     }
     </script>
 
