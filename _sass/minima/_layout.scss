@@ -245,11 +245,11 @@
 }
 
 .footer-col-1 {
-  width: 136px;
+  width: 140px;
 }
 
 .footer-col-2 {
-  width: 430px;
+  width: 426px;
 }
 
 .footer-col-3 {
@@ -288,7 +288,7 @@
  * Page content
  */
 .page-content {
-  padding: 36px 0px 10px 0px;
+  padding: 36px 0px;
   flex: auto;
 
   @include media-query($on-palm) {
@@ -302,7 +302,7 @@
 :root Selector {property: value9;}
 
 .page-post-content {
-  padding: 24px 0px 16px 0px;
+  padding: 36px 0px;
   flex: auto;
 
   @include media-query($on-palm) {
@@ -483,12 +483,18 @@
 
 .post-index-up{
 	text-align: left;
-	width: 367px;
+
+  @include media-query($on-palm) {
+    width: 45%;
+  }
 }
 
 .post-index-down{
 	text-align: left;
-	width: 367px;
+
+  @include media-query($on-palm) {
+    width: 45%;
+  }
 }
 
 a:link {text-decoration: none}		/* not visited */

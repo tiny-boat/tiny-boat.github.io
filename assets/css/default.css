@@ -85,8 +85,21 @@ body {
 }
 
 #code .keyword {
-    color: #7f0055;
+    color: #5DADE2;
     font-weight: bold
+}
+
+#code .operator {
+    color: #E59866;
+    font-weight: bold
+}
+
+#code .number {
+    color: #099;
+}
+
+#code .string {
+    color: #8E44AD;
 }
 
 #code .placeholder {
@@ -109,3 +122,5 @@ body {
     top: 100px;
     left: 0
 }
+
+
