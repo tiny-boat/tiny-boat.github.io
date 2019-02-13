@@ -14,20 +14,13 @@ permalink: /xgjj/4/
     {%- seo -%}
     <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
     {%- feed_meta -%}
+
     {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
     {%- endif -%}
-    <!--
-<style type="text/css">
-@font-face {
-  font-family: digit;
-  src: url('digital-7_mono.ttf') format("truetype");
-}
-</style>
--->
+
     <link href="/assets/css/default.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="/assets/js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="/assets/js/garden.js"></script>
     <script type="text/javascript" src="/assets/js/functions.js"></script>
 </head>
 
@@ -36,19 +29,21 @@ permalink: /xgjj/4/
         <div class="wrapper">
             {%- assign default_paths = site.pages | map: "path" -%}
             {%- assign page_paths = site.header_pages | default: default_paths -%}
+
             <div class="site-title">
                 <span><img class="site-title-img" src="/assets/img/about_me/tiny-boat.gif"></span>
                 <span class="site-title-title">{{ site.title | escape }}</span>
             </div>
+
             {%- if page_paths -%}
             <nav class="site-nav">
                 <input type="checkbox" id="nav-trigger" class="nav-trigger" />
                 <label for="nav-trigger">
                     <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
+                        <svg viewBox="0 0 18 15" width="18px" height="15px">
+                            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+                        </svg>
+                    </span>
                 </label>
                 <div class="trigger">
                     <a class="page-link" href="/">首页</a>
@@ -64,6 +59,7 @@ permalink: /xgjj/4/
                 </div>
             </nav>
             {%- endif -%}
+
         </div>
     </header>
 
@@ -177,7 +173,7 @@ permalink: /xgjj/4/
                     <span class="keyword">LoveBox</span>[<span class="number">35</span>] <span class="operator">=</span> <span class="string">"我觉得神算子应该配小笨蛋，一个聪明一个笨，虽然我不笨"</span> <span class="comments">// 23:16</span><br><br>
 
                     <span class="comments">/* 2019-01-11 */</span><br>
-                    <span class="keyword">LoveBox</span>[<span class="number">36</span>] <span class="operator">=</span> <span class="string">"帆船是在水里的，星星是在天上的"</span> <span class="comments">// 21:53</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">36</span>] <span class="operator">=</span> <span class="string">"帆船是在水里的，星星是在天上的"</span> <span class="comments">// 21:53</span>
                 </div>
 
                 <div id="code" class="codea">
@@ -252,7 +248,7 @@ permalink: /xgjj/4/
 
                     <span class="comments">/* 2019-02-10 */</span><br>
                     <span class="keyword">LoveBox</span>[<span class="number">63</span>] <span class="operator">=</span> <span class="string">"数学之美该看 14 章了"</span> <span class="comments">// 10:17</span><br>
-                    <span class="keyword">LoveBox</span>[<span class="number">64</span>] <span class="operator">=</span> <span class="string">"看我做的土豆泥"</span> <span class="comments">// 17:36</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">64</span>] <span class="operator">=</span> <span class="string">"看我做的土豆泥"</span> <span class="comments">// 17:36</span>
                 </div>
                 
                 <div id="code" class="codeg">
@@ -260,11 +256,12 @@ permalink: /xgjj/4/
  
                     <span class="comments">// 谢谢你，江，因为想写个动态页面给你，我开始接触作为网页编程语言之一的 JavaScript，虽然只学到些皮毛，但接触新东西的日子总能让我无比兴奋</span><br><br>
 
-                    <span class="comments">// 谢谢你，来到我的身边，愿我们能在爱情里携手成长，遇见全新的世界，全新的自己（づ￣3￣）づ╭❤～</span><br><br>
+                    <span class="comments">// 有时候我也会想啊，你的到来是不是天意，因为多年以前我写下的情诗，它的标题与你的姓同音</span><br><br>
 
-                    <span class="comments">// 帆，2019-02-13 18:48 于宁乡</span>                    
+                    <span class="comments">// 不管是不是天意吧，都要谢谢你，谢谢你来到我的身边，愿我们能在往后的日子里，健康生活，快乐学习，携手成长，遇见全新的世界全新的自己（づ￣3￣）づ╭❤～</span><br><br>
+
+                    <span class="comments">// 帆，2019-02-13 20:13 于宁乡</span>                 
                 </div>
-
             </div>
         </div>
     </main>
@@ -289,99 +286,85 @@ permalink: /xgjj/4/
 
     <script type="text/javascript">
 
-        if (!document.createElement('canvas').getContext) {
-            var msg = document.createElement("div");
-            msg.id = "errorMsg";
-            msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
-            document.body.appendChild(msg);
-            $("#code").css("display", "none")
-            document.execCommand("stop");
-        } else {           
-            var ct = 30000; //codetime
-            var ft = 4000; //fadeouttime
+        var ct = 30000; //codetime
+        var ft = 4000; //fadeouttime
 
-            /*
-            var ct = 10; //codetime
-            var ft = 10; //fadeouttime
-            */
+        $(".codeg").hide();
+        $(".codef").hide();
+        $(".codee").hide();
+        $(".coded").hide();
+        $(".codec").hide();
+        $(".codeb").hide();
+        $(".codea").hide();
+        $(".code9").hide();
+		$(".code8").hide();
+        $(".code7").hide();
+		$(".code6").hide();
+		$(".code5").hide();
+        $(".code4").hide();
+		$(".code3").hide();
+        $(".code2").hide();
+        $(".code1").typewriter();
 
-            $(".codeg").hide();
-            $(".codef").hide();
-            $(".codee").hide();
-            $(".coded").hide();
-            $(".codec").hide();
-            $(".codeb").hide();
-            $(".codea").hide();
-            $(".code9").hide();
-    		$(".code8").hide();
-            $(".code7").hide();
-    		$(".code6").hide();
-    		$(".code5").hide();
-            $(".code4").hide();
-    		$(".code3").hide();
-            $(".code2").hide();
-            $(".code1").typewriter();
+        setTimeout(function(){$(".code1").fadeOut(ft)},ct);
+        setTimeout(function(){$(".code2").show()},ct+ft);
+        setTimeout(function(){$(".code2").typewriter()},ct+ft);
 
-            setTimeout(function(){$(".code1").fadeOut(ft)},ct);
-            setTimeout(function(){$(".code2").show()},ct+ft);
-            setTimeout(function(){$(".code2").typewriter()},ct+ft);
+        setTimeout(function(){$(".code2").fadeOut(ft)},ct*2+ft);
+        setTimeout(function(){$(".code3").show()},(ct+ft)*2);
+        setTimeout(function(){$(".code3").typewriter()},(ct+ft)*2);
 
-            setTimeout(function(){$(".code2").fadeOut(ft)},ct*2+ft);
-            setTimeout(function(){$(".code3").show()},(ct+ft)*2);
-            setTimeout(function(){$(".code3").typewriter()},(ct+ft)*2);
+        setTimeout(function(){$(".code3").fadeOut(ft)},ct*3+ft*2);
+        setTimeout(function(){$(".code4").show()},(ct+ft)*3);
+        setTimeout(function(){$(".code4").typewriter()},(ct+ft)*3);
 
-            setTimeout(function(){$(".code3").fadeOut(ft)},ct*3+ft*2);
-            setTimeout(function(){$(".code4").show()},(ct+ft)*3);
-            setTimeout(function(){$(".code4").typewriter()},(ct+ft)*3);
+        setTimeout(function(){$(".code4").fadeOut(ft)},ct*4+ft*3);
+        setTimeout(function(){$(".code5").show()},(ct+ft)*4);
+        setTimeout(function(){$(".code5").typewriter()},(ct+ft)*4);
 
-            setTimeout(function(){$(".code4").fadeOut(ft)},ct*4+ft*3);
-            setTimeout(function(){$(".code5").show()},(ct+ft)*4);
-            setTimeout(function(){$(".code5").typewriter()},(ct+ft)*4);
+        setTimeout(function(){$(".code5").fadeOut(ft)},ct*5+ft*4);
+        setTimeout(function(){$(".code6").show()},(ct+ft)*5);
+        setTimeout(function(){$(".code6").typewriter()},(ct+ft)*5);
 
-            setTimeout(function(){$(".code5").fadeOut(ft)},ct*5+ft*4);
-            setTimeout(function(){$(".code6").show()},(ct+ft)*5);
-            setTimeout(function(){$(".code6").typewriter()},(ct+ft)*5);
+        setTimeout(function(){$(".code6").fadeOut(ft)},ct*6+ft*5);
+        setTimeout(function(){$(".code7").show()},(ct+ft)*6);
+        setTimeout(function(){$(".code7").typewriter()},(ct+ft)*6);
 
-            setTimeout(function(){$(".code6").fadeOut(ft)},ct*6+ft*5);
-            setTimeout(function(){$(".code7").show()},(ct+ft)*6);
-            setTimeout(function(){$(".code7").typewriter()},(ct+ft)*6);
+        setTimeout(function(){$(".code7").fadeOut(ft)},ct*7+ft*6);
+        setTimeout(function(){$(".code8").show()},(ct+ft)*7);
+        setTimeout(function(){$(".code8").typewriter()},(ct+ft)*7);
 
-            setTimeout(function(){$(".code7").fadeOut(ft)},ct*7+ft*6);
-            setTimeout(function(){$(".code8").show()},(ct+ft)*7);
-            setTimeout(function(){$(".code8").typewriter()},(ct+ft)*7);
+        setTimeout(function(){$(".code8").fadeOut(ft)},ct*8+ft*7);
+        setTimeout(function(){$(".code9").show()},(ct+ft)*8);
+        setTimeout(function(){$(".code9").typewriter()},(ct+ft)*8);
 
-            setTimeout(function(){$(".code8").fadeOut(ft)},ct*8+ft*7);
-            setTimeout(function(){$(".code9").show()},(ct+ft)*8);
-            setTimeout(function(){$(".code9").typewriter()},(ct+ft)*8);
+        setTimeout(function(){$(".code9").fadeOut(ft)},ct*9+ft*8);
+        setTimeout(function(){$(".codea").show()},(ct+ft)*9);
+        setTimeout(function(){$(".codea").typewriter()},(ct+ft)*9);
 
-            setTimeout(function(){$(".code9").fadeOut(ft)},ct*9+ft*8);
-            setTimeout(function(){$(".codea").show()},(ct+ft)*9);
-            setTimeout(function(){$(".codea").typewriter()},(ct+ft)*9);
+        setTimeout(function(){$(".codea").fadeOut(ft)},ct*10+ft*9);
+        setTimeout(function(){$(".codeb").show()},(ct+ft)*10);
+        setTimeout(function(){$(".codeb").typewriter()},(ct+ft)*10);
 
-            setTimeout(function(){$(".codea").fadeOut(ft)},ct*10+ft*9);
-            setTimeout(function(){$(".codeb").show()},(ct+ft)*10);
-            setTimeout(function(){$(".codeb").typewriter()},(ct+ft)*10);
+        setTimeout(function(){$(".codeb").fadeOut(ft)},ct*11+ft*10);
+        setTimeout(function(){$(".codec").show()},(ct+ft)*11);
+        setTimeout(function(){$(".codec").typewriter()},(ct+ft)*11);
 
-            setTimeout(function(){$(".codeb").fadeOut(ft)},ct*11+ft*10);
-            setTimeout(function(){$(".codec").show()},(ct+ft)*11);
-            setTimeout(function(){$(".codec").typewriter()},(ct+ft)*11);
+        setTimeout(function(){$(".codec").fadeOut(ft)},ct*12+ft*11);
+        setTimeout(function(){$(".coded").show()},(ct+ft)*12);
+        setTimeout(function(){$(".coded").typewriter()},(ct+ft)*12);
 
-            setTimeout(function(){$(".codec").fadeOut(ft)},ct*12+ft*11);
-            setTimeout(function(){$(".coded").show()},(ct+ft)*12);
-            setTimeout(function(){$(".coded").typewriter()},(ct+ft)*12);
+        setTimeout(function(){$(".coded").fadeOut(ft)},ct*13+ft*12);
+        setTimeout(function(){$(".codee").show()},(ct+ft)*13);
+        setTimeout(function(){$(".codee").typewriter()},(ct+ft)*13);
 
-            setTimeout(function(){$(".coded").fadeOut(ft)},ct*13+ft*12);
-            setTimeout(function(){$(".codee").show()},(ct+ft)*13);
-            setTimeout(function(){$(".codee").typewriter()},(ct+ft)*13);
+        setTimeout(function(){$(".codee").fadeOut(ft)},ct*14+ft*13);
+        setTimeout(function(){$(".codef").show()},(ct+ft)*14);
+        setTimeout(function(){$(".codef").typewriter()},(ct+ft)*14);
 
-            setTimeout(function(){$(".codee").fadeOut(ft)},ct*14+ft*13);
-            setTimeout(function(){$(".codef").show()},(ct+ft)*14);
-            setTimeout(function(){$(".codef").typewriter()},(ct+ft)*14);
-
-            setTimeout(function(){$(".codef").fadeOut(ft)},ct*15+ft*14);
-            setTimeout(function(){$(".codeg").show()},(ct+ft)*15);
-            setTimeout(function(){$(".codeg").typewriter()},(ct+ft)*15);
-        }
+        setTimeout(function(){$(".codef").fadeOut(ft)},ct*15+ft*14);
+        setTimeout(function(){$(".codeg").show()},(ct+ft)*15);
+        setTimeout(function(){$(".codeg").typewriter(100)},(ct+ft)*15);
     </script>
 </body>
 
