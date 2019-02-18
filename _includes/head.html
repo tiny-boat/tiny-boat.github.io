@@ -5,12 +5,22 @@
   {%- seo -%}
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {%- feed_meta -%}
+
+  <!-- web analysis supported by Google -->
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
 
-  <!-- 数学公式 -->
-	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <!-- web analysis supported by Baidu -->
+  {% include baidu-analytics.html %}
+
+  <!-- search function supported by Swiftype -->
+
+  <!-- read counts supported by leancloud -->
+  {% include leancloud-analytics.html %}
+
+  <!-- Math Formula supported by LaTex-->
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	<script type="text/x-mathjax-config">
 	  MathJax.Hub.Config({
 		tex2jax: {
@@ -20,6 +30,10 @@
 	  });
 	</script>
 
-  <script src="/assets/js/highlight.pack.js" type="text/javascript"></script>
+  <!-- syntax highlight -->
+  <script type="text/javascript" src="/assets/js/highlight.pack.js"></script>
 
+  <!-- an excellent library of javascript: jquery -->
+  <script type="text/javascript" src="/assets/js/jquery-3.3.1.min.js"></script>
+  
 </head>
