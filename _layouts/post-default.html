@@ -15,6 +15,17 @@
 
     {%- include footer.html -%}
 
+    <script type="text/javascript">
+    var ht = 100;
+    var ft = 4000;
+    $('.page-post-content').hide();
+    $('.footer-heading').hide();
+    $('.footer-col-wrapper').hide();
+    setTimeout(function(){$('.page-post-content').fadeIn(ft)},ht);
+    setTimeout(function(){$('.footer-heading').fadeIn(ft)},ft);
+    setTimeout(function(){$('.footer-col-wrapper').fadeIn(ft)},ft);
+    </script>
+
   </body>
-  
+
 </html>
