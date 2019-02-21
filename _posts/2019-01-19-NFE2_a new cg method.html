@@ -68,7 +68,7 @@ $$\begin{aligned}
 & M = \frac{2\gamma_1}{\left (1+t^2  \right ) \left \| y_k - \frac{\lambda_k}{2} s_k \right \|^2} \\
 & \lambda_k = \min \left ( 1,\frac{2s_k^T y_k}{\left \| s_k \right \|^2} \right )\\
 & t = \left\{\begin{matrix}
-\alpha_k,\ \ \left |\alpha_k-1  \right |\leq \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2}\\ 
+\alpha_k,\ \ \left |\alpha_k-1  \right |\leq \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2}\\
 1 + \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2},\ otherwise
 \end{matrix}\right.\\
 & \gamma_1 + \gamma_2 < 1,\quad \gamma_1,\gamma_2>0
@@ -80,7 +80,7 @@ $$\begin{aligned}
 & \beta_k =\frac{y_k^T g_{k+1}}{y_k^T d_k} - \frac{t}{1+t^2}\frac{s_k^T g_{k+1}}{y_k^T d_k} - \frac{\left \| y_k - \frac{\lambda_k}{2} s_k \right \|^2}{4\gamma_1} \frac{g_{k+1}^T d_k}{\left(y_k^T d_k \right)^2} &\left ( 6 \right )  \\
 & \lambda_k = \min \left ( 1,\frac{2s_k^T y_k}{\left \| s_k \right \|^2} \right ) &\left ( 7 \right )\\
 & t = \left\{\begin{matrix}
-\alpha_k,\ \ \left |\alpha_k-1  \right |\leq \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2}\\ 
+\alpha_k,\ \ \left |\alpha_k-1  \right |\leq \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2}\\
 1 + \left ( \frac{2\gamma_2\left ( y_k^T s_k \right )}{\left \| s_k \right \|^2} \right )^\frac{1}{2},\ otherwise
 \end{matrix}\right.&\left ( 8 \right )
 \end{aligned}$$
@@ -119,6 +119,87 @@ $$\begin{aligned}
 
 <h1>4 全局收敛性的证明</h1>
 
-<p>关于这一部分我也有不少问题，但本文许多证明都省略了，我想读了它给的参考文献后再做整理，也许那时问题能少点。</p>
+<p>本文首先证明了在目标函数为强凸函数、搜索步长由 Wolfe 线搜索确定时，即</p>
+
+$$\begin{aligned}
+& \exists \ \mu > 0,\ s.t.\ \forall \ x,y \in \mathcal{L},\ \mu \left \| x-y \right \| \leq \left( \nabla f\left(x \right) - \nabla f\left(y \right) \right)^T \left( x-y \right)\\
+& \mathcal{L} = \left \{ x \in R^n\ |\ f\left(x \right ) \leq f\left(x_0 \right ) \right \} \\
+& f\left ( x_{k+1} \right ) - f\left ( x_k \right ) \leq c_1 \alpha_kg_k^Td_k,\ c_1 \in \left ( 0,1 \right )\\
+& g_{k+1}^Td_k \geq c_2 g_k^Td_k,\ c_2 \in \left ( c_1,1 \right )
+\end{aligned}$$
+
+<p class="post-text-noindent">时，这一新的共轭梯度法是全局收敛的。接着本文对 $\beta_k$ 作出修正：</p>
+
+$$\begin{aligned}
+& \beta_k^T = \max \left(\beta_k, \chi_k \right) \\
+& \chi_k \left \| d_k \right \| \leq M,\ M > 0 \\
+& if \ g_{k+1}^T d_k > 0, then \ \chi_k \leq \frac{\epsilon \left \| g_{k+1} \right \|^2}{g_{k+1}^T d_k},\ \epsilon < 1
+\end{aligned}$$
+
+<p class="post-text-noindent">然后验证了在搜索步长 $\alpha_k$ 由 Wolfe 线搜索确定时，即</p>
+
+$$\begin{aligned}
+& f\left ( x_{k+1} \right ) - f\left ( x_k \right ) \leq c_1 \alpha_kg_k^Td_k,\ c_1 \in \left ( 0,1 \right )\\
+& g_{k+1}^Td_k \geq c_2 g_k^Td_k,\ c_2 \in \left ( c_1,1 \right )
+\end{aligned}$$
+
+<p class="post-text-noindent">时，修正后的新共轭梯度法：</p>
+
+$$x_{k+1} = x_k + \alpha_k d_k,\ d_{k+1} = -g_{k+1} + \beta_k^T d_k,\ d_0 = g_0$$
+
+<p class="post-text-noindent">对任意目标函数具有全局收敛性。需要指出的是，这两次对全局收敛性的刻画存在差异，前者用梯度范数的极限为0刻画全局收敛，后者用梯度范数下确界的极限（下极限）刻画全局收敛。即前者证明的结论是：</p>
+
+$$\lim_{k \rightarrow \infty} \left \| g_k \right \| = 0$$
+
+<p class="post-text-noindent">后者证明的结论是：</p>
+
+$$\lim_{k \rightarrow \infty} \inf \left \| g_k \right \| = 0$$
+
+<p class="post-text-noindent">以下，我将分两个部分阐述我的问题。</p>
+
+<h2>4.1 强凸函数的全局收敛性</h2>
+
+<p>引理 2 在给出 Zoutendijk condition 时假设其满足如下图所示的三个条件：</p>
+
+<p class="post-text-center">
+<img src="/assets/img/Natural_Science/Mathematics/NFE1_4.png">
+</p>
+
+<p class="post-text-noindent">而文章 “A subspace conjugate gradient algorithm for large-scale unconstrained optimization” 在给出 Zoutendijk condition 时只假设其满足如下图所示的两个条件：</p>
+
+<p class="post-text-center">
+<img src="/assets/img/Natural_Science/Mathematics/NFE1_5.png">
+</p>
+
+<p class="post-text-noindent">在文章 “A new conjugate gradient method with guaranteed descent and an efficient line search” 中，作者指出：如果水平集是有界的，那么函数在水平集上必有下界，即引理 2 中的 (A3) 可由 (A2) 推得。</p>
+
+<p><strong>我的第六个问题是</strong>：“如果水平集是有界的，那么函数在水平集上必有下界” 这一结论如何推导？</p>
+
+<p>关于 Zoutendijk condition 的证明，我自己推导了一遍，推导过程中使用了如下四个条件</p>
+
+<ul>
+	<li>梯度向量是利普希茨连续的</li>
+	<li>Wolfe 条件</li>
+	<li>目标函数在水平集上有下界</li>
+	<li>搜索方向是下降方向</li>
+</ul>
+
+<p class="post-text-noindent">定理 3 的证明需要使用 Zoutendijk condition，而定理 3 的条件中缺乏上述四个条件中的两个：梯度向量是利普希茨连续的，以及目标函数在水平集上有下界。参考文章 “A new conjugate gradient method with guaranteed descent and an efficient line search” 知道，由定理 3 给出的强凸函数条件可以推得目标函数在水平集上有下界，且定理 3 在陈述时漏掉了梯度向量是利普希茨连续的这一条件。</p>
+
+<p><strong>我的第七个问题是</strong>：如何由强凸函数条件推出函数在水平集上有下界？</p>
+
+<p>此外，关于文章中给出的定理 3 的证明过程，我觉得有 3 处错误，还有 1 处虽然不是错误，但我不理解它是如何得到的，我将这些汇总为我的第八个问题。</p>
+
+<p><strong>我的第八个问题是</strong>：</p>
+
+<p class="post-text-center">
+<img src="/assets/img/Natural_Science/Mathematics/NFE1_6.png">
+</p>
+
+<p class="post-text-noindent">关于上图打问号的部分，我的放缩过程如下：</p>
+
+<h2>4.2 一般函数的全局收敛性</h2>
+
+<p>未完待续……</p>
 
 </div>
