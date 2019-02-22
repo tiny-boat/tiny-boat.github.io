@@ -4,10 +4,20 @@ title:  "论文摘要(2):一种新的共轭梯度法"
 date:   2019-01-19 18:33:00
 categories: Mathematics
 excerpt: "本文提出的一种新的共轭梯度法与经典共轭梯度法的基本框架是一致的，其差别体现在求解搜索方向时确定参数的公式不同。在经典共轭梯度法中，参数是依据共轭条件确定的。而在本文提出的新方法中，参数是通过最小化一个新的目标函数确定的，该目标函数中引入了待定的惩罚参数。其基本思想是要让新的方法尽量满足经典共轭梯度法所具有的三个性质：充分下降条件、共轭条件和正交条件"
-permalink: /nfe/1/
+permalink: /nfe/2/
 ---
 
 <div class="post-style">
+
+<blockquote>本文作者：Masoud Fatemi；作者单位：伊朗德黑兰 KN 图什理工大学数学学院 / 优化与系统工程中的科学计算；文章接收于 2015 年 7 月 2 日，文章修订版本接收于 2015 年 11 月 14 日，文章于 2016 年在 Journal of Computational and Applied Mathematics 上发表。</blockquote>
+
+<blockquote>下载本文：<a href="https://pan.baidu.com/s/1Cgda4wZkqHxZVpmnrV_CpA">A new efficient conjugate gradient method for unconstrained optimization</a></blockquote>
+
+<blockquote>下载本文一般函数全局收敛性证明的参考文献：<a href="https://pan.baidu.com/s/1QPNIge0jflJLSc299m2WFg">A new conjugate gradient method with guaranteed descent and an efficient line search</a></blockquote>
+
+<blockquote>下载笔者摘要中提到的文献：<a href="https://pan.baidu.com/s/1juNBAkWBf-JoUv5QbDbNCw">A subspace conjugate gradient algorithm for large-scale unconstrained optimization</a></blockquote>
+
+<blockquote>本摘要共有 10 个问题，其中第 1、2、5、6、7、9、10 个问题比较重要，尤其是第 5、7、9、10 个问题涉及定理或引理的证明。</blockquote>
 
 <h1>1 概述</h1>
 
@@ -102,19 +112,19 @@ $$\begin{aligned}
 <p><strong>我的第三个问题是：</strong>我觉得引理 1 如下图所示的这一步是有错误的，应该去掉 $\pm \frac{\left (s_k^T g_{k+1}  \right )^2}{2y_k^Ts_k}$ 这一项。</p>
 
 <p class="post-text-center">
-<img src="/assets/img/Natural_Science/Mathematics/NFE1_1.png">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_1.png">
 </p>
 
 <p><strong>我的第四个问题是：</strong>我觉得引理 1 如下图所示的不等式并不需要要求 $a$ 和 $b$ 是正数，如果要求是正数，那么必须验证 $\left(y_k - \left(\lambda_k / 2 \right)s_k \right)^T g_{k+1} > 0$ 且 $\left(g_{k+1}^T s_k \right)/\left(y_k^Ts_k\right) > 0$，而本文并未给出论证。</p>
 
 <p class="post-text-center">
-<img src="/assets/img/Natural_Science/Mathematics/NFE1_2.png">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_2.png">
 </p>
 
 <p><strong>我的第五个问题是：</strong>引理 1 最终证明如下图所示的结论，可见 $\gamma_1 = \frac{M\left ( 1+t^2 \right )\left \| y_k-\frac{\lambda_k}{2} \right \|^2}{2}$ 且 $\gamma_2 = \frac{\left ( t-1 \right )^2}{2\left ( 1+t^2 \right )}\frac{\left \| s_k \right \|^2}{y_k^Ts_k}$，然而本文并未验证 $\gamma_1 + \gamma_2 < 1$，更加奇怪的是由条件 $\left(10 \right)$ 我们有 $\gamma_2 \geq \frac{\left ( t-1 \right )^2}{2}\frac{\left \| s_k \right \|^2}{y_k^Ts_k}$，而 $\frac{\left ( t-1 \right )^2}{2}\frac{\left \| s_k \right \|^2}{y_k^Ts_k} = \left(1+t^2 \right )\gamma_2$，这意味着 $\gamma_2 \geq \left(1+t^2 \right )\gamma_2$，可这怎么可能？</p>
 
 <p class="post-text-center">
-<img src="/assets/img/Natural_Science/Mathematics/NFE1_3.png">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_3.png">
 </p>
 
 <h1>4 全局收敛性的证明</h1>
@@ -128,7 +138,7 @@ $$\begin{aligned}
 & g_{k+1}^Td_k \geq c_2 g_k^Td_k,\ c_2 \in \left ( c_1,1 \right )
 \end{aligned}$$
 
-<p class="post-text-noindent">时，这一新的共轭梯度法是全局收敛的。其证明的基本思路是：假设所有 $g_k$ 不为零向量的前提下，利用有关条件和常用不等式对 $|\beta_k|$ 进行放缩，从而实现对搜索方向范数 $\left \|d_k \right \|$ 的放缩，其放缩结果仅与搜索方向 $d_k$ 和梯度 $g_k$ 有关，最后利用这一放缩结果，结合同样仅与搜索方向 $d_k$ 和梯度 $g_k$ 有关的充分下降条件以及 Zoutendijk 条件，得到要么梯度范数 $\left \| g_k \right \|$ 极限为 0，要么某些梯度为 0 的结论。</p>
+<p class="post-text-noindent">时，这一新的共轭梯度法是全局收敛的。其证明的基本思路是：假设所有 $g_k$ 不为零向量的前提下，利用有关条件和常用不等式对 $|\beta_k|$ 进行放缩，从而实现对搜索方向范数 $\left \|d_k \right \|$ 的放缩，其放缩结果仅与搜索方向 $d_k$ 和梯度 $g_k$ 有关，最后利用这一放缩结果，结合同样仅与搜索方向 $d_k$ 和梯度 $g_k$ 有关的充分下降条件以及 Zoutendijk 条件，得到梯度范数 $\left \| g_k \right \|$ 极限为 0 或者某些梯度为 0 的结论。</p>
 
 <p>本文接着对 $\beta_k$ 作出修正：</p>
 
@@ -168,13 +178,13 @@ $$\lim_{k \rightarrow \infty} \inf \left \| g_k \right \| = 0\ or\ g_k = 0 \ for
 <p>引理 2 在给出 Zoutendijk condition 时假设其满足如下图所示的三个条件：</p>
 
 <p class="post-text-center">
-<img src="/assets/img/Natural_Science/Mathematics/NFE1_4.png">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_4.png">
 </p>
 
 <p class="post-text-noindent">而文章 “A subspace conjugate gradient algorithm for large-scale unconstrained optimization” 在给出 Zoutendijk condition 时只假设其满足如下图所示的两个条件：</p>
 
 <p class="post-text-center">
-<img src="/assets/img/Natural_Science/Mathematics/NFE1_5.png">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_5.png">
 </p>
 
 <p class="post-text-noindent">在文章 “A new conjugate gradient method with guaranteed descent and an efficient line search” 中，作者指出：如果水平集是有界的，那么函数在水平集上必有下界，即引理 2 中的 (A2) 可由 (A3) 推得。</p>
@@ -199,7 +209,7 @@ $$\lim_{k \rightarrow \infty} \inf \left \| g_k \right \| = 0\ or\ g_k = 0 \ for
 <p><strong>我的第八个问题是</strong>：</p>
 
 <p class="post-text-center">
-<img src="/assets/img/Natural_Science/Mathematics/NFE1_6.png">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_6.png">
 </p>
 
 <p class="post-text-noindent">关于上图打问号的部分，我的放缩过程如下：</p>
@@ -236,6 +246,14 @@ $$\left \| y_k - \frac{\lambda_k}{2} s_k \right \|^2 \leq L^2 \left \| s_k \righ
 
 <p><strong>我的第九个问题是</strong>：引理 5 的证明需要使用 $\left \| g_k \right \|$ 有界的条件，那如何从梯度是利普希茨连续的以及水平集有界（或者目标函数在水平集上有下界）推得梯度范数在水平集上有界？</p>
 
-<p>未完待续……</p>
+<p><strong>我的第十个问题是</strong>：本文关于定理 6 的证明省略了许多步骤，作者参考的是 Hager 和 Zhang 的文章 “A new conjugate gradient method with guaranteed descent and an efficient line search”，然而在这篇参考文章中，我没有看懂它的第三部分证明，没有看懂它是如何证明 $\left \| d_l \right \|$ 有界且与 $l$ 无关的。下图是该参考文章中给出的一般函数全局收敛性的证明过程。</p>
+
+<p class="post-text-center">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_7.png">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_8.png">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_9.png">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_10.png">
+<img src="/assets/img/Natural_Science/Mathematics/NFE2_11.png">
+</p>
 
 </div>
