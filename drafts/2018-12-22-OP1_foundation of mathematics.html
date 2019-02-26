@@ -125,6 +125,86 @@ $$\left \| \boldsymbol{AB}  \right \| \leq \left \| \boldsymbol{A}  \right \|\le
 
 $$\left \| \boldsymbol{AB}  \right \|_F \leq \min \left \{ \left \| \boldsymbol{A}  \right \|_2 \left \| \boldsymbol{B}  \right \|_F,\left \| \boldsymbol{A}  \right \|_F \left \| \boldsymbol{B}  \right \|_2 \right \},\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{m\times n}$$
 
+<p class="post-text-noindent">在本节最后，我们给出 $l_1$ 诱导范数、$l_2$ 诱导范数和 $l_\infty$ 诱导范数的证明过程</p>
+
+<br>
+
+<blockquote><strong>$l_1$ 诱导范数的证明如下：</strong></blockquote>
+
+<blockquote>$$\begin{aligned}
+&\because \ \left \| \boldsymbol{Ax}  \right \|_1=\sum_{i=1}^{m}\left | \sum_{j=1}^{n}a_{ij}x_j \right | \leq \sum_{i=1}^{m}\sum_{j=1}^{n}\left | a_{ij} \right |\left | x_j \right |= \sum_{j=1}^{n}\sum_{i=1}^{m}\left | a_{ij} \right |\left | x_j \right |  \\
+&\leq \left ( \max_j \sum_{i=1}^{m}\left | a_{ij} \right | \right )\sum_{j=1}^{n}\left | x_j \right |=\max_j \sum_{i=1}^{m}\left | a_{ij} \right |\left \| \boldsymbol{x} \right \|_1
+\end{aligned}$$</blockquote>
+
+<blockquote>$$\therefore \ \left \| \boldsymbol{A}  \right \|_1 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_1}{ \left \| \boldsymbol{x}  \right \|_1} = \max_{\left \| \boldsymbol{x} \right \|_1=1}\left \| \boldsymbol{Ax}  \right \|_1 \leq \max_{j}\sum_{i=1}^{m}\left | a_{ij} \right | \qquad \cdots \left(1\right)$$</blockquote>
+
+<blockquote>取 $\boldsymbol{x^{(j)}}=(0,\cdots,1,\cdots,0),\ j=1,2,\cdots,n$，它是除第 $j$ 个元素为 $1$、其余元素全为 $0$ 的向量，则有</blockquote>
+
+<blockquote>$$\left \| \boldsymbol{A}  \right \|_1 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_1}{ \left \| \boldsymbol{x}  \right \|_1} = \max_{\left \| \boldsymbol{x} \right \|_1=1}\left \| \boldsymbol{Ax}  \right \|_1 \geq \max_{\boldsymbol{x}^{(j)}}\left \| \boldsymbol{Ax}  \right \|_1=\max_{j}\sum_{i=1}^{m}\left | a_{ij} \right | \qquad \cdots \left(2\right)$$</blockquote>
+
+<blockquote>由 $\left(1 \right)$、$\left(2 \right)$ 两式知</blockquote>
+
+<blockquote>$$\left \| \boldsymbol{A}  \right \|_1 =\max_{j}\sum_{i=1}^{m}\left | a_{ij} \right |$$</blockquote>
+
+<br>
+
+<blockquote><strong>$l_2$ 诱导范数的证明如下：</strong></blockquote>
+
+<blockquote>设 $\boldsymbol{x}_1,\boldsymbol{x}_2,\cdots,\boldsymbol{x}_n$ 为对称半正定矩阵 $A^TA$ 的与特征值 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$ 相对应的相互正交的特征向量，则 $\forall \ \boldsymbol{x} = 1$ 的向量 $\boldsymbol{x}$，必存在满足条件 $c_1^2+c_2^2+\cdots+c_n^2=1$ 的 $c_1,c_2,\cdots,c_n$ 使得 $\boldsymbol{x}=c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n$。所以有：</blockquote>
+
+<blockquote>$$\begin{aligned}
+&\ \left \| \boldsymbol{Ax} \right \|_2^2 = \left ( \boldsymbol{Ax} \right )^T \boldsymbol{Ax} = \boldsymbol{x}^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x} \\
+&= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\boldsymbol{A}^T\boldsymbol{A}\left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right ) \\
+&= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\left ( c_1\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_1+c_2\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_2+\cdots+c_n\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_n \right ) \\
+&= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\left ( c_1\lambda_1\boldsymbol{x}_1+c_2\lambda_2\boldsymbol{x}_2+\cdots+c_n\lambda_n\boldsymbol{x}_n \right )\\
+&= \left ( c_1\boldsymbol{x}_1^T+c_2\boldsymbol{x}_2^T+\cdots+c_n\boldsymbol{x}_n^T \right )\left ( c_1\lambda_1\boldsymbol{x}_1+c_2\lambda_2\boldsymbol{x}_2+\cdots+c_n\lambda_n\boldsymbol{x}_n \right ) \\
+&= \sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_j c_ic_j \boldsymbol{x}_i^T\boldsymbol{x}_j = \sum_{i=1}^n \lambda_i c_i^2 \\
+&\leq \lambda_1 \sum_{i=1}^n c_i^2 = \lambda_1 \qquad \cdots \left(3\right)
+\end{aligned}$$</blockquote>
+
+<blockquote>又因为 $\left \| \boldsymbol{x}_1 \right \|_2 = 1$ 且：</blockquote>
+
+<blockquote>$$\left \| \boldsymbol{Ax}_1 \right \|_2^2 = \boldsymbol{x}_1^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_1 =  \boldsymbol{x}_1^T\lambda_1\boldsymbol{x}_1 = \lambda_1 \qquad \cdots \left(4\right)$$</blockquote>
+
+<blockquote>所以由 $\left(3\right)$、$\left(4\right)$ 式得：</blockquote>
+
+<blockquote>$$\left \| \boldsymbol{A}  \right \|_2 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_2}{ \left \| \boldsymbol{x}  \right \|_2} = \max_{\left \| \boldsymbol{x} \right \|_2=1}\left \| \boldsymbol{Ax}  \right \|_2 = \sqrt{\lambda_1}$$</blockquote>
+
+<br>
+
+<blockquote><strong>$l_\infty$ 诱导范数的证明如下：</strong></blockquote>
+
+<blockquote>$$\begin{aligned}
+&\because \ \left \| \boldsymbol{Ax}  \right \|_\infty=\max_{1\leq i \leq m}\left | \sum_{j=1}^{n}a_{ij}x_j \right | \leq \max_{1\leq i \leq m}\sum_{j=1}^{n}\left | a_{ij} \right |\left | x_j \right | \\
+&\leq \max_{1\leq i \leq m} \left ( \max_{1\leq j \leq n}\left | x_j \right | \right ) \sum_{i=1}^{m}\left | a_{ij} \right | =\max_i \sum_{i=1}^{m}\left | a_{ij} \right |\left \| \boldsymbol{x} \right \|_\infty
+\end{aligned}$$</blockquote>
+
+<blockquote>$$\therefore \ \left \| \boldsymbol{A}  \right \|_\infty =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_\infty}{ \left \| \boldsymbol{x}  \right \|_\infty} = \max_{\left \| \boldsymbol{x} \right \|_\infty=1}\left \| \boldsymbol{Ax}  \right \|_\infty \leq \max_{i}\sum_{i=1}^{n}\left | a_{ij} \right | \qquad \cdots \left(5\right)$$</blockquote>
+
+<blockquote>取 $k$ 使得</blockquote>
+
+<blockquote>$$\sum_{j=1}^{n}\left | a_{kj} \right | = \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$</blockquote>
+
+<blockquote>令 $\boldsymbol{y} = \left(y_1,y_2,\cdots,y_n \right)^T$，其中</blockquote>
+
+<blockquote>$$\ y_j = \left\{\begin{matrix}
+\begin{aligned}
+&\frac{\left | a_{kj} \right |}{a_{kj}},\ a_{kj} \neq 0
+\\ &1\ \ \ \ \ \ \, , \ otherwise
+\end{aligned}
+\end{matrix}\right.$$</blockquote>
+
+<blockquote>易知 $\left \| \boldsymbol{y} \right \|_\infty = 1$，从而有</blockquote>
+
+<blockquote>$$\begin{aligned}
+&\left \| \boldsymbol{A}  \right \|_\infty =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_\infty}{ \left \| \boldsymbol{x}  \right \|_\infty} = \max_{\left \| \boldsymbol{x} \right \|_\infty=1}\left \| \boldsymbol{Ax}  \right \|_\infty \geq \left \| \boldsymbol{Ay} \right \|_\infty = \max_{1 \leq i \leq m}\left | \sum_{j=1}^{n}a_{ij}y_j \right |\\
+&\geq \left | \sum_{j=1}^{n}a_{kj}y_j \right | = \sum_{j=1}^{n}\left | a_{kj} \right |= \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |\ \cdots \left(6\right)
+\end{aligned}$$</blockquote>
+
+<blockquote>由 $\left(5 \right)$、$\left(6 \right)$ 两式知：</blockquote>
+
+<blockquote>$$\left \| \boldsymbol{A}  \right \|_\infty =\max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$</blockquote>
+
 <h2>1.1.2 矩阵的逆与广义逆</h2>
 <h2>1.1.3 矩阵的 Rayleigh 商</h2>
 <h2>1.1.4 矩阵的秩一校正</h2>
