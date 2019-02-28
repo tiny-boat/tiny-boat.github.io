@@ -77,15 +77,43 @@ $$\sqrt{\lambda_{\mathrm{min}}\left ( \boldsymbol{A} \right )}\left \| \boldsymb
 <p class="post-text-noindent">此外，关于向量范数，还有几个重要的不等式：</p>
 
 <ul>
-	<li>$\left | \boldsymbol{x}^T\boldsymbol{A}\boldsymbol{y} \right |\leq\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}},\boldsymbol{A}_{n\times n}>0;\ \left | \boldsymbol{x}^T\boldsymbol{A}\boldsymbol{y} \right |=\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}} \Leftrightarrow \boldsymbol{x}=c\boldsymbol{y},c\neq 0$</li>
-	<li>$\left | \boldsymbol{x}^T \boldsymbol{y} \right |\leq\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}^{-1}},\boldsymbol{A}_{n\times n}>0;\ \left | \boldsymbol{x}^T\boldsymbol{y} \right |=\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A^{-1}}} \Leftrightarrow \boldsymbol{x}=c\boldsymbol{A^{-1}y},c\neq 0$</li>
-	<li><strong>Young 不等式</strong>（特例：算术-几何不等式）：</li>
-	$$xy \leq \frac{x^p}{p}+\frac{y^q}{q},\ \frac{1}{p}+\frac{1}{q}=1,\ p,q>1;\ xy = \frac{x^p}{p}+\frac{y^q}{q}\Leftrightarrow x^p=y^q$$
-	<li><strong>Holder 不等式</strong>（特例：Cauchy-Schwarz 不等式）：</li>
+	<li>$\left | \boldsymbol{x}^T\boldsymbol{A}\boldsymbol{y} \right |\leq\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}},\boldsymbol{A}_{n\times n}>0;\ \left | \boldsymbol{x}^T\boldsymbol{A}\boldsymbol{y} \right |=\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}} \Leftrightarrow \boldsymbol{x}=c\boldsymbol{y},c\neq 0$（<span class="post-text-problem">待证明</span>）</li>
+	<li>$\left | \boldsymbol{x}^T \boldsymbol{y} \right |\leq\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}^{-1}},\boldsymbol{A}_{n\times n}>0;\ \left | \boldsymbol{x}^T\boldsymbol{y} \right |=\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A^{-1}}} \Leftrightarrow \boldsymbol{x}=c\boldsymbol{A^{-1}y},c\neq 0$（<span class="post-text-problem">待证明</span>）</li>
+	<li><strong>Young 不等式</strong>：</li>
+	$$xy \leq \frac{x^p}{p}+\frac{y^q}{q},\ x,y \geq 0,\ \frac{1}{p}+\frac{1}{q}=1,\ p,q>1;\ xy = \frac{x^p}{p}+\frac{y^q}{q}\Leftrightarrow x^p=y^q$$
+</ul>
+
+<blockquote>证明：当 $x = 0$ 或 $y = 0$ 时，显然成立；当 $x,y > 0$ 时，令 $t = \frac{1}{p}$、$1-t = \frac{1}{q}$、$a = x^p$、$b = y^q$，因为 $\ln \left(x \right)$ 是一个凹函数，所以 $\ln \left[ta + \left(1-t \right)b \right] \geq t\ln a + \left(1-t \right)\ln b$，代入 $t,\ 1-t,\ a,\ b$，然后两边同取指数运算，即得上式。</blockquote>
+
+<ul>
+	<li><strong>Holder 不等式</strong>（特例：<strong>Cauchy-Schwarz 不等式</strong>）：</li>
 	$$\left | \boldsymbol{x}^T \boldsymbol{y} \right |\leq \left \| \boldsymbol{x} \right \|_p\left \| \boldsymbol{y} \right \|_q,\ \frac{1}{p}+\frac{1}{q}=1,\ p,q>1$$
+</ul>
+
+<blockquote>证明：由 Young 不等式有</blockquote>
+
+<blockquote>$$\frac{\left | x_iy_i \right |}{\left \| x \right \|_p\left \| y \right \|_q} \leq \frac{1}{p}\left ( \frac{\left | x_i \right |}{\left \| x \right \|_p} \right )^p + \frac{1}{q}\left ( \frac{\left | x_i \right |}{\left \| x \right \|_q} \right )^q$$</blockquote>
+
+<blockquote>上述不等式两边关于 $i$ 求和得</blockquote>
+
+<blockquote>$$\frac{1}{\left \| x \right \|_p\left \| y \right \|_q}\sum_{i=1}^{n}\left | x_iy_i \right | \leq \frac{1}{p\left \| x \right \|_p^p}\sum_{i=1}^{n}\left | x_i \right |^p + \frac{1}{q\left \| y \right \|_q^q}\sum_{i=1}^{n}\left | y_i \right |^q = \frac{1}{p} + \frac{1}{q} = 1$$</blockquote>
+
+<blockquote>两边同乘 $\left \| x \right \|_p\left \| y \right \|_q$ 即得结果。</blockquote>
+
+<ul>
 	<li><strong>Minkowski 不等式</strong>（范数定义中的第 3 条性质）：</li>
 	$$\left \| \boldsymbol{x}+\boldsymbol{y} \right \|_p\leq \left \| \boldsymbol{x} \right \|_p+\left \| \boldsymbol{y} \right \|_p,\ p \geq 1$$
 </ul>
+
+<blockquote>证明：当 $x = 0$ 或 $y = 0$ 时，显然成立；当 $x,y > 0$ 时，令 $t = \frac{\left \| x \right \|_p}{\left \| x  \right \|_p + \left \| y  \right \|_p}$、$1-t = \frac{\left \| y \right \|_p}{\left \| x  \right \|_p + \left \| y  \right \|_p}$、$a = \frac{\left | x_i \right |}{\left \| x \right \|_p}$、$b = \frac{\left | y_i \right |}{\left \| y \right \|_p}$。因为 $x^p,\ x>0$ 是凸函数，所以有 $\left[ta + \left(1-t \right)b \right]^p \leq t a^p + \left(1-t \right) b^p$，代入 $t,\ 1-t,\ a,\ b$，然后两边同时对 $i$ 求和，可得</blockquote>
+
+<blockquote>$$\sum_{i=1}^{n}\left ( \frac{\left | x_i \right |+\left | y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq 1$$</blockquote>
+
+<blockquote>所以</blockquote>
+
+<blockquote>$$\sum_{i=1}^{n}\left ( \frac{\left | x_i + y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq \sum_{i=1}^{n}\left ( \frac{\left | x_i \right |+\left | y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq 1$$</blockquote>
+
+<blockquote>不等号两边同取 $p$ 次根，然后经恒等变换即得结果。</blockquote>
 
 <p>矩阵范数是向量范数的自然推广，$R^{m\times n}$ 上的矩阵可视为 $R^{mn}$ 中的向量。$R^{m\times n}$ 上的<strong>矩阵范数</strong> (matrix norm) 是一个从 $R^{mn} \rightarrow R$ 的映射 $\left \| \cdot  \right \|$，它满足如下三个性质：</p>
 
@@ -99,9 +127,11 @@ $$\sqrt{\lambda_{\mathrm{min}}\left ( \boldsymbol{A} \right )}\left \| \boldsymb
 
 $$\left \| \boldsymbol{Ax}  \right \| \leq \left \| \boldsymbol{A}  \right \|\left \| \boldsymbol{x}  \right \|$$
 
-<p class="post-text-noindent">我们称该矩阵范数可由向量范数导出，或与向量范数兼容，<strong>诱导 (矩阵) 范数</strong>（induced norm）因此定义为：</p>
+<p class="post-text-noindent">我们称该矩阵范数可由向量范数导出，或与向量范数兼容，<strong>诱导 (矩阵) 范数</strong>（induced norm）因此定义为（<span class="post-text-problem">为什么 $\begin{aligned}\left \| \boldsymbol{A^{-1}}  \right \| =1/ \min_{\left \| \boldsymbol{x} \right \|=1}\left \| \boldsymbol{Ax}  \right \|\end{aligned}$</span>）：</p>
 
 $$\left \| \boldsymbol{A}  \right \| =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|}{ \left \| \boldsymbol{x}  \right \|} = \max_{\left \| \boldsymbol{x} \right \|=1}\left \| \boldsymbol{Ax}  \right \|$$
+
+<blockquote>显然，上式给出的诱导范数的定义满足条件 $\left \| \boldsymbol{Ax}  \right \| \leq \left \| \boldsymbol{A}  \right \|\left \| \boldsymbol{x}  \right \|$，但要保证上式定义的合理性，$f\left( \boldsymbol{x} \right) = \left \| \boldsymbol{Ax}  \right \|$ 在 $D = \left \{\boldsymbol{x} \in R^n: \left \| \boldsymbol{x}  \right \| = 1 \right \}$ 上必须存在最大值。根据向量范数的连续性，以及有界闭集上的连续函数必有最大最小值的定理，我们可以知道上述定义是合理的。</blockquote>
 
 <p class="post-text-noindent">如果对 $n\times n$ 正交矩阵 $\boldsymbol{U}$ 有 $\left \| \boldsymbol{UA}  \right \| = \left \| \boldsymbol{A}  \right \|$，则称 $\left \| \cdot  \right \|$ 为<strong>正交不变范数</strong>。常用的矩阵范数如下所示：</p>
 
@@ -119,11 +149,11 @@ $$\left \| \boldsymbol{A}  \right \| =\max_{\boldsymbol{x}\neq 0} \frac{\left \|
 
 <p class="post-text-noindent">上述常用矩阵范数中，谱范数和 Frobenius 范数为正交不变范数。此外，上述常用矩阵范数均满足<strong>相容性条件</strong>：</p>
 
-$$\left \| \boldsymbol{AB}  \right \| \leq \left \| \boldsymbol{A}  \right \|\left \| \boldsymbol{B}  \right \|,\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{m\times n}$$
+$$\left \| \boldsymbol{AB}  \right \| \leq \left \| \boldsymbol{A}  \right \|\left \| \boldsymbol{B}  \right \|,\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{n\times n}$$
 
-<p class="post-text-noindent">且有：</p>
+<p class="post-text-noindent">且有（<span class="post-text-problem">为什么成立</span>）：</p>
 
-$$\left \| \boldsymbol{AB}  \right \|_F \leq \min \left \{ \left \| \boldsymbol{A}  \right \|_2 \left \| \boldsymbol{B}  \right \|_F,\left \| \boldsymbol{A}  \right \|_F \left \| \boldsymbol{B}  \right \|_2 \right \},\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{m\times n}$$
+$$\left \| \boldsymbol{AB}  \right \|_F \leq \min \left \{ \left \| \boldsymbol{A}  \right \|_2 \left \| \boldsymbol{B}  \right \|_F,\left \| \boldsymbol{A}  \right \|_F \left \| \boldsymbol{B}  \right \|_2 \right \},\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{n\times n}$$
 
 <p class="post-text-noindent">在本节最后，我们给出 $l_1$ 诱导范数、$l_2$ 诱导范数和 $l_\infty$ 诱导范数的证明过程</p>
 
@@ -206,6 +236,29 @@ $$\left \| \boldsymbol{AB}  \right \|_F \leq \min \left \{ \left \| \boldsymbol{
 <blockquote>$$\left \| \boldsymbol{A}  \right \|_\infty =\max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$</blockquote>
 
 <h2>1.1.2 矩阵的逆与广义逆</h2>
+
+<p>关于矩阵的逆，有一个重要的结论，那就是：接近于可逆矩阵的矩阵可逆，其接近度由两个矩阵差的范数衡量。下面是这一结论的严格数学表述：</p>
+
+<blockquote><strong>定理 1</strong>：设 $A,B \in R^{n\times n}$，$A$ 可逆，$\left \| A^{-1} \right \| \leq \alpha$，如果 $\left \| A-B \right \| \leq \beta$，$\alpha \beta < 1$（注：矩阵范数为相容矩阵范数），则 $B$ 可逆且</blockquote>
+
+<blockquote>$$\left \| B^{-1} \right \| \leq \frac{\alpha}{1-\alpha \beta}$$</blockquote>
+
+<p class="post-text-noindent">下面是定理 1 的证明过程：</p>
+
+<blockquote><strong>证明</strong>：令 $E = A^{-1}\left(A-B \right) = I - A^{-1}B$，因为</blockquote>
+
+<blockquote>$$\left \| E \right \| = \left \| A^{-1}\left(A-B \right) \right \| \leq \left \| A^{-1} \right \|\left \| A-B \right \| \leq \alpha \beta < 1$$</blockquote>
+
+<blockquote>所以 $\sum_{k=0}^{\infty} E^k$ 存在，且容易验证：</blockquote>
+
+<blockquote>$$\sum_{k=0}^{\infty} E^k = \left ( I-E \right )^{-1}$$</blockquote>
+
+<blockquote>从而</blockquote>
+
+<blockquote>$$\left \| \left (I-E  \right )^{-1} \right \| \leq \sum_{k=0}^{\infty}\left \| E \right \|^k = \frac{1}{1-\left \| E \right \|}$$</blockquote>
+
+<blockquote>代入 $E$ ，再利用矩阵范数的相容性即可得证。</blockquote>
+
 <h2>1.1.3 矩阵的 Rayleigh 商</h2>
 <h2>1.1.4 矩阵的秩一校正</h2>
 
