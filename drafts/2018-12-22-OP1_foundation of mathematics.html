@@ -237,27 +237,87 @@ $$\left \| \boldsymbol{AB}  \right \|_F \leq \min \left \{ \left \| \boldsymbol{
 
 <h2>1.1.2 矩阵的逆与广义逆</h2>
 
-<p>关于矩阵的逆，有一个重要的结论，那就是：接近于可逆矩阵的矩阵可逆，其接近度由两个矩阵差的范数衡量。下面是这一结论的严格数学表述：</p>
+<p>关于矩阵的逆，有一个重要的结论，那就是：<strong>接近于可逆矩阵的矩阵可逆</strong>，其接近度由两个矩阵差的范数衡量。下面是这一结论的严格数学表述：</p>
 
-<blockquote><strong>定理 1</strong>：设 $A,B \in R^{n\times n}$，$A$ 可逆，$\left \| A^{-1} \right \| \leq \alpha$，如果 $\left \| A-B \right \| \leq \beta$，$\alpha \beta < 1$（注：矩阵范数为相容矩阵范数），则 $B$ 可逆且</blockquote>
+<blockquote><strong>定理 1</strong>：设 $\boldsymbol{A},\boldsymbol{B} \in R^{n\times n}$，$\boldsymbol{A}$ 可逆，$\left \| \boldsymbol{A}^{-1} \right \| \leq \alpha$，如果 $\left \| \boldsymbol{A}-\boldsymbol{B} \right \| \leq \beta$，$\alpha \beta < 1$（注：矩阵范数为相容矩阵范数），则 $\boldsymbol{B}$ 可逆且</blockquote>
 
-<blockquote>$$\left \| B^{-1} \right \| \leq \frac{\alpha}{1-\alpha \beta}$$</blockquote>
+<blockquote>$$\left \| \boldsymbol{B}^{-1} \right \| \leq \frac{\alpha}{1-\alpha \beta}$$</blockquote>
 
 <p class="post-text-noindent">下面是定理 1 的证明过程：</p>
 
-<blockquote><strong>证明</strong>：令 $E = A^{-1}\left(A-B \right) = I - A^{-1}B$，因为</blockquote>
+<blockquote><strong>证明</strong>：令 $\boldsymbol{E} = \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) = \boldsymbol{I} - \boldsymbol{A}^{-1}\boldsymbol{B}$，因为</blockquote>
 
-<blockquote>$$\left \| E \right \| = \left \| A^{-1}\left(A-B \right) \right \| \leq \left \| A^{-1} \right \|\left \| A-B \right \| \leq \alpha \beta < 1$$</blockquote>
+<blockquote>$$\left \| \boldsymbol{E} \right \| = \left \| \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) \right \| \leq \left \| \boldsymbol{A}^{-1} \right \|\left \| \boldsymbol{A}-\boldsymbol{B} \right \| \leq \alpha \beta < 1$$</blockquote>
 
-<blockquote>所以 $\sum_{k=0}^{\infty} E^k$ 存在，且容易验证：</blockquote>
+<blockquote>所以 $\sum_{k=0}^{\infty} \boldsymbol{E}^k$ 存在，且容易验证：</blockquote>
 
-<blockquote>$$\sum_{k=0}^{\infty} E^k = \left ( I-E \right )^{-1}$$</blockquote>
+<blockquote>$$\sum_{k=0}^{\infty} \boldsymbol{E}^k = \left ( \boldsymbol{I}-\boldsymbol{E} \right )^{-1}$$</blockquote>
 
 <blockquote>从而</blockquote>
 
-<blockquote>$$\left \| \left (I-E  \right )^{-1} \right \| \leq \sum_{k=0}^{\infty}\left \| E \right \|^k = \frac{1}{1-\left \| E \right \|}$$</blockquote>
+<blockquote>$$\left \| \left (\boldsymbol{I}-\boldsymbol{E}  \right )^{-1} \right \| \leq \sum_{k=0}^{\infty}\left \| \boldsymbol{E} \right \|^k = \frac{1}{1-\left \| \boldsymbol{E} \right \|}$$</blockquote>
 
-<blockquote>代入 $E$ ，再利用矩阵范数的相容性即可得证。</blockquote>
+<blockquote>代入 $\boldsymbol{E}$，得：</blockquote>
+
+<blockquote>$$\left \| \boldsymbol{B}^{-1} \right \| \leq \left \| \boldsymbol{B}^{-1}\boldsymbol{A} \right \|\left \| \boldsymbol{A}^{-1} \right \| \leq \frac{\left \| \boldsymbol{A}^{-1} \right \|}{1-\left \| \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) \right \|} \leq \frac{\left \| \boldsymbol{A}^{-1} \right \|}{1-\left \| \boldsymbol{A}^{-1} \right \|\left \| \boldsymbol{A}-\boldsymbol{B} \right \|} \leq \frac{\alpha}{1-\alpha \beta}$$</blockquote>
+
+<p>设 $\boldsymbol{A}$ 为 $m\times n$ 复矩阵，则矩阵方程 $\boldsymbol{A}\boldsymbol{X}\boldsymbol{A} = \boldsymbol{A}$ 的每一个解称为 $\boldsymbol{A}$ 的<strong>广义逆</strong>，记作 $\boldsymbol{A}^{-}$（注：可以证明该矩阵方程一定有解，证明过程可参见丘维声所著 《高等代数(第二版)》 上册第 5 章第 3 节的定理 1）。为了避免上述矩阵方程解的不唯一性，即广义逆的不唯一性，我们引入 Penrose 方程组（注：$\boldsymbol{A}^{*}$ 表示 $\boldsymbol{A}$ 的共轭转置）</p>
+
+$$\left\{\begin{matrix}
+\boldsymbol{AXA} \, = \boldsymbol{A} \ \ \\
+\boldsymbol{XAX} = \boldsymbol{X} \ \\
+\left(\boldsymbol{AX} \right)^{*} = \boldsymbol{AX} \\
+\left(\boldsymbol{XA} \right)^{*} = \boldsymbol{XA}
+\end{matrix}\right.$$
+
+<p class="post-text-noindent">我们将上述方程组的解称为 $\boldsymbol{A}$ 的 <strong>Moore-Penrose 广义逆</strong>，记作 $\boldsymbol{A}^{+}$。下面给出与 Moore-Penrose 广义逆有关的两个正交投影算子：</p>
+
+<blockquote><strong>定义 1</strong>：设 $\mathcal{V}$ 为 $R^n$ 的子空间, $\mathcal{V}^{\perp}$ 为子空间的<strong>正交补</strong>，即 $\mathcal{V}^{\perp} = \left \{ \boldsymbol{x}:\boldsymbol{v}^{*}\boldsymbol{x}=0,\forall \ \boldsymbol{v}\in \mathcal{V} \right \}$，如果线性算子 $P$ 满足：$\forall \boldsymbol{y} \in \mathcal{V},\ P\boldsymbol{y} = \boldsymbol{y}$，$\forall \boldsymbol{z} \in \mathcal{V
+^{\perp}},\ P\boldsymbol{z} = 0$，那么我们称 $P$ 是从 $R^n$ 沿子空间 $\mathcal{V}^{\perp}$ 到子空间 $\mathcal{V}$ 的<strong>正交投影算子</strong>。</blockquote>
+
+<blockquote><strong>定理 2</strong>：$\boldsymbol{A}\boldsymbol{A}^{+}$ 是从 $R^n$ 沿 $\boldsymbol{A}^{*}$ 零空间 $\mathcal{N}\left(\boldsymbol{A}^{*} \right)$ 到 $\boldsymbol{A}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A} \right)$ 的正交投影算子，$\boldsymbol{A}^{+}\boldsymbol{A}$ 是从 $R^n$ 沿 ${\boldsymbol{A}^{+}}^{*}$ 的零空间 $\mathcal{N}\left({\boldsymbol{A}^{+}}^{*} \right)$ 到 $\boldsymbol{A}^{+}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A}^{+} \right)$ 的正交投影算子。其中 $\mathcal{R} \left(\boldsymbol{A} \right) \triangleq \left \{ \boldsymbol{Ax}: \boldsymbol{x} \in R^n\right \}$，$\mathcal{N} \left(\boldsymbol{A} \right) \triangleq \left \{ \boldsymbol{x} \in R^n:\boldsymbol{Ax}=0\right \}$。</blockquote>
+
+<p class="post-text-noindent">下面是定理 2 的证明过程（我们仅给出第一部分的证明，第二部分证明同理可得）：</p>
+
+<blockquote><strong>证明</strong>：我们首先证明 ${\mathcal{R}\left(\boldsymbol{A} \right)}^{\perp} = \mathcal{N}\left(\boldsymbol{A}^{*} \right)$. </blockquote>
+
+<blockquote>如果 $\boldsymbol{x} \in \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$，则 $\forall \boldsymbol{y} \in R^n$，有 $\left(\boldsymbol{Ay} \right) \in \mathcal{R}\left(\boldsymbol{A} \right)$，所以由正交补的定义有 $\left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$，因此 $\boldsymbol{y}^{*} \left( \boldsymbol{A}^{*} \boldsymbol{x} \right) = 0$，从而有 $\boldsymbol{A}^{*} \boldsymbol{x} = \boldsymbol{0}$，即 $\boldsymbol{x} \in \mathcal{N}\left(\boldsymbol{A}^{*} \right)$，所以 $\mathcal{R}\left(\boldsymbol{A} \right)^{\perp} \subset \mathcal{N}\left(\boldsymbol{A}^{*} \right)$.</blockquote>
+
+<blockquote>如果 $\boldsymbol{x} \in \mathcal{N}\left(\boldsymbol{A}^{*} \right)$，则 $\left(\boldsymbol{A}^{*}\boldsymbol{x} \right) = 0$，$\forall \boldsymbol{y} \in R^n$，有 $\boldsymbol{y}^{*} \left(\boldsymbol{A}^{*}\boldsymbol{x} \right) = \left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$，由 $\left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$ 知 $\boldsymbol{x} \in \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$，所以 $\mathcal{N}\left(\boldsymbol{A}^{*} \right) \subset \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$.</blockquote>
+
+<blockquote>综上，${\mathcal{R}\left(\boldsymbol{A} \right)}^{\perp} = \mathcal{N}\left(\boldsymbol{A}^{*} \right)$。下证 $\boldsymbol{A}\boldsymbol{A}^{+}$ 是从 $R^n$ 沿 $\boldsymbol{A}^{*}$ 零空间 $\mathcal{N}\left(\boldsymbol{A}^{*} \right)$ 到 $\boldsymbol{A}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A} \right)$ 的正交投影算子。</blockquote>
+
+<blockquote>因为 $\forall \boldsymbol{y} \in \mathcal{R} \left(\boldsymbol{A} \right)$, 有 $\boldsymbol{y} = \boldsymbol{Ax}$ . 又由 Moore-Penrose 广义逆的定义有 $\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{A} = \boldsymbol{A}$，所以 $\forall \boldsymbol{y} \in \mathcal{R} \left(\boldsymbol{A} \right)$，$\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{y} = \boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{Ax} = \boldsymbol{Ax} = \boldsymbol{y}$；</blockquote>
+
+<blockquote>因为 $\forall \boldsymbol{z} \in \mathcal{N} \left(\boldsymbol{A}^{*} \right)$，有 $\boldsymbol{A}^{*} \boldsymbol{z} = 0$，又由 Moore-Penrose 广义逆的定义有 $\left(\boldsymbol{AA}^{+} \right)^{*} = \left(\boldsymbol{AA}^{+} \right)$，所以 $\forall \boldsymbol{z} \in \mathcal{N} \left(\boldsymbol{A}^{*} \right)$，有 $\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{z} = \left(\boldsymbol{A}\boldsymbol{A}^{+} \right )^{*}\boldsymbol{z} = {\boldsymbol{A}^{+}}^{*} \boldsymbol{A}^{*}\boldsymbol{z} = 0$</blockquote>
+
+<blockquote>综上，$\boldsymbol{A}\boldsymbol{A}^{+}$ 是从 $R^n$ 沿 $\boldsymbol{A}^{*}$ 零空间 $\mathcal{N}\left(\boldsymbol{A}^{*} \right)$ 到 $\boldsymbol{A}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A} \right)$ 的正交投影算子。</blockquote>
+
+<p class="post-text-noindent">本节最后，我们给出矩阵正交分解和奇异值分解的 Moore-Penrose 广义逆。</p>
+
+<blockquote><strong>定理 3</strong>：若 $A$ 是秩为 $r$ 的 $m\times n$ 复矩阵，其正交分解为</blockquote>
+
+<blockquote>$$\boldsymbol{A} = \boldsymbol{Q}^*\boldsymbol{RP},\ \boldsymbol{Q}^*\boldsymbol{Q} = \boldsymbol{P}^*\boldsymbol{P} = \boldsymbol{I},\ \boldsymbol{R} = \begin{bmatrix}
+\boldsymbol{R}_{r\times r}^{11} & \boldsymbol{O}\\
+\boldsymbol{O} & \boldsymbol{O}
+\end{bmatrix},\ \left | \boldsymbol{R}_{r\times r}^{11} \right | \neq 0$$</blockquote>
+
+<blockquote>其奇异值分解为</blockquote>
+
+<blockquote>$$\boldsymbol{A} = \boldsymbol{U}\boldsymbol{DV}^*,\ \boldsymbol{U}^*\boldsymbol{U} = \boldsymbol{V}^*\boldsymbol{V} = \boldsymbol{I},\ \boldsymbol{D} = \begin{bmatrix}
+\boldsymbol{\Sigma}_{r\times r} & \boldsymbol{O}\\
+\boldsymbol{O} & \boldsymbol{O}
+\end{bmatrix},\ \boldsymbol{\Sigma}_{r\times r} = \mathrm{diag}\left ( \lambda_1,\cdots,\lambda_r \right )$$</blockquote>
+
+<blockquote>这里 $\boldsymbol{R}_{r\times r}^{11}$ 为上三角矩阵，$\boldsymbol{O}$ 为零矩阵，则有 $\boldsymbol{A}^{+} = \boldsymbol{P}^{*}\boldsymbol{R}^{+}\boldsymbol{Q}$ 或者 $\boldsymbol{A}^{+} = \boldsymbol{V}\boldsymbol{D}^{+}\boldsymbol{U}^{*}$，其中</blockquote>
+
+<blockquote>$$\boldsymbol{R}^{+} = \begin{bmatrix}
+{\boldsymbol{R}_{r\times r} ^{11}}^{-1} & \boldsymbol{O}\\
+\boldsymbol{O} & \boldsymbol{O}
+\end{bmatrix},\ \boldsymbol{D}^{+} = \begin{bmatrix}
+\boldsymbol{\Sigma}_{r\times r} ^{-1} & \boldsymbol{O}\\
+\boldsymbol{O} & \boldsymbol{O}
+\end{bmatrix}$$</blockquote>
 
 <h2>1.1.3 矩阵的 Rayleigh 商</h2>
 <h2>1.1.4 矩阵的秩一校正</h2>
