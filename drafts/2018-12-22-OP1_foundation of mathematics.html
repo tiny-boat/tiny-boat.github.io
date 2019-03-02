@@ -321,13 +321,41 @@ $$\left\{\begin{matrix}
 
 <h2>1.1.3 矩阵的 Rayleigh 商</h2>
 
-<p>矩阵 $\boldsymbol{A}$ 的 Rayleigh 商定义为：</p>
+<p>$n \times n$ Hermite 矩阵 $\boldsymbol{A}$ 的 <strong>Rayleigh 商</strong>定义为：</p>
 
 $$R\left(\boldsymbol{u} \right) = \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}}$$
 
-<p class="post-text-noindent">它的几何意义是：$n$ 维复数空间 $C^n$ 中的任意向量 $\boldsymbol{u}$ 经变换 $\boldsymbol{A}$ 后得到的新向量 $\boldsymbol{Au}$ 在原向量 $\boldsymbol{u}$ 上的正交投影的长度。它与矩阵的特征值有着密切的联系，它的最大值是矩阵的最大特征值，最小值是矩阵的最小特征值。</p>
+<p class="post-text-noindent">它与矩阵特征值有着密切的联系，它的最大值是矩阵的最大特征值，最小值是矩阵的最小特征值，当 $\boldsymbol{u}$ 取矩阵的特征向量（矩阵对应线性变换下方向不变的非零向量）时，它为该特征向量对应的特征值。它的几何意义是：$n$ 维复数空间 $C^n$ 中的任意向量 $\boldsymbol{u}$ 经变换 $\boldsymbol{A}$ 后得到的新向量 $\boldsymbol{Au}$ 在原向量 $\boldsymbol{u}$ 上的正交投影的长度。下面给出上述内容的严格数学表述：</p>
+
+<blockquote><strong>埃尔米特矩阵 / 厄米特矩阵（Hermitian matrix）</strong>，也称自伴随矩阵，它是共轭对称的方阵，即矩阵中每一个第 $i$ 行第 $j$ 列的元素都是第 $j$ 行第 $i$ 列的元素的共轭复数，它是实数域下对称矩阵在复数域下的推广。</blockquote>
+
+<blockquote><strong>定理 4</strong>：设 $\boldsymbol{A}$ 是 $n \times n$ Hermite 矩阵，$u \in C^n$，则 $\boldsymbol{A}$ 的 Rayleigh 商满足以下基本性质：</blockquote>
+
+<blockquote>
+1.齐次性：$\forall \alpha \neq 0,\ R_\lambda \left(\alpha \boldsymbol{u} \right) = R_\lambda \left( \boldsymbol{u} \right)$<br>
+2.极性：$\begin{aligned} \lambda_1 = \underset{\left \| \boldsymbol{u} \right \|_2 = 1}{\max}\boldsymbol{u}^*\boldsymbol{Au} = \underset{\boldsymbol{u}\neq \boldsymbol{0}}{\max}\ \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}},\  \lambda_n = \underset{\left \| \boldsymbol{u} \right \|_2 = 1}{\min}\boldsymbol{u}^*\boldsymbol{Au} = \underset{\boldsymbol{u}\neq \boldsymbol{0}}{\min}\ \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}} \end{aligned}$<br>
+3.极小残量性质：$\forall \mu \in R,\ \left \| \boldsymbol{Au} - R_\lambda \left(\boldsymbol{u} \right )\boldsymbol{u} \right \| \leq \left \| \boldsymbol{Au} - \mu \boldsymbol{u}\right \|$<br>
+</blockquote>
+
+<p class="post-text-noindent">下面是定理 4 的证明过程：</p>
+
+<blockquote><strong>证明</strong>：由 Rayleigh 商的定义易证其满足齐次性，这里不再赘述，接下来我们首先证明极性：</blockquote>
+
+<blockquote>根据齐次性，我们有 $\begin{aligned} R_\lambda \left( \boldsymbol{u} \right) = \boldsymbol{u}_s^*\boldsymbol{Au}_s,\ \boldsymbol{u}_s = \frac{\boldsymbol{u}}{\left \| \boldsymbol{u} \right \|_2} \end{aligned}$，又因为 $\boldsymbol{A}$ 是 $n \times n$ Hermite 矩阵，所以必存在酉矩阵（实数域下正交矩阵在复数域下的推广） $\boldsymbol{T}$ 使得 $\boldsymbol{T}^*\boldsymbol{A}\boldsymbol{T} = \mathrm{diag}\left \{\lambda_1,\lambda_2,\cdots,\lambda_n \right \}$，其中 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$ 为矩阵 $\boldsymbol{A}$ 的特征值。由于 $\forall \boldsymbol{u}_s$，必存在 $\boldsymbol{y} \in C^n$ 使得 $\boldsymbol{u}_s = \boldsymbol{T} \boldsymbol{y}$，又由 $T^*T = I$ 知 $\left \| \boldsymbol{y} \right \|_2 = \left \| \boldsymbol{u} \right \|_2$，所以</blockquote>
+
+<blockquote>$$\lambda_n = \lambda_n\sum_{i=1}^{n}\left | y_i \right |^2 \leq \boldsymbol{u}_s^*\boldsymbol{Au}_s = \boldsymbol{y}^*\boldsymbol{A} \boldsymbol{y} = \sum_{i=1}^{n}\lambda_i\left | y_i \right |^2 \leq \lambda_1\sum_{i=1}^{n}\left | y_i \right |^2 = \lambda_1$$</blockquote>
+
+<blockquote>且当 $y_1 = 1,y_i = 0 \left(i \neq 1 \right)$ 时，右侧不等号取到等号，$y_n = 1,y_j = 0 \left(j \neq n \right)$ 时，左侧不等号取到等号，极性得证。下面证明极小残量性质：</blockquote>
+
+<blockquote>令 $s\left(\boldsymbol{u} \right) = \boldsymbol{Au} - R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u},\ \boldsymbol{u} \neq 0$，因为</blockquote>
+
+<blockquote>$$\left(s\left(\boldsymbol{u} \right),\boldsymbol{u} \right) = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^*R_\lambda\left(\boldsymbol{u} \right) \boldsymbol{u} = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^* \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}} \boldsymbol{u} = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^*\boldsymbol{u} \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}} = 0$$</blockquote>
+
+<blockquote>所以 $\boldsymbol{Au} = R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u} + s\left(\boldsymbol{u} \right)$ 是 $\boldsymbol{Au}$ 的正交分解，从而 $R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u}$ 是 $\boldsymbol{Au}$ 在 $\boldsymbol{u}$ 上的正交投影，所以必有：$\forall \mu \in R,\ \left \| \boldsymbol{Au} - R_\lambda \left(\boldsymbol{u} \right )\boldsymbol{u} \right \| \leq \left \| \boldsymbol{Au} - \mu \boldsymbol{u}\right \|$。</blockquote>
 
 <h2>1.1.4 矩阵的秩一校正</h2>
+
+
 
 <h1>1.2 微积分</h1>
 
