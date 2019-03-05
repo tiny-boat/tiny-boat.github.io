@@ -353,9 +353,17 @@ $$R\left(\boldsymbol{u} \right) = \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsy
 
 <blockquote>所以 $\boldsymbol{Au} = R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u} + s\left(\boldsymbol{u} \right)$ 是 $\boldsymbol{Au}$ 的正交分解，从而 $R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u}$ 是 $\boldsymbol{Au}$ 在 $\boldsymbol{u}$ 上的正交投影，所以必有：$\forall \mu \in R,\ \left \| \boldsymbol{Au} - R_\lambda \left(\boldsymbol{u} \right )\boldsymbol{u} \right \| \leq \left \| \boldsymbol{Au} - \mu \boldsymbol{u}\right \|$。</blockquote>
 
-<h2>1.1.4 矩阵的秩一校正</h2>
+<h2>1.1.4 矩阵的秩 1 校正</h2>
 
+<p>矩阵的秩 1 校正（rank one correction）指的是在原矩阵的基础上加上一个秩为 1 的矩阵，下面我们将依次介绍秩一校正的逆、秩一校正的行列式、秩一校正联锁特征值定理、Cholesky 分解与 QR 分解的秩 1 校正。秩 1 校正及其推广秩 r 校正有着广泛的应用，例如：正交变换中常用的 Householder 反射（$\boldsymbol{I} - \frac{2}{\boldsymbol{v}^T\boldsymbol{v}}\boldsymbol{v}\boldsymbol{v}^T$，可大量引入 0 元）和 Givens 旋转（单位矩阵的秩 2 校正，可选择性地引入 0 元）、QR 分解（可利用 Householder 反射或 Givens 旋转等方法实现）等等。</p>
 
+<p>下面是著名的 Sherman-Morrison 公式，它给出了秩一校正的逆。</p>
+
+<blockquote><strong>定理 5</strong>：若 $\boldsymbol{A}_{n\times n}$ 非奇异，则 $\forall \ \boldsymbol{u},\boldsymbol{v}\ \in R^n$，只要 $1 + \boldsymbol{v}^T\boldsymbol{A^{-1}}\boldsymbol{u} \neq 0$，便有 $\boldsymbol{A} + \boldsymbol{u}\boldsymbol{v}^T$ 可逆且<br>$$\left(\boldsymbol{A} + \boldsymbol{u}\boldsymbol{v}^T \right)^{-1} = \boldsymbol{A}^{-1} - \frac{\boldsymbol{A}^{-1}\boldsymbol{u}\boldsymbol{v}^T\boldsymbol{A}^{-1}}{1+\boldsymbol{v}^T\boldsymbol{A}^{-1}\boldsymbol{u}}$$</blockquote>
+
+<p class="post-text-noindent">我们很容易验证上述公式是成立的，故这里不再给出证明过程。下面是该定理的推广，被称为 Woodbury 矩阵恒等式（Woodbury matrix identity），或者矩阵逆引理（matrix inversion lemma）、Sherman–Morrison–Woodbury 公式（Sherman–Morrison–Woodbury formula）、Woodbury 公式（Woodbury formula）。</p>
+
+<blockquote><strong>定理 6</strong>：若 $\boldsymbol{A}_{n\times n}$ 非奇异，则 $\forall \ \boldsymbol{U}_{n\times m},\ \boldsymbol{V}_{n\times r},\ \boldsymbol{C}_{r\times r}$，只要 $\boldsymbol{C}^{-1} + \boldsymbol{V^*A}^{-1}\boldsymbol{U}$ 可逆，则<br>$$\left(\boldsymbol{A+UV}^* \right)^{-1} = \boldsymbol{A}^{-1} - \boldsymbol{A}^{-1}\boldsymbol{U}\left(\boldsymbol{C}^{-1}+\boldsymbol{V}^*\boldsymbol{A}^{-1}\boldsymbol{U} \right)^{-1}\boldsymbol{V}^*\boldsymbol{A}^{-1}$$</blockquote>
 
 <h1>1.2 微积分</h1>
 
