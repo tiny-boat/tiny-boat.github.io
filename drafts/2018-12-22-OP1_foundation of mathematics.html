@@ -355,15 +355,31 @@ $$R\left(\boldsymbol{u} \right) = \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsy
 
 <h2>1.1.4 矩阵的秩 1 校正</h2>
 
-<p>矩阵的秩 1 校正（rank one correction）指的是在原矩阵的基础上加上一个秩为 1 的矩阵，下面我们将依次介绍秩一校正的逆、秩一校正的行列式、秩一校正联锁特征值定理、Cholesky 分解与 QR 分解的秩 1 校正。秩 1 校正及其推广秩 r 校正有着广泛的应用，例如：正交变换中常用的 Householder 反射（$\boldsymbol{I} - \frac{2}{\boldsymbol{v}^T\boldsymbol{v}}\boldsymbol{v}\boldsymbol{v}^T$，可大量引入 0 元）和 Givens 旋转（单位矩阵的秩 2 校正，可选择性地引入 0 元）、QR 分解（可利用 Householder 反射或 Givens 旋转等方法实现）等等。</p>
+<p>矩阵的<strong>秩 1 校正</strong>（rank one correction）指的是在原矩阵的基础上加上一个秩为 1 的矩阵，下面我们将依次介绍秩一校正的逆、单位矩阵秩一校正的行列式、秩一校正联锁特征值定理、Cholesky 分解与 QR 分解的秩 1 校正。秩 1 校正及其推广秩 r 校正有着广泛的应用，例如：正交变换中常用的 <strong>Householder 反射</strong>（$\boldsymbol{I} - \frac{2}{\boldsymbol{v}^T\boldsymbol{v}}\boldsymbol{v}\boldsymbol{v}^T$，可大量引入 0 元）和 <strong>Givens 旋转</strong>（单位矩阵的秩 2 校正，可选择性地引入 0 元）、<strong>QR 分解</strong>（可利用 Householder 反射或 Givens 旋转等方法实现）等等。</p>
 
-<p>下面是著名的 Sherman-Morrison 公式，它给出了秩一校正的逆。</p>
+<p>下面是著名的 <strong>Sherman-Morrison 公式</strong>，它给出了秩 1 校正的逆。</p>
 
 <blockquote><strong>定理 5</strong>：若 $\boldsymbol{A}_{n\times n}$ 非奇异，则 $\forall \ \boldsymbol{u},\boldsymbol{v}\ \in R^n$，只要 $1 + \boldsymbol{v}^T\boldsymbol{A^{-1}}\boldsymbol{u} \neq 0$，便有 $\boldsymbol{A} + \boldsymbol{u}\boldsymbol{v}^T$ 可逆且<br>$$\left(\boldsymbol{A} + \boldsymbol{u}\boldsymbol{v}^T \right)^{-1} = \boldsymbol{A}^{-1} - \frac{\boldsymbol{A}^{-1}\boldsymbol{u}\boldsymbol{v}^T\boldsymbol{A}^{-1}}{1+\boldsymbol{v}^T\boldsymbol{A}^{-1}\boldsymbol{u}}$$</blockquote>
 
-<p class="post-text-noindent">我们很容易验证上述公式是成立的，故这里不再给出证明过程。下面是该定理的推广，被称为 Woodbury 矩阵恒等式（Woodbury matrix identity），或者矩阵逆引理（matrix inversion lemma）、Sherman–Morrison–Woodbury 公式（Sherman–Morrison–Woodbury formula）、Woodbury 公式（Woodbury formula）。</p>
+<p class="post-text-noindent">我们很容易验证上述公式是成立的，故这里不再给出证明过程。下面是该定理的推广，被称为 <strong>Woodbury 矩阵恒等式</strong>（Woodbury matrix identity），或者矩阵逆引理（matrix inversion lemma）、Sherman–Morrison–Woodbury 公式（Sherman–Morrison–Woodbury formula）、Woodbury 公式（Woodbury formula）。同样，很容易验证该公式是成立的。</p>
 
 <blockquote><strong>定理 6</strong>：若 $\boldsymbol{A}_{n\times n}$ 非奇异，则 $\forall \ \boldsymbol{U}_{n\times m},\ \boldsymbol{V}_{n\times r},\ \boldsymbol{C}_{r\times r}$，只要 $\boldsymbol{C}^{-1} + \boldsymbol{V^*A}^{-1}\boldsymbol{U}$ 可逆，则<br>$$\left(\boldsymbol{A+UV}^* \right)^{-1} = \boldsymbol{A}^{-1} - \boldsymbol{A}^{-1}\boldsymbol{U}\left(\boldsymbol{C}^{-1}+\boldsymbol{V}^*\boldsymbol{A}^{-1}\boldsymbol{U} \right)^{-1}\boldsymbol{V}^*\boldsymbol{A}^{-1}$$</blockquote>
+
+<p>下面给出单位矩阵秩 1 校正的行列式，由于</p>
+
+$$\left(\boldsymbol{I} + \boldsymbol{u}\boldsymbol{v}^T \right)\boldsymbol{u} = \left(1+\boldsymbol{u}^T\boldsymbol{v} \right)\boldsymbol{u}$$
+
+<p class="post-text-noindent">且</p>
+
+$$\left(\boldsymbol{I} + \boldsymbol{u}\boldsymbol{v}^T \right)\boldsymbol{s} = \boldsymbol{s}\ \ if\ \  \boldsymbol{v}^T\boldsymbol{s} = 0$$
+
+<p class="post-text-noindent">所以 $\boldsymbol{u}$ 是单位矩阵秩 1 校正的特征值 $1+\boldsymbol{u}^T\boldsymbol{v}$ 对应的特征向量，正交于 $\boldsymbol{v}$ 的 $\boldsymbol{s}$ 是单位矩阵秩 1 校正的特征值 $1$ 对应的特征向量，又因为 $R^n$ 中与 $\boldsymbol{v}$ 正交的线性无关向量必有 $\left(n-1 \right)$ 个，即单位矩阵秩 1 校正的特征值 $1$ 的几何重数等于 $\left(n-1 \right)$，所以单位矩阵秩 1 校正的特征值 $1$ 的代数重数大于等于 $\left(n-1 \right)$。由于 $n$ 次特征多项式（特征值是特征多项式的根）最多有 $n$ 个根（包括重根），而 $n\times n$ 单位矩阵秩 1 校正的特征值 $1$ 的重数至少为 $\left(n-1 \right)$，且前面已经知道单位矩阵秩 1 校正存在两个不同的特征值，所以单位矩阵秩 1 校正仅有两个不同的特征值 $1$ 和 $\left(1+\boldsymbol{u}^T\boldsymbol{v} \right)$，其重数分别为 $\left(n-1 \right)$ 和 $1$。根据行列式等于特征值之积的性质，我们立即得到：</p>
+
+$$\mathrm{det}\left(\boldsymbol{I} + \boldsymbol{u}\boldsymbol{v}^T \right) = 1+\boldsymbol{u}^T\boldsymbol{v}$$
+
+<p>下面介绍秩一校正 $\boldsymbol{A} + \sigma\boldsymbol{u}\boldsymbol{u}^T$ 的联锁特征值定理（interlocking eigenvalue theorem），该定理见于 1965 年出版的 Wilkinson 的 The Algebraic Eigenvalue Problem 一书中（其中译本《代数特征值问题》于 2006 年由科学出版社出版）的第二章关于秩 1 校正的部分。该书是计算数学领域的经典著作，作者用摄动理论和向后误差分析方法系统地论述了代数特征值问题以及有关的线性代数方程组、多项式零点的各种解法，并对方法的性质作了透彻的分析，该书为研究代数特征值及有关问题提供了严密的理论基础和强有力的工具。</p>
+
+<blockquote><strong>定理 6</strong>：</blockquote>
 
 <h1>1.2 微积分</h1>
 
