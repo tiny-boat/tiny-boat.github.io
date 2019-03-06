@@ -365,7 +365,7 @@ $$R\left(\boldsymbol{u} \right) = \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsy
 
 <blockquote><strong>定理 6</strong>：若 $\boldsymbol{A}_{n\times n}$ 非奇异，则 $\forall \ \boldsymbol{U}_{n\times m},\ \boldsymbol{V}_{n\times r},\ \boldsymbol{C}_{r\times r}$，只要 $\boldsymbol{C}^{-1} + \boldsymbol{V^*A}^{-1}\boldsymbol{U}$ 可逆，则<br>$$\left(\boldsymbol{A+UV}^* \right)^{-1} = \boldsymbol{A}^{-1} - \boldsymbol{A}^{-1}\boldsymbol{U}\left(\boldsymbol{C}^{-1}+\boldsymbol{V}^*\boldsymbol{A}^{-1}\boldsymbol{U} \right)^{-1}\boldsymbol{V}^*\boldsymbol{A}^{-1}$$</blockquote>
 
-<p>下面给出单位矩阵秩 1 校正的行列式，由于</p>
+<p>下面给出单位矩阵<strong>秩 1 校正的行列式</strong>，由于</p>
 
 $$\left(\boldsymbol{I} + \boldsymbol{u}\boldsymbol{v}^T \right)\boldsymbol{u} = \left(1+\boldsymbol{u}^T\boldsymbol{v} \right)\boldsymbol{u}$$
 
@@ -377,9 +377,19 @@ $$\left(\boldsymbol{I} + \boldsymbol{u}\boldsymbol{v}^T \right)\boldsymbol{s} = 
 
 $$\mathrm{det}\left(\boldsymbol{I} + \boldsymbol{u}\boldsymbol{v}^T \right) = 1+\boldsymbol{u}^T\boldsymbol{v}$$
 
-<p>下面介绍秩一校正 $\boldsymbol{A} + \sigma\boldsymbol{u}\boldsymbol{u}^T$ 的联锁特征值定理（interlocking eigenvalue theorem），该定理见于 1965 年出版的 Wilkinson 的 The Algebraic Eigenvalue Problem 一书中（其中译本《代数特征值问题》于 2006 年由科学出版社出版）的第二章关于秩 1 校正的部分。该书是计算数学领域的经典著作，作者用摄动理论和向后误差分析方法系统地论述了代数特征值问题以及有关的线性代数方程组、多项式零点的各种解法，并对方法的性质作了透彻的分析，该书为研究代数特征值及有关问题提供了严密的理论基础和强有力的工具。</p>
+<p>下面介绍秩一校正 $\boldsymbol{A} + \sigma\boldsymbol{u}\boldsymbol{u}^T$ 的<strong>联锁特征值定理</strong>（interlocking eigenvalue theorem），该定理见于 1965 年出版的 Wilkinson 的 The Algebraic Eigenvalue Problem 一书中（其中译本《代数特征值问题》于 2006 年由科学出版社出版）的第二章关于秩 1 校正的部分。该书是计算数学领域的经典著作，作者用摄动理论和向后误差分析方法系统地论述了代数特征值问题以及有关的线性代数方程组、多项式零点的各种解法，并对方法的性质作了透彻的分析，该书为研究代数特征值及有关问题提供了严密的理论基础和强有力的工具。</p>
 
-<blockquote><strong>定理 6</strong>：</blockquote>
+<blockquote>
+<strong>定理 6</strong>：若 $\boldsymbol{A}_{n\times n}$ 为对称矩阵且其特征值为 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$，且记 $\bar{\boldsymbol{A}} = \boldsymbol{A} + \sigma\boldsymbol{u}\boldsymbol{u}^T$ 的特征值为 $\bar{\lambda}_1 \geq \bar{\lambda}_2 \geq \cdots \geq \bar{\lambda}_n$，则有<br>
+$$\sigma > 0:\ \bar{\lambda}_1 \geq \lambda_1 \geq \bar{\lambda}_2 \geq \lambda_2 \geq \cdots \geq \bar{\lambda}_n \geq \lambda_n$$
+$$\sigma < 0:\ \lambda_1 \geq \bar{\lambda}_1 \geq \lambda_2 \geq \bar{\lambda}_2 \geq \cdots \geq \lambda_n \geq \bar{\lambda}_n$$
+</blockquote>
+
+<p>本节最后，我们谈一下 <strong>Cholesky 分解与 QR 分解的秩 1 校正</strong>，在 Matlab 中有实现它们的函数，分别是 Cholupdate(R,x,'+/-') 和 qrupdate(Q,R,u,v)，它们分别用于求 $\boldsymbol{R} \pm \boldsymbol{x}\boldsymbol{x}^T$ 的 Cholesky 分解和 $\boldsymbol{QR} + \boldsymbol{u}\boldsymbol{v}^T$ 的 QR 分解，Matlab <a href="https://ww2.mathworks.cn/help/matlab/">官方文档</a>指出：<a href="https://ww2.mathworks.cn/help/matlab/ref/cholupdate.html">Cholupdate</a> 参考的是 LINPACK 子例程 ZCHUD 和 ZCHDD 使用的算法，详情见参考文献 Dongarra, J.J., J.R. Bunch, C.B. Moler, and G.W. Stewart, LINPACK Users' Guide, SIAM, Philadelphia, 1979；<a href="https://ww2.mathworks.cn/help/matlab/ref/qrupdate.html">qrupdate</a> 使用由 Golub 与 van Loan 合著的 Matrix Computations 第三版第 12.5.1 节中的算法，详情见参考文献 Golub, Gene H. and Charles Van Loan, Matrix Computations, Third Edition, Johns Hopkins University Press, Baltimore, 1996. 限于时间与精力，笔者暂时还不打算去研究这些算法背后的原理，这里也就不给出算法步骤的叙述了，感兴趣的读者可以翻阅上述参考文献进行了解。</p>
+
+<blockquote>Cholesky 分解（Cholesky decomposition / factorization）：将一个正定的 Hermite 矩阵 $\boldsymbol{R}$ 分解成一个下三角矩阵 $\boldsymbol{L}$ 与其共轭转置 $\boldsymbol{L}^*$ 的乘积，即 $\boldsymbol{R} = \boldsymbol{L}\boldsymbol{L}^*$。当限定 $\boldsymbol{L}$ 的对角元素为正时，Cholesky 分解是唯一的。此外它还有一个变形，那就是 $\boldsymbol{R} = \boldsymbol{LD}\boldsymbol{L}^*$，此时 $\boldsymbol{L}$ 变为了单位下三角矩阵（主对角元全为 1），$\boldsymbol{D}$ 为对角矩阵。维基百科给出了秩 1 校正 Cholesky 分解的具体算法，如需了解请<a href="https://zh.wikipedia.org/wiki/Cholesky%E5%88%86%E8%A7%A3">点击此处</a>。</blockquote>
+
+<blockquote>QR 分解：将一个矩阵 $\boldsymbol{A}_{n\times m}$ 分解成一个酉矩阵 $\boldsymbol{Q}_{n\times n}$ 与一个上三角矩阵 $\boldsymbol{R}_{n\times m}$ 的乘积，即 $\boldsymbol{A} = \boldsymbol{QR}$。如果 $\boldsymbol{A}$ 是非奇异的，且限定 $\boldsymbol{R}$ 的对角线元素为正，则该矩阵的 QR 分解是唯一的。QR 分解的实际计算方法有很多，如 Givens 旋转、Householder 变换，以及 Gram-Schmidt 正交化等等，每一种方法都有其优点和不足，详情见上述参考文献，也可以参考本书的中译本：由科学出版社于 2001 年出版的《矩阵计算》。</blockquote>
 
 <h1>1.2 微积分</h1>
 
