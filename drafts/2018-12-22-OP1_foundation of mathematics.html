@@ -325,7 +325,7 @@ $$\left\{\begin{matrix}
 
 $$R\left(\boldsymbol{u} \right) = \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}}$$
 
-<p class="post-text-noindent">它与矩阵特征值有着密切的联系，它的最大值是矩阵的最大特征值，最小值是矩阵的最小特征值，当 $\boldsymbol{u}$ 取矩阵的特征向量（矩阵对应线性变换下方向不变的非零向量）时，它为该特征向量对应的特征值。它的几何意义是：$n$ 维复数空间 $C^n$ 中的任意向量 $\boldsymbol{u}$ 经变换 $\boldsymbol{A}$ 后得到的新向量 $\boldsymbol{Au}$ 在原向量 $\boldsymbol{u}$ 上的正交投影的长度。下面给出上述内容的严格数学表述：</p>
+<p class="post-text-noindent">它与矩阵特征值有着密切的联系，<strong>它的最大值是矩阵的最大特征值，最小值是矩阵的最小特征值</strong>，当 $\boldsymbol{u}$ 取矩阵的特征向量（矩阵对应线性变换下方向不变的非零向量）时，它为该特征向量对应的特征值。<strong>它的几何意义是：$n$ 维复数空间 $C^n$ 中的任意向量 $\boldsymbol{u}$ 经变换 $\boldsymbol{A}$ 后得到的新向量 $\boldsymbol{Au}$ 在原向量 $\boldsymbol{u}$ 上的正交投影的长度。</strong>下面给出上述内容的严格数学表述：</p>
 
 <blockquote><strong>埃尔米特矩阵 / 厄米特矩阵（Hermitian matrix）</strong>，也称自伴随矩阵，它是共轭对称的方阵，即矩阵中每一个第 $i$ 行第 $j$ 列的元素都是第 $j$ 行第 $i$ 列的元素的共轭复数，它是实数域下对称矩阵在复数域下的推广。</blockquote>
 
@@ -393,10 +393,44 @@ $$\sigma < 0:\ \lambda_1 \geq \bar{\lambda}_1 \geq \lambda_2 \geq \bar{\lambda}_
 
 <h1>1.2 微积分</h1>
 
-<p>本节，我们介绍最优化理论中需要用到的微积分知识，包括：函数的微分、向量值函数的微分和有限差分导数。</p>
+<p>本节，我们介绍最优化理论中需要用到的微积分知识，包括：向量序列的收敛、函数的微分、向量值函数的微分和有限差分导数。</p>
 
 <h2>1.2.1 向量序列的收敛</h2>
+
+<p>向量序列的收敛是由范数定义的，我们说向量序列 $x_k$ 收敛于向量 $x$ 是指当 $k \rightarrow \infty$ 时它们之间差的范数趋于 0，即</p>
+
+$$\lim_{k \rightarrow \infty} \left \| \boldsymbol{x}_k - \boldsymbol{x} \right \| = 0$$
+
 <h2>1.2.2 函数的微分</h2>
+
+<p>我们首先给出函数<strong>可微</strong>与微分的定义：</p>
+
+<blockquote><strong>定义 2</strong>：如果存在一个仅依赖于 $\boldsymbol{x}_0 \in R^n$ 的向量 $\boldsymbol{a} \in R^n$ 使得<br>
+$$f\left(\boldsymbol{x}_0 + \Delta\boldsymbol{x} \right) - f\left(\boldsymbol{x}_0 \right) = \boldsymbol{a}^T\Delta\boldsymbol{x} + o\left(\left \| \Delta\boldsymbol{x} \right \| \right)$$
+则我们称 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处可微，并称 $\boldsymbol{a}^T\Delta\boldsymbol{x}$ 为 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的（全）微分。
+</blockquote>
+
+<p class="post-text-noindent">可以证明：如果函数 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处可微，则 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处连续，$f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的偏导 $\frac{\partial f\left(\boldsymbol{x}_0 \right )}{\partial x_i}$ 存在且 $\boldsymbol{a}$ 为 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的<strong>梯度</strong>，即 $\boldsymbol{a} = \left(\frac{\partial f\left(\boldsymbol{x}_0 \right )}{\partial x_1},\frac{\partial f\left(\boldsymbol{x}_0 \right )}{\partial x_2},\cdots,\frac{\partial f\left(\boldsymbol{x}_0 \right )}{\partial x_n} \right)^T \triangleq \nabla f\left(\boldsymbol{x}_0 \right)$。如需了解详细证明过程，可参考由北京大学出版社出版、由伍胜健编著的《数学分析》第三册第十四章中定理 14.1.1 的证明。</p>
+
+<p>梯度与另一概念——<strong>方向导数</strong>——有着密切的联系，它们在优化中有着重要而广泛的应用。下面给出方向导数的定义：</p>
+
+<blockquote><strong>定义 3</strong>：如果 $f\left(\boldsymbol{x} \right)$ 可微，则我们称<br>
+$$\lim_{\alpha \rightarrow 0} \frac{f\left(\boldsymbol{x}_0 + \alpha \boldsymbol{d} \right) - f\left(\boldsymbol{x}_0 \right)}{\alpha}$$
+为 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处沿方向 $\boldsymbol{d}$ 的导数，记作 $\frac{\partial f}{\partial \boldsymbol{d}} \left(\boldsymbol{x}_0 \right)$。
+</blockquote>
+
+<p class="post-text-noindent">利用函数可微及方向导数的定义，我们立即可以得到：</p>
+
+$$\frac{\partial f}{\partial \boldsymbol{d}} \left(\boldsymbol{x}_0 \right) = \lim_{\alpha \rightarrow 0} \frac{f\left(\boldsymbol{x}_0 + \alpha \boldsymbol{d} \right) - f\left(\boldsymbol{x}_0 \right)}{\alpha} = \nabla f\left(\boldsymbol{x}_0 \right)^T \boldsymbol{d}$$
+
+<p class="post-text-noindent">可见，$f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处沿方向 $\boldsymbol{d}$ 的导数等于梯度与方向的欧式内积，又根据柯西施瓦兹不等式，我们有：</p>
+
+$$\left| \frac{\partial f}{\partial \boldsymbol{d}} \left(\boldsymbol{x}_0 \right) \right| = \left| \nabla f\left(\boldsymbol{x}_0 \right)^T \boldsymbol{d} \right| \leq \left \| \nabla f\left(\boldsymbol{x}_0 \right ) \right \|_2 \left \| \boldsymbol{d} \right \|_2$$
+
+$$- \left \| \nabla f\left(\boldsymbol{x}_0 \right ) \right \|_2 \left \| \boldsymbol{d} \right \|_2 \leq \nabla f\left(\boldsymbol{x}_0 \right)^T \boldsymbol{d} \leq \left \| \nabla f\left(\boldsymbol{x}_0 \right ) \right \|_2 \left \| \boldsymbol{d} \right \|_2$$
+
+<p class="post-text-noindent">且左侧等号成立当且仅当 $\boldsymbol{d} = c\nabla f\left(\boldsymbol{x}_0 \right ),\ c < 0$，右侧等号成立当且仅当 $\boldsymbol{d} = c\nabla f\left(\boldsymbol{x}_0 \right ),\ c > 0$。由此我们可以知道：<strong>在所有可能方向中，梯度方向是使得函数增长最快的方向，负梯度方向是使得函数下降最快的方向</strong>，这一结论便是重要的优化方法——梯度下降法——的核心思想与理论基础。此外，在一定条件下保证每次迭代，函数在新迭代点上的值都比原迭代点小，是不少优化方法（如共轭梯度法）在选择迭代方向时遵循的基本原则之一，而这一基本原则用数学语言描述就是：每次迭代，函数在当前迭代点 $\boldsymbol{x}_k$ 沿下一步迭代方向 $\boldsymbol{d}_k$ 的方向导数小于 0，即：$\forall k \in \mathrm{N},\ \nabla f\left(\boldsymbol{x}_k \right)^T \boldsymbol{d}_k < 0$。</p>
+
 <h2>1.2.3 向量值函数的微分</h2>
 <h2>1.2.4 有限差分导数</h2>
 
