@@ -363,7 +363,7 @@ $$R\left(\boldsymbol{u} \right) = \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsy
 
 <p class="post-text-noindent">我们很容易验证上述公式是成立的，故这里不再给出证明过程。下面是该定理的推广，被称为 <strong>Woodbury 矩阵恒等式</strong>（Woodbury matrix identity），或者矩阵逆引理（matrix inversion lemma）、Sherman–Morrison–Woodbury 公式（Sherman–Morrison–Woodbury formula）、Woodbury 公式（Woodbury formula）。同样，很容易验证该公式是成立的。</p>
 
-<blockquote><strong>定理 6</strong>：若 $\boldsymbol{A}_{n\times n}$ 非奇异，则 $\forall \ \boldsymbol{U}_{n\times m},\ \boldsymbol{V}_{n\times r},\ \boldsymbol{C}_{r\times r}$，只要 $\boldsymbol{C}^{-1} + \boldsymbol{V^*A}^{-1}\boldsymbol{U}$ 可逆，则<br>$$\left(\boldsymbol{A+UV}^* \right)^{-1} = \boldsymbol{A}^{-1} - \boldsymbol{A}^{-1}\boldsymbol{U}\left(\boldsymbol{C}^{-1}+\boldsymbol{V}^*\boldsymbol{A}^{-1}\boldsymbol{U} \right)^{-1}\boldsymbol{V}^*\boldsymbol{A}^{-1}$$</blockquote>
+<blockquote><strong>定理 6</strong>：若 $\boldsymbol{A}_{n\times n}$ 非奇异，则 $\forall \ \boldsymbol{U}_{n\times m},\ \boldsymbol{V}_{n\times r},\ \boldsymbol{C}_{r\times r}$，只要 $\boldsymbol{C}^{-1} + \boldsymbol{V^*A}^{-1}\boldsymbol{U}$ 可逆，则<br>$$\left(\boldsymbol{A+UCV}^* \right)^{-1} = \boldsymbol{A}^{-1} - \boldsymbol{A}^{-1}\boldsymbol{U}\left(\boldsymbol{C}^{-1}+\boldsymbol{V}^*\boldsymbol{A}^{-1}\boldsymbol{U} \right)^{-1}\boldsymbol{V}^*\boldsymbol{A}^{-1}$$</blockquote>
 
 <p>下面给出单位矩阵<strong>秩 1 校正的行列式</strong>，由于</p>
 
@@ -380,7 +380,7 @@ $$\mathrm{det}\left(\boldsymbol{I} + \boldsymbol{u}\boldsymbol{v}^T \right) = 1+
 <p>下面介绍秩一校正 $\boldsymbol{A} + \sigma\boldsymbol{u}\boldsymbol{u}^T$ 的<strong>联锁特征值定理</strong>（interlocking eigenvalue theorem），该定理见于 1965 年出版的 Wilkinson 的 The Algebraic Eigenvalue Problem 一书中（其中译本《代数特征值问题》于 2006 年由科学出版社出版）的第二章关于秩 1 校正的部分。该书是计算数学领域的经典著作，作者用摄动理论和向后误差分析方法系统地论述了代数特征值问题以及有关的线性代数方程组、多项式零点的各种解法，并对方法的性质作了透彻的分析，该书为研究代数特征值及有关问题提供了严密的理论基础和强有力的工具。</p>
 
 <blockquote>
-<strong>定理 6</strong>：若 $\boldsymbol{A}_{n\times n}$ 为对称矩阵且其特征值为 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$，且记 $\bar{\boldsymbol{A}} = \boldsymbol{A} + \sigma\boldsymbol{u}\boldsymbol{u}^T$ 的特征值为 $\bar{\lambda}_1 \geq \bar{\lambda}_2 \geq \cdots \geq \bar{\lambda}_n$，则有<br>
+<strong>定理 7</strong>：若 $\boldsymbol{A}_{n\times n}$ 为对称矩阵且其特征值为 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$，且记 $\bar{\boldsymbol{A}} = \boldsymbol{A} + \sigma\boldsymbol{u}\boldsymbol{u}^T$ 的特征值为 $\bar{\lambda}_1 \geq \bar{\lambda}_2 \geq \cdots \geq \bar{\lambda}_n$，则有<br>
 $$\sigma > 0:\ \bar{\lambda}_1 \geq \lambda_1 \geq \bar{\lambda}_2 \geq \lambda_2 \geq \cdots \geq \bar{\lambda}_n \geq \lambda_n$$
 $$\sigma < 0:\ \lambda_1 \geq \bar{\lambda}_1 \geq \lambda_2 \geq \bar{\lambda}_2 \geq \cdots \geq \lambda_n \geq \bar{\lambda}_n$$
 </blockquote>
@@ -397,7 +397,7 @@ $$\sigma < 0:\ \lambda_1 \geq \bar{\lambda}_1 \geq \lambda_2 \geq \bar{\lambda}_
 
 <h2>1.2.1 向量序列的收敛</h2>
 
-<p>向量序列的收敛是由范数定义的，我们说向量序列 $x_k$ 收敛于向量 $x$ 是指当 $k \rightarrow \infty$ 时它们之间差的范数趋于 0，即</p>
+<p>向量序列的收敛是由范数定义的，我们说向量序列 $\boldsymbol{x}_k$ 收敛于向量 $\boldsymbol{x}$ 是指当 $k \rightarrow \infty$ 时它们之间差的范数趋于 0，即</p>
 
 $$\lim_{k \rightarrow \infty} \left \| \boldsymbol{x}_k - \boldsymbol{x} \right \| = 0$$
 
@@ -431,7 +431,109 @@ $$- \left \| \nabla f\left(\boldsymbol{x}_0 \right ) \right \|_2 \left \| \bolds
 
 <p class="post-text-noindent">且左侧等号成立当且仅当 $\boldsymbol{d} = c\nabla f\left(\boldsymbol{x}_0 \right ),\ c < 0$，右侧等号成立当且仅当 $\boldsymbol{d} = c\nabla f\left(\boldsymbol{x}_0 \right ),\ c > 0$。由此我们可以知道：<strong>在所有可能方向中，梯度方向是使得函数增长最快的方向，负梯度方向是使得函数下降最快的方向</strong>，这一结论便是重要的优化方法——梯度下降法——的核心思想与理论基础。此外，在一定条件下保证每次迭代，函数在新迭代点上的值都比原迭代点小，是不少优化方法（如共轭梯度法）在选择迭代方向时遵循的基本原则之一，而这一基本原则用数学语言描述就是：每次迭代，函数在当前迭代点 $\boldsymbol{x}_k$ 沿下一步迭代方向 $\boldsymbol{d}_k$ 的方向导数小于 0，即：$\forall k \in \mathrm{N},\ \nabla f\left(\boldsymbol{x}_k \right)^T \boldsymbol{d}_k < 0$。</p>
 
+<p>我们将第 $\left(i,j \right)$ 个元素为 $\frac{\partial f\left(\boldsymbol{x}_0 \right)}{\partial x_i \partial x_j}$ 的 $n\times n$ 矩阵称为 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的 <strong>Hessian 矩阵</strong>，记作 $\boldsymbol{H}_f\left( \boldsymbol{x}_0 \right )$，它与上面提到的梯度、方向导数一样，在优化中有着重要而广泛的应用。包括函数全部一阶偏导信息的梯度与（一阶）方向导数有着密切的联系，同样地，包括函数全部二阶偏导信息的 Hessian 矩阵与<strong>二阶方向导数</strong>有着密切的联系。下面是二阶方向导数的定义：</p>
+
+<blockquote><strong>定义 4</strong>：如果 $\frac{\partial f}{\partial \boldsymbol{d}} \left(\boldsymbol{x} \right)$ 存在且可微，则我们称<br>
+$$\lim_{\alpha \rightarrow 0} \frac{\frac{\partial f}{\partial \boldsymbol{d}}\left(\boldsymbol{x}_0 + \alpha \boldsymbol{d} \right) - \frac{\partial f}{\partial \boldsymbol{d}}\left(\boldsymbol{x}_0 \right)}{\alpha}$$
+为 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处沿方向 $\boldsymbol{d}$ 的二阶导数，记作 $\frac{\partial^2 f}{\partial \boldsymbol{d}^2} \left(\boldsymbol{x}_0 \right)$。</blockquote>
+
+<p class="post-text-noindent">同样地，利用函数可微及二阶方向导数的定义，我们容易验证下式成立：</p>
+
+$$\frac{\partial^2 f}{\partial \boldsymbol{d}^2} \left(\boldsymbol{x}_0 \right) = \lim_{\alpha \rightarrow 0} \frac{\frac{\partial f}{\partial \boldsymbol{d}}\left(\boldsymbol{x}_0 + \alpha \boldsymbol{d} \right) - \frac{\partial f}{\partial \boldsymbol{d}}\left(\boldsymbol{x}_0 \right)}{\alpha} = \boldsymbol{d}^T\boldsymbol{H}_f\left(\boldsymbol{x}_0 \right ) \boldsymbol{d}$$
+
+<p>本小节最后，我们给出多元函数的<strong>泰勒公式</strong>（证明见北京大学出版社出版的由伍胜健编著的《数学分析》第三册第十四章的定理 14.3.1）：</p>
+
+<blockquote><strong>定理 8</strong>：设 $f\left(\boldsymbol{x} \right)$ 具有 $\left(r+1 \right)$ 阶连续偏导数，则有<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \sum_{k=1}^{r}\frac{1}{k!}\left ( \sum_{i=1}^{n}d_i \frac{\partial}{\partial x_i} \right )^kf\left(\boldsymbol{x} \right) + \frac{1}{\left ( r+1 \right )!}\left ( \sum_{i=1}^{n}d_i \frac{\partial}{\partial x_i} \right )^{r+1}f\left(\boldsymbol{\xi } \right),\ \boldsymbol{\xi } \in \left ( \boldsymbol{x},\boldsymbol{x}+\boldsymbol{d} \right )$$
+或者<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \sum_{k=1}^{r+1}\frac{1}{k!}\left ( \sum_{i=1}^{n}d_i \frac{\partial}{\partial x_i} \right )^kf\left(\boldsymbol{x} \right) + o\left(\left \| \boldsymbol{d} \right \|^{r+1} \right )$$
+</blockquote>
+
+<blockquote><strong>推论 1</strong>：设 $f\left(\boldsymbol{x} \right)$ 具有一阶连续偏导数，则有<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{\xi } \right)^T \boldsymbol{d},\ \boldsymbol{\xi} \in \left(\boldsymbol{x},\boldsymbol{x}+\boldsymbol{d} \right)$$
+或者<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{x} \right)^T \boldsymbol{d} + o\left(\left \| \boldsymbol{d} \right \| \right)$$
+</blockquote>
+
+<blockquote><strong>推论 2</strong>：设 $f\left(\boldsymbol{x} \right)$ 具有二阶连续偏导数，则有<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{x} \right)^T \boldsymbol{d} + \frac{1}{2} \boldsymbol{d}^T \boldsymbol{H}_f\left(\boldsymbol{\xi } \right ) \boldsymbol{d},\ \boldsymbol{\xi} \in \left(\boldsymbol{x},\boldsymbol{x}+\boldsymbol{d} \right)$$
+或者<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{x} \right)^T \boldsymbol{d} + \frac{1}{2} \boldsymbol{d}^T \boldsymbol{H}_f\left(\boldsymbol{x} \right ) \boldsymbol{d} + o\left(\left \| \boldsymbol{d} \right \|^2 \right)$$
+</blockquote>
+
+<p class="post-text-noindent">与梯度、Hessian 矩阵一样，一阶、二阶泰勒公式在优化中同样有着重要而广泛的应用。<strong>它给出了函数的一阶或二阶近似，而大多数优化方法是基于函数的一阶或二阶近似模型给出的</strong>。此外，我们还可以看到，函数 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x} + \boldsymbol{d}$ 的一阶近似是 $f\left(\boldsymbol{x} \right)$ 与 $f\left(\boldsymbol{x} \right)$ 的方向导数的和，二阶近似是 $f\left(\boldsymbol{x} \right)$、$f\left(\boldsymbol{x} \right)$ 的方向导数与 $f\left(\boldsymbol{x} \right)$ 二阶方向导数的一半的和。</p>
+
 <h2>1.2.3 向量值函数的微分</h2>
+
+<p>我们首先给出向量值函数<strong>可微</strong>与微分的定义：</p>
+
+<blockquote><strong>定义 5</strong>：如果存在一个仅依赖于 $\boldsymbol{x}_0 \in R^n$ 的 $m\times n$ 矩阵 $\boldsymbol{A}$ 使得<br>
+$$\boldsymbol{f}\left(\boldsymbol{x}_0 + \Delta\boldsymbol{x} \right) - \boldsymbol{f}\left(\boldsymbol{x}_0 \right) = \boldsymbol{A}\Delta\boldsymbol{x} + \boldsymbol{o}\left(\left \| \Delta\boldsymbol{x} \right \| \right)$$
+其中 $\boldsymbol{o}\left(\left \| \Delta\boldsymbol{x} \right \| \right) = \left(o_1\left(\left \| \Delta\boldsymbol{x} \right \| \right),o_2\left(\left \| \Delta\boldsymbol{x} \right \| \right),\cdots,o_m\left(\left \| \Delta\boldsymbol{x} \right \| \right) \right)^T$ 是由 $m$ 个 $\left \| \Delta\boldsymbol{x} \right \|$ 的高阶无穷小构成的列向量，则我们称 $\boldsymbol{f}\left(\boldsymbol{x} \right) = \left(f_1\left(\boldsymbol{x} \right),f_2\left(\boldsymbol{x} \right),\cdots,f_m\left(\boldsymbol{x} \right) \right)^T$ 在 $\boldsymbol{x}_0$ 处可微或可导，称矩阵 $\boldsymbol{A}$ 为 $\boldsymbol{f}\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的 Fréchet 导数（Fréchet derivative），并称 $\boldsymbol{A}\Delta\boldsymbol{x}$ 为 $\boldsymbol{f}\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的（全）微分。
+</blockquote>
+
+<p class="post-text-noindent">可以证明：向量值函数 $\boldsymbol{f}\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处可微当且仅当它的每个分量 $f_i\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0,\ i = 1,2,\cdots,m$ 处可微，从而有 $f_i\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处连续，$f_i\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的偏导 $\frac{\partial f_i\left(\boldsymbol{x}_0 \right )}{\partial x_j},\ j = 1,2,\cdots,n$ 存在且 $\boldsymbol{A}$ 为 $\boldsymbol{f}\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的 <strong>Jacobian 矩阵</strong>，即
+
+$$\boldsymbol{A} = \begin{pmatrix}
+\nabla f_1\left(\boldsymbol{x}_0 \right)^T \\
+\nabla f_2\left(\boldsymbol{x}_0 \right)^T \\
+\vdots \\
+\nabla f_m\left(\boldsymbol{x}_0 \right)^T
+\end{pmatrix} = \begin{bmatrix}
+\frac{\partial f_1\left(\boldsymbol{x}_0 \right )}{\partial x_1} & \frac{\partial f_1\left(\boldsymbol{x}_0 \right )}{\partial x_2} & \cdots & \frac{\partial f_1\left(\boldsymbol{x}_0 \right )}{\partial x_n} \\
+\frac{\partial f_2\left(\boldsymbol{x}_0 \right )}{\partial x_1} & \frac{\partial f_2\left(\boldsymbol{x}_0 \right )}{\partial x_2} & \cdots & \frac{\partial f_2\left(\boldsymbol{x}_0 \right )}{\partial x_n} \\
+\vdots & \vdots &  & \vdots \\
+\frac{\partial f_m\left(\boldsymbol{x}_0 \right )}{\partial x_1} & \frac{\partial f_m\left(\boldsymbol{x}_0 \right )}{\partial x_2} & \cdots & \frac{\partial f_m\left(\boldsymbol{x}_0 \right )}{\partial x_n}
+\end{bmatrix} \triangleq \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x}_0 \right)$$
+
+<p class="post-text-noindent">如需了解详细证明过程，可参考由北京大学出版社出版、由伍胜健编著的《数学分析》第三册第十四章中定理 14.1.4 和定理 14.1.1 的证明。</p>
+
+<p>下面定理的推论将给出用线性模型 $\boldsymbol{f}\left(\boldsymbol{x} \right) + \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right) \boldsymbol{d}$ 近似 $\boldsymbol{f}\left(\boldsymbol{x}+\boldsymbol{d} \right)$ 时所产生的误差上界。</p>
+
+<blockquote><strong>定理 9</strong>：若 $\boldsymbol{f}:R^n \rightarrow R^m$ 在开凸集 D 上偏导存在且连续，则 $\forall \boldsymbol{x},\boldsymbol{u},\boldsymbol{v} \in D$，有：<br>
+$$\left \| \boldsymbol{f}\left ( \boldsymbol{u} \right ) - \boldsymbol{f}\left ( \boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right )\left(\boldsymbol{u}-\boldsymbol{v} \right )\right \| \leq \left \| \boldsymbol{u}-\boldsymbol{v} \right \|\underset{0\leq t\leq 1}{\sup}\left \| \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{v}+t\left(\boldsymbol{u}-\boldsymbol{v} \right ) \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right ) \right \|$$
+若 $\boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right)$ 在 $D$ 上 Lipschitz 连续，即 $\forall\ \boldsymbol{x},\ \boldsymbol{y} \in D$，存在 Lipschitz 常数 $\gamma > 0$ 使 $\left \| \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{y} \right ) \right \| \leq$ $\gamma\left \| \boldsymbol{x}-\boldsymbol{y} \right \|$，则有：<br>
+$$\left \| \boldsymbol{f}\left ( \boldsymbol{u} \right ) - \boldsymbol{f}\left ( \boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right )\left(\boldsymbol{u}-\boldsymbol{v} \right )\right \| \leq \gamma \frac{\left \| \boldsymbol{u}-\boldsymbol{x} \right \| + \left \| \boldsymbol{v}-\boldsymbol{x} \right \|}{2} \left \| \boldsymbol{u}-\boldsymbol{v} \right \| \leq \gamma \sigma\left(\boldsymbol{u},\boldsymbol{v} \right) \left \| \boldsymbol{u}-\boldsymbol{v} \right \|$$
+这里 $\sigma\left(\boldsymbol{u},\boldsymbol{v} \right) = \max \left \{ \left \| \boldsymbol{u}-\boldsymbol{x} \right \|,\left \| \boldsymbol{v}-\boldsymbol{x} \right \| \right \}$
+</blockquote>
+
+<blockquote><strong>推论 3</strong>：若 $\boldsymbol{f}:R^n \rightarrow R^m$ 在开凸集 D 上偏导存在且连续，则 $\forall \boldsymbol{x},\boldsymbol{x} + \boldsymbol{d} \in D$，有：<br>
+$$\left \| \boldsymbol{f}\left ( \boldsymbol{x} + \boldsymbol{d} \right ) - \boldsymbol{f}\left ( \boldsymbol{x} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right )\boldsymbol{d}\right \| \leq \left \| \boldsymbol{d} \right \|\underset{0\leq t\leq 1}{\sup}\left \| \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x}+t\boldsymbol{d} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right ) \right \|$$
+若 $\boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right)$ 在 $D$ 中是 Lipschitz 连续的，则有：<br>
+$$\left \| \boldsymbol{f}\left ( \boldsymbol{x} + \boldsymbol{d} \right ) - \boldsymbol{f}\left ( \boldsymbol{x} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right )\boldsymbol{d}\right \| \leq \frac{\gamma}{2} \left \| \boldsymbol{d} \right \|^2 \leq \gamma \left \| \boldsymbol{d} \right \|^2$$
+这里 $\gamma$ 为 Lipschitz 常数。
+</blockquote>
+
+<p class="post-text-noindent">通过以上推论，我们知道：<strong>用线性模型 $\boldsymbol{f}\left(\boldsymbol{x} \right) + \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right) \boldsymbol{d}$ 近似 $\boldsymbol{f}\left(\boldsymbol{x}+\boldsymbol{d} \right)$ 所产生的误差存在一个上界，这个上界是 $\left \| \boldsymbol{d} \right \|^2$ 的常数倍，而当 Jacobian 矩阵 Lipschitz 连续时，这个常数就是 Lipschitz 常数的 1/2</strong>。下面给出该定理的证明：</p>
+
+<blockquote><strong>证明</strong>：由 $\boldsymbol{f}$ 的一阶连续可微性我们有（<span class="post-text-problem">注：关于该结论，笔者是存疑的，对于向量值函数而言，其每个分量函数的一阶泰勒展开所对应的 t 不一定相同，为什么这里是相同的</span>）<br>
+$$\boldsymbol{f}\left(\boldsymbol{u} \right ) - \boldsymbol{f}\left(\boldsymbol{v} \right ) = \int_{0}^{1}\boldsymbol{J}_{\boldsymbol{f}}\left ( t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} \right ) \left(\boldsymbol{u} - \boldsymbol{v} \right )\mathrm{d}t$$
+从而<br>
+$$\begin{aligned}
+&\quad \ \left \| \boldsymbol{f}\left(\boldsymbol{u} \right ) - \boldsymbol{f}\left(\boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \left(\boldsymbol{u} - \boldsymbol{v} \right ) \right \| \\
+& \leq \int_{0}^{1} \left \| \left [ \boldsymbol{J}_{\boldsymbol{f}}\left ( t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \right ] \left(\boldsymbol{u} - \boldsymbol{v} \right ) \right \|\mathrm{d}t \\
+& \leq \int_{0}^{1} \left \| \boldsymbol{J}_{\boldsymbol{f}}\left ( t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \right \| \left \| \boldsymbol{u} - \boldsymbol{v} \right \|\mathrm{d}t \\
+&\leq \left \| \boldsymbol{u}-\boldsymbol{v} \right \|\underset{0\leq t\leq 1}{\sup}\left \| \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{v}+t\left(\boldsymbol{u}-\boldsymbol{v} \right ) \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right ) \right \|
+\end{aligned}$$
+如果 $\boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right)$ 在 $D$ 上 Lipschitz 连续，则有<br>
+$$\begin{aligned}
+&\quad \ \left \| \boldsymbol{f}\left(\boldsymbol{u} \right ) - \boldsymbol{f}\left(\boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \left(\boldsymbol{u} - \boldsymbol{v} \right ) \right \| \\
+& \leq \int_{0}^{1} \left \| \boldsymbol{J}_{\boldsymbol{f}}\left ( t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \right \| \left \| \boldsymbol{u} - \boldsymbol{v} \right \|\mathrm{d}t \\
+& \leq \int_{0}^{1} \gamma \left \| t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} - \boldsymbol{x}  \right \| \left \| \boldsymbol{u} - \boldsymbol{v} \right \|\mathrm{d}t \\
+& = \int_{0}^{1} \gamma \left \| t\left ( \boldsymbol{u}-\boldsymbol{x} \right ) + \left( 1-t \right )\left ( \boldsymbol{v} - \boldsymbol{x} \right ) \right \| \left \| \boldsymbol{u} - \boldsymbol{v} \right \|\mathrm{d}t \\
+& \leq \gamma \left \| \boldsymbol{u} - \boldsymbol{v} \right \| \int_{0}^{1} \left [ t\left \| \boldsymbol{u}-\boldsymbol{x}\right \| + \left ( 1-t \right )\left \| \boldsymbol{v}-\boldsymbol{x}\right \| \right ] \mathrm{d}t \\
+& = \gamma \left \| \boldsymbol{u} - \boldsymbol{v} \right \| \left [ \left \| \boldsymbol{u}-\boldsymbol{x}\right \| \int_{0}^{1} t \mathrm{d}t + \left \| \boldsymbol{v}-\boldsymbol{x}\right \|\int_{0}^{1} \left ( 1-t \right ) \mathrm{d}t \right ] \\
+& = \gamma \frac{\left \| \boldsymbol{u}-\boldsymbol{x} \right \| + \left \| \boldsymbol{v}-\boldsymbol{x} \right \|}{2} \left \| \boldsymbol{u}-\boldsymbol{v} \right \| \\
+& \leq \gamma \max \left \{ \left \| \boldsymbol{u}-\boldsymbol{x} \right \|,\left \| \boldsymbol{v}-\boldsymbol{x} \right \| \right \} \left \| \boldsymbol{u}-\boldsymbol{v} \right \|
+\end{aligned}
+$$
+证毕。
+</blockquote>
+
+<p class="post-text-noindent">由于向量值函数是函数的推广，适用于向量值函数的推论 3 同样适用于函数。它给出了用线性模型 $f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{x} \right)^T \boldsymbol{d}$ 近似 $f\left(\boldsymbol{x}+\boldsymbol{d} \right)$ 的误差上界，类似地，我们可以证明：如果 $f\left(x \right)$ 在开凸集 $D$ 上二阶连续可微且 $\boldsymbol{H}_f\left(x \right)$ 在 $D$ 上 Lipschitz 连续，则有（<span class="post-text-problem">注：书上给出的是一个更小的界，书上不是 $\frac{\gamma}{4}$ 而是 $\frac{\gamma}{6}$，笔者没有证明出来，不知书上正确与否</span>）</p>
+
+$$\left | f\left(\boldsymbol{x}+\boldsymbol{d} \right ) - \left [ f\left(\boldsymbol{x} \right ) + \nabla f\left(\boldsymbol{x} \right )^T\boldsymbol{d} + \frac{1}{2}\boldsymbol{d}^T\boldsymbol{H}_f\left(\boldsymbol{x} \right ) \boldsymbol{d}\right ] \right | \leq \frac{\gamma}{4}\left \| \boldsymbol{d} \right \|^3$$
+
 <h2>1.2.4 有限差分导数</h2>
 
 <h1>1.3 凸分析</h1>
