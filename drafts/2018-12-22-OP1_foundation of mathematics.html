@@ -506,7 +506,7 @@ $$\left \| \boldsymbol{f}\left ( \boldsymbol{x} + \boldsymbol{d} \right ) - \bol
 
 <p class="post-text-noindent">通过以上推论，我们知道：<strong>用线性模型 $\boldsymbol{f}\left(\boldsymbol{x} \right) + \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right) \boldsymbol{d}$ 近似 $\boldsymbol{f}\left(\boldsymbol{x}+\boldsymbol{d} \right)$ 所产生的误差存在一个上界，这个上界是 $\left \| \boldsymbol{d} \right \|^2$ 的常数倍，而当 Jacobian 矩阵 Lipschitz 连续时，这个常数就是 Lipschitz 常数的 1/2</strong>。下面给出该定理的证明：</p>
 
-<blockquote><strong>证明</strong>：由 $\boldsymbol{f}$ 的一阶连续可微性我们有（<span class="post-text-problem">注：关于该结论，笔者是存疑的，对于向量值函数而言，其每个分量函数的一阶泰勒展开所对应的 t 不一定相同，为什么这里是相同的</span>）<br>
+<blockquote><strong>证明</strong>：由 $\boldsymbol{f}$ 的一阶偏导连续性我们有（<span class="post-text-problem">注：关于该结论，笔者是存疑的，对于向量值函数而言，其每个分量函数的一阶泰勒展开所对应的 t 不一定相同，为什么这里是相同的</span>）<br>
 $$\boldsymbol{f}\left(\boldsymbol{u} \right ) - \boldsymbol{f}\left(\boldsymbol{v} \right ) = \int_{0}^{1}\boldsymbol{J}_{\boldsymbol{f}}\left ( t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} \right ) \left(\boldsymbol{u} - \boldsymbol{v} \right )\mathrm{d}t$$
 从而<br>
 $$\begin{aligned}
@@ -530,11 +530,55 @@ $$
 证毕。
 </blockquote>
 
-<p class="post-text-noindent">由于向量值函数是函数的推广，适用于向量值函数的推论 3 同样适用于函数。它给出了用线性模型 $f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{x} \right)^T \boldsymbol{d}$ 近似 $f\left(\boldsymbol{x}+\boldsymbol{d} \right)$ 的误差上界，类似地，我们可以证明：如果 $f\left(x \right)$ 在开凸集 $D$ 上二阶连续可微且 $\boldsymbol{H}_f\left(x \right)$ 在 $D$ 上 Lipschitz 连续，则有（<span class="post-text-problem">注：书上给出的是一个更小的界，书上不是 $\frac{\gamma}{4}$ 而是 $\frac{\gamma}{6}$，笔者没有证明出来，不知书上正确与否</span>）</p>
+<p class="post-text-noindent">由于向量值函数是函数的推广，适用于向量值函数的推论 3 同样适用于函数。它给出了用线性模型 $f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{x} \right)^T \boldsymbol{d}$ 近似 $f\left(\boldsymbol{x}+\boldsymbol{d} \right)$ 的误差上界，类似地，我们可以证明：如果 $f\left(x \right)$ 在开凸集 $D$ 上二阶偏导连续且 $\boldsymbol{H}_f\left(x \right)$ 在 $D$ 上 Lipschitz 连续，则有（<span class="post-text-problem">注：书上给出的是一个更小的界，书上不是 $\frac{\gamma}{4}$ 而是 $\frac{\gamma}{6}$，笔者没有证明出来，不知书上正确与否</span>）</p>
 
 $$\left | f\left(\boldsymbol{x}+\boldsymbol{d} \right ) - \left [ f\left(\boldsymbol{x} \right ) + \nabla f\left(\boldsymbol{x} \right )^T\boldsymbol{d} + \frac{1}{2}\boldsymbol{d}^T\boldsymbol{H}_f\left(\boldsymbol{x} \right ) \boldsymbol{d}\right ] \right | \leq \frac{\gamma}{4}\left \| \boldsymbol{d} \right \|^3$$
 
-<h2>1.2.4 有限差分导数</h2>
+<p>本节最后，我们给出经由向量值函数 $\boldsymbol{f}:\ R^n\rightarrow R^m$ 和函数 $\boldsymbol{g}:\ R^m\rightarrow R$ 得到的<strong>复合函数 $h = g\left(\boldsymbol{f}\left(\boldsymbol{x} \right) \right)$ 的梯度与 Hessian 矩阵</strong>。若 $\boldsymbol{f}$ 各分量函数的一阶偏导连续且 $\boldsymbol{g}$ 一阶偏导连续，则有：</p>
+
+$$\nabla h\left(\boldsymbol{x} \right) = \boldsymbol{J}_{\boldsymbol{f}}\left(x \right)^T \nabla g\left(\boldsymbol{f}\left(\boldsymbol{x} \right) \right)$$
+
+<p class="post-text-noindent">且</p>
+
+$$\boldsymbol{H}_{h} \left(\boldsymbol{x} \right ) = \boldsymbol{J}_{\boldsymbol{f}} \left(\boldsymbol{x} \right ) \boldsymbol{H}_{g} \left(\boldsymbol{f} \left(\boldsymbol{x} \right) \right )^T \boldsymbol{J}_{\boldsymbol{f}} \left(\boldsymbol{x} \right )^T + \sum_{i=1}^{m}\frac{\partial g\left(\boldsymbol{f}\left(\boldsymbol{x} \right ) \right )}{\partial f_i} \boldsymbol{H}_{f_i}\left(\boldsymbol{x} \right )$$
+
+<p class="post-text-noindent">若还有 $\boldsymbol{g}:\ R^m\rightarrow R$ 二阶偏导连续（此时 Hessian 矩阵为对称矩阵），则</p>
+
+$$\boldsymbol{H}_{h} \left(\boldsymbol{x} \right ) = \boldsymbol{J}_{\boldsymbol{f}} \left(\boldsymbol{x} \right ) \boldsymbol{H}_{g} \left(\boldsymbol{f} \left(\boldsymbol{x} \right) \right ) \boldsymbol{J}_{\boldsymbol{f}} \left(\boldsymbol{x} \right )^T + \sum_{i=1}^{m}\frac{\partial g\left(\boldsymbol{f}\left(\boldsymbol{x} \right ) \right )}{\partial f_i} \boldsymbol{H}_{f_i}\left(\boldsymbol{x} \right )$$
+
+<h2>1.2.4 差商</h2>
+
+<p>以下三个定理分别给出了<strong>梯度、Hessian 矩阵和 Jacobian 矩阵的差商近似</strong>及近似误差上界。<strong>差商</strong>（difference quotient）定义为（注：书中称差商为有限差分导数）</p>
+
+$$\frac{f\left(\boldsymbol{x}+b \right) - f\left(\boldsymbol{x}+a \right)}{b-a}$$
+
+<p class="post-text-noindent">其中形如 $f\left(\boldsymbol{x}+b \right) - f\left(\boldsymbol{x}+a \right)$ 的数学表达式被称为<strong>有限差分</strong>（finite difference）。</p>
+
+<blockquote><strong>定理 10</strong>：如果 $f\left(\boldsymbol{x} \right)$ 在开凸集 $D$ 上二阶偏导连续且 $\boldsymbol{H}_f\left(x \right)$ 在 $D$ 上 Lipschitz 连续，则梯度的差商近似<br>
+$$\boldsymbol{g} =\left (g_1,g_2,\cdots,g_n \right)^T,\ g_i = \frac{f\left(\boldsymbol{x}+h\boldsymbol{e}_i \right )-f\left(\boldsymbol{x}-h\boldsymbol{e}_i \right )}{2h}$$
+满足<br>
+$$\left| g_i - \frac{\partial f\left(\boldsymbol{x} \right)}{\partial x_i} \right| \leq \frac{\gamma}{6}h^2 \\
+\left \| \boldsymbol{g} - \nabla f\left(\boldsymbol{x} \right) \right \|_\infty \leq \frac{\gamma}{6}h^2$$
+这里 $h$ 为常数，$\boldsymbol{e}_i$ 为第 $i$ 个分量为 1，其余分量为 0 的单位向量。
+</blockquote>
+
+<blockquote><strong>定理 11</strong>：如果 $f\left(\boldsymbol{x} \right)$ 在开凸集 $D$ 上二阶偏导连续且 $\boldsymbol{H}_f\left(x \right)$ 在 $D$ 上 Lipschitz 连续，则 Hessian 矩阵的差商近似<br>
+$$\boldsymbol{A} =\left(a_{ij} \right)_{n\times n},\ a_{ij} = \frac{f\left(\boldsymbol{x}+h\boldsymbol{e}_i+h\boldsymbol{e}_j \right )-f\left(\boldsymbol{x}+h\boldsymbol{e}_i \right )-f\left(\boldsymbol{x}+h\boldsymbol{e}_j \right )+f\left(\boldsymbol{x}\right )}{2h^2}$$
+满足<br>
+$$\left| a_{ij} - \frac{\partial^2 f\left(\boldsymbol{x} \right)}{\partial x_i \partial x_j} \right| \leq \frac{\gamma h}{4} \\
+\left \| \boldsymbol{A} - \boldsymbol{H}_f\left(\boldsymbol{x} \right) \right \|_{1/\infty/F} \leq \frac{\gamma hn}{4}$$
+这里 $h$ 为常数，$\boldsymbol{e}_i$ 为第 $i$ 个分量为 1，其余分量为 0 的单位向量。
+</blockquote>
+
+<blockquote><strong>定理 12</strong>：如果 $\boldsymbol{f}\left(\boldsymbol{x} \right)$ 在开凸集 $D$ 上一阶偏导连续且 $\boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right)$ 在 $D$ 上 Lipschitz 连续，则 Jacobian 矩阵的差商近似<br>
+$$\boldsymbol{A} =\left(a_{ij} \right)_{n\times n},\ a_{ij} = \frac{f_i\left(\boldsymbol{x}+h\boldsymbol{e}_j \right ) -f_i\left(\boldsymbol{x}\right )}{h}$$
+满足<br>
+$$\left| \boldsymbol{A}_{.j} - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right )_{.j} \right| \leq \frac{\gamma}{2}\left | h \right | \\
+\left \| \boldsymbol{A} - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \right \|_1 \leq \frac{\gamma}{2}\left | h \right |$$
+这里 $h$ 为常数，$\boldsymbol{A}_{.j}$ 为 $A$ 的第 $j$ 列，$\boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right )_{.j}$ 为 $\boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right )$ 第 $j$ 列，$\boldsymbol{e}_i$ 为第 $i$ 个分量为 1，其余分量为 0 的单位向量。
+</blockquote>
+
+<p class="post-text-noindent">上述这些定理的证明主要利用了上小节给出的用线性模型近似原函数的误差上界，如需了解详细证明过程，可参考由科学出版社出版，由袁亚湘、孙文瑜著的《最优化理论与方法》一书的 1.2.6 节。</p>
 
 <h1>1.3 凸分析</h1>
 
