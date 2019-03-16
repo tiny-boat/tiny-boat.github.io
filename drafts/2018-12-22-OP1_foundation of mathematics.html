@@ -626,13 +626,25 @@ $$S\ is\ convex\ set \Leftrightarrow \forall \boldsymbol{x}_1,\boldsymbol{x}_2 \
 
 <blockquote><strong>定义 6</strong>：不在非空凸集 $S$ 中任何线段内部的 $S$ 中的点称为非空凸集 $S$ 的极值点，即对于任意 $S$ 中的极值点 $\boldsymbol{x}$，若 $\boldsymbol{x} = \alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2,\ \alpha \in \left(0,1 \right)$ 则必有 $\boldsymbol{x} = \boldsymbol{x}_1 = \boldsymbol{x}_2$。</blockquote>
 
-<blockquote><strong>定义 7</strong>：若对非空凸集 $S$ 中的任意点 $\boldsymbol{x}$，存在 $\lambda_0 > 0$ 使得 $\forall \lambda \in \left(0,\lambda_0 \right)$ 都有 $\boldsymbol{x} + \lambda \boldsymbol{d} \in S,\ \boldsymbol{d} \neq 0$，则我们称 $\boldsymbol{d}$ 为非空凸集 $S$ 的可行方向。如果 $S$ 中的可行方向 $\boldsymbol{d}$ 不能表示成两个不同可行方向 $\boldsymbol{d}_1,\boldsymbol{d}_2$ 的线性组合，则称 $\boldsymbol{d}$ 为非空凸集 $S$ 的极值方向。</blockquote>
+<blockquote><strong>定义 7</strong>：若对非空凸集 $S$ 中的任意点 $\boldsymbol{x}$，存在 $\lambda_0 > 0$ 使得 $\forall \lambda \in \left(0,\lambda_0 \right)$ 都有 $\boldsymbol{x} + \lambda \boldsymbol{d} \in S$，$\ \boldsymbol{d} \neq 0$，则我们称 $\boldsymbol{d}$ 为非空凸集 $S$ 的可行方向。如果 $S$ 中的可行方向 $\boldsymbol{d}$ 不能表示成两个不同可行方向 $\boldsymbol{d}_1,\boldsymbol{d}_2$ 的线性组合，则称 $\boldsymbol{d}$ 为非空凸集 $S$ 的极值方向。</blockquote>
 
 <p class="post-text-noindent">凸集的极值点和极值方向概念在凸集研究中是个有用的概念，但究竟有用在何处，笔者还不得而知。</p>
 
 <h2>1.3.2 凸函数</h2>
 
-<p></p>
+<p>如果定义在非空凸集 $S$ 上的函数 $f$ 满足：</p>
+
+$$\forall \boldsymbol{x}_1 \neq \boldsymbol{x}_2 \in S,\ f\left( \alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2 \right) \leq \alpha f\left(\boldsymbol{x}_1 \right) + \left(1-\alpha \right) f\left(\boldsymbol{x}_2 \right),\ \alpha \in \left(0,1 \right)$$
+
+<p class="post-text-noindent">则我们称 $f$ 为非空凸集 $S$ 上的<strong>凸函数</strong>，如果上述不等式取不到等号，那么我们称 $f$ 为非空凸集 $S$ 上的<strong>严格凸函数</strong>。如果 $f$ 还满足：</p>
+
+$$\forall \boldsymbol{x}_1 \neq \boldsymbol{x}_2 \in S,\ f\left( \alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2 \right) \leq \alpha f\left(\boldsymbol{x}_1 \right) + \left(1-\alpha \right) f\left(\boldsymbol{x}_2 \right) - c\alpha \left(1-\alpha \right) \left \| \boldsymbol{x}_1 - \boldsymbol{x}_2 \right \|^2$$
+
+<p class="post-text-noindent">则我们称 $f$ 为 $S$ 上的<strong>一致凸函数</strong>。由凸函数的定义不难看出，凸函数的图像特征是：<strong>凸函数任意两点间的函数图像必位于连接该两点线段的下方</strong>。</p>
+
+<p>凸函数具有与凸集类似的性质，那就是两个凸函数之和仍然为凸函数，此外，凸函数的正常数倍仍为凸函数。下面我们给出在函数可微和函数二次可微时，$f$ 为凸函数的充要条件，它们分别与 $f$ 的梯度和 Hessian 矩阵有关。</p>
+
+<blockquote>定理 13：</blockquote>
 
 <h2>1.3.3 凸集的分离与支撑</h2>
 
