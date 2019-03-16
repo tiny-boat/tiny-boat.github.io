@@ -582,10 +582,58 @@ $$\left| \boldsymbol{A}_{.j} - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbo
 
 <h1>1.3 凸分析</h1>
 
-<p>本节，我们介绍最优化理论中需要用到的凸分析知识，包括：凸集、凸函数和凸集的分离与支撑。</p>
+<p>凸性在最优化理论与方法的研究中起着重要的作用。本节，我们介绍最优化理论中需要用到的凸分析知识，包括：凸集、凸函数和凸集的分离与支撑。</p>
 
 <h2>1.3.1 凸集</h2>
+
+<p>如果一个集合中连接任意两点的线段上的点依然属于这个集合，那么我们称这样的集合为<strong>凸集</strong>（convex set）。用数学语言描述就是</p>
+
+$$S\ is\ convex\ set \Leftrightarrow \forall \boldsymbol{x}_1,\boldsymbol{x}_2 \in S,\ \alpha \boldsymbol{x}_1 + \left(1-\alpha \right)\boldsymbol{x}_2 \in S, \forall \alpha \in \left[0,1 \right]$$
+
+<p class="post-text-noindent">根据定义，利用数学归纳法不难验证：$R^n$ 中的子集 $S$ 为凸集当且仅当 $S$ 中任意 $m$ 个元素 $x_1,x_2,\cdots,x_m$ 的所有凸组合 $\sum_{i=1}^{n} \alpha_i \boldsymbol{x}_i$ 仍然属于 $S$，这里 $\sum_{i=1}^{n} \alpha_i = 1$ 且 $\alpha_i \geq 0$。我们将包含 $S$ 的最小凸集称为 $S$ 的<strong>凸包</strong>，而这个最小凸集正是由 $S$ 中任意 $m$ 个元素的所有凸组合构成的，因此如果 $S$ 本身为凸集，那么它的凸包就是它自身。下面我们给出一些<strong>常见的凸集</strong>：</p>
+
+<ul>
+	<li>线段（line segment）:</li>
+	$$\left \{\boldsymbol{z} \in R^n: \boldsymbol{z} = \alpha \boldsymbol{x} + \left( 1-\alpha \right) \boldsymbol{y},\ \alpha \in \left[0,1 \right] \right \}$$
+	<li>射线（ray / half-line）：</li>
+	$$\left \{\boldsymbol{x} \in R^n: \boldsymbol{x} = \boldsymbol{x}_0 + \lambda \boldsymbol{d},\ \lambda \geq 0,\ \boldsymbol{d} \neq 0,\ \boldsymbol{x}_0\ is\ a\ fixed\ point\right \}$$
+	<li>直线（line）：</li>
+	$$\left \{\boldsymbol{x} \in R^n: \boldsymbol{x} = \boldsymbol{x}_0 + \lambda \boldsymbol{d}\ for\ all\  \lambda \in R,\ \boldsymbol{d}\neq 0,\ \boldsymbol{x}_0\ is\ a\ fixed\ point\right \}$$
+	<li>超平面（hyperplane）：</li>
+	$$\left \{ \boldsymbol{x} \in R^n: \boldsymbol{a}^T\boldsymbol{x} = b,\ \boldsymbol{a} \in R^n,\ b \in R \right \}$$
+	<li>半空间（half-space）：</li>
+	$$\left \{ \boldsymbol{x} \in R^n: \boldsymbol{a}^T\boldsymbol{x} \geq b,\ \boldsymbol{a} \in R^n,\ b \in R \right \}$$
+	$$\left \{ \boldsymbol{x} \in R^n: \boldsymbol{a}^T\boldsymbol{x} \leq b,\ \boldsymbol{a} \in R^n,\ b \in R \right \}$$
+	<li>线性簇（linear variety）:</li>
+	$$\left \{ \boldsymbol{x} \in R^n: \boldsymbol{A}\boldsymbol{x} = \boldsymbol{b},\ \boldsymbol{A} \in R^{m\times n},\ \boldsymbol{b} \in R^m \right \}$$
+	<li>多面体（polytope）:</li>
+	$$\bigcap_{i = 1}^{r} H_i,\ H_i = \left \{ \boldsymbol{x} \in R^n: \boldsymbol{a}_i^T\boldsymbol{x} \geq b_i\ or\ \boldsymbol{a}_i^T\boldsymbol{x} \leq b_i,\ \boldsymbol{a}_i \in R^n,\ b_i \in R \right \}$$
+	<li>多胞形（polyhedra）:</li>
+	$$\begin{aligned} & \bigcap_{i = 1}^{r} H_i,\ H_i = \left \{ \boldsymbol{x} \in R^n: \boldsymbol{a}_i^T\boldsymbol{x} \geq b_i\ or\ \boldsymbol{a}_i^T\boldsymbol{x} \leq b_i,\ \boldsymbol{a}_i \in R^n,\ b_i \in R \right \} \\ & \forall \boldsymbol{x} \in \bigcap_{i = 1}^{r} H_i,\ \exists M > 0,\ s.t.\left \| \boldsymbol{x} \right \| \leq M \end{aligned}$$
+</ul>
+
+<p class="post-text-noindent"><strong>两个凸集的交、两个凸集的和仍然为凸集</strong>，这是凸集的两条重要性质。上面列出的常见凸集中，线性簇是有限个超平面的和，多面体、多胞形是有限个半空间的交。</p>
+
+<p>我们定义对正的数乘运算封闭的 $R^n$ 的子集为锥，因而我们将对正的数乘运算封闭的凸集称为<strong>凸锥</strong>。根据凸集与锥的定义，我们不难知道：$R^n$ 的子集为凸锥当且仅当它对加法和正的数乘运算是封闭的。下面给出凸锥的几个例子：</p>
+
+<ul>
+	<li>各分量均非负的所有向量：$\left \{ \boldsymbol{x} = \left ( x_1,x_2,\cdots,x_n \right ) \in R^n: x_i \geq 0 \right \}$</li>
+	<li>有限个 $b = 0$ 的负半空间的交：$\left \{ \boldsymbol{x} = \left ( x_1,x_2,\cdots,x_n \right ) \in R^n: a_i^T\boldsymbol{x} \leq 0,\ a_i \in R^n,\ i \in I \right \}$，这里 $I$ 是任意一个指标集</li>
+	<li>包含凸集的最小凸锥：$\left \{ \lambda \boldsymbol{x}: \lambda > 0,\ \boldsymbol{x} \in C \right \}$，这里 $C$ 为凸集</li>
+</ul>
+
+<p>本小节最后，我们给出<strong>凸集极值点</strong>和<strong>极值方向</strong>的定义。</p>
+
+<blockquote><strong>定义 6</strong>：不在非空凸集 $S$ 中任何线段内部的 $S$ 中的点称为非空凸集 $S$ 的极值点，即对于任意 $S$ 中的极值点 $\boldsymbol{x}$，若 $\boldsymbol{x} = \alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2,\ \alpha \in \left(0,1 \right)$ 则必有 $\boldsymbol{x} = \boldsymbol{x}_1 = \boldsymbol{x}_2$。</blockquote>
+
+<blockquote><strong>定义 7</strong>：若对非空凸集 $S$ 中的任意点 $\boldsymbol{x}$，存在 $\lambda_0 > 0$ 使得 $\forall \lambda \in \left(0,\lambda_0 \right)$ 都有 $\boldsymbol{x} + \lambda \boldsymbol{d} \in S,\ \boldsymbol{d} \neq 0$，则我们称 $\boldsymbol{d}$ 为非空凸集 $S$ 的可行方向。如果 $S$ 中的可行方向 $\boldsymbol{d}$ 不能表示成两个不同可行方向 $\boldsymbol{d}_1,\boldsymbol{d}_2$ 的线性组合，则称 $\boldsymbol{d}$ 为非空凸集 $S$ 的极值方向。</blockquote>
+
+<p class="post-text-noindent">凸集的极值点和极值方向概念在凸集研究中是个有用的概念，但究竟有用在何处，笔者还不得而知。</p>
+
 <h2>1.3.2 凸函数</h2>
+
+<p></p>
+
 <h2>1.3.3 凸集的分离与支撑</h2>
 
 <h1>1.4 最优性条件</h1>
