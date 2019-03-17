@@ -642,11 +642,28 @@ $$\forall \boldsymbol{x}_1 \neq \boldsymbol{x}_2 \in S,\ f\left( \alpha \boldsym
 
 <p class="post-text-noindent">则我们称 $f$ 为 $S$ 上的<strong>一致凸函数</strong>。由凸函数的定义不难看出，凸函数的图像特征是：<strong>凸函数任意两点间的函数图像必位于连接该两点线段的下方</strong>。</p>
 
-<p>凸函数具有与凸集类似的性质，那就是两个凸函数之和仍然为凸函数，此外，凸函数的正常数倍仍为凸函数。下面我们给出在函数可微和函数二次可微时，$f$ 为凸函数的充要条件，它们分别与 $f$ 的梯度和 Hessian 矩阵有关。</p>
+<p>凸函数具有与凸集类似的性质，那就是<strong>两个凸函数之和仍然为凸函数</strong>，此外，<strong>凸函数的正常数倍仍为凸函数</strong>。下面我们给出在函数可微和函数二阶可微时，$f$ 为凸函数的充要条件，它们分别与 $f$ 的梯度和 Hessian 矩阵有关。</p>
 
-<blockquote>定理 13：</blockquote>
+<blockquote><strong>定理 13</strong>：若 $f$ 是定义在非空凸集 $S$ 上的可微函数，则 $f$ 为凸函数当且仅当<br>
+$$f\left(\boldsymbol{x} \right) \geq f\left(\boldsymbol{x}_0 \right) + \nabla f\left(\boldsymbol{x}_0 \right)^T\left(\boldsymbol{x} - \boldsymbol{x}_0\right),\ \forall \boldsymbol{x},\boldsymbol{x}_0 \in S$$
+</blockquote>
+
+<blockquote><strong>定理 14</strong>：若 $f$ 是定义在非空凸集 $S$ 上的二阶可微函数，则 $f$ 为凸函数当且仅当对于任意 $\boldsymbol{x} \in S$，Hessian 矩阵 $\boldsymbol{H}_f\left(\boldsymbol{x} \right)$ 半正定。</blockquote>
+
+<p class="post-text-noindent">上述两个定理很好理解，这里不给出证明，如确有需要了解证明过程，可参考由科学出版社出版，由袁亚湘、孙文瑜著的《最优化理论与方法》一书的 1.3.2 节。定理 13 实际上说的是：<strong>对于可微凸函数而言，利用 $\boldsymbol{x}_0$ 处梯度信息构造的原函数的线性近似 $f\left(\boldsymbol{x}_0 \right) + \nabla f\left(\boldsymbol{x}_0 \right)^T\left(\boldsymbol{x} - \boldsymbol{x}_0\right)$ 是原函数 $f\left(\boldsymbol{x} \right)$ 的低估</strong>，特别地，对于一元凸函数而言，这种低估说的就是函数任意一点的切线始终位于函数下方。至于定理 14，它是二阶可微的一元函数为凸函数的充分必要条件（二阶导数恒大于等于 0）在多元情形下的自然推广。此外，需要特别指出的是：如果 $f$ 是严格凸函数，那么对于定理 13，只需把充要条件中的等号去掉即可，但对于定理 14 而言，二阶可微严格凸函数的充要条件不能改为函数每一点的 Hessian 矩阵正定。事实上，<strong>如果函数在每一点的 Hessian 矩阵正定则 $f$ 为严格凸函数，但 $f$ 为严格凸函数只能保证函数在每一点的 Hessian 矩阵一定半正定，而无法保证一定正定</strong>。</p>
+
+<p>本小节最后，我们将依托水平集这一概念，进一步阐述凸函数与凸集之间的紧密联系。<strong>凸函数是定义在凸集之上的</strong>，如果凸函数不定义在凸集之上，那么凸函数定义中的 $f\left( \alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2 \right)$ 可能不存在，因为如果没有凸集的保证，$\alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2$ 可能不在集合中。而通过接下来的定理我们可以知道：<strong>凸函数的水平集是凸集</strong>。</p>
+
+<blockquote><strong>定理 15</strong>：如果 $f$ 是定义在非空凸集 $S$ 上的凸函数，则其水平集<br>
+$$L\left(\boldsymbol{x}_0 \right) = \left \{ \boldsymbol{x} \in S: f\left(\boldsymbol{x} \right) \leq f\left(\boldsymbol{x}_0 \right) \right \}$$
+是凸集，若 $f$ 可微，则其水平集 $L\left(\boldsymbol{x}_0 \right)$ 为闭凸集，进一步，如果 $f$ 二阶可微且存在 $m > 0$ 使得<br>
+$$\boldsymbol{u}^T\boldsymbol{H}_f\left(\boldsymbol{x} \right)\boldsymbol{u} \geq m \left \| \boldsymbol{u} \right \|^2,\ \forall \boldsymbol{x} \in L\left(\boldsymbol{x}_0 \right),\boldsymbol{u} \in R^n$$
+则水平集 $L\left(\boldsymbol{x}_0 \right)$ 为有界闭凸集。
+</blockquote>
 
 <h2>1.3.3 凸集的分离与支撑</h2>
+
+
 
 <h1>1.4 最优性条件</h1>
 
