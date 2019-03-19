@@ -669,13 +669,42 @@ $$\boldsymbol{u}^T\boldsymbol{H}_f\left(\boldsymbol{x} \right)\boldsymbol{u} \ge
 $$\left(\boldsymbol{x} - \boldsymbol{x}_0 \right)^T\left(\boldsymbol{x}_0 - \boldsymbol{y} \right) \geq 0,\ \forall \boldsymbol{x} \in S$$
 </blockquote>
 
-<p class="post-text-noindent">定理 16 初看起来让人有点摸不着头脑，但如果从几何直观上来看，定理 16 给出的结论就容易理解多了。事实上，定理 16 说的是：如果从闭凸集外一点 $\boldsymbol{y}$ 指向闭凸集内一点 $\boldsymbol{x}_0$ 的向量 $\boldsymbol{v}_{\boldsymbol{y}\boldsymbol{x}_0}$，与从 $\boldsymbol{x}_0$ 指向闭凸集内其他任意点 $\boldsymbol{x}$ 的向量 $\boldsymbol{v}_{\boldsymbol{x}_0\boldsymbol{x}}$ 的夹角均为锐角或直角，则 $\boldsymbol{x}_0$ 就是闭凸集内与闭凸集外一点 $\boldsymbol{y}$ 距离最短的点，反之亦然。（注：对于能从直观上获得很好理解的定理，笔者不关心它的证明过程，当然也不会在这里放上定理的证明，如有兴趣请参考由科学出版社出版的孙文瑜、袁亚湘所著的《最优化理论与方法》。）</p>
+<p class="post-text-noindent">定理 16 初看起来让人有点摸不着头脑，但如果从几何直观上来看，定理 16 给出的结论就容易理解多了。事实上，定理 16 说的是：<strong>如果从闭凸集外一点 $\boldsymbol{y}$ 指向闭凸集内一点 $\boldsymbol{x}_0$ 的向量 $\boldsymbol{v}_{\boldsymbol{y}\boldsymbol{x}_0}$，与从 $\boldsymbol{x}_0$ 指向闭凸集内其他任意点 $\boldsymbol{x}$ 的向量 $\boldsymbol{v}_{\boldsymbol{x}_0\boldsymbol{x}}$ 的夹角均为锐角或直角，则 $\boldsymbol{x}_0$ 就是闭凸集内与闭凸集外一点 $\boldsymbol{y}$ 距离最短的点，反之亦然</strong>。（注：对于能从直观上获得很好理解的定理，笔者不关心它的证明过程，当然也不会在这里放上定理的证明，如有兴趣请参考由科学出版社出版的孙文瑜、袁亚湘所著的《最优化理论与方法》）</p>
 
-<p>在叙述凸集和凸集的分离定理之前，我们首先阐述点和凸集的分离定理。</p>
+<p>在叙述凸集与凸集的分离定理之前，我们首先阐述<strong>点与凸集的分离定理</strong>，它的证明用到了定理 16。</p>
 
 <blockquote><strong>定理 17</strong>：存在超平面 $H = \left \{\boldsymbol{x} \in R^n:\boldsymbol{a}^T\boldsymbol{x} = b \right \}$ 严格分离非空闭凸集 $S$ 和非空闭凸集 $S$ 外一点 $y$。即存在非零向量 $\boldsymbol{a}$ 和实数 $b$，使得 $\boldsymbol{a}^T\boldsymbol{y} > b$ 和 $\boldsymbol{a}^T\boldsymbol{x} \leq b,\ \forall \boldsymbol{x} \in S$.</blockquote>
 
-<p class="post-text-noindent">这一定理是凸集和凸集分离定理的基础，因为凸集就是点的集合。此外，该定理还可用来得到在推导线性和非线性规划最优性条件（KKT条件）时需要用到的 Farkas 定理。该定理的几何意义是：c 要么在锥内，要么在锥外。</p>
+<p class="post-text-noindent">点与凸集的分离定理是证明凸集与凸集分离定理的基础，因为凸集就是点的集合。此外，该定理还可用来得到在推导约束问题的最优性条件（KKT条件）时需要用到的<strong> Farkas 引理</strong>。</p>
+
+<blockquote><strong>引理 1</strong>：若 $\boldsymbol{A}$ 为 $m\times n$ 矩阵，$\boldsymbol{b} \in R^n$，则下列两个方程组中有且仅有一组有解：<br>
+$$\boldsymbol{Ax} \leq \boldsymbol{0},\ \boldsymbol{b}^T\boldsymbol{x} > 0$$
+$$\boldsymbol{A}^T\boldsymbol{y}=\boldsymbol{b},\ \boldsymbol{y} \geq \boldsymbol{0}$$
+</blockquote>
+
+<p class="post-text-noindent">通过几何直观，我们可以很好的理解 Farkas 引理。<strong>Farkas 引理的几何意义是：$\boldsymbol{b}$ 要么在凸锥内，要么在凸锥外</strong>。下面依据几何直观给出该引理的不严格的解释性证明：</p>
+
+<blockquote><strong>证明</strong>：设凸锥为 $\boldsymbol{A}$ 的 m 个行向量或 $\boldsymbol{A}^T$ 的 m 个列向量 $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_m$ 与非负系数构成的线性组合：<br>
+$$\left \{\boldsymbol{x}\in R^n: \boldsymbol{x} = \sum_{i=1}^{n} y_i\boldsymbol{a}_i，y_i \geq 0 \right \}$$
+因此 $\boldsymbol{b}$ 在该凸锥内说的就是：<br>
+$$\exists \boldsymbol{y},\ s.t.\boldsymbol{A}^T\boldsymbol{y}=\boldsymbol{b},\ \boldsymbol{y} \geq \boldsymbol{0}$$
+如果 $\boldsymbol{b}$ 在凸锥外，那么依据点与凸集的分离定理，我们可以证明此时存在过原点的超平面 $\boldsymbol{p}^T\boldsymbol{x} = 0$ 分离凸锥与 $\boldsymbol{b}$，即<br>
+$$\exists \boldsymbol{p} \neq 0,\ s.t.\boldsymbol{p}^T\boldsymbol{b} = \boldsymbol{b}^T\boldsymbol{p} > 0,\ \boldsymbol{p}^T\boldsymbol{a}_i = \boldsymbol{a}_i^T\boldsymbol{p} \leq 0$$
+因此 $\boldsymbol{b}$ 在凸锥外说的就是（注：既然需要满足 $\boldsymbol{b}^T\boldsymbol{p} > 0$，所以无需强调 $\boldsymbol{p} \neq 0$）：<br>
+$$\exists \boldsymbol{p},\ s.t.\boldsymbol{Ap} \leq \boldsymbol{0},\ \boldsymbol{b}^T\boldsymbol{p} > 0$$
+由于 $\boldsymbol{b}$ 要么在凸锥内，要么在凸锥外，而不可能既在凸锥内，又在凸锥外，因而上述引理得证。
+</blockquote>
+
+<p>下面我们讲述<strong>超平面支撑凸集定理</strong>，它的证明使用了点与凸集的分离定理，并且它和点与凸集的分离定理一样，是用来证明凸集与凸集分离定理的基础。</p>
+
+<blockquote><strong>定义 8</strong>：如果存在 $\boldsymbol{p} \in R^n$ 使得非空集合 $S$ 以及 $S$ 中的边界点 $\boldsymbol{x}_0$ 满足<br>
+$$S \subset H^+ =\left \{\boldsymbol{x}\in S: \boldsymbol{p}^T\left(\boldsymbol{x}-\boldsymbol{x}_0 \right )\geq 0 \right \}$$
+或者
+$$S \subset H^- =\left \{\boldsymbol{x}\in S: \boldsymbol{p}^T\left(\boldsymbol{x}-\boldsymbol{x}_0 \right )\leq 0 \right \}$$
+则称超平面 $H =\left \{\boldsymbol{x}\in S: \boldsymbol{p}^T\left(\boldsymbol{x}-\boldsymbol{x}_0 \right )= 0 \right \}$ 为 $S$ 在边界点 $\boldsymbol{x}_0$ 处的支撑超平面。
+</blockquote>
+
+<blockquote><strong>定理 18</strong>：</blockquote>
 
 <h1>1.4 最优性条件</h1>
 
