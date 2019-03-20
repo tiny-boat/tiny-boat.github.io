@@ -727,13 +727,17 @@ $$\boldsymbol{p}^T \boldsymbol{x}_1 \leq \alpha < \alpha + \varepsilon \leq \bol
 
 <h2>1.4.1 无约束优化的最优性条件</h2>
 
-<p>下面定理将依次给出无约束优化的<strong>一阶必要条件</strong>、<strong>二阶必要条件</strong>、<strong>二阶充分条件</strong>以及<strong>无约束凸优化的一阶充要条件</strong>。</p>
+<p>下面定理将依次给出无约束优化的最优性条件中的<strong>一阶必要条件</strong>、<strong>二阶必要条件</strong>、<strong>二阶充分条件</strong>以及<strong>无约束凸优化的一阶充要条件</strong>。</p>
 
-<blockquote><strong>定理 21</strong>：如果 $f$ 在开集 $D$ 上一阶偏导连续且 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点，那么 $f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量，即<br>
+<blockquote><strong>定理 21</strong>：如果 $f$ 在 $D$ 上一阶偏导连续且 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点，那么 $f$ 在 $\boldsymbol{x}^*$ 处关于任意可行方向 $\boldsymbol{d}$ 的方向导数非负。即<br>
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) \geq 0$$
+进一步，若 $D$ 为开集，则有：$f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量，即<br>
 $$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0}$$
 </blockquote>
 
-<blockquote><strong>定理 22</strong>：如果 $f$ 在开集 $D$ 上二阶偏导连续且 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点，那么 $f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量且 $f$ 在 $\boldsymbol{x}^*$ 处的 Hessian 矩阵半正定，即<br>
+<blockquote><strong>定理 22</strong>：如果 $f$ 在 $D$ 上二阶偏导连续且 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点，那么由 $f$ 在 $\boldsymbol{x}^*$ 处关于任意可行方向 $\boldsymbol{d}$ 的方向导数等于 0 可推得 $f$ 在 $\boldsymbol{x}^*$ 处关于任意可行方向 $\boldsymbol{d}$ 的二阶方向导数大于等于 0，即<br>
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) = 0 \Rightarrow \boldsymbol{d}^T \boldsymbol{H}_f \left(\boldsymbol{x}^* \right )\boldsymbol{d} \geq 0$$
+进一步，若 $D$ 为开集，则有：$f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量且 $f$ 在 $\boldsymbol{x}^*$ 处的 Hessian 矩阵半正定，即<br>
 $$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0},\ \boldsymbol{H}_f \left(\boldsymbol{x}^* \right ) \geq 0$$
 </blockquote>
 
@@ -750,7 +754,19 @@ $$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0}$$
 
 <h2>1.4.2 约束优化的最优性条件</h2>
 
-<p>我们首先介绍约束优化的一阶必要条件，这一条件便是著名的 <strong>KKT 条件</strong>（Karush–Kuhn–Tucker conditions），它由 Kuhn 和 Tucker 于 1951 年给出，因此也称为 Kuhn-Tucker 条件，但由于 Karush 在 1939 年也类似地考虑了约束优化的最优性条件，所以我们今天称这一条件为 KKT 条件。它与拉格朗日于 18 世纪 60 年代提出的拉格朗日函数（用于求带等式约束的条件极值问题）有着密切的联系。</p>
+<p>我们首先介绍约束优化最优性条件中的<strong>一阶必要条件</strong>，一阶必要条件中最著名的就是 <strong>KKT 条件</strong>（Karush–Kuhn–Tucker conditions），它由 Kuhn 和 Tucker 于 1951 年给出，因此也称为 Kuhn-Tucker 条件，但由于 Karush 在 1939 年也类似地考虑了约束优化的最优性条件，所以我们今天称这一条件为 KKT 条件。它与拉格朗日于 18 世纪 60 年代提出的拉格朗日函数（用于求带等式约束的条件极值问题）有着密切的联系。下面的定理 24 给出了 KKT 条件。</p>
+
+<blockquote><strong>定义 9</strong>：设 $\boldsymbol{x}^* \in X,\ \boldsymbol{d} \in R^n$，$X$ 为可行域，如果存在序列 $\boldsymbol{d}_k,k=1,2,\cdots$ 和 $\alpha_k > 0,k=1,2,\cdots$ 使得<br>
+$$\boldsymbol{x}^* + \alpha_k \boldsymbol{d}_k \in X,\ \forall k$$
+$$\lim_{n \rightarrow \infty} \boldsymbol{d}_k = \boldsymbol{d},\ \lim_{n \rightarrow \infty} \alpha_k = 0$$
+则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的序列可行方向（sequence feasible direction, SFD）。
+</blockquote>
+
+<blockquote><strong>定义 10</strong>：设 $\boldsymbol{x}^* \in X,\ \boldsymbol{d} \in R^n$，$X$ 为可行域，如果
+$$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in E$$
+$$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) \geq 0,\ i \in I \left(\boldsymbol{x}^* \right )$$
+则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的线性化可行方向（linearized feasible directions, LFD）。
+</blockquote>
 
 <blockquote><strong>定理 24</strong>：如果 $\boldsymbol{x}^*$ 是约束优化问题<br>
 $$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
@@ -759,11 +775,45 @@ $$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
 的解，且可行域 $X$ 在 $\boldsymbol{x}^*$ 处的序列化可行方向构成的集合 $SFD \left(\boldsymbol{x}^*,X \right )$ 与其在 $\boldsymbol{x}^*$ 处的线性化可行方向构成的集合 $LFD \left(\boldsymbol{x}^*,X \right )$ 相等，即约束优化问题满足约束规范条件/正则性条件（constraint qualifications / regularity conditions）<br>
 $$SFD \left(\boldsymbol{x}^*,X \right ) = LFD \left(\boldsymbol{x}^*,X \right )$$
 那么必存在 $\lambda_i^*,i \in E \cup I$ 使得<br>
-$$\nabla f \left(\boldsymbol{x}^* \right ) - \sum_{i \in E \cup I}\lambda_i^*\nabla c_i \left(\boldsymbol{x}^* \right ) = 0$$
+$$\nabla f \left(\boldsymbol{x}^* \right ) - \sum_{i \in E \cup I}\lambda_i^*\nabla c_i \left(\boldsymbol{x}^* \right ) = \boldsymbol{0}$$
 $$\lambda_i^* \geq 0,\ \lambda_i^* c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in I$$
 </blockquote>
 
-<p class="post-text-noindent">由于上述约束规范条件不易验证，人们给出了更强的、相对而言更容易验证的约束规范条件。常见的有：Mangasarian-Fromovitz 约束条件（Mangasarian-Fromovitz constraint qualification, MFCQ）、线性无关约束条件（linear independence constraint qualification, LICQ）和线性约束条件（linearity constraint qualification, LCQ）。</p>
+<p class="post-text-noindent">由于上述约束规范条件 $SFD \left(\boldsymbol{x}^*,X \right ) = LFD \left(\boldsymbol{x}^*,X \right )$ 不易验证，人们给出了更强的、相对而言更容易验证的约束规范条件。常见的有（注：按条件由弱到强的顺序依次列出）：</p>
+
+<ul>
+	<li>Mangasarian-Fromovitz 约束条件（Mangasarian-Fromovitz constraint qualification, MFCQ）</li>
+	$$\sum_{i \in E}k_i\nabla c_i \left(\boldsymbol{x}^* \right ) = \boldsymbol{0} \Rightarrow k_i = 0,\forall i \in E$$
+	$$\exists \boldsymbol{d},\ s.t.\ \boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\forall i \in E;\ \boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) > 0,\forall i \in I \left(\boldsymbol{x}^* \right )$$
+	<li>线性无关约束条件（linear independence constraint qualification, LICQ）</li>
+	$$\sum_{i \in E \cup I \left(\boldsymbol{x}^* \right )}k_i\nabla c_i \left(\boldsymbol{x}^* \right ) = \boldsymbol{0} \Rightarrow k_i = 0,\forall i \in E \cup I \left(\boldsymbol{x}^* \right )$$
+	<li>线性约束条件（linearity constraint qualification, LCQ）：$c_i \left(\boldsymbol{x} \right )$ 为仿射函数（最高次数为 1 的多项式函数，当常数项为零退化为线性函数）</li>
+</ul>
+
+<p class="post-text-noindent">这里 $I \left(\boldsymbol{x}^* \right ) \triangleq \left \{ i:c_i \left(\boldsymbol{x}^* \right ) = 0,i \in I \right \}$，它是对局部极值点 $\boldsymbol{x}^*$ 的有效不等式约束所对应的指标集。我们称有效约束（积极约束）对应的指标集集合为积极集合/有效集合（active set），可以看到：上述的约束规范条件/正则性条件 MFCQ 和 LICQ 均是针对积极集合而言的。</p>
+
+<blockquote>为什么 $c_i \left(\boldsymbol{x}^* \right ) = 0,i \in I$ 对应的不等式约束 $c_i \left(\boldsymbol{x} \right ) \geq 0$ 是对局部极值点 $\boldsymbol{x}^*$ 的有效不等式约束呢？如果对某个不等式约束 $c_i\left(\boldsymbol{x} \right ) \geq 0$ 有 $c_i \left(\boldsymbol{x}^* \right ) > 0$，那么这个不等式约束对于局部极小点 $\boldsymbol{x}^*$ 而言是非必须的。这是因为在这种情况下，由于 $\boldsymbol{x}^*$ 不在不等式约束对应的边界 $c_i\left(\boldsymbol{x} \right ) = 0$ 上，因此总可以找到与该边界不相交且位于可行域（包含该不等式约束）内的 $\boldsymbol{x}^*$ 的邻域，在这个邻域内 $f$ 在 $\boldsymbol{x}^*$ 处取到最小值。此时不管我们加不加上这个不等式约束，这个邻域均在可行域范围内，即不管有没有这个不等式约束 $\boldsymbol{x}^*$ 均是 $f$ 的局部极小点。相反，如果 $\boldsymbol{x}^*$ 在不等式约束对应的边界 $c_i\left(\boldsymbol{x} \right ) = 0$ 上，那么 $\boldsymbol{x}^*$ 的任意邻域与该边界相交且必有位于可行域（包含该不等式约束）外的部分，此时 $\boldsymbol{x}^*$ 只是 $f$ 在 $\boldsymbol{x}^*$ 任意足够小的邻域的一部分上的最小值点，如果去掉该不等式约束，扩大可行域范围，则一定可以找到一个  $\boldsymbol{x}^*$ 的足够小的邻域，它没有位于新可行域外的部分，由于邻域一部分上的最小值点不一定是邻域上的最小值点，因此 $\boldsymbol{x}^*$ 将有可能不再是 $f$ 的局部极小点。</blockquote>
+
+<p>KKT 条件的证明需要用到 Farkas 引理以及另一个约束优化<strong>一阶必要条件</strong>，它与无约束优化的一阶必要条件十分类似，下面的定理 25 给出了这一一阶必要条件。</p>
+
+<blockquote><strong>定理 25</strong>：如果 $\boldsymbol{x}^*$ 是约束优化问题<br>
+$$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
+的解且 $f \left(\boldsymbol{x} \right )$ 和 $c_i \left(\boldsymbol{x} \right )$ 在 $\boldsymbol{x}^*$ 处均可微，则对可行域 $X$ 在 $\boldsymbol{x}^*$ 处的所有序列化可行方向 $\boldsymbol{d}$，$f$ 在 $\boldsymbol{x}^*$ 处关于这些方向的方向导数非负，即<br>
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) \geq 0,\ \forall \boldsymbol{d} \in SFD \left(\boldsymbol{x}^*,X \right )$$
+</blockquote>
+
+<p class="post-text-noindent">对上述定理做一点微调，便得到了如下的约束优化的<strong>一阶充分条件</strong>：</p>
+
+<blockquote><strong>定理 26</strong>：如果 $f \left(\boldsymbol{x} \right )$ 和 $c_i \left(\boldsymbol{x} \right )$ 在 $\boldsymbol{x}^*$ 处均可微，$\boldsymbol{x}^* \in X$ 且对可行域 $X$ 在 $\boldsymbol{x}^*$ 处的所有序列化可行非零方向 $\boldsymbol{d} \neq 0$，都有 $f$ 在 $\boldsymbol{x}^*$ 处关于这些方向的方向导数大于 0，即<br>
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) > 0,\ \forall \boldsymbol{d} \neq 0 \in SFD \left(\boldsymbol{x}^*,X \right )$$
+那么 $\boldsymbol{x}^*$ 是约束优化问题<br>
+$$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
+的解。
+</blockquote>
 
 <h1>1.5 最优化算法的基本结构</h1>
 
