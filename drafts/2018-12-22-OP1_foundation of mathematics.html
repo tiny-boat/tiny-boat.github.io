@@ -626,7 +626,7 @@ $$S\ is\ convex\ set \Leftrightarrow \forall \boldsymbol{x}_1,\boldsymbol{x}_2 \
 
 <blockquote><strong>定义 6</strong>：不在非空凸集 $S$ 中任何线段内部的 $S$ 中的点称为非空凸集 $S$ 的极值点，即对于任意 $S$ 中的极值点 $\boldsymbol{x}$，若 $\boldsymbol{x} = \alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2,\ \alpha \in \left(0,1 \right)$ 则必有 $\boldsymbol{x} = \boldsymbol{x}_1 = \boldsymbol{x}_2$。</blockquote>
 
-<blockquote><strong>定义 7</strong>：若对非空凸集 $S$ 中的任意点 $\boldsymbol{x}$，存在 $\lambda_0 > 0$ 使得 $\forall \lambda \in \left(0,\lambda_0 \right)$ 都有 $\boldsymbol{x} + \lambda \boldsymbol{d} \in S$，$\ \boldsymbol{d} \neq 0$，则我们称 $\boldsymbol{d}$ 为非空凸集 $S$ 的可行方向。如果 $S$ 中的可行方向 $\boldsymbol{d}$ 不能表示成两个不同可行方向 $\boldsymbol{d}_1,\boldsymbol{d}_2$ 的线性组合，则称 $\boldsymbol{d}$ 为非空凸集 $S$ 的极值方向。</blockquote>
+<blockquote><strong>定义 7</strong>：若对非空凸集 $S$ 中的任意点 $\boldsymbol{x}$，使得 $\forall \lambda > 0$ 都有 $\boldsymbol{x} + \lambda \boldsymbol{d} \in S$，$\ \boldsymbol{d} \neq 0$，则我们称 $\boldsymbol{d}$ 为非空凸集 $S$ 的方向。如果 $S$ 中的方向 $\boldsymbol{d}$ 不能表示成两个不同方向 $\boldsymbol{d}_1,\boldsymbol{d}_2$ 的正的线性组合，即如果 $\boldsymbol{d} = \lambda_1 \boldsymbol{d}_1 + \lambda_2 \boldsymbol{d}_2,\ \lambda_1,\lambda_2 > 0$ 必有 $\boldsymbol{d}_1 = \alpha \boldsymbol{d}_2,\ \alpha > 0$，则称 $\boldsymbol{d}$ 为非空凸集 $S$ 的极值方向。</blockquote>
 
 <p class="post-text-noindent">凸集的极值点和极值方向概念在凸集研究中是个有用的概念，但究竟有用在何处，笔者还不得而知。</p>
 
@@ -704,14 +704,66 @@ $$S \subset H^- =\left \{\boldsymbol{x}\in S: \boldsymbol{p}^T\left(\boldsymbol{
 则称超平面 $H =\left \{\boldsymbol{x}\in S: \boldsymbol{p}^T\left(\boldsymbol{x}-\boldsymbol{x}_0 \right )= 0 \right \}$ 为 $S$ 在边界点 $\boldsymbol{x}_0$ 处的支撑超平面。
 </blockquote>
 
-<blockquote><strong>定理 18</strong>：</blockquote>
+<blockquote>支撑超平面的几何意义：过边界点 $\boldsymbol{x}_0$ 的支撑超平面的法向量，与由边界点 $\boldsymbol{x}_0$ 指向凸集内任意一点 $\boldsymbol{x}$ 的向量的夹角，要么为锐角或直角，要么为钝角或直角。</blockquote>
+
+<blockquote><strong>定理 18</strong>：非空凸集 $S$ 的任意边界点 $\boldsymbol{x}_0$ 必存在一个支撑超平面，即存在 $\boldsymbol{p} \neq \boldsymbol{0}$ 使得<br>
+$$\boldsymbol{p}^T \left(\boldsymbol{x} - \boldsymbol{x}_0 \right ) \leq 0,\ \forall \boldsymbol{x} \in \bar{S}$$<br>
+这里 $\bar{S}$ 表示 $S$ 的闭包。
+</blockquote>
+
+<p class="post-text-noindent">点与凸集分离定理告诉我们存在超平面分离凸集与凸集外任意一点，而超平面支撑凸集定理告诉我们：凸集在其每一个边界点上都存在一个支撑超平面。这是否意味着：如果两个凸集没有交集，那么一定存在超平面分离这两个凸集？答案是肯定的，下面的两个定理给出了回答，它们分别被称为<strong>凸集的分离定理</strong>和<strong>凸集的强分离定理</strong>。</p>
+
+<blockquote><strong>定理 19</strong>：存在超平面分离非空不交凸集 $S_1$ 和 $S_2$，即存在 $\boldsymbol{p} \neq 0$ 和 $\alpha \in R$ 使得<br>
+$$\boldsymbol{p}^T \boldsymbol{x}_1 \leq \alpha \leq \boldsymbol{p}^T \boldsymbol{x}_2,\ \forall \boldsymbol{x}_1 \in \bar{S}_1,\boldsymbol{x}_2 \in \bar{S}_2$$
+</blockquote>
+
+<blockquote><strong>定理 20</strong>：存在超平面分离非空不交有界闭凸集 $S_1$ 和 闭凸集 $S_2$，即存在 $\boldsymbol{p} \neq 0$、$\alpha \in R$ 和 $\varepsilon  > 0$ 使得<br>
+$$\boldsymbol{p}^T \boldsymbol{x}_1 \leq \alpha < \alpha + \varepsilon \leq \boldsymbol{p}^T \boldsymbol{x}_2,\ \forall \boldsymbol{x}_1 \in \bar{S}_1,\boldsymbol{x}_2 \in \bar{S}_2$$
+</blockquote>
 
 <h1>1.4 最优性条件</h1>
 
-<p>本节，我们介绍最优化理论中目标函数取到极值的条件即最优性条件，包括：无约束问题的最优性条件和约束问题的最优性条件。</p>
+<p>本节，我们介绍最优化理论中目标函数取到极值的条件即最优性条件，包括：无约束优化的最优性条件和约束优化的最优性条件。</p>
 
-<h2>1.4.1 无约束问题的最优性条件</h2>
-<h2>1.4.2 约束问题的最优性条件</h2>
+<h2>1.4.1 无约束优化的最优性条件</h2>
+
+<p>下面定理将依次给出无约束优化的<strong>一阶必要条件</strong>、<strong>二阶必要条件</strong>、<strong>二阶充分条件</strong>以及<strong>无约束凸优化的一阶充要条件</strong>。</p>
+
+<blockquote><strong>定理 21</strong>：如果 $f$ 在开集 $D$ 上一阶偏导连续且 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点，那么 $f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量，即<br>
+$$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0}$$
+</blockquote>
+
+<blockquote><strong>定理 22</strong>：如果 $f$ 在开集 $D$ 上二阶偏导连续且 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点，那么 $f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量且 $f$ 在 $\boldsymbol{x}^*$ 处的 Hessian 矩阵半正定，即<br>
+$$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0},\ \boldsymbol{H}_f \left(\boldsymbol{x}^* \right ) \geq 0$$
+</blockquote>
+
+<blockquote><strong>定理 22</strong>：如果 $f$ 在开集 $D$ 上二阶偏导连续，$f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量且 $f$ 在 $\boldsymbol{x}^*$ 处的 Hessian 矩阵正定，即<br>
+$$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0},\ \boldsymbol{H}_f \left(\boldsymbol{x}^* \right ) > 0$$
+那么 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点。
+</blockquote>
+
+<blockquote><strong>定理 23</strong>：如果 $f$ 为开集 $D$ 上的凸函数且 $f$ 在 $D$ 上一阶偏导连续，那么 $\boldsymbol{x}^*$ 是 $f$ 的全局极小点当且仅当 $f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量，即<br>
+$$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0}$$
+</blockquote>
+
+<p class="post-text-noindent">我们将梯度为 0 向量的点称为函数的<strong>平稳点</strong>或<strong>驻点</strong>。梯度为 0 的点可能是局部极小点，也可能是局部极大点，也可能不是极值点。我们将不是极值点的驻点称为<strong>鞍点</strong>。定理 23 告诉我们：<strong>凸函数的驻点就是局部极小点，并且是全局极小点</strong>。</p>
+
+<h2>1.4.2 约束优化的最优性条件</h2>
+
+<p>我们首先介绍约束优化的一阶必要条件，这一条件便是著名的 <strong>KKT 条件</strong>（Karush–Kuhn–Tucker conditions），它由 Kuhn 和 Tucker 于 1951 年给出，因此也称为 Kuhn-Tucker 条件，但由于 Karush 在 1939 年也类似地考虑了约束优化的最优性条件，所以我们今天称这一条件为 KKT 条件。它与拉格朗日于 18 世纪 60 年代提出的拉格朗日函数（用于求带等式约束的条件极值问题）有着密切的联系。</p>
+
+<blockquote><strong>定理 24</strong>：如果 $\boldsymbol{x}^*$ 是约束优化问题<br>
+$$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
+的解，且可行域 $X$ 在 $\boldsymbol{x}^*$ 处的序列化可行方向构成的集合 $SFD \left(\boldsymbol{x}^*,X \right )$ 与其在 $\boldsymbol{x}^*$ 处的线性化可行方向构成的集合 $LFD \left(\boldsymbol{x}^*,X \right )$ 相等，即约束优化问题满足约束规范条件/正则性条件（constraint qualifications / regularity conditions）<br>
+$$SFD \left(\boldsymbol{x}^*,X \right ) = LFD \left(\boldsymbol{x}^*,X \right )$$
+那么必存在 $\lambda_i^*,i \in E \cup I$ 使得<br>
+$$\nabla f \left(\boldsymbol{x}^* \right ) - \sum_{i \in E \cup I}\lambda_i^*\nabla c_i \left(\boldsymbol{x}^* \right ) = 0$$
+$$\lambda_i^* \geq 0,\ \lambda_i^* c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in I$$
+</blockquote>
+
+<p class="post-text-noindent">由于上述约束规范条件不易验证，人们给出了更强的、相对而言更容易验证的约束规范条件。常见的有：Mangasarian-Fromovitz 约束条件（Mangasarian-Fromovitz constraint qualification, MFCQ）、线性无关约束条件（linear independence constraint qualification, LICQ）和线性约束条件（linearity constraint qualification, LCQ）。</p>
 
 <h1>1.5 最优化算法的基本结构</h1>
 
