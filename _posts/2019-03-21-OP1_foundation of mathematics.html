@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "最优化算法(1):数学基础"
-date:   2018-12-21 10:47:00
+date:   2019-03-21 16:45:00
 categories: Mathematics Optimization
 excerpt: "从某种程度上说，我们生活中遇到的许许多多的问题，其本质都是一个优化问题。例如着装打扮、选择饭店、租购房屋、旅行规划等等。如果我们能将这些问题转化为目前数学上可解的最优化模型，并且我们掌握了求解相关最优化模型的最优化算法，那么我们或许能够生活得更聪明，更舒适，也更幸福。将生活问题转化为数学模型并不容易，它或许需要敏锐的头脑，需要长期的积累，需要灵光的乍泄，但掌握求解相关最优化模型的算法则相对容易多了"
 permalink: /optimization/1/foundation_of_mathematics/
@@ -90,30 +90,22 @@ $$\sqrt{\lambda_{\mathrm{min}}\left ( \boldsymbol{A} \right )}\left \| \boldsymb
 	$$\left | \boldsymbol{x}^T \boldsymbol{y} \right |\leq \left \| \boldsymbol{x} \right \|_p\left \| \boldsymbol{y} \right \|_q,\ \frac{1}{p}+\frac{1}{q}=1,\ p,q>1$$
 </ul>
 
-<blockquote>证明：由 Young 不等式有</blockquote>
-
-<blockquote>$$\frac{\left | x_iy_i \right |}{\left \| x \right \|_p\left \| y \right \|_q} \leq \frac{1}{p}\left ( \frac{\left | x_i \right |}{\left \| x \right \|_p} \right )^p + \frac{1}{q}\left ( \frac{\left | x_i \right |}{\left \| x \right \|_q} \right )^q$$</blockquote>
-
-<blockquote>上述不等式两边关于 $i$ 求和得</blockquote>
-
-<blockquote>$$\frac{1}{\left \| x \right \|_p\left \| y \right \|_q}\sum_{i=1}^{n}\left | x_iy_i \right | \leq \frac{1}{p\left \| x \right \|_p^p}\sum_{i=1}^{n}\left | x_i \right |^p + \frac{1}{q\left \| y \right \|_q^q}\sum_{i=1}^{n}\left | y_i \right |^q = \frac{1}{p} + \frac{1}{q} = 1$$</blockquote>
-
-<blockquote>两边同乘 $\left \| x \right \|_p\left \| y \right \|_q$ 即得结果。</blockquote>
+<blockquote>证明：由 Young 不等式有<br>
+$$\frac{\left | x_iy_i \right |}{\left \| x \right \|_p\left \| y \right \|_q} \leq \frac{1}{p}\left ( \frac{\left | x_i \right |}{\left \| x \right \|_p} \right )^p + \frac{1}{q}\left ( \frac{\left | x_i \right |}{\left \| x \right \|_q} \right )^q$$
+上述不等式两边关于 $i$ 求和得<br>
+$$\frac{1}{\left \| x \right \|_p\left \| y \right \|_q}\sum_{i=1}^{n}\left | x_iy_i \right | \leq \frac{1}{p\left \| x \right \|_p^p}\sum_{i=1}^{n}\left | x_i \right |^p + \frac{1}{q\left \| y \right \|_q^q}\sum_{i=1}^{n}\left | y_i \right |^q = \frac{1}{p} + \frac{1}{q} = 1$$
+两边同乘 $\left \| x \right \|_p\left \| y \right \|_q$ 即得结果。</blockquote>
 
 <ul>
 	<li><strong>Minkowski 不等式</strong>（范数定义中的第 3 条性质）：</li>
 	$$\left \| \boldsymbol{x}+\boldsymbol{y} \right \|_p\leq \left \| \boldsymbol{x} \right \|_p+\left \| \boldsymbol{y} \right \|_p,\ p \geq 1$$
 </ul>
 
-<blockquote>证明：当 $x = 0$ 或 $y = 0$ 时，显然成立；当 $x,y > 0$ 时，令 $t = \frac{\left \| x \right \|_p}{\left \| x  \right \|_p + \left \| y  \right \|_p}$、$1-t = \frac{\left \| y \right \|_p}{\left \| x  \right \|_p + \left \| y  \right \|_p}$、$a = \frac{\left | x_i \right |}{\left \| x \right \|_p}$、$b = \frac{\left | y_i \right |}{\left \| y \right \|_p}$。因为 $x^p,\ x>0$ 是凸函数，所以有 $\left[ta + \left(1-t \right)b \right]^p \leq t a^p + \left(1-t \right) b^p$，代入 $t,\ 1-t,\ a,\ b$，然后两边同时对 $i$ 求和，可得</blockquote>
-
-<blockquote>$$\sum_{i=1}^{n}\left ( \frac{\left | x_i \right |+\left | y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq 1$$</blockquote>
-
-<blockquote>所以</blockquote>
-
-<blockquote>$$\sum_{i=1}^{n}\left ( \frac{\left | x_i + y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq \sum_{i=1}^{n}\left ( \frac{\left | x_i \right |+\left | y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq 1$$</blockquote>
-
-<blockquote>不等号两边同取 $p$ 次根，然后经恒等变换即得结果。</blockquote>
+<blockquote>证明：当 $x = 0$ 或 $y = 0$ 时，显然成立；当 $x,y > 0$ 时，令 $t = \frac{\left \| x \right \|_p}{\left \| x  \right \|_p + \left \| y  \right \|_p}$、$1-t = \frac{\left \| y \right \|_p}{\left \| x  \right \|_p + \left \| y  \right \|_p}$、$a = \frac{\left | x_i \right |}{\left \| x \right \|_p}$、$b = \frac{\left | y_i \right |}{\left \| y \right \|_p}$。因为 $x^p,\ x>0$ 是凸函数，所以有 $\left[ta + \left(1-t \right)b \right]^p \leq t a^p + \left(1-t \right) b^p$，代入 $t,\ 1-t,\ a,\ b$，然后两边同时对 $i$ 求和，可得<br>
+$$\sum_{i=1}^{n}\left ( \frac{\left | x_i \right |+\left | y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq 1$$
+所以<br>
+$$\sum_{i=1}^{n}\left ( \frac{\left | x_i + y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq \sum_{i=1}^{n}\left ( \frac{\left | x_i \right |+\left | y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq 1$$
+不等号两边同取 $p$ 次根，然后经恒等变换即得结果。</blockquote>
 
 <p>矩阵范数是向量范数的自然推广，$R^{m\times n}$ 上的矩阵可视为 $R^{mn}$ 中的向量。$R^{m\times n}$ 上的<strong>矩阵范数</strong> (matrix norm) 是一个从 $R^{mn} \rightarrow R$ 的映射 $\left \| \cdot  \right \|$，它满足如下三个性质：</p>
 
@@ -159,30 +151,21 @@ $$\left \| \boldsymbol{AB}  \right \|_F \leq \min \left \{ \left \| \boldsymbol{
 
 <br>
 
-<blockquote><strong>$l_1$ 诱导范数的证明如下：</strong></blockquote>
-
-<blockquote>$$\begin{aligned}
+<blockquote><strong>$l_1$ 诱导范数的证明如下：</strong><br>
+$$\begin{aligned}
 &\because \ \left \| \boldsymbol{Ax}  \right \|_1=\sum_{i=1}^{m}\left | \sum_{j=1}^{n}a_{ij}x_j \right | \leq \sum_{i=1}^{m}\sum_{j=1}^{n}\left | a_{ij} \right |\left | x_j \right |= \sum_{j=1}^{n}\sum_{i=1}^{m}\left | a_{ij} \right |\left | x_j \right |  \\
 &\leq \left ( \max_j \sum_{i=1}^{m}\left | a_{ij} \right | \right )\sum_{j=1}^{n}\left | x_j \right |=\max_j \sum_{i=1}^{m}\left | a_{ij} \right |\left \| \boldsymbol{x} \right \|_1
-\end{aligned}$$</blockquote>
-
-<blockquote>$$\therefore \ \left \| \boldsymbol{A}  \right \|_1 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_1}{ \left \| \boldsymbol{x}  \right \|_1} = \max_{\left \| \boldsymbol{x} \right \|_1=1}\left \| \boldsymbol{Ax}  \right \|_1 \leq \max_{j}\sum_{i=1}^{m}\left | a_{ij} \right | \qquad \cdots \left(1\right)$$</blockquote>
-
-<blockquote>取 $\boldsymbol{x^{(j)}}=(0,\cdots,1,\cdots,0),\ j=1,2,\cdots,n$，它是除第 $j$ 个元素为 $1$、其余元素全为 $0$ 的向量，则有</blockquote>
-
-<blockquote>$$\left \| \boldsymbol{A}  \right \|_1 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_1}{ \left \| \boldsymbol{x}  \right \|_1} = \max_{\left \| \boldsymbol{x} \right \|_1=1}\left \| \boldsymbol{Ax}  \right \|_1 \geq \max_{\boldsymbol{x}^{(j)}}\left \| \boldsymbol{Ax}  \right \|_1=\max_{j}\sum_{i=1}^{m}\left | a_{ij} \right | \qquad \cdots \left(2\right)$$</blockquote>
-
-<blockquote>由 $\left(1 \right)$、$\left(2 \right)$ 两式知</blockquote>
-
-<blockquote>$$\left \| \boldsymbol{A}  \right \|_1 =\max_{j}\sum_{i=1}^{m}\left | a_{ij} \right |$$</blockquote>
+\end{aligned}$$
+$$\therefore \ \left \| \boldsymbol{A}  \right \|_1 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_1}{ \left \| \boldsymbol{x}  \right \|_1} = \max_{\left \| \boldsymbol{x} \right \|_1=1}\left \| \boldsymbol{Ax}  \right \|_1 \leq \max_{j}\sum_{i=1}^{m}\left | a_{ij} \right | \qquad \cdots \left(1\right)$$
+取 $\boldsymbol{x^{(j)}}=(0,\cdots,1,\cdots,0),\ j=1,2,\cdots,n$，它是除第 $j$ 个元素为 $1$、其余元素全为 $0$ 的向量，则有<br>
+$$\left \| \boldsymbol{A}  \right \|_1 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_1}{ \left \| \boldsymbol{x}  \right \|_1} = \max_{\left \| \boldsymbol{x} \right \|_1=1}\left \| \boldsymbol{Ax}  \right \|_1 \geq \max_{\boldsymbol{x}^{(j)}}\left \| \boldsymbol{Ax}  \right \|_1=\max_{j}\sum_{i=1}^{m}\left | a_{ij} \right | \qquad \cdots \left(2\right)$$
+由 $\left(1 \right)$、$\left(2 \right)$ 两式知<br>
+$$\left \| \boldsymbol{A}  \right \|_1 =\max_{j}\sum_{i=1}^{m}\left | a_{ij} \right |$$</blockquote>
 
 <br>
 
-<blockquote><strong>$l_2$ 诱导范数的证明如下：</strong></blockquote>
-
-<blockquote>设 $\boldsymbol{x}_1,\boldsymbol{x}_2,\cdots,\boldsymbol{x}_n$ 为对称半正定矩阵 $A^TA$ 的与特征值 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$ 相对应的相互正交的特征向量，则 $\forall \ \boldsymbol{x} = 1$ 的向量 $\boldsymbol{x}$，必存在满足条件 $c_1^2+c_2^2+\cdots+c_n^2=1$ 的 $c_1,c_2,\cdots,c_n$ 使得 $\boldsymbol{x}=c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n$。所以有：</blockquote>
-
-<blockquote>$$\begin{aligned}
+<blockquote><strong>$l_2$ 诱导范数的证明如下：</strong>设 $\boldsymbol{x}_1,\boldsymbol{x}_2,\cdots,\boldsymbol{x}_n$ 为对称半正定矩阵 $A^TA$ 的与特征值 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$ 相对应的相互正交的特征向量，则 $\forall \ \boldsymbol{x} = 1$ 的向量 $\boldsymbol{x}$，必存在满足条件 $c_1^2+c_2^2+\cdots+c_n^2=1$ 的 $c_1,c_2,\cdots,c_n$ 使得 $\boldsymbol{x}=c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n$。所以有：<br>
+$$\begin{aligned}
 &\ \left \| \boldsymbol{Ax} \right \|_2^2 = \left ( \boldsymbol{Ax} \right )^T \boldsymbol{Ax} = \boldsymbol{x}^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x} \\
 &= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\boldsymbol{A}^T\boldsymbol{A}\left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right ) \\
 &= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\left ( c_1\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_1+c_2\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_2+\cdots+c_n\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_n \right ) \\
@@ -190,76 +173,54 @@ $$\left \| \boldsymbol{AB}  \right \|_F \leq \min \left \{ \left \| \boldsymbol{
 &= \left ( c_1\boldsymbol{x}_1^T+c_2\boldsymbol{x}_2^T+\cdots+c_n\boldsymbol{x}_n^T \right )\left ( c_1\lambda_1\boldsymbol{x}_1+c_2\lambda_2\boldsymbol{x}_2+\cdots+c_n\lambda_n\boldsymbol{x}_n \right ) \\
 &= \sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_j c_ic_j \boldsymbol{x}_i^T\boldsymbol{x}_j = \sum_{i=1}^n \lambda_i c_i^2 \\
 &\leq \lambda_1 \sum_{i=1}^n c_i^2 = \lambda_1 \qquad \cdots \left(3\right)
-\end{aligned}$$</blockquote>
-
-<blockquote>又因为 $\left \| \boldsymbol{x}_1 \right \|_2 = 1$ 且：</blockquote>
-
-<blockquote>$$\left \| \boldsymbol{Ax}_1 \right \|_2^2 = \boldsymbol{x}_1^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_1 =  \boldsymbol{x}_1^T\lambda_1\boldsymbol{x}_1 = \lambda_1 \qquad \cdots \left(4\right)$$</blockquote>
-
-<blockquote>所以由 $\left(3\right)$、$\left(4\right)$ 式得：</blockquote>
-
-<blockquote>$$\left \| \boldsymbol{A}  \right \|_2 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_2}{ \left \| \boldsymbol{x}  \right \|_2} = \max_{\left \| \boldsymbol{x} \right \|_2=1}\left \| \boldsymbol{Ax}  \right \|_2 = \sqrt{\lambda_1}$$</blockquote>
+\end{aligned}$$
+又因为 $\left \| \boldsymbol{x}_1 \right \|_2 = 1$ 且：<br>
+$$\left \| \boldsymbol{Ax}_1 \right \|_2^2 = \boldsymbol{x}_1^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_1 =  \boldsymbol{x}_1^T\lambda_1\boldsymbol{x}_1 = \lambda_1 \qquad \cdots \left(4\right)$$
+所以由 $\left(3\right)$、$\left(4\right)$ 式得：<br>
+$$\left \| \boldsymbol{A}  \right \|_2 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_2}{ \left \| \boldsymbol{x}  \right \|_2} = \max_{\left \| \boldsymbol{x} \right \|_2=1}\left \| \boldsymbol{Ax}  \right \|_2 = \sqrt{\lambda_1}$$</blockquote>
 
 <br>
 
-<blockquote><strong>$l_\infty$ 诱导范数的证明如下：</strong></blockquote>
-
-<blockquote>$$\begin{aligned}
+<blockquote><strong>$l_\infty$ 诱导范数的证明如下：</strong><br>
+$$\begin{aligned}
 &\because \ \left \| \boldsymbol{Ax}  \right \|_\infty=\max_{1\leq i \leq m}\left | \sum_{j=1}^{n}a_{ij}x_j \right | \leq \max_{1\leq i \leq m}\sum_{j=1}^{n}\left | a_{ij} \right |\left | x_j \right | \\
 &\leq \max_{1\leq i \leq m} \left ( \max_{1\leq j \leq n}\left | x_j \right | \right ) \sum_{i=1}^{m}\left | a_{ij} \right | =\max_i \sum_{i=1}^{m}\left | a_{ij} \right |\left \| \boldsymbol{x} \right \|_\infty
-\end{aligned}$$</blockquote>
-
-<blockquote>$$\therefore \ \left \| \boldsymbol{A}  \right \|_\infty =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_\infty}{ \left \| \boldsymbol{x}  \right \|_\infty} = \max_{\left \| \boldsymbol{x} \right \|_\infty=1}\left \| \boldsymbol{Ax}  \right \|_\infty \leq \max_{i}\sum_{i=1}^{n}\left | a_{ij} \right | \qquad \cdots \left(5\right)$$</blockquote>
-
-<blockquote>取 $k$ 使得</blockquote>
-
-<blockquote>$$\sum_{j=1}^{n}\left | a_{kj} \right | = \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$</blockquote>
-
-<blockquote>令 $\boldsymbol{y} = \left(y_1,y_2,\cdots,y_n \right)^T$，其中</blockquote>
-
-<blockquote>$$\ y_j = \left\{\begin{matrix}
+\end{aligned}$$
+$$\therefore \ \left \| \boldsymbol{A}  \right \|_\infty =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_\infty}{ \left \| \boldsymbol{x}  \right \|_\infty} = \max_{\left \| \boldsymbol{x} \right \|_\infty=1}\left \| \boldsymbol{Ax}  \right \|_\infty \leq \max_{i}\sum_{i=1}^{n}\left | a_{ij} \right | \qquad \cdots \left(5\right)$$
+取 $k$ 使得<br>
+$$\sum_{j=1}^{n}\left | a_{kj} \right | = \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$
+令 $\boldsymbol{y} = \left(y_1,y_2,\cdots,y_n \right)^T$，其中<br>
+$$\ y_j = \left\{\begin{matrix}
 \begin{aligned}
 &\frac{\left | a_{kj} \right |}{a_{kj}},\ a_{kj} \neq 0
 \\ &1\ \ \ \ \ \ \, , \ otherwise
 \end{aligned}
-\end{matrix}\right.$$</blockquote>
-
-<blockquote>易知 $\left \| \boldsymbol{y} \right \|_\infty = 1$，从而有</blockquote>
-
-<blockquote>$$\begin{aligned}
+\end{matrix}\right.$$
+易知 $\left \| \boldsymbol{y} \right \|_\infty = 1$，从而有<br>
+$$\begin{aligned}
 &\left \| \boldsymbol{A}  \right \|_\infty =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_\infty}{ \left \| \boldsymbol{x}  \right \|_\infty} = \max_{\left \| \boldsymbol{x} \right \|_\infty=1}\left \| \boldsymbol{Ax}  \right \|_\infty \geq \left \| \boldsymbol{Ay} \right \|_\infty = \max_{1 \leq i \leq m}\left | \sum_{j=1}^{n}a_{ij}y_j \right |\\
 &\geq \left | \sum_{j=1}^{n}a_{kj}y_j \right | = \sum_{j=1}^{n}\left | a_{kj} \right |= \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |\ \cdots \left(6\right)
-\end{aligned}$$</blockquote>
-
-<blockquote>由 $\left(5 \right)$、$\left(6 \right)$ 两式知：</blockquote>
-
-<blockquote>$$\left \| \boldsymbol{A}  \right \|_\infty =\max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$</blockquote>
+\end{aligned}$$
+由 $\left(5 \right)$、$\left(6 \right)$ 两式知：<br>
+$$\left \| \boldsymbol{A}  \right \|_\infty =\max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$</blockquote>
 
 <h2>1.1.2 矩阵的逆与广义逆</h2>
 
 <p>关于矩阵的逆，有一个重要的结论，那就是：<strong>接近于可逆矩阵的矩阵可逆</strong>，其接近度由两个矩阵差的范数衡量。下面是这一结论的严格数学表述：</p>
 
-<blockquote><strong>定理 1</strong>：设 $\boldsymbol{A},\boldsymbol{B} \in R^{n\times n}$，$\boldsymbol{A}$ 可逆，$\left \| \boldsymbol{A}^{-1} \right \| \leq \alpha$，如果 $\left \| \boldsymbol{A}-\boldsymbol{B} \right \| \leq \beta$，$\alpha \beta < 1$（注：矩阵范数为相容矩阵范数），则 $\boldsymbol{B}$ 可逆且</blockquote>
-
-<blockquote>$$\left \| \boldsymbol{B}^{-1} \right \| \leq \frac{\alpha}{1-\alpha \beta}$$</blockquote>
+<blockquote><strong>定理 1</strong>：设 $\boldsymbol{A},\boldsymbol{B} \in R^{n\times n}$，$\boldsymbol{A}$ 可逆，$\left \| \boldsymbol{A}^{-1} \right \| \leq \alpha$，如果 $\left \| \boldsymbol{A}-\boldsymbol{B} \right \| \leq \beta$，$\alpha \beta < 1$（注：矩阵范数为相容矩阵范数），则 $\boldsymbol{B}$ 可逆且<br>
+$$\left \| \boldsymbol{B}^{-1} \right \| \leq \frac{\alpha}{1-\alpha \beta}$$</blockquote>
 
 <p class="post-text-noindent">下面是定理 1 的证明过程：</p>
 
-<blockquote><strong>证明</strong>：令 $\boldsymbol{E} = \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) = \boldsymbol{I} - \boldsymbol{A}^{-1}\boldsymbol{B}$，因为</blockquote>
-
-<blockquote>$$\left \| \boldsymbol{E} \right \| = \left \| \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) \right \| \leq \left \| \boldsymbol{A}^{-1} \right \|\left \| \boldsymbol{A}-\boldsymbol{B} \right \| \leq \alpha \beta < 1$$</blockquote>
-
-<blockquote>所以 $\sum_{k=0}^{\infty} \boldsymbol{E}^k$ 存在，且容易验证：</blockquote>
-
-<blockquote>$$\sum_{k=0}^{\infty} \boldsymbol{E}^k = \left ( \boldsymbol{I}-\boldsymbol{E} \right )^{-1}$$</blockquote>
-
-<blockquote>从而</blockquote>
-
-<blockquote>$$\left \| \left (\boldsymbol{I}-\boldsymbol{E}  \right )^{-1} \right \| \leq \sum_{k=0}^{\infty}\left \| \boldsymbol{E} \right \|^k = \frac{1}{1-\left \| \boldsymbol{E} \right \|}$$</blockquote>
-
-<blockquote>代入 $\boldsymbol{E}$，得：</blockquote>
-
-<blockquote>$$\left \| \boldsymbol{B}^{-1} \right \| \leq \left \| \boldsymbol{B}^{-1}\boldsymbol{A} \right \|\left \| \boldsymbol{A}^{-1} \right \| \leq \frac{\left \| \boldsymbol{A}^{-1} \right \|}{1-\left \| \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) \right \|} \leq \frac{\left \| \boldsymbol{A}^{-1} \right \|}{1-\left \| \boldsymbol{A}^{-1} \right \|\left \| \boldsymbol{A}-\boldsymbol{B} \right \|} \leq \frac{\alpha}{1-\alpha \beta}$$</blockquote>
+<blockquote><strong>证明</strong>：令 $\boldsymbol{E} = \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) = \boldsymbol{I} - \boldsymbol{A}^{-1}\boldsymbol{B}$，因为<br>
+$$\left \| \boldsymbol{E} \right \| = \left \| \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) \right \| \leq \left \| \boldsymbol{A}^{-1} \right \|\left \| \boldsymbol{A}-\boldsymbol{B} \right \| \leq \alpha \beta < 1$$
+所以 $\sum_{k=0}^{\infty} \boldsymbol{E}^k$ 存在，且容易验证：<br>
+$$\sum_{k=0}^{\infty} \boldsymbol{E}^k = \left ( \boldsymbol{I}-\boldsymbol{E} \right )^{-1}$$
+从而<br>
+$$\left \| \left (\boldsymbol{I}-\boldsymbol{E}  \right )^{-1} \right \| \leq \sum_{k=0}^{\infty}\left \| \boldsymbol{E} \right \|^k = \frac{1}{1-\left \| \boldsymbol{E} \right \|}$$
+代入 $\boldsymbol{E}$，得：<br>
+$$\left \| \boldsymbol{B}^{-1} \right \| \leq \left \| \boldsymbol{B}^{-1}\boldsymbol{A} \right \|\left \| \boldsymbol{A}^{-1} \right \| \leq \frac{\left \| \boldsymbol{A}^{-1} \right \|}{1-\left \| \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) \right \|} \leq \frac{\left \| \boldsymbol{A}^{-1} \right \|}{1-\left \| \boldsymbol{A}^{-1} \right \|\left \| \boldsymbol{A}-\boldsymbol{B} \right \|} \leq \frac{\alpha}{1-\alpha \beta}$$</blockquote>
 
 <p>设 $\boldsymbol{A}$ 为 $m\times n$ 复矩阵，则矩阵方程 $\boldsymbol{A}\boldsymbol{X}\boldsymbol{A} = \boldsymbol{A}$ 的每一个解称为 $\boldsymbol{A}$ 的<strong>广义逆</strong>，记作 $\boldsymbol{A}^{-}$（注：可以证明该矩阵方程一定有解，证明过程可参见丘维声所著 《高等代数(第二版)》 上册第 5 章第 3 节的定理 1）。为了避免上述矩阵方程解的不唯一性，即广义逆的不唯一性，我们引入 Penrose 方程组（注：$\boldsymbol{A}^{*}$ 表示 $\boldsymbol{A}$ 的共轭转置，当矩阵为实矩阵时，$\boldsymbol{A}^{*}$ 即为 $\boldsymbol{A}$ 的转置 $\boldsymbol{A}^T$）</p>
 
@@ -279,39 +240,32 @@ $$\left\{\begin{matrix}
 
 <p class="post-text-noindent">下面是定理 2 的证明过程（我们仅给出第一部分的证明，第二部分证明同理可得）：</p>
 
-<blockquote><strong>证明</strong>：我们首先证明 ${\mathcal{R}\left(\boldsymbol{A} \right)}^{\perp} = \mathcal{N}\left(\boldsymbol{A}^{*} \right)$. </blockquote>
+<blockquote><strong>证明</strong>：我们首先证明<br> $${\mathcal{R}\left(\boldsymbol{A} \right)}^{\perp} = \mathcal{N}\left(\boldsymbol{A}^{*} \right)$$
+如果 $\boldsymbol{x} \in \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$，则 $\forall \boldsymbol{y} \in R^n$，有 $\left(\boldsymbol{Ay} \right) \in \mathcal{R}\left(\boldsymbol{A} \right)$，所以由正交补的定义有 $\left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$，因此 $\boldsymbol{y}^{*} \left( \boldsymbol{A}^{*} \boldsymbol{x} \right) = 0$，从而有 $\boldsymbol{A}^{*} \boldsymbol{x} = \boldsymbol{0}$，即 $\boldsymbol{x} \in \mathcal{N}\left(\boldsymbol{A}^{*} \right)$，所以<br>
+$$\mathcal{R}\left(\boldsymbol{A} \right)^{\perp} \subset \mathcal{N}\left(\boldsymbol{A}^{*} \right)$$
+如果 $\boldsymbol{x} \in \mathcal{N}\left(\boldsymbol{A}^{*} \right)$，则 $\left(\boldsymbol{A}^{*}\boldsymbol{x} \right) = 0$，$\forall \boldsymbol{y} \in R^n$，有 $\boldsymbol{y}^{*} \left(\boldsymbol{A}^{*}\boldsymbol{x} \right) = \left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$，由 $\left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$ 知 $\boldsymbol{x} \in \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$，所以<br>
+$$\mathcal{N}\left(\boldsymbol{A}^{*} \right) \subset \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$$
+综上，${\mathcal{R}\left(\boldsymbol{A} \right)}^{\perp} = \mathcal{N}\left(\boldsymbol{A}^{*} \right)$。下证 $\boldsymbol{A}\boldsymbol{A}^{+}$ 是从 $R^n$ 沿 $\boldsymbol{A}^{*}$ 零空间 $\mathcal{N}\left(\boldsymbol{A}^{*} \right)$ 到 $\boldsymbol{A}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A} \right)$ 的正交投影算子。</blockquote>
 
-<blockquote>如果 $\boldsymbol{x} \in \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$，则 $\forall \boldsymbol{y} \in R^n$，有 $\left(\boldsymbol{Ay} \right) \in \mathcal{R}\left(\boldsymbol{A} \right)$，所以由正交补的定义有 $\left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$，因此 $\boldsymbol{y}^{*} \left( \boldsymbol{A}^{*} \boldsymbol{x} \right) = 0$，从而有 $\boldsymbol{A}^{*} \boldsymbol{x} = \boldsymbol{0}$，即 $\boldsymbol{x} \in \mathcal{N}\left(\boldsymbol{A}^{*} \right)$，所以 $\mathcal{R}\left(\boldsymbol{A} \right)^{\perp} \subset \mathcal{N}\left(\boldsymbol{A}^{*} \right)$.</blockquote>
-
-<blockquote>如果 $\boldsymbol{x} \in \mathcal{N}\left(\boldsymbol{A}^{*} \right)$，则 $\left(\boldsymbol{A}^{*}\boldsymbol{x} \right) = 0$，$\forall \boldsymbol{y} \in R^n$，有 $\boldsymbol{y}^{*} \left(\boldsymbol{A}^{*}\boldsymbol{x} \right) = \left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$，由 $\left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$ 知 $\boldsymbol{x} \in \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$，所以 $\mathcal{N}\left(\boldsymbol{A}^{*} \right) \subset \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$.</blockquote>
-
-<blockquote>综上，${\mathcal{R}\left(\boldsymbol{A} \right)}^{\perp} = \mathcal{N}\left(\boldsymbol{A}^{*} \right)$。下证 $\boldsymbol{A}\boldsymbol{A}^{+}$ 是从 $R^n$ 沿 $\boldsymbol{A}^{*}$ 零空间 $\mathcal{N}\left(\boldsymbol{A}^{*} \right)$ 到 $\boldsymbol{A}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A} \right)$ 的正交投影算子。</blockquote>
-
-<blockquote>因为 $\forall \boldsymbol{y} \in \mathcal{R} \left(\boldsymbol{A} \right)$, 有 $\boldsymbol{y} = \boldsymbol{Ax}$ . 又由 Moore-Penrose 广义逆的定义有 $\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{A} = \boldsymbol{A}$，所以 $\forall \boldsymbol{y} \in \mathcal{R} \left(\boldsymbol{A} \right)$，$\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{y} = \boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{Ax} = \boldsymbol{Ax} = \boldsymbol{y}$；</blockquote>
-
-<blockquote>因为 $\forall \boldsymbol{z} \in \mathcal{N} \left(\boldsymbol{A}^{*} \right)$，有 $\boldsymbol{A}^{*} \boldsymbol{z} = 0$，又由 Moore-Penrose 广义逆的定义有 $\left(\boldsymbol{AA}^{+} \right)^{*} = \left(\boldsymbol{AA}^{+} \right)$，所以 $\forall \boldsymbol{z} \in \mathcal{N} \left(\boldsymbol{A}^{*} \right)$，有 $\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{z} = \left(\boldsymbol{A}\boldsymbol{A}^{+} \right )^{*}\boldsymbol{z} = {\boldsymbol{A}^{+}}^{*} \boldsymbol{A}^{*}\boldsymbol{z} = 0$</blockquote>
-
-<blockquote>综上，$\boldsymbol{A}\boldsymbol{A}^{+}$ 是从 $R^n$ 沿 $\boldsymbol{A}^{*}$ 零空间 $\mathcal{N}\left(\boldsymbol{A}^{*} \right)$ 到 $\boldsymbol{A}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A} \right)$ 的正交投影算子。</blockquote>
+<blockquote>因为 $\forall \boldsymbol{y} \in \mathcal{R} \left(\boldsymbol{A} \right)$, 有 $\boldsymbol{y} = \boldsymbol{Ax}$ . 又由 Moore-Penrose 广义逆的定义有 $\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{A} = \boldsymbol{A}$，所以<br>
+$$\forall \boldsymbol{y} \in \mathcal{R} \left(\boldsymbol{A} \right)$，$\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{y} = \boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{Ax} = \boldsymbol{Ax} = \boldsymbol{y}$$
+因为 $\forall \boldsymbol{z} \in \mathcal{N} \left(\boldsymbol{A}^{*} \right)$，有 $\boldsymbol{A}^{*} \boldsymbol{z} = 0$，又由 Moore-Penrose 广义逆的定义有 $\left(\boldsymbol{AA}^{+} \right)^{*} = \left(\boldsymbol{AA}^{+} \right)$，所以 $\forall \boldsymbol{z} \in \mathcal{N} \left(\boldsymbol{A}^{*} \right)$，有<br> $$\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{z} = \left(\boldsymbol{A}\boldsymbol{A}^{+} \right )^{*}\boldsymbol{z} = {\boldsymbol{A}^{+}}^{*} \boldsymbol{A}^{*}\boldsymbol{z} = 0$$
+综上，$\boldsymbol{A}\boldsymbol{A}^{+}$ 是从 $R^n$ 沿 $\boldsymbol{A}^{*}$ 零空间 $\mathcal{N}\left(\boldsymbol{A}^{*} \right)$ 到 $\boldsymbol{A}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A} \right)$ 的正交投影算子。</blockquote>
 
 <p class="post-text-noindent">本节最后，我们给出矩阵正交分解和奇异值分解的 Moore-Penrose 广义逆。</p>
 
-<blockquote><strong>定理 3</strong>：若 $A$ 是秩为 $r$ 的 $m\times n$ 复矩阵，其正交分解为</blockquote>
-
-<blockquote>$$\boldsymbol{A} = \boldsymbol{Q}^*\boldsymbol{RP},\ \boldsymbol{Q}^*\boldsymbol{Q} = \boldsymbol{P}^*\boldsymbol{P} = \boldsymbol{I},\ \boldsymbol{R} = \begin{bmatrix}
+<blockquote><strong>定理 3</strong>：若 $A$ 是秩为 $r$ 的 $m\times n$ 复矩阵，其正交分解为<br>
+$$\boldsymbol{A} = \boldsymbol{Q}^*\boldsymbol{RP},\ \boldsymbol{Q}^*\boldsymbol{Q} = \boldsymbol{P}^*\boldsymbol{P} = \boldsymbol{I},\ \boldsymbol{R} = \begin{bmatrix}
 \boldsymbol{R}_{r\times r}^{11} & \boldsymbol{O}\\
 \boldsymbol{O} & \boldsymbol{O}
-\end{bmatrix},\ \left | \boldsymbol{R}_{r\times r}^{11} \right | \neq 0$$</blockquote>
-
-<blockquote>其奇异值分解为</blockquote>
-
-<blockquote>$$\boldsymbol{A} = \boldsymbol{U}\boldsymbol{DV}^*,\ \boldsymbol{U}^*\boldsymbol{U} = \boldsymbol{V}^*\boldsymbol{V} = \boldsymbol{I},\ \boldsymbol{D} = \begin{bmatrix}
+\end{bmatrix},\ \left | \boldsymbol{R}_{r\times r}^{11} \right | \neq 0$$
+其奇异值分解为
+$$\boldsymbol{A} = \boldsymbol{U}\boldsymbol{DV}^*,\ \boldsymbol{U}^*\boldsymbol{U} = \boldsymbol{V}^*\boldsymbol{V} = \boldsymbol{I},\ \boldsymbol{D} = \begin{bmatrix}
 \boldsymbol{\Sigma}_{r\times r} & \boldsymbol{O}\\
 \boldsymbol{O} & \boldsymbol{O}
-\end{bmatrix},\ \boldsymbol{\Sigma}_{r\times r} = \mathrm{diag}\left ( \lambda_1,\cdots,\lambda_r \right )$$</blockquote>
-
-<blockquote>这里 $\boldsymbol{R}_{r\times r}^{11}$ 为上三角矩阵，$\boldsymbol{O}$ 为零矩阵，则有 $\boldsymbol{A}^{+} = \boldsymbol{P}^{*}\boldsymbol{R}^{+}\boldsymbol{Q}$ 或者 $\boldsymbol{A}^{+} = \boldsymbol{V}\boldsymbol{D}^{+}\boldsymbol{U}^{*}$，其中</blockquote>
-
-<blockquote>$$\boldsymbol{R}^{+} = \begin{bmatrix}
+\end{bmatrix},\ \boldsymbol{\Sigma}_{r\times r} = \mathrm{diag}\left ( \lambda_1,\cdots,\lambda_r \right )$$
+这里 $\boldsymbol{R}_{r\times r}^{11}$ 为上三角矩阵，$\boldsymbol{O}$ 为零矩阵，则有 $\boldsymbol{A}^{+} = \boldsymbol{P}^{*}\boldsymbol{R}^{+}\boldsymbol{Q}$ 或者 $\boldsymbol{A}^{+} = \boldsymbol{V}\boldsymbol{D}^{+}\boldsymbol{U}^{*}$，其中<br>
+$$\boldsymbol{R}^{+} = \begin{bmatrix}
 {\boldsymbol{R}_{r\times r} ^{11}}^{-1} & \boldsymbol{O}\\
 \boldsymbol{O} & \boldsymbol{O}
 \end{bmatrix},\ \boldsymbol{D}^{+} = \begin{bmatrix}
@@ -341,17 +295,13 @@ $$R\left(\boldsymbol{u} \right) = \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsy
 
 <blockquote><strong>证明</strong>：由 Rayleigh 商的定义易证其满足齐次性，这里不再赘述，接下来我们首先证明极性：</blockquote>
 
-<blockquote>根据齐次性，我们有 $\begin{aligned} R_\lambda \left( \boldsymbol{u} \right) = \boldsymbol{u}_s^*\boldsymbol{Au}_s,\ \boldsymbol{u}_s = \frac{\boldsymbol{u}}{\left \| \boldsymbol{u} \right \|_2} \end{aligned}$，又因为 $\boldsymbol{A}$ 是 $n \times n$ Hermite 矩阵，所以必存在酉矩阵（实数域下正交矩阵在复数域下的推广） $\boldsymbol{T}$ 使得 $\boldsymbol{T}^*\boldsymbol{A}\boldsymbol{T} = \mathrm{diag}\left \{\lambda_1,\lambda_2,\cdots,\lambda_n \right \}$，其中 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$ 为矩阵 $\boldsymbol{A}$ 的特征值。由于 $\forall \boldsymbol{u}_s$，必存在 $\boldsymbol{y} \in C^n$ 使得 $\boldsymbol{u}_s = \boldsymbol{T} \boldsymbol{y}$，又由 $T^*T = I$ 知 $\left \| \boldsymbol{y} \right \|_2 = \left \| \boldsymbol{u} \right \|_2$，所以</blockquote>
+<blockquote>根据齐次性，我们有 $\begin{aligned} R_\lambda \left( \boldsymbol{u} \right) = \boldsymbol{u}_s^*\boldsymbol{Au}_s,\ \boldsymbol{u}_s = \frac{\boldsymbol{u}}{\left \| \boldsymbol{u} \right \|_2} \end{aligned}$，又因为 $\boldsymbol{A}$ 是 $n \times n$ Hermite 矩阵，所以必存在酉矩阵（实数域下正交矩阵在复数域下的推广） $\boldsymbol{T}$ 使得 $\boldsymbol{T}^*\boldsymbol{A}\boldsymbol{T} = \mathrm{diag}\left \{\lambda_1,\lambda_2,\cdots,\lambda_n \right \}$，其中 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$ 为矩阵 $\boldsymbol{A}$ 的特征值。由于 $\forall \boldsymbol{u}_s$，必存在 $\boldsymbol{y} \in C^n$ 使得 $\boldsymbol{u}_s = \boldsymbol{T} \boldsymbol{y}$，又由 $T^*T = I$ 知 $\left \| \boldsymbol{y} \right \|_2 = \left \| \boldsymbol{u} \right \|_2$，所以<br>
+$$\lambda_n = \lambda_n\sum_{i=1}^{n}\left | y_i \right |^2 \leq \boldsymbol{u}_s^*\boldsymbol{Au}_s = \boldsymbol{y}^*\boldsymbol{A} \boldsymbol{y} = \sum_{i=1}^{n}\lambda_i\left | y_i \right |^2 \leq \lambda_1\sum_{i=1}^{n}\left | y_i \right |^2 = \lambda_1$$
+且当 $y_1 = 1,y_i = 0 \left(i \neq 1 \right)$ 时，右侧不等号取到等号，$y_n = 1,y_j = 0 \left(j \neq n \right)$ 时，左侧不等号取到等号，极性得证。下面证明极小残量性质：</blockquote>
 
-<blockquote>$$\lambda_n = \lambda_n\sum_{i=1}^{n}\left | y_i \right |^2 \leq \boldsymbol{u}_s^*\boldsymbol{Au}_s = \boldsymbol{y}^*\boldsymbol{A} \boldsymbol{y} = \sum_{i=1}^{n}\lambda_i\left | y_i \right |^2 \leq \lambda_1\sum_{i=1}^{n}\left | y_i \right |^2 = \lambda_1$$</blockquote>
-
-<blockquote>且当 $y_1 = 1,y_i = 0 \left(i \neq 1 \right)$ 时，右侧不等号取到等号，$y_n = 1,y_j = 0 \left(j \neq n \right)$ 时，左侧不等号取到等号，极性得证。下面证明极小残量性质：</blockquote>
-
-<blockquote>令 $s\left(\boldsymbol{u} \right) = \boldsymbol{Au} - R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u},\ \boldsymbol{u} \neq 0$，因为</blockquote>
-
-<blockquote>$$\left(s\left(\boldsymbol{u} \right),\boldsymbol{u} \right) = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^*R_\lambda\left(\boldsymbol{u} \right) \boldsymbol{u} = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^* \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}} \boldsymbol{u} = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^*\boldsymbol{u} \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}} = 0$$</blockquote>
-
-<blockquote>所以 $\boldsymbol{Au} = R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u} + s\left(\boldsymbol{u} \right)$ 是 $\boldsymbol{Au}$ 的正交分解，从而 $R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u}$ 是 $\boldsymbol{Au}$ 在 $\boldsymbol{u}$ 上的正交投影，所以必有：$\forall \mu \in R,\ \left \| \boldsymbol{Au} - R_\lambda \left(\boldsymbol{u} \right )\boldsymbol{u} \right \| \leq \left \| \boldsymbol{Au} - \mu \boldsymbol{u}\right \|$。</blockquote>
+<blockquote>令 $s\left(\boldsymbol{u} \right) = \boldsymbol{Au} - R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u},\ \boldsymbol{u} \neq 0$，因为<br>
+$$\left(s\left(\boldsymbol{u} \right),\boldsymbol{u} \right) = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^*R_\lambda\left(\boldsymbol{u} \right) \boldsymbol{u} = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^* \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}} \boldsymbol{u} = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^*\boldsymbol{u} \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}} = 0$$
+所以 $\boldsymbol{Au} = R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u} + s\left(\boldsymbol{u} \right)$ 是 $\boldsymbol{Au}$ 的正交分解，从而 $R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u}$ 是 $\boldsymbol{Au}$ 在 $\boldsymbol{u}$ 上的正交投影，所以必有：$\forall \mu \in R,\ \left \| \boldsymbol{Au} - R_\lambda \left(\boldsymbol{u} \right )\boldsymbol{u} \right \| \leq \left \| \boldsymbol{Au} - \mu \boldsymbol{u}\right \|$。</blockquote>
 
 <h2>1.1.4 矩阵的秩 1 校正</h2>
 
@@ -729,6 +679,11 @@ $$\boldsymbol{p}^T \boldsymbol{x}_1 \leq \alpha < \alpha + \varepsilon \leq \bol
 
 <p>下面定理将依次给出无约束优化的最优性条件中的<strong>一阶必要条件</strong>、<strong>二阶必要条件</strong>、<strong>二阶充分条件</strong>以及<strong>无约束凸优化的一阶充要条件</strong>。</p>
 
+<blockquote><strong>定义 9</strong>：设 $\boldsymbol{x}^* \in X,\ \boldsymbol{d} \in R^n$，$X$ 为可行域，如果存在 $\alpha_0 > 0$ 使得<br>
+$$\boldsymbol{x}^* + \alpha \boldsymbol{d} \in X,\ \forall \alpha \in \left[0,\alpha_0 \right ]$$
+则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的可行方向（feasible direction, FD）。
+</blockquote>
+
 <blockquote><strong>定理 21</strong>：如果 $f$ 在 $D$ 上一阶偏导连续且 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点，那么 $f$ 在 $\boldsymbol{x}^*$ 处关于任意可行方向 $\boldsymbol{d}$ 的方向导数非负。即<br>
 $$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) \geq 0$$
 进一步，若 $D$ 为开集，则有：$f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量，即<br>
@@ -756,13 +711,13 @@ $$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0}$$
 
 <p>我们首先介绍约束优化最优性条件中的<strong>一阶必要条件</strong>，一阶必要条件中最著名的就是 <strong>KKT 条件</strong>（Karush–Kuhn–Tucker conditions），它由 Kuhn 和 Tucker 于 1951 年给出，因此也称为 Kuhn-Tucker 条件，但由于 Karush 在 1939 年也类似地考虑了约束优化的最优性条件，所以我们今天称这一条件为 KKT 条件。它与拉格朗日于 18 世纪 60 年代提出的拉格朗日函数（用于求带等式约束的条件极值问题）有着密切的联系。下面的定理 24 给出了 KKT 条件。</p>
 
-<blockquote><strong>定义 9</strong>：设 $\boldsymbol{x}^* \in X,\ \boldsymbol{d} \in R^n$，$X$ 为可行域，如果存在序列 $\boldsymbol{d}_k,k=1,2,\cdots$ 和 $\alpha_k > 0,k=1,2,\cdots$ 使得<br>
+<blockquote><strong>定义 10</strong>：设 $\boldsymbol{x}^* \in X,\ \boldsymbol{d} \in R^n$，$X$ 为可行域，如果存在序列 $\boldsymbol{d}_k$ 和 $\alpha_k > 0,k=1,2,\cdots$ 使得<br>
 $$\boldsymbol{x}^* + \alpha_k \boldsymbol{d}_k \in X,\ \forall k$$
 $$\lim_{n \rightarrow \infty} \boldsymbol{d}_k = \boldsymbol{d},\ \lim_{n \rightarrow \infty} \alpha_k = 0$$
 则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的序列可行方向（sequence feasible direction, SFD）。
 </blockquote>
 
-<blockquote><strong>定义 10</strong>：设 $\boldsymbol{x}^* \in X,\ \boldsymbol{d} \in R^n$，$X$ 为可行域，如果
+<blockquote><strong>定义 11</strong>：设 $\boldsymbol{x}^* \in X,\ \boldsymbol{d} \in R^n$，$X$ 为可行域，如果
 $$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in E$$
 $$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) \geq 0,\ i \in I \left(\boldsymbol{x}^* \right )$$
 则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的线性化可行方向（linearized feasible directions, LFD）。
@@ -772,7 +727,7 @@ $$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) \geq 0,\ i \in I \
 $$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
 &\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
 &\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
-的解，且可行域 $X$ 在 $\boldsymbol{x}^*$ 处的序列化可行方向构成的集合 $SFD \left(\boldsymbol{x}^*,X \right )$ 与其在 $\boldsymbol{x}^*$ 处的线性化可行方向构成的集合 $LFD \left(\boldsymbol{x}^*,X \right )$ 相等，即约束优化问题满足约束规范条件/正则性条件（constraint qualifications / regularity conditions）<br>
+的局部极小点，且可行域 $X$ 在 $\boldsymbol{x}^*$ 处的序列化可行方向构成的集合 $SFD \left(\boldsymbol{x}^*,X \right )$ 与其在 $\boldsymbol{x}^*$ 处的线性化可行方向构成的集合 $LFD \left(\boldsymbol{x}^*,X \right )$ 相等，即约束优化问题满足约束规范条件/正则性条件（constraint qualifications / regularity conditions）<br>
 $$SFD \left(\boldsymbol{x}^*,X \right ) = LFD \left(\boldsymbol{x}^*,X \right )$$
 那么必存在 $\lambda_i^*,i \in E \cup I$ 使得<br>
 $$\nabla f \left(\boldsymbol{x}^* \right ) - \sum_{i \in E \cup I}\lambda_i^*\nabla c_i \left(\boldsymbol{x}^* \right ) = \boldsymbol{0}$$
@@ -790,7 +745,7 @@ $$\lambda_i^* \geq 0,\ \lambda_i^* c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \
 	<li>线性约束条件（linearity constraint qualification, LCQ）：$c_i \left(\boldsymbol{x} \right )$ 为仿射函数（最高次数为 1 的多项式函数，当常数项为零退化为线性函数）</li>
 </ul>
 
-<p class="post-text-noindent">这里 $I \left(\boldsymbol{x}^* \right ) \triangleq \left \{ i:c_i \left(\boldsymbol{x}^* \right ) = 0,i \in I \right \}$，它是对局部极值点 $\boldsymbol{x}^*$ 的有效不等式约束所对应的指标集。我们称有效约束（积极约束）对应的指标集集合为积极集合/有效集合（active set），可以看到：上述的约束规范条件/正则性条件 MFCQ 和 LICQ 均是针对积极集合而言的。</p>
+<p class="post-text-noindent">这里 $I \left(\boldsymbol{x}^* \right ) \triangleq \left \{ i:c_i \left(\boldsymbol{x}^* \right ) = 0,i \in I \right \}$，它是对局部极值点 $\boldsymbol{x}^*$ 的有效不等式约束所对应的指标集。我们称有效约束（积极约束）对应的指标集集合为<strong>积极集合</strong>/有效集合（active set），可以看到：上述的约束规范条件/正则性条件 MFCQ 和 LICQ 均是针对积极集合而言的。</p>
 
 <blockquote>为什么 $c_i \left(\boldsymbol{x}^* \right ) = 0,i \in I$ 对应的不等式约束 $c_i \left(\boldsymbol{x} \right ) \geq 0$ 是对局部极值点 $\boldsymbol{x}^*$ 的有效不等式约束呢？如果对某个不等式约束 $c_i\left(\boldsymbol{x} \right ) \geq 0$ 有 $c_i \left(\boldsymbol{x}^* \right ) > 0$，那么这个不等式约束对于局部极小点 $\boldsymbol{x}^*$ 而言是非必须的。这是因为在这种情况下，由于 $\boldsymbol{x}^*$ 不在不等式约束对应的边界 $c_i\left(\boldsymbol{x} \right ) = 0$ 上，因此总可以找到与该边界不相交且位于可行域（包含该不等式约束）内的 $\boldsymbol{x}^*$ 的邻域，在这个邻域内 $f$ 在 $\boldsymbol{x}^*$ 处取到最小值。此时不管我们加不加上这个不等式约束，这个邻域均在可行域范围内，即不管有没有这个不等式约束 $\boldsymbol{x}^*$ 均是 $f$ 的局部极小点。相反，如果 $\boldsymbol{x}^*$ 在不等式约束对应的边界 $c_i\left(\boldsymbol{x} \right ) = 0$ 上，那么 $\boldsymbol{x}^*$ 的任意邻域与该边界相交且必有位于可行域（包含该不等式约束）外的部分，此时 $\boldsymbol{x}^*$ 只是 $f$ 在 $\boldsymbol{x}^*$ 任意足够小的邻域的一部分上的最小值点，如果去掉该不等式约束，扩大可行域范围，则一定可以找到一个  $\boldsymbol{x}^*$ 的足够小的邻域，它没有位于新可行域外的部分，由于邻域一部分上的最小值点不一定是邻域上的最小值点，因此 $\boldsymbol{x}^*$ 将有可能不再是 $f$ 的局部极小点。</blockquote>
 
@@ -800,7 +755,7 @@ $$\lambda_i^* \geq 0,\ \lambda_i^* c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \
 $$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
 &\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
 &\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
-的解且 $f \left(\boldsymbol{x} \right )$ 和 $c_i \left(\boldsymbol{x} \right )$ 在 $\boldsymbol{x}^*$ 处均可微，则对可行域 $X$ 在 $\boldsymbol{x}^*$ 处的所有序列化可行方向 $\boldsymbol{d}$，$f$ 在 $\boldsymbol{x}^*$ 处关于这些方向的方向导数非负，即<br>
+的局部极小点且 $f \left(\boldsymbol{x} \right )$ 和 $c_i \left(\boldsymbol{x} \right )$ 在 $\boldsymbol{x}^*$ 处均可微，则对可行域 $X$ 在 $\boldsymbol{x}^*$ 处的所有序列化可行方向 $\boldsymbol{d}$，$f$ 在 $\boldsymbol{x}^*$ 处关于这些方向的方向导数非负，即<br>
 $$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) \geq 0,\ \forall \boldsymbol{d} \in SFD \left(\boldsymbol{x}^*,X \right )$$
 </blockquote>
 
@@ -812,9 +767,133 @@ $$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) > 0,\ \forall \bolds
 $$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
 &\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
 &\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
-的解。
+的局部极小点。
 </blockquote>
 
+<p class="post-text-noindent">如果 $\boldsymbol{x}^*$ 不满足定理 26 给出的一阶充分条件但满足定理 25 给出的一阶必要条件，即</p>
+
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) \geq 0,\ \forall \boldsymbol{d} \in SFD \left(\boldsymbol{x}^*,X \right )$$
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) = 0,\ \exists \boldsymbol{d} \neq 0 \in SFD \left(\boldsymbol{x}^*,X \right )$$
+
+<p class="post-text-noindent">那我们就无法根据一阶条件判断 $\boldsymbol{x}^*$ 是否为 $f$ 的局部极小点，此时就需要借助于二阶条件。</p>
+
+<p>在阐述约束优化最优性条件中的二阶必要条件和二阶充分条件前，我们先给出线性化零约束方向与序列零约束方向的定义。它们是增加了限制条件后的线性化可行方向与序列可行方向，这个限制条件与 KKT 条件有关。事实上，我们将要阐述的二阶条件除了要求 $\boldsymbol{x}^*$ 不满足定理 26 给出的一阶充分条件但满足定理 25 给出的一阶必要条件外，还要求 $\boldsymbol{x}^*$ 满足约束规范条件/正则性条件，而这意味着 $\boldsymbol{x}^*$ 满足 KKT 条件，由 $SFD \left(\boldsymbol{x}^*,X \right ) \subseteq LFD \left(\boldsymbol{x}^*,X \right )$ 和</p>
+
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) = 0,\ \exists \boldsymbol{d} \neq 0 \in SFD \left(\boldsymbol{x}^*,X \right )$$
+
+<p class="post-text-noindent">我们可以得到 KKT 条件</p>
+
+$$\nabla f \left(\boldsymbol{x}^* \right ) = \sum_{i \in E \cup I}\lambda_i^*\nabla c_i \left(\boldsymbol{x}^* \right )$$
+
+<p class="post-text-noindent">等价于</p>
+
+$$\lambda_i^* \boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in I \left(\boldsymbol{x}^* \right )$$
+
+<p class="post-text-noindent">而这就是在定义线性化零约束方向时，在线性化可行方向基础上加上的限制条件。 </p>
+
+<blockquote><strong>定义 12</strong>：设 $\boldsymbol{x}^* \in X$ 满足 KKT 条件, $\lambda_i^*$ 为相应的 Lagrange 乘子，$\boldsymbol{d} \in R^n$，$X$ 为可行域。如果
+$$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in E$$
+$$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) \geq 0,\ i \in I \left(\boldsymbol{x}^* \right )$$
+$$\lambda_i^* \boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in I \left(\boldsymbol{x}^* \right )$$
+则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的线性化零约束方向，记作 $\boldsymbol{d} \in G \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right )$。</blockquote>
+
+<blockquote><strong>定义 13</strong>：设 $\boldsymbol{x}^* \in X$ 满足 KKT 条件, $\lambda_i^*$ 为相应的 Lagrange 乘子，$\boldsymbol{d} \in R^n$，$X$ 为可行域。如果存在序列 $\boldsymbol{d}_k,k=1,2,\cdots$ 和 $\alpha_k > 0,k=1,2,\cdots$ 使得<br>
+$$\boldsymbol{x}^* + \alpha_k \boldsymbol{d}_k \in X,\ \forall k$$
+$$\sum_{i \in E \cup I } \lambda_i^* \nabla c_i \left(\boldsymbol{x}^* + \alpha_k \boldsymbol{d}_k \right ) = 0$$
+$$\lim_{n \rightarrow \infty} \boldsymbol{d}_k = \boldsymbol{d},\ \lim_{n \rightarrow \infty} \alpha_k = 0$$
+则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的序列零约束方向，记作 $\boldsymbol{d} \in S \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right )$。</blockquote>
+
+<p class="post-text-noindent">可以证明：$S \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right ) \subseteq G \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right )$。下面给出约束优化最优性条件中的二阶必要条件和二阶充分条件，它们与无约束优化最优性条件中的二阶必要条件和二阶充分条件十分相似。</p>
+
+<blockquote><strong>定理 27</strong>：如果 $\boldsymbol{x}^*$ 是约束优化问题<br>
+$$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
+的局部极小点且 $\lambda_i^*$ 为 Lagrange 函数<br>
+$$L \left(\boldsymbol{x; \boldsymbol{\lambda}} \right ) \triangleq f \left(\boldsymbol{x} \right ) - \sum_{i \in E \cup I}\lambda_i^* c_i \left(\boldsymbol{x} \right )$$
+中相应的 Lagrange 乘子，那么该 Lagrange 函数关于序列零约束方向的二阶方向导数非负，即<br>
+$$\boldsymbol{d}^T \boldsymbol{H}_L \left(\boldsymbol{x}^*;\boldsymbol{\lambda} \right ) \boldsymbol{d} \geq 0,\ \forall \boldsymbol{d} \in S \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right )$$
+</blockquote>
+
+<blockquote><strong>定理 28</strong>：如果 $\boldsymbol{x}^*$ 满足 KKT 条件， $\lambda_i^*$ 为 Lagrange 函数<br>
+$$L \left(\boldsymbol{x; \boldsymbol{\lambda}} \right ) \triangleq f \left(\boldsymbol{x} \right ) - \sum_{i \in E \cup I}\lambda_i^* c_i \left(\boldsymbol{x} \right )$$
+中相应的 Lagrange 乘子，且该 Lagrange 函数关于线性零约束方向的二阶方向导数大于 0，即<br>
+$$\boldsymbol{d}^T \boldsymbol{H}_L \left(\boldsymbol{x}^*;\boldsymbol{\lambda} \right ) \boldsymbol{d} > 0,\ \forall \boldsymbol{d} \neq 0 \in G \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right )$$
+那么 $\boldsymbol{x}^*$ 是约束优化问题<br>
+$$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
+的局部严格极小点。
+</blockquote>
+
+<p class="post-text-noindent">如果二阶必要性条件满足而二阶充分性条件不满足，则我们还需要借助更高阶的最优性条件来判断一个满足 KKT 条件的点是否为局部极小点。</p>
+
 <h1>1.5 最优化算法的基本结构</h1>
+
+<p>最优化算法通常采用迭代方法得到最优解，其基本思想是：从一个初始点 $\boldsymbol{x}_0$ 开始，按照某一迭代规则产生点列 $\left \{ \boldsymbol{x}_k \right \}$，当 $\left \{ \boldsymbol{x}_k \right \}$ 是有穷点列时，其最后一点是最优解，当 $\left \{ \boldsymbol{x}_k \right \}$ 是无穷点列时，其极限点是最优解。<strong>一个好的最优化算法应该具备的典型特征是：迭代点列 $\left \{ \boldsymbol{x}_k \right \}$ 能稳定地接近局部极小点 $\boldsymbol{x}^*$ 的邻域，然后迅速收敛于 $\boldsymbol{x}^*$</strong>。最优化算法的基本步骤如下：</p>
+
+<ul>
+	<li>给定初始点 $\boldsymbol{x}_0$</li>
+	<li>按照一定规则确定搜索方向 $\boldsymbol{d}_k$ 和步长因子 $\alpha_k$</li>
+	<li>令 $\boldsymbol{x}_{k+1} = \boldsymbol{x}_k + \alpha_k \boldsymbol{d}_k$</li>
+	<li>对 $k = 0,1,2,\cdots$ 重复上述两步直到满足某种终止条件，此时 $\boldsymbol{x}_{k+1}$ 即为近似最优解</li>
+</ul>
+
+<p class="post-text-noindent"><strong>大多数最优化算法是从函数的二阶近似模型导出的</strong>，因为一般函数在极小点附近常可用二次函数很好地近似。当算法应用于二次函数，只要经过有限步迭代就能达到函数的极小点时，我们称该算法具有二次终止性。一般而言，<strong>具有二次终止性的算法可望在接近极小点时具有很好的收敛性质</strong>。</p>
+
+<p><strong>收敛速度</strong>是衡量最优化算法有效性的重要指标，下面给出收敛速度的定义：</p>
+
+<blockquote>若存在 $\alpha > 0$ 和 $q > 0$ 使得<br>
+$$\lim_{k \rightarrow \infty} \frac{\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}^* \right \|}{\left \| \boldsymbol{x}_{k} - \boldsymbol{x}^* \right \|^\alpha} = q$$
+则我们称算法具有 $\alpha$ 阶收敛速度，特别地：当 $\alpha = 1$ 时，称算法具有线性收敛速度；当 $1 < \alpha < 2$ 时，称算法具有超线性收敛速度；当 $\alpha = 2$ 时，称算法具有二阶收敛速度。<br>
+</blockquote>
+
+<p class="post-text-noindent">一般认为：具有超线性收敛速度和二阶收敛速度的算法是比较快速的。但需要特别指出的是：<strong>对任何一个算法，收敛性和收敛速度的理论结果并不保证算法在实际执行时一定有好的实际效果</strong>，这是因为</p>
+
+<ul>
+	<li>收敛性和收敛速度均是针对极限而言的，其结果本身并不能保证算法一定有好的实际效果</li>
+	<li>为了得到收敛性和收敛速度的理论结果，通常对函数作了某些不易验证的限制，实际中需要优化的函数可能并不满足这些限制条件</li>
+	<li>实际计算过程中存在舍入误差</li>
+</ul>
+
+<p class="post-text-noindent">因此一个最优化算法的开发，仅仅从理论上论证其收敛性和收敛速度是不够的，还需要配合数值测试。</p>
+
+<p><strong>迭代终止条件</strong>是最优化算法的重要组成部分，如果算法具有超线性收敛速度，则可以证明</p>
+
+$$\lim_{k\rightarrow \infty} \frac{\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|}{\left \| \boldsymbol{x}_{k} - \boldsymbol{x}^* \right \|} = 1$$
+
+<p class="post-text-noindent">这表明当算法具有超线性收敛速度时，$\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|$ 是误差 $\left \| \boldsymbol{x}_{k} - \boldsymbol{x}^* \right \|$ 的一个合理估计，因此当算法有较快收敛速度时，我们可以将</p>
+
+$$\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \| \leq \varepsilon$$
+
+<p class="post-text-noindent">作为算法的终止条件，类似的终止条件还有</p>
+
+$$\left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right | \leq \varepsilon$$
+
+<p class="post-text-noindent">然而，有些时候，当 $\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|$ 足够小时，$\left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right |$ 并不小，或者当 $\left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right |$ 足够小时，$\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|$ 并不小，此时单独使用这两个终止条件中的一个是不合理的。Himmeblau 指出：同时使用上述两个终止条件是合适的，注意到量的关系，Himmeblau 提出了如下终止条件：</p>
+
+<ul>
+	<li>$\left \|\boldsymbol{x}_k \right \| > \varepsilon_2$ 且 $\left \|f \left(\boldsymbol{x}_k \right ) \right \| > \varepsilon_2$ 时</li>
+$$\frac{\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|}{\left \| \boldsymbol{x}_{k} \right \|} \leq \varepsilon_1\ or \ \frac{\left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right |}{\left |f \left(\boldsymbol{x}_{k} \right )\right |} \leq \varepsilon_1$$
+	<li>$\left \|\boldsymbol{x}_k \right \| \leq \varepsilon_2$ 或 $\left \|f \left(\boldsymbol{x}_k \right ) \right \| \leq \varepsilon_2$ 时</li>
+$$\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \| \leq \varepsilon_1\ or \ \left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right | \leq \varepsilon_1$$
+</ul>
+
+<p class="post-text-noindent">对于有一阶导数信息且收敛不太快的算法，可采用如下终止条件：</p>
+
+$$\left \| \nabla f \left(\boldsymbol{x}_k \right ) \right \| \leq \varepsilon_3$$
+
+<p class="post-text-noindent">但由于可能遇到鞍点，单独使用这个终止条件并不合适。Himmeblau 建议可将其与上面的终止条件结合起来使用，即使用终止条件：</p>
+
+<ul>
+	<li>$\left \|\boldsymbol{x}_k \right \| > \varepsilon_2$ 且 $\left \|f \left(\boldsymbol{x}_k \right ) \right \| > \varepsilon_2$ 时</li>
+$$\frac{\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|}{\left \| \boldsymbol{x}_{k} \right \|} \leq \varepsilon_1\ or \ \frac{\left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right |}{\left |f \left(\boldsymbol{x}_{k} \right )\right |} \leq \varepsilon_1\ or\ \left \| \nabla f \left(\boldsymbol{x}_k \right ) \right \| \leq \varepsilon_3$$
+	<li>$\left \|\boldsymbol{x}_k \right \| \leq \varepsilon_2$ 或 $\left \|f \left(\boldsymbol{x}_k \right ) \right \| \leq \varepsilon_2$ 时</li>
+$$\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \| \leq \varepsilon_1\ or \ \left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right | \leq \varepsilon_1\ or \ \left \| \nabla f \left(\boldsymbol{x}_k \right ) \right \| \leq \varepsilon_3$$
+</ul>
+
+<p class="post-text-noindent">一般地，我们取 $\varepsilon_1 = \varepsilon_2 = 10^{-5},\ \varepsilon_3 = 10^{-4}$.</p>
+
+<p>本章到这里就结束了，本章我们讲述了最优化理论中需要用到的线性代数、微积分和凸分析方面的知识，给出了无约束优化和约束优化的最优性条件，并在最后对最优化算法的基本结构作了阐述。下一章，我们将介绍无约束优化算法，包括梯度下降法、牛顿法、拟牛顿法和共轭梯度法。在介绍梯度下降法时，还将介绍非精确线搜索技术（inexact line search technique）以及单变量函数的优化算法（包括黄金分割法、斐波那契法、二分法、牛顿法、割线法、插值法等）。</p>
 
 </div>
