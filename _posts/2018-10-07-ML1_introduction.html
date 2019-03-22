@@ -39,7 +39,7 @@ $$D_1 = \left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \rig
 
 <p class="post-text-formula">$$D_2 = \left ( \left(\boldsymbol{x}_1,y_1\right), \left(\boldsymbol{x}_2,y_2\right),\cdots, \left(\boldsymbol{x}_m,y_m\right) \right )^{\bf{T}},\boldsymbol{x}_i \ 同上\ ,y_i \in \mathcal {Y}\subseteq{\textbf R}$$</p>
 
-<p class="post-text-noindent">$D_1$ 或 $D_2$ 称为一个<strong>数据集</strong> (data set)，它们都有 $m$ 个<strong>示例</strong>/<strong>样本</strong>/<strong>特征向量</strong> (instance / sample / feature vector) </p>
+<p class="post-text-noindent">$D_1$ 或 $D_2$ 称为一个<strong>数据集</strong> (data set)，它们都有 $m$ 个<strong>示例</strong>/<strong>样本</strong> (instance / sample) </p>
 
 <p>$$\boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m$$</p>
 
@@ -47,19 +47,19 @@ $$D_1 = \left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \rig
 
 <p>$$\left(\boldsymbol{x}_1,y_1\right), \left(\boldsymbol{x}_2,y_2\right),\cdots, \left(\boldsymbol{x}_m,y_m\right)$$</p>
 
-<p class="post-text-noindent">数据集 $D_1$ 或 $D_2$ 中的示例 $\boldsymbol{x}_i$ 都有 $d$ 个<strong>属性</strong>/<strong>特征</strong>/<strong>属性值</strong> (attribute / feature / attribute value)</p>
+<p class="post-text-noindent">数据集 $D_1$ 或 $D_2$ 中的示例 $\boldsymbol{x}_i$ 都有 $d$ 个<strong>属性</strong>/<strong>特征</strong> (attribute / feature)</p>
 
 <p>$$x_{i1},x_{i2},\cdots,x_{id}$$</p>
 
-<p class="post-text-noindent">$d$ 被称为该示例的<strong>维数</strong> (dimensionality)。$D_2$ 中的样例 $\boldsymbol{x}_i,y_i$ 还另有一个<strong>标记</strong> (label)</p>
+<p class="post-text-noindent">$d$ 被称为该示例的<strong>维数</strong> (dimensionality)，因为一个示例/样本由特征构成，我们又称一个示例为一个<strong>特征向量</strong>（feature vector），特征向量所属的空间称为<strong>特征空间</strong>（feature space）。$D_2$ 中的样例 $\boldsymbol{x}_i,y_i$ 还另有一个<strong>标记</strong> (label)</p>
 
 <p>$$y_i$$</p>
 
-<p class="post-text-noindent">由属性张成的空间 $\mathcal {X}$ 称为<strong>属性空间</strong>/<strong>样本空间</strong>/<strong>输入空间</strong> (attribute space / sample space / input space)，由标记张成的空间 $\mathcal {Y}$ 称为<strong>标记空间</strong>/<strong>输出空间</strong> (label space / output space)，我们通常假设样本空间中的全体样本服从一个未知的<strong>分布</strong> (distribution)，且每一个样本都是独立地从分布中采样得到的，即各样本<strong>独立同分布</strong> (independent and identically distributed, i.i.d.)。</p>
+<p class="post-text-noindent">由属性张成的空间 $\mathcal {X}$ 称为<strong>属性空间</strong>/<strong>样本空间</strong>/<strong>输入空间</strong> (attribute space / sample space / input space)，由标记张成的空间 $\mathcal {Y}$ 称为<strong>标记空间</strong>/<strong>输出空间</strong> (label space / output space)。输入空间与特征空间有时是一致的，有时是不一致的，而模型实际都是定义在特征空间上的。我们通常假设输入空间中的全体样本服从一个未知的<strong>分布</strong> (distribution)，且每一个样本都是独立地从分布中采样得到的，即各样本<strong>独立同分布</strong> (independent and identically distributed, i.i.d.)。</p>
 
 <blockquote>在上述这些概念中，数据集对应于统计学中的<strong>样本</strong> (sample)，示例/样本/特征向量/样例对应于统计学中的<strong>样品</strong> (specimen)，属性/特征对应于统计学中的<strong>变量</strong>/<strong>自变量</strong> (variable / independent variable)，标记对应于统计学中的<strong>因变量</strong> (dependent variable)，属性空间或由属性和标签共同张成的空间对应于统计学中的<strong>样本空间</strong>(sample space)，标记空间在统计学中没有与之对应的术语，如果一定要找个对应名词的话，那就是线性代数中的术语向量空间。其余的如维数、分布和独立同分布这些术语，与统计学中是一致的。</blockquote>
 
-<p>我们将对数据集建模的过程称为<strong>学习</strong>/<strong>训练</strong> (learning / training)，建模使用的数据集称为<strong>训练数据集</strong> (training data set)，其中的示例称为<strong>训练样本</strong> (training sample)。学得的模型还可称为<strong>假设</strong> (hypothesis)，它对应于数据的某种潜在规律即<strong>真相</strong> (ground-truth)，我们可以把学习过程看做一个在所有假设组成的空间中进行搜索的过程，搜索目标就是找到与训练集匹配的假设，我们将与训练集一致的假设集合称之为<strong>版本空间</strong> (version space)。学得模型后，使用其进行预测的过程称为<strong>测试</strong> (testing)，预测使用的数据集称为<strong>测试数据集</strong> (testing data set)，其中的示例称为<strong>测试样本</strong> (testing sample)。我们将学得的模型适用于新样本的能力称为<strong>泛化</strong> (generalization) 能力。</p>
+<p>我们将对数据集建模的过程称为<strong>学习</strong>/<strong>训练</strong> (learning / training)，建模使用的数据集称为<strong>训练数据集</strong> (training data set)，其中的示例称为<strong>训练样本</strong> (training sample)。如果我们将从输入空间/特征空间到输出空间的所有可能映射构成的集合称为<strong>假设空间</strong>（hypothesis space），那么我们可以把学习过程看做一个在假设空间中进行搜索的过程，搜索目标就是找到与训练集最匹配的模型。如果可以找到一个或多个与训练集完全匹配的模型，那么我们就将这些模型构成的集合称之为<strong>版本空间</strong> (version space)。学得模型后，使用其进行预测的过程称为<strong>测试</strong> (testing)，预测使用的数据集称为<strong>测试数据集</strong> (testing data set)，其中的示例称为<strong>测试样本</strong> (testing sample)。我们将学得的模型适用于新样本的能力称为<strong>泛化</strong> (generalization) 能力。</p>
 
 <blockquote>在上述这些概念中，学习/训练对应于统计学中的<strong>建模</strong> (modeling)，由于传统统计学中使用建模数据评估模型预测效果，因此训练数据集、训练样本、测试数据集、测试样本等概念在统计学中都找不到与之对应的术语。</blockquote>
 
@@ -67,7 +67,7 @@ $$D_1 = \left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \rig
 
 <blockquote>在上述这些概念中，回归、聚类、分类来源于统计学。回归是统计学中<strong>回归分析</strong> (regression analysis) 的研究内容，聚类、分类则是统计学中<strong>多元统计分析</strong> (multivariate statistical analysis) 中<strong>聚类分析</strong>(cluster analysis)、<strong>判别分析</strong>(discriminant analysis)的研究内容，其余概念在统计学中基本找不到对应术语。</blockquote>
 
-<p>有限的训练数据集常常导致版本空间中存在多个与训练数据集一致的假设，此时对于一个具体的学习算法而言，它必须从这些假设中选择一个作为模型，我们将学习算法在学习过程中对某种类型假设的偏好称为<strong>归纳偏好</strong> (inductive bias)。有没有一般性的原则来引导算法确立 “正确的” 偏好呢？答案是有的，如 “<strong>奥卡姆剃刀</strong>” (Occam's razor) 原则指出若有多个假设与观察一致，则选择最简单的一个；“<strong>多释原则</strong>” (principle of multiple explanations) 指出应保留与经验观察一致的所有假设。然而，依据 Wolpert 和 Macready 于 1995 年提出的著名的<strong>没有免费午餐定理</strong> (No Free Lunch Theorem, NFL)，我们可以知道对于任意一个学习算法 $\mathcal{L}_a$，若它在某些问题上比学习算法 $\mathcal{L}_b$ 好，则必然存在另一些问题，在那里 $\mathcal{L}_b$ 比 $\mathcal{L}_a$ 好。NFL 定理告诉我们：脱离具体问题空谈 "什么学习算法更好" 或 “那种归纳偏好更好” 是毫无意义的，因为若考虑所有潜在问题，则所有学习算法都一样好。</p>
+<p>有限的训练数据集常常导致假设空间中存在多个与训练数据集近似一致或一致的模型，此时对于一个具体的学习算法而言，它必须从这些模型中作出选择，我们将学习算法在学习过程中对某种类型模型的偏好称为<strong>归纳偏好</strong> (inductive bias)。有没有一般性的原则来引导算法确立 “正确的” 偏好呢？答案是有的，如 “<strong>奥卡姆剃刀</strong>” (Occam's razor) 原则指出若有多个模型与观察（近似）一致，则选择最简单的一个；“<strong>多释原则</strong>” (principle of multiple explanations) 指出应保留与经验观察（近似）一致的所有模型。然而，依据 Wolpert 和 Macready 于 1995 年提出的著名的<strong>没有免费午餐定理</strong> (No Free Lunch Theorem, NFL)，我们可以知道对于任意一个学习算法 $\mathcal{L}_a$，若它在某些问题上比学习算法 $\mathcal{L}_b$ 好，则必然存在另一些问题，在那里 $\mathcal{L}_b$ 比 $\mathcal{L}_a$ 好。NFL 定理告诉我们：脱离具体问题空谈 "什么学习算法更好" 或 “那种归纳偏好更好” 是毫无意义的，因为若考虑所有潜在问题，则所有学习算法都一样好。</p>
 
 <h1>1.2 发展历程与应用现状</h1>
 
@@ -89,7 +89,7 @@ $$D_1 = \left ( \boldsymbol{x}_1, \boldsymbol{x}_2,\cdots, \boldsymbol{x}_m \rig
 
 <p>上世纪 80 年代至 90 年代初，“从样例中进行学习” 的另一大主流技术则是基于神经网络的 “<strong>连接主义学习</strong>”。虽然连接主义学习在上世纪 50 年代就取得了大的发展，然而由于早期人工智能研究者对符号表示的情有独钟，以及连接主义自身遇到的诸如只能处理线性分类、像 “异或” 这样简单的问题也无法处理等的障碍，连接主义在很长一段时间内，都徘徊在人工智能研究领域的边缘。1983 年，<strong>John.J.Hopfield</strong> (1933.07.15——) 利用神经网络求解著名的 NP 难题 “<strong>流动推销员问题</strong>” 取得重大进展，连接主义终于重获关注。3 年后的 1986 年，<strong>David.E.Rumelhart</strong> (1942.06.12——2011.03.13) 等人重新发现了著名的<strong>反向传播算法</strong> (Backpropagation, BP). 与符号主义学习能产生明确的概念表示不同，连接主义学习产生的是 “黑箱” 模型，其学习过程涉及大量参数，而参数的设置又缺乏理论指导，参数调节上失之毫厘，学习结果可能谬以千里。</p>
 
-<p>上世纪 90 年代中期，以<strong>支持向量机</strong>为代表的<strong>统计学习</strong> (Statistcal Learning) 方法取代连接主义成为机器学习的主流方法，支持向量机算法于 90 年代初提出，其优越性能于 90 年代中期在文本分类中显现。在支持向量机被普遍接受后，<strong>核技巧</strong>（将低维输入空间映射到高维特征空间，从而将原本低维空间下的非线性分类问题转换为高维空间的线性分类问题）被人们用到了机器学习的几乎每一个角落。</p>
+<p>上世纪 90 年代中期，以<strong>支持向量机</strong>为代表的<strong>统计学习</strong> (Statistcal Learning) 方法取代连接主义成为机器学习的主流方法，支持向量机算法于 90 年代初提出，其优越性能于 90 年代中期在文本分类中显现。在支持向量机被普遍接受后，<strong>核技巧</strong>（将低维输入空间映射到高维特征空间，从而将原本低维空间中的非线性分类问题转换为高维空间的线性分类问题）被人们用到了机器学习的几乎每一个角落。</p>
 
 <p>进入 21 世纪，多层神经网络在涉及语音、图像等复杂对象的应用中取得了举世瞩目的成绩，缺乏严格理论基础的连接主义就这样卷土重来了，其掀起的被命名为 “<strong>深度学习</strong>” 的技术浪潮，席卷了整个世界。相形之下，拥有严格理论基础的统计学习，反而显得黯淡无光了。</p>
 
