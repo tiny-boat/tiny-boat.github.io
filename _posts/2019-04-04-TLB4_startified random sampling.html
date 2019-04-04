@@ -56,17 +56,47 @@ $$\bar{y}_{st} = \sum_{h=1}^{L} W_h \bar{y}_h$$
 
 <p>下面我们来看回归估计期望与方差的理论结果，当各层回归系数给定时，分别回归估计的期望与方差有准确公式，当回归系数给定时，联合回归估计的期望与方差有准确公式，即</p>
 
-$$E \left(\bar{y}_{lrs} \right ) = \bar{Y}$$
-$$V \left(\bar{y}_{lrs} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta_h S_{xyh} + \beta_h^{2} S_{xh}^2 \right )$$
-$$E \left(\bar{y}_{lrc} \right ) = \bar{Y}$$
-$$V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )$$
+$$\begin{aligned}
+& E \left(\bar{y}_{lrs} \right ) = \bar{Y} \\
+& V \left(\bar{y}_{lrs} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta_h S_{xyh} + \beta_h^{2} S_{xh}^2 \right ) \\
+\\
+& E \left(\bar{y}_{lrc} \right ) = \bar{Y} \\
+& V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )
+\end{aligned}
+$$
+
+<blockquote>证明：由 $E \left(\bar{y}_{st} \right ) = \bar{Y}$，$E \left(\bar{x}_{st} \right ) = \bar{X}$ 有<br>
+$$\begin{aligned}
+&\ E \left(\bar{y}_{lrc} \right ) = E \left[ \bar{y}_{st} + \beta \left(\bar{X} - \bar{x}_{st} \right ) \right ] \\
+& = E \left(\bar{y}_{st} \right ) + \beta \bar{X} - \beta E \left(\bar{x}_{st} \right ) \\
+& = \bar{Y} + \beta \bar{X} - \beta \bar{X} \\
+& = \bar{Y}
+\end{aligned}
+$$
+令 $G_{hi} = Y_{hi} + \beta \left(\bar{X}-X_{hi} \right ),\ \bar{G}_{h} = \bar{Y}_{h} + \beta \left(\bar{X}-\bar{X}_{h} \right )$，则有
+$$\begin{aligned}
+&\ V \left(\bar{y}_{lrc} \right ) = V \left[ \bar{y}_{st} + \beta \left(\bar{X} - \bar{x}_{st} \right ) \right ] \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \frac{1}{N_h-1} \sum_{i=1}^{N_h} \left(G_{hi} - \bar{G}_h \right )^2 \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )
+\end{aligned}
+$$
+</blockquote>
 
 <p class="post-text-noindent">当各层回归系数未定且各层样本量 $n_h$ 均较大时，分别回归估计的期望与方差有近似公式，当回归系数未定且样本量 $n$ 较大时，联合回归估计的期望与方差有近似公式，即</p>
 
-$$E \left(\bar{y}_{lrs} \right ) \approx \bar{Y},\ B_h = \frac{S_{xyh}}{S^2_{xh}}$$
-$$V \left(\bar{y}_{lrs} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B_h S_{xyh} + B_h^{2} S_{xh}^2 \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left[S_{yh}^2 \left(1-\rho_h^2 \right ) \right ]$$
-$$E \left(\bar{y}_{lrc} \right ) \approx \bar{Y},\ B_c = \frac{\sum_{h=1}^{L} a_h B_h}{\sum_{h=1}^{L}a_h},\ a_h = \frac{W_h^2 \left(1-f_h \right )S_{xh}^2}{n_h}$$
-$$V \left(\bar{y}_{lrc} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B_c S_{xyh} + B_c^{2} S_{xh}^2 \right )$$
+$$\begin{aligned}
+&\ E \left(\bar{y}_{lrs} \right ) \approx \bar{Y},\ B_h = \frac{S_{xyh}}{S^2_{xh}} \\
+&\ V \left(\bar{y}_{lrs} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B_h S_{xyh} + B_h^{2} S_{xh}^2 \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - B_h^2 S_{xh}^2 \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left[S_{yh}^2 \left(1-\rho_h^2 \right ) \right ] \\
+\\
+&\ E \left(\bar{y}_{lrc} \right ) \approx \bar{Y},\ B_c = \frac{\sum_{h=1}^{L} a_h B_h}{\sum_{h=1}^{L}a_h},\ a_h = \frac{W_h^2 \left(1-f_h \right )S_{xh}^2}{n_h} \\
+&\ V \left(\bar{y}_{lrc} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B_c S_{xyh} + B_c^{2} S_{xh}^2 \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - B_c^{2} S_{xh}^2 \right )
+\end{aligned}
+$$
+
+<blockquote>证明：见抽样技术（第四版）75-76 页</blockquote>
 
 <p class="post-text-noindent">对比这四个方差公式：</p>
 
@@ -91,21 +121,21 @@ $$\sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B S_{xyh} + B^{2}
 
 <p>令 $\beta_h = \bar{y}_h / \bar{x}_h$，根据 $n_h$ 较大时 $\bar{y}_h/\bar{x}_h \approx \bar{Y}_h/\bar{X}_h = R_h$ 的性质以及 $\beta_h$ 已知条件下分别回归估计期望与方差的公式</p>
 
-$$E \left(\bar{y}_{lrs} \right ) = \bar{Y}$$
-$$V \left(\bar{y}_{lrs} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta_h S_{xyh} + \beta_h^{2} S_{xh}^2 \right )$$
+$$\begin{aligned}
+& E \left(\bar{y}_{lrs} \right ) = \bar{Y} \\
+& V \left(\bar{y}_{lrs} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta_h S_{xyh} + \beta_h^{2} S_{xh}^2 \right )
+\end{aligned}
+$$
 
 <p class="post-text-noindent">我们可以得到<strong>当各层样本量 $n_h$ 较大时， 分别比估计的期望与方差的近似公式</strong>，即（注：$\bar{y}_h / \bar{x}_h$ 不是常数，而是随机变量，但 $\bar{Y}_h / \bar{X}_h$ 是常数）：</p>
 
 $$\begin{aligned}
-& E \left(\bar{y}_{rs} \right ) = E \left(\sum_{h=1}^{L} W_h \left[\bar{y}_h + \frac{\bar{y}_h}{\bar{x}_h} \left(\bar{X}_h - \bar{x}_h \right ) \right ] \right ) \\
+&\ E \left(\bar{y}_{rs} \right ) = E \left(\sum_{h=1}^{L} W_h \left[\bar{y}_h + \frac{\bar{y}_h}{\bar{x}_h} \left(\bar{X}_h - \bar{x}_h \right ) \right ] \right ) \\
 & \approx E \left(\sum_{h=1}^{L} W_h \left[\bar{y}_h + \frac{\bar{Y}_h}{\bar{X}_h} \left(\bar{X}_h - \bar{x}_h \right ) \right ] \right ) \\
 & = E \left(\sum_{h=1}^{L} W_h \left[\bar{y}_h + R_h \left(\bar{X}_h - \bar{x}_h \right ) \right ] \right ) \\
-& = \bar{Y}
-\end{aligned}
-$$
-
-$$\begin{aligned}
-& V \left(\bar{y}_{rs} \right ) \approx V \left(\sum_{h=1}^{L} W_h \left[\bar{y}_h + R_h \left(\bar{X}_h - \bar{x}_h \right ) \right ] \right ) \\
+& = \bar{Y} \\
+\\
+&\ V \left(\bar{y}_{rs} \right ) \approx V \left(\sum_{h=1}^{L} W_h \left[\bar{y}_h + R_h \left(\bar{X}_h - \bar{x}_h \right ) \right ] \right ) \\
 & = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2R_h S_{xyh} + R_h^{2} S_{xh}^2 \right ) \\
 & = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2R_h \rho_h S_{yh}S_{xh} + R_h^{2} S_{xh}^2 \right )
 \end{aligned}
@@ -113,21 +143,21 @@ $$
 
 <p>令 $\beta = \bar{y} / \bar{x}$，根据 $n$ 较大时 $\bar{y}/\bar{x} \approx \bar{Y}/\bar{X} = R$ 的性质以及 $\beta$ 已知条件下联合回归估计期望与方差的公式</p>
 
-$$E \left(\bar{y}_{lrc} \right ) = \bar{Y}$$
-$$V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )$$
+$$\begin{aligned}
+& E \left(\bar{y}_{lrc} \right ) = \bar{Y} \\
+& V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )
+\end{aligned}
+$$
 
 <p class="post-text-noindent">我们可以得到<strong>当样本量 $n$ 较大时，联合比估计的期望与方差的近似公式</strong>，即（注：$\bar{y} / \bar{x}$ 不是常数，而是随机变量，但 $\bar{Y} / \bar{X}$ 是常数）：</p>
 
 $$\begin{aligned}
-& E \left(\bar{y}_{rc} \right ) = E \left(\bar{y}_{st} + \frac{\bar{y}}{\bar{x}} \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
+&\ E \left(\bar{y}_{rc} \right ) = E \left(\bar{y}_{st} + \frac{\bar{y}}{\bar{x}} \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
 & \approx E \left(\bar{y}_{st} + \frac{\bar{Y}}{\bar{X}} \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
 & = E \left(\bar{y}_{st} + R \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
-& = \bar{Y}
-\end{aligned}
-$$
-
-$$\begin{aligned}
-& V \left(\bar{y}_{rc} \right ) \approx V \left(\bar{y}_{st} + R \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
+& = \bar{Y} \\
+\\
+&\ V \left(\bar{y}_{rc} \right ) \approx V \left(\bar{y}_{st} + R \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
 & = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2R S_{xyh} + R^{2} S_{xh}^2 \right ) \\
 & = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2R\rho_h S_{yh}S_{xh} + R^{2} S_{xh}^2 \right )
 \end{aligned}
@@ -135,23 +165,81 @@ $$
 
 <p>令 $\beta = 0$，根据 $\beta$ 已知条件下联合回归估计期望与方差的公式</p>
 
-$$E \left(\bar{y}_{lrc} \right ) = \bar{Y}$$
-$$V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )$$
+$$\begin{aligned}
+& E \left(\bar{y}_{lrc} \right ) = \bar{Y} \\
+& V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )
+\end{aligned}
+$$
 
 <p class="post-text-noindent">我们可以得到<strong>简单估计的期望与方差的公式</strong>，即：</p>
 
 $$\begin{aligned}
-& E \left(\bar{y}_{st} \right ) = E \left(\bar{y}_{st} + 0 \times \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
-& = \bar{Y}
-\end{aligned}
-$$
-
-$$\begin{aligned}
-& V \left(\bar{y}_{st} \right ) = V \left(\bar{y}_{st} + 0 \times \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
-& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} S_{h}^2
+&\ E \left(\bar{y}_{st} \right ) = E \left(\bar{y}_{st} + 0 \times \left(\bar{X} - \bar{x}_{st} \right ) \right ) = \bar{Y} \\
+&\ V \left(\bar{y}_{st} \right ) = V \left(\bar{y}_{st} + 0 \times \left(\bar{X} - \bar{x}_{st} \right ) \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} S_{h}^2
 \end{aligned}
 $$
 
 <h1>2 总体均值三种估计的比较</h1>
+
+<p>本节，我们将对总体均值三种估计的精度进行比较，其依据主要是上节给出的三种估计的期望与方差，由于在一定条件下这些估计是无偏或近似无偏的，因此我们主要通过比较估计的方差来比较三种估计的精度。下面是上节给出的三种估计的方差公式（注：回归估计只列出了回归系数未知的情形，现实中回归系数已知的情况是少见的）：</p>
+
+$$\begin{aligned}
+& V \left(\bar{y}_{st} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} S_{h}^2 \\
+& V \left(\bar{y}_{rs} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2R_h S_{xyh} + R_h^{2} S_{xh}^2 \right ) \\
+& V \left(\bar{y}_{rc} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2R S_{xyh} + R^{2} S_{xh}^2 \right ) \\
+& V \left(\bar{y}_{lrs} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - B_h^2 S_{xh}^2 \right ) \\
+& V \left(\bar{y}_{lrc} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - B_c^2 S_{xh}^2 \right )
+\end{aligned}
+$$
+
+<p>我们首先比较分别（联合）比估计 $\bar{y}_{rs}$（$\bar{y}_{rc}$）与简单估计 $\bar{y}_{st}$，当各层样本量 $n_h$ 较大、总体 $Y$ 与总体 $X$ 各层变异系数一致（$S_{yh}/\bar{Y}_h = S_{xh}/\bar{X}_h$）且各层相关系数大于 $1/2$（$S_{xyh}/\left(S_{yh}S_{xh} \right ) > 1/2$）时，我们有：</p>
+
+$$\begin{aligned}
+&\ V \left(\bar{y}_{rs} \right ) - V \left(\bar{y}_{st} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(- 2R_h S_{xyh} + R_h^{2} S_{xh}^2 \right )\\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(- 2\frac{\bar{Y}_h}{\bar{X}_h} S_{xyh} + \frac{\bar{Y}_h^2}{\bar{X}_h^2} S_{xh}^2 \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(- 2\bar{Y}_h^2\frac{S_{xh}}{\bar{X}_h}\frac{S_{yh}}{\bar{Y}_h} \frac{S_{xyh}}{S_{xh}S_{yh}} + \bar{Y}_h^2\frac{S_{xh}^2}{\bar{X}_h^2} \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(- 2\bar{Y}_h^2\frac{S_{xh}^2}{\bar{X}_h^2}\frac{S_{xyh}}{S_{xh}S_{yh}} + \bar{Y}_h^2\frac{S_{xh}^2}{\bar{X}_h^2} \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \bar{Y}_h^2\frac{S_{xh}^2}{\bar{X}_h^2} \left(1 - 2\frac{S_{xyh}}{S_{xh}S_{yh}} \right ) \\
+& < \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \bar{Y}_h^2\frac{S_{xh}^2}{\bar{X}_h^2} \left(1 - 2\frac{1}{2} \right ) \\
+& = 0
+\end{aligned}
+$$
+
+<p class="post-text-noindent">所以，<strong>当各层样本量 $n_h$ 较大、总体 $Y$ 与总体 $X$ 各层变异系数一致且各层相关系数大于 $1/2$ 时，分别比估计的精度高于简单估计的精度</strong>。类似地，我们可以得到：<strong>当样本量 $n$ 较大、各层相对于总体的变异程度一致（$S_{yh}/\bar{Y} = S_{xh}/\bar{X}$）且各层相关系数大于 $1/2$ 时，联合比估计的精度高于简单估计的精度</strong>。</p>
+
+<p>接下来我们比较分别（联合）回归估计 $\bar{y}_{lrs}$（$\bar{y}_{lrc}$）与简单估计 $\bar{y}_{st}$，当各层样本量 $n_h$ 较大时，我们有：</p>
+
+$$V \left(\bar{y}_{lrs} \right ) - V \left(\bar{y}_{st} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(- B_h^{2} S_{xh}^2 \right ) \leq 0$$
+
+<p class="post-text-noindent">所以，<strong>当各层样本量 $n_h$ 较大时，分别回归估计的精度不低于简单估计的精度</strong>。类似地，我们可以得到：<strong>当样本量 $n$ 较大时，联合回归估计的精度不低于简单估计的精度</strong>。</p>
+
+<p>当存在某些层样本量 $n_h$ 不大 (或样本量 $n$ 不大) 时，比估计、回归估计既存在偏差，也没有方差的准确或近似公式，此时无法从理论上判断三者精度的关系。随机模拟显示：此时回归估计与比估计方差相差不大，但其均方误差显著大于比估计。</p>
+
+<p>下面我们比较分别比（回归）估计与联合比（回归）估计。当各层样本量 $n_h$ 较大、各层比率 $R_h = \frac{S_{xyh}}{S_{xh}^2}$ 时，我们有：</p>
+
+$$\begin{aligned}
+&\ V \left(\bar{y}_{rs} \right ) - V \left(\bar{y}_{rc} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left[ - 2\left(R_h-R \right ) S_{xyh} + \left(R_h^2-R^2 \right ) S_{xh}^2 \right ] \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left[ 2\left(R_h-R \right ) \left(S_{xyh} - R_h S_{xh}^2 \right ) - \left(R_h-R \right )^2 S_{xh}^2 \right ] \\
+& = - \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(R_h-R \right )^2 S_{xh}^2 \\
+& \leq 0
+\end{aligned}
+$$
+
+<p class="post-text-noindent">所以，<strong>当各层样本量 $n_h$ 较大、各层比率 $R_h = \frac{S_{xyh}}{S_{xh}^2}$ 时，分别比估计的精度不低于联合比估计</strong>。当各层样本量 $n_h$ 较大时，我们有：</p>
+
+$$\begin{aligned}
+&\ V \left(\bar{y}_{lrc} \right ) - V \left(\bar{y}_{lrs} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left( B_h^2S_{xh}^2 - B_c^2S_{xh}^2 \right ) \\
+& = \sum_{h=1}^{L} a_h B_{h}^{2} - \sum_{h=1}^{L} a_h B_{c}^{2} \\
+& = \sum_{h=1}^{L} a_h B_{h}^{2} - 2\sum_{h=1}^{L} a_h B_{c}^{2} + \sum_{h=1}^{L} a_h B_{c}^{2} \\
+& = \sum_{h=1}^{L} a_h B_{h}^{2} - 2\left(B_{c}\sum_{h=1}^{L} a_h \right ) B_{c} + \sum_{h=1}^{L} a_h B_{c}^{2} \\
+& = \sum_{h=1}^{L} a_h B_{h}^{2} - 2\left(\sum_{h=1}^{L} a_h B_{h} \right ) B_{c} + \sum_{h=1}^{L} a_h B_{c}^{2} \\
+& = \sum_{h=1}^{L} a_h \left(B_{h}-B_{c} \right )^{2} \\
+& \geq 0
+\end{aligned}
+$$
+
+<p class="post-text-noindent">所以，<strong>当各层样本量 $n$ 较大时，分别回归估计的精度不低于联合回归估计</strong>。</p>
+
+<p><strong>当样本量 $n$ 较大，但存在某些层样本量 $n_h$ 不大时</strong>，由于此时没有分别比 (回归) 估计方差的准确或近似公式，以及联合估计无需辅助变量各层特征的便利性，<strong>如果要选择比 (回归)估计，应优先选择联合比 (回归) 估计</strong>。</p>
 
 </div>
