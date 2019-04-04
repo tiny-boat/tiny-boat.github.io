@@ -1,0 +1,157 @@
+---
+layout: post
+title:  "抽样技术讲课稿"
+date:   2019-04-03 10:00:00
+categories: Statistics
+excerpt: "抽样技术的一个核心目标就是：在一定人力、物力、财力的限制下，去找到一个精度较高的总体特征估计量。精度通常由估计量的均方误差衡量，均方误差是偏差平方与方差的和，偏差是期望与总体特征之差，所以推导总体特征不同估计量的期望与方差，占据了我们教材的大部分版面。"
+permalink: /stratified_random_sampling/
+---
+
+<div class="post-style">
+
+<p>抽样技术的一个核心目标就是：在一定人力、物力、财力的限制下，去找到一个精度较高的总体特征估计量。</p>
+
+<p>精度通常由估计量的均方误差衡量，均方误差是偏差平方与方差的和，偏差是期望与总体特征之差，所以推导总体特征不同估计量的期望与方差，占据了我们教材的大部分版面。</p>
+
+<p>总体特征包括均值、总值、比例、比率。通常，教材只会给出总体均值各种估计量（简单估计、比估计、回归估计）期望与方差的详细推导过程。这是因为：</p>
+
+<ul>
+	<li>对特定总体，总值是均值的常数倍，比例是特殊的均值，一旦知道了总体均值估计量的期望与方差，我们就可以很容易地得到总体总值、总体比例估计量的期望与方差</li>
+	<li>虽然无法通过总体均值估计量的期望与方差直接推得总体比率估计量的期望与方差，但估计总体比率的需求并不常见，因此教材只给出了简单随机抽样下的总体比率估计量的期望与方差。事实上，总体比率估计量的期望与方差结果，更多地承担着中介的角色，因为总体特征的比估计与比率估计量息息相关</li>
+</ul>
+
+<p>下面，我们回顾一下分层随机抽样中，总体均值的简单估计、比估计、回归估计的期望与方差。我们不从简答估计开始看，而从回归估计开始看。这是因为：与简单随机抽样一致，对分层随机抽样而言，其总体均值的简单估计、比估计也是总体均值回归估计的特例。</p>
+
+<h1>1 总体均值的三种估计</h1>
+
+<p>由于简单估计、比估计均是回归估计的特例，我们首先来看分层随机抽样中总体均值的回归估计，包括总体均值的分别回归估计与联合回归估计。</p>
+
+<h2>1.1 回归估计的定义及其与简单/比估计的关系</h2>
+
+<p>分层随机抽样中，总体均值的<strong>分别回归估计是各层回归估计的加权和</strong>，即</p>
+
+$$\bar{y}_{lrs} = \sum_{h=1}^{L} W_h \bar{y}_{lrh} = \sum_{h=1}^{L} W_h \left[\bar{y}_h + \beta_h \left(\bar{X}_h - \bar{x}_h \right ) \right ]$$
+
+<p class="post-text-noindent">当各层回归系数 $\beta_h = \bar{y}_h / \bar{x}_h$，总体均值的分别回归估计退化为总体均值的分别比估计，即</p>
+
+$$\bar{y}_{rs} = \sum_{h=1}^{L} W_h \frac{\bar{y}_h}{\bar{x}_h} \bar{X}_h$$
+
+<p class="post-text-noindent">当各层回归系数 $\beta_h = 0$ 时，总体均值的分别回归估计退化为总体均值的简单估计，即</p>
+
+$$\bar{y}_{st} = \sum_{h=1}^{L} W_h \bar{y}_h$$
+
+<p>分层随机抽样中，总体均值的<strong>联合回归估计是各层加权后的回归估计</strong>，即</p>
+
+$$\bar{y}_{lrc} = \bar{y}_{st} + \beta \left(\bar{X} - \bar{x}_{st} \right ) = \sum_{h=1}^{L} W_h \bar{y}_h + \beta \left(\bar{X} - \sum_{h=1}^{L} W_h \bar{x}_h \right )$$
+
+<p class="post-text-noindent">当回归系数 $\beta = \bar{y}_{st} / \bar{x}_{st}$ 时，总体均值的联合回归估计退化为总体均值的联合比估计，即</p>
+
+$$\bar{y}_{rc} = \frac{\bar{y}_{st}}{\bar{x}_{st}} \bar{X}$$
+
+<p class="post-text-noindent">当回归系数 $\beta = 0$ 时，总体均值的联合回归估计退化为总体均值的简单估计，即</p>
+
+$$\bar{y}_{st} = \sum_{h=1}^{L} W_h \bar{y}_h$$
+
+<h2>1.2 回归估计的期望与方差</h2>
+
+<p>下面我们来看回归估计期望与方差的理论结果，当各层回归系数给定时，分别回归估计的期望与方差有准确公式，当回归系数给定时，联合回归估计的期望与方差有准确公式，即</p>
+
+$$E \left(\bar{y}_{lrs} \right ) = \bar{Y}$$
+$$V \left(\bar{y}_{lrs} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta_h S_{xyh} + \beta_h^{2} S_{xh}^2 \right )$$
+$$E \left(\bar{y}_{lrc} \right ) = \bar{Y}$$
+$$V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )$$
+
+<p class="post-text-noindent">当各层回归系数未定且各层样本量 $n_h$ 均较大时，分别回归估计的期望与方差有近似公式，当回归系数未定且样本量 $n$ 较大时，联合回归估计的期望与方差有近似公式，即</p>
+
+$$E \left(\bar{y}_{lrs} \right ) \approx \bar{Y},\ B_h = \frac{S_{xyh}}{S^2_{xh}}$$
+$$V \left(\bar{y}_{lrs} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B_h S_{xyh} + B_h^{2} S_{xh}^2 \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left[S_{yh}^2 \left(1-\rho_h^2 \right ) \right ]$$
+$$E \left(\bar{y}_{lrc} \right ) \approx \bar{Y},\ B_c = \frac{\sum_{h=1}^{L} a_h B_h}{\sum_{h=1}^{L}a_h},\ a_h = \frac{W_h^2 \left(1-f_h \right )S_{xh}^2}{n_h}$$
+$$V \left(\bar{y}_{lrc} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B_c S_{xyh} + B_c^{2} S_{xh}^2 \right )$$
+
+<p class="post-text-noindent">对比这四个方差公式：</p>
+
+<ul>
+<li>$\beta_h$ 已知：</li>
+$$V \left(\bar{y}_{lrs} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta_h S_{xyh} + \beta_h^{2} S_{xh}^2 \right )$$
+<li>$\beta$ 已知：</li>
+$$V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )$$
+<li>$\beta_h$ 未知，$n_h$ 较大：</li>
+$$V \left(\bar{y}_{lrs} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B_h S_{xyh} + B_h^{2} S_{xh}^2 \right )$$
+<li>$\beta$ 未知，$n$ 较大：</li>
+$$V \left(\bar{y}_{lrc} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B_c S_{xyh} + B_c^{2} S_{xh}^2 \right )$$
+</ul>
+
+<p class="post-text-noindent">我们可以看到，它们十分相似，都具有如下形式：</p>
+
+$$\sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B S_{xyh} + B^{2} S_{xh}^2 \right )$$
+
+<p class="post-text-noindent">只不过对各层回归系数已知的分别回归估计，$B$ 等于各层回归系数 $\beta_h$；对回归系数已知的联合回归估计，$B$ 等于回归系数 $\beta$；对各层回归系数未知且各层样本量较大的分别回归估计，$B$ 等于各层总体回归系数 $B_h$；对回归系数未知且样本量较大的联合回归估计，$B$ 等于各层总体回归系数的加权平均 $B_c$。</p>
+
+<h2>1.3 简单/比估计的期望与方差</h2>
+
+<p>令 $\beta_h = \bar{y}_h / \bar{x}_h$，根据 $n_h$ 较大时 $\bar{y}_h/\bar{x}_h \approx \bar{Y}_h/\bar{X}_h = R_h$ 的性质以及 $\beta_h$ 已知条件下分别回归估计期望与方差的公式</p>
+
+$$E \left(\bar{y}_{lrs} \right ) = \bar{Y}$$
+$$V \left(\bar{y}_{lrs} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta_h S_{xyh} + \beta_h^{2} S_{xh}^2 \right )$$
+
+<p class="post-text-noindent">我们可以得到<strong>当各层样本量 $n_h$ 较大时， 分别比估计的期望与方差的近似公式</strong>，即（注：$\bar{y}_h / \bar{x}_h$ 不是常数，而是随机变量，但 $\bar{Y}_h / \bar{X}_h$ 是常数）：</p>
+
+$$\begin{aligned}
+& E \left(\bar{y}_{rs} \right ) = E \left(\sum_{h=1}^{L} W_h \left[\bar{y}_h + \frac{\bar{y}_h}{\bar{x}_h} \left(\bar{X}_h - \bar{x}_h \right ) \right ] \right ) \\
+& \approx E \left(\sum_{h=1}^{L} W_h \left[\bar{y}_h + \frac{\bar{Y}_h}{\bar{X}_h} \left(\bar{X}_h - \bar{x}_h \right ) \right ] \right ) \\
+& = E \left(\sum_{h=1}^{L} W_h \left[\bar{y}_h + R_h \left(\bar{X}_h - \bar{x}_h \right ) \right ] \right ) \\
+& = \bar{Y}
+\end{aligned}
+$$
+
+$$\begin{aligned}
+& V \left(\bar{y}_{rs} \right ) \approx V \left(\sum_{h=1}^{L} W_h \left[\bar{y}_h + R_h \left(\bar{X}_h - \bar{x}_h \right ) \right ] \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2R_h S_{xyh} + R_h^{2} S_{xh}^2 \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2R_h \rho_h S_{yh}S_{xh} + R_h^{2} S_{xh}^2 \right )
+\end{aligned}
+$$
+
+<p>令 $\beta = \bar{y} / \bar{x}$，根据 $n$ 较大时 $\bar{y}/\bar{x} \approx \bar{Y}/\bar{X} = R$ 的性质以及 $\beta$ 已知条件下联合回归估计期望与方差的公式</p>
+
+$$E \left(\bar{y}_{lrc} \right ) = \bar{Y}$$
+$$V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )$$
+
+<p class="post-text-noindent">我们可以得到<strong>当样本量 $n$ 较大时，联合比估计的期望与方差的近似公式</strong>，即（注：$\bar{y} / \bar{x}$ 不是常数，而是随机变量，但 $\bar{Y} / \bar{X}$ 是常数）：</p>
+
+$$\begin{aligned}
+& E \left(\bar{y}_{rc} \right ) = E \left(\bar{y}_{st} + \frac{\bar{y}}{\bar{x}} \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
+& \approx E \left(\bar{y}_{st} + \frac{\bar{Y}}{\bar{X}} \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
+& = E \left(\bar{y}_{st} + R \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
+& = \bar{Y}
+\end{aligned}
+$$
+
+$$\begin{aligned}
+& V \left(\bar{y}_{rc} \right ) \approx V \left(\bar{y}_{st} + R \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2R S_{xyh} + R^{2} S_{xh}^2 \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2R\rho_h S_{yh}S_{xh} + R^{2} S_{xh}^2 \right )
+\end{aligned}
+$$
+
+<p>令 $\beta = 0$，根据 $\beta$ 已知条件下联合回归估计期望与方差的公式</p>
+
+$$E \left(\bar{y}_{lrc} \right ) = \bar{Y}$$
+$$V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )$$
+
+<p class="post-text-noindent">我们可以得到<strong>简单估计的期望与方差的公式</strong>，即：</p>
+
+$$\begin{aligned}
+& E \left(\bar{y}_{st} \right ) = E \left(\bar{y}_{st} + 0 \times \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
+& = \bar{Y}
+\end{aligned}
+$$
+
+$$\begin{aligned}
+& V \left(\bar{y}_{st} \right ) = V \left(\bar{y}_{st} + 0 \times \left(\bar{X} - \bar{x}_{st} \right ) \right ) \\
+& = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} S_{h}^2
+\end{aligned}
+$$
+
+<h1>2 总体均值三种估计的比较</h1>
+
+</div>
