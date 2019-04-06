@@ -1,0 +1,899 @@
+---
+layout: post
+title:  "最优化算法(1):数学基础"
+date:   2018-12-21 10:47:00
+categories: Mathematics Optimization
+excerpt: "从某种程度上说，我们生活中遇到的许许多多的问题，其本质都是一个优化问题。例如着装打扮、选择饭店、租购房屋、旅行规划等等。如果我们能将这些问题转化为目前数学上可解的最优化模型，并且我们掌握了求解相关最优化模型的最优化算法，那么我们或许能够生活得更聪明，更舒适，也更幸福。将生活问题转化为数学模型并不容易，它或许需要敏锐的头脑，需要长期的积累，需要灵光的乍泄，但掌握求解相关最优化模型的算法则相对容易多了"
+permalink: /optimization/1/foundation_of_mathematics/
+---
+
+<div class="post-style">
+
+<p>从某种程度上说，我们生活中遇到的许许多多的问题，都可以看成是一个最优化问题。例如着装打扮、选择饭店、租购房屋、旅行规划等等。如果我们能将这些问题转化为目前数学上可解的最优化模型，并且我们掌握了求解相关最优化模型的最优化算法，那么我们或许能够生活得更聪明，更舒适，也更幸福。将生活问题转化为数学模型并不容易，它或许需要敏锐的头脑，需要长期的积累，需要灵光的乍泄，但掌握求解相关最优化模型的算法则相对容易多了。</p>
+
+<p><strong>1947 年，Dantzig 提出求解一般线性规划问题的单纯形法后，最优化开始成为一门独立的学科</strong>。历经 70 多年的风雨，在电子计算机的推动下，最优化理论与算法如今已在经济计划、工程设计、生产管理、交通运输等诸多方面得到广泛应用，并已发展成为当今应用数学领域一门十分活跃的学科。</p>
+
+<p>最优化问题的一般形式为：</p>
+
+$$
+\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ \boldsymbol{x} \in X \subseteq R^n \end{aligned}
+$$
+
+<p class="post-text-noindent">其中 $x$ 为<strong>决策变量</strong> (decision variable)，$f\left(x \right)$ 为<strong>目标函数</strong> (objective function)，$X$ 为<strong>约束集</strong> (constraint set) 或<strong>可行域</strong> (feasible region)。当 $X = R^n$ 时，称为<strong>无约束优化</strong> (unconstrained optimization) 问题 ，否则称为<strong>约束优化</strong> (constrained optimization) 问题。约束优化问题通常写为如下更具体的形式：</p>
+
+$$
+\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}
+$$
+
+<p class="post-text-noindent">$c_i\left(\boldsymbol{x}\right) = 0, i \in E$ 为<strong>等式约束</strong> (equality constraint)，$c_i\left(\boldsymbol{x}\right) \geq 0, i \in I$ 为<strong>不等式约束</strong> (inequality constraint)，$c_i\left(\boldsymbol{x}\right)$ 为<strong>约束函数</strong> (constraint function)，$E$ 和 $I$ 分别是等式约束的指标集和不等式约束的指标集。当目标函数与约束函数均为线性函数时，约束优化问题称为<strong>线性规划</strong> (linear programming)，否则称为<strong>非线性规划</strong> (nonlinear programming)。</p>
+
+<p>本章，我们将主要介绍一些数学基础知识，为后续系统学习最优化算法打下坚实的基础，此外，我们还会对最优化算法的基本结构做个简要描述。现在，就让我们放下对数学符号的恐惧，拿起笔和纸，一起在属于 x, y 和 z 的王国里开始遨游吧。学习从来都是痛苦的过程，只有那些不惧艰险、勇于攀登的人，才能最终品尝到属于他们的、独一无二的、最甜也最美的果实。</p>
+
+<h1>1.1 线性代数</h1>
+
+<p>本节，我们介绍最优化理论中需要用到的线性代数知识，包括：范数、矩阵的逆与广义逆、矩阵的 Rayleigh 商和矩阵的秩一校正。</p>
+
+<h2>1.1.1 范数</h2>
+
+<p>范数是长度概念的推广，向量、矩阵均有范数。$R^n$ 上的<strong>向量范数</strong> (vector norm) 是一个从 $R^n \rightarrow R$ 的映射 $\left \| \cdot  \right \|$，它满足如下三个性质：</p>
+
+<ul>
+	<li>非负性 (Positivity)：$\left \| \boldsymbol{x}  \right \| \geq 0,\ \forall \ \boldsymbol{x} \in R^n,\ \left \| \boldsymbol{x}  \right \| = 0 \Leftrightarrow \boldsymbol{x} = 0$</li>
+	<li>齐次性 (Homogeneity)：$\left \| \alpha \boldsymbol{x}  \right \| =\left | \alpha \right |\left \| \boldsymbol{x} \right \|,\ \forall \alpha \in R, \ \boldsymbol{x} \in R^n$</li>
+	<li>三角不等式 (Triangle inequality)：$\left \| \boldsymbol{x}+\boldsymbol{y}  \right \| \leq \left \| \boldsymbol{x} \right \|+\left \| \boldsymbol{y} \right \|,\ \forall \ \boldsymbol{x},\boldsymbol{y} \in R^n$</li>
+</ul>
+
+<p class="post-text-noindent">向量 $\boldsymbol{x} = \left(x_1,x_2,\cdots,x_n\right)'$ 的 <strong>$l_p$ 范数</strong>定义为：</p>
+
+$$\left \| \boldsymbol{x}  \right \|_p = \left ( \sum_{i=1}^{n}\left | x_i \right |^p \right )^{\frac{1}{p}},\ 1 \leq p < \infty$$
+
+<p class="post-text-noindent">常用的向量范数如下所示：</p>
+
+<ul>
+	<li><strong>$l_1$ 范数</strong> $\left ( l_1\ \,\,\mathrm{norm} \right )$:</li>
+	$$\left \| \boldsymbol{x}  \right \|_1 = \sum_{i=1}^{n}\left | x_i \right |$$
+	<li><strong>$l_2$ 范数</strong> $\left ( l_2\ \,\,\mathrm{norm} \right )$:</li>
+	$$\left \| \boldsymbol{x}  \right \|_2 = \left (\sum_{i=1}^{n} x_i^2 \right )^{\frac{1}{2}}$$
+	<li><strong>$l_\infty$ 范数</strong> $\left ( l_\infty\  \mathrm{norm} \right )$:</li>
+	$$\left \| \boldsymbol{x}  \right \|_\infty = \max_{1\leq i\leq n}\left | x_i \right |$$
+	<li><strong>椭球范数</strong> $\left(\mathrm{ellipsoidal} \ \mathrm{norm}\right)$:</li>
+	$$\left \| \boldsymbol{x}  \right \|_{\boldsymbol{A}} = \left ( x^T\boldsymbol{A}x \right )^{\frac{1}{2}},\boldsymbol{A}^T=\boldsymbol{A},\boldsymbol{A}_{n\times n} > 0$$
+</ul>
+
+<p class="post-text-noindent">上述四个向量范数是等价的，这是因为它们满足如下四个不等式：</p>
+
+$$\left \| \boldsymbol{x} \right \|_2\ \ \leq \left \| \boldsymbol{x} \right \|_1 \leq \sqrt{n}\left \| \boldsymbol{x} \right \|_2$$
+$$\left \| \boldsymbol{x} \right \|_\infty\  \leq \left \| \boldsymbol{x} \right \|_2 \leq \sqrt{n}\left \| \boldsymbol{x} \right \|_\infty$$
+$$\left \| \boldsymbol{x} \right \|_\infty\  \leq \left \| \boldsymbol{x} \right \|_1 \leq n\left \| \boldsymbol{x} \right \|_\infty$$
+$$\sqrt{\lambda_{\mathrm{min}}\left ( \boldsymbol{A} \right )}\left \| \boldsymbol{x} \right \|_2\ \  \leq \left \| \boldsymbol{x} \right \|_{\boldsymbol{A}} \leq \sqrt{\lambda_{\mathrm{max}}\left ( \boldsymbol{A} \right )}\left \| \boldsymbol{x} \right \|_2$$
+
+<p class="post-text-noindent">其中 $\lambda_{\mathrm{max}} \left ( \boldsymbol{A} \right )$ 为矩阵 $\boldsymbol{A}$ 的最大特征值，$\lambda_{\mathrm{min}} \left ( \boldsymbol{A} \right )$ 为矩阵 $\boldsymbol{A}$ 的最小特征值。</p>
+
+<blockquote>等价范数：如果 $\exists \mu_1,\ \mu_2>0$ 使得 $R^n$ 上的范数 $\left \| \cdot  \right \|_\alpha$ 和 $\left \| \cdot  \right \|_\beta$ 满足：$\mu_1\left \| \boldsymbol{x} \right \|_\alpha \leq \left \| \boldsymbol{x} \right \|_\beta \leq \mu_2\left \| \boldsymbol{x} \right \|_\alpha$，$\forall \ \boldsymbol{x}\in R^n$，则我们称 $R^n$ 上的范数 $\left \| \cdot  \right \|_\alpha$ 和 $\left \| \cdot  \right \|_\beta$ 是等价的。</blockquote>
+
+<p class="post-text-noindent">此外，关于向量范数，还有几个重要的不等式：</p>
+
+<ul>
+	<li>$\left | \boldsymbol{x}^T\boldsymbol{A}\boldsymbol{y} \right |\leq\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}},\boldsymbol{A}_{n\times n}>0;\ \left | \boldsymbol{x}^T\boldsymbol{A}\boldsymbol{y} \right |=\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}} \Leftrightarrow \boldsymbol{x}=c\boldsymbol{y},c\neq 0$（<span class="post-text-problem">待证明</span>）</li>
+	<li>$\left | \boldsymbol{x}^T \boldsymbol{y} \right |\leq\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A}^{-1}},\boldsymbol{A}_{n\times n}>0;\ \left | \boldsymbol{x}^T\boldsymbol{y} \right |=\left \| \boldsymbol{x} \right \|_{\boldsymbol{A}}\left \| \boldsymbol{y} \right \|_{\boldsymbol{A^{-1}}} \Leftrightarrow \boldsymbol{x}=c\boldsymbol{A^{-1}y},c\neq 0$（<span class="post-text-problem">待证明</span>）</li>
+	<li><strong>Young 不等式</strong>：</li>
+	$$xy \leq \frac{x^p}{p}+\frac{y^q}{q},\ x,y \geq 0,\ \frac{1}{p}+\frac{1}{q}=1,\ p,q>1;\ xy = \frac{x^p}{p}+\frac{y^q}{q}\Leftrightarrow x^p=y^q$$
+</ul>
+
+<blockquote>证明：当 $x = 0$ 或 $y = 0$ 时，显然成立；当 $x,y > 0$ 时，令 $t = \frac{1}{p}$、$1-t = \frac{1}{q}$、$a = x^p$、$b = y^q$，因为 $\ln \left(x \right)$ 是一个凹函数，所以 $\ln \left[ta + \left(1-t \right)b \right] \geq t\ln a + \left(1-t \right)\ln b$，代入 $t,\ 1-t,\ a,\ b$，然后两边同取指数运算，即得上式。</blockquote>
+
+<ul>
+	<li><strong>Holder 不等式</strong>（特例：<strong>Cauchy-Schwarz 不等式</strong>）：</li>
+	$$\left | \boldsymbol{x}^T \boldsymbol{y} \right |\leq \left \| \boldsymbol{x} \right \|_p\left \| \boldsymbol{y} \right \|_q,\ \frac{1}{p}+\frac{1}{q}=1,\ p,q>1$$
+</ul>
+
+<blockquote>证明：由 Young 不等式有<br>
+$$\frac{\left | x_iy_i \right |}{\left \| x \right \|_p\left \| y \right \|_q} \leq \frac{1}{p}\left ( \frac{\left | x_i \right |}{\left \| x \right \|_p} \right )^p + \frac{1}{q}\left ( \frac{\left | x_i \right |}{\left \| x \right \|_q} \right )^q$$
+上述不等式两边关于 $i$ 求和得<br>
+$$\frac{1}{\left \| x \right \|_p\left \| y \right \|_q}\sum_{i=1}^{n}\left | x_iy_i \right | \leq \frac{1}{p\left \| x \right \|_p^p}\sum_{i=1}^{n}\left | x_i \right |^p + \frac{1}{q\left \| y \right \|_q^q}\sum_{i=1}^{n}\left | y_i \right |^q = \frac{1}{p} + \frac{1}{q} = 1$$
+两边同乘 $\left \| x \right \|_p\left \| y \right \|_q$ 即得结果。</blockquote>
+
+<ul>
+	<li><strong>Minkowski 不等式</strong>（范数定义中的第 3 条性质）：</li>
+	$$\left \| \boldsymbol{x}+\boldsymbol{y} \right \|_p\leq \left \| \boldsymbol{x} \right \|_p+\left \| \boldsymbol{y} \right \|_p,\ p \geq 1$$
+</ul>
+
+<blockquote>证明：当 $x = 0$ 或 $y = 0$ 时，显然成立；当 $x,y > 0$ 时，令 $t = \frac{\left \| x \right \|_p}{\left \| x  \right \|_p + \left \| y  \right \|_p}$、$1-t = \frac{\left \| y \right \|_p}{\left \| x  \right \|_p + \left \| y  \right \|_p}$、$a = \frac{\left | x_i \right |}{\left \| x \right \|_p}$、$b = \frac{\left | y_i \right |}{\left \| y \right \|_p}$。因为 $x^p,\ x>0$ 是凸函数，所以有 $\left[ta + \left(1-t \right)b \right]^p \leq t a^p + \left(1-t \right) b^p$，代入 $t,\ 1-t,\ a,\ b$，然后两边同时对 $i$ 求和，可得<br>
+$$\sum_{i=1}^{n}\left ( \frac{\left | x_i \right |+\left | y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq 1$$
+所以<br>
+$$\sum_{i=1}^{n}\left ( \frac{\left | x_i + y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq \sum_{i=1}^{n}\left ( \frac{\left | x_i \right |+\left | y_i \right |}{\left \| x \right \|_p + \left \| y \right \|_p} \right )^p \leq 1$$
+不等号两边同取 $p$ 次根，然后经恒等变换即得结果。</blockquote>
+
+<p>矩阵范数是向量范数的自然推广，$R^{m\times n}$ 上的矩阵可视为 $R^{mn}$ 中的向量。$R^{m\times n}$ 上的<strong>矩阵范数</strong> (matrix norm) 是一个从 $R^{mn} \rightarrow R$ 的映射 $\left \| \cdot  \right \|$，它满足如下三个性质：</p>
+
+<ul>
+	<li>非负性：$\left \| \boldsymbol{A}  \right \| \geq 0,\ \forall \ \boldsymbol{A} \in R^{m\times n},\ \left \| \boldsymbol{A}  \right \| = 0 \Leftrightarrow \boldsymbol{A} = \boldsymbol{O}$，$\boldsymbol{O}$ 为一个零矩阵</li>
+	<li>齐次性：$\left \| \alpha \boldsymbol{A}  \right \| =\left | \alpha \right |\left \| \boldsymbol{A} \right \|,\ \forall \alpha \in R, \ \boldsymbol{A} \in R^{m\times n}$</li>
+	<li>三角不等式：$\left \| \boldsymbol{A}+\boldsymbol{B}  \right \| \leq \left \| \boldsymbol{A} \right \|+\left \| \boldsymbol{B} \right \|,\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{m\times n}$</li>
+</ul>
+
+<p class="post-text-noindent">如果 $\forall \boldsymbol{A} \in R^{m\times n},\ \boldsymbol{x} \in R^n$ 有：</p>
+
+$$\left \| \boldsymbol{Ax}  \right \| \leq \left \| \boldsymbol{A}  \right \|\left \| \boldsymbol{x}  \right \|$$
+
+<p class="post-text-noindent">我们称该矩阵范数可由向量范数导出，或与向量范数兼容，<strong>诱导 (矩阵) 范数</strong>（induced norm）因此定义为（<span class="post-text-problem">为什么 $\begin{aligned}\left \| \boldsymbol{A^{-1}}  \right \| =1/ \min_{\left \| \boldsymbol{x} \right \|=1}\left \| \boldsymbol{Ax}  \right \|\end{aligned}$</span>）：</p>
+
+$$\left \| \boldsymbol{A}  \right \| =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|}{ \left \| \boldsymbol{x}  \right \|} = \max_{\left \| \boldsymbol{x} \right \|=1}\left \| \boldsymbol{Ax}  \right \|$$
+
+<blockquote>显然，上式给出的诱导范数的定义满足条件 $\left \| \boldsymbol{Ax}  \right \| \leq \left \| \boldsymbol{A}  \right \|\left \| \boldsymbol{x}  \right \|$，但要保证上式定义的合理性，$f\left( \boldsymbol{x} \right) = \left \| \boldsymbol{Ax}  \right \|$ 在 $D = \left \{\boldsymbol{x} \in R^n: \left \| \boldsymbol{x}  \right \| = 1 \right \}$ 上必须存在最大值。根据向量范数的连续性，以及有界闭集上的连续函数必有最大最小值的定理，我们可以知道上述定义是合理的。</blockquote>
+
+<p class="post-text-noindent">如果对 $n\times n$ 正交矩阵 $\boldsymbol{U}$ 有 $\left \| \boldsymbol{UA}  \right \| = \left \| \boldsymbol{A}  \right \|$，则称 $\left \| \cdot  \right \|$ 为<strong>正交不变范数</strong>。常用的矩阵范数如下所示：</p>
+
+<ul>
+	<li><strong>$l_1$ 诱导范数</strong> / <strong>列和范数</strong> $\left ( l_1\ \mathrm{induced\ norm} \right )$:</li>
+	$$\left \| \boldsymbol{A}  \right \|_1 = \max_{j}\left \| \boldsymbol{a}_{j} \right \|_1 = \max_{j}\sum_{i=1}^{n}\left | a_{ij} \right |$$
+	<li><strong>$l_2$ 诱导范数</strong> / <strong>谱范数</strong> $\left ( l_2\ \mathrm{induced\ norm \ / \ spectral \ norm} \right )$:</li>
+	$$\left \| \boldsymbol{A}  \right \|_2 = \sqrt{\lambda_{\mathrm{max}} \left ( \boldsymbol{A}^T\boldsymbol{A} \right )}$$
+	<li><strong>$l_\infty$ 诱导范数</strong> / <strong>行和范数</strong> $\left ( l_\infty\ \mathrm{induced\ norm} \right )$:</li>
+	$$\left \| \boldsymbol{A}  \right \|_\infty = \max_{i}\left \| \boldsymbol{a}_{i} \right \|_1 = \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$
+	<li><strong>Frobenius 范数</strong> $\left (\mathrm{Frobenius\ norm} \right )$:</li>
+	$$\left \| \boldsymbol{A}  \right \|_F = \left ( \sum_{i=1}^{n}\sum_{j=1}^{n}\left | a_{ij} \right |^2 \right )^{\frac{1}{2}} = \sqrt{\mathrm{tr}\left ( \boldsymbol{A}^T\boldsymbol{A} \right )}$$
+	<li>这里 $\boldsymbol{a}_{j}$ 为矩阵 $\boldsymbol{A}$ 的第 $j$ 列构成的向量，$\boldsymbol{a}_{i}$ 为矩阵 $\boldsymbol{A}$ 的第 $i$ 行构成的向量，$\lambda_{\mathrm{max}} \left ( \boldsymbol{A}^T\boldsymbol{A} \right )$ 为矩阵 $\boldsymbol{A}^T\boldsymbol{A}$ 的最大特征值，$\mathrm{tr}\left ( \boldsymbol{A}^T\boldsymbol{A} \right )$ 为矩阵 $\boldsymbol{A}^T\boldsymbol{A}$ 的迹（主对角线上元素的和）</li>
+</ul>
+
+<p class="post-text-noindent">上述常用矩阵范数中，谱范数和 Frobenius 范数为正交不变范数。此外，上述常用矩阵范数均满足<strong>相容性条件</strong>：</p>
+
+$$\left \| \boldsymbol{AB}  \right \| \leq \left \| \boldsymbol{A}  \right \|\left \| \boldsymbol{B}  \right \|,\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{n\times n}$$
+
+<p class="post-text-noindent">且有（<span class="post-text-problem">为什么成立</span>）：</p>
+
+$$\left \| \boldsymbol{AB}  \right \|_F \leq \min \left \{ \left \| \boldsymbol{A}  \right \|_2 \left \| \boldsymbol{B}  \right \|_F,\left \| \boldsymbol{A}  \right \|_F \left \| \boldsymbol{B}  \right \|_2 \right \},\ \forall \ \boldsymbol{A},\boldsymbol{B} \in R^{n\times n}$$
+
+<p class="post-text-noindent">在本节最后，我们给出 $l_1$ 诱导范数、$l_2$ 诱导范数和 $l_\infty$ 诱导范数的证明过程</p>
+
+<br>
+
+<blockquote><strong>$l_1$ 诱导范数的证明如下：</strong><br>
+$$\begin{aligned}
+&\because \ \left \| \boldsymbol{Ax}  \right \|_1=\sum_{i=1}^{m}\left | \sum_{j=1}^{n}a_{ij}x_j \right | \leq \sum_{i=1}^{m}\sum_{j=1}^{n}\left | a_{ij} \right |\left | x_j \right |= \sum_{j=1}^{n}\sum_{i=1}^{m}\left | a_{ij} \right |\left | x_j \right |  \\
+&\leq \left ( \max_j \sum_{i=1}^{m}\left | a_{ij} \right | \right )\sum_{j=1}^{n}\left | x_j \right |=\max_j \sum_{i=1}^{m}\left | a_{ij} \right |\left \| \boldsymbol{x} \right \|_1
+\end{aligned}$$
+$$\therefore \ \left \| \boldsymbol{A}  \right \|_1 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_1}{ \left \| \boldsymbol{x}  \right \|_1} = \max_{\left \| \boldsymbol{x} \right \|_1=1}\left \| \boldsymbol{Ax}  \right \|_1 \leq \max_{j}\sum_{i=1}^{m}\left | a_{ij} \right | \qquad \cdots \left(1\right)$$
+取 $\boldsymbol{x^{(j)}}=(0,\cdots,1,\cdots,0),\ j=1,2,\cdots,n$，它是除第 $j$ 个元素为 $1$、其余元素全为 $0$ 的向量，则有<br>
+$$\left \| \boldsymbol{A}  \right \|_1 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_1}{ \left \| \boldsymbol{x}  \right \|_1} = \max_{\left \| \boldsymbol{x} \right \|_1=1}\left \| \boldsymbol{Ax}  \right \|_1 \geq \max_{\boldsymbol{x}^{(j)}}\left \| \boldsymbol{Ax}  \right \|_1=\max_{j}\sum_{i=1}^{m}\left | a_{ij} \right | \qquad \cdots \left(2\right)$$
+由 $\left(1 \right)$、$\left(2 \right)$ 两式知<br>
+$$\left \| \boldsymbol{A}  \right \|_1 =\max_{j}\sum_{i=1}^{m}\left | a_{ij} \right |$$</blockquote>
+
+<br>
+
+<blockquote><strong>$l_2$ 诱导范数的证明如下：</strong>设 $\boldsymbol{x}_1,\boldsymbol{x}_2,\cdots,\boldsymbol{x}_n$ 为对称半正定矩阵 $A^TA$ 的与特征值 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$ 相对应的相互正交的特征向量，则 $\forall \ \boldsymbol{x} = 1$ 的向量 $\boldsymbol{x}$，必存在满足条件 $c_1^2+c_2^2+\cdots+c_n^2=1$ 的 $c_1,c_2,\cdots,c_n$ 使得 $\boldsymbol{x}=c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n$。所以有：<br>
+$$\begin{aligned}
+&\ \left \| \boldsymbol{Ax} \right \|_2^2 = \left ( \boldsymbol{Ax} \right )^T \boldsymbol{Ax} = \boldsymbol{x}^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x} \\
+&= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\boldsymbol{A}^T\boldsymbol{A}\left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right ) \\
+&= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\left ( c_1\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_1+c_2\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_2+\cdots+c_n\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_n \right ) \\
+&= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\left ( c_1\lambda_1\boldsymbol{x}_1+c_2\lambda_2\boldsymbol{x}_2+\cdots+c_n\lambda_n\boldsymbol{x}_n \right )\\
+&= \left ( c_1\boldsymbol{x}_1^T+c_2\boldsymbol{x}_2^T+\cdots+c_n\boldsymbol{x}_n^T \right )\left ( c_1\lambda_1\boldsymbol{x}_1+c_2\lambda_2\boldsymbol{x}_2+\cdots+c_n\lambda_n\boldsymbol{x}_n \right ) \\
+&= \sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_j c_ic_j \boldsymbol{x}_i^T\boldsymbol{x}_j = \sum_{i=1}^n \lambda_i c_i^2 \\
+&\leq \lambda_1 \sum_{i=1}^n c_i^2 = \lambda_1 \qquad \cdots \left(3\right)
+\end{aligned}$$
+又因为 $\left \| \boldsymbol{x}_1 \right \|_2 = 1$ 且：<br>
+$$\left \| \boldsymbol{Ax}_1 \right \|_2^2 = \boldsymbol{x}_1^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_1 =  \boldsymbol{x}_1^T\lambda_1\boldsymbol{x}_1 = \lambda_1 \qquad \cdots \left(4\right)$$
+所以由 $\left(3\right)$、$\left(4\right)$ 式得：<br>
+$$\left \| \boldsymbol{A}  \right \|_2 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_2}{ \left \| \boldsymbol{x}  \right \|_2} = \max_{\left \| \boldsymbol{x} \right \|_2=1}\left \| \boldsymbol{Ax}  \right \|_2 = \sqrt{\lambda_1}$$</blockquote>
+
+<br>
+
+<blockquote><strong>$l_\infty$ 诱导范数的证明如下：</strong><br>
+$$\begin{aligned}
+&\because \ \left \| \boldsymbol{Ax}  \right \|_\infty=\max_{1\leq i \leq m}\left | \sum_{j=1}^{n}a_{ij}x_j \right | \leq \max_{1\leq i \leq m}\sum_{j=1}^{n}\left | a_{ij} \right |\left | x_j \right | \\
+&\leq \max_{1\leq i \leq m} \left ( \max_{1\leq j \leq n}\left | x_j \right | \right ) \sum_{i=1}^{m}\left | a_{ij} \right | =\max_i \sum_{i=1}^{m}\left | a_{ij} \right |\left \| \boldsymbol{x} \right \|_\infty
+\end{aligned}$$
+$$\therefore \ \left \| \boldsymbol{A}  \right \|_\infty =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_\infty}{ \left \| \boldsymbol{x}  \right \|_\infty} = \max_{\left \| \boldsymbol{x} \right \|_\infty=1}\left \| \boldsymbol{Ax}  \right \|_\infty \leq \max_{i}\sum_{i=1}^{n}\left | a_{ij} \right | \qquad \cdots \left(5\right)$$
+取 $k$ 使得<br>
+$$\sum_{j=1}^{n}\left | a_{kj} \right | = \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$
+令 $\boldsymbol{y} = \left(y_1,y_2,\cdots,y_n \right)^T$，其中<br>
+$$\ y_j = \left\{\begin{matrix}
+\begin{aligned}
+&\frac{\left | a_{kj} \right |}{a_{kj}},\ a_{kj} \neq 0
+\\ &1\ \ \ \ \ \ \, , \ otherwise
+\end{aligned}
+\end{matrix}\right.$$
+易知 $\left \| \boldsymbol{y} \right \|_\infty = 1$，从而有<br>
+$$\begin{aligned}
+&\left \| \boldsymbol{A}  \right \|_\infty =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_\infty}{ \left \| \boldsymbol{x}  \right \|_\infty} = \max_{\left \| \boldsymbol{x} \right \|_\infty=1}\left \| \boldsymbol{Ax}  \right \|_\infty \geq \left \| \boldsymbol{Ay} \right \|_\infty = \max_{1 \leq i \leq m}\left | \sum_{j=1}^{n}a_{ij}y_j \right |\\
+&\geq \left | \sum_{j=1}^{n}a_{kj}y_j \right | = \sum_{j=1}^{n}\left | a_{kj} \right |= \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |\ \cdots \left(6\right)
+\end{aligned}$$
+由 $\left(5 \right)$、$\left(6 \right)$ 两式知：<br>
+$$\left \| \boldsymbol{A}  \right \|_\infty =\max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$</blockquote>
+
+<h2>1.1.2 矩阵的逆与广义逆</h2>
+
+<p>关于矩阵的逆，有一个重要的结论，那就是：<strong>接近于可逆矩阵的矩阵可逆</strong>，其接近度由两个矩阵差的范数衡量。下面是这一结论的严格数学表述：</p>
+
+<blockquote><strong>定理 1</strong>：设 $\boldsymbol{A},\boldsymbol{B} \in R^{n\times n}$，$\boldsymbol{A}$ 可逆，$\left \| \boldsymbol{A}^{-1} \right \| \leq \alpha$，如果 $\left \| \boldsymbol{A}-\boldsymbol{B} \right \| \leq \beta$，$\alpha \beta < 1$（注：矩阵范数为相容矩阵范数），则 $\boldsymbol{B}$ 可逆且<br>
+$$\left \| \boldsymbol{B}^{-1} \right \| \leq \frac{\alpha}{1-\alpha \beta}$$</blockquote>
+
+<p class="post-text-noindent">下面是定理 1 的证明过程：</p>
+
+<blockquote><strong>证明</strong>：令 $\boldsymbol{E} = \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) = \boldsymbol{I} - \boldsymbol{A}^{-1}\boldsymbol{B}$，因为<br>
+$$\left \| \boldsymbol{E} \right \| = \left \| \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) \right \| \leq \left \| \boldsymbol{A}^{-1} \right \|\left \| \boldsymbol{A}-\boldsymbol{B} \right \| \leq \alpha \beta < 1$$
+所以 $\sum_{k=0}^{\infty} \boldsymbol{E}^k$ 存在，且容易验证：<br>
+$$\sum_{k=0}^{\infty} \boldsymbol{E}^k = \left ( \boldsymbol{I}-\boldsymbol{E} \right )^{-1}$$
+从而<br>
+$$\left \| \left (\boldsymbol{I}-\boldsymbol{E}  \right )^{-1} \right \| \leq \sum_{k=0}^{\infty}\left \| \boldsymbol{E} \right \|^k = \frac{1}{1-\left \| \boldsymbol{E} \right \|}$$
+代入 $\boldsymbol{E}$，得：<br>
+$$\left \| \boldsymbol{B}^{-1} \right \| \leq \left \| \boldsymbol{B}^{-1}\boldsymbol{A} \right \|\left \| \boldsymbol{A}^{-1} \right \| \leq \frac{\left \| \boldsymbol{A}^{-1} \right \|}{1-\left \| \boldsymbol{A}^{-1}\left(\boldsymbol{A}-\boldsymbol{B} \right) \right \|} \leq \frac{\left \| \boldsymbol{A}^{-1} \right \|}{1-\left \| \boldsymbol{A}^{-1} \right \|\left \| \boldsymbol{A}-\boldsymbol{B} \right \|} \leq \frac{\alpha}{1-\alpha \beta}$$</blockquote>
+
+<p>设 $\boldsymbol{A}$ 为 $m\times n$ 复矩阵，则矩阵方程 $\boldsymbol{A}\boldsymbol{X}\boldsymbol{A} = \boldsymbol{A}$ 的每一个解称为 $\boldsymbol{A}$ 的<strong>广义逆</strong>，记作 $\boldsymbol{A}^{-}$（注：可以证明该矩阵方程一定有解，证明过程可参见丘维声所著 《高等代数(第二版)》 上册第 5 章第 3 节的定理 1）。为了避免上述矩阵方程解的不唯一性，即广义逆的不唯一性，我们引入 Penrose 方程组（注：$\boldsymbol{A}^{*}$ 表示 $\boldsymbol{A}$ 的共轭转置，当矩阵为实矩阵时，$\boldsymbol{A}^{*}$ 即为 $\boldsymbol{A}$ 的转置 $\boldsymbol{A}^T$）</p>
+
+$$\left\{\begin{matrix}
+\boldsymbol{AXA} \, = \boldsymbol{A} \ \ \\
+\boldsymbol{XAX} = \boldsymbol{X} \ \\
+\left(\boldsymbol{AX} \right)^{*} = \boldsymbol{AX} \\
+\left(\boldsymbol{XA} \right)^{*} = \boldsymbol{XA}
+\end{matrix}\right.$$
+
+<p class="post-text-noindent">我们将上述方程组的解称为 $\boldsymbol{A}$ 的 <strong>Moore-Penrose 广义逆</strong>，记作 $\boldsymbol{A}^{+}$。下面给出与 Moore-Penrose 广义逆有关的两个正交投影算子：</p>
+
+<blockquote><strong>定义 1</strong>：设 $\mathcal{V}$ 为 $R^n$ 的子空间, $\mathcal{V}^{\perp}$ 为子空间的<strong>正交补</strong>，即 $\mathcal{V}^{\perp} = \left \{ \boldsymbol{x}:\boldsymbol{v}^{*}\boldsymbol{x}=0,\forall \ \boldsymbol{v}\in \mathcal{V} \right \}$，如果线性算子 $P$ 满足：$\forall \boldsymbol{y} \in \mathcal{V},\ P\boldsymbol{y} = \boldsymbol{y}$，$\forall \boldsymbol{z} \in \mathcal{V
+^{\perp}},\ P\boldsymbol{z} = 0$，那么我们称 $P$ 是从 $R^n$ 沿子空间 $\mathcal{V}^{\perp}$ 到子空间 $\mathcal{V}$ 的<strong>正交投影算子</strong>。</blockquote>
+
+<blockquote><strong>定理 2</strong>：$\boldsymbol{A}\boldsymbol{A}^{+}$ 是从 $R^n$ 沿 $\boldsymbol{A}^{*}$ 零空间 $\mathcal{N}\left(\boldsymbol{A}^{*} \right)$ 到 $\boldsymbol{A}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A} \right)$ 的正交投影算子，$\boldsymbol{A}^{+}\boldsymbol{A}$ 是从 $R^n$ 沿 ${\boldsymbol{A}^{+}}^{*}$ 的零空间 $\mathcal{N}\left({\boldsymbol{A}^{+}}^{*} \right)$ 到 $\boldsymbol{A}^{+}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A}^{+} \right)$ 的正交投影算子。其中 $\mathcal{R} \left(\boldsymbol{A} \right) \triangleq \left \{ \boldsymbol{Ax}: \boldsymbol{x} \in R^n\right \}$，$\mathcal{N} \left(\boldsymbol{A} \right) \triangleq \left \{ \boldsymbol{x} \in R^n:\boldsymbol{Ax}=0\right \}$。</blockquote>
+
+<p class="post-text-noindent">下面是定理 2 的证明过程（我们仅给出第一部分的证明，第二部分证明同理可得）：</p>
+
+<blockquote><strong>证明</strong>：我们首先证明<br> $${\mathcal{R}\left(\boldsymbol{A} \right)}^{\perp} = \mathcal{N}\left(\boldsymbol{A}^{*} \right)$$
+如果 $\boldsymbol{x} \in \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$，则 $\forall \boldsymbol{y} \in R^n$，有 $\left(\boldsymbol{Ay} \right) \in \mathcal{R}\left(\boldsymbol{A} \right)$，所以由正交补的定义有 $\left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$，因此 $\boldsymbol{y}^{*} \left( \boldsymbol{A}^{*} \boldsymbol{x} \right) = 0$，从而有 $\boldsymbol{A}^{*} \boldsymbol{x} = \boldsymbol{0}$，即 $\boldsymbol{x} \in \mathcal{N}\left(\boldsymbol{A}^{*} \right)$，所以<br>
+$$\mathcal{R}\left(\boldsymbol{A} \right)^{\perp} \subset \mathcal{N}\left(\boldsymbol{A}^{*} \right)$$
+如果 $\boldsymbol{x} \in \mathcal{N}\left(\boldsymbol{A}^{*} \right)$，则 $\left(\boldsymbol{A}^{*}\boldsymbol{x} \right) = 0$，$\forall \boldsymbol{y} \in R^n$，有 $\boldsymbol{y}^{*} \left(\boldsymbol{A}^{*}\boldsymbol{x} \right) = \left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$，由 $\left(\boldsymbol{Ay} \right)^{*} \boldsymbol{x} = 0$ 知 $\boldsymbol{x} \in \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$，所以<br>
+$$\mathcal{N}\left(\boldsymbol{A}^{*} \right) \subset \mathcal{R}\left(\boldsymbol{A} \right)^{\perp}$$
+综上，${\mathcal{R}\left(\boldsymbol{A} \right)}^{\perp} = \mathcal{N}\left(\boldsymbol{A}^{*} \right)$。下证 $\boldsymbol{A}\boldsymbol{A}^{+}$ 是从 $R^n$ 沿 $\boldsymbol{A}^{*}$ 零空间 $\mathcal{N}\left(\boldsymbol{A}^{*} \right)$ 到 $\boldsymbol{A}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A} \right)$ 的正交投影算子。</blockquote>
+
+<blockquote>因为 $\forall \boldsymbol{y} \in \mathcal{R} \left(\boldsymbol{A} \right)$, 有 $\boldsymbol{y} = \boldsymbol{Ax}$ . 又由 Moore-Penrose 广义逆的定义有 $\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{A} = \boldsymbol{A}$，所以<br>
+$$\forall \boldsymbol{y} \in \mathcal{R} \left(\boldsymbol{A} \right),\ \boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{y} = \boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{Ax} = \boldsymbol{Ax} = \boldsymbol{y}$$
+因为 $\forall \boldsymbol{z} \in \mathcal{N} \left(\boldsymbol{A}^{*} \right)$，有 $\boldsymbol{A}^{*} \boldsymbol{z} = 0$，又由 Moore-Penrose 广义逆的定义有 $\left(\boldsymbol{AA}^{+} \right)^{*} = \left(\boldsymbol{AA}^{+} \right)$，所以 $\forall \boldsymbol{z} \in \mathcal{N} \left(\boldsymbol{A}^{*} \right)$，有<br> $$\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{z} = \left(\boldsymbol{A}\boldsymbol{A}^{+} \right )^{*}\boldsymbol{z} = {\boldsymbol{A}^{+}}^{*} \boldsymbol{A}^{*}\boldsymbol{z} = 0$$
+综上，$\boldsymbol{A}\boldsymbol{A}^{+}$ 是从 $R^n$ 沿 $\boldsymbol{A}^{*}$ 零空间 $\mathcal{N}\left(\boldsymbol{A}^{*} \right)$ 到 $\boldsymbol{A}$ 的象空间 $\mathcal{R}\left(\boldsymbol{A} \right)$ 的正交投影算子。</blockquote>
+
+<p class="post-text-noindent">本节最后，我们给出矩阵正交分解和奇异值分解的 Moore-Penrose 广义逆。</p>
+
+<blockquote><strong>定理 3</strong>：若 $A$ 是秩为 $r$ 的 $m\times n$ 复矩阵，其正交分解为<br>
+$$\boldsymbol{A} = \boldsymbol{Q}^*\boldsymbol{RP},\ \boldsymbol{Q}^*\boldsymbol{Q} = \boldsymbol{P}^*\boldsymbol{P} = \boldsymbol{I},\ \boldsymbol{R} = \begin{bmatrix}
+\boldsymbol{R}_{r\times r}^{11} & \boldsymbol{O}\\
+\boldsymbol{O} & \boldsymbol{O}
+\end{bmatrix},\ \left | \boldsymbol{R}_{r\times r}^{11} \right | \neq 0$$
+其奇异值分解为
+$$\boldsymbol{A} = \boldsymbol{U}\boldsymbol{DV}^*,\ \boldsymbol{U}^*\boldsymbol{U} = \boldsymbol{V}^*\boldsymbol{V} = \boldsymbol{I},\ \boldsymbol{D} = \begin{bmatrix}
+\boldsymbol{\Sigma}_{r\times r} & \boldsymbol{O}\\
+\boldsymbol{O} & \boldsymbol{O}
+\end{bmatrix},\ \boldsymbol{\Sigma}_{r\times r} = \mathrm{diag}\left ( \lambda_1,\cdots,\lambda_r \right )$$
+这里 $\boldsymbol{R}_{r\times r}^{11}$ 为上三角矩阵，$\boldsymbol{O}$ 为零矩阵，则有 $\boldsymbol{A}^{+} = \boldsymbol{P}^{*}\boldsymbol{R}^{+}\boldsymbol{Q}$ 或者 $\boldsymbol{A}^{+} = \boldsymbol{V}\boldsymbol{D}^{+}\boldsymbol{U}^{*}$，其中<br>
+$$\boldsymbol{R}^{+} = \begin{bmatrix}
+{\boldsymbol{R}_{r\times r} ^{11}}^{-1} & \boldsymbol{O}\\
+\boldsymbol{O} & \boldsymbol{O}
+\end{bmatrix},\ \boldsymbol{D}^{+} = \begin{bmatrix}
+\boldsymbol{\Sigma}_{r\times r} ^{-1} & \boldsymbol{O}\\
+\boldsymbol{O} & \boldsymbol{O}
+\end{bmatrix}$$</blockquote>
+
+<h2>1.1.3 矩阵的 Rayleigh 商</h2>
+
+<p>$n \times n$ Hermite 矩阵 $\boldsymbol{A}$ 的 <strong>Rayleigh 商</strong>定义为：</p>
+
+$$R\left(\boldsymbol{u} \right) = \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}}$$
+
+<p class="post-text-noindent">它与矩阵特征值有着密切的联系，<strong>它的最大值是矩阵的最大特征值，最小值是矩阵的最小特征值</strong>，当 $\boldsymbol{u}$ 取矩阵的特征向量（矩阵对应线性变换下方向不变的非零向量）时，它为该特征向量对应的特征值。<strong>它的几何意义是：$n$ 维复数空间 $C^n$ 中的任意向量 $\boldsymbol{u}$ 经变换 $\boldsymbol{A}$ 后得到的新向量 $\boldsymbol{Au}$ 在原向量 $\boldsymbol{u}$ 上的正交投影的长度。</strong>下面给出上述内容的严格数学表述：</p>
+
+<blockquote><strong>埃尔米特矩阵 / 厄米特矩阵（Hermitian matrix）</strong>，也称自伴随矩阵，它是共轭对称的方阵，即矩阵中每一个第 $i$ 行第 $j$ 列的元素都是第 $j$ 行第 $i$ 列的元素的共轭复数，它是实数域下对称矩阵在复数域下的推广。</blockquote>
+
+<blockquote><strong>定理 4</strong>：设 $\boldsymbol{A}$ 是 $n \times n$ Hermite 矩阵，$u \in C^n$，则 $\boldsymbol{A}$ 的 Rayleigh 商满足以下基本性质：</blockquote>
+
+<blockquote>
+1.齐次性：$\forall \alpha \neq 0,\ R_\lambda \left(\alpha \boldsymbol{u} \right) = R_\lambda \left( \boldsymbol{u} \right)$<br>
+2.极性：$\begin{aligned} \lambda_1 = \underset{\left \| \boldsymbol{u} \right \|_2 = 1}{\max}\boldsymbol{u}^*\boldsymbol{Au} = \underset{\boldsymbol{u}\neq \boldsymbol{0}}{\max}\ \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}},\  \lambda_n = \underset{\left \| \boldsymbol{u} \right \|_2 = 1}{\min}\boldsymbol{u}^*\boldsymbol{Au} = \underset{\boldsymbol{u}\neq \boldsymbol{0}}{\min}\ \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}} \end{aligned}$<br>
+3.极小残量性质：$\forall \mu \in R,\ \left \| \boldsymbol{Au} - R_\lambda \left(\boldsymbol{u} \right )\boldsymbol{u} \right \| \leq \left \| \boldsymbol{Au} - \mu \boldsymbol{u}\right \|$<br>
+</blockquote>
+
+<p class="post-text-noindent">下面是定理 4 的证明过程：</p>
+
+<blockquote><strong>证明</strong>：由 Rayleigh 商的定义易证其满足齐次性，这里不再赘述，接下来我们首先证明极性：</blockquote>
+
+<blockquote>根据齐次性，我们有 $\begin{aligned} R_\lambda \left( \boldsymbol{u} \right) = \boldsymbol{u}_s^*\boldsymbol{Au}_s,\ \boldsymbol{u}_s = \frac{\boldsymbol{u}}{\left \| \boldsymbol{u} \right \|_2} \end{aligned}$，又因为 $\boldsymbol{A}$ 是 $n \times n$ Hermite 矩阵，所以必存在酉矩阵（实数域下正交矩阵在复数域下的推广） $\boldsymbol{T}$ 使得 $\boldsymbol{T}^*\boldsymbol{A}\boldsymbol{T} = \mathrm{diag}\left \{\lambda_1,\lambda_2,\cdots,\lambda_n \right \}$，其中 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$ 为矩阵 $\boldsymbol{A}$ 的特征值。由于 $\forall \boldsymbol{u}_s$，必存在 $\boldsymbol{y} \in C^n$ 使得 $\boldsymbol{u}_s = \boldsymbol{T} \boldsymbol{y}$，又由 $T^*T = I$ 知 $\left \| \boldsymbol{y} \right \|_2 = \left \| \boldsymbol{u} \right \|_2$，所以<br>
+$$\lambda_n = \lambda_n\sum_{i=1}^{n}\left | y_i \right |^2 \leq \boldsymbol{u}_s^*\boldsymbol{Au}_s = \boldsymbol{y}^*\boldsymbol{A} \boldsymbol{y} = \sum_{i=1}^{n}\lambda_i\left | y_i \right |^2 \leq \lambda_1\sum_{i=1}^{n}\left | y_i \right |^2 = \lambda_1$$
+且当 $y_1 = 1,y_i = 0 \left(i \neq 1 \right)$ 时，右侧不等号取到等号，$y_n = 1,y_j = 0 \left(j \neq n \right)$ 时，左侧不等号取到等号，极性得证。下面证明极小残量性质：</blockquote>
+
+<blockquote>令 $s\left(\boldsymbol{u} \right) = \boldsymbol{Au} - R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u},\ \boldsymbol{u} \neq 0$，因为<br>
+$$\left(s\left(\boldsymbol{u} \right),\boldsymbol{u} \right) = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^*R_\lambda\left(\boldsymbol{u} \right) \boldsymbol{u} = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^* \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}} \boldsymbol{u} = \boldsymbol{u}^*\boldsymbol{Au} - \boldsymbol{u}^*\boldsymbol{u} \frac{\boldsymbol{u}^*\boldsymbol{Au}}{\boldsymbol{u}^*\boldsymbol{u}} = 0$$
+所以 $\boldsymbol{Au} = R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u} + s\left(\boldsymbol{u} \right)$ 是 $\boldsymbol{Au}$ 的正交分解，从而 $R_\lambda\left(\boldsymbol{u} \right)\boldsymbol{u}$ 是 $\boldsymbol{Au}$ 在 $\boldsymbol{u}$ 上的正交投影，所以必有：$\forall \mu \in R,\ \left \| \boldsymbol{Au} - R_\lambda \left(\boldsymbol{u} \right )\boldsymbol{u} \right \| \leq \left \| \boldsymbol{Au} - \mu \boldsymbol{u}\right \|$。</blockquote>
+
+<h2>1.1.4 矩阵的秩 1 校正</h2>
+
+<p>矩阵的<strong>秩 1 校正</strong>（rank one correction）指的是在原矩阵的基础上加上一个秩为 1 的矩阵，下面我们将依次介绍秩一校正的逆、单位矩阵秩一校正的行列式、秩一校正联锁特征值定理、Cholesky 分解与 QR 分解的秩 1 校正。秩 1 校正及其推广秩 r 校正有着广泛的应用，例如：正交变换中常用的 <strong>Householder 反射</strong>（$\boldsymbol{I} - \frac{2}{\boldsymbol{v}^T\boldsymbol{v}}\boldsymbol{v}\boldsymbol{v}^T$，可大量引入 0 元）和 <strong>Givens 旋转</strong>（单位矩阵的秩 2 校正，可选择性地引入 0 元）、<strong>QR 分解</strong>（可利用 Householder 反射或 Givens 旋转等方法实现）等等。</p>
+
+<p>下面是著名的 <strong>Sherman-Morrison 公式</strong>，它给出了秩 1 校正的逆。</p>
+
+<blockquote><strong>定理 5</strong>：若 $\boldsymbol{A}_{n\times n}$ 非奇异，则 $\forall \ \boldsymbol{u},\boldsymbol{v}\ \in R^n$，只要 $1 + \boldsymbol{v}^T\boldsymbol{A^{-1}}\boldsymbol{u} \neq 0$，便有 $\boldsymbol{A} + \boldsymbol{u}\boldsymbol{v}^T$ 可逆且<br>$$\left(\boldsymbol{A} + \boldsymbol{u}\boldsymbol{v}^T \right)^{-1} = \boldsymbol{A}^{-1} - \frac{\boldsymbol{A}^{-1}\boldsymbol{u}\boldsymbol{v}^T\boldsymbol{A}^{-1}}{1+\boldsymbol{v}^T\boldsymbol{A}^{-1}\boldsymbol{u}}$$</blockquote>
+
+<p class="post-text-noindent">我们很容易验证上述公式是成立的，故这里不再给出证明过程。下面是该定理的推广，被称为 <strong>Woodbury 矩阵恒等式</strong>（Woodbury matrix identity），或者矩阵逆引理（matrix inversion lemma）、Sherman–Morrison–Woodbury 公式（Sherman–Morrison–Woodbury formula）、Woodbury 公式（Woodbury formula）。同样，很容易验证该公式是成立的。</p>
+
+<blockquote><strong>定理 6</strong>：若 $\boldsymbol{A}_{n\times n}$ 非奇异，则 $\forall \ \boldsymbol{U}_{n\times m},\ \boldsymbol{V}_{n\times r},\ \boldsymbol{C}_{r\times r}$，只要 $\boldsymbol{C}^{-1} + \boldsymbol{V^*A}^{-1}\boldsymbol{U}$ 可逆，则<br>$$\left(\boldsymbol{A+UCV}^* \right)^{-1} = \boldsymbol{A}^{-1} - \boldsymbol{A}^{-1}\boldsymbol{U}\left(\boldsymbol{C}^{-1}+\boldsymbol{V}^*\boldsymbol{A}^{-1}\boldsymbol{U} \right)^{-1}\boldsymbol{V}^*\boldsymbol{A}^{-1}$$</blockquote>
+
+<p>下面给出单位矩阵<strong>秩 1 校正的行列式</strong>，由于</p>
+
+$$\left(\boldsymbol{I} + \boldsymbol{u}\boldsymbol{v}^T \right)\boldsymbol{u} = \left(1+\boldsymbol{u}^T\boldsymbol{v} \right)\boldsymbol{u}$$
+
+<p class="post-text-noindent">且</p>
+
+$$\left(\boldsymbol{I} + \boldsymbol{u}\boldsymbol{v}^T \right)\boldsymbol{s} = \boldsymbol{s}\ \ if\ \  \boldsymbol{v}^T\boldsymbol{s} = 0$$
+
+<p class="post-text-noindent">所以 $\boldsymbol{u}$ 是单位矩阵秩 1 校正的特征值 $1+\boldsymbol{u}^T\boldsymbol{v}$ 对应的特征向量，正交于 $\boldsymbol{v}$ 的 $\boldsymbol{s}$ 是单位矩阵秩 1 校正的特征值 $1$ 对应的特征向量，又因为 $R^n$ 中与 $\boldsymbol{v}$ 正交的线性无关向量必有 $\left(n-1 \right)$ 个，即单位矩阵秩 1 校正的特征值 $1$ 的几何重数等于 $\left(n-1 \right)$，所以单位矩阵秩 1 校正的特征值 $1$ 的代数重数大于等于 $\left(n-1 \right)$。由于 $n$ 次特征多项式（特征值是特征多项式的根）最多有 $n$ 个根（包括重根），而 $n\times n$ 单位矩阵秩 1 校正的特征值 $1$ 的重数至少为 $\left(n-1 \right)$，且前面已经知道单位矩阵秩 1 校正存在两个不同的特征值，所以单位矩阵秩 1 校正仅有两个不同的特征值 $1$ 和 $\left(1+\boldsymbol{u}^T\boldsymbol{v} \right)$，其重数分别为 $\left(n-1 \right)$ 和 $1$。根据行列式等于特征值之积的性质，我们立即得到：</p>
+
+$$\mathrm{det}\left(\boldsymbol{I} + \boldsymbol{u}\boldsymbol{v}^T \right) = 1+\boldsymbol{u}^T\boldsymbol{v}$$
+
+<p>下面介绍秩一校正 $\boldsymbol{A} + \sigma\boldsymbol{u}\boldsymbol{u}^T$ 的<strong>联锁特征值定理</strong>（interlocking eigenvalue theorem），该定理见于 1965 年出版的 Wilkinson 的 The Algebraic Eigenvalue Problem 一书中（其中译本《代数特征值问题》于 2006 年由科学出版社出版）的第二章关于秩 1 校正的部分。该书是计算数学领域的经典著作，作者用摄动理论和向后误差分析方法系统地论述了代数特征值问题以及有关的线性代数方程组、多项式零点的各种解法，并对方法的性质作了透彻的分析，该书为研究代数特征值及有关问题提供了严密的理论基础和强有力的工具。</p>
+
+<blockquote>
+<strong>定理 7</strong>：若 $\boldsymbol{A}_{n\times n}$ 为对称矩阵且其特征值为 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$，且记 $\bar{\boldsymbol{A}} = \boldsymbol{A} + \sigma\boldsymbol{u}\boldsymbol{u}^T$ 的特征值为 $\bar{\lambda}_1 \geq \bar{\lambda}_2 \geq \cdots \geq \bar{\lambda}_n$，则有<br>
+$$\sigma > 0:\ \bar{\lambda}_1 \geq \lambda_1 \geq \bar{\lambda}_2 \geq \lambda_2 \geq \cdots \geq \bar{\lambda}_n \geq \lambda_n$$
+$$\sigma < 0:\ \lambda_1 \geq \bar{\lambda}_1 \geq \lambda_2 \geq \bar{\lambda}_2 \geq \cdots \geq \lambda_n \geq \bar{\lambda}_n$$
+</blockquote>
+
+<p>本节最后，我们谈一下 <strong>Cholesky 分解与 QR 分解的秩 1 校正</strong>，在 Matlab 中有实现它们的函数，分别是 Cholupdate(R,x,'+/-') 和 qrupdate(Q,R,u,v)，它们分别用于求 $\boldsymbol{R} \pm \boldsymbol{x}\boldsymbol{x}^T$ 的 Cholesky 分解和 $\boldsymbol{QR} + \boldsymbol{u}\boldsymbol{v}^T$ 的 QR 分解，Matlab <a href="https://ww2.mathworks.cn/help/matlab/">官方文档</a>指出：<a href="https://ww2.mathworks.cn/help/matlab/ref/cholupdate.html">Cholupdate</a> 参考的是 LINPACK 子例程 ZCHUD 和 ZCHDD 使用的算法，详情见参考文献 Dongarra, J.J., J.R. Bunch, C.B. Moler, and G.W. Stewart, LINPACK Users' Guide, SIAM, Philadelphia, 1979；<a href="https://ww2.mathworks.cn/help/matlab/ref/qrupdate.html">qrupdate</a> 使用由 Golub 与 van Loan 合著的 Matrix Computations 第三版第 12.5.1 节中的算法，详情见参考文献 Golub, Gene H. and Charles Van Loan, Matrix Computations, Third Edition, Johns Hopkins University Press, Baltimore, 1996. 限于时间与精力，笔者暂时还不打算去研究这些算法背后的原理，这里也就不给出算法步骤的叙述了，感兴趣的读者可以翻阅上述参考文献进行了解。</p>
+
+<blockquote>Cholesky 分解（Cholesky decomposition / factorization）：将一个正定的 Hermite 矩阵 $\boldsymbol{R}$ 分解成一个下三角矩阵 $\boldsymbol{L}$ 与其共轭转置 $\boldsymbol{L}^*$ 的乘积，即 $\boldsymbol{R} = \boldsymbol{L}\boldsymbol{L}^*$。当限定 $\boldsymbol{L}$ 的对角元素为正时，Cholesky 分解是唯一的。此外它还有一个变形，那就是 $\boldsymbol{R} = \boldsymbol{LD}\boldsymbol{L}^*$，此时 $\boldsymbol{L}$ 变为了单位下三角矩阵（主对角元全为 1），$\boldsymbol{D}$ 为对角矩阵。维基百科给出了秩 1 校正 Cholesky 分解的具体算法，如需了解请<a href="https://zh.wikipedia.org/wiki/Cholesky%E5%88%86%E8%A7%A3">点击此处</a>。</blockquote>
+
+<blockquote>QR 分解：将一个矩阵 $\boldsymbol{A}_{n\times m}$ 分解成一个酉矩阵 $\boldsymbol{Q}_{n\times n}$ 与一个上三角矩阵 $\boldsymbol{R}_{n\times m}$ 的乘积，即 $\boldsymbol{A} = \boldsymbol{QR}$。如果 $\boldsymbol{A}$ 是非奇异的，且限定 $\boldsymbol{R}$ 的对角线元素为正，则该矩阵的 QR 分解是唯一的。QR 分解的实际计算方法有很多，如 Givens 旋转、Householder 变换，以及 Gram-Schmidt 正交化等等，每一种方法都有其优点和不足，详情见上述参考文献，也可以参考本书的中译本：由科学出版社于 2001 年出版的《矩阵计算》。</blockquote>
+
+<h1>1.2 微积分</h1>
+
+<p>本节，我们介绍最优化理论中需要用到的微积分知识，包括：向量序列的收敛、函数的微分、向量值函数的微分和有限差分导数。</p>
+
+<h2>1.2.1 向量序列的收敛</h2>
+
+<p>向量序列的收敛是由范数定义的，我们说向量序列 $\boldsymbol{x}_k$ 收敛于向量 $\boldsymbol{x}$ 是指当 $k \rightarrow \infty$ 时它们之间差的范数趋于 0，即</p>
+
+$$\lim_{k \rightarrow \infty} \left \| \boldsymbol{x}_k - \boldsymbol{x} \right \| = 0$$
+
+<h2>1.2.2 函数的微分</h2>
+
+<p>我们首先给出函数<strong>可微</strong>与微分的定义：</p>
+
+<blockquote><strong>定义 2</strong>：如果存在一个仅依赖于 $\boldsymbol{x}_0 \in R^n$ 的向量 $\boldsymbol{a} \in R^n$ 使得<br>
+$$f\left(\boldsymbol{x}_0 + \Delta\boldsymbol{x} \right) - f\left(\boldsymbol{x}_0 \right) = \boldsymbol{a}^T\Delta\boldsymbol{x} + o\left(\left \| \Delta\boldsymbol{x} \right \| \right)$$
+则我们称 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处可微，并称 $\boldsymbol{a}^T\Delta\boldsymbol{x}$ 为 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的（全）微分。
+</blockquote>
+
+<p class="post-text-noindent">可以证明：如果函数 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处可微，则 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处连续，$f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的偏导 $\frac{\partial f\left(\boldsymbol{x}_0 \right )}{\partial x_i}$ 存在且 $\boldsymbol{a}$ 为 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的<strong>梯度</strong>，即 $\boldsymbol{a} = \left(\frac{\partial f\left(\boldsymbol{x}_0 \right )}{\partial x_1},\frac{\partial f\left(\boldsymbol{x}_0 \right )}{\partial x_2},\cdots,\frac{\partial f\left(\boldsymbol{x}_0 \right )}{\partial x_n} \right)^T \triangleq \nabla f\left(\boldsymbol{x}_0 \right)$。如需了解详细证明过程，可参考由北京大学出版社出版、由伍胜健编著的《数学分析》第三册第十四章中定理 14.1.1 的证明。</p>
+
+<p>梯度与另一概念——<strong>方向导数</strong>——有着密切的联系，它们在优化中有着重要而广泛的应用。下面给出方向导数的定义：</p>
+
+<blockquote><strong>定义 3</strong>：如果 $f\left(\boldsymbol{x} \right)$ 可微，则我们称<br>
+$$\lim_{\alpha \rightarrow 0} \frac{f\left(\boldsymbol{x}_0 + \alpha \boldsymbol{d} \right) - f\left(\boldsymbol{x}_0 \right)}{\alpha}$$
+为 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处沿方向 $\boldsymbol{d}$ 的导数，记作 $\frac{\partial f}{\partial \boldsymbol{d}} \left(\boldsymbol{x}_0 \right)$。
+</blockquote>
+
+<p class="post-text-noindent">利用函数可微及方向导数的定义，我们立即可以得到：</p>
+
+$$\frac{\partial f}{\partial \boldsymbol{d}} \left(\boldsymbol{x}_0 \right) = \lim_{\alpha \rightarrow 0} \frac{f\left(\boldsymbol{x}_0 + \alpha \boldsymbol{d} \right) - f\left(\boldsymbol{x}_0 \right)}{\alpha} = \nabla f\left(\boldsymbol{x}_0 \right)^T \boldsymbol{d}$$
+
+<p class="post-text-noindent">可见，$f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处沿方向 $\boldsymbol{d}$ 的导数等于梯度与方向的欧式内积，又根据柯西施瓦兹不等式，我们有：</p>
+
+$$\left| \frac{\partial f}{\partial \boldsymbol{d}} \left(\boldsymbol{x}_0 \right) \right| = \left| \nabla f\left(\boldsymbol{x}_0 \right)^T \boldsymbol{d} \right| \leq \left \| \nabla f\left(\boldsymbol{x}_0 \right ) \right \|_2 \left \| \boldsymbol{d} \right \|_2$$
+
+$$- \left \| \nabla f\left(\boldsymbol{x}_0 \right ) \right \|_2 \left \| \boldsymbol{d} \right \|_2 \leq \nabla f\left(\boldsymbol{x}_0 \right)^T \boldsymbol{d} \leq \left \| \nabla f\left(\boldsymbol{x}_0 \right ) \right \|_2 \left \| \boldsymbol{d} \right \|_2$$
+
+<p class="post-text-noindent">且左侧等号成立当且仅当 $\boldsymbol{d} = c\nabla f\left(\boldsymbol{x}_0 \right ),\ c < 0$，右侧等号成立当且仅当 $\boldsymbol{d} = c\nabla f\left(\boldsymbol{x}_0 \right ),\ c > 0$。由此我们可以知道：<strong>在所有可能方向中，梯度方向是使得函数增长最快的方向，负梯度方向是使得函数下降最快的方向</strong>，这一结论便是重要的优化方法——梯度下降法——的核心思想与理论基础。此外，在一定条件下保证每次迭代，函数在新迭代点上的值都比原迭代点小，是不少优化方法（如共轭梯度法）在选择迭代方向时遵循的基本原则之一，而这一基本原则用数学语言描述就是：每次迭代，函数在当前迭代点 $\boldsymbol{x}_k$ 沿下一步迭代方向 $\boldsymbol{d}_k$ 的方向导数小于 0，即：$\forall k \in \mathrm{N},\ \nabla f\left(\boldsymbol{x}_k \right)^T \boldsymbol{d}_k < 0$。</p>
+
+<p>我们将第 $\left(i,j \right)$ 个元素为 $\frac{\partial f\left(\boldsymbol{x}_0 \right)}{\partial x_i \partial x_j}$ 的 $n\times n$ 矩阵称为 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的 <strong>Hessian 矩阵</strong>，记作 $\boldsymbol{H}_f\left( \boldsymbol{x}_0 \right )$，它与上面提到的梯度、方向导数一样，在优化中有着重要而广泛的应用。包括函数全部一阶偏导信息的梯度与（一阶）方向导数有着密切的联系，同样地，包括函数全部二阶偏导信息的 Hessian 矩阵与<strong>二阶方向导数</strong>有着密切的联系。下面是二阶方向导数的定义：</p>
+
+<blockquote><strong>定义 4</strong>：如果 $\frac{\partial f}{\partial \boldsymbol{d}} \left(\boldsymbol{x} \right)$ 存在且可微，则我们称<br>
+$$\lim_{\alpha \rightarrow 0} \frac{\frac{\partial f}{\partial \boldsymbol{d}}\left(\boldsymbol{x}_0 + \alpha \boldsymbol{d} \right) - \frac{\partial f}{\partial \boldsymbol{d}}\left(\boldsymbol{x}_0 \right)}{\alpha}$$
+为 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处沿方向 $\boldsymbol{d}$ 的二阶导数，记作 $\frac{\partial^2 f}{\partial \boldsymbol{d}^2} \left(\boldsymbol{x}_0 \right)$。</blockquote>
+
+<p class="post-text-noindent">同样地，利用函数可微及二阶方向导数的定义，我们容易验证下式成立：</p>
+
+$$\frac{\partial^2 f}{\partial \boldsymbol{d}^2} \left(\boldsymbol{x}_0 \right) = \lim_{\alpha \rightarrow 0} \frac{\frac{\partial f}{\partial \boldsymbol{d}}\left(\boldsymbol{x}_0 + \alpha \boldsymbol{d} \right) - \frac{\partial f}{\partial \boldsymbol{d}}\left(\boldsymbol{x}_0 \right)}{\alpha} = \boldsymbol{d}^T\boldsymbol{H}_f\left(\boldsymbol{x}_0 \right ) \boldsymbol{d}$$
+
+<p>本小节最后，我们给出多元函数的<strong>泰勒公式</strong>（证明见北京大学出版社出版的由伍胜健编著的《数学分析》第三册第十四章的定理 14.3.1）：</p>
+
+<blockquote><strong>定理 8</strong>：设 $f\left(\boldsymbol{x} \right)$ 具有 $\left(r+1 \right)$ 阶连续偏导数，则有<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \sum_{k=1}^{r}\frac{1}{k!}\left ( \sum_{i=1}^{n}d_i \frac{\partial}{\partial x_i} \right )^kf\left(\boldsymbol{x} \right) + \frac{1}{\left ( r+1 \right )!}\left ( \sum_{i=1}^{n}d_i \frac{\partial}{\partial x_i} \right )^{r+1}f\left(\boldsymbol{\xi } \right),\ \boldsymbol{\xi } \in \left ( \boldsymbol{x},\boldsymbol{x}+\boldsymbol{d} \right )$$
+或者<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \sum_{k=1}^{r+1}\frac{1}{k!}\left ( \sum_{i=1}^{n}d_i \frac{\partial}{\partial x_i} \right )^kf\left(\boldsymbol{x} \right) + o\left(\left \| \boldsymbol{d} \right \|^{r+1} \right )$$
+</blockquote>
+
+<blockquote><strong>推论 1</strong>：设 $f\left(\boldsymbol{x} \right)$ 具有一阶连续偏导数，则有<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{\xi } \right)^T \boldsymbol{d},\ \boldsymbol{\xi} \in \left(\boldsymbol{x},\boldsymbol{x}+\boldsymbol{d} \right)$$
+或者<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{x} \right)^T \boldsymbol{d} + o\left(\left \| \boldsymbol{d} \right \| \right)$$
+</blockquote>
+
+<blockquote><strong>推论 2</strong>：设 $f\left(\boldsymbol{x} \right)$ 具有二阶连续偏导数，则有<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{x} \right)^T \boldsymbol{d} + \frac{1}{2} \boldsymbol{d}^T \boldsymbol{H}_f\left(\boldsymbol{\xi } \right ) \boldsymbol{d},\ \boldsymbol{\xi} \in \left(\boldsymbol{x},\boldsymbol{x}+\boldsymbol{d} \right)$$
+或者<br>
+$$f\left(\boldsymbol{x+d} \right) = f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{x} \right)^T \boldsymbol{d} + \frac{1}{2} \boldsymbol{d}^T \boldsymbol{H}_f\left(\boldsymbol{x} \right ) \boldsymbol{d} + o\left(\left \| \boldsymbol{d} \right \|^2 \right)$$
+</blockquote>
+
+<p class="post-text-noindent">与梯度、Hessian 矩阵一样，一阶、二阶泰勒公式在优化中同样有着重要而广泛的应用。<strong>它给出了函数的一阶或二阶近似，而大多数优化方法是基于函数的一阶或二阶近似模型给出的</strong>。此外，我们还可以看到，函数 $f\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x} + \boldsymbol{d}$ 的一阶近似是 $f\left(\boldsymbol{x} \right)$ 与 $f\left(\boldsymbol{x} \right)$ 的方向导数的和，二阶近似是 $f\left(\boldsymbol{x} \right)$、$f\left(\boldsymbol{x} \right)$ 的方向导数与 $f\left(\boldsymbol{x} \right)$ 二阶方向导数的一半的和。</p>
+
+<h2>1.2.3 向量值函数的微分</h2>
+
+<p>我们首先给出向量值函数<strong>可微</strong>与微分的定义：</p>
+
+<blockquote><strong>定义 5</strong>：如果存在一个仅依赖于 $\boldsymbol{x}_0 \in R^n$ 的 $m\times n$ 矩阵 $\boldsymbol{A}$ 使得<br>
+$$\boldsymbol{f}\left(\boldsymbol{x}_0 + \Delta\boldsymbol{x} \right) - \boldsymbol{f}\left(\boldsymbol{x}_0 \right) = \boldsymbol{A}\Delta\boldsymbol{x} + \boldsymbol{o}\left(\left \| \Delta\boldsymbol{x} \right \| \right)$$
+其中 $\boldsymbol{o}\left(\left \| \Delta\boldsymbol{x} \right \| \right) = \left(o_1\left(\left \| \Delta\boldsymbol{x} \right \| \right),o_2\left(\left \| \Delta\boldsymbol{x} \right \| \right),\cdots,o_m\left(\left \| \Delta\boldsymbol{x} \right \| \right) \right)^T$ 是由 $m$ 个 $\left \| \Delta\boldsymbol{x} \right \|$ 的高阶无穷小构成的列向量，则我们称 $\boldsymbol{f}\left(\boldsymbol{x} \right) = \left(f_1\left(\boldsymbol{x} \right),f_2\left(\boldsymbol{x} \right),\cdots,f_m\left(\boldsymbol{x} \right) \right)^T$ 在 $\boldsymbol{x}_0$ 处可微或可导，称矩阵 $\boldsymbol{A}$ 为 $\boldsymbol{f}\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的 Fréchet 导数（Fréchet derivative），并称 $\boldsymbol{A}\Delta\boldsymbol{x}$ 为 $\boldsymbol{f}\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的（全）微分。
+</blockquote>
+
+<p class="post-text-noindent">可以证明：向量值函数 $\boldsymbol{f}\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处可微当且仅当它的每个分量 $f_i\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0,\ i = 1,2,\cdots,m$ 处可微，从而有 $f_i\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处连续，$f_i\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的偏导 $\frac{\partial f_i\left(\boldsymbol{x}_0 \right )}{\partial x_j},\ j = 1,2,\cdots,n$ 存在且 $\boldsymbol{A}$ 为 $\boldsymbol{f}\left(\boldsymbol{x} \right)$ 在 $\boldsymbol{x}_0$ 处的 <strong>Jacobian 矩阵</strong>，即
+
+$$\boldsymbol{A} = \begin{pmatrix}
+\nabla f_1\left(\boldsymbol{x}_0 \right)^T \\
+\nabla f_2\left(\boldsymbol{x}_0 \right)^T \\
+\vdots \\
+\nabla f_m\left(\boldsymbol{x}_0 \right)^T
+\end{pmatrix} = \begin{bmatrix}
+\frac{\partial f_1\left(\boldsymbol{x}_0 \right )}{\partial x_1} & \frac{\partial f_1\left(\boldsymbol{x}_0 \right )}{\partial x_2} & \cdots & \frac{\partial f_1\left(\boldsymbol{x}_0 \right )}{\partial x_n} \\
+\frac{\partial f_2\left(\boldsymbol{x}_0 \right )}{\partial x_1} & \frac{\partial f_2\left(\boldsymbol{x}_0 \right )}{\partial x_2} & \cdots & \frac{\partial f_2\left(\boldsymbol{x}_0 \right )}{\partial x_n} \\
+\vdots & \vdots &  & \vdots \\
+\frac{\partial f_m\left(\boldsymbol{x}_0 \right )}{\partial x_1} & \frac{\partial f_m\left(\boldsymbol{x}_0 \right )}{\partial x_2} & \cdots & \frac{\partial f_m\left(\boldsymbol{x}_0 \right )}{\partial x_n}
+\end{bmatrix} \triangleq \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x}_0 \right)$$
+
+<p class="post-text-noindent">如需了解详细证明过程，可参考由北京大学出版社出版、由伍胜健编著的《数学分析》第三册第十四章中定理 14.1.4 和定理 14.1.1 的证明。</p>
+
+<p>下面定理的推论将给出用线性模型 $\boldsymbol{f}\left(\boldsymbol{x} \right) + \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right) \boldsymbol{d}$ 近似 $\boldsymbol{f}\left(\boldsymbol{x}+\boldsymbol{d} \right)$ 时所产生的误差上界。</p>
+
+<blockquote><strong>定理 9</strong>：若 $\boldsymbol{f}:R^n \rightarrow R^m$ 在开凸集 D 上偏导存在且连续，则 $\forall \boldsymbol{x},\boldsymbol{u},\boldsymbol{v} \in D$，有：<br>
+$$\left \| \boldsymbol{f}\left ( \boldsymbol{u} \right ) - \boldsymbol{f}\left ( \boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right )\left(\boldsymbol{u}-\boldsymbol{v} \right )\right \| \leq \left \| \boldsymbol{u}-\boldsymbol{v} \right \|\underset{0\leq t\leq 1}{\sup}\left \| \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{v}+t\left(\boldsymbol{u}-\boldsymbol{v} \right ) \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right ) \right \|$$
+若 $\boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right)$ 在 $D$ 上 Lipschitz 连续，即 $\forall\ \boldsymbol{x},\ \boldsymbol{y} \in D$，存在 Lipschitz 常数 $\gamma > 0$ 使 $\left \| \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{y} \right ) \right \| \leq$ $\gamma\left \| \boldsymbol{x}-\boldsymbol{y} \right \|$，则有：<br>
+$$\left \| \boldsymbol{f}\left ( \boldsymbol{u} \right ) - \boldsymbol{f}\left ( \boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right )\left(\boldsymbol{u}-\boldsymbol{v} \right )\right \| \leq \gamma \frac{\left \| \boldsymbol{u}-\boldsymbol{x} \right \| + \left \| \boldsymbol{v}-\boldsymbol{x} \right \|}{2} \left \| \boldsymbol{u}-\boldsymbol{v} \right \| \leq \gamma \sigma\left(\boldsymbol{u},\boldsymbol{v} \right) \left \| \boldsymbol{u}-\boldsymbol{v} \right \|$$
+这里 $\sigma\left(\boldsymbol{u},\boldsymbol{v} \right) = \max \left \{ \left \| \boldsymbol{u}-\boldsymbol{x} \right \|,\left \| \boldsymbol{v}-\boldsymbol{x} \right \| \right \}$
+</blockquote>
+
+<blockquote><strong>推论 3</strong>：若 $\boldsymbol{f}:R^n \rightarrow R^m$ 在开凸集 D 上偏导存在且连续，则 $\forall \boldsymbol{x},\boldsymbol{x} + \boldsymbol{d} \in D$，有：<br>
+$$\left \| \boldsymbol{f}\left ( \boldsymbol{x} + \boldsymbol{d} \right ) - \boldsymbol{f}\left ( \boldsymbol{x} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right )\boldsymbol{d}\right \| \leq \left \| \boldsymbol{d} \right \|\underset{0\leq t\leq 1}{\sup}\left \| \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x}+t\boldsymbol{d} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right ) \right \|$$
+若 $\boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right)$ 在 $D$ 中是 Lipschitz 连续的，则有：<br>
+$$\left \| \boldsymbol{f}\left ( \boldsymbol{x} + \boldsymbol{d} \right ) - \boldsymbol{f}\left ( \boldsymbol{x} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right )\boldsymbol{d}\right \| \leq \frac{\gamma}{2} \left \| \boldsymbol{d} \right \|^2 \leq \gamma \left \| \boldsymbol{d} \right \|^2$$
+这里 $\gamma$ 为 Lipschitz 常数。
+</blockquote>
+
+<p class="post-text-noindent">通过以上推论，我们知道：<strong>用线性模型 $\boldsymbol{f}\left(\boldsymbol{x} \right) + \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right) \boldsymbol{d}$ 近似 $\boldsymbol{f}\left(\boldsymbol{x}+\boldsymbol{d} \right)$ 所产生的误差存在一个上界，这个上界是 $\left \| \boldsymbol{d} \right \|^2$ 的常数倍，而当 Jacobian 矩阵 Lipschitz 连续时，这个常数就是 Lipschitz 常数的 1/2</strong>。下面给出该定理的证明：</p>
+
+<blockquote><strong>证明</strong>：由 $\boldsymbol{f}$ 的一阶偏导连续性我们有（<span class="post-text-problem">注：关于该结论，笔者是存疑的，对于向量值函数而言，其每个分量函数的一阶泰勒展开所对应的 t 不一定相同，为什么这里是相同的</span>）<br>
+$$\boldsymbol{f}\left(\boldsymbol{u} \right ) - \boldsymbol{f}\left(\boldsymbol{v} \right ) = \int_{0}^{1}\boldsymbol{J}_{\boldsymbol{f}}\left ( t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} \right ) \left(\boldsymbol{u} - \boldsymbol{v} \right )\mathrm{d}t$$
+从而<br>
+$$\begin{aligned}
+&\quad \ \left \| \boldsymbol{f}\left(\boldsymbol{u} \right ) - \boldsymbol{f}\left(\boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \left(\boldsymbol{u} - \boldsymbol{v} \right ) \right \| \\
+& \leq \int_{0}^{1} \left \| \left [ \boldsymbol{J}_{\boldsymbol{f}}\left ( t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \right ] \left(\boldsymbol{u} - \boldsymbol{v} \right ) \right \|\mathrm{d}t \\
+& \leq \int_{0}^{1} \left \| \boldsymbol{J}_{\boldsymbol{f}}\left ( t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \right \| \left \| \boldsymbol{u} - \boldsymbol{v} \right \|\mathrm{d}t \\
+&\leq \left \| \boldsymbol{u}-\boldsymbol{v} \right \|\underset{0\leq t\leq 1}{\sup}\left \| \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{v}+t\left(\boldsymbol{u}-\boldsymbol{v} \right ) \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right ) \right \|
+\end{aligned}$$
+如果 $\boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right)$ 在 $D$ 上 Lipschitz 连续，则有<br>
+$$\begin{aligned}
+&\quad \ \left \| \boldsymbol{f}\left(\boldsymbol{u} \right ) - \boldsymbol{f}\left(\boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \left(\boldsymbol{u} - \boldsymbol{v} \right ) \right \| \\
+& \leq \int_{0}^{1} \left \| \boldsymbol{J}_{\boldsymbol{f}}\left ( t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} \right ) - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \right \| \left \| \boldsymbol{u} - \boldsymbol{v} \right \|\mathrm{d}t \\
+& \leq \int_{0}^{1} \gamma \left \| t\boldsymbol{u} + \left( 1-t \right )\boldsymbol{v} - \boldsymbol{x}  \right \| \left \| \boldsymbol{u} - \boldsymbol{v} \right \|\mathrm{d}t \\
+& = \int_{0}^{1} \gamma \left \| t\left ( \boldsymbol{u}-\boldsymbol{x} \right ) + \left( 1-t \right )\left ( \boldsymbol{v} - \boldsymbol{x} \right ) \right \| \left \| \boldsymbol{u} - \boldsymbol{v} \right \|\mathrm{d}t \\
+& \leq \gamma \left \| \boldsymbol{u} - \boldsymbol{v} \right \| \int_{0}^{1} \left [ t\left \| \boldsymbol{u}-\boldsymbol{x}\right \| + \left ( 1-t \right )\left \| \boldsymbol{v}-\boldsymbol{x}\right \| \right ] \mathrm{d}t \\
+& = \gamma \left \| \boldsymbol{u} - \boldsymbol{v} \right \| \left [ \left \| \boldsymbol{u}-\boldsymbol{x}\right \| \int_{0}^{1} t \mathrm{d}t + \left \| \boldsymbol{v}-\boldsymbol{x}\right \|\int_{0}^{1} \left ( 1-t \right ) \mathrm{d}t \right ] \\
+& = \gamma \frac{\left \| \boldsymbol{u}-\boldsymbol{x} \right \| + \left \| \boldsymbol{v}-\boldsymbol{x} \right \|}{2} \left \| \boldsymbol{u}-\boldsymbol{v} \right \| \\
+& \leq \gamma \max \left \{ \left \| \boldsymbol{u}-\boldsymbol{x} \right \|,\left \| \boldsymbol{v}-\boldsymbol{x} \right \| \right \} \left \| \boldsymbol{u}-\boldsymbol{v} \right \|
+\end{aligned}
+$$
+证毕。
+</blockquote>
+
+<p class="post-text-noindent">由于向量值函数是函数的推广，适用于向量值函数的推论 3 同样适用于函数。它给出了用线性模型 $f\left(\boldsymbol{x} \right) + \nabla f\left(\boldsymbol{x} \right)^T \boldsymbol{d}$ 近似 $f\left(\boldsymbol{x}+\boldsymbol{d} \right)$ 的误差上界，类似地，我们可以证明：如果 $f\left(x \right)$ 在开凸集 $D$ 上二阶偏导连续且 $\boldsymbol{H}_f\left(x \right)$ 在 $D$ 上 Lipschitz 连续，则有（<span class="post-text-problem">注：书上给出的是一个更小的界，书上不是 $\frac{\gamma}{4}$ 而是 $\frac{\gamma}{6}$，笔者没有证明出来，不知书上正确与否</span>）</p>
+
+$$\left | f\left(\boldsymbol{x}+\boldsymbol{d} \right ) - \left [ f\left(\boldsymbol{x} \right ) + \nabla f\left(\boldsymbol{x} \right )^T\boldsymbol{d} + \frac{1}{2}\boldsymbol{d}^T\boldsymbol{H}_f\left(\boldsymbol{x} \right ) \boldsymbol{d}\right ] \right | \leq \frac{\gamma}{4}\left \| \boldsymbol{d} \right \|^3$$
+
+<p>本节最后，我们给出经由向量值函数 $\boldsymbol{f}:\ R^n\rightarrow R^m$ 和函数 $\boldsymbol{g}:\ R^m\rightarrow R$ 得到的<strong>复合函数 $h = g\left(\boldsymbol{f}\left(\boldsymbol{x} \right) \right)$ 的梯度与 Hessian 矩阵</strong>。若 $\boldsymbol{f}$ 各分量函数的一阶偏导连续且 $\boldsymbol{g}$ 一阶偏导连续，则有：</p>
+
+$$\nabla h\left(\boldsymbol{x} \right) = \boldsymbol{J}_{\boldsymbol{f}}\left(x \right)^T \nabla g\left(\boldsymbol{f}\left(\boldsymbol{x} \right) \right)$$
+
+<p class="post-text-noindent">且</p>
+
+$$\boldsymbol{H}_{h} \left(\boldsymbol{x} \right ) = \boldsymbol{J}_{\boldsymbol{f}} \left(\boldsymbol{x} \right ) \boldsymbol{H}_{g} \left(\boldsymbol{f} \left(\boldsymbol{x} \right) \right )^T \boldsymbol{J}_{\boldsymbol{f}} \left(\boldsymbol{x} \right )^T + \sum_{i=1}^{m}\frac{\partial g\left(\boldsymbol{f}\left(\boldsymbol{x} \right ) \right )}{\partial f_i} \boldsymbol{H}_{f_i}\left(\boldsymbol{x} \right )$$
+
+<p class="post-text-noindent">若还有 $\boldsymbol{g}:\ R^m\rightarrow R$ 二阶偏导连续（此时 Hessian 矩阵为对称矩阵），则</p>
+
+$$\boldsymbol{H}_{h} \left(\boldsymbol{x} \right ) = \boldsymbol{J}_{\boldsymbol{f}} \left(\boldsymbol{x} \right ) \boldsymbol{H}_{g} \left(\boldsymbol{f} \left(\boldsymbol{x} \right) \right ) \boldsymbol{J}_{\boldsymbol{f}} \left(\boldsymbol{x} \right )^T + \sum_{i=1}^{m}\frac{\partial g\left(\boldsymbol{f}\left(\boldsymbol{x} \right ) \right )}{\partial f_i} \boldsymbol{H}_{f_i}\left(\boldsymbol{x} \right )$$
+
+<h2>1.2.4 差商</h2>
+
+<p>以下三个定理分别给出了<strong>梯度、Hessian 矩阵和 Jacobian 矩阵的差商近似</strong>及近似误差上界。<strong>差商</strong>（difference quotient）定义为（注：书中称差商为有限差分导数）</p>
+
+$$\frac{f\left(\boldsymbol{x}+b \right) - f\left(\boldsymbol{x}+a \right)}{b-a}$$
+
+<p class="post-text-noindent">其中形如 $f\left(\boldsymbol{x}+b \right) - f\left(\boldsymbol{x}+a \right)$ 的数学表达式被称为<strong>有限差分</strong>（finite difference）。</p>
+
+<blockquote><strong>定理 10</strong>：如果 $f\left(\boldsymbol{x} \right)$ 在开凸集 $D$ 上二阶偏导连续且 $\boldsymbol{H}_f\left(x \right)$ 在 $D$ 上 Lipschitz 连续，则梯度的差商近似<br>
+$$\boldsymbol{g} =\left (g_1,g_2,\cdots,g_n \right)^T,\ g_i = \frac{f\left(\boldsymbol{x}+h\boldsymbol{e}_i \right )-f\left(\boldsymbol{x}-h\boldsymbol{e}_i \right )}{2h}$$
+满足<br>
+$$\left| g_i - \frac{\partial f\left(\boldsymbol{x} \right)}{\partial x_i} \right| \leq \frac{\gamma}{6}h^2 \\
+\left \| \boldsymbol{g} - \nabla f\left(\boldsymbol{x} \right) \right \|_\infty \leq \frac{\gamma}{6}h^2$$
+这里 $h$ 为常数，$\boldsymbol{e}_i$ 为第 $i$ 个分量为 1，其余分量为 0 的单位向量。
+</blockquote>
+
+<blockquote><strong>定理 11</strong>：如果 $f\left(\boldsymbol{x} \right)$ 在开凸集 $D$ 上二阶偏导连续且 $\boldsymbol{H}_f\left(x \right)$ 在 $D$ 上 Lipschitz 连续，则 Hessian 矩阵的差商近似<br>
+$$\boldsymbol{A} =\left(a_{ij} \right)_{n\times n},\ a_{ij} = \frac{f\left(\boldsymbol{x}+h\boldsymbol{e}_i+h\boldsymbol{e}_j \right )-f\left(\boldsymbol{x}+h\boldsymbol{e}_i \right )-f\left(\boldsymbol{x}+h\boldsymbol{e}_j \right )+f\left(\boldsymbol{x}\right )}{2h^2}$$
+满足<br>
+$$\left| a_{ij} - \frac{\partial^2 f\left(\boldsymbol{x} \right)}{\partial x_i \partial x_j} \right| \leq \frac{\gamma h}{4} \\
+\left \| \boldsymbol{A} - \boldsymbol{H}_f\left(\boldsymbol{x} \right) \right \|_{1/\infty/F} \leq \frac{\gamma hn}{4}$$
+这里 $h$ 为常数，$\boldsymbol{e}_i$ 为第 $i$ 个分量为 1，其余分量为 0 的单位向量。
+</blockquote>
+
+<blockquote><strong>定理 12</strong>：如果 $\boldsymbol{f}\left(\boldsymbol{x} \right)$ 在开凸集 $D$ 上一阶偏导连续且 $\boldsymbol{J}_{\boldsymbol{f}}\left(\boldsymbol{x} \right)$ 在 $D$ 上 Lipschitz 连续，则 Jacobian 矩阵的差商近似<br>
+$$\boldsymbol{A} =\left(a_{ij} \right)_{n\times n},\ a_{ij} = \frac{f_i\left(\boldsymbol{x}+h\boldsymbol{e}_j \right ) -f_i\left(\boldsymbol{x}\right )}{h}$$
+满足<br>
+$$\left| \boldsymbol{A}_{.j} - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right )_{.j} \right| \leq \frac{\gamma}{2}\left | h \right | \\
+\left \| \boldsymbol{A} - \boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right ) \right \|_1 \leq \frac{\gamma}{2}\left | h \right |$$
+这里 $h$ 为常数，$\boldsymbol{A}_{.j}$ 为 $A$ 的第 $j$ 列，$\boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right )_{.j}$ 为 $\boldsymbol{J}_{\boldsymbol{f}}\left ( \boldsymbol{x} \right )$ 第 $j$ 列，$\boldsymbol{e}_i$ 为第 $i$ 个分量为 1，其余分量为 0 的单位向量。
+</blockquote>
+
+<p class="post-text-noindent">上述这些定理的证明主要利用了上小节给出的用线性模型近似原函数的误差上界，如需了解详细证明过程，可参考由科学出版社出版，由袁亚湘、孙文瑜著的《最优化理论与方法》一书的 1.2.6 节。</p>
+
+<h1>1.3 凸分析</h1>
+
+<p>凸性在最优化理论与方法的研究中起着重要的作用。本节，我们介绍最优化理论中需要用到的凸分析知识，包括：凸集、凸函数和凸集的分离与支撑。</p>
+
+<h2>1.3.1 凸集</h2>
+
+<p>如果一个集合中连接任意两点的线段上的点依然属于这个集合，那么我们称这样的集合为<strong>凸集</strong>（convex set）。用数学语言描述就是</p>
+
+$$S\ is\ convex\ set \Leftrightarrow \forall \boldsymbol{x}_1,\boldsymbol{x}_2 \in S,\ \alpha \boldsymbol{x}_1 + \left(1-\alpha \right)\boldsymbol{x}_2 \in S, \forall \alpha \in \left[0,1 \right]$$
+
+<p class="post-text-noindent">根据定义，利用数学归纳法不难验证：$R^n$ 中的子集 $S$ 为凸集当且仅当 $S$ 中任意 $m$ 个元素 $x_1,x_2,\cdots,x_m$ 的所有凸组合 $\sum_{i=1}^{n} \alpha_i \boldsymbol{x}_i$ 仍然属于 $S$，这里 $\sum_{i=1}^{n} \alpha_i = 1$ 且 $\alpha_i \geq 0$。我们将包含 $S$ 的最小凸集称为 $S$ 的<strong>凸包</strong>，而这个最小凸集正是由 $S$ 中任意 $m$ 个元素的所有凸组合构成的，因此如果 $S$ 本身为凸集，那么它的凸包就是它自身。下面我们给出一些<strong>常见的凸集</strong>：</p>
+
+<ul>
+	<li>线段（line segment）:</li>
+	$$\left \{\boldsymbol{z} \in R^n: \boldsymbol{z} = \alpha \boldsymbol{x} + \left( 1-\alpha \right) \boldsymbol{y},\ \alpha \in \left[0,1 \right] \right \}$$
+	<li>射线（ray / half-line）：</li>
+	$$\left \{\boldsymbol{x} \in R^n: \boldsymbol{x} = \boldsymbol{x}_0 + \lambda \boldsymbol{d},\ \lambda \geq 0,\ \boldsymbol{d} \neq 0,\ \boldsymbol{x}_0\ is\ a\ fixed\ point\right \}$$
+	<li>直线（line）：</li>
+	$$\left \{\boldsymbol{x} \in R^n: \boldsymbol{x} = \boldsymbol{x}_0 + \lambda \boldsymbol{d}\ for\ all\  \lambda \in R,\ \boldsymbol{d}\neq 0,\ \boldsymbol{x}_0\ is\ a\ fixed\ point\right \}$$
+	<li>超平面（hyperplane）：</li>
+	$$\left \{ \boldsymbol{x} \in R^n: \boldsymbol{a}^T\boldsymbol{x} = b,\ \boldsymbol{a} \in R^n,\ b \in R \right \}$$
+	<li>半空间（half-space）：</li>
+	$$\left \{ \boldsymbol{x} \in R^n: \boldsymbol{a}^T\boldsymbol{x} \geq b,\ \boldsymbol{a} \in R^n,\ b \in R \right \}$$
+	$$\left \{ \boldsymbol{x} \in R^n: \boldsymbol{a}^T\boldsymbol{x} \leq b,\ \boldsymbol{a} \in R^n,\ b \in R \right \}$$
+	<li>线性簇（linear variety）:</li>
+	$$\left \{ \boldsymbol{x} \in R^n: \boldsymbol{A}\boldsymbol{x} = \boldsymbol{b},\ \boldsymbol{A} \in R^{m\times n},\ \boldsymbol{b} \in R^m \right \}$$
+	<li>多面体（polytope）:</li>
+	$$\bigcap_{i = 1}^{r} H_i,\ H_i = \left \{ \boldsymbol{x} \in R^n: \boldsymbol{a}_i^T\boldsymbol{x} \geq b_i\ or\ \boldsymbol{a}_i^T\boldsymbol{x} \leq b_i,\ \boldsymbol{a}_i \in R^n,\ b_i \in R \right \}$$
+	<li>多胞形（polyhedra）:</li>
+	$$\begin{aligned} & \bigcap_{i = 1}^{r} H_i,\ H_i = \left \{ \boldsymbol{x} \in R^n: \boldsymbol{a}_i^T\boldsymbol{x} \geq b_i\ or\ \boldsymbol{a}_i^T\boldsymbol{x} \leq b_i,\ \boldsymbol{a}_i \in R^n,\ b_i \in R \right \} \\ & \forall \boldsymbol{x} \in \bigcap_{i = 1}^{r} H_i,\ \exists M > 0,\ s.t.\left \| \boldsymbol{x} \right \| \leq M \end{aligned}$$
+</ul>
+
+<p class="post-text-noindent"><strong>两个凸集的交、两个凸集的和仍然为凸集</strong>，这是凸集的两条重要性质。上面列出的常见凸集中，线性簇是有限个超平面的和，多面体、多胞形是有限个半空间的交。</p>
+
+<p>我们定义对正的数乘运算封闭的 $R^n$ 的子集为锥，因而我们将对正的数乘运算封闭的凸集称为<strong>凸锥</strong>。根据凸集与锥的定义，我们不难知道：$R^n$ 的子集为凸锥当且仅当它对加法和正的数乘运算是封闭的。下面给出凸锥的几个例子：</p>
+
+<ul>
+	<li>各分量均非负的所有向量：$\left \{ \boldsymbol{x} = \left ( x_1,x_2,\cdots,x_n \right ) \in R^n: x_i \geq 0 \right \}$</li>
+	<li>有限个 $b = 0$ 的负半空间的交：$\left \{ \boldsymbol{x} = \left ( x_1,x_2,\cdots,x_n \right ) \in R^n: a_i^T\boldsymbol{x} \leq 0,\ a_i \in R^n,\ i \in I \right \}$，这里 $I$ 是任意一个指标集</li>
+	<li>包含凸集的最小凸锥：$\left \{ \lambda \boldsymbol{x}: \lambda > 0,\ \boldsymbol{x} \in C \right \}$，这里 $C$ 为凸集</li>
+</ul>
+
+<p>本小节最后，我们给出<strong>凸集极值点</strong>和<strong>极值方向</strong>的定义。</p>
+
+<blockquote><strong>定义 6</strong>：不在非空凸集 $S$ 中任何线段内部的 $S$ 中的点称为非空凸集 $S$ 的极值点，即对于任意 $S$ 中的极值点 $\boldsymbol{x}$，若 $\boldsymbol{x} = \alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2,\ \alpha \in \left(0,1 \right)$ 则必有 $\boldsymbol{x} = \boldsymbol{x}_1 = \boldsymbol{x}_2$。</blockquote>
+
+<blockquote><strong>定义 7</strong>：若对非空凸集 $S$ 中的任意点 $\boldsymbol{x}$，使得 $\forall \lambda > 0$ 都有 $\boldsymbol{x} + \lambda \boldsymbol{d} \in S$，$\ \boldsymbol{d} \neq 0$，则我们称 $\boldsymbol{d}$ 为非空凸集 $S$ 的方向。如果 $S$ 中的方向 $\boldsymbol{d}$ 不能表示成两个不同方向 $\boldsymbol{d}_1,\boldsymbol{d}_2$ 的正的线性组合，即如果 $\boldsymbol{d} = \lambda_1 \boldsymbol{d}_1 + \lambda_2 \boldsymbol{d}_2,\ \lambda_1,\lambda_2 > 0$ 必有 $\boldsymbol{d}_1 = \alpha \boldsymbol{d}_2,\ \alpha > 0$，则称 $\boldsymbol{d}$ 为非空凸集 $S$ 的极值方向。</blockquote>
+
+<p class="post-text-noindent">凸集的极值点和极值方向概念在凸集研究中是个有用的概念，但究竟有用在何处，笔者还不得而知。</p>
+
+<h2>1.3.2 凸函数</h2>
+
+<p>如果定义在非空凸集 $S$ 上的函数 $f$ 满足：</p>
+
+$$\forall \boldsymbol{x}_1 \neq \boldsymbol{x}_2 \in S,\ f\left( \alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2 \right) \leq \alpha f\left(\boldsymbol{x}_1 \right) + \left(1-\alpha \right) f\left(\boldsymbol{x}_2 \right),\ \alpha \in \left(0,1 \right)$$
+
+<p class="post-text-noindent">则我们称 $f$ 为非空凸集 $S$ 上的<strong>凸函数</strong>，如果上述不等式取不到等号，那么我们称 $f$ 为非空凸集 $S$ 上的<strong>严格凸函数</strong>。如果 $f$ 还满足：</p>
+
+$$\forall \boldsymbol{x}_1 \neq \boldsymbol{x}_2 \in S,\ f\left( \alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2 \right) \leq \alpha f\left(\boldsymbol{x}_1 \right) + \left(1-\alpha \right) f\left(\boldsymbol{x}_2 \right) - c\alpha \left(1-\alpha \right) \left \| \boldsymbol{x}_1 - \boldsymbol{x}_2 \right \|^2$$
+
+<p class="post-text-noindent">则我们称 $f$ 为 $S$ 上的<strong>一致凸函数</strong>。由凸函数的定义不难看出，凸函数的图像特征是：<strong>凸函数任意两点间的函数图像必位于连接该两点线段的下方</strong>。</p>
+
+<p>凸函数具有与凸集类似的性质，那就是<strong>两个凸函数之和仍然为凸函数</strong>，此外，<strong>凸函数的正常数倍仍为凸函数</strong>。下面我们给出在函数可微和函数二阶可微时，$f$ 为凸函数的充要条件，它们分别与 $f$ 的梯度和 Hessian 矩阵有关。</p>
+
+<blockquote><strong>定理 13</strong>：若 $f$ 是定义在非空凸集 $S$ 上的可微函数，则 $f$ 为凸函数当且仅当<br>
+$$f\left(\boldsymbol{x} \right) \geq f\left(\boldsymbol{x}_0 \right) + \nabla f\left(\boldsymbol{x}_0 \right)^T\left(\boldsymbol{x} - \boldsymbol{x}_0\right),\ \forall \boldsymbol{x},\boldsymbol{x}_0 \in S$$
+</blockquote>
+
+<blockquote><strong>定理 14</strong>：若 $f$ 是定义在非空凸集 $S$ 上的二阶可微函数，则 $f$ 为凸函数当且仅当对于任意 $\boldsymbol{x} \in S$，Hessian 矩阵 $\boldsymbol{H}_f\left(\boldsymbol{x} \right)$ 半正定。</blockquote>
+
+<p class="post-text-noindent">上述两个定理很好理解，这里不给出证明，如确有需要了解证明过程，可参考由科学出版社出版，由袁亚湘、孙文瑜著的《最优化理论与方法》一书的 1.3.2 节。定理 13 实际上说的是：<strong>对于可微凸函数而言，利用 $\boldsymbol{x}_0$ 处梯度信息构造的原函数的线性近似 $f\left(\boldsymbol{x}_0 \right) + \nabla f\left(\boldsymbol{x}_0 \right)^T\left(\boldsymbol{x} - \boldsymbol{x}_0\right)$ 是原函数 $f\left(\boldsymbol{x} \right)$ 的低估</strong>，特别地，对于一元凸函数而言，这种低估说的就是函数任意一点的切线始终位于函数下方。至于定理 14，它是二阶可微的一元函数为凸函数的充分必要条件（二阶导数恒大于等于 0）在多元情形下的自然推广。此外，需要特别指出的是：如果 $f$ 是严格凸函数，那么对于定理 13，只需把充要条件中的等号去掉即可，但对于定理 14 而言，二阶可微严格凸函数的充要条件不能改为函数每一点的 Hessian 矩阵正定。事实上，<strong>如果函数在每一点的 Hessian 矩阵正定则 $f$ 为严格凸函数，但 $f$ 为严格凸函数只能保证函数在每一点的 Hessian 矩阵一定半正定，而无法保证一定正定</strong>。</p>
+
+<p>本小节最后，我们将依托水平集这一概念，进一步阐述凸函数与凸集之间的紧密联系。<strong>凸函数是定义在凸集之上的</strong>，如果凸函数不定义在凸集之上，那么凸函数定义中的 $f\left( \alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2 \right)$ 可能不存在，因为如果没有凸集的保证，$\alpha \boldsymbol{x}_1 + \left( 1-\alpha \right) \boldsymbol{x}_2$ 可能不在集合中。而通过接下来的定理我们可以知道：<strong>凸函数的水平集是凸集</strong>。</p>
+
+<blockquote><strong>定理 15</strong>：如果 $f$ 是定义在非空凸集 $S$ 上的凸函数，则其水平集<br>
+$$L\left(\boldsymbol{x}_0 \right) = \left \{ \boldsymbol{x} \in S: f\left(\boldsymbol{x} \right) \leq f\left(\boldsymbol{x}_0 \right) \right \}$$
+是凸集，若 $f$ 可微，则其水平集 $L\left(\boldsymbol{x}_0 \right)$ 为闭凸集，进一步，如果 $f$ 二阶可微且存在 $m > 0$ 使得<br>
+$$\boldsymbol{u}^T\boldsymbol{H}_f\left(\boldsymbol{x} \right)\boldsymbol{u} \geq m \left \| \boldsymbol{u} \right \|^2,\ \forall \boldsymbol{x} \in L\left(\boldsymbol{x}_0 \right),\boldsymbol{u} \in R^n$$
+则水平集 $L\left(\boldsymbol{x}_0 \right)$ 为有界闭凸集。
+</blockquote>
+
+<h2>1.3.3 凸集的分离与支撑</h2>
+
+<p>凸集的分离与支撑是研究最优性条件的重要工具。下面的定理，我们首先给出闭凸集内一点 $\boldsymbol{x}_0$ 成为与闭凸集外一点 $\boldsymbol{y}$ 距离最短的点所需满足的条件。</p>
+
+<blockquote><strong>定理 16</strong>：对于非空闭凸集 $S$ 外一点 $\boldsymbol{y}$，$S$ 中与其距离最短的点存在且唯一。若记该点为 $\boldsymbol{x}_0$，则 $\boldsymbol{y}$ 与 $\boldsymbol{x}_0$ 距离最短当且仅当<br>
+$$\left(\boldsymbol{x} - \boldsymbol{x}_0 \right)^T\left(\boldsymbol{x}_0 - \boldsymbol{y} \right) \geq 0,\ \forall \boldsymbol{x} \in S$$
+</blockquote>
+
+<p class="post-text-noindent">定理 16 初看起来让人有点摸不着头脑，但如果从几何直观上来看，定理 16 给出的结论就容易理解多了。事实上，定理 16 说的是：<strong>如果从闭凸集外一点 $\boldsymbol{y}$ 指向闭凸集内一点 $\boldsymbol{x}_0$ 的向量 $\boldsymbol{v}_{\boldsymbol{y}\boldsymbol{x}_0}$，与从 $\boldsymbol{x}_0$ 指向闭凸集内其他任意点 $\boldsymbol{x}$ 的向量 $\boldsymbol{v}_{\boldsymbol{x}_0\boldsymbol{x}}$ 的夹角均为锐角或直角，则 $\boldsymbol{x}_0$ 就是闭凸集内与闭凸集外一点 $\boldsymbol{y}$ 距离最短的点，反之亦然</strong>。（注：对于能从直观上获得很好理解的定理，笔者不关心它的证明过程，当然也不会在这里放上定理的证明，如有兴趣请参考由科学出版社出版的孙文瑜、袁亚湘所著的《最优化理论与方法》）</p>
+
+<p>在叙述凸集与凸集的分离定理之前，我们首先阐述<strong>点与凸集的分离定理</strong>，它的证明用到了定理 16。</p>
+
+<blockquote><strong>定理 17</strong>：存在超平面 $H = \left \{\boldsymbol{x} \in R^n:\boldsymbol{a}^T\boldsymbol{x} = b \right \}$ 严格分离非空闭凸集 $S$ 和非空闭凸集 $S$ 外一点 $y$。即存在非零向量 $\boldsymbol{a}$ 和实数 $b$，使得 $\boldsymbol{a}^T\boldsymbol{y} > b$ 和 $\boldsymbol{a}^T\boldsymbol{x} \leq b,\ \forall \boldsymbol{x} \in S$.</blockquote>
+
+<p class="post-text-noindent">点与凸集的分离定理是证明凸集与凸集分离定理的基础，因为凸集就是点的集合。此外，该定理还可用来得到在推导约束问题的最优性条件（KKT条件）时需要用到的<strong> Farkas 引理</strong>。</p>
+
+<blockquote><strong>引理 1</strong>：若 $\boldsymbol{A}$ 为 $m\times n$ 矩阵，$\boldsymbol{b} \in R^n$，则下列两个方程组中有且仅有一组有解：<br>
+$$\boldsymbol{Ax} \leq \boldsymbol{0},\ \boldsymbol{b}^T\boldsymbol{x} > 0$$
+$$\boldsymbol{A}^T\boldsymbol{y}=\boldsymbol{b},\ \boldsymbol{y} \geq \boldsymbol{0}$$
+</blockquote>
+
+<p class="post-text-noindent">通过几何直观，我们可以很好的理解 Farkas 引理。<strong>Farkas 引理的几何意义是：$\boldsymbol{b}$ 要么在凸锥内，要么在凸锥外</strong>。下面依据几何直观给出该引理的不严格的解释性证明：</p>
+
+<blockquote><strong>证明</strong>：设凸锥为 $\boldsymbol{A}$ 的 m 个行向量或 $\boldsymbol{A}^T$ 的 m 个列向量 $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_m$ 与非负系数构成的线性组合：<br>
+$$\left \{\boldsymbol{x}\in R^n: \boldsymbol{x} = \sum_{i=1}^{n} y_i\boldsymbol{a}_i，y_i \geq 0 \right \}$$
+因此 $\boldsymbol{b}$ 在该凸锥内说的就是：<br>
+$$\exists \boldsymbol{y},\ s.t.\boldsymbol{A}^T\boldsymbol{y}=\boldsymbol{b},\ \boldsymbol{y} \geq \boldsymbol{0}$$
+如果 $\boldsymbol{b}$ 在凸锥外，那么依据点与凸集的分离定理，我们可以证明此时存在过原点的超平面 $\boldsymbol{p}^T\boldsymbol{x} = 0$ 分离凸锥与 $\boldsymbol{b}$，即<br>
+$$\exists \boldsymbol{p} \neq 0,\ s.t.\boldsymbol{p}^T\boldsymbol{b} = \boldsymbol{b}^T\boldsymbol{p} > 0,\ \boldsymbol{p}^T\boldsymbol{a}_i = \boldsymbol{a}_i^T\boldsymbol{p} \leq 0$$
+因此 $\boldsymbol{b}$ 在凸锥外说的就是（注：既然需要满足 $\boldsymbol{b}^T\boldsymbol{p} > 0$，所以无需强调 $\boldsymbol{p} \neq 0$）：<br>
+$$\exists \boldsymbol{p},\ s.t.\boldsymbol{Ap} \leq \boldsymbol{0},\ \boldsymbol{b}^T\boldsymbol{p} > 0$$
+由于 $\boldsymbol{b}$ 要么在凸锥内，要么在凸锥外，而不可能既在凸锥内，又在凸锥外，因而上述引理得证。
+</blockquote>
+
+<p>下面我们讲述<strong>超平面支撑凸集定理</strong>，它的证明使用了点与凸集的分离定理，并且它和点与凸集的分离定理一样，是用来证明凸集与凸集分离定理的基础。</p>
+
+<blockquote><strong>定义 8</strong>：如果存在 $\boldsymbol{p} \in R^n$ 使得非空集合 $S$ 以及 $S$ 中的边界点 $\boldsymbol{x}_0$ 满足<br>
+$$S \subset H^+ =\left \{\boldsymbol{x}\in S: \boldsymbol{p}^T\left(\boldsymbol{x}-\boldsymbol{x}_0 \right )\geq 0 \right \}$$
+或者
+$$S \subset H^- =\left \{\boldsymbol{x}\in S: \boldsymbol{p}^T\left(\boldsymbol{x}-\boldsymbol{x}_0 \right )\leq 0 \right \}$$
+则称超平面 $H =\left \{\boldsymbol{x}\in S: \boldsymbol{p}^T\left(\boldsymbol{x}-\boldsymbol{x}_0 \right )= 0 \right \}$ 为 $S$ 在边界点 $\boldsymbol{x}_0$ 处的支撑超平面。
+</blockquote>
+
+<blockquote>支撑超平面的几何意义：过边界点 $\boldsymbol{x}_0$ 的支撑超平面的法向量，与由边界点 $\boldsymbol{x}_0$ 指向凸集内任意一点 $\boldsymbol{x}$ 的向量的夹角，要么为锐角或直角，要么为钝角或直角。</blockquote>
+
+<blockquote><strong>定理 18</strong>：非空凸集 $S$ 的任意边界点 $\boldsymbol{x}_0$ 必存在一个支撑超平面，即存在 $\boldsymbol{p} \neq \boldsymbol{0}$ 使得<br>
+$$\boldsymbol{p}^T \left(\boldsymbol{x} - \boldsymbol{x}_0 \right ) \leq 0,\ \forall \boldsymbol{x} \in \bar{S}$$<br>
+这里 $\bar{S}$ 表示 $S$ 的闭包。
+</blockquote>
+
+<p class="post-text-noindent">点与凸集分离定理告诉我们存在超平面分离凸集与凸集外任意一点，而超平面支撑凸集定理告诉我们：凸集在其每一个边界点上都存在一个支撑超平面。这是否意味着：如果两个凸集没有交集，那么一定存在超平面分离这两个凸集？答案是肯定的，下面的两个定理给出了回答，它们分别被称为<strong>凸集的分离定理</strong>和<strong>凸集的强分离定理</strong>。</p>
+
+<blockquote><strong>定理 19</strong>：存在超平面分离非空不交凸集 $S_1$ 和 $S_2$，即存在 $\boldsymbol{p} \neq 0$ 和 $\alpha \in R$ 使得<br>
+$$\boldsymbol{p}^T \boldsymbol{x}_1 \leq \alpha \leq \boldsymbol{p}^T \boldsymbol{x}_2,\ \forall \boldsymbol{x}_1 \in \bar{S}_1,\boldsymbol{x}_2 \in \bar{S}_2$$
+</blockquote>
+
+<blockquote><strong>定理 20</strong>：存在超平面分离非空不交有界闭凸集 $S_1$ 和 闭凸集 $S_2$，即存在 $\boldsymbol{p} \neq 0$、$\alpha \in R$ 和 $\varepsilon  > 0$ 使得<br>
+$$\boldsymbol{p}^T \boldsymbol{x}_1 \leq \alpha < \alpha + \varepsilon \leq \boldsymbol{p}^T \boldsymbol{x}_2,\ \forall \boldsymbol{x}_1 \in \bar{S}_1,\boldsymbol{x}_2 \in \bar{S}_2$$
+</blockquote>
+
+<h1>1.4 最优性条件</h1>
+
+<p>本节，我们介绍最优化理论中目标函数取到极值的条件即最优性条件，包括：无约束优化的最优性条件和约束优化的最优性条件。</p>
+
+<h2>1.4.1 无约束优化的最优性条件</h2>
+
+<p>下面定理将依次给出无约束优化的最优性条件中的<strong>一阶必要条件</strong>、<strong>二阶必要条件</strong>、<strong>二阶充分条件</strong>以及<strong>无约束凸优化的一阶充要条件</strong>。</p>
+
+<blockquote><strong>定义 9</strong>：设 $\boldsymbol{x}^* \in X,\ \boldsymbol{d} \in R^n$，$X$ 为可行域，如果存在 $\alpha_0 > 0$ 使得<br>
+$$\boldsymbol{x}^* + \alpha \boldsymbol{d} \in X,\ \forall \alpha \in \left[0,\alpha_0 \right ]$$
+则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的可行方向（feasible direction, FD）。
+</blockquote>
+
+<blockquote><strong>定理 21</strong>：如果 $f$ 在 $D$ 上一阶偏导连续且 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点，那么 $f$ 在 $\boldsymbol{x}^*$ 处关于任意可行方向 $\boldsymbol{d}$ 的方向导数非负。即<br>
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) \geq 0$$
+进一步，若 $D$ 为开集，则有：$f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量，即<br>
+$$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0}$$
+</blockquote>
+
+<blockquote><strong>定理 22</strong>：如果 $f$ 在 $D$ 上二阶偏导连续且 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点，那么由 $f$ 在 $\boldsymbol{x}^*$ 处关于任意可行方向 $\boldsymbol{d}$ 的方向导数等于 0 可推得 $f$ 在 $\boldsymbol{x}^*$ 处关于任意可行方向 $\boldsymbol{d}$ 的二阶方向导数大于等于 0，即<br>
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) = 0 \Rightarrow \boldsymbol{d}^T \boldsymbol{H}_f \left(\boldsymbol{x}^* \right )\boldsymbol{d} \geq 0$$
+进一步，若 $D$ 为开集，则有：$f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量且 $f$ 在 $\boldsymbol{x}^*$ 处的 Hessian 矩阵半正定，即<br>
+$$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0},\ \boldsymbol{H}_f \left(\boldsymbol{x}^* \right ) \geq 0$$
+</blockquote>
+
+<blockquote><strong>定理 22</strong>：如果 $f$ 在开集 $D$ 上二阶偏导连续，$f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量且 $f$ 在 $\boldsymbol{x}^*$ 处的 Hessian 矩阵正定，即<br>
+$$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0},\ \boldsymbol{H}_f \left(\boldsymbol{x}^* \right ) > 0$$
+那么 $\boldsymbol{x}^*$ 是 $f$ 的局部极小点。
+</blockquote>
+
+<blockquote><strong>定理 23</strong>：如果 $f$ 为开集 $D$ 上的凸函数且 $f$ 在 $D$ 上一阶偏导连续，那么 $\boldsymbol{x}^*$ 是 $f$ 的全局极小点当且仅当 $f$ 在 $\boldsymbol{x}^*$ 处的梯度为零向量，即<br>
+$$\nabla f \left(\boldsymbol{x}^* \right ) = \boldsymbol{0}$$
+</blockquote>
+
+<p class="post-text-noindent">我们将梯度为 0 向量的点称为函数的<strong>平稳点</strong>或<strong>驻点</strong>。梯度为 0 的点可能是局部极小点，也可能是局部极大点，也可能不是极值点。我们将不是极值点的驻点称为<strong>鞍点</strong>。定理 23 告诉我们：<strong>凸函数的驻点就是局部极小点，并且是全局极小点</strong>。</p>
+
+<h2>1.4.2 约束优化的最优性条件</h2>
+
+<p>我们首先介绍约束优化最优性条件中的<strong>一阶必要条件</strong>，一阶必要条件中最著名的就是 <strong>KKT 条件</strong>（Karush–Kuhn–Tucker conditions），它由 Kuhn 和 Tucker 于 1951 年给出，因此也称为 Kuhn-Tucker 条件，但由于 Karush 在 1939 年也类似地考虑了约束优化的最优性条件，所以我们今天称这一条件为 KKT 条件。它与拉格朗日于 18 世纪 60 年代提出的拉格朗日函数（用于求带等式约束的条件极值问题）有着密切的联系。下面的定理 24 给出了 KKT 条件。</p>
+
+<blockquote><strong>定义 10</strong>：设 $\boldsymbol{x}^* \in X,\ \boldsymbol{d} \in R^n$，$X$ 为可行域，如果存在序列 $\boldsymbol{d}_k$ 和 $\alpha_k > 0,k=1,2,\cdots$ 使得<br>
+$$\boldsymbol{x}^* + \alpha_k \boldsymbol{d}_k \in X,\ \forall k$$
+$$\lim_{n \rightarrow \infty} \boldsymbol{d}_k = \boldsymbol{d},\ \lim_{n \rightarrow \infty} \alpha_k = 0$$
+则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的序列可行方向（sequence feasible direction, SFD）。
+</blockquote>
+
+<blockquote><strong>定义 11</strong>：设 $\boldsymbol{x}^* \in X,\ \boldsymbol{d} \in R^n$，$X$ 为可行域，如果
+$$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in E$$
+$$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) \geq 0,\ i \in I \left(\boldsymbol{x}^* \right )$$
+则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的线性化可行方向（linearized feasible directions, LFD）。
+</blockquote>
+
+<blockquote><strong>定理 24</strong>：如果 $\boldsymbol{x}^*$ 是约束优化问题<br>
+$$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
+的局部极小点，且可行域 $X$ 在 $\boldsymbol{x}^*$ 处的序列化可行方向构成的集合 $SFD \left(\boldsymbol{x}^*,X \right )$ 与其在 $\boldsymbol{x}^*$ 处的线性化可行方向构成的集合 $LFD \left(\boldsymbol{x}^*,X \right )$ 相等，即约束优化问题满足约束规范条件/正则性条件（constraint qualifications / regularity conditions）<br>
+$$SFD \left(\boldsymbol{x}^*,X \right ) = LFD \left(\boldsymbol{x}^*,X \right )$$
+那么必存在 $\lambda_i^*,i \in E \cup I$ 使得<br>
+$$\nabla f \left(\boldsymbol{x}^* \right ) - \sum_{i \in E \cup I}\lambda_i^*\nabla c_i \left(\boldsymbol{x}^* \right ) = \boldsymbol{0}$$
+$$\lambda_i^* \geq 0,\ \lambda_i^* c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in I$$
+</blockquote>
+
+<p class="post-text-noindent">由于上述约束规范条件 $SFD \left(\boldsymbol{x}^*,X \right ) = LFD \left(\boldsymbol{x}^*,X \right )$ 不易验证，人们给出了更强的、相对而言更容易验证的约束规范条件。常见的有（注：按条件由弱到强的顺序依次列出）：</p>
+
+<ul>
+	<li>Mangasarian-Fromovitz 约束条件（Mangasarian-Fromovitz constraint qualification, MFCQ）</li>
+	$$\sum_{i \in E}k_i\nabla c_i \left(\boldsymbol{x}^* \right ) = \boldsymbol{0} \Rightarrow k_i = 0,\forall i \in E$$
+	$$\exists \boldsymbol{d},\ s.t.\ \boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\forall i \in E;\ \boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) > 0,\forall i \in I \left(\boldsymbol{x}^* \right )$$
+	<li>线性无关约束条件（linear independence constraint qualification, LICQ）</li>
+	$$\sum_{i \in E \cup I \left(\boldsymbol{x}^* \right )}k_i\nabla c_i \left(\boldsymbol{x}^* \right ) = \boldsymbol{0} \Rightarrow k_i = 0,\forall i \in E \cup I \left(\boldsymbol{x}^* \right )$$
+	<li>线性约束条件（linearity constraint qualification, LCQ）：$c_i \left(\boldsymbol{x} \right )$ 为仿射函数（最高次数为 1 的多项式函数，当常数项为零退化为线性函数）</li>
+</ul>
+
+<p class="post-text-noindent">这里 $I \left(\boldsymbol{x}^* \right ) \triangleq \left \{ i:c_i \left(\boldsymbol{x}^* \right ) = 0,i \in I \right \}$，它是对局部极值点 $\boldsymbol{x}^*$ 的有效不等式约束所对应的指标集。我们称有效约束（积极约束）对应的指标集集合为<strong>积极集合</strong>/有效集合（active set），可以看到：上述的约束规范条件/正则性条件 MFCQ 和 LICQ 均是针对积极集合而言的。</p>
+
+<blockquote>为什么 $c_i \left(\boldsymbol{x}^* \right ) = 0,i \in I$ 对应的不等式约束 $c_i \left(\boldsymbol{x} \right ) \geq 0$ 是对局部极值点 $\boldsymbol{x}^*$ 的有效不等式约束呢？如果对某个不等式约束 $c_i\left(\boldsymbol{x} \right ) \geq 0$ 有 $c_i \left(\boldsymbol{x}^* \right ) > 0$，那么这个不等式约束对于局部极小点 $\boldsymbol{x}^*$ 而言是非必须的。这是因为在这种情况下，由于 $\boldsymbol{x}^*$ 不在不等式约束对应的边界 $c_i\left(\boldsymbol{x} \right ) = 0$ 上，因此总可以找到与该边界不相交且位于可行域（包含该不等式约束）内的 $\boldsymbol{x}^*$ 的邻域，在这个邻域内 $f$ 在 $\boldsymbol{x}^*$ 处取到最小值。此时不管我们加不加上这个不等式约束，这个邻域均在可行域范围内，即不管有没有这个不等式约束 $\boldsymbol{x}^*$ 均是 $f$ 的局部极小点。相反，如果 $\boldsymbol{x}^*$ 在不等式约束对应的边界 $c_i\left(\boldsymbol{x} \right ) = 0$ 上，那么 $\boldsymbol{x}^*$ 的任意邻域与该边界相交且必有位于可行域（包含该不等式约束）外的部分，此时 $\boldsymbol{x}^*$ 只是 $f$ 在 $\boldsymbol{x}^*$ 任意足够小的邻域的一部分上的最小值点，如果去掉该不等式约束，扩大可行域范围，则一定可以找到一个  $\boldsymbol{x}^*$ 的足够小的邻域，它没有位于新可行域外的部分，由于邻域一部分上的最小值点不一定是邻域上的最小值点，因此 $\boldsymbol{x}^*$ 将有可能不再是 $f$ 的局部极小点。</blockquote>
+
+<p>KKT 条件的证明需要用到 Farkas 引理以及另一个约束优化<strong>一阶必要条件</strong>，它与无约束优化的一阶必要条件十分类似，下面的定理 25 给出了这一一阶必要条件。</p>
+
+<blockquote><strong>定理 25</strong>：如果 $\boldsymbol{x}^*$ 是约束优化问题<br>
+$$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
+的局部极小点且 $f \left(\boldsymbol{x} \right )$ 和 $c_i \left(\boldsymbol{x} \right )$ 在 $\boldsymbol{x}^*$ 处均可微，则对可行域 $X$ 在 $\boldsymbol{x}^*$ 处的所有序列化可行方向 $\boldsymbol{d}$，$f$ 在 $\boldsymbol{x}^*$ 处关于这些方向的方向导数非负，即<br>
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) \geq 0,\ \forall \boldsymbol{d} \in SFD \left(\boldsymbol{x}^*,X \right )$$
+</blockquote>
+
+<p class="post-text-noindent">对上述定理做一点微调，便得到了如下的约束优化的<strong>一阶充分条件</strong>：</p>
+
+<blockquote><strong>定理 26</strong>：如果 $f \left(\boldsymbol{x} \right )$ 和 $c_i \left(\boldsymbol{x} \right )$ 在 $\boldsymbol{x}^*$ 处均可微，$\boldsymbol{x}^* \in X$ 且对可行域 $X$ 在 $\boldsymbol{x}^*$ 处的所有序列化可行非零方向 $\boldsymbol{d} \neq 0$，都有 $f$ 在 $\boldsymbol{x}^*$ 处关于这些方向的方向导数大于 0，即<br>
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) > 0,\ \forall \boldsymbol{d} \neq 0 \in SFD \left(\boldsymbol{x}^*,X \right )$$
+那么 $\boldsymbol{x}^*$ 是约束优化问题<br>
+$$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
+的局部极小点。
+</blockquote>
+
+<p class="post-text-noindent">如果 $\boldsymbol{x}^*$ 不满足定理 26 给出的一阶充分条件但满足定理 25 给出的一阶必要条件，即</p>
+
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) \geq 0,\ \forall \boldsymbol{d} \in SFD \left(\boldsymbol{x}^*,X \right )$$
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) = 0,\ \exists \boldsymbol{d} \neq 0 \in SFD \left(\boldsymbol{x}^*,X \right )$$
+
+<p class="post-text-noindent">那我们就无法根据一阶条件判断 $\boldsymbol{x}^*$ 是否为 $f$ 的局部极小点，此时就需要借助于二阶条件。</p>
+
+<p>在阐述约束优化最优性条件中的二阶必要条件和二阶充分条件前，我们先给出线性化零约束方向与序列零约束方向的定义。它们是增加了限制条件后的线性化可行方向与序列可行方向，这个限制条件与 KKT 条件有关。事实上，我们将要阐述的二阶条件除了要求 $\boldsymbol{x}^*$ 不满足定理 26 给出的一阶充分条件但满足定理 25 给出的一阶必要条件外，还要求 $\boldsymbol{x}^*$ 满足约束规范条件/正则性条件，而这意味着 $\boldsymbol{x}^*$ 满足 KKT 条件，由 $SFD \left(\boldsymbol{x}^*,X \right ) \subseteq LFD \left(\boldsymbol{x}^*,X \right )$ 和</p>
+
+$$\boldsymbol{d}^T \nabla f \left(\boldsymbol{x}^* \right ) = 0,\ \exists \boldsymbol{d} \neq 0 \in SFD \left(\boldsymbol{x}^*,X \right )$$
+
+<p class="post-text-noindent">我们可以得到 KKT 条件</p>
+
+$$\nabla f \left(\boldsymbol{x}^* \right ) = \sum_{i \in E \cup I}\lambda_i^*\nabla c_i \left(\boldsymbol{x}^* \right )$$
+
+<p class="post-text-noindent">等价于</p>
+
+$$\lambda_i^* \boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in I \left(\boldsymbol{x}^* \right )$$
+
+<p class="post-text-noindent">而这就是在定义线性化零约束方向时，在线性化可行方向基础上加上的限制条件。 </p>
+
+<blockquote><strong>定义 12</strong>：设 $\boldsymbol{x}^* \in X$ 满足 KKT 条件, $\lambda_i^*$ 为相应的 Lagrange 乘子，$\boldsymbol{d} \in R^n$，$X$ 为可行域。如果
+$$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in E$$
+$$\boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) \geq 0,\ i \in I \left(\boldsymbol{x}^* \right )$$
+$$\lambda_i^* \boldsymbol{d}^T \nabla c_i \left(\boldsymbol{x}^* \right ) = 0,\ i \in I \left(\boldsymbol{x}^* \right )$$
+则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的线性化零约束方向，记作 $\boldsymbol{d} \in G \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right )$。</blockquote>
+
+<blockquote><strong>定义 13</strong>：设 $\boldsymbol{x}^* \in X$ 满足 KKT 条件, $\lambda_i^*$ 为相应的 Lagrange 乘子，$\boldsymbol{d} \in R^n$，$X$ 为可行域。如果存在序列 $\boldsymbol{d}_k,k=1,2,\cdots$ 和 $\alpha_k > 0,k=1,2,\cdots$ 使得<br>
+$$\boldsymbol{x}^* + \alpha_k \boldsymbol{d}_k \in X,\ \forall k$$
+$$\sum_{i \in E \cup I } \lambda_i^* \nabla c_i \left(\boldsymbol{x}^* + \alpha_k \boldsymbol{d}_k \right ) = 0$$
+$$\lim_{n \rightarrow \infty} \boldsymbol{d}_k = \boldsymbol{d},\ \lim_{n \rightarrow \infty} \alpha_k = 0$$
+则称 $\boldsymbol{d}$ 是 $X$ 在 $\boldsymbol{x}^*$ 处的序列零约束方向，记作 $\boldsymbol{d} \in S \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right )$。</blockquote>
+
+<p class="post-text-noindent">可以证明：$S \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right ) \subseteq G \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right )$。下面给出约束优化最优性条件中的二阶必要条件和二阶充分条件，它们与无约束优化最优性条件中的二阶必要条件和二阶充分条件十分相似。</p>
+
+<blockquote><strong>定理 27</strong>：如果 $\boldsymbol{x}^*$ 是约束优化问题<br>
+$$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
+的局部极小点且 $\lambda_i^*$ 为 Lagrange 函数<br>
+$$L \left(\boldsymbol{x; \boldsymbol{\lambda}} \right ) \triangleq f \left(\boldsymbol{x} \right ) - \sum_{i \in E \cup I}\lambda_i^* c_i \left(\boldsymbol{x} \right )$$
+中相应的 Lagrange 乘子，那么该 Lagrange 函数关于序列零约束方向的二阶方向导数非负，即<br>
+$$\boldsymbol{d}^T \boldsymbol{H}_L \left(\boldsymbol{x}^*;\boldsymbol{\lambda} \right ) \boldsymbol{d} \geq 0,\ \forall \boldsymbol{d} \in S \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right )$$
+</blockquote>
+
+<blockquote><strong>定理 28</strong>：如果 $\boldsymbol{x}^*$ 满足 KKT 条件， $\lambda_i^*$ 为 Lagrange 函数<br>
+$$L \left(\boldsymbol{x; \boldsymbol{\lambda}} \right ) \triangleq f \left(\boldsymbol{x} \right ) - \sum_{i \in E \cup I}\lambda_i^* c_i \left(\boldsymbol{x} \right )$$
+中相应的 Lagrange 乘子，且该 Lagrange 函数关于线性零约束方向的二阶方向导数大于 0，即<br>
+$$\boldsymbol{d}^T \boldsymbol{H}_L \left(\boldsymbol{x}^*;\boldsymbol{\lambda} \right ) \boldsymbol{d} > 0,\ \forall \boldsymbol{d} \neq 0 \in G \left(\boldsymbol{x}^*,\boldsymbol{\lambda}^* \right )$$
+那么 $\boldsymbol{x}^*$ 是约束优化问题<br>
+$$\begin{aligned} &\min \ f\left ( \boldsymbol{x} \right ) \\
+&\ \mathrm{s.t.} \ \ c_i\left(\boldsymbol{x}\right) = 0, i \in E \\
+&\qquad \ c_i\left(\boldsymbol{x}\right) \geq 0, i \in I \end{aligned}$$
+的局部严格极小点。
+</blockquote>
+
+<p class="post-text-noindent">如果二阶必要性条件满足而二阶充分性条件不满足，则我们还需要借助更高阶的最优性条件来判断一个满足 KKT 条件的点是否为局部极小点。</p>
+
+<h1>1.5 最优化算法的基本结构</h1>
+
+<p>最优化算法通常采用迭代方法得到最优解，其基本思想是：从一个初始点 $\boldsymbol{x}_0$ 开始，按照某一迭代规则产生点列 $\left \{ \boldsymbol{x}_k \right \}$，当 $\left \{ \boldsymbol{x}_k \right \}$ 是有穷点列时，其最后一点是最优解，当 $\left \{ \boldsymbol{x}_k \right \}$ 是无穷点列时，其极限点是最优解。<strong>一个好的最优化算法应该具备的典型特征是：迭代点列 $\left \{ \boldsymbol{x}_k \right \}$ 能稳定地接近局部极小点 $\boldsymbol{x}^*$ 的邻域，然后迅速收敛于 $\boldsymbol{x}^*$</strong>。最优化算法的基本步骤如下：</p>
+
+<ul>
+	<li>给定初始点 $\boldsymbol{x}_0$</li>
+	<li>按照一定规则确定搜索方向 $\boldsymbol{d}_k$ 和步长因子 $\alpha_k$</li>
+	<li>令 $\boldsymbol{x}_{k+1} = \boldsymbol{x}_k + \alpha_k \boldsymbol{d}_k$</li>
+	<li>对 $k = 0,1,2,\cdots$ 重复上述两步直到满足某种终止条件，此时 $\boldsymbol{x}_{k+1}$ 即为近似最优解</li>
+</ul>
+
+<p class="post-text-noindent"><strong>大多数最优化算法是从函数的二阶近似模型导出的</strong>，因为一般函数在极小点附近常可用二次函数很好地近似。当算法应用于二次函数，只要经过有限步迭代就能达到函数的极小点时，我们称该算法具有二次终止性。一般而言，<strong>具有二次终止性的算法可望在接近极小点时具有很好的收敛性质</strong>。</p>
+
+<p><strong>收敛速度</strong>是衡量最优化算法有效性的重要指标，下面给出收敛速度的定义：</p>
+
+<blockquote>若存在 $\alpha > 0$ 和 $q > 0$ 使得<br>
+$$\lim_{k \rightarrow \infty} \frac{\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}^* \right \|}{\left \| \boldsymbol{x}_{k} - \boldsymbol{x}^* \right \|^\alpha} = q$$
+则我们称算法具有 $\alpha$ 阶收敛速度，特别地：当 $\alpha = 1$ 时，称算法具有线性收敛速度；当 $1 < \alpha < 2$ 时，称算法具有超线性收敛速度；当 $\alpha = 2$ 时，称算法具有二阶收敛速度。<br>
+</blockquote>
+
+<p class="post-text-noindent">一般认为：具有超线性收敛速度和二阶收敛速度的算法是比较快速的。但需要特别指出的是：<strong>对任何一个算法，收敛性和收敛速度的理论结果并不保证算法在实际执行时一定有好的实际效果</strong>，这是因为</p>
+
+<ul>
+	<li>收敛性和收敛速度均是针对极限而言的，其结果本身并不能保证算法一定有好的实际效果</li>
+	<li>为了得到收敛性和收敛速度的理论结果，通常对函数作了某些不易验证的限制，实际中需要优化的函数可能并不满足这些限制条件</li>
+	<li>实际计算过程中存在舍入误差</li>
+</ul>
+
+<p class="post-text-noindent">因此一个最优化算法的开发，仅仅从理论上论证其收敛性和收敛速度是不够的，还需要配合数值测试。</p>
+
+<p><strong>迭代终止条件</strong>是最优化算法的重要组成部分，如果算法具有超线性收敛速度，则可以证明</p>
+
+$$\lim_{k\rightarrow \infty} \frac{\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|}{\left \| \boldsymbol{x}_{k} - \boldsymbol{x}^* \right \|} = 1$$
+
+<p class="post-text-noindent">这表明当算法具有超线性收敛速度时，$\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|$ 是误差 $\left \| \boldsymbol{x}_{k} - \boldsymbol{x}^* \right \|$ 的一个合理估计，因此当算法有较快收敛速度时，我们可以将</p>
+
+$$\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \| \leq \varepsilon$$
+
+<p class="post-text-noindent">作为算法的终止条件，类似的终止条件还有</p>
+
+$$\left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right | \leq \varepsilon$$
+
+<p class="post-text-noindent">然而，有些时候，当 $\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|$ 足够小时，$\left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right |$ 并不小，或者当 $\left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right |$ 足够小时，$\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|$ 并不小，此时单独使用这两个终止条件中的一个是不合理的。Himmeblau 指出：同时使用上述两个终止条件是合适的，注意到量的关系，Himmeblau 提出了如下终止条件：</p>
+
+<ul>
+	<li>$\left \|\boldsymbol{x}_k \right \| > \varepsilon_2$ 且 $\left \|f \left(\boldsymbol{x}_k \right ) \right \| > \varepsilon_2$ 时</li>
+$$\frac{\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|}{\left \| \boldsymbol{x}_{k} \right \|} \leq \varepsilon_1\ or \ \frac{\left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right |}{\left |f \left(\boldsymbol{x}_{k} \right )\right |} \leq \varepsilon_1$$
+	<li>$\left \|\boldsymbol{x}_k \right \| \leq \varepsilon_2$ 或 $\left \|f \left(\boldsymbol{x}_k \right ) \right \| \leq \varepsilon_2$ 时</li>
+$$\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \| \leq \varepsilon_1\ or \ \left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right | \leq \varepsilon_1$$
+</ul>
+
+<p class="post-text-noindent">对于有一阶导数信息且收敛不太快的算法，可采用如下终止条件：</p>
+
+$$\left \| \nabla f \left(\boldsymbol{x}_k \right ) \right \| \leq \varepsilon_3$$
+
+<p class="post-text-noindent">但由于可能遇到鞍点，单独使用这个终止条件并不合适。Himmeblau 建议可将其与上面的终止条件结合起来使用，即使用终止条件：</p>
+
+<ul>
+	<li>$\left \|\boldsymbol{x}_k \right \| > \varepsilon_2$ 且 $\left \|f \left(\boldsymbol{x}_k \right ) \right \| > \varepsilon_2$ 时</li>
+$$\frac{\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \|}{\left \| \boldsymbol{x}_{k} \right \|} \leq \varepsilon_1\ or \ \frac{\left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right |}{\left |f \left(\boldsymbol{x}_{k} \right )\right |} \leq \varepsilon_1\ or\ \left \| \nabla f \left(\boldsymbol{x}_k \right ) \right \| \leq \varepsilon_3$$
+	<li>$\left \|\boldsymbol{x}_k \right \| \leq \varepsilon_2$ 或 $\left \|f \left(\boldsymbol{x}_k \right ) \right \| \leq \varepsilon_2$ 时</li>
+$$\left \| \boldsymbol{x}_{k+1} - \boldsymbol{x}_{k} \right \| \leq \varepsilon_1\ or \ \left |f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_{k} \right )\right | \leq \varepsilon_1\ or \ \left \| \nabla f \left(\boldsymbol{x}_k \right ) \right \| \leq \varepsilon_3$$
+</ul>
+
+<p class="post-text-noindent">一般地，我们取 $\varepsilon_1 = \varepsilon_2 = 10^{-5},\ \varepsilon_3 = 10^{-4}$.</p>
+
+<p>本章到这里就结束了，本章我们讲述了最优化理论中需要用到的线性代数、微积分和凸分析方面的知识，给出了无约束优化和约束优化的最优性条件，并在最后对最优化算法的基本结构作了阐述。下一章，我们将介绍无约束优化算法，包括梯度下降法、牛顿法、拟牛顿法和共轭梯度法。在介绍梯度下降法时，还将介绍非精确线搜索技术（inexact line search technique）以及单变量函数的优化算法（包括黄金分割法、斐波那契法、二分法、牛顿法、割线法、插值法等）。</p>
+
+</div>
