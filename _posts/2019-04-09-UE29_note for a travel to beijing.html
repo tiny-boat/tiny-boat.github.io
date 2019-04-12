@@ -1,0 +1,85 @@
+---
+layout: post
+title:  "优化短期课程摘要"
+date:   2019-04-09 22:55:00
+categories: University_Essay
+excerpt: "本文是笔者对第二期实用优化能力提升班的小结，实用优化能力提升班由中国科学院数学与系统研究院优化与应用研究中心、中国运筹学会数学优化分会优化与软件应用支部和柚子优化公众号联合主办，第二期主讲嘉宾是美国亚利桑那大学 Hans Mittelmann 教授，主讲内容为数值优化软件"
+permalink: /short_course_of_optimization/
+---
+
+<div class="post-style">
+
+<blockquote>本文是笔者对第二期实用优化能力提升班的小结，实用优化能力提升班由中国科学院数学与系统研究院优化与应用研究中心、中国运筹学会数学优化分会优化与软件应用支部和柚子优化公众号联合主办，第二期主讲嘉宾是美国亚利桑那大学 Hans Mittelmann 教授，主讲内容为数值优化软件（numerical optimization software）</blockquote>
+
+<blockquote>Hans Mittelmann 教授是美国亚利桑那州立大学（Arizona State University）数学与统计科学学院（School of Math & Stat Sciences）教授，Mittelmann 教授的研究领域是科学计算中的优化问题以及优化在科学与工程中的应用，他于 1971 年在德国美因茨大学（University of Mainz）获得硕士学位，于 1973 年在德国达姆施塔特工业大学（Technical University of Darmstadt）获得博士学位，后又于 1976 年在该校获得特许任教资格（<a href="https://zh.wikipedia.org/wiki/%E7%89%B9%E8%AE%B8%E4%BB%BB%E6%95%99%E8%B5%84%E6%A0%BC">Habilitation</a>），Mittelmann 教授给出了优化软件的决策树（Decision Tree for Optimization Software）、比较了不同优化软件求解各种各样优化问题的性能（<a href="http://plato.asu.edu/bench.html">Benchmarks for Optimization Software</a>）。更多详情见 Hans Mittelmann 教授的<a href="https://plato.asu.edu/">个人主页</a></blockquote>
+
+<h1>1 导论</h1>
+
+<p>Mittelmann 教授的个人主页提供了<a href="http://plato.asu.edu/guide.html">优化软件的决策树</a>，它给出了针对不同优化问题的多种<a href="http://plato.asu.edu/sub/pns.html">求解器</a>（solvers）、不同优化软件在各种各样优化问题中的<a href="http://plato.asu.edu/sub/benchm.html">求解性能</a>、用于不同优化问题的<a href="http://plato.asu.edu/sub/testcases.html">测试用例</a>、优化领域的各种<a href="http://plato.asu.edu/sub/tutorials.html">书籍与手册</a>、帮助描述优化问题和简化解的<a href="http://plato.asu.edu/sub/tools.html">工具</a>、在线求解优化问题的<a href="http://plato.asu.edu/sub/websub.html">网站</a>（如：NEOS）以及一些<a href="http://plato.asu.edu/sub/sources.html">其他资源</a>。</p>
+
+<blockquote>NEOS 服务器提供基于互联网求解数值优化问题的服务，它由威斯康星大学麦迪逊分校的威斯康星发现研究所主持，该服务器提供最先进的 60 多个求解器用来求解十多种优化问题。 由威斯康星大学主持的求解器运行在由 HTCondor 软件公司管理的分布式高性能计算机上，其他求解器运行在美国亚利桑那州立大学、奥地利克拉根福大学（the University of Klagenfurt in Austria）和葡萄牙米尼奥大学（the University of Minho in Portugal）。</blockquote>
+
+<p>此外，Mittelmann 教授还向我们介绍了 Netlib 和 Coin-or。据维基百科介绍，<a href="http://netlib.org/">Netlib</a> 是由贝尔实验室（Bell Laboratories），田纳西大学（University of Tennessee）和橡树岭国家实验室（Oak Ridge National Laboratory）维护的科学计算软件库。库中代码多由 C 和 Fortran 语言编写，而据 Netlib 网站介绍，Netlib 是数学软件、论文和数据库的集合。<a href="https://www.coin-or.org/">Coin-or</a>（Computational Infrastructure for Operations Research）则是一个运筹学领域的开源社区，由运筹与管理科学研究所（Institute for Operations Research and the Management Sciences, INFORMS）主持，其中拥有大量开放源代码的优化问题求解程序。</p>
+
+<blockquote>在 Netlib 中，可以找到一个<a href="https://www.top500.org/">网站</a>，该网站给出了世界上排名前 500 的超级计算机。2018 年 11 月份给出的最新榜单中，排名第一的已不再是我国的神威太湖之光超级计算机，而是 IBM 公司的超级计算机 IBM Power System AC922. 而从榜单中各超级计算机核数、计算速度、能耗的指标中，我们可以看到，我国的超级计算机虽然在计算速度上达到了国际领先水平，但使用的核数以及能耗仍远远高于欧美发达国家。</blockquote>
+
+<p class="post-text-tablename">表 1-1 排名前 5 的超级计算机</p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Mathematics/top500.png"></p>
+
+<h1>2 无约束优化</h1>
+
+<p>Mittelmann 教授认为，针对无约束优化问题的方法和软件可以由以下几点区分：</p>
+
+<ul>
+	<li>目标函数 $f \left(\boldsymbol{x} \right)$ 的表达式是否已知</li>
+	<li>目标函数 $f \left(\boldsymbol{x} \right)$ 非线性的方式</li>
+	<li>目标函数 $f \left(\boldsymbol{x} \right)$ 是否为凸函数</li>
+	<li>目标函数 $f \left(\boldsymbol{x} \right)$ 的计算是否有噪音干扰</li>
+	<li>目标函数 $f \left(\boldsymbol{x} \right)$ 的计算代价是否昂贵</li>
+	<li>目标函数 $f \left(\boldsymbol{x} \right)$ 是实数还是复数</li>
+	<li>是否使用导数信息以及使用多少导数信息</li>
+	<li>导数信息的计算方式</li>
+	<li>决策变量 $\boldsymbol{x}$ 的维度大小</li>
+</ul>
+
+<p class="post-text-noindent">而针对这些问题的软件代码可以由以下几点区分：</p>
+
+<ul>
+	<li>使用一种低级语言</li>
+	<li>使用多种低级语言</li>
+	<li>拥有多种低级语言的接口</li>
+	<li>使用一种高级语言</li>
+	<li>拥有针对一个或多个模型语言的接口</li>
+	<li>商业或免费、开源或闭源</li>
+	<li>是否支持多平台</li>
+	<li>使用的许可证</li>
+	<li>串行或并行执行</li>
+</ul>
+
+<p>Mittelmann 教授提供了一本<a href="http://plato.asu.edu/ftp/nos/imm3217.pdf">讲义</a>，该讲义属于丹麦技术大学优化与数据拟合课程，它介绍了无约束优化的经典方法，包括下降方法、共轭梯度法、牛顿类方法等。同时 Mittelmann 教授也给出了针对不同类型<a href="http://plato.asu.edu/sub/nlounres.html">无约束优化问题的软件列表</a>。此外，Mittelmann 教授还提供了以下几个资源：</p>
+
+<ul>
+	<li>无导数优化算法的回顾及软件比较：<a href="http://plato.asu.edu/ftp/nos/dfo.pdf">Derivative-free optimization: a review of algorithms and comparison of software implementations</a></li>
+	<li>非光滑优化方法和软件的实验和理论比较：<a href="http://napsu.karmitsa.fi/publications/comparing.pdf">Empirical and Theoretical Comparisons of Several Nonsmooth Minimization Methods and Software</a></li>
+	<li>全局优化导论：<a href="http://plato.asu.edu/ftp/nos/nonconvex_optimization.pdf">Introduction to Global Optimization</a></li>
+</ul>
+
+<h1>3 非线性最小二乘与非线性方程组</h1>
+
+<p>非线性最小二乘问题是无约束优化中的一个典型例子，除了一般性的无约束优化方法外，有专门的方法用以解决非线性最小二乘问题。</p>
+
+<h1>4 约束非线性优化</h1>
+
+<h2>4.1 经典方法</h2>
+
+<h2>4.2 内点法</h2>
+
+<h1>5 凸优化</h1>
+
+<h2>5.1 线性规划与二次规划</h2>
+
+<h2>5.2 半定规划与二阶锥规划</h2>
+
+<h1>6 混合整数线性规划</h1>
+
+</div>

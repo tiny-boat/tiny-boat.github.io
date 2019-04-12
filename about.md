@@ -37,6 +37,7 @@ permalink: /about_me/
 * QQmail：[737130291@qq.com](https://mail.qq.com)
 * Gmail：[llygg6@gmail.com](https://mail.google.com/mail)
 
-## 结语
+## 只言片语
 
-* 归零，再出发
+* 再见，北京，一座重新给予我力量的城市
+* 再见，星星，我生命中独一无二的好朋友
