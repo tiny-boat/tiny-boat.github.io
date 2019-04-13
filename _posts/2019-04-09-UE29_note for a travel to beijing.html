@@ -68,15 +68,59 @@ permalink: /short_course_of_optimization/
 
 <p>非线性最小二乘问题是无约束优化中的一个典型例子，除了一般性的无约束优化方法外，有专门的方法用以解决非线性最小二乘问题。</p>
 
+<p>NEOS Guide 中有关于非线性最小二乘问题的<a href="https://neos-guide.org/content/nonlinear-least-squares">简短叙述</a>，非线性最小二乘问题的主要算法可参考<a href="https://en.wikipedia.org/wiki/Non-linear_least_squares">维基百科</a>，Mittelmann 教授的主页给出了求解<a href="http://plato.asu.edu/sub/nonlsq.html#lsqunres">非线性最小二乘问题的软件列表</a>，也给出了求解<a href="http://plato.asu.edu/sub/nonlsq.html#lsqres">带约束的非线性最小二乘问题的软件列表</a>，软件列表中涉及到<a href="http://pages.cs.wisc.edu/~swright/talks/sjw-siopt11.pdf">稀疏优化</a>（sparse optimization），稀疏优化的一个典型例子就是 <a href="https://en.wikipedia.org/wiki/Lasso_(statistics)">LASSO 回归</a>。此外，Mittelmann 教授还介绍了<a href="https://docs.scipy.org/doc/external/odr_ams.pdf">正交距离回归</a>，它是通过最小化数据点与回归曲面的垂直距离来求解回归曲面的。下面是一些可供选择的求解非线性最小二乘问题的求解器：</p>
+
+<ul>
+	<li>Gauss-Newton 代码，非线性约束：NLSQ, NLSCON, ELSUNC</li>
+	<li>Levenberg-Marquardt 代码：LMFIT, LMFnlsq, LEVMAR, SparseLM</li>
+	<li>Hybrid 代码, 大残差：CERES, NL2SOL, IMMOPTIBOX</li>
+	<li>正交距离回归：ODRPACK95, GAUSSFIT</li>
+	<li>稀疏优化代码：ASP</li>
+	<li>其他用于求解非线性规划的求解器</li>
+</ul>
+
+<p>求非线性方程组 $\boldsymbol{f} \left( \boldsymbol{x} \right) = \boldsymbol{0}$ 解的问题可以转化为一个非线性最小二乘问题 $\min \left \| \boldsymbol{f} \left( \boldsymbol{x} \right) \right \|_2^2$。因此，所有用于非线性最小二乘问题以及无约束问题的方法也可以用于求解非线性方程组。当然，非线性方程组的求解也有自己的一套方法，NEOS Guide 给出了<a href="https://neos-guide.org/content/nonlinear-equations">求解非线性方程组的方法</a>，包括信頼域与线搜索方法、截断牛顿法（Truncated Newton Methods）、Broyden 方法、张量（tensor）方法和 Homotopy 方法等。Mittlemann 教授的个人主页则列出了<a href="http://plato.asu.edu/sub/zero.html">求解非线性方程组的软件列表</a>。下面是一些可供选择的求解非线性方程组的求解器：</p>
+
+<ul>
+	<li>Newton 代码：STRSCNE, CoDoSol, CSOLVE, NLEQ1</li>
+	<li>Interval 方法：ALIAS, CHABIS</li>
+	<li>Continuation 方法：MatCont, LOCA, ALCON, PITCON</li>
+	<li>多项式系统：Bertini, POLSYS PLP, PHCpack</li>
+	<li>张量代码：TENSOLVE</li>
+	<li>复数代码：box zeros</li>
+	<li>最小平方方法：TRESNEI</li>
+	<li>可行性问题：Filtrane</li>
+</ul>
+
+<blockquote>可行性问题（feasibility problem）：又称可满足性问题（satisfiability problem），它是在不考虑目标函数取值的情况下找到所有可行解，可以视作是对任意可行解目标函数值相同的优化问题。许多优化算法需要从一个可行点开始，而一种获得可行点的方式就是：使用松弛变量弱化约束条件，当松弛足够时，任意初始点都是可行的，那么现在只要不断小化松弛变量直到松弛变量为零或者为负。（注：摘自维基百科）</blockquote>
+
 <h1>4 约束非线性优化</h1>
 
 <h2>4.1 经典方法</h2>
 
+<p>NEOS Guide 中有关于非线性规划的<a href="https://neos-guide.org/content/nonlinear-programming">详细介绍</a>，包括基本概念、最优性条件、经典算法、软件资源和测试用例等。Mittlemann 教授的个人主页列出了一些<a href="http://plato.asu.edu/sub/nlores.html#general">相关软件</a>以及一些软件的<a href="http://plato.asu.edu/ftp/ampl-nlp.html">性能比较</a>结果。</p>
+
+<p>NEOS Guide 给出的非线性规划的经典方法包括：扩展拉格朗日方法（Augmented Lagrangian Methods）、序列二次规划（Sequential Quadratic Programming）、可行序列二次规划（Feasible Sequential Quadratic Programming）和次梯度方法（Reduced-Gradient Methods）。</p>
+
+<p>此外，在这一部分，Mittlemann 教授还给出了一个与机器人控制有关的约束非线性优化<a href="http://plato.asu.edu/ftp/nos/robot/">问题</a>，该问题由建模语言描述。</p>
+
 <h2>4.2 内点法</h2>
+
+<p>对于更大规模优化问题和稀疏优化问题，内点法（Interior Point Methods）的效率高于经典方法。NEOS Guide 只给出了针对线性问题的内点法或障碍方法（Barrier Methods），Mittlemann 教授提供了非线性问题内点法的<a href="http://www.cs.cas.cz/matonoha/download/2009_ModellingB.pdf">简要介绍</a>以及<a href="https://people.kth.se/~andersf/doc/sirev41494.pdf">更多细节</a>。实现内点法的求解器有 <a href="http://plato.asu.edu/ftp/nos/knitro.pdf">KNITRO</a>、<a href="http://cepac.cheme.cmu.edu/pasilectures/biegler/ipopt.pdf">IPOPT</a> 和 NLPY 等。下面是一些可供选择的求解非线性规划的求解器：</p>
+
+<ul>
+	<li>SQP 求解器：SNOPT, HQP, KNITRO-SQP, SQPlab, NLPY, SOLNP</li>
+	<li>多目标 SQP 求解器：MOSQP</li>
+	<li>扩展拉格朗日求解器：PENLAB, LANCELOT, ALGENCAN</li>
+	<li>内点法：KNITRO, IPOPT, NLPY</li>
+	<li>凸求解器：CVX, CVXOPT, MOSEK</li>
+</ul>
 
 <h1>5 凸优化</h1>
 
 <h2>5.1 线性规划与二次规划</h2>
+
+
 
 <h2>5.2 半定规划与二阶锥规划</h2>
 
