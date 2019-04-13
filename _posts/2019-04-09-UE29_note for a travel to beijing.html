@@ -116,13 +116,37 @@ permalink: /short_course_of_optimization/
 	<li>凸求解器：CVX, CVXOPT, MOSEK</li>
 </ul>
 
-<h1>5 凸优化</h1>
+<h1>5 线性规划与二次规划</h1>
 
-<h2>5.1 线性规划与二次规划</h2>
+<p>NEOS Guide 上有<a href="https://neos-guide.org/content/linear-programming">线性规划</a>与<a href="https://neos-guide.org/content/quadratic-programming">二次规划</a>的方法与软件的详细介绍，但关于二次规划的介绍是不完整且过时的。Mittelmann 教授的个人主页给出了<a href="http://plato.asu.edu/sub/nlores.html#LP-problem">线性规划软件列表</a>和<a href="http://plato.asu.edu/sub/nlores.html#QP-problem">二次规划软件列表</a>，也给出了单纯形（Simplex）方法求解器的<a href="http://plato.asu.edu/ftp/lpsimp.html">性能比较</a>、障碍（Barrier）方法求解器的<a href="http://plato.asu.edu/ftp/lpbar.html">性能比较</a>、大规模网络线性规划求解器（Network-LPs）的<a href="http://plato.asu.edu/ftp/network.html">性能比较</a>、非商业二次规划求解器的<a href="http://plato.asu.edu/ftp/qpbench.html">性能比较</a>、二进制二次规划求解器的<a href="http://plato.asu.edu/ftp/qplib.html">性能比较</a>、二次约束二次规划（QCQP，不等式约束为二次约束）求解器的<a href="http://plato.asu.edu/ftp/qcqp.html">性能比较</a>以及离散凸二次规划求解器的<a href="http://plato.asu.edu/ftp/convex.html">性能比较</a>。以下是一些可供选择的求解线性规划的求解器：</p>
+
+<ul>
+	<li>基于单纯形的方法：CLP, SOPLEX, QSopt, GLPK, lp solve</li>
+	<li>内点法：BPMPD, PCx, LIPSOL, HOPDM</li>
+	<li>精确线性规划求解器：SOPLEX, QSopt-Exact</li>
+	<li>随机线性规划求解器：BNBS, DSP, SD, MSLiP</li>
+</ul>
+
+<p class="post-text-noindent">以下则是一些可供选择的求解二次规划的求解器：</p>
+
+<ul>
+	<li>凸二次规划求解器：QPC, QuadProg++, QP solver, MOSEK, CONV QP, OOQP</li>
+	<li>信頼域子问题：MSS, LSTRS</li>
+	<li>用于控制的在线二次规划求解器和代码生成器：qpOASES, FORCES, HPMPC, ACADO</li>
+	<li>不定二次规划求解器：QuadProgBB, NewtonKKTqp, IQP, QPA, QPB</li>
+</ul>
+
+<p class="post-text-noindent">此外，Mittelmann 教授还提供了以下几点信息：</p>
+
+<ul>
+	<li>CPLEX 位于 NEOS 服务器上，它能解决非凸二次规划问题</li>
+	<li>不定或非凸二次规划问题是 NP 难问题</li>
+	<li>QPLIB 是一个解决凸和非凸二次规划问题的综合库</li>
+</ul>
+
+<h1>6 半定规划与二阶锥规划</h1>
 
 
-
-<h2>5.2 半定规划与二阶锥规划</h2>
 
 <h1>6 混合整数线性规划</h1>
 
