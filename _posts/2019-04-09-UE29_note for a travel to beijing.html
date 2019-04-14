@@ -2,7 +2,7 @@
 layout: post
 title:  "优化短期课程摘要"
 date:   2019-04-09 22:55:00
-categories: University_Essay
+categories: Mathematics University_Essay
 excerpt: "本文是笔者对第二期实用优化能力提升班的小结，实用优化能力提升班由中国科学院数学与系统研究院优化与应用研究中心、中国运筹学会数学优化分会优化与软件应用支部和柚子优化公众号联合主办，第二期主讲嘉宾是美国亚利桑那大学 Hans Mittelmann 教授，主讲内容为数值优化软件"
 permalink: /short_course_of_optimization/
 ---
@@ -146,8 +146,47 @@ permalink: /short_course_of_optimization/
 
 <h1>6 半定规划与二阶锥规划</h1>
 
+<p>NEOS Guide 给出了<a href="https://neos-guide.org/content/semidefinite-programming">半定规划</a>（SDP）及其特例<a href="https://neos-guide.org/content/second-order-cone-programming">二阶锥规划</a>（SOCP）的介绍（注：LP、QCQP 均是 SOCP 的特例），Mittelmann 教授个人主页给出了半定规划和二阶锥规划<a href="http://plato.asu.edu/sub/nlores.html#semidef">软件列表</a>。下面是一些可供选择的 SDP / SOCP 求解器：</p>
 
+<ul>
+	<li>纯粹 SDP 代码：CSDP, DSDP, SDPLR, SDPA, SDPNAL+</li>
+	<li>非线性 SDP 代码：PENLAB, PENBMI</li>
+	<li>纯粹 SOCP 代码：ECOS, LOQO</li>
+	<li>SDP / SOCP 代码：MOSEK, SDPT3, SeDuMi, CVX, CVXOPT</li>
+	<li>离散 SDP 代码：SCIP-SDP, BiqCrunch, Max-AO</li>
+</ul>
+
+<p class="post-text-noindent">此外，Mittelmann 教授还给出了如下一些资源：</p>
+
+<ul>
+	<li>求解凸优化问题的包：<a href="https://docs.mosek.com/modeling-cookbook/intro.html">MOSEK</a></li>
+	<li>半定规划导论：<a href="http://plato.asu.edu/abstracts/sdpasu.pdf">An Introduction to Semidefinite Programming</a>,<a href="An Introduction to Semidefinite Programming">Introduction to Semidefinite Programming</a></li>
+	<li>二阶锥规划：<a href="http://rutcor.rutgers.edu/~alizadeh/CLASSES/12fallSDP/Papers/survey.pdf">Second-Order Cone Programming</a></li>
+	<li>SDP 和 SOCP 求解器性能比较：<a href="http://plato.asu.edu/dimacs/">An Independent Benchmarking of SDP and SOCP Solvers</a>、<a href="http://www.optimization-online.org/DB_HTML/2010/08/2694.html">The state-of-the-art in conic optimization software</a></li>
+	<li>将某些问题转换为二阶锥问题：<a href="https://ampl.com/MEETINGS/TALKS/2015_01_Richmond_2E.2.pdf">Automatic Reformulation of Second-Order Cone Programming Problems</a>、<a href="https://docs.mosek.com/8.0/javaapi/advanced-toconic.html">Converting a quadratically constrained problem to conic form</a>（注：MOSEK-8 可自动完成该转换）</li>
+	<li></li>
+</ul>
 
 <h1>6 混合整数线性规划</h1>
+
+<p>NEOS Guide 给出了混合整数线性规划的一个简短而不完整的<a href="https://neos-guide.org/content/integer-linear-programming">介绍</a>，更详细的信息可参考<a href="https://en.wikipedia.org/wiki/Integer_programming">维基百科</a>。下面是一些可供选择的 MILP 求解器：</p>
+
+<ul>
+	<li>非商业代码：CBC, GLPK, MIPCL, SCIP, Symphony</li>
+	<li>商业代码：CPLEX, Gurobi, XPRESS</li>
+	<li>随机 MILP 代码：DDSIP, DSP</li>
+	<li>精确 MILP 求解器：QSopt-Exact</li>
+</ul>
+
+<p class="post-text-noindent">此外，Mittelmann 教授还给出了如下一些资源：</p>
+
+<ul>
+	<li>关于分支定界和切平面法的<a href="https://mat.gsia.cmu.edu/orclass/integer/node11.html#SECTION00040000000000000000">简介</a></li>
+	<li>MILP 的计算进展：<a href="http://plato.asu.edu/ftp/nos/mip_speedup.pdf">http://plato.asu.edu/ftp/nos/mip_speedup.pdf</a></li>
+	<li>Gurobi 求解器的性能：<a href="http://www.gurobi.com/pdfs/benchmarks.pdf">Gurobi 8 Performance Benchmarks</a></li>
+	<li>求解由数字无线通信引出的二次三维分配问题：On Solving a Hard Quadratic 3-Dimensional Assignment Problem（<a href="http://www.optimization-online.org/DB_HTML/2013/09/4055.html">论文</a>、<a href="http://plato.asu.edu/talks/informs2014.pdf">报告</a>）</li>
+	<li>主要的 MILP 求解器：<a href="http://miplib.zib.de/">MIPLIB</a></li>
+	<li>整数规划中的对称性：<a href="https://www.csm.ornl.gov/workshops/nd2012/documents/talks/ostrowski">Symmetry in Integer Programming</a></li>
+</ul>
 
 </div>
