@@ -9,6 +9,17 @@ permalink: /ML/2/model_selection/
 
 <div class="post-style">
 
+$E \left(\bar{y}_{lrs} \right ) = \bar{Y}$
+$V \left(\bar{y}_{lrs} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta_h S_{xyh} + \beta_h^{2} S_{xh}^2 \right )$
+$E \left(\bar{y}_{lrs} \right ) \approx \bar{Y}$
+$V \left(\bar{y}_{lrs} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left[S_{yh}^2 \left(1-\rho_h^2 \right ) \right ]$
+$E \left(\bar{y}_{lrc} \right ) = \bar{Y}$
+
+$E \left(\bar{y}_{lrc} \right ) = \bar{Y}$
+$V \left(\bar{y}_{lrc} \right ) = \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2\beta S_{xyh} + \beta^{2} S_{xh}^2 \right )$
+$E \left(\bar{y}_{lrc} \right ) \approx \bar{Y}$
+$V \left(\bar{y}_{lrc} \right ) \approx \sum_{h=1}^{L} W_{h}^{2} \frac{1-f_h}{n_h} \left(S_{yh}^2 - 2B_c S_{xyh} + B_c^{2} S_{xh}^2 \right )$
+
 <blockquote>参考文献：① 周志华. 机器学习[M]. 北京:清华大学出版社. 2016.01. ② 李航. 统计学习方法[M]. 北京:清华大学出版社. 2012.03.
 </blockquote>
 

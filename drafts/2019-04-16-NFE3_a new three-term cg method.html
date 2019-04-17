@@ -100,7 +100,7 @@ b_k
 <p>1. 给定初始点 $\boldsymbol{x}_0$，初始搜索方向 $\boldsymbol{d}_0 = - \boldsymbol{g}_0$，惩罚参数 $M$ 以及允许误差 $\varepsilon_1,\varepsilon_2$</p>
 <p>2. 计算 $\left \| \boldsymbol{g}_0 \right \|$，如果 $\left \| \boldsymbol{g}_0 \right \| < \varepsilon_1$，停止；否则计算 $f \left(\boldsymbol{x}_0 \right )$，继续下一步</p>
 <p>3. 通过线搜索确定搜索步长 $\alpha_0$，得到 $\boldsymbol{x}_1 = \boldsymbol{x}_0 + \alpha_0 \boldsymbol{d}_0$ 和 $\boldsymbol{g}_1$，令 $\boldsymbol{d}_1 = - \boldsymbol{g}_1$</p>
-<p>4. 计算 $\left \| \boldsymbol{g}_1 \right \|$、$f \left(\boldsymbol{x}_1 \right )$，如果 $\left \| \boldsymbol{g}_1 \right \| < \varepsilon_1$ 或 $\left | f \left(\boldsymbol{x}_1 \right ) - f \left(\boldsymbol{x}_0 \right ) \right | < \varepsilon_2 \max \left \{ 1,\left | f \left(\boldsymbol{x}_0 \right ) \right | \right \}$，停止；否则令 $k = 1$，继续下一步</p>
+<p>4. 计算 $\left \| \boldsymbol{g}_1 \right \|$、$f \left(\boldsymbol{x}_1 \right )$，如果 $\left \| \boldsymbol{g}_1 \right \| < \varepsilon_1$ 或 $\frac{\left | f \left(\boldsymbol{x}_1 \right ) - f \left(\boldsymbol{x}_0 \right ) \right |}{\max \left \{ 1,\left | f \left(\boldsymbol{x}_0 \right ) \right | \right \}} < \varepsilon_2$，停止；否则令 $k = 1$，继续下一步</p>
 <p>5. 通过线搜索确定搜索步长 $\alpha_k$，得到 $\boldsymbol{x}_{k+1} = \boldsymbol{x}_k + \alpha_k \boldsymbol{d}_k,\ \boldsymbol{g}_{k+1}$ 以及 $f \left(\boldsymbol{x}_{k+1} \right )$。如果 $\left \| \boldsymbol{g}_{k+1} \right \|$ $< \varepsilon_1$ 或 $\left | f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_k \right ) \right | < \varepsilon_2 \max \left \{ 1,\left | f \left(\boldsymbol{x}_k \right ) \right | \right \}$，停止迭代；否则继续下一步</p>
 <p>6. 计算 $\boldsymbol{s}_{k-1} = \boldsymbol{x}_k - \boldsymbol{x}_{k-1},\ \boldsymbol{s}_{k} = \boldsymbol{x}_{k+1}-\boldsymbol{x}_k,\ \boldsymbol{y}_k = \boldsymbol{g}_{k+1} - \boldsymbol{g}_k$，令</p>
 
@@ -130,14 +130,18 @@ l_kq_kw_k - v_k - m_kq_ku_k
 
 <p>关于子空间共轭梯度这篇文章的算法，我还有以下几个问题：</p>
 
-<p>第一：它的引理 2.1 说算法本身保证了 $\Phi_{k+1}\left(d_{k+1} \right ) = g_{k+1}^Td_{k+1}+\frac{1}{2}d_{k+1}^TB_{k+1}d_{k+1} \leq 0$，由于</p>
+<p>第一：它的引理 2.1 说算法本身保证了</p>
+
+$$\Phi_{k+1}\left(d_{k+1} \right ) = g_{k+1}^Td_{k+1}+\frac{1}{2}d_{k+1}^TB_{k+1}d_{k+1} \leq 0$$
+
+<p class="post-text-noindent">又由于</p>
 
 $$f \left(\boldsymbol{x}_{k+2} \right ) - f \left(\boldsymbol{x}_{k+1} \right ) \approx g_{k+1}^Td_{k+1}+\frac{1}{2}d_{k+1}^TB_{k+1}d_{k+1}
 $$
 
-<p class="post-text-noindent">即算法本身就保证了搜索方向是下降方向，但它是如何保证的呢？难道 Wolfe 线搜索能保证搜索方向就一定为下降方向？</p>
+<p class="post-text-noindent">所以算法本身就保证了搜索方向是下降方向，但它是如何保证的呢？难道 Wolfe 线搜索能保证搜索方向就一定为下降方向？</p>
 
-<p>第二：关于它的 acceleration scheme 我看不明白，这段要实现加速，就必须保证如果 $\bar{b}_k > 0$，就一定有 $f \left(\boldsymbol{x}_k + \xi_k \alpha_k \boldsymbol{d}_k \right ) < f \left(\boldsymbol{x}_k + \alpha_k \boldsymbol{d}_k \right )$，否则如何称之为加速？这里成立吗？</p>
+<p>第二：关于它的 acceleration scheme 我看不明白，这段要实现加速，就必须保证如果 $\bar{b}_k > 0$，就一定有 $f \left(\boldsymbol{x}_k + \xi_k \alpha_k \boldsymbol{d}_k \right ) < f \left(\boldsymbol{x}_k + \alpha_k \boldsymbol{d}_k \right )$，否则如何称之为加速？这里成立吗？难道就这么修正一下就能让目标函数进一步变小吗？</p>
 
 <p>第三：论文不提供数值测试使用的 Matlab 的源代码吗？这样如何供后续研究者进行检查和复现？我发现论文的数值测试使用的迭代终止条件就与论文给的算法步骤中的迭代终止条件不一致，论文在实际进行数值测试时，其他地方会不会也存在出入呢？</p>
 
