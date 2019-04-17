@@ -130,12 +130,16 @@ l_kq_kw_k - v_k - m_kq_ku_k
 
 <p>关于子空间共轭梯度这篇文章的算法，我还有以下几个问题：</p>
 
-<p>第一：它的引理 2.1 说算法本身保证了 $\Phi_{k+1}\left(d_{k+1} \right ) = g_{k+1}^Td_{k+1}+\frac{1}{2}d_{k+1}^TB_{k+1}d_{k+1} \leq 0$，由于</p>
+<p>第一：它的引理 2.1 说算法本身保证了</p>
+
+$$\Phi_{k+1}\left(d_{k+1} \right ) = g_{k+1}^Td_{k+1}+\frac{1}{2}d_{k+1}^TB_{k+1}d_{k+1} \leq 0$$
+
+<p class="post-text-noindent">又由于</p>
 
 $$f \left(\boldsymbol{x}_{k+2} \right ) - f \left(\boldsymbol{x}_{k+1} \right ) \approx g_{k+1}^Td_{k+1}+\frac{1}{2}d_{k+1}^TB_{k+1}d_{k+1}
 $$
 
-<p class="post-text-noindent">即算法本身就保证了搜索方向是下降方向，但它是如何保证的呢？难道 Wolfe 线搜索能保证搜索方向就一定为下降方向？</p>
+<p class="post-text-noindent">所以算法本身就保证了搜索方向是下降方向，但它是如何保证的呢？难道 Wolfe 线搜索能保证搜索方向就一定为下降方向？</p>
 
 <p>第二：关于它的 acceleration scheme 我看不明白，这段要实现加速，就必须保证如果 $\bar{b}_k > 0$，就一定有 $f \left(\boldsymbol{x}_k + \xi_k \alpha_k \boldsymbol{d}_k \right ) < f \left(\boldsymbol{x}_k + \alpha_k \boldsymbol{d}_k \right )$，否则如何称之为加速？这里成立吗？难道就这么修正一下就能让目标函数进一步变小吗？</p>
 
