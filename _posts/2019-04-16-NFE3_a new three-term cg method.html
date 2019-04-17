@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "论文摘要(3):一种新的三项共轭梯度法"
+title:  "一种新的三项子空间共轭梯度法"
 date:   2019-04-15 19:14:00
 categories: Mathematics
 excerpt: ""
@@ -17,9 +17,14 @@ $$\Phi \left(\boldsymbol{d}_{k+1} \right ) = \boldsymbol{g}_{k+1}^T \boldsymbol{
 
 $$\boldsymbol{g}_{k+1}^T \left(\boldsymbol{I}_n + 2Mt \boldsymbol{s}_k \boldsymbol{y}_k^T \right ) + \boldsymbol{d}_{k+1}^T 2M \left(t^2 + 1 \right )\boldsymbol{y}_k \boldsymbol{y}_k^T = \boldsymbol{0}' \qquad \left(2 \right )$$
 
-<p class="post-text-noindent">这里 $\boldsymbol{I}_n$ 为 $n\times n$ 单位矩阵，$n$ 为 $\boldsymbol{x}$ 的维数，$\boldsymbol{0}'$ 为元素全为 0 的行向量。对 $\left(2 \right )$ 式等号两边依次右乘 $\boldsymbol{s}_k$ 和 $\boldsymbol{s}_{k-1}$，得到关于 $a_k,b_k$ 的二元一次方程组：</p>
+<p class="post-text-noindent">这里 $\boldsymbol{I}_n$ 为 $n\times n$ 单位矩阵，$n$ 为 $\boldsymbol{x}$ 的维数，$\boldsymbol{0}'$ 为元素全为 0 的行向量。将</p>
 
-$$\begin{pmatrix}
+$$\boldsymbol{d}_{k+1} = - \boldsymbol{g}_{k+1} + a_k \boldsymbol{s}_k + b_k \boldsymbol{s}_{k-1} \qquad \left(3 \right )$$
+
+<p class="post-text-noindent">代入 $\left(2 \right )$ 式并对 $\left(2 \right )$ 式等号两边依次右乘 $\boldsymbol{s}_k$ 和 $\boldsymbol{s}_{k-1}$，得到如下关于 $a_k,b_k$ 的二元一次方程组：</p>
+
+$$\begin{aligned}
+& \begin{pmatrix}
 l_kp_k^2 & l_kp_kq_k\\
 l_kp_kq_k & l_kq_k^2
 \end{pmatrix}
@@ -29,19 +34,68 @@ b_k
 \end{pmatrix}
 =
 \begin{pmatrix}
-l_kp_kw_k - u_k - m_kp_ku_k\\
-l_kq_kw_k - v_k - m_kq_ku_k
-\end{pmatrix}$$
+\ l_kp_kw_k - u_k - m_kp_ku_k\\
+\ l_kq_kw_k - v_k - m_kq_ku_k
+\end{pmatrix} \\
+&\ p_k = \boldsymbol{s}_k^T \boldsymbol{y}_k,\ q_k = \boldsymbol{s}_{k-1}^T \boldsymbol{y}_k \\
+&\ u_k = \boldsymbol{s}_k^T \boldsymbol{g}_{k+1},\ v_k = \boldsymbol{s}_{k-1}^T \boldsymbol{g}_{k+1},\ w_k = \boldsymbol{g}_{k+1}^T \boldsymbol{y}_k \\
+&\ l_k = 2M \left(1+t^2 \right ),\ m_k = 2M t \end{aligned} \qquad \left(4 \right )$$
 
-$$p_k = \boldsymbol{s}_k^T \boldsymbol{y}_k,\ q_k = \boldsymbol{s}_{k-1}^T \boldsymbol{y}_k$$
-$$u_k = \boldsymbol{s}_k^T \boldsymbol{g}_{k+1},\ v_k = \boldsymbol{s}_{k-1}^T \boldsymbol{g}_{k+1},\ w_k = \boldsymbol{g}_{k+1}^T \boldsymbol{y}_k$$
-$$l_k = 2M \left(1+t^2 \right ),\ m_k = 2M t$$
+<p class="post-text-noindent">由此求得 $a_k,b_k$。</p>
 
-<p class="post-text-noindent">由此求得 $a_k,b_k$，下面算法取 $t = \alpha_k$。</p>
+<p>如果将 $\left(3 \right )$ 式改为</p>
+
+$$\boldsymbol{d}_{k+1} = - \boldsymbol{g}_{k+1} + a_k \boldsymbol{y}_k + b_k \boldsymbol{y}_{k-1} \qquad \left(5 \right )$$
+
+<p class="post-text-noindent">则 $a_k,b_k$ 由以下二元一次方程组求得：</p>
+
+$$\begin{aligned}
+& \begin{pmatrix}
+l_kp_k^2 & l_kp_kq_k\\
+l_kp_kq_k & l_kq_k^2
+\end{pmatrix}
+\begin{pmatrix}
+a_k\\
+b_k
+\end{pmatrix}
+=
+\begin{pmatrix}
+\ l_kp_ku_k - u_k - m_kp_kw_k\\
+\ l_kq_ku_k - v_k - m_kq_kw_k
+\end{pmatrix} \\
+&\ p_k = \boldsymbol{y}_k^T \boldsymbol{y}_k,\ q_k = \boldsymbol{y}_{k-1}^T \boldsymbol{y}_k \\
+&\ u_k = \boldsymbol{y}_k^T \boldsymbol{g}_{k+1},\ v_k = \boldsymbol{y}_{k-1}^T \boldsymbol{g}_{k+1},\ w_k = \boldsymbol{g}_{k+1}^T \boldsymbol{s}_k \\
+&\ l_k = 2M \left(1+t^2 \right ),\ m_k = 2M t \end{aligned} \qquad \left(6 \right )$$
+
+<p>如果将 $\left(3 \right )$ 式改为</p>
+
+$$\boldsymbol{d}_{k+1} = - \boldsymbol{g}_{k+1} + a_k \boldsymbol{d}_k + b_k \boldsymbol{d}_{k-1} \qquad \left(7 \right )$$
+
+<p class="post-text-noindent">则 $a_k,b_k$ 由以下二元一次方程组求得：</p>
+
+$$\begin{aligned}
+& \begin{pmatrix}
+l_kp_k^2 & l_kp_kq_k\\
+l_kp_kq_k & l_kq_k^2
+\end{pmatrix}
+\begin{pmatrix}
+a_k\\
+b_k
+\end{pmatrix}
+=
+\begin{pmatrix}
+\ l_kp_kw_k - u_k - m_kp_kr_k\\
+\ l_kq_kw_k - v_k - m_kq_kr_k
+\end{pmatrix} \\
+&\ p_k = \boldsymbol{d}_k^T \boldsymbol{y}_k,\ q_k = \boldsymbol{d}_{k-1}^T \boldsymbol{y}_k,\ r_k = \boldsymbol{g}_{k+1}^T \boldsymbol{s}_k \\
+&\ u_k = \boldsymbol{d}_k^T \boldsymbol{g}_{k+1},\ v_k = \boldsymbol{d}_{k-1}^T \boldsymbol{g}_{k+1},\ w_k = \boldsymbol{g}_{k+1}^T \boldsymbol{y}_k \\
+&\ l_k = 2M \left(1+t^2 \right ),\ m_k = 2M t \end{aligned} \qquad \left(8 \right )$$
+
+<p class="post-text-noindent">下面算法取 $t = \alpha_k$</p>
 
 <br>
 
-<p>算法步骤：</p>
+<p>算法步骤（$\boldsymbol{d}_{k+1} = - \boldsymbol{g}_{k+1} + a_k \boldsymbol{s}_k + b_k \boldsymbol{s}_{k-1}$）：</p>
 
 <p>1. 给定初始点 $\boldsymbol{x}_0$，初始搜索方向 $\boldsymbol{d}_0 = - \boldsymbol{g}_0$，惩罚参数 $M$ 以及允许误差 $\varepsilon_1,\varepsilon_2$</p>
 <p>2. 计算 $\left \| \boldsymbol{g}_0 \right \|$，如果 $\left \| \boldsymbol{g}_0 \right \| < \varepsilon_1$，停止；否则计算 $f \left(\boldsymbol{x}_0 \right )$，继续下一步</p>
