@@ -21,9 +21,10 @@
 
         <div class="trigger">
 		  <a class="page-link" href="/">首页</a>
-		  <a class="page-link" href="/category/natural_science.html">自然科学</a>
-		  <a class="page-link" href="/category/humanities.html">人文社科</a>
+		  <a class="page-link" href="/category/category.html">文章分类</a>
       <a class="page-link" href="/category/life.html">随笔杂录</a>
+		  <a class="page-link" href="/category/link.html">友情链接</a>
+
           {%- for path in page_paths -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
             {%- if my_page.title -%}
