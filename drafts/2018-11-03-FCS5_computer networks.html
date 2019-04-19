@@ -91,15 +91,50 @@ permalink: /CS_intro/5/
 	<li>目的主机 B 依据应用层相关协议将消息拆分为数据和其他信息，应用程序获得数据，通信结束。</li>
 </ul>
 
-<p class="post-text-noindent">上述步骤只是对图 5-2 所示两台计算机之间通信步骤的一个大致描述，计算机之间实际的通信过程比这个简单描述要复杂得多。另外，非常抱歉地是，由于笔者知识有限，这样的简单描述也可能还存在不少错误或不妥之处。但笔者想说的是：虽然计算机实际通信过程是复杂的，但其背后蕴含的基本思想其实并不复杂，正如我们在之前提到过的，源主机与目的主机之间通信的基本过程就是：<strong>数据通过源主机各层的封装后，经由各种传输介质传送到目的地，再通过目的主机各层的解封装还原成原始数据。</strong>此外，对于上述步骤，还有一点说明，那就是：我们寄一封信件需要寄件人和收件人的地址，同样地，在计算机通信的过程中，也需要地址标识，才能让信息沿着正确的方向传递。上述步骤中提到的名称、端口、IP 地址、MAC 地址等概念，就是应用层、传输层、网络层和数据链路层分别对应的通信地址。下面我们将依次对 TCP/IP 协议族中各层涉及的部分协议和基本功能作简要介绍。</p>
+<p class="post-text-noindent">上述步骤只是对图 5-2 所示两台计算机之间通信步骤的一个大致描述，计算机之间实际的通信过程比这个简单描述要复杂得多。另外，非常抱歉地是，由于笔者知识有限，这样的简单描述也可能还存在不少错误或不妥之处。但笔者想说的是：虽然计算机实际通信过程是复杂的，但其背后蕴含的基本思想其实并不复杂，正如我们在之前提到过的，源主机与目的主机之间通信的基本过程就是：<strong>数据通过源主机各层的封装后，经由各种传输介质传送到目的地，再通过目的主机各层的解封装还原成原始数据。</strong>此外，对于上述步骤，还有一点说明，那就是：我们寄一封信件需要寄件人和收件人的地址，同样地，在计算机通信的过程中，也需要地址标识，才能让信息沿着正确的方向传递。上述步骤中提到的名称、端口、IP 地址、MAC 地址等概念，就是应用层、传输层、网络层和数据链路层分别对应的通信地址。下面我们将依次对 TCP/IP 协议族中各层的基本功能及其涉及的部分协议作简要介绍。</p>
 
 <h2>5.2.1 应用层</h2>
 
-<p>应用层是协议族中的最高层，它接受传输层协议提供的服务，但它不向其他协议层提供服务。因此，一个应用层的协议可以轻易被添加或去除。应用层的这种灵活性使得新的协议层出不穷，我们很难说清楚应用层现有的协议数目。应用层的协议与应用程序紧密相关，这里我们将主要介绍与客户机——服务器模式的应用程序有关的超文本传输协议 (HyperText Transfer Protocol, HTTP)、文件传输协议 (File Transfer Protocol, FTP)、简单邮件传输协议 (Simple Mail Transfer Protocol, SMTP)、安全外壳协议 (Secure Shell, SSH)、域名系统 (Domain Name System, DNS)，以及与端到端模式的应用程序有关的 IP 电话协议 (Voice over Internet Protocol, VoIP)、BT 下载 (BitTorrent)。</p>
+<p>应用层是协议族中的最高层，它接受传输层协议提供的服务，但它不向其他协议层提供服务。因此，一个应用层的协议可以轻易被添加或去除。应用层的这种灵活性使得新的协议层出不穷，我们很难说清楚应用层现有的协议数目。应用层的协议与应用程序紧密相关，应用程序按照应用层协议的规定向用户提供服务，应用程序之间按照应用层协议的规定在传输层之上进行数据传输和信息交流。这里我们将主要介绍与客户端-服务器模式的应用程序有关的<strong>超文本传输协议</strong> (HyperText Transfer Protocol, HTTP)、<strong>文件传输协议</strong> (File Transfer Protocol, FTP)、<strong>简单邮件传输协议</strong> (Simple Mail Transfer Protocol, SMTP)、<strong>安全外壳</strong> (Secure Shell, SSH)、<strong>域名系统</strong> (Domain Name System, DNS) 和<strong>动态主机配置协议</strong>（Dynamic Host Configuration Protocol, DHCP），以及与端到端模式的应用程序有关的 <strong>IP 电话协议</strong> (Voice over Internet Protocol, VoIP)、<strong>BT</strong> (BitTorrent)。</p>
 
-<p>未完待续……</p>
+<p>HTTP 是<strong>万维网</strong>（World Wide Web, WWW / Web）信息交流的基础，它是一个作用于客户端-服务器（client-server）类型应用程序的<strong>请求-响应</strong>（request-response）协议，客户端应用程序（例如：Web 浏览器）按照 HTTP 协议规定发送请求，服务器应用程序（例如：Web 服务器）按照 HTTP 协议规定响应客户端请求，向客户端返回其请求的内容和相关信息。</p>
+
+<blockquote>万维网是因特网提供的服务之一，它可以看作由许许多多互相链接的文本、图像、音频和视频构成的庞大数据库，这些互相链接的数据被称为超媒体（hypermedia），由于历史的原因，即最早的万维网只有互联链接的文本，因此我们今天仍会习惯性地称呼超媒体为超文本（hypertext）。这些超文本有着一个更为大众熟悉的名词，那就是网页（Web page）。超文本标记语言（HyperText Markup Language, HTML）是一种用于创建网页的标准标记语言，它常与层叠样式表（Cascading Style Sheets, CSS）和 JavaScript 脚本语言一起，用来编写<a href="https://baike.baidu.com/item/%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5">静态网页</a>（注：没有后台数据库的网页）。</blockquote>
+
+<p class="post-text-noindent">网页使用<strong>统一资源标识符</strong>（Uniform Resource Identifier, URI）进行区分。过去，统一资源标识符被分为统一资源定位符（Uniform Resource Locator, URL）和统一资源名（Uniform Resource Name），前者描述资源的特定位置，后者描述资源的特定名称。2001 年，因特网工程任务组（Internet Engineering Task Force, IETF）和万维网联盟（World Wide Web Consortium, W3C）不再支持这两个术语的使用，从现代观点来看，位置与名称的界限不再清晰，因而官方的技术文档中已不再区分 URL 和 URN，而统一使用 URI。但在非技术文档中，URL 仍被广泛使用。下面是 URI 的通用格式：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Bash %}
+
+scheme:[//[user[:password]@]host[:port]][/path][?query][#fragment]
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">它由<strong>方案</strong>（scheme）、用户（user）、密码（password）、<strong>主机</strong>（host）、端口（port）、<strong>路径</strong>（path）、查询（query）和片段（fragment）构成，其中方案、主机和路径是最重要的 3 个部分，许多 URI 只包含这三个部分，例如该网页的 URI 就只包含 https、www.longzf.com 和 CS_intro/5/ 三个部分。下面是<a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E6%A0%87%E5%BF%97%E7%AC%A6">维基百科</a>给出的 URI 示例：</p>
+
+<pre style="font-family:Courier,Courier New,DejaVu Sans Mono;font-size:13px;margin:20px 32px;padding:0px 16px;">                     hierarchical part
+         ┌───────────────────┴─────────────────────┐
+                     authority               path
+         ┌───────────────┴───────────────┐┌───┴────┐
+  http://username:password@example.com:123/path/data?key=value&amp;key2=value2#fragid1
+  └┬┘   └───────┬───────┘  └────┬────┘ └┬┘           └─────────┬─────────┘ └──┬──┘
+scheme  user information      host     port                  query        fragment
+
+  urn:example:mammal:monotreme:echidna
+  └┬┘ └──────────────┬───────────────┘
+scheme              path</pre>
+
+<p class="post-text-noindent">2015 年，HTTP 协议已经更新到 2.0 版本，HTTP/2.0 保留了 HTTP/1.1 的大部分语义，例如请求方法、状态码乃至 URI 和绝大多数 HTTP 头部字段，但它采用了新的方法来编码、传输客户端-服务器间的数据。关于 HTTP 的更多细节，笔者后续将在专题文章中加以阐述，读者如有兴趣，也可以通过书籍或网络资源，特别是通过 IETF 发布的<a href="https://zh.wikipedia.org/wiki/RFC">请求意见稿</a>（Request For Comments, RFC）进行了解（HTTP/1.1：<a href="https://tools.ietf.org/html/rfc2616">RFC 2616</a>，HTTP/2.0：<a href="https://tools.ietf.org/html/rfc7540">RFC 7540</a>）。</p>
 
 <h2>5.2.2 传输层</h2>
+
 <h2>5.2.3 网络层</h2>
 <h2>5.2.4 数据链路层</h2>
 <h2>5.2.5 物理层</h2>
