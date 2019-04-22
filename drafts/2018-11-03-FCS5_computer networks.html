@@ -155,6 +155,10 @@ scheme              path</pre>
 
 <blockquote><strong>网络地址转换</strong>/网络掩蔽/IP掩蔽（Network Address Translation, NAT）：它是一种在 IP 数据包通过路由器或防火墙时重写来源 IP 地址或目的 IP 地址的技术。这种技术被普遍使用在有多台主机但只通过一个公有 IP 地址访问因特网的私有网络中。它是一个方便且得到了广泛应用的技术。当然，NAT 也让主机之间的通信变得复杂，导致了通信效率的降低。NAT 是作为一种解决 IPv4 地址短缺、避免保留 IP 地址困难的方案而在 1990 年代中期流行起来的，今天 NAT 成了众多家庭和小型办公室网络连接上的路由器的一个标准特征。上面在给子网掩码举例时提到的 IP 地址就是局域网中的一个私有 IP，像 10.0.0.0 ~ 10.255.255.255、127.0.0.0 ~ 127.255.255.255、127.16.0.0 ~ 172.31.255.255 和 192.168.0.0 ~ 192.169.255.255 是不作为 IP 地址使用的，它们是为特殊应用保留的。</blockquote>
 
+<p><strong>VoIP</strong> 是一种语音通话技术，经由网际协议（IP）来达成语音通话与多媒体会议，也就是经由互联网来进行通信。其他非正式的名称有 IP 电话（IP telephony）、互联网电话（Internet telephony）、宽带电话（broadband telephony）以及宽带电话服务（broadband phone service）。VOIP 涉及众多协议，其中一个重要的且属于应用层的点对点协议是<strong>会话发起协议</strong>（Session Initiation Protocol, SIP），SIP 最早由 Henning Schulzrinne 和 Mark Handley 于 1996 年所设计. SIP 的设计目标之一是提供类似公用交换电话网（PSTN）中调用处理功能的扩展集。在这个扩展集中，实现类似日常电话的操作：拨号，振铃，回铃音或者忙音，只是实现方式和术语有所不同。关于 SIP 及 VoIP 的更多细节，已超出笔者目前所能理解的范围，读者如有兴趣请参考<a href="https://en.wikipedia.org/wiki/Voice_over_IP">维基百科</a>。</p>
+
+<p><strong>BT</strong> 是用在对等网络中文件分享的网络协议程序。和点对点（point-to-point）的协议程序不同，它是用户群对用户群（peer-to-peer）的，而且用户越多，下载同一文件的人越多，下载该文件的速度越快。与 BT 紧密相关的常用技术是<strong>分布式哈希表</strong>（Distributed Hash Table, DHT），除 BT 外，分布式数据结构（DDS）、内容分布式系统（CDS）和域名系统都使用了 DHT 技术。关于 BT 的更多细节参见<a href="https://en.wikipedia.org/wiki/BitTorrent">维基百科</a>。</p>
+
 <h2>5.2.2 传输层</h2>
 
 
