@@ -244,7 +244,66 @@ scheme              path</pre>
 
 <p>IP 定义了寻址方法和数据报的封装结构，TCP 分段 / UDP 数据报依据 IP 被封装为 IP 数据报，寻址指的是如何将 IP 地址分配给各个终端节点，以及如何划分和组合子网。IP 目前有两个主要版本：IPv4 和 IPv6。</p>
 
-<p>网际协议版本 4（Internet Protocol version 4, IPv4）是网际协议开发过程中的第四个修订版本，也是此协议第一个被广泛部署和使用的版本。IPv4 是一种无连接的协议，操作在使用分组交换的链路层（如以太网）上。此协议会尽最大努力交付数据包，意即它不保证任何数据包能送达目的地，也不保证所有数据包能按照正确的顺序无重复地到达目的地。这些功能是由上层的传输协议（如 TCP）实现的。IPv4 使用 32 位地址，因此地址空间中只有 $2^32 = 4294967296$ 个地址。不过，一些地址是为特殊用途所保留的，如专用网络（约 1800 万个地址）和多播地址（约 2.7 亿个地址），这减少了可在互联网上路由的地址数量。随着地址不断被分配给最终用户，IPv4 地址枯竭问题随之产生。基于分类网络、无类别域间路由（CIDR）和网络地址转换（NAT）的地址结构重构显著地减少了地址枯竭的速度。但在 2011 年 2 月 3 日，最后 5 个地址块被分配给 5 个区域互联网注册管理机构（RIR）之后，IANA 的主要地址池已经用尽。</p>
+<p>网际协议版本 4（Internet Protocol version 4, <strong>IPv4</strong>）是网际协议开发过程中的第四个修订版本，也是此协议第一个被广泛部署和使用的版本。IPv4 是一种无连接的协议，其工作在使用分组交换的数据链路层（如以太网）上。此协议会尽最大努力交付数据包，意即它不保证任何数据包能送达目的地，也不保证数据包能按正确顺序无重复地到达目的地。这些功能是由上层传输协议（如 TCP）实现的。<strong>IPv4 使用 32 位地址</strong>，因此地址空间中只有 $2^{32} = 4294967296$ 个地址，而这远远低于世界人口的数量，再加上这些地址中有不少是为特殊用途保留的，因此当上世纪 80 年代提出 IPv4 后，人们就已经预见到：终有一天 IPv4 地址将会不够用。互联网用户的快速增长、长期在线设备的增加和移动设备数量的增长加速了 IPv4 地址枯竭问题的产生。为了延缓 IPv4 地址耗尽时刻的到来，1991 年，作为对分类网络寻址系统面临的可扩展性问题的回应，互联网工程任务组（IETE）提出路由和寻址组（Routing and Addressing Group, ROAD），1993 年，IETE 又提出<strong>网络地址转换</strong>（NAT）与<strong>无类别域间路由</strong>（CIDR）。但在 2011 年 1 月 31 日，随着<strong>互联网编号分配机构</strong>（Internet Assigned Numbers Authority, <strong>IANA</strong>）将最后 5 个顶级地址块（注：按 IP 地址第一个八位分块）分配给 5 个<strong>区域互联网注册管理机构</strong>（Regional Internet Registries, <strong>RIR</strong>）后，IANA 的主要地址池已经用尽了。</p>
+
+<blockquote>到目前为止，5 个 RIR 中已经有 4 个向互联网服务提供商（ISP）分配完了所有除为 IPv6 迁移预留的地址块外的其他所有地址块，管理亚洲和太平洋地区事务的亚太网络信息中心（Asia-Pacific Network Information Centre, APNIC）于 2011 年 4 月 15 日耗尽所有可核发地址，管理欧洲、中东和中亚地区事务的欧洲 IP 网络资源协调中心（RIPE Network Coordination Centre, RIPE NCC）于 2012 年 9 月 14 日耗尽所有可核发地址，管理拉丁美洲和部分加勒比地区事务的拉丁美洲及加勒比地区互联网地址注册管理机构（Latin American and Caribbean Internet Address Registry, LACNIC）于 2014 年 6 月 10 日耗尽所有可核发地址，管理北美和部分加勒比地区事务的美洲互联网号码注册管理机构（American Registry for Internet Numbers, ARIN）于 2015 年 9 月 24 日耗尽所有可核发地址，而预计在今年（2019 年），管理非洲事务的非洲网络信息中心（African Network Information Centre, AfriNIC）也将耗尽所有可核发地址。</blockquote>
+
+<p class="post-text-noindent">我们正在迎接 IPv6 时代的到来，<strong>2017 年 11 月 26 日，中共中央办公厅、国务院办公厅印发了 《推进互联网协议第六版（IPv6）规模部署行动计划》</strong>，并发出通知，要求各地区各部门结合实际认真贯彻落实。《计划》 指出：到 2018 年末，中国 IPv6 活跃用户数达 2 亿，在互联网用户中占比不低于 20%；到 2020 年末，IPv6 活跃用户数超过 5 亿，互联网用户中占比超过 50%，新增网络地址不再使用私有 IPv4 地址；到 2025 年末，中国 IPv6 网络规模、用户规模、流量规模位居世界第一，网络、应用、终端全面支持IPv6。去年（2018 年）年底，阿里巴巴宣布全面应用 IPv6，淘宝、天猫、优酷以及高德地图等多个用户过亿的应用成为国内首批落地 IPv6 技术的 APP。下面，我们介绍 IPv4 数据报和 IPv6 数据报，图 5-7，5-8 分别给出了 IPv4 数据报的构成和 IPv6 数据报的构成。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/IPv4-datagram.png"></p>
+
+<p class="post-text-tablename">图 5-7 IPv4 数据报</p>
+
+<p class="post-text-noindent">IPv4 数据报头部各部分的功能如下所示：</p>
+
+<ul>
+	<li>版本（version, 4 bits）：IP 版本信息，IPv4 对应 0100</li>
+	<li>网际头部长度（internet header length, 4 bits）：IP 数据报头部的长度，其单位为 32 bits</li>
+	<li>差异化服务代码点（differentiated services code point, DSCP, 6 bits）：多数情况下为 0，但需要实时数据的新兴技术的出现使得 DSCP 开始发挥作用，例如：IP 电话</li>
+	<li>显示拥塞通知（explicit congestion notification, ECN, 2 bits）：允许在不丢弃数据包的情况下进行网络拥塞的端到端通知。ECN 是一项可选功能，它仅在两个端点都支持并愿意使用时使用，并且仅在底层网络协议支持时才有效</li>
+	<li>总长度（total length, 16 bits）：IP 数据报的长度，单位为字节</li>
+	<li>标识（identification, 16 bits）：用来唯一地表示一个消息的所有片段，当消息太大而必须将消息分成多段 IP 数据报（注：每小段 IP 数据报被称为片段，英文为 fragment）时使用，它是一个逐渐变大的数值，每产生一个片段，计数器加 1，并赋值给此字段</li>
+	<li>标记（flags, 3 bits）：用来标记是否划分片段，第一个位保留，设为 0，第二个位为没有片段（don't fragment, DF），1 表示不划分片段，0 表示划分片段，第三个位为更多片段（more fragment, MF）。DF 标记可用来向那些没有资源处理片段的主机传递包，也可以用来发现传输路径的最大传输单元（Maximum Transimission Unit, MTU），发现 MTU 可通过软件或者利用诊断工具 ping 或 traceroute 实现；对于没有划分片段的包，MF 标记为 0，对于划分了片段的包，最后一个片段的 MF 标记为 0（其与无片段包的区分由 IP 数据报中的片段偏移部分实现），其余均为 1</li>
+	<li>片段偏移（fragment offset, 13 bits）：用来标记片段在原消息中的次序</li>
+	<li>生存时间（time to live, TTL, 8 bits）：这个字段避免报文在互联网中永远存在（例如陷入路由环路）。生存时间以秒为单位，在现实中，这实际上成了一个跳数计数器：它的最大值是 255，数据报经过的每个路由器都将此字段减 1，当此字段等于 0 时，数据报不再向下一跳传送并被丢弃。常规地，一份 ICMP 数据报被发回 IP 数据报发送端就说明其发送的 IP 数据报已被丢弃，这也是 traceroute 的核心原理</li>
+	<li>协议（protocol, 8 bits）：接受数据的协议，如 6 表示 TCP，17 表示 UDP，1 表示 ICMP</li>
+	<li>头部校验和（header checksum, 16 bits）：用于检验头部的有效性</li>
+	<li>源地址（source address, 32 bits）：IP 数据报的源 IP 地址</li>
+	<li>目标地址（destination address, 32 bits）：IP 数据报的目标 IP 地址</li>
+	<li>选项（options）：一些可选的头部设置，其长度不得大于 40 字节且其位数必须为 32 bits 的倍数，不足位补 0</li>
+</ul>
+
+<blockquote>差异化服务代码点（differentiated services code point, DSCP） 最初属于术语<strong>服务类型</strong>（type of service,<strong>ToS</strong>）中的一部分，ToS 是 IPv4 数据报头部的第二个字节，其最初的用途是对等待通过路由器的数据报区分优先级，然而实践中，ToS 从未在美国国防部网络外使用过，但是大量的研究工作都在关注如何有效利用这个字节，正是这些研究导致了术语 DS field 的产生。现在我们将 ToS field 重新定义为一个 8 位差异化服务域（DS field），它由一个 6 位差异化服务代码点（DSCP）和一个 2 位显示拥塞通知（ECN）组成。</blockquote>
+
+<p class="post-text-noindent">IPv6 数据报主头部各部分的功能如下所示：</p>
+
+<ul>
+	<li>版本（version, 4 bits）：IP 版本号，这里为 0110</li>
+	<li>业务类（traffice class, 8 bits）：数据类别</li>
+	<li>流标签（flow label, 20 bits）：指派的流级别</li>
+	<li>负载长度（payload length, 16 bits）：确定数据的长度</li>
+	<li>下一个头（next header, 8 bits）：紧跟在当前头之后的头的类型</li>
+	<li>跳数限制（hop limit, 8 bits）：本数据包剩余的跳数</li>
+	<li>源地址（source address, 128 bits）：源主机 IP 地址</li>
+	<li>目标地址（destination address, 128 bits）：目的主机 IP 地址</li>
+</ul>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/ipv6-datagram.png"></p>
+
+<p class="post-text-tablename">图 5-8 IPv6 数据报（仅含主头）</p>
+
+<p class="post-text-noindent">除了主头外，IPv6 会将可选的信息添加在主头和数据之间的扩展头内，这些扩展头提供的信息可应用于特定的环境，也保证了主头能尽量的简单。IPv6 定义了如下 6 种扩展头：</p>
+
+<ul>
+	<li>跳跃选项（Hop-by-Hop Option）：携带传递路径中关于路由器的可选信息</li>
+	<li>目标选项（Destination Option）：用于目的节点的可选信息</li>
+	<li>路由（Routing）：用来制定数据包在传递路径上的一个或多个路由器</li>
+	<li>片段（Fragment）：组合分成片段的数据包所需的信息</li>
+	<li>认证（Authentication）：用于提供安全性和身份认证信息</li>
+	<li>加密安全负载（Encrypted Security Payload）：提供了加密和隐私特性</li>
+</ul>
+
+<p class="post-text-noindent">此外，IPv6 的每种头都对应一个 8 位位串，主头和扩展头中的字段——下一个头——放置的就是这个 8 位位串，即下一个头的种类信息。关于 IPv4 和 IPv6 更多细节的讨论已超出了这门导论课程的范围，感兴趣的读者可参考维基百科或其他网络资源。</p>
 
 <h2>5.2.4 数据链路层</h2>
 <h2>5.2.5 物理层</h2>
