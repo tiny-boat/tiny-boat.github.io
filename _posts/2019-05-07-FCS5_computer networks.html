@@ -221,9 +221,9 @@ scheme              path</pre>
 
 <p class="post-text-tablename">图 5-6 关闭 TCP 连接的四次挥手</p>
 
-<p>下面我们介绍 UDP，相比于 TCP 分段，UDP 数据报的结构要简单太多，表 5-5 是 UDP 规定的 UDP 数据报的格式。</p>
+<p>下面我们介绍 UDP，相比于 TCP 分段，UDP 数据报的结构要简单太多，表 5-7 是 UDP 规定的 UDP 数据报的格式。</p>
 
-<p class="post-text-tablename">表 5-4 UDP 数据报</p>
+<p class="post-text-tablename">表 5-7 UDP 数据报</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/UDP_datagram.png"></p>
 
@@ -250,11 +250,11 @@ scheme              path</pre>
 
 <blockquote>到目前为止，5 个 RIR 中已经有 4 个向互联网服务提供商（ISP）分配完了所有除为 IPv6 迁移预留的地址块外的其他所有地址块，管理亚洲和太平洋地区事务的亚太网络信息中心（Asia-Pacific Network Information Centre, APNIC）于 2011 年 4 月 15 日耗尽所有可核发地址，管理欧洲、中东和中亚地区事务的欧洲 IP 网络资源协调中心（RIPE Network Coordination Centre, RIPE NCC）于 2012 年 9 月 14 日耗尽所有可核发地址，管理拉丁美洲和部分加勒比地区事务的拉丁美洲及加勒比地区互联网地址注册管理机构（Latin American and Caribbean Internet Address Registry, LACNIC）于 2014 年 6 月 10 日耗尽所有可核发地址，管理北美和部分加勒比地区事务的美洲互联网号码注册管理机构（American Registry for Internet Numbers, ARIN）于 2015 年 9 月 24 日耗尽所有可核发地址，而预计在今年（2019 年），管理非洲事务的非洲网络信息中心（African Network Information Centre, AfriNIC）也将耗尽所有可核发地址。</blockquote>
 
-<p class="post-text-noindent">我们正在迎接 IPv6 时代的到来，<strong>2017 年 11 月 26 日，中共中央办公厅、国务院办公厅印发了 《推进互联网协议第六版（IPv6）规模部署行动计划》</strong>，并发出通知，要求各地区各部门结合实际认真贯彻落实。《计划》 指出：到 2018 年末，中国 IPv6 活跃用户数达 2 亿，在互联网用户中占比不低于 20%；到 2020 年末，IPv6 活跃用户数超过 5 亿，互联网用户中占比超过 50%，新增网络地址不再使用私有 IPv4 地址；到 2025 年末，中国 IPv6 网络规模、用户规模、流量规模位居世界第一，网络、应用、终端全面支持IPv6。去年（2018 年）年底，阿里巴巴宣布全面应用 IPv6，淘宝、天猫、优酷以及高德地图等多个用户过亿的应用成为国内首批落地 IPv6 技术的 APP。下面，我们介绍 IPv4 数据报和 IPv6 数据报，图 5-7，5-8 分别给出了 IPv4 数据报的构成和 IPv6 数据报的构成。</p>
+<p class="post-text-noindent">我们正在迎接 IPv6 时代的到来，<strong>2017 年 11 月 26 日，中共中央办公厅、国务院办公厅印发了 《推进互联网协议第六版（IPv6）规模部署行动计划》</strong>，并发出通知，要求各地区各部门结合实际认真贯彻落实。《计划》 指出：到 2018 年末，中国 IPv6 活跃用户数达 2 亿，在互联网用户中占比不低于 20%；到 2020 年末，IPv6 活跃用户数超过 5 亿，互联网用户中占比超过 50%，新增网络地址不再使用私有 IPv4 地址；到 2025 年末，中国 IPv6 网络规模、用户规模、流量规模位居世界第一，网络、应用、终端全面支持IPv6。去年（2018 年）年底，阿里巴巴宣布全面应用 IPv6，淘宝、天猫、优酷以及高德地图等多个用户过亿的应用成为国内首批落地 IPv6 技术的 APP。下面，我们介绍 IPv4 数据报和 IPv6 数据报，图 5-8，5-9 分别给出了 IPv4 数据报的构成和 IPv6 数据报的构成。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/IPv4-datagram.png"></p>
 
-<p class="post-text-tablename">图 5-7 IPv4 数据报</p>
+<p class="post-text-tablename">图 5-8 IPv4 数据报</p>
 
 <p class="post-text-noindent">IPv4 数据报头部各部分的功能如下所示：</p>
 
@@ -292,7 +292,7 @@ scheme              path</pre>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/IPv6-datagram.png"></p>
 
-<p class="post-text-tablename">图 5-8 IPv6 数据报（仅含主头）</p>
+<p class="post-text-tablename">图 5-9 IPv6 数据报（仅含主头）</p>
 
 <p class="post-text-noindent">除了主头外，IPv6 会将可选的信息添加在主头和数据之间的扩展头内，这些扩展头提供的信息可应用于特定的环境，也保证了主头能尽量的简单。IPv6 定义了如下 6 种扩展头：</p>
 
@@ -317,13 +317,13 @@ scheme              path</pre>
 
 <blockquote>SmallTalk 是基于 Simula 的一门面向对象编程语言，Simula 是上世纪 60 年代位于奥斯陆的挪威计算中心的 Ole-Johan Dahl 和 Kristen Nygaard 开发的世界上首个面向对象的编程语言，施乐帕罗奥多研究中心开发的 SmallTalk 语言极大地推动了众多计算机编程语言的诞生，包括：C++、Java、Python、Ruby 等，90 年代诞生的许多软件开发思想也得利于 Smalltalk，例如设计模式、敏捷编程和代码重构等。</blockquote>
 
-<p><strong>IEEE 802.3</strong> 标准制定了以太网的技术标准，它规定了包括物理层的连线、电子信号和介质访问层协议的内容。下面我们介绍以太网帧，图 5-9 向我们展示了以太网帧和以太网包的结构。</p>
+<p><strong>IEEE 802.3</strong> 标准制定了以太网的技术标准，它规定了包括物理层的连线、电子信号和介质访问层协议的内容。下面我们介绍以太网帧，图 5-10 向我们展示了以太网帧和以太网包的结构。</p>
 
 <blockquote>介质访问层（Media Access Control, MAC）是开放式系统互联通信参考模型（Open System Interconnection Reference Model, <strong>OSI</strong>）定义的数据链路层中的一个子层，这个子层提供与网络适配器（网卡）的接口，数据链路层中另一个子层被称为逻辑链路控制（Logic Link Control, LLC），这个子层对经过子网传递的帧进行错误检测，并且管理子网上通信设备间的链路。OSI 模型将通信模型划分为七层（自顶向下排序）：应用层、表达层、会话层、传输层、网络层、数据链路层和物理层。TCP/IP 协议族中的应用层对应于 OSI 模型的会话层、表达层和应用层，此外，关于 TCP/IP 协议族的分层有两种方式，一种是如本文所述的五层模型，另一种是四层模型，它将数据链路层和物理层合并称为网络访问层。</blockquote>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/Ethernet_frame.png"></p>
 
-<p class="post-text-tablename">图 5-9 以太网包和以太网帧</p>
+<p class="post-text-tablename">图 5-10 以太网包和以太网帧</p>
 
 <p class="post-text-noindent">关于以太网帧各字段的含义这里就不展开介绍了，下面我们简要介绍一下无线局域网。</p>
 
@@ -365,21 +365,21 @@ scheme              path</pre>
 
 <p><strong>同轴电缆</strong>（coaxial cable）一般是由四层构成：最内层是一条导电铜线，线的外面有一层塑胶（作绝缘体、电介质之用）围拢，绝缘体外面又有一层薄的网状导电体（一般为铜或合金），然后导电体外面是最外层的绝缘护套。传统的有线电视网络使用的是同轴电缆，后来有线电视供应商把大多数的媒介换成了光纤电缆，只在网络的边缘和靠近客户房屋处使用同轴电缆。</p>
 
-<p><strong>光缆</strong>是包含光导纤维（optical fiber）的线缆，是一种由玻璃或塑料制成的纤维，在玻璃或塑料外覆盖有另一种密度较小的介质（称为包层），它利用了光在进入密度较低介质时既不反射也不折射的特性。微细的光纤封装在塑料护套中，使得它能够弯曲而不至于断裂。通常光纤的一端的发射装置使用发光二极管或一束激光将光脉冲传送至光纤中，光纤的另一端的接收装置使用光敏元件检测脉冲。信息在光导纤维的传输损失比电在电线传导的损耗低得多，加上主要生产原料是蕴藏丰富且极易开采的硅，使得光纤成为了长距离信息传递的重要媒介。图 5-10 向我们展示了这三种导向介质。</p>
+<p><strong>光缆</strong>是包含光导纤维（optical fiber）的线缆，是一种由玻璃或塑料制成的纤维，在玻璃或塑料外覆盖有另一种密度较小的介质（称为包层），它利用了光在进入密度较低介质时既不反射也不折射的特性。微细的光纤封装在塑料护套中，使得它能够弯曲而不至于断裂。通常光纤的一端的发射装置使用发光二极管或一束激光将光脉冲传送至光纤中，光纤的另一端的接收装置使用光敏元件检测脉冲。信息在光导纤维的传输损失比电在电线传导的损耗低得多，加上主要生产原料是蕴藏丰富且极易开采的硅，使得光纤成为了长距离信息传递的重要媒介。图 5-11 向我们展示了这三种导向介质。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/
 guide_medium.png"></p>
 
-<p class="post-text-tablename">图 5-10 导向介质</p>
+<p class="post-text-tablename">图 5-11 导向介质</p>
 
 <p>非导向介质不通过物理上的导体传播电磁波，信号通常在自由空间中传播，<strong>电磁波谱中用于无线通信的波段从 3 KHz 到 900 THz</strong>（注：1000 G = 1 T），频率在 3 KHz ~ 1 GHz 的电磁波被称为<strong>无线电波</strong>，频率在 1 ~ 300 GHz 的电磁波被称为<strong>微波</strong>，频率在 300 GHz ~ 400 THz 的电磁波称为<strong>红外波</strong>。</p>
 
-<p>在前面，我们提到过 Wi-Fi 6 支持 2.4 GHz 和 5 GHz 两个频段，可见 Wi-Fi 网络的传输介质是微波，后面又提到了 5G 的频谱属于极高频，但其仍属于微波的范围。在讲到 5G 时，我们还提到过：5G 的频谱较高导致信号衍射能力较低。事实上，电磁波频率越高，其衍射能力（绕过障碍物的能力）越低，像这里提到的红外波是无法穿透墙壁的。这种弱衍射能力的优势在于可以防止不同系统之间的干扰。例如我们的遥控器使用的就是红外信号，使用遥控器时我们不必担心会受到邻居家遥控器的干扰，但这种弱衍射能力使得我们无法将红外信号应用于长距离通信。此外，我们也无法在室外使用红外波，因为太阳光中的红外波会对通信产生干扰。图 5-11 向我们展示了无线电波、微波、红外波和可见光的频谱。</p>
+<p>在前面，我们提到过 Wi-Fi 6 支持 2.4 GHz 和 5 GHz 两个频段，可见 Wi-Fi 网络的传输介质是微波，后面又提到了 5G 的频谱属于极高频，但其仍属于微波的范围。在讲到 5G 时，我们还提到过：5G 的频谱较高导致信号衍射能力较低。事实上，电磁波频率越高，其衍射能力（绕过障碍物的能力）越低，像这里提到的红外波是无法穿透墙壁的。这种弱衍射能力的优势在于可以防止不同系统之间的干扰。例如我们的遥控器使用的就是红外信号，使用遥控器时我们不必担心会受到邻居家遥控器的干扰，但这种弱衍射能力使得我们无法将红外信号应用于长距离通信。此外，我们也无法在室外使用红外波，因为太阳光中的红外波会对通信产生干扰。图 5-12 向我们展示了无线电波、微波、红外波和可见光的频谱。</p>
 
 <p class="post-text-center"><img src="/assets/img/Natural_Science/Computer_Science/Introduction/
 electromagnetic_wave_spectrum.png"></p>
 
-<p class="post-text-tablename">图 5-11 电磁波频谱</p>
+<p class="post-text-tablename">图 5-12 电磁波频谱</p>
 
 <p>有关计算机网络的简要介绍到这里就结束了，从 2018 年 11 月 3 日到 2019 年 5 月 7 日，断断续续半年时间，借助于各种书籍和网络资源，笔者终于完成了计算机科学导论中有关计算机网络的学习，并将其整理成为这篇博文。笔者在阅读计算机科学导论这本书的过程中，一直没有遇到太大的障碍，直到读到计算机网络这一章，当时读完一遍之后是毫无头绪，完全不知道作者在讲啥的状态，幸运的是：现在终于在黑暗中看到了一缕曙光，也许还不怎么亮，但已足够振奋人心。互联网走进普通大众的生活不过 30 年左右的时间，30 岁，对于一个人而言，还足够年轻，我想，对于互联网而言，也同样如此。互联网技术还并未与我们的传统行业实现深度结合，互联网平等、开放、自由的思想观念也还没有深入所有人的心中，万物互联也才刚刚起步，在可以预见的将来，计算机网络技术仍将绽放出灿烂的光芒。路漫漫其修远兮，吾将上下而求索，愿与诸君共勉！</p>
 
