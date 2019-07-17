@@ -1,0 +1,630 @@
+---
+layout: post
+title:  "最优化算法(2):线搜索"
+date:   2019-07-13 14:35:00
+categories: Mathematics Optimization
+excerpt: "线搜索技术是多变量函数优化的基础，它包括精确线搜索技术和非精确线搜索技术。常见的精确线搜索技术可分为分割方法和插值方法两大类：分割方法有二分法、黄金分割法、斐波那契法等；插值方法有一点二次插值法（牛顿法）、二点二次插值法（包括割线法）、三点二次插值法、二点三次插值法等。非精确线搜索技术基于非精确线搜索准则，常用的准则有 Armijo-Goldstein 准则、Wolfe-Powell 准则和简单准则"
+permalink: /optimization/2/line_search/
+---
+
+<div class="post-style">
+
+<p>线搜索技术是多变量函数优化的基础，它包括精确线搜索技术和非精确线搜索技术。常见的精确线搜索技术可分为分割方法和插值方法两大类：分割方法有二分法、黄金分割法、斐波那契法等；插值方法有一点二次插值法（牛顿法）、二点二次插值法（包括割线法）、三点二次插值法、二点三次插值法等。非精确线搜索技术基于非精确线搜索准则，常用的准则有 Armijo-Goldstein 准则、Wolfe-Powell 准则、强 Wolfe-Powell 准则和简单准则。</p>
+
+<p>什么是线搜索呢？上一章我们提到了最优化算法的基本框架就是依据迭代公式 $\boldsymbol{x}_{k+1} = \boldsymbol{x}_{k} + \alpha_k\boldsymbol{d}_k$ 不断产生下一个迭代点，直到满足某些终止条件。迭代公式的确定涉及搜索方向 $\boldsymbol{d}_k$ 和搜索步长 $\alpha_k$ 的确定，其中 $\alpha_k$ 的确定过程就是所谓线搜索的过程，精确线搜索即求使得 $f \left(\boldsymbol{x}_{k} + \alpha\boldsymbol{d}_k \right )$ 取到最小值时对应的 $\alpha$，换句话说：精确线搜索求使得目标函数沿搜索方向 $\boldsymbol{d}_k$ 下降最多的搜索步长。非精确线搜索则是求使得目标函数沿搜索方向 $\boldsymbol{d}_k$ 有一定下降的搜索步长。</p>
+
+<p>实际计算中，通常采用非精确线搜索技术，这是因为精确线搜索技术耗费大量的计算资源，而且对于多变量函数的优化，许多算法的收敛速度并不取决于是否采用精确线搜索技术。</p>
+
+<h1>2.1 精确线搜索技术</h1>
+
+<p>精确线搜索技术包括两大类方法：分割方法和插值方法。分割方法按一定规则不断压缩区间，直到区间宽度很小时停止并将区间中点作为目标函数极值点。插值方法则是不断用新的二次或三次插值多项式近似目标函数，直到满足停止条件并将插值多项式极值点作为目标函数极值点。</p>
+
+<h2>2.1.1 分割方法</h2>
+
+<p>常见的分割方法有二分法、黄金分割法和斐波那契法。我们定义每一步的压缩比为压缩后区间长度与原区间长度之比，总压缩比为最终区间长度与初始区间长度之比。当总迭代次数为 $n$ 时，二分法每一步的压缩比均为 $\frac{1}{2}$，总压缩比为 $\frac{1}{2^n}$；黄金分割法的每一步的压缩比均为 $\frac{\sqrt{5}-1}{2}$，总压缩比为 $\left(\frac{\sqrt{5}-1}{2} \right )^n$ 而斐波那契法每一步的压缩比是不定的，但当步数足够大时，其压缩比接近 $\frac{\sqrt{5}-1}{2}$，总压缩比为 $\frac{1+2\epsilon}{F_{n+1}}$，$F_{n+1}$ 为斐波那契数列的第 $\left(n + 1 \right )$ 项。下面给出了这些方法的原理简介与 Python 实现：</p>
+
+<p>利用<strong>二分法</strong>（Bisection Method）求单谷函数 $f \left(x \right )$ 在区间 $\left[a_0,b_0 \right ]$ 上极值点 $x^*$ 的基本原理是：计算 $f' \left(c_0 \right ) \triangleq f' \left(\frac{a_0+b_0}{2} \right )$，如果 $f' \left(c_0 \right ) = 0$，则 $c_0$ 即为 $f \left(x \right )$ 的极小值点，如果 $f' \left(c_0 \right ) < 0$，说明 $f \left(x \right )$ 在 $c_0$ 处仍处于单调下降状态而没有达到极小值，即 $x^* \in \left(c_0,b_0 \right ]$, 此时令 $a_1 = c_0,\ b_1 = b_0$，初始区间 $\left[a_0,b_0 \right ]$ 被压缩为 $\left[a_1,b_1 \right ]$. 如果 $f' \left(c_0 \right ) > 0$，说明 $f \left(x \right )$ 在 $c_0$ 处已处于单调上升状态而在小于 $c_0$ 的某点处达到了极小值，即 $x^* \in \left[a_0,c_0 \right )$，此时令 $b_1 = c_0,\ a_1 = a_0$，初始区间 $\left[a_0,b_0 \right ]$ 被压缩为 $\left[a_1,b_1 \right ]$. 利用这样的原理要么直接找到极小值点 $c_k$，要么可以通过比较 $f \left(x \right )$ 在区间中点 $c_k$ 的导数与 0 的大小关系来不断缩小极小值点所在区间 $\left[a_k,b_k \right ]$ 的长度，并且每次区间长度都缩小为原来的 1/2，当区间长度足够小或直接找到了极小值点就可以停止迭代，此时区间的中点或找到的极小值点就是二分法最终求得的函数 $f \left(x \right )$ 的极小值点。下面是二分法的 Python 实现：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+def bisection(start,end,func,dfunc,epsilon=1e-4,appendix=False):
+    '''Bisection Method for exact line search'''
+
+    if appendix == True:
+        start0, end0 = start, end   # save initial search interval
+
+    iterNum = 0
+    while True:
+        # compute middle point and its derivation
+        middle = (start + end) / 2
+        dfMiddle = dfunc(middle)
+        if abs(dfMiddle) < epsilon or end - start < epsilon:
+            break
+        # update start or end point
+        elif dfMiddle > 0:
+            end = middle
+        else:
+            start = middle
+        iterNum += 1
+
+    minPoint = middle
+    minValue = func(minPoint)
+    if appendix == True:
+        print("方法：二分法\n")
+        print("初始区间：[%.2f, %.2f]; 最终区间：[%f, %f]" % (start0,end0,start,end))
+        print("极小值点：%.4f; 极小值：%.4f; 迭代次数：%d" % (minPoint,minValue,iterNum))
+
+    return minPoint, minValue, iterNum
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p>利用<strong>黄金分割法</strong>（Golden Section Method）求单谷函数 $f \left(x \right )$ 在区间 $\left[a_0,b_0 \right ]$ 上极值点 $x^*$ 的基本原理是：选择 $\left[a_0,b_0 \right ]$ 上的两个黄金分割点 $$c_0 = a_0 + (1 - \rho)(b_0 - a_0),\ d_0 = a_0 + \rho(b_0 - a_0),\ \rho = \frac{\sqrt{5}-1}{2}$$ 若 $f \left(c_0 \right ) > f \left(d_0 \right )$，则必有 $x^{*} \in \left(c_0,b_0 \right ]$，此时令 $a_1 = c_0,\ b_1=b_0$，若 $f \left(c_0 \right ) < f \left(d_0 \right )$，则必有 $x^{*} \in \left[a_0,d_0 \right )$，此时令 $a_1 = a_0,\ b_1=d_0$，这样初始区间 $\left[a_0,b_0 \right ]$ 压缩为 $\left[a_1,b_1 \right ]$，其长度约为初始区间的 0.618 倍。通过比较区间 $\left[a_k,b_k \right ]$ 上两个黄金分割点 $c_k,d_k$ 的大小关系不断缩小区间 $\left[a_k,b_k \right ]$ 的长度，当长度足够小时区间的中点即为黄金分割法求得的 $f \left(x \right )$ 的极小值点。需要特别指出的是：黄金分割法每一步求 $\left[a_k,b_k \right ]$ 上的两个黄金分割点 $c_k,d_k$ 时，有一个黄金分割点就是上一步迭代中的黄金分割点，是不需要计算的，当 $f \left(c_{k-1} \right ) > f \left(d_{k-1} \right )$ 时，$c_k = d_{k-1}$，当 $f \left(c_{k-1} \right ) < f \left(d_{k-1} \right )$ 时，$d_k = c_{k-1}$. 下面是黄金分割法的 Python 实现：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+def goldenSection(start,end,func,epsilon=1e-4,appendix=False):
+    '''Golden Section Method for exact line search'''
+
+    if appendix == True:
+        start0, end0 = start, end   # save initial search interval
+
+    # find two insertion points using fixed ratio
+    from math import sqrt
+    ratio = sqrt(5) / 2 - 0.5
+    intervalLen = end - start
+    middleL = start + (1 - ratio) * intervalLen
+    middleR = start + ratio * intervalLen
+
+    iterNum = 0
+    while intervalLen >= epsilon:
+        # update start or end point and two insertion points
+        if func(middleL) > func(middleR):
+            start = middleL
+            intervalLen = end - start
+            middleL = middleR
+            middleR = start + ratio * intervalLen
+        else:
+            end = middleR
+            intervalLen = end - start
+            middleR = middleL
+            middleL = start + (1 - ratio) * intervalLen
+        iterNum += 1
+
+    minPoint = (start + end) / 2
+    minValue = func(minPoint)
+    if appendix == True:
+        print("方法：黄金分割法\n")
+        print("初始区间：[%.2f, %.2f]; 最终区间：[%f, %f]" % (start0,end0,start,end))
+        print("极小值点：%.4f; 极小值：%.4f; 迭代次数：%d" % (minPoint,minValue,iterNum))
+
+    return minPoint, minValue, iterNum
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p>利用<strong>斐波那契法</strong>（Fibonacci Method）求单谷函数 $f \left(x \right )$ 在区间 $\left[a_0,b_0 \right ]$ 上极值点 $x^*$ 的基本原理是：选择 $\left[a_0,b_0 \right ]$ 上的两个点 $$c_0 = a_0 + (1 - \rho_0)(b_0 - a_0),\ d_0 = a_0 + \rho_0(b_0 - a_0),\ \rho_0 = 1 - \frac{F_n}{F_{n+1}}$$ 若 $f \left(c_0 \right ) > f \left(d_0 \right )$，则必有 $x^{*} \in \left(c_0,b_0 \right ]$，此时令 $a_1 = c_0,\ b_1=b_0$，若 $f \left(c_0 \right ) < f \left(d_0 \right )$，则必有 $x^{*} \in \left[a_0,d_0 \right )$，此时令 $a_1 = a_0,\ b_1=d_0$，这样初始区间 $\left[a_0,b_0 \right ]$ 压缩为 $\left[a_1,b_1 \right ]$，其长度约为初始区间的 $\left(1-\rho_0 \right )$ 倍。通过比较区间 $\left[a_k,b_k \right ]$ 上两个插入点 $c_k,d_k$ 的大小关系不断缩小区间 $\left[a_k,b_k \right ]$ 的长度，当长度足够小时区间的中点即为斐波那契法求得的 $f \left(x \right )$ 的极小值点。与黄金分割法一样，斐波那契法每一步求 $\left[a_k,b_k \right ]$ 上的两个插入点 $c_k,d_k$ 时，有一个插入点就是上一步迭代中的插入点，是不需要计算的，当 $f \left(c_{k-1} \right ) > f \left(d_{k-1} \right )$ 时，$c_k = d_{k-1}$，当 $f \left(c_{k-1} \right ) < f \left(d_{k-1} \right )$ 时，$d_k = c_{k-1}$. 可以看到，斐波那契法与黄金分割法是十分类似的，它们的区别体现在两个方面：一是斐波那契法每一步的压缩比 $1 - \rho_k = \frac{F_{n-k+1}}{F_{n-k+2}}$ 是不定的，而黄金分割法每一步的压缩比 $1 - \rho_k$ 恒等于 $\frac{\sqrt{5}-1}{2}$；二是斐波那契法最多迭代 $n$ 次，$\left(n+1 \right )$ 为斐波那契序列的长度，黄金分割法则没有这个要求。此外，还有一点需要强调：斐波那契法第 $n$ 步的压缩比 $1 - \rho_n =1 - \frac{F_{1}}{F_{2}} + \epsilon \neq 1 - \frac{F_{1}}{F_{2}}$，因为如果 $1 - \rho_n = 1 - \frac{F_{1}}{F_{2}} = \frac{1}{2}$ 将导致 $c_n = d_n$ 的情形出现，这里 $\epsilon$ 是个很小的正实数。下面是斐波那契法的 Python 实现：</p>
+
+<blockquote>
+斐波那契法的每一步的压缩比 $1-\rho_k$ 是求解约束优化问题：
+$$\begin{aligned}
+&\min \ \prod_{i=1}^{n}\left ( 1-\rho_i \right ) \\
+&\ \mathrm{s.t.} \ \ \rho_{k+1}\left ( 1-\rho_k \right ) = 1-2\rho_k,\ k={1,2,\cdots,n-1} \\
+&\ \ \ \ \ \ \ \ \ 0 \leq \rho_k \leq \frac{1}{2},\ k={1,2,\cdots,n-1}
+\end{aligned}$$
+得到的，它是在确保上一步插入点中有一个点成为下一步插入点的前提下最小化总压缩比的结果，通过图 2-1 我们可以更直观地理解为什么求解上述约束优化问题就是：在确保上一步插入点中有一个点成为下一步插入点的前提下最小化总压缩比。
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Mathematics/fibonacci_method.png"></p>
+<p class="post-text-tablename">图 2-1 相邻两次迭代插入点的选择</p>
+</blockquote>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+def fibonacci(start,end,func,n=100,epsilon=1e-4,appendix=False):
+    '''Fibonacci Method for exact line search'''
+
+    if appendix == True:
+        start0, end0 = start, end   # save initial search interval
+
+    # create list fibL for storing Fibonacci sequence
+    fib0, fib1, fibL = 0, 1, []
+    for i in range(n+1):
+        fib0, fib1 = fib1, fib0 + fib1
+        fibL.append(fib0)
+
+    # find two insertion points using unfixed ratio
+    denominator, numerator = fibL.pop(), fibL.pop()
+    ratio = numerator / denominator
+    intervalLen = end - start
+    middleL = start + (1-ratio) * intervalLen
+    middleR = start + ratio * intervalLen
+
+    iterNum = 0
+    while iterNum < n and intervalLen >= epsilon:
+        # update start or end point and two insertion points
+        if func(middleL) > func(middleR):
+            start = middleL
+            intervalLen = end - start
+            middleL = middleR
+            middleR = start + ratio * intervalLen
+        else:
+            end = middleR
+            intervalLen = end - start
+            middleR = middleL
+            middleL = start + (1 - ratio) * intervalLen
+        # update unfixed ratio
+        denominator, numerator = numerator, fibL.pop()
+        ratio = numerator / denominator
+        if iterNum == n-1:
+           ratio = ratio + epsilon
+        iterNum += 1
+
+    minPoint = (start + end) / 2
+    minValue = func(minPoint)
+    if appendix == True:
+        print("方法：斐波那契法\n")
+        print("初始区间：[%.2f, %.2f]; 最终区间：[%f, %f]" % (start0,end0,start,end))
+        print("极小值点：%.4f; 极小值：%.4f; 迭代次数：%d" % (minPoint,minValue,iterNum))
+
+    return minPoint, minValue, iterNum
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<h2>2.1.2 插值方法</h2>
+
+<p>常见的插值方法有一点二次插值法、二点二次插值法、三点二次插值法和二点三次插值法。其中一点二次插值法就是牛顿法，二点二次插值法中的一种就是割线法。下面给出了这些方法的原理简介和 Python 实现：</p>
+
+<p>二次插值法就是不断构造二次插值多项式 $q \left(x \right ) = ax^2+bx+c$ 来近似目标函数 $f \left(x \right )$ 并将最后一步构造的二次插值多项式的极小值点作为目标函数极小值点的方法，不同二次插值法的区别在于构造二次插值多项式时使用的信息不同。（注：以下介绍各方法基本原理时，$x_k$ 均指第 $k$ 步迭代中构造的插值多项式的极小值点）</p>
+
+<p><strong>一点二次插值法</strong>（牛顿法, Newton Method）在第 $\left(k+1 \right )$ 步构造二次插值多项式时使用 1 个函数、1 个一阶导数和 1 个二阶导数信息
+$$q\left(x_k \right ) = f \left(x_k \right ),\ q'\left(x_k \right ) = f' \left(x_k \right ),\ q''\left(x_k \right ) = f'' \left(x_k \right )$$ 由此导出一点二次插值法（牛顿法）的迭代公式为：
+$$x_{k+1} = x_k - \frac{f' \left(x_k \right )}{f'' \left(x_k \right )}$$
+下面是一点二次插值法（牛顿法）的 Python 实现：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+def newton(x0,func,dfunc,ddfunc,epsilon=1e-4,appendix=False):
+    '''Newton Method for exact line search'''
+
+    if appendix == True:
+        initial = x0   # save initial point
+
+    # make sure that conditions of loop are available
+    # also make sure no loop if df(x0) = 0
+    x1 = x0
+    diffX = epsilon + 1
+
+    iterNum = 0
+    while diffX >= epsilon and abs(dfunc(x1)) >= epsilon:
+        x1 = x0 - dfunc(x0)/ddfunc(x0)
+        diffX = abs(x1 - x0)
+        x0 = x1
+        iterNum += 1
+
+    minPoint = x0
+    minValue = func(x0)
+    if appendix == True:
+        print("方法：一点二次插值法（牛顿法）\n")
+        print("初始点：%.2f" % (initial))
+        print("极小值点：%.4f; 极小值：%.4f; 迭代次数：%d" % (minPoint,minValue,iterNum))
+
+    return minPoint, minValue, iterNum
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p><strong>二点二次插值法</strong>（<strong>割线法</strong>, Secant Method）在第 $\left(k+1 \right )$ 步构造二次插值多项式时使用 1 个函数和 2 个一阶导数信息
+$$q\left(x_{k-1} \right ) = f \left(x_{k-1} \right ),\ q'\left(x_{k-1} \right ) = f' \left(x_{k-1} \right ),\ q'\left(x_k \right ) = f' \left(x_k \right )$$
+由此导出二点二次插值法（割线法）的迭代公式为：
+$$x_{k+1} = x_k - \frac{f' \left(x_k \right )}{\frac{f' \left(x_k \right ) - f' \left(x_{k-1} \right )}{x_k - x_{k-1}}} = x_k - \frac{x_k - x_{k-1}}{f'\left(x_k \right )-f'\left(x_{k-1} \right )}f'\left(x_k \right )$$
+而<strong>二点二次插值法</strong>（<strong>非割线法</strong>, Quadratic Interpolation Method with Two-Points）则使用 2 个函数和 1 个一阶导数信息
+$$q\left(x_{k-1} \right ) = f \left(x_{k-1} \right ),\ q'\left(x_{k-1} \right ) = f' \left(x_{k-1} \right ),\ q\left(x_k \right ) = f \left(x_k \right )$$
+由此导出二点二次插值法（非割线法）的迭代公式为：
+$$x_{k+1} = x_k + \frac{1}{2}\frac{x_k - x_{k-1}}{\frac{f \left(x_k \right ) - f \left(x_{k-1} \right )}{f'\left(x_k \right )\left(x_k - x_{k-1} \right )} - 1} = x_k - \frac{1}{2}\frac{x_k-x_{k-1}}{f'\left(x_k \right )-\frac{f\left(x_k \right )-f\left(x_{k-1} \right )}{x_k - x_{k-1}}}f'\left(x_k \right )$$
+下面给出了二点二次插值法的 Python 实现：</p>
+
+</div>
+
+<div class="code-style">
+{% highlight Python %}
+
+def quadInterpo2(x0,x1,func,dfunc,epsilon=1e-4,appendix=False,method='secant'):
+    '''Quadratic Interpolation Method with Two-Points for exact line search'''
+
+    if appendix == True:
+        initial1 = x0   # save initial point
+        initial2 = x1
+
+    if abs(dfunc(x0)) >= epsilon:
+        # make sure that conditions of loop are available
+        # also make sure no loop if df(x1) = 0
+        x2 = x1
+        distance = epsilon + 1
+
+        iterNum = 0
+        while distance >= epsilon and abs(dfunc(x2)) >= epsilon:
+            if method == 'secant':
+                x2 = x1 - dfunc(x1) * (x1 - x0) / (dfunc(x1) - dfunc(x0))
+            else:
+                diffX1X0 = x1 - x0
+                x2 = x1 + 0.5 * diffX1X0 / ((func(x1) - func(x0)) / (dfunc(x1) * diffX1X0) - 1)
+            distance = abs(x2 - x1)
+            x0, x1 = x1, x2
+            iterNum += 1
+    else:
+        x1 = x0   # make sure that the minPoint is x0 if df(x0) = 0
+
+    minPoint = x1
+    minValue = func(x1)
+    if appendix == True:
+        if method == 'secant':
+            print("方法：二点二次插值法（割线法）\n")
+        else:
+            print("方法：二点二次插值法（非割线法）\n")
+        print("初始点：%.2f, %.2f" % (initial1,initial2))
+        print("极小值点：%.4f; 极小值：%.4f; 迭代次数：%d" % (minPoint,minValue,iterNum))
+
+    return minPoint, minValue, iterNum
+
+{% endhighlight %}
+</div>
+
+<div class="post-style">
+
+<p><strong>三点二次插值法</strong>（Quadratic Interpolation Method with Three-Points）在第 $\left(k+1 \right )$ 步构造二次插值多项式时使用 3 个函数信息 $$q\left(a_{k} \right ) = f \left(a_{k} \right ),\ q\left(c_{k} \right ) = f \left(c_{k} \right ),\ q\left(b_k \right ) = f \left(b_k \right )$$ $a_k < c_k < b_k$ 的值根据 $c_{k-1},x_{k}$ 的大小关系以及 $f \left(c_{k-1} \right ),f \left(x_{k} \right )$ 的大小关系，从 $a_{k-1}$、$b_{k-1}$、$c_{k-1}$ 和 $x_{k}$ 中选取以保证 $f \left(x \right )$ 的极小值点 $x^* \in \left[a_k,b_k \right ] \subset \left[a_{k-1},b_{k-1} \right ]$。由 3 个函数信息得到的第 $\left(k+1 \right )$ 步迭代中构造的二次插值多项式的极小值点公式为：
+$$\begin{aligned}
+&\ x_{k+1} = \frac{1}{2}\frac{\left(c_k^2-b_k^2 \right )f \left(a_k \right ) + \left(b_k^2-a_k^2 \right )f \left(c_k \right ) + \left(a_k^2 - c_k^2 \right )f \left(b_k \right )}{\left(c_k-b_k \right )f \left(a_k \right ) + \left(b_k-a_k \right )f \left(c_k \right ) + \left(a_k - c_k \right )f \left(b_k \right )} \\
+& = \frac{1}{2}\left(a_k+c_k \right ) + \frac{1}{2}\frac{\left(f \left(a_k \right ) - f \left(c_k \right ) \right )\left(c_k-b_k \right )\left(b_k-a_k \right )}{\left(c_k-b_k \right )f \left(a_k \right ) + \left(b_k-a_k \right )f \left(c_k \right ) + \left(a_k-c_k \right )f \left(b_k \right )}
+\end{aligned}$$
+下面给出了三点二次插值法的 Python 实现：</p>
+
+</div>
+
+<div class="code-style">
+{% highlight Python %}
+
+def quadInterpo3(start,middle,end,func,epsilon=1e-4,appendix=False):
+    '''Quadratic Interpolation Method with Three-Points for exact line search'''
+
+    if appendix == True:
+        start0, middle0, end0 = start, middle, end   # save initial point
+
+    iterNum = 0
+    while True:
+        # compute quadMinPoint (minimum point of quadratic interpolation)
+        fStart, fMiddle, fEnd = func(start), func(middle), func(end)
+        diffME, diffES, diffSM = middle - end, end - start, start - middle
+        numerator = (fStart - fMiddle) * diffME * diffES
+        denominator = diffME * fStart + diffES * fMiddle + diffSM * fEnd
+        quadMinPoint = 0.5 * (start + middle + numerator / denominator)
+
+        # update start, middle and end point
+        # stop iteration if quadMinPoint approaches middle point
+        if abs(quadMinPoint - middle) < epsilon:
+            break
+        elif func(quadMinPoint) > fMiddle:
+            if quadMinPoint > middle:
+                end = quadMinPoint
+            else:
+                start = quadMinPoint
+        else:
+            if quadMinPoint > middle:
+                start = middle
+                middle = quadMinPoint
+            else:
+                end = middle
+                middle = quadMinPoint
+        iterNum += 1
+
+    minPoint = quadMinPoint
+    minValue = func(quadMinPoint)
+    if appendix == True:
+        print("方法：三点二次插值法（抛物线法）\n")
+        print("初始点：%.2f, %.2f, %.2f" % (start0,middle0,end0))
+        print("极小值点：%.4f; 极小值：%.4f; 迭代次数：%d" % (minPoint,minValue,iterNum))
+
+    return minPoint, minValue, iterNum
+
+{% endhighlight %}
+</div>
+
+<div class="post-style">
+
+<p>类似地，三次插值法就是不断构造三次插值多项式 $p \left(x \right ) = ax^3 + bx^2 + cx + d$ 来近似目标函数 $f \left(x \right )$ 并将最后构造的三次插值多项式的极小值点作为目标函数极小值点的方法。<strong>二点三次插值法</strong>（Cubic Interpolation Method with Two-Points）在第 $k$ 步构造三次插值多项式时使用 2 个函数和 2 个一阶导数信息 $$p \left(a_k \right ) = f \left(a_k \right ), p'\left(a_k \right ) = f'\left(a_k \right ), p \left(b_k \right ) = f \left(b_k \right ), p'\left(b_k \right ) = f'\left(b_k \right )$$ $a_k < b_k$ 的值根据 $f' \left(x_k \right )$ 与 $0$ 的大小关系，从 $a_{k-1},\ b_{k-1},\ x_k$ 中选取。由上述信息得到的第 $\left(k+1 \right )$ 步迭代中构造的三次插值多项式的极小值点公式为：
+$$\begin{aligned}
+&x_{k+1} = a_k + \frac{\eta_k-f'\left(a_k \right )-\omega_k}{2\eta_k-f'\left(a_k \right )+f'\left(b_k \right )}\left(b_k-a_k \right ) \\
+&\eta_k = \sqrt{\omega_k^2-f'\left(a_k \right )f'\left(b_k \right )} \\
+&\omega_k = \frac{3\left[f\left(b_k \right )-f\left(a_k \right ) \right ]}{b_k-a_k}-f'\left(a_k \right )f'\left(b_k \right )
+\end{aligned}$$
+下面给出了二点三次插值法的 Python 实现：</p>
+
+</div>
+
+<div class="code-style">
+{% highlight Python %}
+
+def cubInterpo2(start,end,func,dfunc,epsilon=1e-4,appendix=False):
+    '''Cubic Interpolation Method with Two-Points for exact line search'''
+    from math import sqrt
+
+    if appendix == True:
+        start0, end0 = start, end   # save initial point
+
+    iterNum = 0
+    while True:
+        # compute cubMinPoint (minimum point of cubic interpolation)
+        intervalLen = end - start
+        fStart, fEnd = func(start), func(end)
+        dfStart, dfEnd = dfunc(start), dfunc(end)
+        dfSE = dfStart * dfEnd
+        omega = 3 * (fEnd - fStart) / intervalLen - dfSE
+        eta = sqrt(omega ** 2 - dfSE)
+        cubMinPoint = start + (eta - dfStart - omega) * intervalLen / (2 * eta - dfStart + dfEnd)
+        dfCubMinPoint = dfunc(cubMinPoint)
+
+        # update start or end point
+        # stop iteration if df(cubMinPoint) approaches 0
+        if abs(dfCubMinPoint) < epsilon:
+            break
+        elif dfCubMinPoint > 0:
+            end = cubMinPoint
+        else:
+            start = cubMinPoint
+        iterNum += 1
+
+    minPoint = cubMinPoint
+    minValue = func(minPoint)
+    if appendix == True:
+        print("方法：二点三次插值法\n")
+        print("初始点：%.2f, %.2f" % (start0,end0))
+        print("极小值点：%.4f; 极小值：%.4f; 迭代次数：%d" % (minPoint,minValue,iterNum))
+
+    return minPoint, minValue, iterNum
+
+{% endhighlight %}
+</div>
+
+<div class="post-style">
+
+<h1>2.2 非精确线搜索技术</h1>
+
+<h2>2.2.1 搜索准则</h2>
+
+<p>常见的非精确线搜索准则有 Armijo-Goldstein 准则、Wolfe-Powell 准则、强 Wolfe-Powell 准则和简单准则，它们的出发点是保证搜索步长不太大或不太小。非精确线搜索技术就是寻找满足某个准则的搜索步长，令</p>
+
+$$\phi \left(\alpha \right ) \triangleq f \left(\boldsymbol{x}_k + \alpha \boldsymbol{d}_k \right )$$
+
+<p class="post-text-noindent">则上述准则可表示为：</p>
+
+<ul>
+    <li>Armijo-Goldstein 准则：</li>
+$$\phi \left(\alpha \right ) \leq \phi \left(0 \right ) + \rho \alpha \phi' \left(0 \right )$$
+$$\phi \left(\alpha \right ) \geq \phi \left(0 \right ) + \sigma \alpha \phi' \left(0 \right )$$
+    <li>Wolfe-Powell 准则：</li>
+$$\phi \left(\alpha \right ) \leq \phi \left(0 \right ) + \rho \alpha \phi' \left(0 \right )$$
+$$\phi' \left(\alpha \right ) \geq \sigma \phi' \left(0 \right )$$
+    <li>强 Wolfe-Powell 准则：</li>
+$$\phi \left(\alpha \right ) \leq \phi \left(0 \right ) + \rho \alpha \phi' \left(0 \right )$$
+$$\left | \phi' \left(\alpha \right ) \right | \leq \sigma \left | \phi' \left(0 \right ) \right |$$
+    <li>简单准则：</li>
+$$\phi \left(\alpha \right ) \leq \phi \left(0 \right ) + \rho \alpha \phi' \left(0 \right )$$
+</ul>
+
+<p class="post-text-noindent">其中 $\rho \in \left(0,\frac{1}{2} \right )$ 且 $\sigma \in \left(\rho,1 \right )$，限制 $\rho < 1/2$ 是因为当 $\phi$ 是二次函数且满足 $\phi' \left(0 \right ) < 0$ 且 $\phi'' \left(0 \right ) > 0$ 时，$\phi$ 的全局极小点 $\alpha^{*}$ 满足</p>
+
+$$\phi \left(\alpha^{*} \right ) = \phi \left(0 \right ) + \frac{1}{2}\alpha^{*} \phi' \left(0 \right )$$
+
+<p class="post-text-noindent">此时如果要让 $\phi$ 的全局极小点 $\alpha^{*}$ 满足非精确线搜索准则</p>
+
+$$\phi \left(\alpha \right ) \leq \phi \left(0 \right ) + \rho \alpha \phi' \left(0 \right )$$
+
+<p class="post-text-noindent">就必须保证 $\rho \leq 1/2$.</p>
+
+<p>这些准则的含义是什么呢？我们可以看到：上述四个准则都要求</p>
+
+$$\phi \left(\alpha \right ) \leq \phi \left(0 \right ) + \rho \alpha \phi' \left(0 \right )$$
+
+<p class="post-text-noindent">当我们选择的搜索方向 $\boldsymbol{d}_k$ 为下降方向（即 $f$ 在 $\boldsymbol{x}_k$ 的方向导数 $\phi' \left(0 \right ) < 0$）时，上述要求事实上保证了 $$\phi \left(\alpha \right ) < \phi \left(0 \right )$$即允许的搜索步长一定会使目标函数下降。此外通过对上述要求的变形，我们容易知道这一要求也保证了允许的搜索步长不会太大。（强）Wolfe-Powell 准则与 Armijo-Goldstein 准则的区别在于第二个要求，Wolfe-Powell 准则的第二个要求的几何意义是：$\phi \left(\alpha \right )$ 在允许的搜索步长处的斜率 $\phi' \left(\alpha_k \right )$ 大于等于初始斜率 $\phi' \left(0 \right )$ 的 $\sigma$ 倍，强 Wolfe-Powell 准则的第二个要求则在此基础上进一步要求 $\phi \left(\alpha \right )$ 在允许的搜索步长处的斜率 $\phi' \left(\alpha_k \right )$ 小于等于初始斜率 $\phi' \left(0 \right )$ 的 $-\sigma$ 倍，它们都保证了 $\phi \left(\alpha \right )$ 的极值点 $\phi \left(\alpha^{*} \right )$ 在允许的搜索步长范围内（因为 $\sigma\phi' \left(0 \right ) < \phi' \left(\alpha^{*} \right ) = 0 < -\sigma\phi' \left(0 \right )$），但 Armijo-Goldstein 准则则可能把这个极值点排除在允许的搜索步长范围外，当然实际中这种情况很少发生。强 Wolfe-Powell 与 Wolfe-Powell 的区别在于：当 $\sigma \rightarrow 0$ 时，遵循强 Wolfe-Powell 准则的非精确线搜索可能就是精确线搜索，而 Wolfe-Powell 准则不具备这个性质。通过适当的变形，我们也容易知道（强）Wolfe-Powell 准则与 Armijo-Goldstein 准则的第二个要求都保证了允许的搜索步长不会太小。综上，我们将非精确线搜索技术常用的四个准则的含义总结如下：</p>
+
+<ul>
+    <li>Armijo-Goldstein 准则：条件一保证目标函数在下降方向下降且搜索步长不太大；条件二保证搜索步长不太小。</li>
+    <li>Wolfe-Powell 准则：条件一保证目标函数在下降方向下降且搜索步长不太大；条件二保证目标函数极小值点有成为搜索步长的可能且搜索步长不太小。</li>
+    <li>强 Wolfe-Powell 准则：条件一保证目标函数在下降方向下降且搜索步长不太大；条件二保证目标函数极小值点有成为搜索步长的可能、极限情况下导致精确线搜索的可能且搜索步长不太小。</li>
+    <li>简单准则：保证目标函数在下降方向下降且搜索步长不太大。</li>
+</ul>
+
+<h2>2.2.2 具体实现</h2>
+
+<p>下面给出非精确线搜索技术的 Python 实现：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+def inexactLineSearch(func,dfunc,start=0,end=1e10,rho=0.1,sigma=0.4,criterion='Wolfe Powell',appendix=False):
+    '''Inexact Line Search Method with four available criterion:
+    1.Armijo Goldstein
+    2.Wolfe Powell
+    3.Strong Wolfe Powell
+    4.Simple'''
+
+    if appendix == True:
+        alpha0 = (start + end) / 2   # save initial point
+
+    # reduce unnecessary caculations in loop
+    f0, df0 = func(0), dfunc(0)
+    rhoDf0 = rho * df0
+    boundary3 = sigma * df0
+    boundary4 = sigma * abs(df0)
+
+    iterNum = 0
+    while True:
+        alpha = (start + end) / 2
+        boundary1 = f0 + rhoDf0 * alpha
+        boundary2 = f0 + boundary3 * alpha
+        fAlpha, dfAlpha = func(alpha), dfunc(alpha)
+
+        # different criterions have same condition1 to avoid too large alpha
+        condition1 = (fAlpha <= boundary1)
+        # different criterions have different condition2 to avoid too small alpha
+        if criterion == 'Armijo Goldstein':
+            condition2 = (fAlpha >= boundary2)
+        elif criterion == 'Wolfe Powell':
+            condition2 = (dfAlpha >= boundary3)
+        elif criterion == 'Strong Wolfe Powell':
+            condition2 = (abs(dfAlpha) <= boundary4)
+        else:
+            condition2 = True
+
+        # update start or end point or stop iteration
+        if condition1 == False:
+            end = alpha
+        elif condition2 == False:
+            start = alpha
+        else:
+            minPoint = alpha
+            minValue = fAlpha
+            break
+        iterNum += 1
+
+    if appendix == True:
+        print("方法：非精确线搜索；准则：%s\n" % criterion)
+        print("初始点：%.2f" % (alpha0))
+        print("停止点：%.4f; 停止点函数值：%.4f; 迭代次数：%d" % (minPoint,minValue,iterNum))
+
+    return minPoint, minValue, iterNum
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<h1>2.3 结语</h1>
+
+<p>从编写的程序中，我们可以看到：精确线搜索其实也不是精确的，它的精确性只是相对于非精确线搜索而言的。事实上，由于计算机只能处理离散数据，而函数的定义域通常是连续的实数集合，加上计算机运算与存储能力的有限，完全精确的线搜索是无法实现的。</p>
+
+<p>上述各精确线搜索方法中，二分法、黄金分割法、斐波那契法线性收敛，二点二次插值法（1.618 阶）、三点二次插值法（1.32 阶）超线性收敛，二点三次插值法和牛顿法二阶收敛。值得注意的是：牛顿法虽然具有二阶收敛速度，但其收敛的前提是初始点靠近极小值点。</p>
+
+<p>从上述程序中我们还可以看到：除牛顿法外，其余方法均需要事先给出搜索区间，而搜索区间的确定可以依据经验或者采用进退法完成。</p>
+
+<p><strong>进退法</strong>从 $\alpha_0$ 以步长 $h_0 > 0$ 出发，若 $\phi \left(\alpha_0 + h_0 \right ) < \phi \left(\alpha_0 \right )$，则下一步从 $\alpha_1 = \alpha_0 + h_0$ 以更长的步长 $h_1 = th_0$ 出发，否则下一步从 $\alpha_1 = \alpha_0$ 以等长但反向的步长 $h_1 = - h_0$ 出发，直到目标函数上升时停止。其依据的基本原理是：若 $f\left ( x \right),\ x\in \left [ a,b \right]$ 是一个单谷函数，则 $\forall \ x_1 < x_2 \in \left [ a,b \right]$，当 $f\left ( x_1 \right) \geq  f\left ( x_2 \right)$ 时，$f\left ( x \right)$ 必在 $\left [ x_1,b \right]$ 取到极小值，否则 $f\left ( x \right)$ 必在 $\left [ a,x_2 \right]$ 取到极小值。下面给出了进退法的 Python 实现：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+def forwardBackward(func,x0=10,stepsize=1,multiplier=2,appendix=False):
+    '''Forward-Backward Method for determining
+    search inteval of exact line search'''
+
+    if appendix == True:
+        start0 = x0
+
+    x1 = x0 + stepsize
+    f0, f1 = func(x0), func(x1)
+    iterNum = 0
+    while True:
+        if f1 > f0:
+            if iterNum == 0:
+                stepsize = - stepsize
+                x1, x2 = x0 + stepsize, x1
+            else:
+                start, end = min(x1,x2), max(x1,x2)
+                break
+        else:
+            stepsize = multiplier * stepsize
+            x2, x0, x1 = x0, x1, x1 + stepsize
+        f0, f1 = func(x0), func(x1)
+        iterNum += 1
+
+    if appendix == True:
+        print("方法：进退法\n")
+        print("初始点：%.2f" % (start0))
+        print("最终区间：[%f, %f]; 迭代次数：%d" % (start,end,iterNum))
+
+    return start, end, iterNum
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p>值得指出地是：虽然线搜索技术这一名词是针对多变量函数优化而言的，但上述程序均可以用于单变量函数的优化。例如，下面给出了用上述程序优化函数 $f \left(x \right ) = x^2 - \sin \left(x \right )$ 的函数调用示例与输出结果：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+from math import sin,cos
+
+def func(x):
+    return x ** 2 - sin(x)
+
+def dfunc(x):
+    return 2 * x - cos(x)
+
+def ddfunc(x):
+    return 2 + sin(x)
+
+forwardBackward(func,appendix=True)   # 进退法
+
+dichotomy(0,1,func,dfunc,1e-5,True)   # 二分法
+goldenSection(0,1,func,1e-5,True)   # 黄金分割法
+fibonacci(0,1,func,100,1e-5,True)   # 斐波那契法
+
+newton(0,func,dfunc,ddfunc,1e-5,True)   # 一点二次插值法（牛顿法）
+quadInterpo2(0,1,func,dfunc,1e-5,True)   # 二点二次插值法（割线法）
+quadInterpo2(0,1,func,dfunc,1e-5,True,'')   # 二点二次插值法
+quadInterpo3(0,0.5,1,func,1e-5,True)   # 三点二次插值法（抛物线法）
+cubInterpo2(0,1,func,dfunc,1e-5,True)   # 二点三次插值法
+
+inexactLineSearch(func,dfunc,appendix=True) # 非精确线搜索
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Mathematics/line_search.png"></p>
+<p class="post-text-tablename">图 2-2 单变量函数 $f \left(x \right ) = x^2 - \sin \left(x \right )$ 优化结果</p>
+
+<p>本章到这里就结束了，下一章我们将介绍一般的无约束优化问题的求解算法，包括梯度下降法（包括最速下降法）、牛顿法及其各种修正方法（修正牛顿法、有限差分牛顿法、负曲率方向法、信頼域法、不精确牛顿法）和共轭方向法（共轭梯度法、拟牛顿法）。</p>
+
+</div>
