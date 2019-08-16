@@ -6,6 +6,13 @@ categories: Note
 permalink: /plan/1/
 ---
 
+### 深度学习
+
+* 深度学习 书籍
+* google tensorflow 手册
+* 网易云 吴恩达课程
+* github 万星项目深度学习 500 问（by SCUtan）
+
 ### 学习计划
 
 * **Computer Science**
@@ -51,28 +58,3 @@ permalink: /plan/1/
 	+ Biology
 		- 第二自然 *[美] 杰拉尔德·M.埃德尔曼* *湖南科学技术出版社*
 		- 下一步是什么 *[美] 麦克斯·布罗克曼* *湖南科学技术出版社*
-
-### 最近计划（自 2019 年 02 月 27 日起，一周更新一次）
-
-* 紧急，一周内，截止到 2019.03.05
-	+ 机器学习 第 2 章 模型评估与选择
-	+ 论文：Benchmarking Optimization Software with Performance
-	+ 最优化理论与方法 第一章
-
-* 重要，半个月内，截止到 2019.03.12
-	+ A Maximum Entropy Approach to Natural Language Processing
-	+ 统计学习方法 第 6 章 逻辑斯谛回归与最大熵模型
-
-* 重要，1 个月内，截止到 2019.03.27
-	+ Python 面向对象编程
-	+ 离散数学第一章
-	+ C 语言第 3、4 章
-
-* 一般，2 个月内，截止到 2019.04.27
-	+ 计算机网络
-	+ 浪潮之巅第 3-8 章
-
-* 一般，无时间限制
-	+ Computing Machinery And Intelligence
-	+ 西方哲学史
-	+ Principles of Economics

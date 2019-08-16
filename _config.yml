@@ -41,7 +41,6 @@ plugins:
 
 #This allows you to set which pages you want to appear in the navigation area and configure order of the links.
 header_pages:
-  - git.md
   - about.md
 #  - README.md
 
@@ -67,5 +66,7 @@ paginate_path: "page:num"
 # page_view_counter
 leancloud:
   enable: true
-  app_id: mCIX8PuELvW3qkSaKOPL0LDB-gzGzoHsz
-  app_key: ctji4A6Ek1GWyAmA29CoQQQi
+  #app_id: mCIX8PuELvW3qkSaKOPL0LDB-gzGzoHsz
+  app_id: 1CRjnX9azY3m0LsGaSV8mvbo-MdYXbMMI
+  #app_key: ctji4A6Ek1GWyAmA29CoQQQi
+  app_key: p9O9n7dFoltupRJYdU1NiEXq
