@@ -467,7 +467,7 @@ def convert_df(df: pd.DataFrame, deep_copy: bool = True) -> pd.DataFrame:
     <li>搞清楚存在哪些可用类型能够降低你的数据框的内存占用（例如：如果对取值范围在 0 到 59 且只有 1 位小数的 price 列使用 float64，就可能造成不必要的开销）</li>
 </ul>
 
-<p>除了你可能正在使用的减少数值类型大小的方式（用 int32 代替 int64），Pandas 还自带有一种分类（category）类型来减少内存占用。</p>
+<p>除了你可能正在使用的减少数值类型大小的方式（用 int32 代替 int64），Pandas 还自带有一种<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/categorical.html">分类</a>（category）类型来减少内存占用。</p>
 
 <blockquote>如果你是一名 R 开发者，你会发现它和 factor 类型是一致的。</blockquote>
 
@@ -1240,7 +1240,7 @@ CPU times: user 55.9 ms, sys: 2.85 ms, total: 58.8 ms
 <blockquote>注意：tup 是一个 namedtuple</blockquote>
 
 <ul>
-  <li>join() 使用 merge()</li>
+  <li>join() 使用了 merge()</li>
   <li>在 Jupyter 笔记本中，在单元开始部分使用 %%time 计算运行时间是有效的</li>
   <li>UInt8 数据类型支持整数 NaN</li>
   <li>从现在开始记住，使用低级方法（尽可能使用 Python 的核心函数）执行密集 I/O （例如：展开大型 CSV 转储）效果更好</li>
