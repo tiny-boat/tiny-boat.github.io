@@ -228,4 +228,3 @@ Daan Wierstra 和 Martin Riedmiller 发表论文 “Playing Atari with Deep Rein
 
 ### 1 Applied Math and Machine Learning Basics
 
-昭山
