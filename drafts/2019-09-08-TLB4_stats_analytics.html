@@ -8,14 +8,65 @@ permalink: /lecture/stats_analysis/
 
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" />
+<head>
 
-<title>Untitled1</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+
+<title>Untitled1 slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/simple.css" id="theme">
 
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -13029,59 +13080,133 @@ ul.typeahead-list  > li > a.pull-right {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
+.reveal {
+  font-size: 160%;
 }
-
-div#notebook {
-  overflow: visible;
-  border-top: none;
-}@media print {
-  div.cell {
-    display: block;
-    page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
-  }
-  div.output { 
-    display: block;
-    page-break-inside: avoid; 
-  }
+.reveal pre {
+  width: inherit;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.reveal pre code {
+  padding: 0px;
+}
+.reveal section img {
+  border: 0px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal i {
+  font-style: normal;
+  font-family: FontAwesome;
+  font-size: 2em;
+}
+.reveal .slides {
+  text-align: left;
+}
+.reveal.fade {
+  opacity: 1;
+}
+.reveal .progress {
+  position: static;
+}
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #727272;
+}
+.reveal .controls .navigate-left.enabled:hover,
+.reveal .controls .navigate-left.enabled.enabled:hover {
+  border-right-color: #dfdfdf;
+}
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #727272;
+}
+.reveal .controls .navigate-right.enabled:hover,
+.reveal .controls .navigate-right.enabled.enabled:hover {
+  border-left-color: #dfdfdf;
+}
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #727272;
+}
+.reveal .controls .navigate-up.enabled:hover,
+.reveal .controls .navigate-up.enabled.enabled:hover {
+  border-bottom-color: #dfdfdf;
+}
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #727272;
+}
+.reveal .controls .navigate-down.enabled:hover,
+.reveal .controls .navigate-down.enabled.enabled:hover {
+  border-top-color: #dfdfdf;
+}
+.reveal .progress span {
+  background: #727272;
+}
+div.input_area {
+  padding: 0.06em;
+}
+div.code_cell {
+  background-color: transparent;
+}
+div.prompt {
+  width: 11ex;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  text-align: right;
+}
+div.output_area pre {
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+}
+div.output_prompt {
+  /* 5px right shift to account for margin in parent container */
+  margin: 5px 5px 0 0;
+}
+div.text_cell.rendered .rendered_html {
+  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
+  overflow-y: hidden;
+}
+a.anchor-link {
+  /* There is still an anchor, we are only hidding it */
+  display: none;
+}
+.rendered_html p {
+  text-align: inherit;
+}
+::-webkit-scrollbar
+{
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar *
+{
+  background:transparent;
+}
+::-webkit-scrollbar-thumb
+{
+  background: #727272 !important;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-<!-- Loading mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration --></head>
-<body>
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
+</head>
 
+
+<body>
+
+
+<div class="reveal">
+<div class="slides">
+<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13310,10 +13435,129 @@ div#notebook {
 <li>各国家的奖牌类型分布类似吗 / 各奖牌类型的国家分布类似吗</li>
 </ul>
 <p>限于时间，笔者没有爬取该数据，上述表格是笔者手动整理的。由于原始数据的缺乏，这里也不展示如何使用软件从原始数据中提取上述信息的过程，而是直接从部分汇总数据（金牌榜排名前 10 的国家的奖牌榜）开始。上述提到的信息中，只有最后一条可以从该汇总数据中得到。</p>
-<p>下面，将介绍如何使用 Python 第三方库 <a href="https://pyecharts.org/#/zh-cn/intro">pyecharts</a> 绘制条形图、饼图和雷达图。</p>
+<table>
+<thead><tr>
+<th style="text-align:center">国家</th>
+<th style="text-align:center">金</th>
+<th style="text-align:center">银</th>
+<th style="text-align:center">铜</th>
+<th style="text-align:center">总</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">中国</td>
+<td style="text-align:center">48</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">30</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">美国</td>
+<td style="text-align:center">36</td>
+<td style="text-align:center">39</td>
+<td style="text-align:center">37</td>
+<td style="text-align:center">112</td>
+</tr>
+<tr>
+<td style="text-align:center">俄罗斯</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">60</td>
+</tr>
+<tr>
+<td style="text-align:center">英国</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">47</td>
+</tr>
+<tr>
+<td style="text-align:center">德国</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">41</td>
+</tr>
+<tr>
+<td style="text-align:center">澳大利亚</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">46</td>
+</tr>
+<tr>
+<td style="text-align:center">韩国</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td style="text-align:center">日本</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">25</td>
+</tr>
+<tr>
+<td style="text-align:center">意大利</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">27</td>
+</tr>
+<tr>
+<td style="text-align:center">法国</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">42</td>
+</tr>
+<tr>
+<td style="text-align:center">其它</td>
+<td style="text-align:center">107</td>
+<td style="text-align:center">142</td>
+<td style="text-align:center">165</td>
+<td style="text-align:center">414</td>
+</tr>
+<tr>
+<td style="text-align:center">总计</td>
+<td style="text-align:center">302</td>
+<td style="text-align:center">303</td>
+<td style="text-align:center">353</td>
+<td style="text-align:center">958</td>
+</tr>
+</tbody>
+</table>
+<p>下面，将结合上述汇总数据介绍如何使用 Python 第三方库 <a href="https://pyecharts.org/#/zh-cn/intro">pyecharts</a> 绘制条形图、饼图和雷达图。</p>
 <p><a href="https://echarts.apache.org/zh/index.html">Echarts</a> 是一个由百度开源的，使用 JavaScript 编写的数据可视化库，凭借着良好的交互性，精巧的图表设计，得到了众多开发者和客户的认可，目前 Echarts 在 <a href="https://github.com/apache/incubator-echarts">Github</a> 上的标星数达到了 36299，其使用者包括国家统计局、国家电网、中石化、中国人民保险、华为、阿里、腾讯、百度、新浪、网易、小米、滴滴等许多知名企业和大型机构。</p>
-<p>pyecharts 是由 <a href="https://chenjiandongx.com/">陈健冬</a> 开发，由 <a href="https://github.com/chenjiandongx">@chenjiandongx</a>、<a href="https://github.com/chfw">@chfw</a>、<a href="https://github.com/kinegratii">@kinegratii</a> 和 <a href="https://github.com/sunhailin-Leo">@sunhailin-Leo</a> 等维护的 Python 第三方数据可视化库。利用 pyecharts，使用 Python 就可以绘制出 Echarts 提供的许多漂亮的、动态的和带交互功能的图，目前该项目 Github 标星数为 6751.</p>
-<h2 id="1-&#26465;&#24418;&#22270;">1 &#26465;&#24418;&#22270;<a class="anchor-link" href="#1-&#26465;&#24418;&#22270;">&#182;</a></h2>
+<p>pyecharts 是由 <a href="https://chenjiandongx.com/">陈健冬</a> 开发，由 <a href="https://github.com/chenjiandongx">@chenjiandongx</a>、<a href="https://github.com/chfw">@chfw</a>、<a href="https://github.com/kinegratii">@kinegratii</a> 和 <a href="https://github.com/sunhailin-Leo">@sunhailin-Leo</a> 等维护的 Python 第三方数据可视化库。利用 pyecharts，使用 Python 就可以绘制出 Echarts 提供的许多漂亮的、带交互功能的图，目前该项目 Github 标星数为 6751.</p>
+<h2 id="1-&#21051;&#30011;&#20998;&#31867;&#22411;&#25968;&#25454;&#30340;&#22270;&#34920;">1 &#21051;&#30011;&#20998;&#31867;&#22411;&#25968;&#25454;&#30340;&#22270;&#34920;<a class="anchor-link" href="#1-&#21051;&#30011;&#20998;&#31867;&#22411;&#25968;&#25454;&#30340;&#22270;&#34920;">&#182;</a></h2><p>刻画分类变量数据的表为频数/频率表（frequency table），刻画两个以上分类变量数据的频数/频率表又称为列联表/交叉表（contingency/cross table），通过列联表，利用皮尔逊卡方检验，可以检验两个分类变量独立性，计算 Phi 系数、Carmer V 系数或列联系数等可以定量衡量两个分类变量的相关性。</p>
+<p>刻画单个分类型变量数据的图有</p>
+<ul>
+<li>条形图（bar plot）</li>
+<li>帕累托图（pareto plot）：条形图按从小到大排序，并添加累积频数线</li>
+<li>饼图（pie chart）</li>
+<li>扇图（fan chart）：饼图的改进版</li>
+<li>……</li>
+</ul>
+<p>刻画两个分类型变量数据的图有</p>
+<ul>
+<li>复式条形图（double bar plot）：条形图的推广</li>
+<li>环形图（ring plot）：饼图的推广</li>
+<li>脊形图（spine plot）</li>
+<li>雷达图（radar chart）</li>
+<li>……</li>
+</ul>
+<p>刻画三个以上分类型变量数据的图有</p>
+<ul>
+<li>马赛克图（mosaic plot）：脊形图的推广</li>
+<li>……</li>
+</ul>
+<p>下面要讲的各国家的奖牌类型分布以及各奖牌类型的国家分布，均涉及两个分类型变量国家和奖牌类型。因此，我们只讲如何利用 Python 包 pyecharts 画两个分类型变量数据的（复式）条形图，环形图和雷达图。需要指出的是，pyecharts 没有提供帕累托图、扇图、脊形图和马赛克图。</p>
+<h2 id="2-&#21508;&#22269;&#23478;&#30340;&#22870;&#29260;&#31867;&#22411;&#20998;&#24067;">2 &#21508;&#22269;&#23478;&#30340;&#22870;&#29260;&#31867;&#22411;&#20998;&#24067;<a class="anchor-link" href="#2-&#21508;&#22269;&#23478;&#30340;&#22870;&#29260;&#31867;&#22411;&#20998;&#24067;">&#182;</a></h2><h3 id="2.1-&#22797;&#24335;&#26465;&#24418;&#22270;">2.1 &#22797;&#24335;&#26465;&#24418;&#22270;<a class="anchor-link" href="#2.1-&#22797;&#24335;&#26465;&#24418;&#22270;">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -13323,10 +13567,9 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1"># import pandas as pd</span>
 <span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="k">import</span> <span class="n">Bar</span>
 <span class="kn">from</span> <span class="nn">pyecharts</span> <span class="k">import</span> <span class="n">options</span> <span class="k">as</span> <span class="n">opts</span>
-<span class="kn">from</span> <span class="nn">pyecharts.globals</span> <span class="k">import</span> <span class="n">ThemeType</span>
+
 
 <span class="n">dfValue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
                     <span class="p">[</span><span class="mi">36</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">37</span><span class="p">],</span>
@@ -13337,11 +13580,11 @@ div#notebook {
                     <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
                     <span class="p">[</span> <span class="mi">9</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
                     <span class="p">[</span> <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
-                    <span class="p">[</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">]])</span>
+                    <span class="p">[</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">107</span><span class="p">,</span><span class="mi">142</span><span class="p">,</span><span class="mi">165</span><span class="p">]])</span>
 <span class="n">dfIndex</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;中国&#39;</span><span class="p">,</span> <span class="s1">&#39;美国&#39;</span><span class="p">,</span> <span class="s1">&#39;俄罗斯&#39;</span><span class="p">,</span> <span class="s1">&#39;英国&#39;</span><span class="p">,</span> <span class="s1">&#39;德国&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;澳大利亚&#39;</span><span class="p">,</span> <span class="s1">&#39;韩国&#39;</span><span class="p">,</span> <span class="s1">&#39;日本&#39;</span><span class="p">,</span> <span class="s1">&#39;意大利&#39;</span><span class="p">,</span> <span class="s1">&#39;法国&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;澳大利亚&#39;</span><span class="p">,</span> <span class="s1">&#39;韩国&#39;</span><span class="p">,</span> <span class="s1">&#39;日本&#39;</span><span class="p">,</span> <span class="s1">&#39;意大利&#39;</span><span class="p">,</span> <span class="s1">&#39;法国&#39;</span><span class="p">,</span> <span class="s1">&#39;其它&#39;</span><span class="p">]</span>
 <span class="n">dfColumns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;金&#39;</span><span class="p">,</span> <span class="s1">&#39;银&#39;</span><span class="p">,</span> <span class="s1">&#39;铜&#39;</span><span class="p">]</span>
-<span class="c1"># medalData = pd.DataFrame(dfValue, dfIndex, dfColumns)</span>
 
 <span class="n">dfValueT</span> <span class="o">=</span> <span class="n">dfValue</span><span class="o">.</span><span class="n">T</span>
 
@@ -13352,11 +13595,11 @@ div#notebook {
     <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dfValueT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dfValueT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
-        <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;2008 年北京奥运会各国的奖牌分布&#39;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;仅包含金牌榜前 10 国家&#39;</span><span class="p">),</span>
+        <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;2008 年北京奥运会各国的奖牌分布&#39;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;并列条形图（仅包含金牌榜前 10 国家）&#39;</span><span class="p">),</span>
         <span class="n">legend_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LegendOpts</span><span class="p">(</span><span class="n">pos_left</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">),</span>
         <span class="n">yaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;奖牌数&quot;</span><span class="p">,</span> <span class="n">name_location</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">name_rotate</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">name_gap</span><span class="o">=</span><span class="mi">35</span><span class="p">),</span>
         <span class="n">xaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;国家&quot;</span><span class="p">,</span> <span class="n">name_location</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">name_gap</span><span class="o">=</span><span class="mi">35</span><span class="p">),</span>
-        <span class="n">datazoom_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">DataZoomOpts</span><span class="p">(</span><span class="n">type_</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">,</span> <span class="n">range_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">range_end</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+        <span class="n">datazoom_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">DataZoomOpts</span><span class="p">(</span><span class="n">type_</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">,</span> <span class="n">range_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">range_end</span><span class="o">=</span><span class="mi">90</span><span class="p">),</span>
         <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -13401,13 +13644,13 @@ div#notebook {
     });
 </script>
 
-        <div id="134ac2e4de4d44b091d5e3c6e1a83676" style="width:900px; height:500px;"></div>
+        <div id="5768463603354ef0ac50fab12bf19553" style="width:900px; height:500px;"></div>
 
 <script>
         require(['echarts'], function(echarts) {
-                var chart_134ac2e4de4d44b091d5e3c6e1a83676 = echarts.init(
-                    document.getElementById('134ac2e4de4d44b091d5e3c6e1a83676'), 'white', {renderer: 'canvas'});
-                var option_134ac2e4de4d44b091d5e3c6e1a83676 = {
+                var chart_5768463603354ef0ac50fab12bf19553 = echarts.init(
+                    document.getElementById('5768463603354ef0ac50fab12bf19553'), 'white', {renderer: 'canvas'});
+                var option_5768463603354ef0ac50fab12bf19553 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -13456,7 +13699,8 @@ div#notebook {
                 13,
                 9,
                 8,
-                7
+                7,
+                107
             ],
             "barCategoryGap": "20%",
             "barGap": 0,
@@ -13479,7 +13723,8 @@ div#notebook {
                 11,
                 7,
                 9,
-                16
+                16,
+                142
             ],
             "barCategoryGap": "20%",
             "barGap": 0,
@@ -13502,7 +13747,8 @@ div#notebook {
                 8,
                 9,
                 10,
-                19
+                19,
+                165
             ],
             "barCategoryGap": "20%",
             "barGap": 0,
@@ -13572,7 +13818,8 @@ div#notebook {
                 "\u97e9\u56fd",
                 "\u65e5\u672c",
                 "\u610f\u5927\u5229",
-                "\u6cd5\u56fd"
+                "\u6cd5\u56fd",
+                "\u5176\u5b83"
             ]
         }
     ],
@@ -13603,7 +13850,7 @@ div#notebook {
     "title": [
         {
             "text": "2008 \u5e74\u5317\u4eac\u5965\u8fd0\u4f1a\u5404\u56fd\u7684\u5956\u724c\u5206\u5e03",
-            "subtext": "\u4ec5\u5305\u542b\u91d1\u724c\u699c\u524d 10 \u56fd\u5bb6"
+            "subtext": "\u5e76\u5217\u6761\u5f62\u56fe\uff08\u4ec5\u5305\u542b\u91d1\u724c\u699c\u524d 10 \u56fd\u5bb6\uff09"
         }
     ],
     "toolbox": {
@@ -13641,12 +13888,12 @@ div#notebook {
         "type": "inside",
         "realtime": true,
         "start": 0,
-        "end": 100,
+        "end": 90,
         "orient": "horizontal",
         "zoomLock": false
     }
 };
-                chart_134ac2e4de4d44b091d5e3c6e1a83676.setOption(option_134ac2e4de4d44b091d5e3c6e1a83676);
+                chart_5768463603354ef0ac50fab12bf19553.setOption(option_5768463603354ef0ac50fab12bf19553);
         });
     </script>
 
@@ -13658,43 +13905,25 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>从上面的（复式）条形图中，我们可以看到，就各国家的奖牌类型分布而言：</p>
-<ul>
-<li>美国、澳大利亚、日本、意大利三种类型奖牌的数目基本一致</li>
-<li>中国、俄罗斯、英国、德国三种类型奖牌的数目呈现出金牌铜牌较多、银牌较少的模式</li>
-<li>比较特别的是韩国和法国，韩国铜牌数量相较金牌和银牌少很多，法国金牌数量相较银牌和铜牌少很多</li>
-</ul>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">Bar</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">add_xaxis</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_xaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dfValueT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dfValueT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dfValueT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span><span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">is_show</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
     <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
-        <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;2008 年北京奥运会各奖牌的国家分布&#39;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;仅包含金牌榜前 10 国家&#39;</span><span class="p">),</span>
-        <span class="n">legend_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LegendOpts</span><span class="p">(</span><span class="n">pos_top</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">pos_right</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">),</span>
-        <span class="n">yaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;国家&quot;</span><span class="p">,</span> <span class="n">name_location</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">name_rotate</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">name_gap</span><span class="o">=</span><span class="mi">35</span><span class="p">),</span>
-        <span class="n">xaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;奖牌类型&quot;</span><span class="p">,</span> <span class="n">name_location</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">name_gap</span><span class="o">=</span><span class="mi">35</span><span class="p">),</span>
-        <span class="n">datazoom_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">DataZoomOpts</span><span class="p">(</span><span class="n">type_</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">,</span> <span class="n">range_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">range_end</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+        <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;2008 年北京奥运会各国的奖牌分布&#39;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;堆叠条形图（仅包含金牌榜前 10 国家）&#39;</span><span class="p">),</span>
+        <span class="n">legend_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LegendOpts</span><span class="p">(</span><span class="n">pos_left</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">),</span>
+        <span class="n">yaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;奖牌数&quot;</span><span class="p">,</span> <span class="n">name_location</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">name_rotate</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> 
+                                 <span class="n">name_gap</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">max_</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">dfValue</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))),</span>
+        <span class="n">xaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;国家&quot;</span><span class="p">,</span> <span class="n">name_location</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">name_gap</span><span class="o">=</span><span class="mi">35</span><span class="p">),</span>
+        <span class="n">datazoom_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">DataZoomOpts</span><span class="p">(</span><span class="n">type_</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">,</span> <span class="n">range_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">range_end</span><span class="o">=</span><span class="mi">90</span><span class="p">),</span>
         <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -13725,7 +13954,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[30]:</div>
 
 
 
@@ -13739,13 +13968,13 @@ div#notebook {
     });
 </script>
 
-        <div id="e1f439eba99e4939a2183b23bd11a64c" style="width:900px; height:500px;"></div>
+        <div id="6f699dc1505c4033a3296757d225fe76" style="width:900px; height:500px;"></div>
 
 <script>
         require(['echarts'], function(echarts) {
-                var chart_e1f439eba99e4939a2183b23bd11a64c = echarts.init(
-                    document.getElementById('e1f439eba99e4939a2183b23bd11a64c'), 'white', {renderer: 'canvas'});
-                var option_e1f439eba99e4939a2183b23bd11a64c = {
+                var chart_6f699dc1505c4033a3296757d225fe76 = echarts.init(
+                    document.getElementById('6f699dc1505c4033a3296757d225fe76'), 'white', {renderer: 'canvas'});
+                var option_6f699dc1505c4033a3296757d225fe76 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -13783,195 +14012,112 @@ div#notebook {
     "series": [
         {
             "type": "bar",
-            "name": "\u4e2d\u56fd",
+            "name": "\u91d1",
             "data": [
                 48,
-                22,
-                30
-            ],
-            "barCategoryGap": "20%",
-            "barGap": 0,
-            "label": {
-                "show": true,
-                "position": "top",
-                "margin": 8
-            }
-        },
-        {
-            "type": "bar",
-            "name": "\u7f8e\u56fd",
-            "data": [
                 36,
-                39,
-                37
+                22,
+                19,
+                16,
+                14,
+                13,
+                9,
+                8,
+                7,
+                107
             ],
+            "stack": "stack1",
             "barCategoryGap": "20%",
             "barGap": 0,
             "label": {
-                "show": true,
+                "show": false,
                 "position": "top",
                 "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
             }
         },
         {
             "type": "bar",
-            "name": "\u4fc4\u7f57\u65af",
+            "name": "\u94f6",
             "data": [
                 22,
+                39,
                 15,
-                23
-            ],
-            "barCategoryGap": "20%",
-            "barGap": 0,
-            "label": {
-                "show": true,
-                "position": "top",
-                "margin": 8
-            }
-        },
-        {
-            "type": "bar",
-            "name": "\u82f1\u56fd",
-            "data": [
-                19,
                 13,
-                15
-            ],
-            "barCategoryGap": "20%",
-            "barGap": 0,
-            "label": {
-                "show": true,
-                "position": "top",
-                "margin": 8
-            }
-        },
-        {
-            "type": "bar",
-            "name": "\u5fb7\u56fd",
-            "data": [
-                16,
                 10,
-                15
-            ],
-            "barCategoryGap": "20%",
-            "barGap": 0,
-            "label": {
-                "show": true,
-                "position": "top",
-                "margin": 8
-            }
-        },
-        {
-            "type": "bar",
-            "name": "\u6fb3\u5927\u5229\u4e9a",
-            "data": [
-                14,
                 15,
-                17
-            ],
-            "barCategoryGap": "20%",
-            "barGap": 0,
-            "label": {
-                "show": true,
-                "position": "top",
-                "margin": 8
-            }
-        },
-        {
-            "type": "bar",
-            "name": "\u97e9\u56fd",
-            "data": [
-                13,
                 11,
-                8
-            ],
-            "barCategoryGap": "20%",
-            "barGap": 0,
-            "label": {
-                "show": true,
-                "position": "top",
-                "margin": 8
-            }
-        },
-        {
-            "type": "bar",
-            "name": "\u65e5\u672c",
-            "data": [
-                9,
                 7,
-                9
+                9,
+                16,
+                142
             ],
+            "stack": "stack1",
             "barCategoryGap": "20%",
             "barGap": 0,
             "label": {
-                "show": true,
+                "show": false,
                 "position": "top",
                 "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
             }
         },
         {
             "type": "bar",
-            "name": "\u610f\u5927\u5229",
+            "name": "\u94dc",
             "data": [
+                30,
+                37,
+                23,
+                15,
+                15,
+                17,
                 8,
                 9,
-                10
+                10,
+                19,
+                165
             ],
+            "stack": "stack1",
             "barCategoryGap": "20%",
             "barGap": 0,
             "label": {
-                "show": true,
+                "show": false,
                 "position": "top",
                 "margin": 8
-            }
-        },
-        {
-            "type": "bar",
-            "name": "\u6cd5\u56fd",
-            "data": [
-                7,
-                16,
-                19
-            ],
-            "barCategoryGap": "20%",
-            "barGap": 0,
-            "label": {
+            },
+            "rippleEffect": {
                 "show": true,
-                "position": "top",
-                "margin": 8
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
             }
         }
     ],
     "legend": [
         {
             "data": [
-                "\u4e2d\u56fd",
-                "\u7f8e\u56fd",
-                "\u4fc4\u7f57\u65af",
-                "\u82f1\u56fd",
-                "\u5fb7\u56fd",
-                "\u6fb3\u5927\u5229\u4e9a",
-                "\u97e9\u56fd",
-                "\u65e5\u672c",
-                "\u610f\u5927\u5229",
-                "\u6cd5\u56fd"
+                "\u91d1",
+                "\u94f6",
+                "\u94dc"
             ],
             "selected": {
-                "\u4e2d\u56fd": true,
-                "\u7f8e\u56fd": true,
-                "\u4fc4\u7f57\u65af": true,
-                "\u82f1\u56fd": true,
-                "\u5fb7\u56fd": true,
-                "\u6fb3\u5927\u5229\u4e9a": true,
-                "\u97e9\u56fd": true,
-                "\u65e5\u672c": true,
-                "\u610f\u5927\u5229": true,
-                "\u6cd5\u56fd": true
+                "\u91d1": true,
+                "\u94f6": true,
+                "\u94dc": true
             },
             "show": true,
-            "right": "right",
-            "top": 50,
-            "orient": "vertical"
+            "left": "center"
         }
     ],
     "tooltip": {
@@ -13988,7 +14134,7 @@ div#notebook {
     },
     "xAxis": [
         {
-            "name": "\u5956\u724c\u7c7b\u578b",
+            "name": "\u56fd\u5bb6",
             "show": true,
             "scale": false,
             "nameLocation": "center",
@@ -14008,15 +14154,23 @@ div#notebook {
                 }
             },
             "data": [
-                "\u91d1",
-                "\u94f6",
-                "\u94dc"
+                "\u4e2d\u56fd",
+                "\u7f8e\u56fd",
+                "\u4fc4\u7f57\u65af",
+                "\u82f1\u56fd",
+                "\u5fb7\u56fd",
+                "\u6fb3\u5927\u5229\u4e9a",
+                "\u97e9\u56fd",
+                "\u65e5\u672c",
+                "\u610f\u5927\u5229",
+                "\u6cd5\u56fd",
+                "\u5176\u5b83"
             ]
         }
     ],
     "yAxis": [
         {
-            "name": "\u56fd\u5bb6",
+            "name": "\u5956\u724c\u6570",
             "show": true,
             "scale": false,
             "nameLocation": "center",
@@ -14026,6 +14180,7 @@ div#notebook {
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
+            "max": 112,
             "minInterval": 0,
             "splitLine": {
                 "show": false,
@@ -14040,8 +14195,8 @@ div#notebook {
     ],
     "title": [
         {
-            "text": "2008 \u5e74\u5317\u4eac\u5965\u8fd0\u4f1a\u5404\u5956\u724c\u7684\u56fd\u5bb6\u5206\u5e03",
-            "subtext": "\u4ec5\u5305\u542b\u91d1\u724c\u699c\u524d 10 \u56fd\u5bb6"
+            "text": "2008 \u5e74\u5317\u4eac\u5965\u8fd0\u4f1a\u5404\u56fd\u7684\u5956\u724c\u5206\u5e03",
+            "subtext": "\u5806\u53e0\u6761\u5f62\u56fe\uff08\u4ec5\u5305\u542b\u91d1\u724c\u699c\u524d 10 \u56fd\u5bb6\uff09"
         }
     ],
     "toolbox": {
@@ -14079,12 +14234,12 @@ div#notebook {
         "type": "inside",
         "realtime": true,
         "start": 0,
-        "end": 100,
+        "end": 90,
         "orient": "horizontal",
         "zoomLock": false
     }
 };
-                chart_e1f439eba99e4939a2183b23bd11a64c.setOption(option_e1f439eba99e4939a2183b23bd11a64c);
+                chart_6f699dc1505c4033a3296757d225fe76.setOption(option_6f699dc1505c4033a3296757d225fe76);
         });
     </script>
 
@@ -14099,25 +14254,23 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>从上面的（复式）条形图中，我们可以看到，就各奖牌类型的国家分布而言：</p>
+<p>从上面的（复式）条形图中，我们可以看到，就各国家的奖牌类型分布而言：</p>
 <ul>
-<li>金牌的国家分布与银牌或铜牌的国家分布存在较大差异</li>
-<li>银牌的国家分布和铜牌的国家分布差异较小</li>
+<li>美国、澳大利亚、日本、意大利三种类型奖牌的数目基本一致</li>
+<li>中国、俄罗斯、英国、德国三种类型奖牌的数目呈现出金牌铜牌较多、银牌较少的模式</li>
+<li>比较特别的是韩国和法国，韩国铜牌数量相较金牌和银牌少很多，法国金牌数量相较银牌和铜牌少很多</li>
 </ul>
-<p><strong>综上：各国家的奖牌类型分布存在一定的相似性和差异性，各奖牌类型的国家分布也存在一定的相似性和差异性。</strong></p>
-<p>下面通过饼图、雷达图进一步验证这一结论。</p>
-<h2 id="2-&#39292;&#22270;">2 &#39292;&#22270;<a class="anchor-link" href="#2-&#39292;&#22270;">&#182;</a></h2>
+<p>下面通过环形图、雷达图进一步验证这一结论。</p>
+<h3 id="2.2-&#29615;&#24418;&#22270;">2.2 &#29615;&#24418;&#22270;<a class="anchor-link" href="#2.2-&#29615;&#24418;&#22270;">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="k">import</span> <span class="n">Page</span><span class="p">,</span> <span class="n">Pie</span>
-
-<span class="n">dfIndexS</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dfIndex</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="k">import</span> <span class="n">Pie</span>
 
 <span class="n">dfValueP</span> <span class="o">=</span> <span class="n">dfValue</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">dfValue</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">round_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="nb">round</span><span class="p">)</span>
@@ -14125,18 +14278,18 @@ div#notebook {
 
 <span class="n">pie</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">Pie</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndexS</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;10%&quot;</span><span class="p">,</span> <span class="s2">&quot;25%&quot;</span><span class="p">])</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndexS</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;26%&quot;</span><span class="p">,</span> <span class="s2">&quot;41%&quot;</span><span class="p">])</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndexS</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;42%&quot;</span><span class="p">,</span> <span class="s2">&quot;57%&quot;</span><span class="p">])</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndexS</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;58%&quot;</span><span class="p">,</span> <span class="s2">&quot;73%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;10%&quot;</span><span class="p">,</span> <span class="s2">&quot;25%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;26%&quot;</span><span class="p">,</span> <span class="s2">&quot;41%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;42%&quot;</span><span class="p">,</span> <span class="s2">&quot;57%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;58%&quot;</span><span class="p">,</span> <span class="s2">&quot;73%&quot;</span><span class="p">])</span>
         <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
-            <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;美澳日意四国的奖牌构成&quot;</span><span class="p">),</span>
+            <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;美澳日意四国的奖牌构成&quot;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;环形图&#39;</span><span class="p">),</span>
             <span class="c1">#tooltip_opts=opts.TooltipOpts(formatter=&quot;{a}: \n{b}:{c}:%&quot;),</span>
             <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
         <span class="p">)</span>
         <span class="c1">#.set_series_opts(label_opts=opts.LabelOpts(is_show=False))</span>
         <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span><span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">formatter</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{c}</span><span class="s2">%&quot;</span><span class="p">,</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">))</span>
-    <span class="p">)</span>
+<span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">pie</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
@@ -14164,7 +14317,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -14178,13 +14331,13 @@ div#notebook {
     });
 </script>
 
-        <div id="ceb2384f8c9141769eb4db1188a210f8" style="width:900px; height:500px;"></div>
+        <div id="6fa43246ad6840838939fed57abb03a5" style="width:900px; height:500px;"></div>
 
 <script>
         require(['echarts'], function(echarts) {
-                var chart_ceb2384f8c9141769eb4db1188a210f8 = echarts.init(
-                    document.getElementById('ceb2384f8c9141769eb4db1188a210f8'), 'white', {renderer: 'canvas'});
-                var option_ceb2384f8c9141769eb4db1188a210f8 = {
+                var chart_6fa43246ad6840838939fed57abb03a5 = echarts.init(
+                    document.getElementById('6fa43246ad6840838939fed57abb03a5'), 'white', {renderer: 'canvas'});
+                var option_6fa43246ad6840838939fed57abb03a5 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -14222,7 +14375,7 @@ div#notebook {
     "series": [
         {
             "type": "pie",
-            "name": "\u7f8e",
+            "name": "\u7f8e\u56fd",
             "clockwise": true,
             "data": [
                 {
@@ -14261,7 +14414,7 @@ div#notebook {
         },
         {
             "type": "pie",
-            "name": "\u6fb3",
+            "name": "\u6fb3\u5927\u5229\u4e9a",
             "clockwise": true,
             "data": [
                 {
@@ -14300,7 +14453,7 @@ div#notebook {
         },
         {
             "type": "pie",
-            "name": "\u65e5",
+            "name": "\u65e5\u672c",
             "clockwise": true,
             "data": [
                 {
@@ -14339,7 +14492,7 @@ div#notebook {
         },
         {
             "type": "pie",
-            "name": "\u610f",
+            "name": "\u610f\u5927\u5229",
             "clockwise": true,
             "data": [
                 {
@@ -14402,7 +14555,8 @@ div#notebook {
     },
     "title": [
         {
-            "text": "\u7f8e\u6fb3\u65e5\u610f\u56db\u56fd\u7684\u5956\u724c\u6784\u6210"
+            "text": "\u7f8e\u6fb3\u65e5\u610f\u56db\u56fd\u7684\u5956\u724c\u6784\u6210",
+            "subtext": "\u73af\u5f62\u56fe"
         }
     ],
     "toolbox": {
@@ -14436,7 +14590,7 @@ div#notebook {
         }
     }
 };
-                chart_ceb2384f8c9141769eb4db1188a210f8.setOption(option_ceb2384f8c9141769eb4db1188a210f8);
+                chart_6fa43246ad6840838939fed57abb03a5.setOption(option_6fa43246ad6840838939fed57abb03a5);
         });
     </script>
 
@@ -14450,22 +14604,22 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pie</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">Pie</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndexS</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;10%&quot;</span><span class="p">,</span> <span class="s2">&quot;25%&quot;</span><span class="p">])</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndexS</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;26%&quot;</span><span class="p">,</span> <span class="s2">&quot;41%&quot;</span><span class="p">])</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndexS</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;42%&quot;</span><span class="p">,</span> <span class="s2">&quot;57%&quot;</span><span class="p">])</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndexS</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;58%&quot;</span><span class="p">,</span> <span class="s2">&quot;73%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;10%&quot;</span><span class="p">,</span> <span class="s2">&quot;25%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;26%&quot;</span><span class="p">,</span> <span class="s2">&quot;41%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;42%&quot;</span><span class="p">,</span> <span class="s2">&quot;57%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;58%&quot;</span><span class="p">,</span> <span class="s2">&quot;73%&quot;</span><span class="p">])</span>
         <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
-            <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;中俄英德四国的奖牌构成&quot;</span><span class="p">),</span>
+            <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;中俄英德四国的奖牌构成&quot;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;环形图&#39;</span><span class="p">),</span>
             <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
         <span class="p">)</span>
         <span class="c1">#.set_series_opts(label_opts=opts.LabelOpts(is_show=False))</span>
         <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span><span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">formatter</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{c}</span><span class="s2">%&quot;</span><span class="p">,</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">))</span>
-    <span class="p">)</span>
+<span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">pie</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
@@ -14493,7 +14647,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -14507,13 +14661,13 @@ div#notebook {
     });
 </script>
 
-        <div id="8ebfd8f8593c46068c47f3e2ae9fcbe7" style="width:900px; height:500px;"></div>
+        <div id="cdee3b1cd01840f5b0f483fcbe638ccc" style="width:900px; height:500px;"></div>
 
 <script>
         require(['echarts'], function(echarts) {
-                var chart_8ebfd8f8593c46068c47f3e2ae9fcbe7 = echarts.init(
-                    document.getElementById('8ebfd8f8593c46068c47f3e2ae9fcbe7'), 'white', {renderer: 'canvas'});
-                var option_8ebfd8f8593c46068c47f3e2ae9fcbe7 = {
+                var chart_cdee3b1cd01840f5b0f483fcbe638ccc = echarts.init(
+                    document.getElementById('cdee3b1cd01840f5b0f483fcbe638ccc'), 'white', {renderer: 'canvas'});
+                var option_cdee3b1cd01840f5b0f483fcbe638ccc = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -14551,7 +14705,7 @@ div#notebook {
     "series": [
         {
             "type": "pie",
-            "name": "\u4e2d",
+            "name": "\u4e2d\u56fd",
             "clockwise": true,
             "data": [
                 {
@@ -14590,7 +14744,7 @@ div#notebook {
         },
         {
             "type": "pie",
-            "name": "\u4fc4",
+            "name": "\u4fc4\u7f57\u65af",
             "clockwise": true,
             "data": [
                 {
@@ -14629,7 +14783,7 @@ div#notebook {
         },
         {
             "type": "pie",
-            "name": "\u82f1",
+            "name": "\u82f1\u56fd",
             "clockwise": true,
             "data": [
                 {
@@ -14668,7 +14822,7 @@ div#notebook {
         },
         {
             "type": "pie",
-            "name": "\u5fb7",
+            "name": "\u5fb7\u56fd",
             "clockwise": true,
             "data": [
                 {
@@ -14731,7 +14885,8 @@ div#notebook {
     },
     "title": [
         {
-            "text": "\u4e2d\u4fc4\u82f1\u5fb7\u56db\u56fd\u7684\u5956\u724c\u6784\u6210"
+            "text": "\u4e2d\u4fc4\u82f1\u5fb7\u56db\u56fd\u7684\u5956\u724c\u6784\u6210",
+            "subtext": "\u73af\u5f62\u56fe"
         }
     ],
     "toolbox": {
@@ -14765,7 +14920,7 @@ div#notebook {
         }
     }
 };
-                chart_8ebfd8f8593c46068c47f3e2ae9fcbe7.setOption(option_8ebfd8f8593c46068c47f3e2ae9fcbe7);
+                chart_cdee3b1cd01840f5b0f483fcbe638ccc.setOption(option_cdee3b1cd01840f5b0f483fcbe638ccc);
         });
     </script>
 
@@ -14779,20 +14934,20 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pie</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">Pie</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndexS</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;40%&quot;</span><span class="p">,</span> <span class="s2">&quot;55%&quot;</span><span class="p">])</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndexS</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;56%&quot;</span><span class="p">,</span> <span class="s2">&quot;71%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;40%&quot;</span><span class="p">,</span> <span class="s2">&quot;55%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">,</span> <span class="n">dfValueP</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;56%&quot;</span><span class="p">,</span> <span class="s2">&quot;71%&quot;</span><span class="p">])</span>
         <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
-            <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;韩法两国的奖牌构成&quot;</span><span class="p">),</span>
+            <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;韩法两国的奖牌构成&quot;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;环形图&#39;</span><span class="p">),</span>
             <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
         <span class="p">)</span>
         <span class="c1">#.set_series_opts(label_opts=opts.LabelOpts(is_show=False))</span>
         <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span><span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">formatter</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{c}</span><span class="s2">%&quot;</span><span class="p">,</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">))</span>
-    <span class="p">)</span>
+<span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">pie</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
@@ -14820,7 +14975,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[37]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -14834,13 +14989,13 @@ div#notebook {
     });
 </script>
 
-        <div id="aa2044abf05a42529c738e39f5a877f4" style="width:900px; height:500px;"></div>
+        <div id="21536ccfa0174341ab0a4069254fa707" style="width:900px; height:500px;"></div>
 
 <script>
         require(['echarts'], function(echarts) {
-                var chart_aa2044abf05a42529c738e39f5a877f4 = echarts.init(
-                    document.getElementById('aa2044abf05a42529c738e39f5a877f4'), 'white', {renderer: 'canvas'});
-                var option_aa2044abf05a42529c738e39f5a877f4 = {
+                var chart_21536ccfa0174341ab0a4069254fa707 = echarts.init(
+                    document.getElementById('21536ccfa0174341ab0a4069254fa707'), 'white', {renderer: 'canvas'});
+                var option_21536ccfa0174341ab0a4069254fa707 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -14878,7 +15033,7 @@ div#notebook {
     "series": [
         {
             "type": "pie",
-            "name": "\u97e9",
+            "name": "\u97e9\u56fd",
             "clockwise": true,
             "data": [
                 {
@@ -14917,7 +15072,7 @@ div#notebook {
         },
         {
             "type": "pie",
-            "name": "\u6cd5",
+            "name": "\u6cd5\u56fd",
             "clockwise": true,
             "data": [
                 {
@@ -14980,7 +15135,8 @@ div#notebook {
     },
     "title": [
         {
-            "text": "\u97e9\u6cd5\u4e24\u56fd\u7684\u5956\u724c\u6784\u6210"
+            "text": "\u97e9\u6cd5\u4e24\u56fd\u7684\u5956\u724c\u6784\u6210",
+            "subtext": "\u73af\u5f62\u56fe"
         }
     ],
     "toolbox": {
@@ -15014,396 +15170,7 @@ div#notebook {
         }
     }
 };
-                chart_aa2044abf05a42529c738e39f5a877f4.setOption(option_aa2044abf05a42529c738e39f5a877f4);
-        });
-    </script>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfValueTP</span> <span class="o">=</span> <span class="n">dfValue</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">dfValue</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">round_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="nb">round</span><span class="p">)</span>
-<span class="n">dfValueTP</span> <span class="o">=</span> <span class="n">round_vec</span><span class="p">(</span><span class="n">dfValueTP</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-
-<span class="n">pie</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">Pie</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">,</span> <span class="n">dfValueTP</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;30%&quot;</span><span class="p">,</span> <span class="s2">&quot;45%&quot;</span><span class="p">])</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">,</span> <span class="n">dfValueTP</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;46%&quot;</span><span class="p">,</span> <span class="s2">&quot;61%&quot;</span><span class="p">])</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">,</span> <span class="n">dfValueTP</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;62%&quot;</span><span class="p">,</span> <span class="s2">&quot;77%&quot;</span><span class="p">])</span>
-        <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
-            <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;金银铜牌的国家构成&quot;</span><span class="p">),</span>
-            <span class="n">legend_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LegendOpts</span><span class="p">(</span><span class="n">pos_top</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">pos_right</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">),</span>
-            <span class="c1">#tooltip_opts=opts.TooltipOpts(formatter=&quot;{a}: \n{b}:{c}:%&quot;),</span>
-            <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
-        <span class="p">)</span>
-        <span class="c1">#.set_series_opts(label_opts=opts.LabelOpts(is_show=False))</span>
-        <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span><span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">formatter</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{c}</span><span class="s2">%&quot;</span><span class="p">,</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">))</span>
-    <span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">pie</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-
-<script>
-    require.config({
-        paths: {
-            'echarts':'https://assets.pyecharts.org/assets/echarts.min'
-        }
-    });
-</script>
-
-        <div id="7e45f754550545a6ba36d37f90856b1a" style="width:900px; height:500px;"></div>
-
-<script>
-        require(['echarts'], function(echarts) {
-                var chart_7e45f754550545a6ba36d37f90856b1a = echarts.init(
-                    document.getElementById('7e45f754550545a6ba36d37f90856b1a'), 'white', {renderer: 'canvas'});
-                var option_7e45f754550545a6ba36d37f90856b1a = {
-    "animation": true,
-    "animationThreshold": 2000,
-    "animationDuration": 1000,
-    "animationEasing": "cubicOut",
-    "animationDelay": 0,
-    "animationDurationUpdate": 300,
-    "animationEasingUpdate": "cubicOut",
-    "animationDelayUpdate": 0,
-    "color": [
-        "#c23531",
-        "#2f4554",
-        "#61a0a8",
-        "#d48265",
-        "#749f83",
-        "#ca8622",
-        "#bda29a",
-        "#6e7074",
-        "#546570",
-        "#c4ccd3",
-        "#f05b72",
-        "#ef5b9c",
-        "#f47920",
-        "#905a3d",
-        "#fab27b",
-        "#2a5caa",
-        "#444693",
-        "#726930",
-        "#b2d235",
-        "#6d8346",
-        "#ac6767",
-        "#1d953f",
-        "#6950a1",
-        "#918597"
-    ],
-    "series": [
-        {
-            "type": "pie",
-            "name": "\u91d1",
-            "clockwise": true,
-            "data": [
-                {
-                    "name": "\u4e2d\u56fd",
-                    "value": 25.0
-                },
-                {
-                    "name": "\u7f8e\u56fd",
-                    "value": 19.0
-                },
-                {
-                    "name": "\u4fc4\u7f57\u65af",
-                    "value": 11.0
-                },
-                {
-                    "name": "\u82f1\u56fd",
-                    "value": 10.0
-                },
-                {
-                    "name": "\u5fb7\u56fd",
-                    "value": 8.0
-                },
-                {
-                    "name": "\u6fb3\u5927\u5229\u4e9a",
-                    "value": 7.0
-                },
-                {
-                    "name": "\u97e9\u56fd",
-                    "value": 7.0
-                },
-                {
-                    "name": "\u65e5\u672c",
-                    "value": 5.0
-                },
-                {
-                    "name": "\u610f\u5927\u5229",
-                    "value": 4.0
-                },
-                {
-                    "name": "\u6cd5\u56fd",
-                    "value": 4.0
-                }
-            ],
-            "radius": [
-                "30%",
-                "45%"
-            ],
-            "center": [
-                "50%",
-                "50%"
-            ],
-            "label": {
-                "show": true,
-                "position": "inside",
-                "margin": 8,
-                "formatter": "{c}%"
-            },
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
-            }
-        },
-        {
-            "type": "pie",
-            "name": "\u94f6",
-            "clockwise": true,
-            "data": [
-                {
-                    "name": "\u4e2d\u56fd",
-                    "value": 14.0
-                },
-                {
-                    "name": "\u7f8e\u56fd",
-                    "value": 25.0
-                },
-                {
-                    "name": "\u4fc4\u7f57\u65af",
-                    "value": 10.0
-                },
-                {
-                    "name": "\u82f1\u56fd",
-                    "value": 8.0
-                },
-                {
-                    "name": "\u5fb7\u56fd",
-                    "value": 6.0
-                },
-                {
-                    "name": "\u6fb3\u5927\u5229\u4e9a",
-                    "value": 10.0
-                },
-                {
-                    "name": "\u97e9\u56fd",
-                    "value": 7.0
-                },
-                {
-                    "name": "\u65e5\u672c",
-                    "value": 4.0
-                },
-                {
-                    "name": "\u610f\u5927\u5229",
-                    "value": 6.0
-                },
-                {
-                    "name": "\u6cd5\u56fd",
-                    "value": 10.0
-                }
-            ],
-            "radius": [
-                "46%",
-                "61%"
-            ],
-            "center": [
-                "50%",
-                "50%"
-            ],
-            "label": {
-                "show": true,
-                "position": "inside",
-                "margin": 8,
-                "formatter": "{c}%"
-            },
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
-            }
-        },
-        {
-            "type": "pie",
-            "name": "\u94dc",
-            "clockwise": true,
-            "data": [
-                {
-                    "name": "\u4e2d\u56fd",
-                    "value": 16.0
-                },
-                {
-                    "name": "\u7f8e\u56fd",
-                    "value": 20.0
-                },
-                {
-                    "name": "\u4fc4\u7f57\u65af",
-                    "value": 13.0
-                },
-                {
-                    "name": "\u82f1\u56fd",
-                    "value": 8.0
-                },
-                {
-                    "name": "\u5fb7\u56fd",
-                    "value": 8.0
-                },
-                {
-                    "name": "\u6fb3\u5927\u5229\u4e9a",
-                    "value": 9.0
-                },
-                {
-                    "name": "\u97e9\u56fd",
-                    "value": 4.0
-                },
-                {
-                    "name": "\u65e5\u672c",
-                    "value": 5.0
-                },
-                {
-                    "name": "\u610f\u5927\u5229",
-                    "value": 5.0
-                },
-                {
-                    "name": "\u6cd5\u56fd",
-                    "value": 10.0
-                }
-            ],
-            "radius": [
-                "62%",
-                "77%"
-            ],
-            "center": [
-                "50%",
-                "50%"
-            ],
-            "label": {
-                "show": true,
-                "position": "inside",
-                "margin": 8,
-                "formatter": "{c}%"
-            },
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
-            }
-        }
-    ],
-    "legend": [
-        {
-            "data": [
-                "\u4e2d\u56fd",
-                "\u7f8e\u56fd",
-                "\u4fc4\u7f57\u65af",
-                "\u82f1\u56fd",
-                "\u5fb7\u56fd",
-                "\u6fb3\u5927\u5229\u4e9a",
-                "\u97e9\u56fd",
-                "\u65e5\u672c",
-                "\u610f\u5927\u5229",
-                "\u6cd5\u56fd"
-            ],
-            "selected": {},
-            "show": true,
-            "right": "right",
-            "top": 50,
-            "orient": "vertical"
-        }
-    ],
-    "tooltip": {
-        "show": true,
-        "trigger": "item",
-        "triggerOn": "mousemove|click",
-        "axisPointer": {
-            "type": "line"
-        },
-        "textStyle": {
-            "fontSize": 14
-        },
-        "borderWidth": 0
-    },
-    "title": [
-        {
-            "text": "\u91d1\u94f6\u94dc\u724c\u7684\u56fd\u5bb6\u6784\u6210"
-        }
-    ],
-    "toolbox": {
-        "show": true,
-        "orient": "horizontal",
-        "itemSize": 15,
-        "itemGap": 10,
-        "left": "80%",
-        "feature": {
-            "saveAsImage": {
-                "show": true,
-                "title": "save as image",
-                "type": "png"
-            },
-            "restore": {
-                "show": true,
-                "title": "restore"
-            },
-            "dataView": {
-                "show": true,
-                "title": "data view",
-                "readOnly": false
-            },
-            "dataZoom": {
-                "show": true,
-                "title": {
-                    "zoom": "data zoom",
-                    "back": "data zoom restore"
-                }
-            }
-        }
-    }
-};
-                chart_7e45f754550545a6ba36d37f90856b1a.setOption(option_7e45f754550545a6ba36d37f90856b1a);
+                chart_21536ccfa0174341ab0a4069254fa707.setOption(option_21536ccfa0174341ab0a4069254fa707);
         });
     </script>
 
@@ -15418,16 +15185,16 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3-&#38647;&#36798;&#22270;">3 &#38647;&#36798;&#22270;<a class="anchor-link" href="#3-&#38647;&#36798;&#22270;">&#182;</a></h2>
+<h3 id="2.3-&#38647;&#36798;&#22270;">2.3 &#38647;&#36798;&#22270;<a class="anchor-link" href="#2.3-&#38647;&#36798;&#22270;">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="k">import</span> <span class="n">Page</span><span class="p">,</span> <span class="n">Radar</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="k">import</span> <span class="n">Radar</span>
 
 
 <span class="n">radar</span> <span class="o">=</span> <span class="p">(</span>
@@ -15444,8 +15211,11 @@ div#notebook {
           <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="n">dfValue</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#2E8B57&quot;</span><span class="p">)</span>
           <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="n">dfValue</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#FFA500&quot;</span><span class="p">)</span>
           <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span><span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">is_show</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-          <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span><span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;美澳日意四国的奖牌构成&quot;</span><span class="p">))</span>
-         <span class="p">)</span>
+          <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+              <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;美澳日意四国的奖牌构成&quot;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;雷达图&#39;</span><span class="p">),</span>
+              <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
+          <span class="p">)</span>
+<span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">radar</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
@@ -15473,7 +15243,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[29]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -15487,13 +15257,13 @@ div#notebook {
     });
 </script>
 
-        <div id="bdfde5cbc9da42099c1742f97ff83d09" style="width:900px; height:500px;"></div>
+        <div id="22dcd15530ef48109944269b3ebe80da" style="width:900px; height:500px;"></div>
 
 <script>
         require(['echarts'], function(echarts) {
-                var chart_bdfde5cbc9da42099c1742f97ff83d09 = echarts.init(
-                    document.getElementById('bdfde5cbc9da42099c1742f97ff83d09'), 'white', {renderer: 'canvas'});
-                var option_bdfde5cbc9da42099c1742f97ff83d09 = {
+                var chart_22dcd15530ef48109944269b3ebe80da = echarts.init(
+                    document.getElementById('22dcd15530ef48109944269b3ebe80da'), 'white', {renderer: 'canvas'});
+                var option_22dcd15530ef48109944269b3ebe80da = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -15744,11 +15514,42 @@ div#notebook {
     },
     "title": [
         {
-            "text": "\u7f8e\u6fb3\u65e5\u610f\u56db\u56fd\u7684\u5956\u724c\u6784\u6210"
+            "text": "\u7f8e\u6fb3\u65e5\u610f\u56db\u56fd\u7684\u5956\u724c\u6784\u6210",
+            "subtext": "\u96f7\u8fbe\u56fe"
         }
-    ]
+    ],
+    "toolbox": {
+        "show": true,
+        "orient": "horizontal",
+        "itemSize": 15,
+        "itemGap": 10,
+        "left": "80%",
+        "feature": {
+            "saveAsImage": {
+                "show": true,
+                "title": "save as image",
+                "type": "png"
+            },
+            "restore": {
+                "show": true,
+                "title": "restore"
+            },
+            "dataView": {
+                "show": true,
+                "title": "data view",
+                "readOnly": false
+            },
+            "dataZoom": {
+                "show": true,
+                "title": {
+                    "zoom": "data zoom",
+                    "back": "data zoom restore"
+                }
+            }
+        }
+    }
 };
-                chart_bdfde5cbc9da42099c1742f97ff83d09.setOption(option_bdfde5cbc9da42099c1742f97ff83d09);
+                chart_22dcd15530ef48109944269b3ebe80da.setOption(option_22dcd15530ef48109944269b3ebe80da);
         });
     </script>
 
@@ -15762,7 +15563,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">radar</span> <span class="o">=</span> <span class="p">(</span>
@@ -15779,8 +15580,11 @@ div#notebook {
           <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="n">dfValue</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#2E8B57&quot;</span><span class="p">)</span>
           <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="n">dfValue</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#FFA500&quot;</span><span class="p">)</span>
           <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span><span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">is_show</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-          <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span><span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;中俄英德四国的奖牌构成&quot;</span><span class="p">))</span>
+          <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+              <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;中俄英德四国的奖牌构成&quot;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;雷达图&#39;</span><span class="p">),</span>
+              <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
          <span class="p">)</span>
+<span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">radar</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
@@ -15808,7 +15612,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[30]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -15822,13 +15626,13 @@ div#notebook {
     });
 </script>
 
-        <div id="baca660ee3ec4116ae1f9745d135b8e8" style="width:900px; height:500px;"></div>
+        <div id="2d6330b0f26145559febe9e86b5718fa" style="width:900px; height:500px;"></div>
 
 <script>
         require(['echarts'], function(echarts) {
-                var chart_baca660ee3ec4116ae1f9745d135b8e8 = echarts.init(
-                    document.getElementById('baca660ee3ec4116ae1f9745d135b8e8'), 'white', {renderer: 'canvas'});
-                var option_baca660ee3ec4116ae1f9745d135b8e8 = {
+                var chart_2d6330b0f26145559febe9e86b5718fa = echarts.init(
+                    document.getElementById('2d6330b0f26145559febe9e86b5718fa'), 'white', {renderer: 'canvas'});
+                var option_2d6330b0f26145559febe9e86b5718fa = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -16079,11 +15883,42 @@ div#notebook {
     },
     "title": [
         {
-            "text": "\u4e2d\u4fc4\u82f1\u5fb7\u56db\u56fd\u7684\u5956\u724c\u6784\u6210"
+            "text": "\u4e2d\u4fc4\u82f1\u5fb7\u56db\u56fd\u7684\u5956\u724c\u6784\u6210",
+            "subtext": "\u96f7\u8fbe\u56fe"
         }
-    ]
+    ],
+    "toolbox": {
+        "show": true,
+        "orient": "horizontal",
+        "itemSize": 15,
+        "itemGap": 10,
+        "left": "80%",
+        "feature": {
+            "saveAsImage": {
+                "show": true,
+                "title": "save as image",
+                "type": "png"
+            },
+            "restore": {
+                "show": true,
+                "title": "restore"
+            },
+            "dataView": {
+                "show": true,
+                "title": "data view",
+                "readOnly": false
+            },
+            "dataZoom": {
+                "show": true,
+                "title": {
+                    "zoom": "data zoom",
+                    "back": "data zoom restore"
+                }
+            }
+        }
+    }
 };
-                chart_baca660ee3ec4116ae1f9745d135b8e8.setOption(option_baca660ee3ec4116ae1f9745d135b8e8);
+                chart_2d6330b0f26145559febe9e86b5718fa.setOption(option_2d6330b0f26145559febe9e86b5718fa);
         });
     </script>
 
@@ -16097,7 +15932,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">radar</span> <span class="o">=</span> <span class="p">(</span>
@@ -16114,8 +15949,11 @@ div#notebook {
           <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="n">dfValue</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#2E8B57&quot;</span><span class="p">,</span><span class="n">is_selected</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
           <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="n">dfValue</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#FFA500&quot;</span><span class="p">,</span><span class="n">is_selected</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
           <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span><span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">is_show</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-          <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span><span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;韩法两国的奖牌构成&quot;</span><span class="p">))</span>
-         <span class="p">)</span>
+          <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+              <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;韩法两国的奖牌构成&quot;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;雷达图&#39;</span><span class="p">),</span>
+              <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
+          <span class="p">)</span>
+<span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">radar</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
@@ -16143,7 +15981,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[38]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -16157,13 +15995,13 @@ div#notebook {
     });
 </script>
 
-        <div id="eb7dc5ff78b445cbb19e9a88a8994095" style="width:900px; height:500px;"></div>
+        <div id="b5d50f1999a74ce29ebe4c2eaf1905e7" style="width:900px; height:500px;"></div>
 
 <script>
         require(['echarts'], function(echarts) {
-                var chart_eb7dc5ff78b445cbb19e9a88a8994095 = echarts.init(
-                    document.getElementById('eb7dc5ff78b445cbb19e9a88a8994095'), 'white', {renderer: 'canvas'});
-                var option_eb7dc5ff78b445cbb19e9a88a8994095 = {
+                var chart_b5d50f1999a74ce29ebe4c2eaf1905e7 = echarts.init(
+                    document.getElementById('b5d50f1999a74ce29ebe4c2eaf1905e7'), 'white', {renderer: 'canvas'});
+                var option_b5d50f1999a74ce29ebe4c2eaf1905e7 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -16414,11 +16252,42 @@ div#notebook {
     },
     "title": [
         {
-            "text": "\u97e9\u6cd5\u4e24\u56fd\u7684\u5956\u724c\u6784\u6210"
+            "text": "\u97e9\u6cd5\u4e24\u56fd\u7684\u5956\u724c\u6784\u6210",
+            "subtext": "\u96f7\u8fbe\u56fe"
         }
-    ]
+    ],
+    "toolbox": {
+        "show": true,
+        "orient": "horizontal",
+        "itemSize": 15,
+        "itemGap": 10,
+        "left": "80%",
+        "feature": {
+            "saveAsImage": {
+                "show": true,
+                "title": "save as image",
+                "type": "png"
+            },
+            "restore": {
+                "show": true,
+                "title": "restore"
+            },
+            "dataView": {
+                "show": true,
+                "title": "data view",
+                "readOnly": false
+            },
+            "dataZoom": {
+                "show": true,
+                "title": {
+                    "zoom": "data zoom",
+                    "back": "data zoom restore"
+                }
+            }
+        }
+    }
 };
-                chart_eb7dc5ff78b445cbb19e9a88a8994095.setOption(option_eb7dc5ff78b445cbb19e9a88a8994095);
+                chart_b5d50f1999a74ce29ebe4c2eaf1905e7.setOption(option_b5d50f1999a74ce29ebe4c2eaf1905e7);
         });
     </script>
 
@@ -16430,11 +16299,1473 @@ div#notebook {
 </div>
 
 </div>
-    </div>
-  </div>
-</body>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3-&#21508;&#22870;&#29260;&#31867;&#22411;&#30340;&#22269;&#23478;&#20998;&#24067;">3 &#21508;&#22870;&#29260;&#31867;&#22411;&#30340;&#22269;&#23478;&#20998;&#24067;<a class="anchor-link" href="#3-&#21508;&#22870;&#29260;&#31867;&#22411;&#30340;&#22269;&#23478;&#20998;&#24067;">&#182;</a></h2><h3 id="3.1-&#22797;&#24335;&#26465;&#24418;&#22270;">3.1 &#22797;&#24335;&#26465;&#24418;&#22270;<a class="anchor-link" href="#3.1-&#22797;&#24335;&#26465;&#24418;&#22270;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Bar</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">add_xaxis</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">is_selected</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+        <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;2008 年北京奥运会各奖牌的国家分布&#39;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;并列条形图&#39;</span><span class="p">),</span>
+        <span class="n">legend_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LegendOpts</span><span class="p">(</span><span class="n">pos_top</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">pos_right</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">),</span>
+        <span class="n">yaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;奖牌数&quot;</span><span class="p">,</span> <span class="n">name_location</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">name_rotate</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">name_gap</span><span class="o">=</span><span class="mi">35</span><span class="p">),</span>
+        <span class="n">xaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;奖牌类型&quot;</span><span class="p">,</span> <span class="n">name_location</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">name_gap</span><span class="o">=</span><span class="mi">35</span><span class="p">),</span>
+        <span class="n">datazoom_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">DataZoomOpts</span><span class="p">(</span><span class="n">type_</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">,</span> <span class="n">range_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">range_end</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+        <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
- 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">bar</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[33]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<script>
+    require.config({
+        paths: {
+            'echarts':'https://assets.pyecharts.org/assets/echarts.min'
+        }
+    });
+</script>
+
+        <div id="482570f804674c26b46e3f9746d014ac" style="width:900px; height:500px;"></div>
+
+<script>
+        require(['echarts'], function(echarts) {
+                var chart_482570f804674c26b46e3f9746d014ac = echarts.init(
+                    document.getElementById('482570f804674c26b46e3f9746d014ac'), 'white', {renderer: 'canvas'});
+                var option_482570f804674c26b46e3f9746d014ac = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "bar",
+            "name": "\u4e2d\u56fd",
+            "data": [
+                48,
+                22,
+                30
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u7f8e\u56fd",
+            "data": [
+                36,
+                39,
+                37
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u4fc4\u7f57\u65af",
+            "data": [
+                22,
+                15,
+                23
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u82f1\u56fd",
+            "data": [
+                19,
+                13,
+                15
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u5fb7\u56fd",
+            "data": [
+                16,
+                10,
+                15
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u6fb3\u5927\u5229\u4e9a",
+            "data": [
+                14,
+                15,
+                17
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u97e9\u56fd",
+            "data": [
+                13,
+                11,
+                8
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u65e5\u672c",
+            "data": [
+                9,
+                7,
+                9
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u610f\u5927\u5229",
+            "data": [
+                8,
+                9,
+                10
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u6cd5\u56fd",
+            "data": [
+                7,
+                16,
+                19
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u5176\u5b83",
+            "data": [
+                107,
+                142,
+                165
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "\u4e2d\u56fd",
+                "\u7f8e\u56fd",
+                "\u4fc4\u7f57\u65af",
+                "\u82f1\u56fd",
+                "\u5fb7\u56fd",
+                "\u6fb3\u5927\u5229\u4e9a",
+                "\u97e9\u56fd",
+                "\u65e5\u672c",
+                "\u610f\u5927\u5229",
+                "\u6cd5\u56fd",
+                "\u5176\u5b83"
+            ],
+            "selected": {
+                "\u4e2d\u56fd": true,
+                "\u7f8e\u56fd": true,
+                "\u4fc4\u7f57\u65af": true,
+                "\u82f1\u56fd": true,
+                "\u5fb7\u56fd": true,
+                "\u6fb3\u5927\u5229\u4e9a": true,
+                "\u97e9\u56fd": true,
+                "\u65e5\u672c": true,
+                "\u610f\u5927\u5229": true,
+                "\u6cd5\u56fd": true,
+                "\u5176\u5b83": false
+            },
+            "show": true,
+            "right": "right",
+            "top": 50,
+            "orient": "vertical"
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "xAxis": [
+        {
+            "name": "\u5956\u724c\u7c7b\u578b",
+            "show": true,
+            "scale": false,
+            "nameLocation": "center",
+            "nameGap": 35,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "\u91d1",
+                "\u94f6",
+                "\u94dc"
+            ]
+        }
+    ],
+    "yAxis": [
+        {
+            "name": "\u5956\u724c\u6570",
+            "show": true,
+            "scale": false,
+            "nameLocation": "center",
+            "nameGap": 35,
+            "nameRotate": 90,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "title": [
+        {
+            "text": "2008 \u5e74\u5317\u4eac\u5965\u8fd0\u4f1a\u5404\u5956\u724c\u7684\u56fd\u5bb6\u5206\u5e03",
+            "subtext": "\u5e76\u5217\u6761\u5f62\u56fe"
+        }
+    ],
+    "toolbox": {
+        "show": true,
+        "orient": "horizontal",
+        "itemSize": 15,
+        "itemGap": 10,
+        "left": "80%",
+        "feature": {
+            "saveAsImage": {
+                "show": true,
+                "title": "save as image",
+                "type": "png"
+            },
+            "restore": {
+                "show": true,
+                "title": "restore"
+            },
+            "dataView": {
+                "show": true,
+                "title": "data view",
+                "readOnly": false
+            },
+            "dataZoom": {
+                "show": true,
+                "title": {
+                    "zoom": "data zoom",
+                    "back": "data zoom restore"
+                }
+            }
+        }
+    },
+    "dataZoom": {
+        "show": true,
+        "type": "inside",
+        "realtime": true,
+        "start": 0,
+        "end": 100,
+        "orient": "horizontal",
+        "zoomLock": false
+    }
+};
+                chart_482570f804674c26b46e3f9746d014ac.setOption(option_482570f804674c26b46e3f9746d014ac);
+        });
+    </script>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Bar</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">add_xaxis</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="s1">&#39;stack1&#39;</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">dfValue</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">reversal_axis</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span><span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">is_show</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+        <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;2008 年北京奥运会各奖牌的国家分布&#39;</span><span class="p">,</span><span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;并列堆叠条形图&#39;</span><span class="p">),</span>
+        <span class="n">legend_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LegendOpts</span><span class="p">(</span><span class="n">pos_top</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">pos_right</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">),</span>
+        <span class="n">yaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;奖牌类型&quot;</span><span class="p">,</span> <span class="n">name_location</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">name_rotate</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> 
+                                 <span class="n">name_gap</span><span class="o">=</span><span class="mi">35</span><span class="p">),</span>
+        <span class="n">xaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;奖牌数&quot;</span><span class="p">,</span> <span class="n">name_location</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">name_gap</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> 
+                                 <span class="n">max_</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">dfValue</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)),</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="mi">10</span><span class="p">),</span>
+        <span class="n">datazoom_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">DataZoomOpts</span><span class="p">(</span><span class="n">type_</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">,</span> <span class="n">range_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">range_end</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">),</span>
+        <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">bar</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[34]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<script>
+    require.config({
+        paths: {
+            'echarts':'https://assets.pyecharts.org/assets/echarts.min'
+        }
+    });
+</script>
+
+        <div id="ef511727f280435b8ec570cc4413de9e" style="width:900px; height:500px;"></div>
+
+<script>
+        require(['echarts'], function(echarts) {
+                var chart_ef511727f280435b8ec570cc4413de9e = echarts.init(
+                    document.getElementById('ef511727f280435b8ec570cc4413de9e'), 'white', {renderer: 'canvas'});
+                var option_ef511727f280435b8ec570cc4413de9e = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "bar",
+            "name": "\u4e2d\u56fd",
+            "data": [
+                48,
+                22,
+                30
+            ],
+            "stack": "stack1",
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u7f8e\u56fd",
+            "data": [
+                36,
+                39,
+                37
+            ],
+            "stack": "stack1",
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u4fc4\u7f57\u65af",
+            "data": [
+                22,
+                15,
+                23
+            ],
+            "stack": "stack1",
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u82f1\u56fd",
+            "data": [
+                19,
+                13,
+                15
+            ],
+            "stack": "stack1",
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u5fb7\u56fd",
+            "data": [
+                16,
+                10,
+                15
+            ],
+            "stack": "stack1",
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u6fb3\u5927\u5229\u4e9a",
+            "data": [
+                14,
+                15,
+                17
+            ],
+            "stack": "stack1",
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u97e9\u56fd",
+            "data": [
+                13,
+                11,
+                8
+            ],
+            "stack": "stack1",
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u65e5\u672c",
+            "data": [
+                9,
+                7,
+                9
+            ],
+            "stack": "stack1",
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u610f\u5927\u5229",
+            "data": [
+                8,
+                9,
+                10
+            ],
+            "stack": "stack1",
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u6cd5\u56fd",
+            "data": [
+                7,
+                16,
+                19
+            ],
+            "stack": "stack1",
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u5176\u5b83",
+            "data": [
+                107,
+                142,
+                165
+            ],
+            "barCategoryGap": "20%",
+            "barGap": 0,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "\u4e2d\u56fd",
+                "\u7f8e\u56fd",
+                "\u4fc4\u7f57\u65af",
+                "\u82f1\u56fd",
+                "\u5fb7\u56fd",
+                "\u6fb3\u5927\u5229\u4e9a",
+                "\u97e9\u56fd",
+                "\u65e5\u672c",
+                "\u610f\u5927\u5229",
+                "\u6cd5\u56fd",
+                "\u5176\u5b83"
+            ],
+            "selected": {
+                "\u4e2d\u56fd": true,
+                "\u7f8e\u56fd": true,
+                "\u4fc4\u7f57\u65af": true,
+                "\u82f1\u56fd": true,
+                "\u5fb7\u56fd": true,
+                "\u6fb3\u5927\u5229\u4e9a": true,
+                "\u97e9\u56fd": true,
+                "\u65e5\u672c": true,
+                "\u610f\u5927\u5229": true,
+                "\u6cd5\u56fd": true,
+                "\u5176\u5b83": true
+            },
+            "show": true,
+            "right": "right",
+            "top": 50,
+            "orient": "vertical"
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "xAxis": [
+        {
+            "name": "\u5956\u724c\u6570",
+            "show": true,
+            "scale": false,
+            "nameLocation": "center",
+            "nameGap": 35,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "max": 200,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "yAxis": [
+        {
+            "name": "\u5956\u724c\u7c7b\u578b",
+            "show": true,
+            "scale": false,
+            "nameLocation": "center",
+            "nameGap": 35,
+            "nameRotate": 90,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "\u91d1",
+                "\u94f6",
+                "\u94dc"
+            ]
+        }
+    ],
+    "title": [
+        {
+            "text": "2008 \u5e74\u5317\u4eac\u5965\u8fd0\u4f1a\u5404\u5956\u724c\u7684\u56fd\u5bb6\u5206\u5e03",
+            "subtext": "\u5e76\u5217\u5806\u53e0\u6761\u5f62\u56fe"
+        }
+    ],
+    "toolbox": {
+        "show": true,
+        "orient": "horizontal",
+        "itemSize": 15,
+        "itemGap": 10,
+        "left": "80%",
+        "feature": {
+            "saveAsImage": {
+                "show": true,
+                "title": "save as image",
+                "type": "png"
+            },
+            "restore": {
+                "show": true,
+                "title": "restore"
+            },
+            "dataView": {
+                "show": true,
+                "title": "data view",
+                "readOnly": false
+            },
+            "dataZoom": {
+                "show": true,
+                "title": {
+                    "zoom": "data zoom",
+                    "back": "data zoom restore"
+                }
+            }
+        }
+    },
+    "dataZoom": {
+        "show": true,
+        "type": "inside",
+        "realtime": true,
+        "start": 0,
+        "end": 100,
+        "orient": "vertical",
+        "zoomLock": false
+    }
+};
+                chart_ef511727f280435b8ec570cc4413de9e.setOption(option_ef511727f280435b8ec570cc4413de9e);
+        });
+    </script>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>从上面的（复式）条形图中，我们可以看到，就各奖牌类型的国家分布而言：</p>
+<ul>
+<li>金牌的国家分布与银牌或铜牌的国家分布存在较大差异</li>
+<li>银牌的国家分布和铜牌的国家分布差异较小</li>
+<li>金牌榜前十国家的奖牌占有率超过 50%，特别是金牌占有率远超 50%</li>
+</ul>
+<p>下面通过环形图进一步验证这一结论。</p>
+<h3 id="3.2-&#29615;&#24418;&#22270;">3.2 &#29615;&#24418;&#22270;<a class="anchor-link" href="#3.2-&#29615;&#24418;&#22270;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfValueTP</span> <span class="o">=</span> <span class="n">dfValue</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">dfValue</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">round_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="nb">round</span><span class="p">)</span>
+<span class="n">dfValueTP</span> <span class="o">=</span> <span class="n">round_vec</span><span class="p">(</span><span class="n">dfValueTP</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pie</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Pie</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">,</span> <span class="n">dfValueTP</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;30%&quot;</span><span class="p">,</span> <span class="s2">&quot;45%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">,</span> <span class="n">dfValueTP</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;46%&quot;</span><span class="p">,</span> <span class="s2">&quot;61%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dfColumns</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfIndex</span><span class="p">,</span> <span class="n">dfValueTP</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())],</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;62%&quot;</span><span class="p">,</span> <span class="s2">&quot;77%&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+            <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;金银铜牌的国家构成&quot;</span><span class="p">),</span>
+            <span class="n">legend_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LegendOpts</span><span class="p">(</span><span class="n">pos_top</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">pos_right</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">),</span>
+            <span class="c1">#tooltip_opts=opts.TooltipOpts(formatter=&quot;{a}: \n{b}:{c}:%&quot;),</span>
+            <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="c1">#.set_series_opts(label_opts=opts.LabelOpts(is_show=False))</span>
+        <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span><span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">formatter</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{c}</span><span class="s2">%&quot;</span><span class="p">,</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;inside&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">pie</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<script>
+    require.config({
+        paths: {
+            'echarts':'https://assets.pyecharts.org/assets/echarts.min'
+        }
+    });
+</script>
+
+        <div id="e5e56509f97740ef9313cd25635d908c" style="width:900px; height:500px;"></div>
+
+<script>
+        require(['echarts'], function(echarts) {
+                var chart_e5e56509f97740ef9313cd25635d908c = echarts.init(
+                    document.getElementById('e5e56509f97740ef9313cd25635d908c'), 'white', {renderer: 'canvas'});
+                var option_e5e56509f97740ef9313cd25635d908c = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "pie",
+            "name": "\u91d1",
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "\u4e2d\u56fd",
+                    "value": 16.0
+                },
+                {
+                    "name": "\u7f8e\u56fd",
+                    "value": 12.0
+                },
+                {
+                    "name": "\u4fc4\u7f57\u65af",
+                    "value": 7.0
+                },
+                {
+                    "name": "\u82f1\u56fd",
+                    "value": 6.0
+                },
+                {
+                    "name": "\u5fb7\u56fd",
+                    "value": 5.0
+                },
+                {
+                    "name": "\u6fb3\u5927\u5229\u4e9a",
+                    "value": 5.0
+                },
+                {
+                    "name": "\u97e9\u56fd",
+                    "value": 4.0
+                },
+                {
+                    "name": "\u65e5\u672c",
+                    "value": 3.0
+                },
+                {
+                    "name": "\u610f\u5927\u5229",
+                    "value": 3.0
+                },
+                {
+                    "name": "\u6cd5\u56fd",
+                    "value": 2.0
+                },
+                {
+                    "name": "\u5176\u5b83",
+                    "value": 36.0
+                }
+            ],
+            "radius": [
+                "30%",
+                "45%"
+            ],
+            "center": [
+                "50%",
+                "50%"
+            ],
+            "label": {
+                "show": true,
+                "position": "inside",
+                "margin": 8,
+                "formatter": "{c}%"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "pie",
+            "name": "\u94f6",
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "\u4e2d\u56fd",
+                    "value": 7.0
+                },
+                {
+                    "name": "\u7f8e\u56fd",
+                    "value": 13.0
+                },
+                {
+                    "name": "\u4fc4\u7f57\u65af",
+                    "value": 5.0
+                },
+                {
+                    "name": "\u82f1\u56fd",
+                    "value": 4.0
+                },
+                {
+                    "name": "\u5fb7\u56fd",
+                    "value": 3.0
+                },
+                {
+                    "name": "\u6fb3\u5927\u5229\u4e9a",
+                    "value": 5.0
+                },
+                {
+                    "name": "\u97e9\u56fd",
+                    "value": 4.0
+                },
+                {
+                    "name": "\u65e5\u672c",
+                    "value": 2.0
+                },
+                {
+                    "name": "\u610f\u5927\u5229",
+                    "value": 3.0
+                },
+                {
+                    "name": "\u6cd5\u56fd",
+                    "value": 5.0
+                },
+                {
+                    "name": "\u5176\u5b83",
+                    "value": 47.0
+                }
+            ],
+            "radius": [
+                "46%",
+                "61%"
+            ],
+            "center": [
+                "50%",
+                "50%"
+            ],
+            "label": {
+                "show": true,
+                "position": "inside",
+                "margin": 8,
+                "formatter": "{c}%"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "pie",
+            "name": "\u94dc",
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "\u4e2d\u56fd",
+                    "value": 9.0
+                },
+                {
+                    "name": "\u7f8e\u56fd",
+                    "value": 11.0
+                },
+                {
+                    "name": "\u4fc4\u7f57\u65af",
+                    "value": 7.0
+                },
+                {
+                    "name": "\u82f1\u56fd",
+                    "value": 4.0
+                },
+                {
+                    "name": "\u5fb7\u56fd",
+                    "value": 4.0
+                },
+                {
+                    "name": "\u6fb3\u5927\u5229\u4e9a",
+                    "value": 5.0
+                },
+                {
+                    "name": "\u97e9\u56fd",
+                    "value": 2.0
+                },
+                {
+                    "name": "\u65e5\u672c",
+                    "value": 3.0
+                },
+                {
+                    "name": "\u610f\u5927\u5229",
+                    "value": 3.0
+                },
+                {
+                    "name": "\u6cd5\u56fd",
+                    "value": 5.0
+                },
+                {
+                    "name": "\u5176\u5b83",
+                    "value": 47.0
+                }
+            ],
+            "radius": [
+                "62%",
+                "77%"
+            ],
+            "center": [
+                "50%",
+                "50%"
+            ],
+            "label": {
+                "show": true,
+                "position": "inside",
+                "margin": 8,
+                "formatter": "{c}%"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "\u4e2d\u56fd",
+                "\u7f8e\u56fd",
+                "\u4fc4\u7f57\u65af",
+                "\u82f1\u56fd",
+                "\u5fb7\u56fd",
+                "\u6fb3\u5927\u5229\u4e9a",
+                "\u97e9\u56fd",
+                "\u65e5\u672c",
+                "\u610f\u5927\u5229",
+                "\u6cd5\u56fd",
+                "\u5176\u5b83"
+            ],
+            "selected": {},
+            "show": true,
+            "right": "right",
+            "top": 50,
+            "orient": "vertical"
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "title": [
+        {
+            "text": "\u91d1\u94f6\u94dc\u724c\u7684\u56fd\u5bb6\u6784\u6210"
+        }
+    ],
+    "toolbox": {
+        "show": true,
+        "orient": "horizontal",
+        "itemSize": 15,
+        "itemGap": 10,
+        "left": "80%",
+        "feature": {
+            "saveAsImage": {
+                "show": true,
+                "title": "save as image",
+                "type": "png"
+            },
+            "restore": {
+                "show": true,
+                "title": "restore"
+            },
+            "dataView": {
+                "show": true,
+                "title": "data view",
+                "readOnly": false
+            },
+            "dataZoom": {
+                "show": true,
+                "title": {
+                    "zoom": "data zoom",
+                    "back": "data zoom restore"
+                }
+            }
+        }
+    }
+};
+                chart_e5e56509f97740ef9313cd25635d908c.setOption(option_e5e56509f97740ef9313cd25635d908c);
+        });
+    </script>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>综上：各国家的奖牌类型分布存在一定的相似性和差异性，各奖牌类型的国家分布也存在一定的相似性和差异性。</strong></p>
+
+</div>
+</div>
+</div></section></section>
+</div>
+</div>
+
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            transition: "slide",
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+
+    }
+
+);
+</script>
+
+</body>
 
 
 </html>
