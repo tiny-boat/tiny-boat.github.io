@@ -4,9 +4,7 @@ title: 关于我
 permalink: /about_me/
 ---
 
-**感谢你关注远行的小舟，欢迎你走进征帆的世界**
-
-[**远行的舟**](https://www.longzf.com) (๑′ᴗ‵๑)  ❤ You
+**感谢你关注远行的小舟，欢迎你走进征帆的世界**，[**远行的舟**](https://www.longzf.com) (๑′ᴗ‵๑)  ❤ You
 
 ## 引言
 
@@ -31,7 +29,7 @@ permalink: /about_me/
 * 微信：[xiaozhou13171317](https://www.longzf.com/assets/img/about_me/wechat.jpg)
 * 微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
 
-#### 结语
+## 结语
 
 * 一点一滴，为爱前行
 * 追梦不止，青春永在
