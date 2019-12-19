@@ -7,7 +7,7 @@ permalink: /dlbook/
 excerpt: '深度学习读书笔记'
 ---
 
-### 0 Introduction
+# 1 Introduction
 
 如果特征选取合适，一个简单的机器学习算法就很有效了。
 
@@ -28,7 +28,7 @@ excerpt: '深度学习读书笔记'
 
 总的来说就是一句话：自动化是人类始终不渝的追求。
 
-#### History
+## 1.1 History
 
 历史上，人工神经网络历经了三次研究浪潮，今天，第三次研究浪潮仍在继续。
 
@@ -159,7 +159,7 @@ excerpt: '深度学习读书笔记'
 
 * 2014 年，J Chung, C Gulcehre, KH Cho 和 Y Bengio 发表论文 “Empirical evaluation of gated recurrent neural networks on sequence modeling”，评估门循环（递归）神经网络在序列模型的效果
 
-* 2014 年，Kyunghyun Cho, Bart Van Merriënboer, Caglar Gulcehre, Dzmitry Bahdanau, Fethi Bougares, Holger Schwenk 和 Yoshua Bengio 发表论文 “Learning phrase representations using RNN encoder-decoder for statistical machine translation”，介绍使用 RNN 编码-解码器学习短语表示
+* **2014 年，Kyunghyun Cho, Bart Van Merriënboer, Caglar Gulcehre, Dzmitry Bahdanau, Fethi Bougares, Holger Schwenk 和 Yoshua Bengio 发表论文 “Learning phrase representations using RNN encoder-decoder for statistical machine translation”，介绍使用 RNN 编码-解码器学习短语表示**
 
 * 2014 年，P Sermanet, D Eigen, X Zhang, M Mathieu, R Fergus 和 Y LeCun 发表论文 “OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks”，介绍使用卷积网络同时进行识别、定位和检测的 OverFeat 算法
 
@@ -206,7 +206,7 @@ Daan Wierstra 和 Martin Riedmiller 发表论文 “Playing Atari with Deep Rein
 
 第三次浪潮已经开始着眼于无监督学习技术和深度模型在小数据集的泛化能力，但目前更多的兴趣点仍是比较传统的监督学习算法和深度模型充分利用大型标注数据集的能力。
 
-#### Trend
+## 1.2 Trend
 
 与日俱增的数据量、模型规模和精度
 
@@ -226,5 +226,24 @@ Daan Wierstra 和 Martin Riedmiller 发表论文 “Playing Atari with Deep Rein
 
 由于更快的 CPU、通用 GPU 的出现，更快的网络连接和更好的分布式计算，模型规模随时间不断增加是深度学习历史中最重要的趋势之一。自隐藏单元引入后，人工神经网络的规模约 2.4 年扩大一倍，但在现有技术条件下，至少要到 21 世纪 50 年代，人工神经网络才能具备与人脑相同数量级的神经元。我们如今的网络比原始的脊椎动物（如青蛙）的神经系统还要小。
 
-### 1 Applied Math and Machine Learning Basics
+# 2 Applied Math and Machine Learning Basics
 
+## 2.1 linear algerbra
+
+矩阵对应元素相乘的运算称为**元素对应乘积**（element-wise product）或者 **Hadamard 乘积**（Hadamard product），记作 $\boldsymbol{A}\odot \boldsymbol{B}$。  
+
+$\boldsymbol{Ax}=\boldsymbol{b}$  当且仅当 $\boldsymbol{b}$ 位于 $\boldsymbol{A}$ 的列向量的生成子空间（列空间/值域），当且仅当 $\boldsymbol{A}$ 的列向量的生成子空间维数等于 $\left(\boldsymbol{A},\boldsymbol{b}\right)$  的列向量的生成子空间维数，当维数小于未知数个数时，有无穷多个解，当维数等于未知数个数时，有唯一解。
+
+在某些机器学习应用中，由于区分恰好为 0 的元素和非常接近 0 的元素十分重要，欧式范数好于计算更方便的平方欧式范数，不过此时我们更多使用 $L_1$ 范数，$L_1$ 范数也经常作为表示非零元素数目的替代函数。
+
+在深度学习中，矩阵的范数通常使用 Frobenius 范数，类似于向量的欧式范数。
+
+特殊类型的矩阵中，对角矩阵、对称矩阵、正交矩阵受到关注。其中对角矩阵不一定是方阵，它受到关注是因为其乘法计算的高效、以及方阵型对角矩阵逆矩阵计算的高效，若我们想对向量 $\boldsymbol{x}$ 中的每个元素 $x_i$ 放大 $v_i$ 倍，只需要用一个第 $i$ 个对角元为 $v_i$ 的对角矩阵左乘该向量即可。对称矩阵受到关注是因为某些不依赖参数顺序的双参数函数生成元素时，对称矩阵经常出现，例如距离度量矩阵。正交矩阵受到关注是因为其求逆代价小，其逆就是其转置，要特别注意的是：正交矩阵指的是行向量与列向量均标准正交的矩阵，对于行向量与列向量均正交但不是标准正交的矩阵，并没有专门的术语。
+
+特征分解（谱分解）与奇异值分解是两个重要的矩阵分解。特征分解通常针对实对称矩阵而言，实对称矩阵 $\boldsymbol{A}$ 的最大（小）特征值为二次型函数 $f\left(\boldsymbol{x}\right)=\boldsymbol{x}^T\boldsymbol{A}\boldsymbol{x},\ \|\boldsymbol{x}\|_2=1$ 的最大（小）值，对应的特征向量为最大（小）值点。奇异值分解可看作特征分解的扩展，任何实矩阵都有奇异值分解：
+
+$$\boldsymbol{A}_{m\times n} = \boldsymbol{U}_{m\times m}\boldsymbol{D}_{m\times n}\boldsymbol{V}_{n\times n}$$
+
+其中 $\boldsymbol{U}$ 是由 $\boldsymbol{A}\boldsymbol{A}^T$ 的特征向量（左奇异向量）构成的正交矩阵，$\boldsymbol{V}$ 是由 $\boldsymbol{A}^T\boldsymbol{A}$ 的特征向量（右奇异向量）构成的正交矩阵，$\boldsymbol{D}$ 是对角矩阵，其对角元（奇异值）是 $\boldsymbol{A}\boldsymbol{A}^T$ 的非零特征值，也是 $\boldsymbol{A}^T\boldsymbol{A}$ 的非零特征值。
+
+矩阵的奇异值分解将矩阵的求逆运算从方阵扩展到了一般矩阵
