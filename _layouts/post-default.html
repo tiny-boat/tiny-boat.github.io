@@ -26,6 +26,16 @@
     setTimeout(function(){$('.footer-col-wrapper').fadeIn(ft)},ft);
     </script>
 
+    <script type="text/javascript">
+    var href=document.getElementsByTagName('a');
+
+    for(var i=0;i<href.length;i++){
+    href[i].ontouchend=function(){
+    window.location.href=this.getAttribute("href");
+    }
+    };
+    </script>
+
   </body>
 
 </html>
