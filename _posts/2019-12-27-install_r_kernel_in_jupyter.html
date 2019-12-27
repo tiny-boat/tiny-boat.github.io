@@ -1,0 +1,136 @@
+---
+layout: post
+title:  "爱上Bug(1):Jupyter 安装 R 内核失败"
+date:   2019-12-27 16:40:00
+categories: Computer_Science
+excerpt: "兵兵写论文，发来了他的 R 脚本，而我，告别 R 语言许久了，新买的 mac 上也没有装 R。安装 R 语言后，我希望给 Jupyter 安装上 R 内核，以后直接在 Jupyter 上使用 R. 参考网上教程，安装失败，最后通过阅读源代码解决了问题。我也决定，从这个问题开始，将每一次解决问题的过程记录下来。"
+permalink: /computer_science/love_bug/1/
+---
+
+<div class="post-style">
+
+<blockquote>兵兵写论文，发来了他的 R 脚本，而我，告别 R 语言许久了，新买的 mac 上也没有装 R。安装 R 语言后，我希望给 Jupyter 安装上 R 内核，以后直接在 Jupyter 上使用 R. 参考网上教程，安装失败，最后通过阅读源代码解决了问题。我也决定，从这个问题开始，将每一次解决问题的过程记录下来。</blockquote>
+
+<p>网上给出的 Jupyter 安装 R 内核的 R 代码如下：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight R %}
+
+# 安装必要的包
+install.packages(c(‘repr’, ‘IRdisplay’, ‘evaluate’, ‘crayon’,
+                   ‘pbdZMQ’, ‘devtools’, ‘uuid’, ‘digest’))
+devtools::install_github(‘IRkernel/IRkernel’)
+# 使用 IRkernel 包中的函数 installspec() 为 Jupyter 安装 R 内核
+IRkernel::installspec()
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">笔者是在运行最后一行代码时出现的问题，报错信息如下：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Bash %}
+
+Error in IRkernel::installspec() :
+  jupyter-client has to be installed but “jupyter kernelspec --version” exited with code 127.
+In addition: Warning message:
+In system2("jupyter", c("kernelspec", "--version"), FALSE, FALSE) :
+  error in running command
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">Stackoverflow 上找到的答案是需要的 R 包没有安装好，然而笔者的包安装是没有问题的。还有答案写到使用 anconda 解决，为了解决这样一个问题去安装个 anconda 实在是小题大做。这些解决方案的共同问题是：没有从源头出发解决问题。</p>
+
+<p>源头是什么？源头就是程序的报错信息。观察上面的报错信息，我们看到错误出现在 IRkernel 包中的函数 installspec()，错误出现在函数中的语句</p>
+
+<blockquote>system2("jupyter", c("kernelspec", "--version"), FALSE, FALSE)</blockquote>
+
+<p class="post-text-noindent">于是从根本上解决这个问题的方法就是阅读 IRkernel 包中函数 installspec() 的源代码。源代码在哪里？通过观察上面 IRkernel 包的安装方式，我们可以知道源代码位于 Github 上，地址为：https://github.com/IRkernel/IRkernel/。下面贴出源代码：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight R %}
+
+#' Install the kernelspec to tell Jupyter about IRkernel.
+#'
+#' This can be called multiple times for different R interpreter, but you have to give a
+#' different name (and displayname to see a difference in the notebook UI). If the same
+#' name is give, it will overwrite older versions of the kernel spec with that name!
+#'
+#' @param user         Install into user directory (\href{https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html}{\code{$XDG_DATA_HOME}}\code{/jupyter/kernels}) or globally? (default: NULL but treated as TRUE if "prefix" is not specified)
+#' @param name         The name of the kernel (default "ir")
+#' @param displayname  The name which is displayed in the notebook (default: "R")
+#' @param rprofile     (optional) Path to kernel-specific Rprofile (defaults to system-level settings)
+#' @param prefix       (optional) Path to alternate directory to install kernelspec into (default: NULL)
+#'
+#' @return Exit code of the \code{jupyter kernelspec install} call.
+#'
+#' @export
+installspec <- function(user = NULL, name = 'ir', displayname = 'R', rprofile = NULL, prefix = NULL) {
+    exit_code <- system2('jupyter', c('kernelspec', '--version'), FALSE, FALSE)
+    if (exit_code != 0)
+        stop('jupyter-client has to be installed but ', dQuote('jupyter kernelspec --version'), ' exited with code ', exit_code, '.\n')
+
+    # default to 'user' install if neither 'user' or 'prefix' is specified
+    if (is.null(user)) user <- is.null(prefix)
+    if (user && !is.null(prefix))
+        stop('"user" and "prefix" are mutually exclusive')
+
+    # make a kernelspec with the current interpreter's absolute path
+    srcdir <- system.file('kernelspec', package = 'IRkernel')
+    tmp_name <- tempfile()
+    dir.create(tmp_name)
+    file.copy(srcdir, tmp_name, recursive = TRUE)
+    spec_path <- file.path(tmp_name, 'kernelspec', 'kernel.json')
+    spec <- fromJSON(spec_path)
+    spec$argv[[1]] <- file.path(R.home('bin'), 'R')
+    spec$display_name <- displayname
+    if (!is.null(rprofile)) {
+        spec$env <- list(R_PROFILE_USER = rprofile)
+    }
+    write(toJSON(spec, pretty = TRUE, auto_unbox = TRUE), file = spec_path)
+
+    user_flag <- if (user) '--user' else character(0)
+    prefix_flag <- if (!is.null(prefix)) c('--prefix', prefix) else character(0)
+    args <- c('kernelspec', 'install', '--replace', '--name', name, user_flag, prefix_flag, file.path(tmp_name, 'kernelspec'))
+    exit_code <- system2('jupyter', args)
+
+    unlink(tmp_name, recursive = TRUE)
+
+    invisible(exit_code)
+}
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p>通过阅读源码我么可以知道 Jupyter 安装 R 内核的过程如下：</p>
+
+<ul>
+    <li>拷贝 IRkernel 包下的 kernelspec 目录</li>
+    <li>修改 kernelspec 目录副本下的 kernel.json 文件，将中 "argv" 的第一个值修改为 R 语言程序的路径</li>
+    <li>在终端中执行命令 "kernelspec install --replace --name name path"，其中 name 为 jupyter R 内核名称，可自定义，默认为"ir"，path 为 kernelspec 目录副本的完整路径</li>
+</ul>
+
+<p class="post-text-noindent">知道了安装过程，这个问题自然就解决了。实际上，Jupyter 安装 R 内核就是将 IRkernel 包下 kernelspec 目录中的三个文件复制到 jupyter R 内核的安装目录（笔者电脑是 /usr/local/share/jupyter/kernels/ir）。这三个文件是 kernel.js、kernel.json 和 logo-64x64.png，其中 kernel.json 文件中要加入 R 执行程序的路径。</p>
+
+<p>阅读源码的过程可能艰难，但它能帮助我们从根源上发现问题原因，定位了问题的根本原因，问题也就迎刃而解了。不惧问题，爱上 bug，始于今日。</p>
+
+</div>

@@ -247,3 +247,4 @@ $$\boldsymbol{A}_{m\times n} = \boldsymbol{U}_{m\times m}\boldsymbol{D}_{m\times
 其中 $\boldsymbol{U}$ 是由 $\boldsymbol{A}\boldsymbol{A}^T$ 的特征向量（左奇异向量）构成的正交矩阵，$\boldsymbol{V}$ 是由 $\boldsymbol{A}^T\boldsymbol{A}$ 的特征向量（右奇异向量）构成的正交矩阵，$\boldsymbol{D}$ 是对角矩阵，其对角元（奇异值）是 $\boldsymbol{A}\boldsymbol{A}^T$ 的非零特征值，也是 $\boldsymbol{A}^T\boldsymbol{A}$ 的非零特征值。
 
 矩阵的奇异值分解将矩阵的求逆运算从方阵扩展到了一般矩阵
+
