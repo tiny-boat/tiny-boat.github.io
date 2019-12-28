@@ -20,9 +20,9 @@ permalink: /computer_science/love_bug/1/
 {% highlight R %}
 
 # 安装必要的包
-install.packages(c(‘repr’, ‘IRdisplay’, ‘evaluate’, ‘crayon’,
-                   ‘pbdZMQ’, ‘devtools’, ‘uuid’, ‘digest’))
-devtools::install_github(‘IRkernel/IRkernel’)
+install.packages(c("repr", IRdisplay", "evaluate", "crayon",
+                   "pbdZMQ", "devtools", "uuid", "digest"))
+devtools::install_github("IRkernel/IRkernel")
 # 使用 IRkernel 包中的函数 installspec() 为 Jupyter 安装 R 内核
 IRkernel::installspec()
 
@@ -52,7 +52,7 @@ In system2("jupyter", c("kernelspec", "--version"), FALSE, FALSE) :
 
 <div class="post-style">
 
-<p class="post-text-noindent">Stackoverflow 上找到的答案是需要的 R 包没有安装好，然而笔者的包安装是没有问题的。还有答案写到使用 anconda 解决，为了解决这样一个问题去安装个 anconda 实在是小题大做。这些解决方案的共同问题是：没有从源头出发解决问题。</p>
+<p class="post-text-noindent">Stackoverflow 上找到的答案是需要的 R 包没有安装好，然而笔者的包安装是没有问题的。还有答案写到使用 anaconda 解决，为了解决这样一个问题去安装个 anaconda 实在是小题大做。这些解决方案的共同问题是：没有从源头出发解决问题。</p>
 
 <p>源头是什么？源头就是程序的报错信息。观察上面的报错信息，我们看到错误出现在 IRkernel 包中的函数 installspec()，错误出现在函数中的语句</p>
 
@@ -131,6 +131,6 @@ installspec <- function(user = NULL, name = 'ir', displayname = 'R', rprofile = 
 
 <p class="post-text-noindent">知道了安装过程，这个问题自然就解决了。实际上，Jupyter 安装 R 内核就是将 IRkernel 包下 kernelspec 目录中的三个文件复制到 jupyter R 内核的安装目录（笔者电脑是 /usr/local/share/jupyter/kernels/ir）。这三个文件是 kernel.js、kernel.json 和 logo-64x64.png，其中 kernel.json 文件中要加入 R 执行程序的路径。</p>
 
-<p>阅读源码的过程可能艰难，但它能帮助我们从根源上发现问题原因，定位了问题的根本原因，问题也就迎刃而解了。不惧问题，爱上 bug，始于今日。</p>
+<p>阅读源码的过程可能艰难，但它能帮助我们从根源上发现问题原因，定位了问题的根本原因，问题也就迎刃而解了。不惧问题，追根溯源；爱上 bug，始于今日。</p>
 
 </div>
