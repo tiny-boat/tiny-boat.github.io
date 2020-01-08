@@ -32,11 +32,13 @@ permalink: /about_me/
 * 2015.07-2015.11 Introduction to the theory of statistics 第六至九章[翻译](https://www.longzf.com/drafts/统计学课本翻译.pdf)
 * 2017.04-2017.05 本科毕业论文 [k 折交叉验证折数确定方法初探](https://www.longzf.com/drafts/k折交叉验证折数确定方法初探.pdf)
 * 2017.07-2017.09 在中国调查与数据中心的[工作总结](/drafts/CGSS质量控制——数据核查.pdf)以及用以提高工作效率的[自动化脚本](https://www.longzf.com/drafts/CGSS质量控制程序.pdf)
-* 2019.10-2019.11 运筹OR帷幄公众号文章 [熊猫爱上篮球，Pandas 造福世界](https://mp.weixin.qq.com/s/8TaRzXhx5gfsuV81sZUhdg)
+* 2019.07-2019.08 仅用 numpy 实现的一些[无约束优化算法](https://github.com/tiny-boat/my-Python-code/blob/master/unconstrained_optimization.py)（包括梯度下降法、修正牛顿法、共轭梯度法、拟牛顿法、信赖域方法和不使用目标函数导数信息的单纯形法）
+* 2019.09 仅用 numpy 实现的[全连接神经网络](https://github.com/tiny-boat/my-Python-code/blob/master/machine_learning/neural_network.py)(待完善)
+* 2019.10-2019.11 运筹OR帷幄公众号文章 [熊猫爱上篮球，Pandas 造福世界](https://mp.weixin.qq.com/s/8TaRzXhx5gfsuV81sZUhdg)（文章涉及数据分析全流程：数据获取、数据预处理、数据分析与可视化）
 
-## 目前工作
+## 正在进行的工作
 
-* 期望实现文献综述的自动化（涉及网络爬虫、数据可视化、文本聚类、摘要生成），为科学研究的第一步提供便利
+* 文献综述的自动化（涉及网络爬虫、数据可视化、文本聚类、摘要生成）
 * 系统性学习深度学习中
 
 ## 联系方式
