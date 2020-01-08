@@ -23,21 +23,21 @@ permalink: /about_me/
   + 从已上传问卷中筛选出质量存疑问卷，并将其交给电话核查人员进行回访
   + 汇总通过电话回访得到的相关信息，据此决定是否作废质量存疑的问卷
   + 备份问卷数据，以及其他临时性工作
-+ 7月，使用 R 语言完成了上述前两项工作，其余工作手动完成
-+ 8月，由于上述工作需要每日重复，实在麻烦，我开始研究如何实现上述大部分工作的自动化，研究了半个月，终于用 AutoHotkey 这款 Windows 系统下的脚本语言实现了
-+ 9月，我开始嫌弃自己写的代码，通过学习在 AutoHotkey 中自定义函数，以及学习新的语言 Bat、Excel Visual Basic，代码冗长繁琐、程序运行过慢等问题先后获得优化
+* 7月，使用 R 语言完成了上述前两项工作，其余工作手动完成
+* 8月，由于上述工作需要每日重复，实在麻烦，我开始研究如何实现上述大部分工作的自动化，研究了半个月，终于用 AutoHotkey 这款 Windows 系统下的脚本语言实现了
+* 9月，我开始嫌弃自己写的代码，通过学习在 AutoHotkey 中自定义函数，以及学习新的语言 Bat、Excel Visual Basic，代码冗长繁琐、程序运行过慢等问题先后获得优化
 
 ## 一些作品
 
-+ 2015.07-2015.11 Introduction to the theory of statistics 第六至九章[翻译](/drafts/统计学课本翻译.pdf)
-+ 2017.04-2017.05 本科毕业论文 [k 折交叉验证折数确定方法初探](/drafts/k折交叉验证折数确定方法初探.pdf)
-+ 2017.07-2017.09 在中国调查与数据中心的[工作总结](/drafts/CGSS质控控制——数据核查.pdf)以及用以提高工作效率的[自动化脚本](/drafts/CGSS.ahk)
-+ 2019.10-2019.11 运筹OR帷幄公众号文章 [熊猫爱上篮球，Pandas 造福世界](https://mp.weixin.qq.com/s?src=11&timestamp=1578461444&ver=2083&signature=qetx*eDAgJ0rkjC*ZwfFqo*D9V6icbLNoXFFz2f2y*UBvVyLZhm1af4qXlq6prtL3cC7eWhmVTmjILPa9bAAih0Mubg2IMrUO8JUEjQNGUVLPbyBFGTXC6Bh*KZnkyid&new=1)
+* 2015.07-2015.11 Introduction to the theory of statistics 第六至九章[翻译](/drafts/统计学课本翻译.pdf)
+* 2017.04-2017.05 本科毕业论文 [k 折交叉验证折数确定方法初探](/drafts/k折交叉验证折数确定方法初探.pdf)
+* 2017.07-2017.09 在中国调查与数据中心的[工作总结](/drafts/CGSS质控控制——数据核查.pdf)以及用以提高工作效率的[自动化脚本](/drafts/CGSS质量控制程序.pdf)
+* 2019.10-2019.11 运筹OR帷幄公众号文章 [熊猫爱上篮球，Pandas 造福世界](https://mp.weixin.qq.com/s/8TaRzXhx5gfsuV81sZUhdg)
 
 ## 目前工作
 
-+ 期望实现文献综述的自动化（涉及网络爬虫、数据可视化、文本聚类、摘要生成），为科学研究的第一步提供便利
-+ 系统性学习深度学习中
+* 期望实现文献综述的自动化（涉及网络爬虫、数据可视化、文本聚类、摘要生成），为科学研究的第一步提供便利
+* 系统性学习深度学习中
 
 ## 联系方式
 
