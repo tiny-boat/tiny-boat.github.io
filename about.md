@@ -30,6 +30,8 @@ permalink: /about_me/
 ## 一些作品
 
 * 2015.07-2015.11 Introduction to the theory of statistics 第六至九章[翻译](https://www.longzf.com/drafts/统计学课本翻译.pdf)
+* 2017.04-2017.05 [马蹄蟹追随者状态数据分析报告](https://www.longzf.com/drafts/马蹄蟹追随者状态数据分析报告.pdf)
+* 2017.04-2017.05 [北京银行股票数据分析报告](https://www.longzf.com/drafts/北京银行股票数据分析报告.pdf)
 * 2017.04-2017.05 本科毕业论文 [k 折交叉验证折数确定方法初探](https://www.longzf.com/drafts/k折交叉验证折数确定方法初探.pdf)
 * 2017.07-2017.09 在中国调查与数据中心的[工作总结](/drafts/CGSS质量控制——数据核查.pdf)以及用以提高工作效率的[自动化脚本](https://www.longzf.com/drafts/CGSS质量控制程序.pdf)
 * 2019.07-2019.08 仅用 numpy 实现的一些[无约束优化算法](https://github.com/tiny-boat/my-Python-code/blob/master/unconstrained_optimization.py)（包括梯度下降法、修正牛顿法、共轭梯度法、拟牛顿法、信赖域方法和不使用目标函数导数信息的单纯形法）
