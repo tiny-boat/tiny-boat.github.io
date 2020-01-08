@@ -1,7 +1,6 @@
 ---
 layout: post-default
 title: 关于我
-permalink: /about_me/
 ---
 
 **感谢你关注远行的小舟，欢迎你走进征帆的世界**，[**远行的舟**](https://www.longzf.com) (๑′ᴗ‵๑)  ❤ You
