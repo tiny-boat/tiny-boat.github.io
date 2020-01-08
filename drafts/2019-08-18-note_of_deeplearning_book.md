@@ -20,7 +20,7 @@ excerpt: '深度学习读书笔记'
 下图很好的展示了过去基于规则的人工智能、基于经典机器学习的人工智能和现在基于表示学习的人工智能和基于深度学习的人工智能的联系与区别。
 
 <center>
-<img src="/assets/img/Natural_Science/Computer_Science/Deep_Learning/dlbook/diff_ML&RL&DL.png">
+<img src="https://www.longzf.com/assets/img/Natural_Science/Computer_Science/Deep_Learning/dlbook/diff_ML&RL&DL.png">
 <p>不同人工智能系统的区别，阴影框表示能从数据中学习的组件</p>
 </center>
 
@@ -232,19 +232,168 @@ Daan Wierstra 和 Martin Riedmiller 发表论文 “Playing Atari with Deep Rein
 
 矩阵对应元素相乘的运算称为**元素对应乘积**（element-wise product）或者 **Hadamard 乘积**（Hadamard product），记作 $\boldsymbol{A}\odot \boldsymbol{B}$。  
 
-$\boldsymbol{Ax}=\boldsymbol{b}$  当且仅当 $\boldsymbol{b}$ 位于 $\boldsymbol{A}$ 的列向量的生成子空间（列空间/值域），当且仅当 $\boldsymbol{A}$ 的列向量的生成子空间维数等于 $\left(\boldsymbol{A},\boldsymbol{b}\right)$  的列向量的生成子空间维数，当维数小于未知数个数时，有无穷多个解，当维数等于未知数个数时，有唯一解。
+$\boldsymbol{Ax}=\boldsymbol{b}$  当且仅当 $\boldsymbol{b}$ 位于 $\boldsymbol{A}$ 的列向量的生成子空间（列空间/值域），当且仅当 $\boldsymbol{A}$ 的列向量的生成子空间维数等于 $\left(\boldsymbol{A},\boldsymbol{b}\right)$  的列向量的生成子空间维数，当维数小于未知量个数时，有无穷多个解，当维数等于未知量个数时，有唯一解。由于未知量就是 $\boldsymbol{A}$ 的列数，因此当 $\boldsymbol{A}$ 的行数小于列数（方程个数小于未知量个数）时，$\boldsymbol{Ax}=\boldsymbol{b}$ 要么无解，要么有无穷多个解，而不可能有唯一解。
 
 在某些机器学习应用中，由于区分恰好为 0 的元素和非常接近 0 的元素十分重要，欧式范数好于计算更方便的平方欧式范数，不过此时我们更多使用 $L_1$ 范数，$L_1$ 范数也经常作为表示非零元素数目的替代函数。
 
 在深度学习中，矩阵的范数通常使用 Frobenius 范数，类似于向量的欧式范数。
 
-特殊类型的矩阵中，对角矩阵、对称矩阵、正交矩阵受到关注。其中对角矩阵不一定是方阵，它受到关注是因为其乘法计算的高效、以及方阵型对角矩阵逆矩阵计算的高效，若我们想对向量 $\boldsymbol{x}$ 中的每个元素 $x_i$ 放大 $v_i$ 倍，只需要用一个第 $i$ 个对角元为 $v_i$ 的对角矩阵左乘该向量即可。对称矩阵受到关注是因为某些不依赖参数顺序的双参数函数生成元素时，对称矩阵经常出现，例如距离度量矩阵。正交矩阵受到关注是因为其求逆代价小，其逆就是其转置，要特别注意的是：正交矩阵指的是行向量与列向量均标准正交的矩阵，对于行向量与列向量均正交但不是标准正交的矩阵，并没有专门的术语。
+特殊类型的矩阵中，**对角矩阵**、**对称矩阵**、**正交矩阵**受到关注。其中对角矩阵不一定是方阵，它受到关注是因为其乘法计算的高效、以及方阵型对角矩阵逆矩阵计算的高效，若我们想对向量 $\boldsymbol{x}$ 中的每个元素 $x_i$ 放大 $v_i$ 倍，只需要用一个第 $i$ 个对角元为 $v_i$ 的对角矩阵左乘该向量即可。对称矩阵受到关注是因为某些不依赖参数顺序的双参数函数生成元素时，对称矩阵经常出现，例如距离度量矩阵。正交矩阵受到关注是因为其求逆代价小，其逆就是其转置，要特别注意的是：正交矩阵指的是行向量与列向量均标准正交的矩阵，对于行向量与列向量均正交但不是标准正交的矩阵，并没有专门的术语。
 
-特征分解（谱分解）与奇异值分解是两个重要的矩阵分解。特征分解通常针对实对称矩阵而言，实对称矩阵 $\boldsymbol{A}$ 的最大（小）特征值为二次型函数 $f\left(\boldsymbol{x}\right)=\boldsymbol{x}^T\boldsymbol{A}\boldsymbol{x},\ \|\boldsymbol{x}\|_2=1$ 的最大（小）值，对应的特征向量为最大（小）值点。奇异值分解可看作特征分解的扩展，任何实矩阵都有奇异值分解：
+**特征分解**（谱分解）与**奇异值分解**是两个重要的矩阵分解。特征分解通常针对实对称矩阵而言，实对称矩阵 $\boldsymbol{A}$ 的最大（小）特征值为二次型函数 $f\left(\boldsymbol{x}\right)=\boldsymbol{x}^{\rm T}\boldsymbol{A}\boldsymbol{x},\ \|\boldsymbol{x}\|_2=1$ 的最大（小）值，对应的特征向量为最大（小）值点。奇异值分解可看作特征分解的扩展，**任何实矩阵都有奇异值分解**：
 
 $$\boldsymbol{A}_{m\times n} = \boldsymbol{U}_{m\times m}\boldsymbol{D}_{m\times n}\boldsymbol{V}_{n\times n}$$
 
-其中 $\boldsymbol{U}$ 是由 $\boldsymbol{A}\boldsymbol{A}^T$ 的特征向量（左奇异向量）构成的正交矩阵，$\boldsymbol{V}$ 是由 $\boldsymbol{A}^T\boldsymbol{A}$ 的特征向量（右奇异向量）构成的正交矩阵，$\boldsymbol{D}$ 是对角矩阵，其对角元（奇异值）是 $\boldsymbol{A}\boldsymbol{A}^T$ 的非零特征值，也是 $\boldsymbol{A}^T\boldsymbol{A}$ 的非零特征值。
+其中 $\boldsymbol{U}$ 是由 $\boldsymbol{A}\boldsymbol{A}^{\rm T}$ 的特征向量（左奇异向量）构成的正交矩阵，$\boldsymbol{V}$ 是由 $\boldsymbol{A}^{\rm T}\boldsymbol{A}$ 的特征向量（右奇异向量）构成的正交矩阵，$\boldsymbol{D}$ 是对角矩阵，其对角元（奇异值）是 $\boldsymbol{A}\boldsymbol{A}^{\rm T}$ 的非零特征值，也是 $\boldsymbol{A}^{\rm T}\boldsymbol{A}$ 的非零特征值。
 
-矩阵的奇异值分解将矩阵的求逆运算从方阵扩展到了一般矩阵
+矩阵的奇异值分解使一般矩阵的求逆运算变得简单，这为非方阵线性方程组 $\boldsymbol{A}_{m\times n} \boldsymbol{x}= \boldsymbol{b}$ 的求解带来了便利。矩阵 $\boldsymbol{A}$ 的广义逆定义为 $\boldsymbol{A}\boldsymbol{X}\boldsymbol{A} = \boldsymbol{A}$  的解，但这个解是不唯一的，为解决不唯一性引入了所谓 **Moore-Penrose 广义逆**，它定义为方程组
 
+$$\left\{\begin{matrix} \boldsymbol{AXA} \, = \boldsymbol{A} \ \ \\ \boldsymbol{XAX} = \boldsymbol{X} \ \\ \left(\boldsymbol{AX} \right)^{\rm T} = \boldsymbol{AX} \\ \left(\boldsymbol{XA} \right)^{\rm T} = \boldsymbol{XA} \end{matrix}\right.$$
+
+的解，这个解 $\boldsymbol{A}^{+} = \lim_{\alpha \rightarrow 0}\left(\boldsymbol{A}^{\rm T}\boldsymbol{A}+\alpha\boldsymbol{I} \right)^{-1}\boldsymbol{A}^{\rm T}$。有了矩阵的奇异值分解，Moore-Penrose 广义逆的计算变得简单，$\boldsymbol{A}^{+} = \boldsymbol{V}\boldsymbol{D}^{+}\boldsymbol{U}^{\rm T}$，其中 $\boldsymbol{D}^{+}$ 为 $\boldsymbol{D}$ 的非零元素取倒数之后再转置得到的。这样矩阵 Moore-Penrose 广义逆的计算基本等价于对矩阵作奇异值分解。
+
+当 $\boldsymbol{A}$ 的行数小于列数且 $\boldsymbol{Ax}=\boldsymbol{b}$  有解时，$\boldsymbol{x} = \boldsymbol{A}^{+}\boldsymbol{b}$ 是所有解中欧式范数最小的一个；当 $\boldsymbol{A}$ 的行数大于列数且 $\boldsymbol{Ax}=\boldsymbol{b}$  无解时，$\boldsymbol{x} = \boldsymbol{A}^{+}\boldsymbol{b}$ 是函数 $\|\boldsymbol{Ax}-\boldsymbol{b} \|_2$ 的最小值点。（**其他情况书中没有说明，待研究或查阅**）
+
+矩阵的迹为矩阵 Frobenius 范数的计算提供了方便，$\|\boldsymbol{A}\|_{F}=\sqrt{{\rm Tr} \left(\boldsymbol{A}\boldsymbol{A}^{\rm T}\right)}$. 迹运算有如下几点常用性质：
+
+* ${\rm Tr} \left(\boldsymbol{A}\right)={\rm Tr} \left(\boldsymbol{A}^{\rm T}\right)$
+* ${\rm Tr} \left(\prod_{i=1}^{n}\boldsymbol{F}^{\left(i \right)} \right) = {\rm Tr} \left(\boldsymbol{F}^{\left(n \right)} \prod_{i=1}^{n-1}\boldsymbol{F}^{\left(i \right)} \right)$
+* $a = {\rm Tr} \left(a \right)$
+
+实方阵 $\boldsymbol{A}_{n\times n}$ 的行列式 ${\rm det} \left(\boldsymbol{A} \right)$ 将 $\boldsymbol{A}$ 映射为一个实数，这个实数就是 $\boldsymbol{A}$ 的特征值之积，所以 ${\rm det} \left(\boldsymbol{A} \right)$ 的几何意义就是 $n$ 维超球体经线性变换 $\boldsymbol{A}$ 后被拉伸的倍数（或被压缩的倍数的倒数），${\rm det} \left(\boldsymbol{A} \right) = 0$ 时，$n$ 维超球体经线性变换 $\boldsymbol{A}$ 后变为了低维空间的超球体。
+
+## 2.2 probability and information theory
+
+概率论提供了在不确定性存在的情况下进行推理的方法，信息论提供了量化信息不确定性的手段。
+
+独立性比零协方差的要求更强，它不仅排除了线性关系，还排除了非线性关系。
+
+机器学习中常用概率分布有：伯努利分布（Bernoulli distribution）、多努利分布 / 范畴分布（multinoulli distribution / categorical distribution）、高斯分布 / 正态分布、指数分布、拉普拉斯分布、经验分布、高斯混合分布。
+
+正如伯努利分布是二项分布的特例一样，多努利分布是多项分布的特例。**多项分布**的**概率质量函数** / 概率分布律（probability mass function）为
+
+$$P\left(X_1=x_1,\ X_2=x_2,\ \cdots,\ X_k=x_k \right) = \frac{n!}{x_1!x_2!\cdots x_k!}\prod_{i=1}^k p_i^{x_i}\\ {\rm where}\ \sum_{i=1}^k p_i = 1,\ 0\leq p_i\leq 1; \ \sum_{i=1}^k x_i = n,\ \ x_i \in \mathbb{Z}^+$$
+
+当 $n=1$ 时，多项分布退化为多努利分布。
+
+**正态分布**常用的原因有二：一是根据中心极限定理，独立随机变量和近似服从正态分布，而现实中许多随机变量可以看作多个独立随机变量的组合；二是在具有相同方差的概率分布中，正态分布在实数上具有最大的不确定性。
+
+为避免求多维正态分布概率密度时对协方差矩阵求逆，我们通常采用精度矩阵 $\boldsymbol{\beta}$ 替代 $\boldsymbol{\Sigma}^{-1}$，将多维正态分布概率密度表示为
+
+$\mathcal{N} \left(\boldsymbol{x};\boldsymbol{\mu},\boldsymbol{\beta}^{-1} \right) = \sqrt{\frac{det\left(\boldsymbol{\beta} \right)}{\left(2\pi \right)^n}}\exp \left(-\frac{1}{2}\left(\boldsymbol{x}-\boldsymbol{\boldsymbol{\mu}} \right)^T\boldsymbol{\beta}\left(\boldsymbol{x}-\boldsymbol{\boldsymbol{\mu}} \right) \right)$
+
+如果我们假设各随机变量相互独立，则协方差矩阵 $\boldsymbol{\beta}^{-1}$ 是个对角矩阵；进一步，如果协方差矩阵是单位阵的标量倍，则称随机变量服从**各向同性**（isotropic）高斯分布
+
+**拉普拉斯分布**可视作指数分布在负半区域的拓展，其概率密度函数为
+
+$${\rm Laplace} \left(x;\mu,\gamma \right) = \frac{1}{2\gamma} \exp \left(-\frac{|x-\mu|}{\gamma} \right)$$
+
+**经验分布**是 Dirac 分布的组合，其概率密度函数为
+
+$$\hat{p} \left(\boldsymbol{x} \right) = \frac{1}{m} \sum_{i=1}^{m}\delta(\boldsymbol{x}-\boldsymbol{x}^{\left(i\right)})$$
+
+其中 $\delta \left(\boldsymbol{x} \right)$ 处零点外均为 0，但积分为 1，它是一种广义函数，它可视作一个函数序列的极限，这个函数序列把除 0 以外的所有点的概率密度越变越小。
+
+**高斯混合分布**，顾名思义，就是多个高斯分布的组合，其概率密度函数为
+
+$$GMM(\boldsymbol{x}) = \sum_{i=1}^k p_i \mathcal{N}\left(\boldsymbol{x};\boldsymbol{\mu}^\left(i \right),\boldsymbol{\Sigma}^\left(i \right)\right)$$ 
+
+高斯混合分布是概率密度的万能近似器 (universal approximator)，任何平滑的概率密度都可以用具有足够多组件（$k$ 足够大）的高斯混合模型以任意精度来逼近。
+
+**logistic sigmoid** 函数和 softplus 函数在处理概率分布时经常出现。logistic sigmoid 函数
+
+$$\sigma(x) = \frac{1}{1+\exp \left(-x\right)} = \frac{\exp \left(x \right)}{1 + \exp \left(x \right)}$$
+
+将 $\left(-\infty, +\infty \right)$ 映射到 $\left(0,1 \right)$，可用来产生伯努利分布的参数，sigmoid 函数的求导非常简单
+
+$$\frac{d}{dx}\sigma\left(x\right)=\sigma\left(x\right)\left(1-\sigma\left(x\right)\right)=\sigma\left(x\right)\sigma\left(-x\right)$$
+
+**softplus 函数**
+
+$$\zeta(x) = \log \left(1+\exp \left(x \right) \right)$$
+
+将 $\left(-\infty, +\infty \right)$ 映射到 $\left(0,+\infty \right)$，可用来产生正态分布的 $\sigma$ 参数，它是正部函数 $x^+ = \max\left\{0,x\right\}$ 的平滑版本，它的导数就是 sigmoid 函数。如同 $x^+ - x^- = \max\left\{0,x\right\} - \max\left\{0,-x\right\} = x$ 一样，$\zeta(x) - \zeta(-x) = x$
+
+信息论的基本思想是：随机变量的不确定性越大，其包含的信息越多。服从分布 $P$ 的随机变量 $X$ 的微分**熵** / 香农**熵**（differential entropy / Shannon entropy）定义为：
+
+$$H\left(P\right) = E_{X\sim P}[-\log_b P\left(X \right)] = - \int p\left(x \right)\log_b \left(p\left(x \right) \right)dx$$
+
+$$H\left(P \right) = E_{X\sim P}[-\log_b P\left(X \right)] = - \sum_x p\left(x \right)\log_b \left(p\left(x \right) \right)$$
+
+它是随机变量不确定性的量化，也是随机变量所含信息多少的量化。如果 $b=e$，$H\left(X \right)$ 的单位为奈特（nats），它代表平均意义下随机变量包含的信息量。如果 $b=2$，$H\left(X \right)$ 的单位为比特（bits），它不仅代表平均意义下随机变量包含的信息量，还代表平均意义下编码随机变量所需的最少二进制位数，或者说该随机变量最优编码方式对应的平均二进制位数。比特是奈特的 $\log_2 e\approx 1.44$ 倍。
+
+服从分布 $P$ 的随机变量 $X$ 的**交叉熵**（cross-entropy）定义为：
+
+$$H\left(P,Q \right) = E_{X\sim P}[-\log_b Q\left(X \right)] = - \int p\left(x \right)\log_b \left(q\left(x \right) \right)dx$$
+
+$$H\left(P,Q \right) = E_{X\sim P}[-\log_b Q\left(X \right)] = - \sum_x p\left(x \right)\log_b \left(q\left(x \right) \right)$$
+
+它代表以其他分布 $Q$ 近似分布 $P$ 需要的信息量，或者说以其他分布 $Q$ 对应的最优编码方式编码服从分布 $P$ 的随机变量时所需要的平均二进制位数。
+
+交叉熵相较于熵增加的部分称为 **KL 散度 / 相对熵**（Kullback-Leibler divergence / relative entropy），即
+
+$$D_{KL} \left(P||Q \right) = H\left(P,Q \right) - H\left(P \right)$$ 
+
+它代表以其他分布 $Q$ 近似分布 $P$ 时需要增加的额外信息量，或者说以其他分布 $Q$ 近似分布 $P$ 时增加的不确定性，它衡量了分布 $Q$ 对分布 $P$ 的近似精度，量化了分布差异。但需要特别指出的是，它并不代表两个分布之间的距离，因为 $D_{KL} \left(P||Q \right) \neq D_{KL} \left(Q||P \right)$.
+
+建模时，最小化 KL 散度等价于最小化交叉熵，因此交叉熵常作为深度学习中的损失函数，在熵的计算中，约定 $0\log0=0$。
+
+**结构化概率模型** / **图模型**为概率分布提供了全新的描述方式，图的引入，使公式化的概率分布变得形象、直观。图有有向图和无向图之分，它们均能表示概率分布，并且任何概率分布均可用这两种方式进行描述。
+
+## 2.3 numerical computing
+
+实现深度学习算法时，底层库的开发者要牢记数值问题，确保算法是数值稳定的（**避免上溢和下溢问题**），一个典型的例子是 softmax 函数
+
+$${\rm softmax}\left(\boldsymbol{x}\right)_i = \frac{\exp(x_i)}{\sum_{j=1}^n \exp\left({x_i}\right)}$$
+
+的计算，应采用 $\boldsymbol{z} = \boldsymbol{x} - \max_i x_i$ 替代 $\boldsymbol{x}$（这种替代不会改变函数值），避免分母的上溢和下溢。
+
+**病态矩阵**也应引起底层算法开发者的重视，所谓病态矩阵指的是那些条件数（矩阵最大特征值和最小特征值的模之比）特别大的非奇异矩阵。对线性方程组而言，如果其系数矩阵为病态矩阵，那么对于系数矩阵和系数向量的微小扰动会使线性方程组的解发生巨大变化。同样地，以病态矩阵对向量做线性变换，向量的微小扰动会使线性变换的结果发生巨大变化。
+
+**函数的一阶方向导数刻画了函数在任意方向上的变化率/斜率信息**，如果方向是 x (y) 轴方向，一阶方向导数即为对 x (y) 的一阶偏导，理解了这一点，我们就很容易理解为什么函数的一阶方向导数等于函数的梯度向量与方向向量的内积。
+
+同理，**函数的二阶方向导数刻画了函数在任意方向上的曲率信息**，如果方向是 x (y) 轴方向，二阶方向导数即为对 x (y) 的二阶偏导，理解了这一点，我们就很容易理解为什么函数的二阶方向导数等于二次型矩阵为海森矩阵的方向向量的二次型。函数在海森矩阵特征向量方向上的曲率即为对应的特征值，函数在任意方向上的曲率就是这些特征值的加权平均。
+
+**函数的二阶方向导数可用于判断函数的驻点/临界点/平稳点（梯度为 0 向量的点）是否为极值点或鞍点**。从几何直观上，我们很容易理解，当函数在驻点的任意方向的曲率均为正（负）时，这个驻点是函数的极小（大）值点，当函数在驻点的某些方向的曲率为正，在其他方向上为负时，这个驻点是函数的鞍点。因此当海森矩阵正定（负定）时，驻点为极小（大）值点，而当海森矩阵不定（既不半正定，也不半负定）时，驻点为鞍点。当海森矩阵半正（负）定且非正（负）定时，无法判断驻点是极小（大）值点、鞍点还是平坦区域的一部分。
+
+**函数的二阶方向导数还可用于确定梯度下降的最优搜索步长**（前提是函数能用二次函数很好地近似），这个步长是梯度的平方欧式范数与函数在梯度方向的曲率之比。
+
+**当函数的二阶方向导数变化范围较大**（或者说函数各方向曲率变化范围较大，或者说海森矩阵的条件数较大，或者说海森矩阵是病态矩阵）**时，梯度下降的效率较低**，因为它选择的方向不是长期来看函数的最优下降方向，而是当前的最优下降方向（下降方向指一阶方向导数为负的方向，但它是在搜索步长趋于零时的结果，它只代表在当前这个点很小很小的邻域范围内，沿着该方向函数下降的程度比其他方向大）。
+
+**使用牛顿法容易陷入鞍点**（牛顿法一旦进入鞍点，迭代就会停止），但梯度下降通常没有这个问题。此外，牛顿法还存在海森矩阵不正定导致搜索方向为非下降方向的问题，为解决这个问题，人们提出了不少修正牛顿法。一种常见方法是将非正定矩阵加一个常数倍单位矩阵，另一种常见方法是更改搜索方向为负曲率方向。
+
+由于深度学习训练的目标函数通常是一个非常复杂的非凸函数，而优化的主要方法是为有限函数族设计的，因此深度学习算法往往缺乏理论保证。但限制函数或其导数满足 Lipschitz 连续，可以获得一些保证，深度学习中的许多优化问题经过相对小的修改后就能变得 Lipschitz 连续。
+
+凸优化算法适用于凸函数（海森矩阵处处半正定的函数），这些函数没有鞍点并且局部极小值点即为全局最小值点。然而深度学习中的大多数问题都难以表示成凸优化的形式。凸优化只用作深度学习算法的子程序。凸优化中的分析思路对证明深度学习算法的收敛性非常有用，但通常来说，**深度学习背景下凸优化的重要性大大降低**。
+
+# 3 Machine Learning Basic
+
+欠拟合指模型无法在训练集获得足够低的误差，过拟合指模型的训练误差和测试误相差过大。
+
+模型的容量（capacity）指的是其拟合各种函数的能力，容量低的模型可能欠拟合，容量高的模型可能过拟合，从某种程度上说，参数数目越多、特征数目越多，模型容量越大。由于额外的限制，如优化算法的不完美，模型的表示容量（representation capacity）可能大于其有效容量（effective capacity）。
+
+VC 维是统计学习理论中度量二分类模型容量的工具，它定义为分类器能够将两类不同样本彻底分开时的最大样本量，例如线性分类器最多将 3 个二分类样本彻底分开，因此线性分类器的 VC 维为 3。关于 VC 维更学术化的定义如下：
+
+> 对一个指示函数集，如果存在 H 个样本能够被函数集中的函数按所有可能的 2 的 H 次方种形式分开，则称函数集能够把 H 个样本打散；函数集的 VC 维就是它能打散的最大样本数目 H。若对任意数目的样本都有函数能将它们打散，则函数集的 VC 维是无穷大，[有界](https://baike.baidu.com/item/有界)实函数的VC维可以通过用一定的阈值将它转化成[指示函数](https://baike.baidu.com/item/指示函数)来定义
+
+统计学习理论中最重要的结论是：泛化误差与训练误差之间差异的上界与训练样本容量成反比，与模型容量成正比。这一上界为机器学习算法解决问题的有效性提供了理论保证，也为不同算法优劣的比较提供了参考。但其很少用于深度学习中，这是因为：一方面边界太松；另一方面确定深度学习模型的有效容量十分困难。这一结论的严格数学表述如下（摘自李航所著《统计学习方法》）：
+
+> 对二分类问题，当假设空间是有限个函数的集合 $\mathcal{F}=\left\{f_1,f_2,\cdots,f_d \right\}$ 时，对任意函数 $f \in \mathcal{F}$，泛化误差 $R\left(f\right)$ 至少以概率 $1-\delta$ 满足
+>
+> $$R\left(f\right) = \hat{R}\left(f\right) + \varepsilon\left(d, N, \delta\right)$$
+>
+> 其中 $\hat{R}\left(f\right)$ 为训练误差，$\varepsilon\left(d, N, \delta\right) = \sqrt{\frac{1}{2N}\left(\log d + \log \frac{1}{\delta}\right)}$
+
+最近邻回归是一种实用的非参数模型，相比于参数模型有限且固定的参数个数，非参数模型要自由很多，最近邻回归的复杂度与训练样本的规模有关。
+
+从预先知道的真实分布预测而出现的误差称为贝叶斯误差（Bayes error），真实分布预测也会出现误差是因为分布中仍然包含一些噪声。
+
+当模型容量小于最优容量（欠拟合与过拟合的临界点）时，训练误差与训练样本量成正比，因为越大的数据集越难拟合。当训练样本量趋于无穷大时，任何固定容量的模型的训练误差都至少增至贝叶斯误差。
+
+机器学习研究的目标不是找一个通用学习算法或是绝对最好的学习算法，而是理解什么样的分布与人工智能获取经验的 “真实世界” 相关，以及什么样的学习算法在我们关注的数据生成分布（data generating distribution）上效果最好。
+
+表示对函数的偏好是比增减假设空间成员函数更一般地控制模型容量的方法，这种或隐式或显式的方法统称为正则化，正则化修改学习算法，使泛化误差降低。正则化是机器学习领域的中心问题之一，其重要性，只有优化能与之比肩。
+
+没有免费午餐定理表明没有最优的学习算法，特别是没有最优的正则化形式。因此，我们必须挑选一个非常适合于我们所要解决的任务的正则形式。深度学习中普遍的理念是大量任务（例如所有人能做的智能任务）也许都可以使用非常通用的正则化形式来有效解决。
+
+超参数是那些不由训练算法训练的参数，它们用来控制算法行为。如神经网络层数。每层单元数、激活函数、损失函数、正则项系数、优化方法、学习率、训练轮数、批样本量等等。验证集（validation set / development set）是从训练集中划分出来的用来估计泛化误差、更新超参数的数据集。
