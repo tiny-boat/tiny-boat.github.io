@@ -29,9 +29,9 @@ permalink: /about_me/
 
 ## 一些作品
 
-* 2015.07-2015.11 Introduction to the theory of statistics 第六至九章[翻译](/drafts/统计学课本翻译.pdf)
-* 2017.04-2017.05 本科毕业论文 [k 折交叉验证折数确定方法初探](/drafts/k折交叉验证折数确定方法初探.pdf)
-* 2017.07-2017.09 在中国调查与数据中心的[工作总结](/drafts/CGSS质控控制——数据核查.pdf)以及用以提高工作效率的[自动化脚本](/drafts/CGSS质量控制程序.pdf)
+* 2015.07-2015.11 Introduction to the theory of statistics 第六至九章[翻译](https://www.longzf.com/drafts/统计学课本翻译.pdf)
+* 2017.04-2017.05 本科毕业论文 [k 折交叉验证折数确定方法初探](https://www.longzf.com/drafts/k折交叉验证折数确定方法初探.pdf)
+* 2017.07-2017.09 在中国调查与数据中心的[工作总结](/drafts/CGSS质量控制——数据核查.pdf)以及用以提高工作效率的[自动化脚本](https://www.longzf.com/drafts/CGSS质量控制程序.pdf)
 * 2019.10-2019.11 运筹OR帷幄公众号文章 [熊猫爱上篮球，Pandas 造福世界](https://mp.weixin.qq.com/s/8TaRzXhx5gfsuV81sZUhdg)
 
 ## 目前工作
