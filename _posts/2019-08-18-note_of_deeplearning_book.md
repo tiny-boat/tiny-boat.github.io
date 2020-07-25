@@ -2,7 +2,7 @@
 layout: post
 title:  "深度学习读书笔记"
 date:   2019-08-18 17:17:00
-categories: Computer_Science Deep_Learning
+categories: Computer_Science Machine_Learning
 permalink: /dlbook/
 excerpt: '深度学习读书笔记'
 ---
@@ -288,11 +288,11 @@ $$\mathcal{N} \left(\boldsymbol{x};\boldsymbol{\mu},\boldsymbol{\beta}^{-1} \rig
 
 $${\rm Laplace} \left(x;\mu,\gamma \right) = \frac{1}{2\gamma} \exp \left(-\frac{|x-\mu|}{\gamma} \right)$$
 
-**经验分布**是 Dirac 分布的组合，其概率密度函数为
+连续型数据的**经验分布**是 Dirac 分布的组合，其概率密度函数为
 
 $$\hat{p} \left(\boldsymbol{x} \right) = \frac{1}{m} \sum_{i=1}^{m}\delta(\boldsymbol{x}-\boldsymbol{x}^{\left(i\right)})$$
 
-其中 $\delta \left(\boldsymbol{x} \right)$ 处零点外均为 0，但积分为 1，它是一种广义函数，它可视作一个函数序列的极限，这个函数序列把除 0 以外的所有点的概率密度越变越小。
+其中 $\delta \left(\boldsymbol{x} \right)$ 处零点外均为 0，但积分为 1，它是一种广义函数，它可视作一个函数序列的极限，这个函数序列把除 0 以外的所有点的概率密度越变越小。离散型数据的经验分布为多努利分布/范畴分布。
 
 **高斯混合分布**，顾名思义，就是多个高斯分布的组合，其概率密度函数为
 
@@ -339,6 +339,16 @@ $$D_{KL} \left(P||Q \right) = H\left(P,Q \right) - H\left(P \right)$$
 $$D_{KL} \left(P||Q \right) \neq D_{KL} \left(Q||P \right)$$
 
 建模时，**最小化 KL 散度等价于最小化交叉熵，因此交叉熵常作为深度学习中的损失函数**，在熵的计算中，约定 $0\log0=0$。**最大似然估计等价于最小化 KL 散度**（用假设的数据真实分布近似数据经验分布时需要增加的额外信息量），或者换句话说，**最大似然估计最小化数据经验分布与假设的数据真实分布之间的差异**。
+
+以 $Logitstic$ 二分类模型为例，它假设数据给定 $\boldsymbol{x}$ 后 $y$ 的真实条件分布 $Q$ 是以 $$\frac{\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)}{1+\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)}$$ 为参数的伯努利分布。此时服从数据经验条件分布 $P$ （多努利分布 / 范畴分布）的随机变量 $Y|\boldsymbol{X}$ 的交叉墒为（$n$ 为样本量，该交叉墒也被称为二值交叉墒 binary cross entropy）
+
+$$H\left(P,Q \right) = E_{Y|\boldsymbol{X}\sim P}[-\log_e Q\left(Y|\boldsymbol{X} \right)] = - \sum_{y|\boldsymbol{x}} p\left(y|\boldsymbol{x} \right)\log_e \left(q\left(y|\boldsymbol{x} \right) \right)\\=-\sum_{y|\boldsymbol{x}}^n\left[yp\left(1|\boldsymbol{x} \right)\log_e \left(q\left(1|\boldsymbol{x} \right) \right)+\left(1-y\right)p\left(0|\boldsymbol{x} \right)\log_e \left(q\left(0|\boldsymbol{x} \right) \right)\right]\\=-\sum_{y|\boldsymbol{x}}^n\left[\frac{y}{n}\log_e \left(\frac{\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)}{1+\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)} \right)+\frac{1-y}{n}\log_e \left(\frac{1}{1+\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)} \right)\right]\\=\sum_{y|\boldsymbol{x}}^n\left[\frac{1}{n}\log_e\left(1+\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)\right)-\frac{y}{n}\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)\right]\\=\frac{1}{n}\sum_{y|\boldsymbol{x}}^n\left[\log_e\left(1+\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)\right)-y\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)\right]$$
+
+而数据的对数似然为
+
+$$\log L\left(\boldsymbol{\theta};y|\boldsymbol{x}\right) = \sum_{y|\boldsymbol{x}}^n \log_e \left(q\left(y|\boldsymbol{x} \right) \right)\\=\sum_{y|\boldsymbol{x}}^n\left[y\log_e \left(q\left(1|\boldsymbol{x} \right) \right)+\left(1-y\right)\log_e \left(q\left(0|\boldsymbol{x} \right) \right)\right]\\=\sum_{y|\boldsymbol{x}}^n\left[y\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)-\log_e\left(1+\exp\left(\boldsymbol{\theta}\cdot\boldsymbol{x}\right)\right)\right]=-nH\left(P,Q \right)$$
+
+通过这个实例，我们可以清晰地看到：最大似然估计等价于最小化交叉墒，也等价于最小化 KL 散度/相对墒。实际上，从交叉墒的定义，我们也能够看到，交叉墒与对数似然的等价性。
 
 **结构化概率模型** / **图模型**为概率分布提供了全新的描述方式，图的引入，使公式化的概率分布变得形象、直观。图有有向图和无向图之分，它们均能表示概率分布，并且任何概率分布均可用这两种方式进行描述。
 
