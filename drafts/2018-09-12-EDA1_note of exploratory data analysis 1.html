@@ -1,0 +1,770 @@
+---
+layout: post
+title:  "探索性数据分析(1):Python"
+date:   2018-09-13 19:25:00
+categories: Statistics Computer_Science Python
+excerpt: "本篇博文主要参考廖雪峰老师的 Python 教程，同时还会参考笔者所上探索性数据分析这门课的课件以及从网络上获得的其他资料"
+permalink: /eda/1/
+---
+
+<div class="post-style">
+
+<blockquote>本篇博文主要参考廖雪峰老师的 Python 教程，同时还会参考笔者所上探索性数据分析这门课的课件（课件出自湘潭大学数学与计算科学学院刘红良教授的研究生）以及从网络上获得的其他资料，特此说明，望读者知悉。</blockquote>
+
+<h1>1.1 基础</h1>
+
+<p>在讲述有关 Python 的基础性内容前，这里先列出 Python 中可能需要注意的一些特点： </p>
+
+<ul>
+<li>Python 使用缩进来组织代码块，按约定俗成的习惯，缩进长度为 4 个空格（1 个 Tab 键）；</li>
+<li>Python 单行注释采用 #，多行注释采用三引号 “““ ””” 或 ‘‘‘ ’’’；</li>
+<li>Python 对大小写敏感</li>
+<li>Python 中乘方运算符为 **，逻辑运算符为 not、and 和 or，运算符 // 则表示除法取整</li>
+</ul>
+
+<h2>1.1.1 数据类型</h2>
+
+<p>Python 内置的数据类型有：整数（int）、浮点数（float）、复数（complex）、布尔值（True False）、空值（None）、字符串（str）、字节串（bytes）、元组（tuple）、列表（list）、字典（dict）和集合（set）</p>
+
+<p>对于<strong>整数</strong>、<strong>浮点数</strong>、<strong>布尔值</strong>和<strong>空值</strong>，与其他语言是类似的，故不再赘述。这里只提一点，那就是 Python 中允许使用二进制、八进制和十六进制表示一个数，只不过需要在数的前面分别添加 “0b”、“0o” 和 “0x”。 </p>
+
+<p>Python 中的<strong>字符串</strong>不仅可以使用单引号、双引号表示，还可以使用三引号表示。三引号的作用体现在两方面：一是对字符串中存在双引号字符的语句使用三引号，可避免使用转义符表示双引号字符；二是使用三引号且需要换行显示时，直接回车而无需使用转义回车符 “\n”。 另外如果字符串里面有很多字符都需要转义，就需要加很多 \，为了简化，Python 允许使用 r' '、r" " 和 r''' '''，在这种表示下，''、" "、''' ''' 内部的字符串将不会被转义。值得注意的是：字符串是不可变对象（一经创建便不可更改），“+” 或空格可以用来将多个字符串连接为一个字符串，“*” 可用来重复字符串。如 “A”+"B" 的输出为 “AB”，“A”*4 的输出为 “AAAA”。下图给出了相关的 Python 代码示例：</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_1.png"></p>
+
+<p class="post-text-tablename">图 1-1 Python 代码示例之字符串</p>
+
+<p><strong>元组</strong>和<strong>列表</strong>均是 Python 中用来表示有序列表的数据类型，分别使用小括号 () 和中括号 [] 表示。二者的根本区别在于前者是不可变对象，后者是可变对象。我们可以把这种有序列表看成为一个向量，但与 R 语言中对向量的要求不同，元组和列表中元素的数据类型不必保持一致。实际上，元组和列表中可以包含数字、字符串、元组、列表、字典、集合、自定义对象等的任何种类的对象。图 1-2 给出了与元组相关的 Python 代码示例，图 1-3 则给出了与列表相关的 Python 代码示例。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_2.png"></p>
+
+<p class="post-text-tablename">图 1-2 Python 代码示例之元组</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_3.png"></p>
+
+<p class="post-text-tablename">图 1-3 Python 代码示例之列表</p>
+
+<p><strong>字典</strong>和<strong>集合</strong>是 Python 内置的数据类型中比较特别的两个，它们在元素查找速度、增删元素速度方面优于列表和元组。我们可以将字典看成是一个由<strong>键</strong>（key）向量和<strong>值</strong> (value) 向量构成的二维数组，而将集合看成是一个由键构成的无序不重复序列。需要特别强调的是：键的数据类型只能为整数、实数、布尔值、空值、字符串等不可变对象，通常情况下我们使用的都是字符串。图 1-4 给出了与字典相关的 Python 代码示例，图 1-5 则给出了与集合相关的 Python 代码示例。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_4.png"></p>
+
+<p class="post-text-tablename">图 1-4 Python 代码示例之字典</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_5.png"></p>
+
+<p class="post-text-tablename">图 1-5 Python 代码示例之集合</p>
+
+<h2>1.1.2 变量与常量</h2>
+
+<p>Python 中变量的命名规则与 C 语言是一致的，在博文<a href="/computer_science/c/2018/05/22/C1_Introduction-of-C.html">《C语言(1):初识C语言》</a>中已有详细说明，这里不再赘述（注：如果不确定自己使用的变量名是否为 Python 内置对象名，可通过 'var_name' in dir(__builtins__) 判断）。在 Python 中，可以把任意类型的数据赋值给变量，这种变量本身类型不固定的语言称之为<strong>动态语言</strong>，而像 C、Java 这种变量类型固定，即使用变量前必须声明变量类型的语言称之为<strong>静态语言</strong>。Python 中允许在一个语句中对多个变量进行赋值，其语法格式为：</p>
+
+$$var\_name1,var\_name2,\cdots=var\_value1,var\_value2,\cdots$$
+
+<p class="post-text-noindent">此外，我们建议使用像 $var\_name$ += $num$ 这样的语句替代 $var\_name$ = $var\_name$ + $num$，因为使用自变赋值运算符时，python 仅计算一次，而普通写法需计算两次。</p>
+
+<p>Python 中实际上不存在内置常量，我们定义的常量本质上仍是变量，只是为了区分所谓变量与常量，我们约定常量的名称使用大写字母。</p>
+
+<h2>1.1.3 表达式与运算符</h2>
+
+<h2>1.1.4 字符编码</h2>
+
+<p>在计算机内存中，通常使用 Unicode 编码（每个字符的字节数一致），而当需要保存到硬盘或进行传输时，通常使用基于 Unicode 码的 UTF-8 编码（不同字符的字节数可能不一致），关于 Unicode 码与 UTF-8 编码以及其他编码的关系详见博文<a href="/computer_science/computer_science_introduction/2018/07/15/FCS2_data-storage.html">《计算机科学导论(2):数据存储》</a>，这里不再赘述。</p>
+
+<p>在 Python 中，字符串（str）是以 Unicode 编码的，使用函数 ord() 可以获得字符对应的 Unicode 码，使用函数 chr() 则可以获得 Unicode 码对应的字符。如果知道字符的 Unicode 码，在创建字符串时可以直接输入 Unicode 码，其显示效果与输入字符一致。</p>
+
+<p>由于 Python 的字符串类型是 str，在内存中以 Unicode 表示，一个字符对应若干个字节。如果要在网络上传输，或者保存到磁盘上，就需要把 str 变为以字节为单位的 bytes，而如果要在网络上或磁盘上读取字节流，则需要把 bytes 转换为 str.</p>
+
+<p>Python 中对 bytes 类型的数据用 b'' 或 b"" 表示。使用函数 encode() 可以将 str 转变为 bytes，使用函数 decode() 也可以将 bytes 转为 str，如果其中存在无法编码的字符或字节，Python 会报错，此时如果无法编码的字符或字节较少，可以通过增加参数 errors='ignore' 忽略错误。图 1-6 给出了与字符编码相关的 Python 示例代码。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_6.png"></p>
+<p class="post-text-tablename">图 1-6 Python 代码示例之字符编码</p>
+
+<p>此外当 Python 解释器读取源代码时，为了让它按 UTF-8 编码读取，我们通常在文件开头处写上如下两行：
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">第一行注释是为了告诉Linux/OS X 系统，这是一个 Python 可执行程序，Windows 系统会忽略这个注释；第二行注释是为了告知 Python 解释器按照 UTF-8 编码读取源代码。
+</p>
+
+<h2>1.1.4 输出格式化字符串</h2>
+
+<p>Python 中对字符串的格式化输出与 C 语言基本一致，只在语法格式上存在细微差别，下面是示例代码：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+#BMI指数计算器
+height = input('\n这是一个BMI指数计算器\n\n请您在输入数据时不要加单位\n\n现在，请输入您的身高（单位：cm），然后按回车键：\n',)
+weight = input('\n接下来，请输入您的体重（单位：kg），然后按回车键：\n',)
+height = float(height)
+weight = float(weight)
+BMI = weight/pow(height*0.01,2)
+
+if BMI < 18.5:
+	TYPE='过轻'
+elif 18.5 <= BMI < 24:
+	TYPE='正常'
+elif 23 <= BMI < 27:
+	TYPE='过重'
+elif 27 <= BMI <= 30:
+	TYPE='肥胖'
+else:
+	TYPE='严重肥胖'
+
+print("\n您的BMI指数 = %.2f，属 \"%s\" 类型" % (BMI,TYPE)) #切记不要加逗号！！！
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<h2>1.1.5 条件判断与循环</h2>
+
+<p>Python 中的条件判断以及循环与其他语言区别不大，即使有区别也只是语法格式上的细微区别，Python 的条件判断采用通常的 if-elif-else 语句，循环采用通常的 for 循环和 while 循环，在循环中可采用 break 语句结束整个循环，也可采用 continue 语句跳出当次循环。其中，在 for 循环中，迭代对象可以是字符串、列表、元组、其他内置可迭代对象（<strong>如 range(start,stop,step) 代表从 start 开始以步长 step 到 stop 的序列，若省略 start 参数，则 start 为 1，若省略 step 参数，则 step 为 1，stop 参数不可省</strong>），以及用户通过类创建的新对象。
+下面是示例代码：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+total = 0
+for x in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+    total = total + x
+print(total)
+
+total = 0
+for x in range(11):
+    total = total + x
+print(total)
+
+total = 0
+n = 99
+while n > 0:
+    total = total + n
+    n = n - 2
+print(total)
+
+n = 1
+while n <= 100:
+    if n > 10: # 当n = 11时，条件满足，执行break语句
+        break # break语句会结束当前循环
+    print(n)
+    n = n + 1
+print('END')
+
+n = 0
+while n < 10:
+    n = n + 1
+    if n % 2 == 0: # 如果n是偶数，执行continue语句
+        continue # continue语句会直接继续下一轮循环，后续的print()语句不会执行
+    print(n)
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<h1>1.2 函数</h1>
+
+<p>上一节中我们介绍了 Python 的数据类型、变量与常量、字符编码、字符格式化输出以及条件判断与循环等基础内容，这一节我们将主要介绍 Python 函数，包括： Python 的内置函数、自定义函数和递归函数，并且我们将在自定义函数部分重点讲述 Python 函数可以使用的五大参数类型。</p>
+
+<h2>1.2.1 内置函数</h2>
+
+<p>Python 中有 69 个内置函数（built-in functions）,例如用于求绝对值、最大值的 abs()、max()；用于转换数据类型的 int()、float()、str()、bool() 等等，表 1-7 列出了这些内置函数。</p>
+
+<p class="post-text-tablename">表 1-7 Python 内置函数</p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/built_in_functions.png"></p>
+
+<p class="post-text-noindent">我们可以通过<a href="http://docs.python.org/3/library/functions.html#abs">访问官网</a>或使用 help(function_name) 命令获知这些内置函数的作用及使用方法。另外，在 Python 中，我们可以把函数名赋给一个变量，这相当于给函数起了一个<strong>别名</strong>，以后我们调用函数时可以使用这个别名替代原有名称。</p>
+
+<h2>1.2.2 自定义函数</h2>
+
+<p>在 Python 中，函数自定义的基本格式如下所示：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+def function_name(arg):
+    function_body
+    return var_name
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">其中 return 语句可以省略，当省略时，函数返回值为 None. 这里，我们要重点讲一下的是函数的<strong>参数</strong>（arg）。 在 Python 函数中，参数的类型多达 5 种，按定义的顺序依次为：必选参数、默认参数、可变参数、命名关键字参数和关键字参数</p>
+
+<p><strong>必选参数</strong>即我们通常意义下的参数，<strong>默认参数</strong>即我们通常意义下的给定了默认值的参数，这里不做过多叙述，但要特别强调的一点是：默认参数必须指向不可变对象，否则将会导致如图 1-8 所示的类似问题：</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_7.png"></p>
+<p class="post-text-tablename">图 1-8 Python 函数默认参数指向可变对象时的问题</p>
+
+<p><strong>可变参数</strong>指的是传入参数个数可变（可为 0 个）的参数，由符号 * 和参数名构成，这些可变参数在函数调用时自动组装为一个 tuple. 图 1-9 展示了含可变参数的函数的定义方法和使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_8.png"></p>
+<p class="post-text-tablename">图 1-9 含可变参数的 Python 函数的定义及使用方法</p>
+
+<p><strong>关键字参数</strong>由符号 ** 和参数名构成，与可变参数一样，它允许传入 0 个或任意个含参数名的参数，它的不同之处体现在：这些关键字参数在函数调用时自动组装为一个 dict 而非 tuple. 图 1-10 展示了含关键字参数的函数的定义方法和使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_9.png"></p>
+<p class="post-text-tablename">图 1-10 含关键字参数的 Python 函数的定义及使用方法</p>
+
+<p><strong>命名关键字参数</strong>通常由分隔符 * 和参数名构成，在函数参数中包含可变参数的情况下可仅由参数名构成，它主要用来限制关键字参数的名字。在调用函数时命名关键字参数必须传入参数名，否则系统将会报错，另外，命名关键字参数还可以设置默认值。图 1-11 展示了含命名关键字参数的函数的定义方法和使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_10.png"></p>
+<p class="post-text-tablename">图 1-11 含命名关键字参数的 Python 函数的定义及使用方法</p>
+
+<p>如有必要，在 Python 中定义函数时可以使用几种乃至全部参数类型，但必须遵循参数定义的顺序：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。图 1-12 展示了含各种参数的函数的定义方法和使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_11.png"></p>
+<p class="post-text-tablename">图 1-12 含各种参数的 Python 函数的定义及使用方法</p>
+
+<h2>1.2.3 递归函数</h2>
+
+<p>如果一个函数在其内部调用自身，则我们称这样的函数为<strong>递归函数</strong>，例如：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# 递归求阶乘
+def frac(n):
+	if n == 1:
+		return 1
+	return n*frac(n-1)
+
+# 递归解决著名的汉诺塔问题
+def hanoi(n, a, b, c):
+    if n == 1:
+        print(a, '-->', c)
+    else:
+        hanoi(n - 1, a, c, b)
+        print(a, '-->', c)
+        hanoi(n - 1, b, a, c)
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<blockquote><a href="https://baike.baidu.com/item/%E6%B1%89%E8%AF%BA%E5%A1%94/3468295"><strong>汉诺塔</strong></a>问题：汉诺塔（又称河内塔）问题是源于印度一个古老传说的益智玩具。大梵天创造世界的时候做了三根金刚石柱子，在一根柱子上从下往上按照大小顺序摞着 64 片黄金圆盘。大梵天命令婆罗门把圆盘从下面开始按大小顺序重新摆放在另一根柱子上。并且规定，在小圆盘上不能放大圆盘，在三根柱子之间一次只能移动一个圆盘。</blockquote>
+
+<p class="post-text-noindent">我们可以看到递归函数实际上相当于一个循环，但相较于循环的写法，使用递归在逻辑上显得更为清晰。但值得注意的是：递归只能用来实现少量循环，当循环次数过大时，将会出现栈溢出现象。在计算机中，函数调用是通过<strong>栈</strong>（stack）这种数据结构实现的，<strong>每当进入一个函数调用，栈就会加一层栈帧，每当函数返回，栈就会减一层栈帧</strong>。由于栈的大小不是无限的，所以，递归调用的次数过多，会导致栈溢出。</p>
+
+<h1>1.3 高级特性</h1>
+
+<p>上面我们介绍了 Python 的一些基础性内容以及 Python 函数，本节，我们将介绍 Python 的一些高级特性，包括：<strong>切片</strong> (slice)、<strong>列表生成式</strong> (list comprehensions)、<strong>生成器</strong> (generator)、<strong>迭代器</strong> (Iterator) 和<strong>可迭代对象</strong> (Iterable)。相信通过本节的学习，你将能够写出更为简洁、更易维护的 Python 代码，小伙伴们，还等什么，就让我们抓紧扶手，即刻出发，开赴战场，亟拯斯民于水火，切扶大厦之将倾！</p>
+
+<h2>1.3.1 切片</h2>
+
+<p>Python 为列表 (list)、元组 (tuple) 和字符串 (str) 等数据类型提供了切片 (slice) 操作符，从而大大简化了从这些数据中提取子集的过程。若 L 为一个列表，则 L[start:stop:step] 将从列表第 (start) 个索引位置开始到列表的第 (stop-1) 个索引位置结束，每隔 abs(step-1) 个元素提取一个(注：step 可为负整数)，这些提取出来的元素将被组成一个新的列表。下面给出的是一个用来实现去除字符串首尾空格的 Python 自定义函数示例，其中使用了切片操作。</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+def trim(s):
+    i = 0
+    ls = len(s)
+    j = ls - 1
+    if ls > 0:
+        while s[i]==' ':
+            i += 1
+            if i >= ls:
+                break
+        while s[j]==' ' and i < ls:
+            j -= 1
+    return s[i:j+1]
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<h2>1.3.2 列表生成式</h2>
+
+<p>列表生成式 (List Comprehensions) 是 Python 中内置的用来快速创建列表的方法。图 1-13 向我们展示了 Python 列表生成式的使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_12.png"></p>
+<p class="post-text-tablename">图 1-13 Python 列表生成式的使用方法</p>
+
+<p class="post-text-noindent">通过上图，我们可以看到：通过将循环语句和条件判断语句引入列表，列表生成式大大简化了一些较复杂列表的生成步骤，使得程序更加清晰、简单而直观。</p>
+
+<h2>1.3.3 生成器</h2>
+
+<p>通过列表生成式我们可以快速创建一个列表，但受到内存的限制，列表的容量是有限的。那 Python 中是否有方法创建一个容量无限的列表呢？答案是：可以创建，但此时创建的将不再是列表对象，而是一种被称之为生成器（generator）的对象。它可以依据事先定义好的列表元素生成规则，通过 next() 函数或循环语句不断生成新的列表元素。创建生成器的方法有两种：一是将列表生成器中的方括号 [] 换成圆括号 (); 二是在自定义函数中使用关键字 yield.图 1-14 向我们展示了 Python 生成器的定义及使用方法。</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_13_1.png"></p>
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/python_code_13_2.png"></p>
+<p class="post-text-tablename">图 1-14 Python 生成器的定义及使用方法</p>
+
+<p class="post-text-noindent">最后，我们看一个综合运用列表生成式和生成器输出<a href="https://baike.baidu.com/item/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92">杨辉三角/帕斯卡三角</a>的示例：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# a generator for creating Pascal's Triangle
+def triangles():
+    L = [1]
+    while True:
+        yield L
+        L = [1] + [L[k] + L[k + 1] for k in range(len(L) - 1)] + [1]
+    return 'done'
+
+# output first 10 rows of Pascal's Triangle
+n = 0
+results = []
+for t in triangles():
+    print(t)
+    results.append(t)
+    n = n + 1
+    if n == 10:
+        break
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<h2>1.3.4 迭代器与可迭代对象</h2>
+
+<p>我们将可以被 next() 函数调用并不断返回下一个值的对象称为迭代器 (Iterator) ，而将可以<strong>直接作用于 for 循环的对象</strong>统称为<strong>可迭代对象</strong> (Iterable). 上节提到的<strong>生成器</strong> (generator) 既是迭代器也是可迭代对象，但<strong>集合数据类型 list、tuple、dict、set、str</strong> 虽然是可迭代对象，却不是迭代器，但借助 iter() 函数可以将可迭代对象转化为迭代器。我们可以使用 isinstance(x, Iterator/Iterable) 判断一个对象是否为迭代器或可迭代对象，但在调用该命令前必须调用命令 “from collections import Iterator,Iterable”，即从 collections 库中导入 Iterator 和 Iterable。常见的可迭代对象（Iterable）还有 <strong>range</strong>(start, stop[, step])、<strong>enumerate</strong>(iterable, start=0)、<strong>zip</strong>(iter1[, iter2 [...]])、<strong>reversed</strong>(sequence) 和后面将要详细介绍的高阶函数 <strong>map</strong>(func, *iterables)、<strong>filter</strong>(function or None, iterable)、<strong>sorted</strong>(iterable, *, key=None, reverse=False) 等。</p>
+
+<p>Python 的 for 循环本质上是通过将可迭代对象转换为迭代器，然后对迭代器不断调用 next() 函数实现的。代码</p>
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+for x in [1, 2, 3, 4, 5]:
+    pass
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">实际上等价于</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+# 首先获得Iterator对象:
+it = iter([1, 2, 3, 4, 5])
+# 循环:
+while True:
+    try:
+        # 获得下一个值:
+        x = next(it)
+    except StopIteration:
+        # 遇到StopIteration就退出循环
+        break
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<h1>1.4 函数式编程</h1>
+
+<p>函数是 Python 内建支持的一种<strong>封装</strong>，我们通过把大段代码拆成函数，通过一层一层的函数调用将复杂任务分解成简单任务，这种分解可以称之为<strong>面向过程的程序设计</strong>，而函数就是面向过程的程序设计的基本单元。<strong>函数式编程</strong>（Functional Programming) 虽然也可以归结到面向过程的程序设计，但其思想更接近数学计算。函数式编程是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，它们对确定的输入有确定的输出，被称为没有<strong>副作用</strong>（side effect）的。而允许使用变量的程序设计语言对同样的输入可能得到不同的输出。函数式编程的一个特点是：<strong>允许将函数作为函数的参数，也允许将函数作为函数的返回值</strong>！Python 对函数式编程提供部分支持，它允许使用变量，因而不是纯函数式编程语言。</p>
+
+<blockquote><strong>封装</strong>（encapsulation）是计算机科学中的一个术语，它是指一种将抽象性函数接口的实现细节部分包装、隐藏起来的方法。它将抽象得到的数据和操作数据的源代码结合成一个称为 "类" 的有机整体，这个有机整体将内部属性和实现细节隐藏起来而仅对外提供公开接口供使用者使用。适当的封装，可以将对象使用接口的程序实现部分隐藏起来，不让用户看到，同时确保用户无法任意更改对象内部的重要数据。它可以让代码更容易理解与维护，也加强了代码的安全性。</blockquote>
+
+<h2>1.4.1 高阶函数：将函数作为函数的参数</h2>
+
+<p>如果一个函数允许使用函数作为其参数，那么我们称这样的函数为<strong>高阶函数</strong>（higher-order function）。这一节，我们将介绍 Python 的三个内置高阶函数 map()、filter()、sorted() 以及 functools 库中的两个高阶函数 reduce() 和 partial().</p>
+
+<p><strong>map() 函数</strong>接收两个参数，第一个参数是函数，第二个参数是<strong>可迭代对象</strong>。map() 函数将传入的函数依次作用到序列的每个元素，并把结果作为新的<strong>迭代器</strong>返回。与 map() 函数一致，<strong>reduce() 函数</strong>也接收两个参数。 但这两个参数，一个是函数，一个是序列（包括 list、tuple 和 range），reduce() 函数将传入的函数先作用到序列的前两个元素上得到返回结果，然后将传入的函数作用到返回的结果和下一个元素上，如此继续下去直到序列的最后一个元素。下面给出的程序代码便是综合利用 map() 函数和 reduce() 函数的例子，程序定义了 str2float() 函数，该函数能将字符串形式的浮点数转化为浮点数。</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from functools import reduce
+
+def str2float(st):
+
+    def SplitStr(char):
+        float_dict = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '.': '.'}
+        return float_dict[char]
+
+    # list formed from characters splited from string 由从字符串中分离的字符组成的列表
+    list_splited_from_str = list(map(SplitStr, st))
+    # index of decimal point in list 小数点在列表中的索引
+    decpoint_index = list_splited_from_str.index('.')
+
+    # sublist formed from integer part of float 由浮点数整数部分构成的子列表
+    lis_int = list_splited_from_str[0:decpoint_index]
+    # sublist formed from decimal part of float 由浮点数小数部分构成的子列表
+    lis_dec = list_splited_from_str[-1:decpoint_index:-1]
+
+    return reduce(lambda x,y: x*10 + y, lis_int) + reduce(lambda x,y: x/10 + y, lis_dec) / 10
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">在上述示例代码中，我们可以看到，reduce() 函数传入的参数并不是事先定义好的函数的名称，而是一个由<strong>关键字 lambda</strong> 引出的函数定义，这种由关键字 lambda 定义的函数因为没有函数名而被称之为<strong>匿名函数</strong>。使用匿名函数的好处在于不必担心函数名的冲突，但匿名函数能定义的函数范围是有限的，因为它只能有一个表达式，其返回值就是该表达式的结果。另外，匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数。</p>
+
+<p><strong>filter() 函数</strong>主要用来做筛选，它接收两个参数，第一个参数为函数或 None，第二个参数为可迭代对象，这与 map() 函数是类似的。与 map() 不同的是，filter() 传入的函数是用来判断元素在该函数定义的条件下的真假情况的，filter() 将会返回可迭代对象中在给定条件下为 True 的元素，如果第一个参数为 None，filter() 函数会根据每个元素自身的真假情况（如：0、0.0、空字符串 为 False，其他整数、浮点数和非空字符串为 True.）作出判断。下面的示例代码向我们展示了 filter() 函数在求素数与回数中的应用：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# 采用埃氏筛法从奇数序列中筛选素数
+# 取序列的第一个数 3，它一定是素数，然后用 3 把序列的 3 的倍数筛掉
+# 取新序列的第一个数 5，它一定是素数，然后用 5 把序列的 5 的倍数筛掉
+# ……不断筛选下去就能得到一个素数序列
+
+# 奇数序列生成器
+def _odd_iter():
+    n = 1
+    while True:
+        n = n + 2
+        yield n
+
+# 素数筛选函数
+def _not_divisible(n):
+    return lambda x: x % n > 0
+
+# 素数序列生成器
+def primes():
+    yield 2
+    it = _odd_iter() # 初始序列
+    while True:
+        n = next(it) # 返回序列的第一个数
+        yield n
+        it = filter(_not_divisible(n), it) # 构造新序列
+
+# 打印1000以内的素数:
+for n in primes():
+    if n < 1000:
+        print(n)
+    else:
+        break
+
+# 回数筛选函数
+def is_palindrome(num):
+    str_num = str(num)
+    reverse_num = int(str_num[-1::-1])
+    return reverse_num == num
+
+# 打印1000以内的回数：
+output = filter(is_palindrome, range(1, 1000))
+print('1~1000:', list(output))
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p><strong>sorted</strong>(iterable, key=None, reverse=False) <strong>函数</strong>则用来对可迭代对象排序。其中 key 参数为函数参数，如当 key=abs 时，sorted() 函数将按照元素绝对值大小对 iterable 中的元素进行排序。下面是示例代码：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# 对列表按姓名正序排列
+L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
+def by_name(t):
+    return t[0]
+L1 = sorted(L, key=by_name)
+print(L1)
+
+# 对列表按分数倒序排列
+def by_score(t):
+    return t[1]
+L2 = sorted(L, key=by_score, reverse = True)
+print(L2)
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p>本节的最后，我们来介绍一下 functools 库中另一个十分有用的高阶函数 <strong>partial()</strong>。当函数的参数个数太多时，使用 functools.partial 可以创建一个新的函数——<strong>偏函数</strong>，这个新函数可以固定住原函数的部分参数，从而让函数的调用变得更简单。例如：当我们需要频繁地调用 int() 函数将二进制整数字符串转化为十进制整数时，可以通过命令 int2 = functools.partial(int, base=2) 定义一个偏函数 int2，此后我们可以直接调用命令 int2('str') 完成转换，而不必使用更长的命令 int('str',base=2). </p>
+
+<h2>1.4.2 闭包：将函数作为函数的返回值</h2>
+
+<p>在函数 A 中定义函数 B，内部函数 B 可以引用外部函数 A 的参数和局部变量，函数 A 的返回值为函数 B，与函数 A 相关的参数和变量都保存在返回的函数 B 中，我们将类似这样的程序结构称为<strong>闭包</strong>（closure）. 下面给出了一个定义计数器函数的代码示例，其中使用了闭包程序结构，第一次调用该函数返回 1，此后每调用一次返回值加 1.</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# 利用闭包返回一个计数器函数，每次调用它返回递增整数
+def createCounter():
+    L = [0]
+    def counter():
+        L[0] += 1
+        return L[0]
+    return counter
+
+# 测试:
+counterA = createCounter()
+print(counterA(), counterA(), counterA(), counterA(), counterA())
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">廖雪峰老师在其 <a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431835236741e42daf5af6514f1a8917b8aaadff31bf000">Python 教程</a>中指出：闭包程序结构具有强大的威力。但笔者尚不知这强大威力在何处，这里权且当作是一次对 Python 拥有 “ 将函数作为函数返回值” 这一特性的初步认知，他日深入学习之后自会有所领悟。下面我们来看一种被称之为<strong>装饰器</strong>（decorator）的函数，该类函数的也采用闭包程序结构，将函数作为函数的返回值。装饰器用来在代码运行期间动态地增加函数功能，如：在函数运行前打印一段日志，下面是示例代码：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# 装饰器用于在代码运行期间动态增加功能
+
+# ---------------------
+# 1.支持无参数的装饰器
+# ---------------------
+
+import functools
+def log(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kw):
+    	# 函数对象有一个__name__属性, 代表函数的名字
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+
+# 把 @log 放到 now() 的定义处，相当于执行了语句：now = log(now)
+@log
+def now():
+    print('2015-4-25')
+
+# 调用 now 时会在其前面打印日志：call now():
+now()
+# 如果装饰器定义中缺少命令 @functools.wraps(func), now 的名称将不是 now 而是 wrapper
+print(now.__name__)
+
+# --------------------------------
+# 2.同时支持有参数和无参数的装饰器
+# --------------------------------
+
+def log(text):
+    if isinstance(text,str):
+        def decorator(func):
+            @functools.wraps(func)
+            def wrapper(*args, **kw):
+                print('%s %s():' % (text, func.__name__))
+                return func(*args, **kw)
+            return wrapper
+        return decorator
+    else:
+        @functools.wraps(text)
+        def wrapper(*args, **kw):
+            print('call %s():' % text.__name__)
+            return text(*args, **kw)
+        return wrapper
+
+@log
+def now():
+    print('2018-10-01')
+
+now()
+
+@log('hello')
+def now():
+    print('2019-10-01')
+
+# 调用 now 时会在其前面打印日志：hello now():
+now()
+
+# ------------------------------
+# 3.用来打印函数执行时间的装饰器
+# ------------------------------
+
+import time, functools
+
+def metric(fn):
+    @functools.wraps(fn)
+    def wrapper(*args, **kw):
+        start_time = time.time()
+        fn(*args, **kw)
+        end_time = time.time()
+        print('%s executed in %s ms' % (fn.__name__, end_time - start_time))
+        return fn(*args, **kw)
+    return wrapper
+
+@metric
+def fast(x, y):
+    time.sleep(0.0012)
+    return x + y;
+
+fast(11,22)
+
+@metric
+def slow(x, y, z):
+    time.sleep(0.1234)
+    return x * y * z;
+
+slow(11,22,33)
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<h1>1.5 模块化</h1>
+
+<p>随着程序需要实现的功能越来越多，我们编写的代码量也会越来越大，如果把这些代码都放置在一个文件中，那么代码的管理与维护将变得十分困难，解决这一困难的方法就是将代码按照用途分割成多个部分，每一部分使用一个文件，我们称这样的一个文件为<strong>模块</strong>（module）。模块化的编程不仅极大地方便了单个项目代码的管理与维护，而且其用来实现某个通用功能的模块在将来还可以应用于其他项目以加快这些项目的开发进程。此外，模块化编程还可以让我们免于考虑函数名和模块外变量名的冲突，因为相同名字的函数和变量可以分别置于不同的模块中。</p>
+
+<p>模块的命名遵循变量命名规则且应避免使用 Python 已有的模块名，如不确定自己想使用的名称是否同 Python 已有的模块名冲突，可使用 import 命令导入该名称，如果系统报错，则可以放心使用该名称了。此外，为了避免模块名的冲突，Python 引入了按目录来组织模块的方法，这就是<strong>包</strong>（package）. 下图向我们展示了一个有多级目录的包，父包 MyPackage 下还存在一个子包 netease_music_spider.</p>
+
+<p class="post-text-center"><img src="/assets/img/Natural_Science/Statistics/package.png"></p>
+<p class="post-text-tablename">图 1-15 Python 包示例</p>
+
+<p class="post-text-noindent">从图中，我们可以看到：每个包下都有一个名为 __init__.py 的模块。这个模块用来将包与普通目录区别开来，它可以是空文件，也可以有代码，但要注意它的模块名不像其他模块一样是包名加英文句号再加上文件名，而就是包名本身。例如：MyPackage 包下的 __init__ 模块的名称为 MyPackage 而不是 MyPackage.__init__.</p>
+
+<p>下面我们通过一个代码示例来看一下 Python 模块文件的标准写法：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+' my first module '
+
+__author__ = 'tiny-boat'
+
+def _private_1(name):
+    return 'Hello, %s' % name
+
+def _private_2(name):
+    return 'Hi, %s' % name
+
+def greeting(name):
+    if len(name) > 3:
+        return _private_1(name)
+    else:
+        return _private_2(name)
+
+# 如果直接执行该文件，会打印下述字符串
+# 如果通过模块导入，则打印字符串的命令不会执行
+if __name__ == '__main__':
+    print("It is not used as module, but executed directly!")
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">代码第四行 ' my first module ' 是该模块的<strong>文档注释</strong>，第六行 __author__ = 'tiny-boat' 是该模块的<strong>作者信息</strong>，后续则是模块的主体程序。在这个模块中，我们定义了两个<strong>私有</strong>（private）函数 _private_1() 和 _private_2() 以及一个<strong>公有</strong>（public）函数 greeting(). </p>
+
+<p>私有函数或私有变量（注：__name__、__main__ 是 Python 中的特殊变量，不是私有变量）的名称通常以 _ 开头，它仅供模块内部使用，虽然 Python 中并没有一种方法可以完全限制从外部访问私有函数或变量，但从编程的习惯上来讲我们不建议大家从外部访问私有函数和变量。<strong>人们为什么要把函数或变量分成公有和私有的呢？</strong>从上面的代码中，我们可以看到: 通过定义和调用私有函数，模块里的公有函数 greeting() 函数将其内部实现的逻辑隐藏了起来。这样，我们在调用 greeting() 函数时不用关心内部私有函数的细节，而这其实是<strong>一种非常有用的代码封装和抽象的方法</strong>。是不是仍然觉得云里雾里？亲爱的读者，笔者此时与你有着同样的感受，然古人言：河冰结合，非一日之寒；积土成山，非斯须之作。 让我们沉下心来继续前进吧，或许当我们学习完面向对象编程后，就会对此有深刻体会了。</p>
+
+<p>说完了模块化编程的意义、模块文件的命名和编写方法，最后我们来说一下第三方模块的安装方法以及模块的导入方法。第三方模块的安装采用命令 <strong>pip install module_name</strong> 即可，模块的导入采用命令 <strong>import module_name</strong> 即可，当然我们还可以通过命令 <strong>import module_name as moudule_new_name</strong> 给模块重命名，通常这个重命名是原模块名称的缩写，重命名后我们在调用该模块下的对象时就可以使用 moudule_new_name.object_in_module 替代 moudule_name.object_in_module 了，如果我们想在调用模块下对象时不写模块名称，那么在导入模块时我们可以使用命令 <strong>from module_name import object_name as object_new_name</strong>。但要注意的是：<strong>模块必须置于 Python 的搜索路径下</strong>，否则导入将会失败。Python 的搜索路径可通过 sys 模块下的 sys.path 命令查看，如果要永久性添加新的搜索路径的话，就需要在系统中添加新的环境变量 PYTHONPATH，如果只是临时性地添加新的搜索路径，那直接使用命令 sys.path.append(‘path') 就可以了。</p>
+
+<p>这一节的内容到这里就要结束了，伸个懒腰休息一下吧！接下来的一节，我们将走入面向对象编程的世界。面向对象，面向对象，面向对象，无数编程语言如 C++、Java、R、Python 在介绍自己时总要说自己是面向对象的编程语言，仿佛有了这四个字，就实现了从劳苦大众向百万富翁的飞跃。然而面向对象究竟是什么，它究竟是什么？这个曾经让笔者以及现在依旧让笔者魂牵梦绕的名词，是否也曾让你心怀念念却又不知所云？不管是与不是，来吧，让我们一起往下看，一起去心爱的对象那里，和她面对面坐着。相信我，那聪明美丽善良的她，一定会带你领略一段别样的风景，让你的编程思想经历全新的洗礼，出发!</p>
+
+<h1>1.6 面向对象编程</h1>
+
+<p></p>
+
+<!--
+
+
+<h1>1.3 Numpy 库</h1>
+
+<p>import numpy as np</p>
+
+<p>创建数组：np.array([[1,2,3,4],[5,6,7,8],[7,8,9,10]])</p>
+-->
+<p>未完待续……</p>
+
+</div>

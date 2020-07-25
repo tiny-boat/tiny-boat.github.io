@@ -1,0 +1,124 @@
+---
+layout: post
+title:  "爱上Bug(2):Python 连接 MySQL 报错"
+date:   2020-01-11 22:02:00
+categories: Computer_Science Python
+excerpt: "捣鼓知网爬虫的过程中，想到虽然数据量不大，还是要把数据库用起来，以后尽量不把数据存在文本文件里，然而使用 Python 的 pymysql 库连接 MySQL 却报错了。"
+permalink: /computer_science/love_bug/2/
+---
+
+<div class="post-style">
+
+<blockquote>捣鼓知网爬虫的过程中，想到虽然数据量不大，还是要把数据库用起来，以后尽量不把数据存在文本文件里，然而使用 Python 的 pymysql 库连接 MySQL 却报错了。</blockquote>
+
+<p>运行以下 Python 代码连接 MySQL</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+import pymysql
+db = pymysql.connect(host='localhost', user='root', password='123456', port=3306)
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">报错信息如下：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Bash %}
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pymysql/connections.py", line 599, in connect
+    self._request_authentication()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pymysql/connections.py", line 882, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pymysql/_auth.py", line 264, in caching_sha2_password_auth
+    data = sha2_rsa_encrypt(conn.password, conn.salt, conn.server_public_key)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pymysql/_auth.py", line 142, in sha2_rsa_encrypt
+    raise RuntimeError("cryptography is required for sha256_password or caching_sha2_password")
+RuntimeError: cryptography is required for sha256_password or caching_sha2_password
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">网上搜索，发现 MySQL 自 8.0 版本后，默认的身份认证插件由 mysql_native_password 变为了 caching_sha2_password，于是网上大部分答案都是去 MySQL 中更改默认的认证方式。实际上并不需要这样麻烦，不信，你看，我们的报错信息已经为我们提供了解决方案。</p>
+
+<p>"cryptography is required for sha256_password or caching_sha2_password"，什么意思？因为 sha256_password 或 caching_sha2_password 的缘故，需要 cryptography. 什么鬼？</p>
+
+<p>这个报错信息写得不太好，在 PyMySQL 的 Github 仓库中，可以发现这样一条已经关闭的 issue：<a href="https://github.com/PyMySQL/PyMySQL/pull/768">"Improve helpfulness of error message when cryptography is required #768</a>，建议更改报错信息的表达方式，让使用者能更加清晰地知道出错的原因及解决办法。PyMySQL 的开发者最初不太接受这个建议，他认为：</p>
+
+<blockquote>Your suggestion looks too long. If you can google based on current error message, it's enough.</blockquote>
+
+<p class="post-text-noindent">但这个 issue 中，许多人都赞成这个建议，最终这个建议被采纳了，查看 Github 上的<a href="https://github.com/PyMySQL/PyMySQL/blob/master/pymysql/_auth.py">源码</a>，错误信息已经变更为</p>
+
+<blockquote>'cryptography' package is required for sha256_password or caching_sha2_password auth methods</blockquote>
+
+<p class="post-text-noindent">这就很清晰明了了，但是使用 pip 安装得到的 pymysql 仍然是之前的报错信息，可能 PyPI (The Python Package Index) 上还没有更新吧。</p>
+
+<p>综上，解决这个问题的方法就是键入以下命令安装 cryptography 库：</p>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Bash %}
+
+pip3 install cryptography
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<p class="post-text-noindent">cryptography 库是个用于加密的库，以后好好研究下，看，解决个 Bug 还能新认识个库呢 └(^o^)┘，下面附上 cryptography 的官方简介：</p>
+
+<blockquote>cryptography is a package which provides cryptographic recipes and primitives to Python developers. Our goal is for it to be your “cryptographic standard library”. It supports Python 2.7, Python 3.4+, and PyPy 5.4+.
+<br><br>
+cryptography includes both high level recipes and low level interfaces to common cryptographic algorithms such as symmetric ciphers, message digests, and key derivation functions. For example, to encrypt something with cryptography’s high level symmetric encryption recipe:
+</blockquote>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+
+>>> from cryptography.fernet import Fernet
+>>> # Put this somewhere safe!
+>>> key = Fernet.generate_key()
+>>> f = Fernet(key)
+>>> token = f.encrypt(b"A really secret message. Not for prying eyes.")
+>>> token
+'...'
+>>> f.decrypt(token)
+'A really secret message. Not for prying eyes.'
+
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<blockquote>
+You can find more information in the <a href="https://cryptography.io/">documentation</a>.</em>
+</blockquote>
+
+</div>

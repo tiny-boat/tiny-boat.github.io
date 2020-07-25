@@ -1,0 +1,159 @@
+---
+layout: post
+title:  "Python与最优化期末总结"
+date:   2018-12-21 10:47:00
+categories: Mathematics Optimization
+excerpt: ""
+permalink: /bwl/5/
+---
+
+<div class="post-style">
+
+<h1>1.Pandas</h1>
+
+</div>
+
+<div class="code-style">
+
+{% highlight Python %}
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+## -------------------
+## 1 Creat DataFrame
+## -------------------
+
+# 通过 numpy 数组创建
+df = pd.DataFrame(np.random.randn(7,4), index=dates, columns=list('ABCD'))
+print(df)
+
+# 通过字典创建
+items = [('A',1.),('B',pd.Timestamp('20130102')),('C',pd.Series(1,index=list(range(4)),dtype='float32')),('D',np.array([3] * 4,dtype='int32')),('E',pd.Categorical(["test","train","test","train"])),('F','foo')]
+df2 = pd.DataFrame(dict(items))
+print(df2)
+
+# 通过列表创建
+data = DataFrame([[1., 6.5, 3.], [1., NA, NA], [NA, NA, NA], [NA, 6.5, 3.1]])
+
+## ------------------------
+## 2 Descriptive Statistics
+## ------------------------
+
+df.sum() # 求和(列)
+df.sum(axis=1) # 求和(行)
+df.describe() # 汇总统计
+df.mean() # 均值
+df.var() # 方差
+df.std() # 标准差
+df.cov() # 协方差
+df.corr() # 相关系数
+df.skew() # 偏度
+df.kurt() # 峰度
+df.cumsum() # 累积和
+df.cumprod() # 累积积
+df.cummax() # 累积最大
+df.cummin() # 累积最小
+
+## ---------
+## 3 fillna
+## ---------
+
+data.fillna({0:0.5, 1:0, 2:-1}) # 第 1，2，3 列缺失值分别填补 0.5，0 和 -1
+{% endhighlight %}
+
+</div>
+
+<div class="post-style">
+
+<h1>2.诱导范数的证明</h1>
+
+<h2>2.1 $l_1$ 诱导范数</h2>
+
+<p>因为：</p>
+
+$$\begin{aligned}
+&\left \| \boldsymbol{Ax}  \right \|_1=\sum_{i=1}^{m}\left | \sum_{j=1}^{n}a_{ij}x_j \right | \leq \sum_{i=1}^{m}\sum_{j=1}^{n}\left | a_{ij} \right |\left | x_j \right |= \sum_{j=1}^{n}\sum_{i=1}^{m}\left | a_{ij} \right |\left | x_j \right |  \\
+&\qquad \quad \leq \left ( \max_j \sum_{i=1}^{m}\left | a_{ij} \right | \right )\sum_{j=1}^{n}\left | x_j \right |=\max_j \sum_{i=1}^{m}\left | a_{ij} \right |\left \| \boldsymbol{x} \right \|_1
+\end{aligned}$$
+
+<p class="post-text-noindent">所以有：</p>
+
+$$\left \| \boldsymbol{A}  \right \|_1 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_1}{ \left \| \boldsymbol{x}  \right \|_1} = \max_{\left \| \boldsymbol{x} \right \|_1=1}\left \| \boldsymbol{Ax}  \right \|_1 \leq \max_{j}\sum_{i=1}^{m}\left | a_{ij} \right | \qquad \cdots \left(1\right)$$
+
+<p class="post-text-noindent">取 $\boldsymbol{x^{(j)}}=(0,\cdots,1,\cdots,0),\ j=1,2,\cdots,n$，它是除了第 $j$ 个元素为 $1$、其余元素全为 $0$ 的向量，则有</p>
+
+$$\left \| \boldsymbol{A}  \right \|_1 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_1}{ \left \| \boldsymbol{x}  \right \|_1} = \max_{\left \| \boldsymbol{x} \right \|_1=1}\left \| \boldsymbol{Ax}  \right \|_1 \geq \max_{\boldsymbol{x}^{(j)}}\left \| \boldsymbol{Ax}  \right \|_1=\max_{j}\sum_{i=1}^{m}\left | a_{ij} \right | \qquad \cdots \left(2\right)$$
+
+<p class="post-text-noindent">由 $\left(1 \right)$、$\left(2 \right)$ 两式知：</p>
+
+$$\left \| \boldsymbol{A}  \right \|_1 =\max_{j}\sum_{i=1}^{m}\left | a_{ij} \right |$$
+
+<h2>2.2 $l_2$ 诱导范数</h2>
+
+<p>设 $\boldsymbol{x}_1,\boldsymbol{x}_2,\cdots,\boldsymbol{x}_n$ 为对称半正定矩阵 $A^TA$ 的与特征值 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$ 相对应的相互正交的特征向量，则 $\forall \ \boldsymbol{x} = 1$ 的向量 $\boldsymbol{x}$，必存在满足条件 $c_1^2+c_2^2+\cdots+c_n^2=1$ 的 $c_1,c_2,\cdots,c_n$ 使得 $\boldsymbol{x}=c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n$。所以有：</p>
+
+$$\begin{aligned}
+&\ \left \| \boldsymbol{Ax} \right \|_2^2 = \left ( \boldsymbol{Ax} \right )^T \boldsymbol{Ax} = \boldsymbol{x}^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x} \\
+&= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\boldsymbol{A}^T\boldsymbol{A}\left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right ) \\
+&= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\left ( c_1\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_1+c_2\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_2+\cdots+c_n\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_n \right ) \\
+&= \left ( c_1\boldsymbol{x}_1+c_2\boldsymbol{x}_2+\cdots+c_n\boldsymbol{x}_n \right )^T\left ( c_1\lambda_1\boldsymbol{x}_1+c_2\lambda_2\boldsymbol{x}_2+\cdots+c_n\lambda_n\boldsymbol{x}_n \right )\\
+&= \left ( c_1\boldsymbol{x}_1^T+c_2\boldsymbol{x}_2^T+\cdots+c_n\boldsymbol{x}_n^T \right )\left ( c_1\lambda_1\boldsymbol{x}_1+c_2\lambda_2\boldsymbol{x}_2+\cdots+c_n\lambda_n\boldsymbol{x}_n \right ) \\
+&= \sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_j c_ic_j \boldsymbol{x}_i^T\boldsymbol{x}_j = \sum_{i=1}^n \lambda_i c_i^2 \\
+&\leq \lambda_1 \sum_{i=1}^n c_i^2 = \lambda_1 \qquad \cdots \left(3\right)
+\end{aligned}
+$$
+
+<p class="post-text-noindent">又因为 $\left \| \boldsymbol{x}_1 \right \|_2 = 1$ 且：</p>
+
+$$\left \| \boldsymbol{Ax}_1 \right \|_2^2 = \boldsymbol{x}_1^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{x}_1 =  \boldsymbol{x}_1^T\lambda_1\boldsymbol{x}_1 = \lambda_1 \qquad \cdots \left(4\right)$$
+
+<p class="post-text-noindent">所以由 $\left(3\right)$、$\left(4\right)$ 式得：</p>
+
+$$\left \| \boldsymbol{A}  \right \|_2 =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_2}{ \left \| \boldsymbol{x}  \right \|_2} = \max_{\left \| \boldsymbol{x} \right \|_2=1}\left \| \boldsymbol{Ax}  \right \|_2 = \sqrt{\lambda_1}$$
+
+<h2>2.3 $l_\infty$ 诱导范数</h2>
+
+<p>因为：</p>
+
+$$\begin{aligned}
+&\left \| \boldsymbol{Ax}  \right \|_\infty=\max_{1\leq i \leq m}\left | \sum_{j=1}^{n}a_{ij}x_j \right | \leq \max_{1\leq i \leq m}\sum_{j=1}^{n}\left | a_{ij} \right |\left | x_j \right |\\
+&\qquad \quad \ \,\leq \max_{1\leq i \leq m} \left ( \max_{1\leq j \leq n}\left | x_j \right | \right ) \sum_{i=1}^{m}\left | a_{ij} \right | =\max_i \sum_{i=1}^{m}\left | a_{ij} \right |\left \| \boldsymbol{x} \right \|_\infty
+\end{aligned}$$
+
+<p class="post-text-noindent">所以有：</p>
+
+$$\left \| \boldsymbol{A}  \right \|_\infty =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_\infty}{ \left \| \boldsymbol{x}  \right \|_\infty} = \max_{\left \| \boldsymbol{x} \right \|_\infty=1}\left \| \boldsymbol{Ax}  \right \|_\infty \leq \max_{i}\sum_{i=1}^{n}\left | a_{ij} \right | \qquad \cdots \left(5\right)$$
+
+<p class="post-text-noindent">取 $k$ 使得</p>
+
+$$\sum_{j=1}^{n}\left | a_{kj} \right | = \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$
+
+<p class="post-text-noindent">令 $\boldsymbol{y} = \left(y_1,y_2,\cdots,y_n \right)^T$，其中</p>
+
+$$y_j = \left\{\begin{matrix}
+\begin{aligned}
+&\frac{\left | a_{kj} \right |}{a_{kj}},\ a_{kj} \neq 0
+\\ &1\ \ \ \ \ \ \, , \ otherwise
+\end{aligned}
+\end{matrix}\right.$$
+
+<p class="post-text-noindent">易知 $\left \| \boldsymbol{y} \right \|_\infty = 1$，从而有</p>
+
+$$\begin{aligned}
+&\left \| \boldsymbol{A}  \right \|_\infty =\max_{\boldsymbol{x}\neq 0} \frac{\left \| \boldsymbol{Ax}  \right \|_\infty}{ \left \| \boldsymbol{x}  \right \|_\infty} = \max_{\left \| \boldsymbol{x} \right \|_\infty=1}\left \| \boldsymbol{Ax}  \right \|_\infty \geq \left \| \boldsymbol{Ay} \right \|_\infty = \max_{1 \leq i \leq m}\left | \sum_{j=1}^{n}a_{ij}y_j \right |\\
+&\qquad \ \ \,\geq \left | \sum_{j=1}^{n}a_{kj}y_j \right | = \sum_{j=1}^{n}\left | a_{kj} \right |= \max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |\ \cdots \left(6\right)
+\end{aligned}$$
+
+<p class="post-text-noindent">由 $\left(5 \right)$、$\left(6 \right)$ 两式知：</p>
+
+$$\left \| \boldsymbol{A}  \right \|_\infty =\max_{i}\sum_{j=1}^{n}\left | a_{ij} \right |$$
+
+<h1>3 一维优化算法</h1>
+
+<h1>4 多维优化算法</h1>
+
+</div>

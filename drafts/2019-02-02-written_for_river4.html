@@ -1,0 +1,319 @@
+---
+layout:
+title: "特别的爱给特别的你"
+permalink: /xgjj/4/
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- seo -%}
+    <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+    {%- feed_meta -%}
+    {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+    {%- endif -%}
+    {% include baidu-analytics.html %}
+    {% include leancloud-analytics.html %}
+    <link href="/assets/css/default.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/functions.js"></script>
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="wrapper">
+            {%- assign default_paths = site.pages | map: "path" -%}
+            {%- assign page_paths = site.header_pages | default: default_paths -%}
+            <div class="site-title">
+                <span><img class="site-title-img" src="/assets/img/about_me/tiny-boat.gif"></span>
+                <span class="site-title-title">{{ site.title | escape }}</span>
+            </div>
+            {%- if page_paths -%}
+            <nav class="site-nav">
+                <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+                <label for="nav-trigger">
+                    <span class="menu-icon">
+                        <svg viewBox="0 0 18 15" width="18px" height="15px">
+                            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+                        </svg>
+                    </span>
+                </label>
+                <div class="trigger">
+                    <a class="page-link" href="/">首页</a>
+                    <a class="page-link" href="/category/natural_science.html">自然科学</a>
+                    <a class="page-link" href="/category/humanities.html">人文社科</a>
+                    <a class="page-link" href="/category/life.html">随笔杂录</a>
+                    {%- for path in page_paths -%}
+                    {%- assign my_page = site.pages | where: "path", path | first -%}
+                    {%- if my_page.title -%}
+                    <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+                    {%- endif -%}
+                    {%- endfor -%}
+                </div>
+            </nav>
+            {%- endif -%}
+        </div>
+    </header>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <div id="main">
+                <div id="code" class="code1">
+                    <span class="comments">/*</span><br>
+                    <span class="space"><span class="comments">2019-01-04,</span><br>
+                    <span class="space"><span class="comments">2019-02-14.</span><br>
+                    <span class="comments">*/</span><br><br>
+                    BoyName <span class="operator">=</span> <span class="keyword">Mr.</span>Fan<br>
+                    GirlName <span class="operator">=</span> <span class="keyword">Mrs.</span>Jiang<br><br>
+                    <span class="comments">// 我们在一起的第 42 天</span><br>
+                    <span class="comments">// 在这样一个特别的日子里</span><br>
+                    <span class="comments">// 第一个有你的情人节里</span><br>
+                    <span class="comments">// 我想用这样一种方式</span><br>
+                    <span class="comments">// 和你说</span><br>
+                    <span class="comments">// 江，我想你了</span>
+                </div>
+                <div id="code" class="code2">
+                    <span class="comments">/* 创建 JavaScript 数组 */</span><br>
+                    var LoveBox <span class="operator">= new</span> <span class="keyword">Array</span>()<br><br>
+                    <span class="comments">// 我想在这里记录下，记录下那些你曾说过的，打动过我的话语</span><br><br>
+                    <span class="comments">/* 2018-11-13 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">0</span>] <span class="operator">=</span> <span class="string">"男神，我明天需要你"</span> <span class="comments">// 22:39</span><br><br>
+                    <span class="comments">/* 2018-11-20 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">1</span>] <span class="operator">=</span> <span class="string">"谢谢男神晚上帮我弄电脑，还有送我回宿舍，还有男神辛苦啦"</span> <span class="comments">// 23:09</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">2</span>] <span class="operator">=</span> <span class="string">"你喜欢吃什么呀"</span> <span class="comments">// 23:28</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">3</span>] <span class="operator">=</span> <span class="string">"最喜欢吃什么"</span> <span class="comments">// 23:42</span>
+                </div>
+                <div id="code" class="code3">
+                    <span class="comments">/* 2018-11-27 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">4</span>] <span class="operator">=</span> <span class="string">"男神，前两天我有一点点一点点一点点一点点一点点一点点一点点一点点不开心了"</span> <span class="comments">// 23:10</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">5</span>] <span class="operator">=</span> <span class="string">"好了一点点还有好多点"</span> <span class="comments">// 23:10</span><br><br>
+                    <span class="comments">/* 2018-11-30 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">6</span>] <span class="operator">=</span> <span class="string">"如果有理由的话，可能是喜欢他身上的某种特质，但是这种特质可能别人身上也有，但是如果只是单纯喜欢一个人没有理由的话，那这个人是独一无二的啊"</span> <span class="comments">// 00:05</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">7</span>] <span class="operator">=</span> <span class="string">"男神下次打球叫我去看呀"</span> <span class="comments">// 23:00</span>
+                </div>
+                <div id="code" class="code4">
+                    <span class="comments">/* 2018-12-01 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">8</span>] <span class="operator">=</span> <span class="string">"你都说我是蜗牛了，我打字超慢，但是一直停留在和你说话的界面"</span> <span class="comments">// 23:36</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">9</span>] <span class="operator">=</span> <span class="string">"每天晚上和男神说话以后都高兴到睡不着"</span> <span class="comments">// 23:54</span><br><br>
+                    <span class="comments">/* 2018-12-02 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">10</span>] <span class="operator">=</span> <span class="string">"你对别人可能没有这么神，对我就这么神了"</span> <span class="comments">// 00:00</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">11</span>] <span class="operator">=</span> <span class="string">"那我正式介绍一下，我叫于江，我虽然不喜欢读书，虽然不聪明，虽然不文静，虽然有时候神经质，但是我喜欢你"</span> <span class="comments">// 23:59</span>
+                </div>
+                <div id="code" class="code5">
+                    <span class="comments">/* 2018-12-07 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">12</span>] <span class="operator">=</span> <span class="string">"你现在在宿舍么，一会儿你下来一趟呗，等我一会儿叫你"</span> <span class="comments">// 21:58</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">13</span>] <span class="operator">=</span> <span class="string">"你现在下来吧"</span> <span class="comments">// 22:00</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">14</span>] <span class="operator">=</span> <span class="string">"不不不，只是你眼里的光就好了，那我得加油了，可是平常我都没有和你相处的机会"</span> <span class="comments">// 23:14</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">15</span>] <span class="operator">=</span> <span class="string">"那我下次就要假装没有带伞，然后让你去接我了，哈哈哈"</span> <span class="comments">// 23:20</span><br><br>
+                    <span class="comments">/* 2018-12-08 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">16</span>] <span class="operator">=</span> <span class="string">"被子已到达琴湖八栋，很暖和，很愉快的购物，下次还会光临，给卖家比心"</span> <span class="comments">// 22:50</span>
+                </div>
+                <div id="code" class="code6">
+                    <span class="keyword">LoveBox</span>[<span class="number">17</span>] <span class="operator">=</span> <span class="string">"啊啊啊啊啊啊，男神会不会觉得我太大胆太张扬了"</span> <span class="comments">// 23:06</span><br><br>
+                    <span class="comments">/* 2018-12-12 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">18</span>] <span class="operator">=</span> <span class="string">"男神，我需要你！！！！"</span> <span class="comments">// 23:01</span><br><br>
+                    <span class="comments">/* 2018-12-23 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">19</span>] <span class="operator">=</span> <span class="string">"你也不行啊，你也不能成为太空垃圾"</span> <span class="comments">// 23:44</span><br><br>
+                    <span class="comments">/* 2018-12-25 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">20</span>] <span class="operator">=</span> <span class="string">"还有通过心灵，我心里想着要把快乐分给你一半"</span> <span class="comments">// 23:06</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">21</span>] <span class="operator">=</span> <span class="string">"你说什么答案我都喜欢"</span> <span class="comments">// 23:30</span>
+                </div>
+                <div id="code" class="code7">
+                    <span class="keyword">LoveBox</span>[<span class="number">22</span>] <span class="operator">=</span> <span class="string">"她放了这么多灯，都没有等到"</span> <span class="comments">// 23:35</span><br><br>
+                    <span class="comments">/* 2018-12-26 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">23</span>] <span class="operator">=</span> <span class="string">"梦里想不到的话你要告诉我呀"</span> <span class="comments">// 00:11</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">24</span>] <span class="operator">=</span> <span class="string">"愿意和我在一起吗"</span> <span class="comments">// 23:54</span><br><br>
+                    <span class="comments">/* 2018-12-27 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">25</span>] <span class="operator">=</span> <span class="string">"我真的有过思念成疾，真的爱看他背影"</span> <span class="comments">// 00:05</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">26</span>] <span class="operator">=</span> <span class="string">"只愿君心似我心，定不负相思意"</span> <span class="comments">// 22:54</span>
+                </div>
+                <div id="code" class="code8">
+                    <span class="comments">/* 2018-12-31 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">27</span>] <span class="operator">=</span> <span class="string">"你几点出去，能 9 点 30 么，我想早起洗个澡然后和你一起出去"</span> <span class="comments">// 00:16</span><br><br>
+                    <span class="comments">/* 2019-01-03 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">28</span>] <span class="operator">=</span> <span class="string">"我马上要回家了你没有什么要和我说的吗"</span> <span class="comments">// 23:51</span><br><br>
+                    <span class="comments">/* 2019-01-04 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">29</span>] <span class="operator">=</span> <span class="string">"等我回家了一定好好学习"</span> <span class="comments">// 16:55</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">30</span>] <span class="operator">=</span> <span class="string">"我闻了一下，香香的"</span> <span class="comments">// 21:41</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">31</span>] <span class="operator">=</span> <span class="string">"你刚刚怎么没拿，我还说和你走一走"</span> <span class="comments">// 21:46</span>
+                </div>
+                <div id="code" class="code9">
+                    <span class="comments">/* 2019-01-07 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">32</span>] <span class="operator">=</span> <span class="string">"我回家以后感觉好像某人忘了我了"</span> <span class="comments">// 15:16</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">33</span>] <span class="operator">=</span> <span class="string">"很厉害，神算子"</span> <span class="comments">// 23:35</span><br><br>
+                    <span class="comments">/* 2019-01-08 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">34</span>] <span class="operator">=</span> <span class="string">"和你聊天哪有编瞎话，都是实话"</span> <span class="comments">// 22:13</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">35</span>] <span class="operator">=</span> <span class="string">"我觉得神算子应该配小笨蛋，一个聪明一个笨，虽然我不笨"</span> <span class="comments">// 23:16</span><br><br>
+                    <span class="comments">/* 2019-01-11 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">36</span>] <span class="operator">=</span> <span class="string">"帆船是在水里的，星星是在天上的"</span> <span class="comments">// 21:53</span>
+                </div>
+                <div id="code" class="codea">
+                    <span class="comments">/* 2019-01-18 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">37</span>] <span class="operator">=</span> <span class="string">"还没起，还在床上，不想起，起来也见不到你"</span> <span class="comments">// 07:57</span><br><br>
+                    <span class="comments">/* 2019-01-19 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">38</span>] <span class="operator">=</span> <span class="string">"你要她表情包做什么，不行，你天天这么看她，我会吃醋的"</span> <span class="comments">// 22:44</span><br><br>
+                    <span class="comments">/* 2019-01-20 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">39</span>] <span class="operator">=</span> <span class="string">"啊啊啊啊啊啊啊，某人有舍友不理我了"</span> <span class="comments">// 22:17</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">40</span>] <span class="operator">=</span> <span class="string">"没有用了，你都没有主动和我说话，冷战！！！！！！！！！！！！！！！！！！！！！！"</span> <span class="comments">// 22:42</span>
+                </div>
+                <div id="code" class="codeb">
+                    <span class="comments">/* 2019-01-23 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">41</span>] <span class="operator">=</span> <span class="string">"那你想要什么礼物呀"</span> <span class="comments">// 23:11</span><br><br>
+                    <span class="comments">/* 2019-01-24 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">42</span>] <span class="operator">=</span> <span class="string">"汇报完毕"</span> <span class="comments">// 22:18</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">43</span>] <span class="operator">=</span> <span class="string">"给你发的时候我手都是抖的，因为怕你看了以后感觉不好"</span> <span class="comments">// 23:25</span><br><br>
+                    <span class="comments">/* 2019-01-25 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">44</span>] <span class="operator">=</span> <span class="string">"影响力不用太大，能影响你就行了"</span> <span class="comments">// 22:52</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">45</span>] <span class="operator">=</span> <span class="string">"对方申请做您心尖尖上的宝贝 接收请求么"</span> <span class="comments">// 22:58</span>
+                </div>
+                <div id="code" class="codec">
+                    <span class="keyword">LoveBox</span>[<span class="number">46</span>] <span class="operator">=</span> <span class="string">"因为想到是你女朋友，所以异常兴奋的去看了集电视剧"</span> <span class="comments">// 23:27</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">47</span>] <span class="operator">=</span> <span class="string">"对呀，天天都很兴奋，所以天天晚上看一会儿电视剧，不对，最兴奋的是和你说话"</span> <span class="comments">// 23:33</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">48</span>] <span class="operator">=</span> <span class="string">"我要每天对你说一句情话，然后看我能说多少天"</span> <span class="comments">// 23:44</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">49</span>] <span class="operator">=</span> <span class="string">"第一天，吉下两点一口 又有欠字相依 宾语是你"</span> <span class="comments">// 23:44</span><br><br>
+                    <span class="comments">/* 2019-01-27 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">50</span>] <span class="operator">=</span> <span class="string">"第二天，喜你为疾，药石无医"</span> <span class="comments">// 05:09</span>
+                </div>
+                <div id="code" class="coded">
+                    <span class="keyword">LoveBox</span>[<span class="number">51</span>] <span class="operator">=</span> <span class="string">"知道你睡了才和你说，好想你呀好想开学见你呀，哼知道你才不会和我说这种话，说完上线了就没有然后了，差评"</span> <span class="comments">// 05:15</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">52</span>] <span class="operator">=</span> <span class="string">"你可能不知道，我旺男朋友"</span> <span class="comments">// 23:08</span><br><br>
+                    <span class="comments">/* 2019-01-28 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">53</span>] <span class="operator">=</span> <span class="string">"又到了和你说再见的时候，心情无比沉重，我怀着悲伤的心情打开爱奇艺，又关闭，打开，又关闭，打开，又关闭，打开，又关闭，打开，又关闭"</span> <span class="comments">// 23:01</span><br><br>
+                    <span class="comments">/* 2019-01-29 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">54</span>] <span class="operator">=</span> <span class="string">"数着数着我就趁机可以抱抱你"</span> <span class="comments">// 00:03</span>
+                </div>
+                <div id="code" class="codee">
+                    <span class="keyword">LoveBox</span>[<span class="number">55</span>] <span class="operator">=</span> <span class="string">"你嫌我回话太慢，于是我私下拼命练习"</span> <span class="comments">// 22:10</span><br><br>
+                    <span class="comments">/* 2019-01-31 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">56</span>] <span class="operator">=</span> <span class="string">"谁说的，不准这么说自己"</span> <span class="comments">// 00:05</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">57</span>] <span class="operator">=</span> <span class="string">"和你聊天怎么顾得上其他人"</span> <span class="comments">// 23:11</span><br><br>
+                    <span class="comments">/* 2019-02-02 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">58</span>] <span class="operator">=</span> <span class="string">"你以后也会是，会是最厉害的"</span> <span class="comments">// 23:48</span><br><br>
+                    <span class="comments">/* 2019-02-05 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">59</span>] <span class="operator">=</span> <span class="string">"你在干嘛呢"</span> <span class="comments">// 22:36</span>
+                </div>
+                <div id="code" class="codef">
+                    <span class="comments">/* 2019-02-07 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">60</span>] <span class="operator">=</span> <span class="string">"下雪了"</span> <span class="comments">// 08:43</span><br><br>
+                    <span class="comments">/* 2019-02-08 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">61</span>] <span class="operator">=</span> <span class="string">"你现在晚上都不和我说晚安了！！！！"</span> <span class="comments">// 23:58</span><br><br>
+                    <span class="comments">/* 2019-02-09 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">62</span>] <span class="operator">=</span> <span class="string">"是好奇宝宝"</span> <span class="comments">// 22:39</span><br><br>
+                    <span class="comments">/* 2019-02-10 */</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">63</span>] <span class="operator">=</span> <span class="string">"数学之美该看 14 章了"</span> <span class="comments">// 10:17</span><br>
+                    <span class="keyword">LoveBox</span>[<span class="number">64</span>] <span class="operator">=</span> <span class="string">"看我做的土豆泥"</span> <span class="comments">// 17:36</span>
+                </div>
+                <div id="code" class="codeg">
+                    <span class="comments">// 从 2 月 2 日回家到现在，这个页面，我断断续续写了 13 天，虽然一些地方还不满意，但限于水平，也只能作罢了</span><br><br>
+                    <span class="comments">// 谢谢你，江，因为想写个动态页面给你，我开始接触作为网页编程语言之一的 JavaScript，虽然只学到些皮毛，但接触新东西的日子总能让我无比兴奋</span><br><br>
+                    <span class="comments">// 有时候我也会想啊，你的到来是不是天意，因为多年以前我写下的<a href="/fish/">情诗</a>，它的标题与你的姓同音</span><br><br>
+                    <span class="comments">// 不管是不是吧，都要谢谢你，谢谢你来到我的身边。愿我们能在往后的日子里，健康生活，快乐学习，携手成长；愿我们，因为爱情，遇见全新的世界，全新的自己（づ￣3￣）づ╭<span style="color: red">❤</span>～</span><br><br>
+                    <span class="comments">// 帆，2019-02-14 10:14 于宁乡</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer h-card">
+        <data class="u-url" href="{{ "/" | relative_url }}"></data>
+        <div class="wrapper">
+            <h2 class="footer-heading">{{ site.title | escape }}</h2>
+            <div class="footer-col-wrapper">
+                <div class="footer-col footer-col-1">
+                    <p>{{- site.description | escape -}}</p>
+                </div>
+                <div class="footer-col footer-col-2">
+                    <p>Copyright © 2018-2019 Boat On Journey All Rights Reserved</p>
+                </div>
+                <div class="footer-col footer-col-3">
+                    {%- include social.html -%}
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+    var ct = 33000; //codetime
+    var ft = 4000; //fadeouttime
+
+    $(".codeg").hide();
+    $(".codef").hide();
+    $(".codee").hide();
+    $(".coded").hide();
+    $(".codec").hide();
+    $(".codeb").hide();
+    $(".codea").hide();
+    $(".code9").hide();
+    $(".code8").hide();
+    $(".code7").hide();
+    $(".code6").hide();
+    $(".code5").hide();
+    $(".code4").hide();
+    $(".code3").hide();
+    $(".code2").hide();
+    $(".code1").typewriter();
+
+    setTimeout(function() { $(".code1").fadeOut(ft) }, ct);
+    setTimeout(function() { $(".code2").show() }, ct + ft);
+    setTimeout(function() { $(".code2").typewriter() }, ct + ft);
+
+    setTimeout(function() { $(".code2").fadeOut(ft) }, ct * 2 + ft);
+    setTimeout(function() { $(".code3").show() }, (ct + ft) * 2);
+    setTimeout(function() { $(".code3").typewriter() }, (ct + ft) * 2);
+
+    setTimeout(function() { $(".code3").fadeOut(ft) }, ct * 3 + ft * 2);
+    setTimeout(function() { $(".code4").show() }, (ct + ft) * 3);
+    setTimeout(function() { $(".code4").typewriter() }, (ct + ft) * 3);
+
+    setTimeout(function() { $(".code4").fadeOut(ft) }, ct * 4 + ft * 3);
+    setTimeout(function() { $(".code5").show() }, (ct + ft) * 4);
+    setTimeout(function() { $(".code5").typewriter() }, (ct + ft) * 4);
+
+    setTimeout(function() { $(".code5").fadeOut(ft) }, ct * 5 + ft * 4);
+    setTimeout(function() { $(".code6").show() }, (ct + ft) * 5);
+    setTimeout(function() { $(".code6").typewriter() }, (ct + ft) * 5);
+
+    setTimeout(function() { $(".code6").fadeOut(ft) }, ct * 6 + ft * 5);
+    setTimeout(function() { $(".code7").show() }, (ct + ft) * 6);
+    setTimeout(function() { $(".code7").typewriter() }, (ct + ft) * 6);
+
+    setTimeout(function() { $(".code7").fadeOut(ft) }, ct * 7 + ft * 6);
+    setTimeout(function() { $(".code8").show() }, (ct + ft) * 7);
+    setTimeout(function() { $(".code8").typewriter() }, (ct + ft) * 7);
+
+    setTimeout(function() { $(".code8").fadeOut(ft) }, ct * 8 + ft * 7);
+    setTimeout(function() { $(".code9").show() }, (ct + ft) * 8);
+    setTimeout(function() { $(".code9").typewriter() }, (ct + ft) * 8);
+
+    setTimeout(function() { $(".code9").fadeOut(ft) }, ct * 9 + ft * 8);
+    setTimeout(function() { $(".codea").show() }, (ct + ft) * 9);
+    setTimeout(function() { $(".codea").typewriter() }, (ct + ft) * 9);
+
+    setTimeout(function() { $(".codea").fadeOut(ft) }, ct * 10 + ft * 9);
+    setTimeout(function() { $(".codeb").show() }, (ct + ft) * 10);
+    setTimeout(function() { $(".codeb").typewriter() }, (ct + ft) * 10);
+
+    setTimeout(function() { $(".codeb").fadeOut(ft) }, ct * 11 + ft * 10);
+    setTimeout(function() { $(".codec").show() }, (ct + ft) * 11);
+    setTimeout(function() { $(".codec").typewriter() }, (ct + ft) * 11);
+
+    setTimeout(function() { $(".codec").fadeOut(ft) }, ct * 12 + ft * 11);
+    setTimeout(function() { $(".coded").show() }, (ct + ft) * 12);
+    setTimeout(function() { $(".coded").typewriter() }, (ct + ft) * 12);
+
+    setTimeout(function() { $(".coded").fadeOut(ft) }, ct * 13 + ft * 12);
+    setTimeout(function() { $(".codee").show() }, (ct + ft) * 13);
+    setTimeout(function() { $(".codee").typewriter() }, (ct + ft) * 13);
+
+    setTimeout(function() { $(".codee").fadeOut(ft) }, ct * 14 + ft * 13);
+    setTimeout(function() { $(".codef").show() }, (ct + ft) * 14);
+    setTimeout(function() { $(".codef").typewriter() }, (ct + ft) * 14);
+
+    setTimeout(function() { $(".codef").fadeOut(ft) }, ct * 15 + ft * 14);
+    setTimeout(function() { $(".codeg").show() }, (ct + ft) * 15);
+    setTimeout(function() { $(".codeg").typewriter(100) }, (ct + ft) * 15);
+    </script>
+</body>
+
+</html>

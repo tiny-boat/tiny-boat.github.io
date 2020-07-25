@@ -1,0 +1,148 @@
+---
+layout: post
+title:  "一种新的三项子空间共轭梯度法"
+date:   2019-04-15 19:14:00
+categories: Mathematics
+excerpt: ""
+permalink: /nfe/3/
+---
+
+<div class="post-style">
+
+<p>算法大体上只是修改了子空间共轭梯度算法中 $a_k,\ b_k$ 的计算公式，$a_k,\ b_k$ 的计算公式是通过最小化目标函数（关于 $\boldsymbol{d}_{k+1}$ 的二次凸函数，其梯度为 0 向量的点即为极小值点）</p>
+
+$$\Phi \left(\boldsymbol{d}_{k+1} \right ) = \boldsymbol{g}_{k+1}^T \boldsymbol{d}_{k+1} + M \left[ \left(\left(t\boldsymbol{B}_{k+1}\boldsymbol{d}_{k+1} + \boldsymbol{g}_{k+1} \right)^T \boldsymbol{s}_k\right)^2 + \left(\boldsymbol{d}_{k+1}^T \boldsymbol{y}_k\right)^2 \right] \qquad \left(1 \right )$$
+
+<p class="post-text-noindent">得到的，其中 $t\boldsymbol{B}_{k+1}\boldsymbol{d}_{k+1} + \boldsymbol{g}_{k+1}$ 是 $\boldsymbol{g}_{k+2}$ 的近似，$t$ 为 $\alpha_{k+1}$ 的近似。令 $\left(1 \right )$ 式的梯度为 0 向量，即（使用了拟牛顿条件 $B_{k+1} s_k = y_k$）</p>
+
+$$\boldsymbol{g}_{k+1}^T \left(\boldsymbol{I}_n + 2Mt \boldsymbol{s}_k \boldsymbol{y}_k^T \right ) + \boldsymbol{d}_{k+1}^T 2M \left(t^2 + 1 \right )\boldsymbol{y}_k \boldsymbol{y}_k^T = \boldsymbol{0}' \qquad \left(2 \right )$$
+
+<p class="post-text-noindent">这里 $\boldsymbol{I}_n$ 为 $n\times n$ 单位矩阵，$n$ 为 $\boldsymbol{x}$ 的维数，$\boldsymbol{0}'$ 为元素全为 0 的行向量。将</p>
+
+$$\boldsymbol{d}_{k+1} = - \boldsymbol{g}_{k+1} + a_k \boldsymbol{s}_k + b_k \boldsymbol{s}_{k-1} \qquad \left(3 \right )$$
+
+<p class="post-text-noindent">代入 $\left(2 \right )$ 式并对 $\left(2 \right )$ 式等号两边依次右乘 $\boldsymbol{s}_k$ 和 $\boldsymbol{s}_{k-1}$，得到如下关于 $a_k,b_k$ 的二元一次方程组：</p>
+
+$$\begin{aligned}
+& \begin{pmatrix}
+l_kp_k^2 & l_kp_kq_k\\
+l_kp_kq_k & l_kq_k^2
+\end{pmatrix}
+\begin{pmatrix}
+a_k\\
+b_k
+\end{pmatrix}
+=
+\begin{pmatrix}
+\ l_kp_kw_k - u_k - m_kp_ku_k\\
+\ l_kq_kw_k - v_k - m_kq_ku_k
+\end{pmatrix} \\
+&\ p_k = \boldsymbol{s}_k^T \boldsymbol{y}_k,\ q_k = \boldsymbol{s}_{k-1}^T \boldsymbol{y}_k \\
+&\ u_k = \boldsymbol{s}_k^T \boldsymbol{g}_{k+1},\ v_k = \boldsymbol{s}_{k-1}^T \boldsymbol{g}_{k+1},\ w_k = \boldsymbol{g}_{k+1}^T \boldsymbol{y}_k \\
+&\ l_k = 2M \left(1+t^2 \right ),\ m_k = 2M t \end{aligned} \qquad \left(4 \right )$$
+
+<p class="post-text-noindent">由此求得 $a_k,b_k$。</p>
+
+<p>如果将 $\left(3 \right )$ 式改为</p>
+
+$$\boldsymbol{d}_{k+1} = - \boldsymbol{g}_{k+1} + a_k \boldsymbol{y}_k + b_k \boldsymbol{y}_{k-1} \qquad \left(5 \right )$$
+
+<p class="post-text-noindent">则 $a_k,b_k$ 由以下二元一次方程组求得：</p>
+
+$$\begin{aligned}
+& \begin{pmatrix}
+l_kp_k^2 & l_kp_kq_k\\
+l_kp_kq_k & l_kq_k^2
+\end{pmatrix}
+\begin{pmatrix}
+a_k\\
+b_k
+\end{pmatrix}
+=
+\begin{pmatrix}
+\ l_kp_ku_k - u_k - m_kp_kw_k\\
+\ l_kq_ku_k - v_k - m_kq_kw_k
+\end{pmatrix} \\
+&\ p_k = \boldsymbol{y}_k^T \boldsymbol{y}_k,\ q_k = \boldsymbol{y}_{k-1}^T \boldsymbol{y}_k \\
+&\ u_k = \boldsymbol{y}_k^T \boldsymbol{g}_{k+1},\ v_k = \boldsymbol{y}_{k-1}^T \boldsymbol{g}_{k+1},\ w_k = \boldsymbol{g}_{k+1}^T \boldsymbol{s}_k \\
+&\ l_k = 2M \left(1+t^2 \right ),\ m_k = 2M t \end{aligned} \qquad \left(6 \right )$$
+
+<p>如果将 $\left(3 \right )$ 式改为</p>
+
+$$\boldsymbol{d}_{k+1} = - \boldsymbol{g}_{k+1} + a_k \boldsymbol{d}_k + b_k \boldsymbol{d}_{k-1} \qquad \left(7 \right )$$
+
+<p class="post-text-noindent">则 $a_k,b_k$ 由以下二元一次方程组求得：</p>
+
+$$\begin{aligned}
+& \begin{pmatrix}
+l_kp_k^2 & l_kp_kq_k\\
+l_kp_kq_k & l_kq_k^2
+\end{pmatrix}
+\begin{pmatrix}
+a_k\\
+b_k
+\end{pmatrix}
+=
+\begin{pmatrix}
+\ l_kp_kw_k - u_k - m_kp_kr_k\\
+\ l_kq_kw_k - v_k - m_kq_kr_k
+\end{pmatrix} \\
+&\ p_k = \boldsymbol{d}_k^T \boldsymbol{y}_k,\ q_k = \boldsymbol{d}_{k-1}^T \boldsymbol{y}_k,\ r_k = \boldsymbol{g}_{k+1}^T \boldsymbol{s}_k \\
+&\ u_k = \boldsymbol{d}_k^T \boldsymbol{g}_{k+1},\ v_k = \boldsymbol{d}_{k-1}^T \boldsymbol{g}_{k+1},\ w_k = \boldsymbol{g}_{k+1}^T \boldsymbol{y}_k \\
+&\ l_k = 2M \left(1+t^2 \right ),\ m_k = 2M t \end{aligned} \qquad \left(8 \right )$$
+
+<p class="post-text-noindent">下面算法取 $t = \alpha_k$</p>
+
+<br>
+
+<p>算法步骤（$\boldsymbol{d}_{k+1} = - \boldsymbol{g}_{k+1} + a_k \boldsymbol{s}_k + b_k \boldsymbol{s}_{k-1}$）：</p>
+
+<p>1. 给定初始点 $\boldsymbol{x}_0$，初始搜索方向 $\boldsymbol{d}_0 = - \boldsymbol{g}_0$，惩罚参数 $M$ 以及允许误差 $\varepsilon_1,\varepsilon_2$</p>
+<p>2. 计算 $\left \| \boldsymbol{g}_0 \right \|$，如果 $\left \| \boldsymbol{g}_0 \right \| < \varepsilon_1$，停止；否则计算 $f \left(\boldsymbol{x}_0 \right )$，继续下一步</p>
+<p>3. 通过线搜索确定搜索步长 $\alpha_0$，得到 $\boldsymbol{x}_1 = \boldsymbol{x}_0 + \alpha_0 \boldsymbol{d}_0$ 和 $\boldsymbol{g}_1$，令 $\boldsymbol{d}_1 = - \boldsymbol{g}_1$</p>
+<p>4. 计算 $\left \| \boldsymbol{g}_1 \right \|$、$f \left(\boldsymbol{x}_1 \right )$，如果 $\left \| \boldsymbol{g}_1 \right \| < \varepsilon_1$ 或 $\frac{\left | f \left(\boldsymbol{x}_1 \right ) - f \left(\boldsymbol{x}_0 \right ) \right |}{\max \left \{ 1,\left | f \left(\boldsymbol{x}_0 \right ) \right | \right \}} < \varepsilon_2$，停止；否则令 $k = 1$，继续下一步</p>
+<p>5. 通过线搜索确定搜索步长 $\alpha_k$，得到 $\boldsymbol{x}_{k+1} = \boldsymbol{x}_k + \alpha_k \boldsymbol{d}_k,\ \boldsymbol{g}_{k+1}$ 以及 $f \left(\boldsymbol{x}_{k+1} \right )$。如果 $\left \| \boldsymbol{g}_{k+1} \right \|$ $< \varepsilon_1$ 或 $\left | f \left(\boldsymbol{x}_{k+1} \right ) - f \left(\boldsymbol{x}_k \right ) \right | < \varepsilon_2 \max \left \{ 1,\left | f \left(\boldsymbol{x}_k \right ) \right | \right \}$，停止迭代；否则继续下一步</p>
+<p>6. 计算 $\boldsymbol{s}_{k-1} = \boldsymbol{x}_k - \boldsymbol{x}_{k-1},\ \boldsymbol{s}_{k} = \boldsymbol{x}_{k+1}-\boldsymbol{x}_k,\ \boldsymbol{y}_k = \boldsymbol{g}_{k+1} - \boldsymbol{g}_k$，令</p>
+
+$$p_k = \boldsymbol{s}_k^T \boldsymbol{y}_k,\ q_k = \boldsymbol{s}_{k-1}^T \boldsymbol{y}_k$$
+$$u_k = \boldsymbol{s}_k^T \boldsymbol{g}_{k+1},\ v_k = \boldsymbol{s}_{k-1}^T \boldsymbol{g}_{k+1},\ w_k = \boldsymbol{g}_{k+1}^T \boldsymbol{y}_k$$
+$$l_k = 2M \left(1+\alpha_k^2 \right ),\ m_k = 2M \alpha_k$$
+
+<p class="post-text-noindent">求解以下二元一次方程组得到 $a_k,\ b_k$：</p>
+
+$$\begin{pmatrix}
+l_kp_k^2 & l_kp_kq_k\\
+l_kp_kq_k & l_kq_k^2
+\end{pmatrix}
+\begin{pmatrix}
+a_k\\
+b_k
+\end{pmatrix}
+=
+\begin{pmatrix}
+l_kp_kw_k - u_k - m_kp_ku_k\\
+l_kq_kw_k - v_k - m_kq_ku_k
+\end{pmatrix}$$
+
+<p>7. 令 $\boldsymbol{d}_{k+1} = - \boldsymbol{g}_{k+1} + a_k \boldsymbol{s}_k + b_k \boldsymbol{s}_{k-1}$，令 $k = k + 1$，返回第 5 步。</p>
+
+<br>
+
+<p>关于子空间共轭梯度这篇文章的算法，我还有以下几个问题：</p>
+
+<p>第一：它的引理 2.1 说算法本身保证了</p>
+
+$$\Phi_{k+1}\left(d_{k+1} \right ) = g_{k+1}^Td_{k+1}+\frac{1}{2}d_{k+1}^TB_{k+1}d_{k+1} \leq 0$$
+
+<p class="post-text-noindent">又由于</p>
+
+$$f \left(\boldsymbol{x}_{k+2} \right ) - f \left(\boldsymbol{x}_{k+1} \right ) \approx g_{k+1}^Td_{k+1}+\frac{1}{2}d_{k+1}^TB_{k+1}d_{k+1}
+$$
+
+<p class="post-text-noindent">所以算法本身就保证了搜索方向是下降方向，但它是如何保证的呢？难道 Wolfe 线搜索能保证搜索方向就一定为下降方向？</p>
+
+<p>第二：关于它的 acceleration scheme 我看不明白，这段要实现加速，就必须保证如果 $\bar{b}_k > 0$，就一定有 $f \left(\boldsymbol{x}_k + \xi_k \alpha_k \boldsymbol{d}_k \right ) < f \left(\boldsymbol{x}_k + \alpha_k \boldsymbol{d}_k \right )$，否则如何称之为加速？这里成立吗？难道就这么修正一下就能让目标函数进一步变小吗？</p>
+
+<p>第三：论文不提供数值测试使用的 Matlab 的源代码吗？这样如何供后续研究者进行检查和复现？我发现论文的数值测试使用的迭代终止条件就与论文给的算法步骤中的迭代终止条件不一致，论文在实际进行数值测试时，其他地方会不会也存在出入呢？</p>
+
+</div>
