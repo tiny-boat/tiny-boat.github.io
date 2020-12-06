@@ -34,7 +34,7 @@ permalink: /about_me/
 
 * 2019.09 至今 作为全球最大华人运筹学社区“运筹OR帷幄”公众号“数据科学/人工智能”板块责任编辑，原创 1 篇文章，编辑 3 篇文章，转载 4 篇文章，获得平台颁发的[优秀责任编辑证书](https://www.longzf.com/assets/img/about_me/certificate.png)。此外，我还参与公众号组织的 [Pandas 电子书](https://github.com/zhouyanasd/or-pandas)编纂工作，第一期电子书自 2020 年 9 月正式上线 [Github](https://github.com/zhouyanasd/or-pandas) 后已获得 300+ star，100+ fork. 以下是目前公众号与我相关的文章：
   + 原创
-    - [数据科学 \| 熊猫爱上篮球，Pandas 造福世界](https://mp.weixin.qq.com/s/8TaRzXhx5gfsuV81sZUhdg)
+    - [数据科学 \| 熊猫爱上篮球，Pandas 造福世界](https://mp.weixin.qq.com/s/8TaRzXhx5gfsuV81sZUhdg)（文章涉及数据分析全流程：数据获取、数据预处理、数据分析与可视化）
   + 编辑
     - [数据科学 \| 算法工程师必备的机器学习--贝叶斯分类器](https://mp.weixin.qq.com/s/MfzqlQJedEkCLbh2Mb88Jw)
     - [数据科学 \| 算法工程师必备的机器学习--决策树](https://mp.weixin.qq.com/s/KPBYqA5Mp7YcPI_px3QNAg)
@@ -48,7 +48,7 @@ permalink: /about_me/
     - [数据科学 \| “pandas实战教程”电子书正式上线啦](https://mp.weixin.qq.com/s/viTgPDpedxCZHGaT8IyFmw)
     - [优秀责编风采一览--记『运筹OR帷幄』第一届全体责编大会](https://mp.weixin.qq.com/s/nWV7CfszNc7J8Eq-pjQ-ZQ)
 
-* 2017.07-2017.09  中国人民大学中国调查与数据中心数据采集部项目助理，负责中国综合社会调查（CGSS）数据质量远程控制工作，期间使用 R、AutoHotkey、Bat、Excel Visual Basic 等实现了以下大部分工作的自动化：
+* 2017.07-2017.09  中国人民大学中国调查与数据中心数据采集部项目助理，负责中国综合社会调查（CGSS）数据质量远程控制工作，期间使用 R、AutoHotkey、Bat、Excel Visual Basic 等实现了以下大部分工作的自动化（[工作总结](/drafts/CGSS质量控制——数据核查.pdf)、[自动化脚本](https://www.longzf.com/drafts/CGSS质量控制程序.pdf)）：
   + 统计问卷调查进度和受访者电话回收情况，据此把握调查总体进度和质量
   + 从已上传问卷中筛选出质量存疑问卷，并将其交给电话核查人员进行回访
   + 汇总通过电话回访得到的相关信息，据此决定是否作废质量存疑的问卷
@@ -69,16 +69,14 @@ permalink: /about_me/
   + 良好：Word、Excel、Git、Docker
   + 一般：PowerPoint、SPSS、Matlab、Mathematica、Android Debug Bridge
 
-## 一些作品
+## 其他作品
 
 * 2015.07-2015.11 Introduction to the theory of statistics 第六至九章[翻译](https://www.longzf.com/drafts/统计学课本翻译.pdf)
 * 2017.04-2017.05 [马蹄蟹追随者状态数据分析报告](https://www.longzf.com/drafts/马蹄蟹追随者状态数据分析报告.pdf)
 * 2017.04-2017.05 [北京银行股票数据分析报告](https://www.longzf.com/drafts/北京银行股票数据分析报告.pdf)
 * 2017.04-2017.05 本科毕业论文 [k 折交叉验证折数确定方法初探](https://www.longzf.com/drafts/k折交叉验证折数确定方法初探.pdf)
-* 2017.07-2017.09 在中国调查与数据中心的[工作总结](/drafts/CGSS质量控制——数据核查.pdf)以及用以提高工作效率的[自动化脚本](https://www.longzf.com/drafts/CGSS质量控制程序.pdf)
 * 2019.07-2019.08 仅用 numpy 实现的一些[无约束优化算法](https://github.com/tiny-boat/my-Python-code/blob/master/unconstrained_optimization.py)（包括梯度下降法、修正牛顿法、共轭梯度法、拟牛顿法、信赖域方法和不使用目标函数导数信息的单纯形法）
 * 2019.09 仅用 numpy 实现的[全连接神经网络](https://github.com/tiny-boat/my-Python-code/blob/master/machine_learning/neural_network.py)（待完善）
-* 2019.10-2019.11 运筹OR帷幄公众号文章 [熊猫爱上篮球，Pandas 造福世界](https://mp.weixin.qq.com/s/8TaRzXhx5gfsuV81sZUhdg)（文章涉及数据分析全流程：数据获取、数据预处理、数据分析与可视化）
 
 ## 正在进行的工作
 
