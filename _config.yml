@@ -65,7 +65,7 @@ paginate_path: "page:num"
 
 # page_view_counter
 leancloud:
-  enable: true
+  enable: false
   #app_id: mCIX8PuELvW3qkSaKOPL0LDB-gzGzoHsz
   app_id: 1CRjnX9azY3m0LsGaSV8mvbo-MdYXbMMI
   #app_key: ctji4A6Ek1GWyAmA29CoQQQi
