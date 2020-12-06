@@ -19,20 +19,34 @@ permalink: /about_me/
 ## 实习经历
 
 * 2020.07.22 至今 百度 移动生态事业群组 (MEG) 质量效能研发部 爬虫实习生 入职四个月的时间里主要做了以下工作：
-  + 一、MEG 舆情平台
-    - 1.舆情平台异常爬虫的排查与修复以及相关流程的整理
-    - 2.带新实习生熟悉爬虫框架的使用和异常爬虫修复流程
-    - 3.舆情日常监控值班
-  + 二、竞媒广告分析平台：
-    - 1.真机开屏广告抓取日常监测
-    - 2.旗舰店落地页企业信息解析自动化
-    - 3.IT桔子网站资讯获取与投融资信息解析自动化
-  + 三、其他：
-    - 1.内部数据需求：内网产品评论获取、好奇夜微博评论获取、爱企查竞品企查查网站数据获取自动化
-    - 2.外部数据需求：市场监督管理局“长江禁捕、打非断链”之部分电商商品检索详情信息获取自动化
-    - 3.服务器迁移：服务迁移与新机环境配置
+  + MEG 舆情平台
+    - 舆情平台异常爬虫的排查与修复以及相关流程的整理
+    - 带新实习生熟悉爬虫框架的使用和异常爬虫修复流程
+    - 舆情日常监控值班
+  + 竞媒广告分析平台
+    - 真机开屏广告抓取日常监测
+    - 旗舰店落地页企业信息解析自动化
+    - IT桔子网站资讯获取与投融资信息解析自动化
+  + 其他
+    - 内部数据需求：内网产品评论获取、好奇夜微博评论获取、爱企查竞品企查查网站数据获取自动化
+    - 外部数据需求：市场监督管理局“长江禁捕、打非断链”之部分电商商品检索详情信息获取自动化
+    - 服务器迁移：服务迁移与新机环境配置
 
-* 2019.09 至今 作为全球最大华人运筹学社区“运筹OR帷幄”公众号“数据科学/人工智能”板块责任编辑，原创 1 篇文章，转载 7 篇文章，获得平台颁发的[优秀责任编辑证书](https://www.longzf.com/assets/img/about_me/certificate.png)。此外，我还参与公众号组织的 [Pandas 电子书](https://github.com/zhouyanasd/or-pandas)编纂工作，第一期电子书自 2020 年 9 月正式上线 [Github](https://github.com/zhouyanasd/or-pandas) 后已获得 300+ star，100+ fork.
+* 2019.09 至今 作为全球最大华人运筹学社区“运筹OR帷幄”公众号“数据科学/人工智能”板块责任编辑，原创 1 篇文章，编辑 3 篇文章，转载 4 篇文章，获得平台颁发的[优秀责任编辑证书](https://www.longzf.com/assets/img/about_me/certificate.png)。此外，我还参与公众号组织的 [Pandas 电子书](https://github.com/zhouyanasd/or-pandas)编纂工作，第一期电子书自 2020 年 9 月正式上线 [Github](https://github.com/zhouyanasd/or-pandas) 后已获得 300+ star，100+ fork. 以下是目前公众号与我相关的文章：
+  + 原创
+    - [数据科学 | 熊猫爱上篮球，Pandas 造福世界](https://mp.weixin.qq.com/s/8TaRzXhx5gfsuV81sZUhdg)
+  + 编辑
+    - [数据科学 | 算法工程师必备的机器学习--贝叶斯分类器](https://mp.weixin.qq.com/s/MfzqlQJedEkCLbh2Mb88Jw)
+    - [数据科学 | 算法工程师必备的机器学习--决策树](https://mp.weixin.qq.com/s/KPBYqA5Mp7YcPI_px3QNAg)
+    - [数据科学 | 算法工程师必备的机器学习--EM](https://mp.weixin.qq.com/s/xTe3j23cMAYfNxfYszHj0w)
+  + 转载
+    - [数据科学 | 从 Pandas 小白到 Pandas 能手](https://mp.weixin.qq.com/s/U8Y0gVt66PuVhRAPecQwsg)
+    - [数据科学 | 世界经济论坛 2020 全球性别差距报告](https://mp.weixin.qq.com/s/OrgAmrepLDtYVxAMAKaGgQ)
+    - [AI | 硬核战疫，人工智能的八方狙击](https://mp.weixin.qq.com/s/PDOTV5Lgzaec3ajMM5e_eA)
+    - [AI | 优化背后的数学基础](https://mp.weixin.qq.com/s/v_XzquIZX2e0hX7t4_fo4g)
+  + 其他  
+    - [数据科学 | “pandas实战教程”电子书正式上线啦](https://mp.weixin.qq.com/s/viTgPDpedxCZHGaT8IyFmw)
+    - [优秀责编风采一览--记『运筹OR帷幄』第一届全体责编大会](https://mp.weixin.qq.com/s/nWV7CfszNc7J8Eq-pjQ-ZQ)
 
 * 2017.07-2017.09  中国人民大学中国调查与数据中心数据采集部项目助理，负责中国综合社会调查（CGSS）数据质量远程控制工作，期间使用 R、AutoHotkey、Bat、Excel Visual Basic 等实现了以下大部分工作的自动化：
   + 统计问卷调查进度和受访者电话回收情况，据此把握调查总体进度和质量
