@@ -18,18 +18,18 @@ permalink: /about_me/
   
 ## 实习经历
 
-* 2020.07.22 至今 百度 移动生态事业群组 (MEG) 质量效能研发部 爬虫实习生 入职四个月的时间里主要做了以下工作：
+* 2020.07.22 至今 百度 移动生态事业群组 (MEG) 质量效能研发部 爬虫实习生 承接内外部数据获取需求，服务于产品质量和工程效能的提升，入职六个月的时间里主要做了以下工作：
   + MEG 舆情平台
     - 舆情平台异常爬虫的排查与修复以及相关流程的整理
     - 带新实习生熟悉爬虫框架的使用和异常爬虫修复流程
     - 舆情日常监控值班
   + 竞媒广告分析平台
     - 真机开屏广告抓取日常监测
-    - 旗舰店落地页企业信息解析自动化
-    - IT桔子网站资讯获取与投融资信息解析自动化
+    - 旗舰店落地页企业信息解析
+    - IT 桔子网站资讯获取与投融资信息解析
   + 其他
-    - 内部数据需求：内网产品评论获取、好奇夜微博评论获取、爱企查竞品企查查网站数据获取自动化
-    - 外部数据需求：市场监督管理局“长江禁捕、打非断链”之部分电商商品检索详情信息获取自动化
+    - 内部数据需求：内网产品评论、好奇夜微博评论、百度沸点相关微博内容、爱企查竞品天眼查网站和企查查网站数据获取
+    - 外部数据需求：市场监督管理局“长江禁捕、打非断链”之部分电商商品（淘宝、天猫、京东）检索详情信息
     - 服务器迁移：服务迁移与新机环境配置
 
 * 2019.09 至今 作为全球最大华人运筹学社区“运筹OR帷幄”公众号“数据科学/人工智能”板块责任编辑，原创 1 篇文章，编辑 3 篇文章，转载 4 篇文章，获得平台颁发的[优秀责任编辑证书](https://www.longzf.com/assets/img/about_me/certificate.png)。此外，我还参与公众号组织的 [Pandas 电子书](https://github.com/zhouyanasd/or-pandas)编纂工作，第一期电子书自 2020 年 9 月正式上线 [Github](https://github.com/zhouyanasd/or-pandas) 后已获得 300+ star，100+ fork. 以下是目前公众号与我相关的文章：
@@ -58,6 +58,7 @@ permalink: /about_me/
 
 * [1]邓春林,贾懿,隆征帆,姜柳.[基于扎根理论的微博用户情感倾向性分析及应对策略[J].现代情报,2020,40(09):71-78+105.](https://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2020&filename=XDQB202009008)
 * [2]杨柳,张星,邓春林,隆征帆.[基于舆情大数据的境外旅游影响因素的灰色关联分析模型[J].湘潭大学学报(自然科学版),2020,42(02):18-27.](https://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2020&filename=XYDZ202002003)
+* [3]邓春林,姜柳,隆征帆,贾懿,周舒阳.[微博群体性事件热度的影响因素识别研究[J].科技情报研究,2020,2(04):44-55.](https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2020&filename=QBYJ202004005)
 
 ## 个人技能
 
@@ -89,7 +90,7 @@ permalink: /about_me/
 ## 联系方式
 
 * 微信：[xiaozhou13171317](https://www.longzf.com/assets/img/about_me/wechat.jpg)
-* 微博：[@sailboat征帆](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
+* 微博：[@周周画图](https://weibo.com/u/3167301301?refer_flag=1001030102_&is_hot=1)
 
 ## 结语
 
