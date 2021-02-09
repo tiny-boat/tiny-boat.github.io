@@ -13,32 +13,22 @@ permalink: /about_me/
 
 ## 教育经历
 
-* 2013.09—2017.06 东北师范大学 数学与统计学院 统计学 理学学士
-* 2018.09 至今 湘潭大学 数学与计算科学学院 应用统计 专业硕士 在读
+* 2013.08—2017.06 东北师范大学 数学与统计学院 统计学 理学学士
+* 2018.08-2021.06 湘潭大学 数学与计算科学学院 应用统计 专业硕士
   
 ## 实习经历
 
-* 2020.07.22 至今 百度 移动生态事业群组 (MEG) 质量效能研发部 爬虫实习生 承接内外部数据获取需求，服务于产品质量和工程效能的提升，入职六个月的时间里主要做了以下工作：
-  + MEG 舆情平台
-    - 舆情平台异常爬虫的排查与修复以及相关流程的整理
-    - 带新实习生熟悉爬虫框架的使用和异常爬虫修复流程
-    - 舆情日常监控值班
-  + 竞媒广告分析平台
-    - 真机开屏广告抓取日常监测
-    - 旗舰店落地页企业信息解析
-    - IT 桔子网站资讯获取与投融资信息解析
-  + 其他
-    - 内部数据需求：内网产品评论、好奇夜微博评论、百度沸点相关微博内容、爱企查竞品天眼查网站和企查查网站数据获取
-    - 外部数据需求：市场监督管理局“长江禁捕、打非断链”之部分电商商品（淘宝、天猫、京东）检索详情信息
-    - 服务器迁移：服务迁移与新机环境配置
+* 2020.07.22 至今 百度 移动生态事业群组 (MEG) 质量效能研发部 爬虫实习生 承接内外部数据获取需求，服务于产品质量和工程效能的提升
 
-* 2019.09 至今 作为全球最大华人运筹学社区“运筹OR帷幄”公众号“数据科学/人工智能”板块责任编辑，原创 1 篇文章，编辑 3 篇文章，转载 4 篇文章，获得平台颁发的[优秀责任编辑证书](https://www.longzf.com/assets/img/about_me/certificate.png)。此外，我还参与公众号组织的 [Pandas 电子书](https://github.com/zhouyanasd/or-pandas)编纂工作，第一期电子书自 2020 年 9 月正式上线 [Github](https://github.com/zhouyanasd/or-pandas) 后已获得 300+ star，100+ fork. 以下是目前公众号与我相关的文章：
+* 2019.09 至今 作为全球最大华人运筹学社区“运筹OR帷幄”公众号“数据科学/人工智能”板块责任编辑，原创 1 篇文章，编辑 5 篇文章，转载 4 篇文章，获得平台颁发的[优秀责任编辑证书](https://www.longzf.com/assets/img/about_me/certificate.png)。此外，我还参与公众号组织的 [Pandas 电子书](https://github.com/zhouyanasd/or-pandas)编纂工作，第一期电子书自 2020 年 9 月正式上线 [Github](https://github.com/zhouyanasd/or-pandas) 后已获得 400+ star，100+ fork. 以下是目前公众号与我相关的文章：
   + 原创
     - [数据科学 \| 熊猫爱上篮球，Pandas 造福世界](https://mp.weixin.qq.com/s/8TaRzXhx5gfsuV81sZUhdg)（文章涉及数据分析全流程：数据获取、数据预处理、数据分析与可视化）
   + 编辑
     - [数据科学 \| 算法工程师必备的机器学习--贝叶斯分类器](https://mp.weixin.qq.com/s/MfzqlQJedEkCLbh2Mb88Jw)
     - [数据科学 \| 算法工程师必备的机器学习--决策树](https://mp.weixin.qq.com/s/KPBYqA5Mp7YcPI_px3QNAg)
     - [数据科学 \| 算法工程师必备的机器学习--EM](https://mp.weixin.qq.com/s/xTe3j23cMAYfNxfYszHj0w)
+    - [数据科学 \| 算法工程师必备的机器学习--聚类(上)](https://mp.weixin.qq.com/s/ZIRX90UcAFcdzzidcFjL_w)
+    - [数据科学 \| 算法工程师必备的机器学习--聚类(下)](https://mp.weixin.qq.com/s/S06-Unxu_acnfl1G5SLkWw)
   + 转载
     - [数据科学 \| 从 Pandas 小白到 Pandas 能手](https://mp.weixin.qq.com/s/U8Y0gVt66PuVhRAPecQwsg)
     - [数据科学 \| 世界经济论坛 2020 全球性别差距报告](https://mp.weixin.qq.com/s/OrgAmrepLDtYVxAMAKaGgQ)
