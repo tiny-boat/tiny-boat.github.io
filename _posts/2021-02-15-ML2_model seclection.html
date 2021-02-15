@@ -86,7 +86,7 @@ permalink: /machine_learning/2/model_selection/
 <ul>
 	<li>适用于多分类问题的宏查准率/微查准率（macro-P / micro-P）、宏查全率/微查全率（macro-R / micro-R）、宏平衡点/微平衡点（macro-BEP / micro-BEP）、宏 $F_\beta$ 度量/微 $F_\beta$ 度量（macro-$F_\beta$ / micro-$F_\beta$）、宏真正例率/微真正例率（macro-TPR / micro-TPR）、宏假正例率/微假正例率（macro-FPR / micro-FPR）、宏约登指数/微约登指数（macro-Youden / micro-Youden）</li>
 	$$macro-P = \frac{1}{n} \sum_{i=1}^{n}P_i,\ P_i = \frac{TP_{i}}{TP_{i} + FP_{i}}$$
-	$$micro-P = \frac{\bar{TP}}{\bar{TP} + \bar{FP}}, \bar{TP} = \frac{1}{n} \sum_{i=1}^{n}TP_i, \bar{FP} = \frac{1}{n} \sum_{i=1}^{n}FP_i$$
+	$$micro-P = \frac{\overline{TP}}{\overline{TP} + \overline{FP}}, \overline{TP} = \frac{1}{n} \sum_{i=1}^{n}TP_i, \overline{FP} = \frac{1}{n} \sum_{i=1}^{n}FP_i$$
 	其余类似可得
 </ul>
 
@@ -107,20 +107,20 @@ permalink: /machine_learning/2/model_selection/
 
 <blockquote>我们通常认为 DBI 指数越小或 DI 指数越大的聚类模型效果越好，它们均反映了一个基本理念，那就是我们认为一个好的聚类模型应使簇内样本相距很近，而簇间样本相距很远。</blockquote>
 
-<blockquote>上述这些指标都离不开距离的计算，而距离有多种多样的衡量方式。距离有度量距离和非度量距离之分，所谓非度量指的是不满足距离定义中的第三条性质：A与B的距离同B与C的距离的和大于等于A与C的距离。常用的度量距离有适用于连续或有序离散属性的闵可夫斯基距离、适用于无序离散属性的 VDM（value difference metric）。VDM 认为属性值在各簇分布越一致，属性值的距离越近。</blockquote>
+<blockquote>上述这些指标都离不开距离的计算，而距离有多种多样的衡量方式。距离有度量距离和非度量距离之分，所谓非度量指的是不满足距离定义中的第三条性质：A 与 B 的距离同 B 与 C 的距离的和大于等于 A 与 C 的距离。常用的度量距离有适用于连续或有序离散属性的闵可夫斯基距离、适用于无序离散属性的 VDM（value difference metric）。VDM 认为属性值在各簇分布越一致，属性值的距离越近。</blockquote>
 
 <p class="post-text-noindent">常用的外部指标则有：</p>
 
 <ul>
     <li>Jaccard 系数（Jaccard coefficient, JC）：$$JC = \frac{a}{a+b+c}$$</li>
-    <li>FM 指数（Fowlkes and Mallows index, FMI）：$$FMI = \sqrt{\frac{a}{a+b}\dot\frac{a}{a+c}}$$</li>
+    <li>FM 指数（Fowlkes and Mallows index, FMI）：$$FMI = \sqrt{\frac{a}{a+b}\cdot \frac{a}{a+c}}$$</li>
     <li>Rand 指数（Rand index, RI）：$$RI = \frac{2(a+d)}{m(m-1)}$$</li>
     其中 $a$ 代表在聚类模型下同属一类，在参考模型下也同属一类的样本对数量；$d$ 代表在聚类模型下不属于一类，在参考模型下也不属于一类的样本对数量；$b$ 代表在聚类模型下同属一类，但在参考模型下不属于一类的样本对数量；$c$ 代表在聚类模型下不属于一类，但在参考模型下同属一类的样本对数量。
 </ul>
 
 <blockquote>所谓参考模型，可以认为是对样本所属类别作了人工标记。</blockquote>
 
-<blockquote>我们通常认为 JC/FMI/Rand 越大的聚类模型效果越好，它们均反映了一个基本理念，那就是我们认为一个好的聚类模型的聚类结果应尽可能与参考模型的聚类结果一致。</blockquote>
+<blockquote>我们通常认为 JC / FMI / Rand 越大的聚类模型效果越好，它们均反映了一个基本理念，那就是我们认为一个好的聚类模型的聚类结果应尽可能与参考模型的聚类结果一致。</blockquote>
 
 <h1>3 结语</h1>
 
